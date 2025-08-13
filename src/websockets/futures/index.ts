@@ -41,5 +41,6 @@ export interface IQuoteFuturesEvent {
 
 export const getFuturesWebsocket = (
   apiKey: string,
-  apiBase = "wss://socket.polygon.io"
-): websocket.w3cwebsocket => getWsClient(`${apiBase}/futures`, apiKey);
+  apiBase = "wss://socket.polygon.io",
+  exchange?: string
+): websocket.w3cwebsocket => getWsClient(`${apiBase}/futures${exchange ? `/${exchange}` : ""}`, apiKey);
