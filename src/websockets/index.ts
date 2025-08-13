@@ -24,14 +24,15 @@ export interface IWebsocketClient {
 
 export const websocketClient = (
   apiKey: string,
-  apiBase?: string
+  apiBase?: string,
+  exchange?: string
 ): IWebsocketClient => ({
   crypto: () => getCryptoWebsocket(apiKey, apiBase),
   forex: () => getForexWebsocket(apiKey, apiBase),
   indices: () => getIndicesWebsocket(apiKey, apiBase),
   options: () => getOptionsWebsocket(apiKey, apiBase),
   stocks: () => getStocksWebsocket(apiKey, apiBase),
-  futures: () => getFuturesWebsocket(apiKey, apiBase),
+  futures: () => getFuturesWebsocket(apiKey, apiBase, exchange),
 });
 
 export default websocketClient;
