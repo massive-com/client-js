@@ -1,7 +1,7 @@
-import { restClient } from '@polygon.io/client-js';
+import { restClient } from '@massive.com/client-js';
 
-const apiKey = "GLOBAL_POLYGON_API_KEY";
-const rest = restClient(apiKey, 'https://api.polygon.io');
+const apiKey = "GLOBAL_MASSIVE_API_KEY";
+const rest = restClient(apiKey, 'https://api.massive.com');
 
 async function example_getOptionsMACD() {
   try {

@@ -10,11 +10,11 @@ if (!fs.existsSync(examplesDir)) fs.mkdirSync(examplesDir);
 const toCamelCase = (str) =>
   str.replace(/[-_\/{}]+(.)?/g, (_, c) => c ? c.toUpperCase() : '').replace(/^[A-Z]/, (m) => m.toLowerCase());
 
-// Converts a string to POLYGON_TOKEN format with underscores between camelCase words
-const toPolygonToken = (str) => {
+// Converts a string to MASSIVE_TOKEN format with underscores between camelCase words
+const toMassiveToken = (str) => {
   // Split camelCase into words
   const words = str.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase().split('_');
-  return `POLYGON_${words.join('_')}`;
+  return `MASSIVE_${words.join('_')}`;
 };
 
 // Converts camelCase to snake_case for filenames
@@ -37,7 +37,7 @@ Object.entries(spec.paths).forEach(([route, methods]) => {
         details.parameters.forEach(param => {
           if (param.in === 'query' || param.in === 'path') {
             params[param.name] = useTokens
-              ? toPolygonToken(param.name)
+              ? toMassiveToken(param.name)
               : param.example || `<${param.name}>`;
           }
         });
@@ -52,17 +52,17 @@ Object.entries(spec.paths).forEach(([route, methods]) => {
           requestBody = {};
           Object.keys(jsonContent.schema.properties).forEach(key => {
             requestBody[key] = useTokens
-              ? toPolygonToken(key)
+              ? toMassiveToken(key)
               : `<${key}>`;
           });
         }
       }
 
       const snippetLines = [];
-      snippetLines.push(`import { restClient } from '@polygon.io/client-js';`);
+      snippetLines.push(`import { restClient } from '@massive.com/client-js';`);
       snippetLines.push('');
-      snippetLines.push(`const apiKey = "GLOBAL_POLYGON_API_KEY";`);
-      snippetLines.push(`const rest = restClient(apiKey, 'https://api.polygon.io');`);
+      snippetLines.push(`const apiKey = "GLOBAL_MASSIVE_API_KEY";`);
+      snippetLines.push(`const rest = restClient(apiKey, 'https://api.massive.com');`);
       snippetLines.push('');
       snippetLines.push(`async function ${wrapperFuncName}() {`);
       snippetLines.push(`  try {`);

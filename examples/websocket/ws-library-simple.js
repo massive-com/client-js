@@ -1,5 +1,5 @@
 /* 
-	This example uses the ws (https://github.com/websockets/ws) library to connect to the delayed stocks polygon 
+	This example uses the ws (https://github.com/websockets/ws) library to connect to the delayed stocks massive 
 	websocket to subscribe to minute ohlc values for the ticker AAPL.
 */
 
@@ -8,9 +8,9 @@ import WebSocket from 'ws';
 const APIKEY = process.env.POLY_API_KEY || 'YOUR_API_KEY'
 
 // Connection Type:
-const ws = new WebSocket('wss://delayed.polygon.io/stocks') // stocks 15-min delay
-//const ws = new WebSocket('wss://socket.polygon.io/stocks') // stocks real-time
-//const ws = new WebSocket('wss://socket.polygon.io/forex') // forex
+const ws = new WebSocket('wss://delayed.massive.com/stocks') // stocks 15-min delay
+//const ws = new WebSocket('wss://socket.massive.com/stocks') // stocks real-time
+//const ws = new WebSocket('wss://socket.massive.com/forex') // forex
 
 // Connection Opened:
 ws.on('open', () => {

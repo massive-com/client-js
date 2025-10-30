@@ -14,10 +14,10 @@ const APIKEY = process.env.POLY_API_KEY || 'YOUR_API_KEY'
  */
 
 
-class Polygon extends EventEmitter {
+class Massive extends EventEmitter {
 	constructor( params ){
 		super()
-		console.log('Polygon class initialized..')
+		console.log('Massive class initialized..')
 		this.ws = null
 		this.subscriptions = []
 		this.apiKey = params.apiKey
@@ -32,7 +32,7 @@ class Polygon extends EventEmitter {
 	}
 	connect(){
 		this.connected = false
-		this.ws = new WebSocket('wss://socket.polygon.io/crypto')
+		this.ws = new WebSocket('wss://socket.massive.com/crypto')
 		this.ws.on('open', this.onOpen.bind( this ))
 		this.ws.on('close', this.onDisconnect.bind( this ))
 		this.ws.on('disconnect', this.onDisconnect.bind( this ))
@@ -68,8 +68,8 @@ class Polygon extends EventEmitter {
 
 
 
-// Use our Polygon Class:
-const client = new Polygon({ apiKey: APIKEY })
+// Use our Massive Class:
+const client = new Massive({ apiKey: APIKEY })
 
 // Subscribe to trades:
 client.subscribe([ 'XT.*' ])

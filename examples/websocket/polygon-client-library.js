@@ -1,13 +1,13 @@
 /* 
-	This example uses polygon client-js library to connect to the  delayed stocks polygon 
+	This example uses massive client-js library to connect to the  delayed stocks massive 
 	websocket to subscribe to minute ohlc values for the ticker AAPL.
 */
 
-import { websocketClient } from "@polygon.io/client-js";
+import { websocketClient } from "@massive.com/client-js";
 
-// create a websocket client using the polygon client-js library
-const ws  = websocketClient('API KEY', 'wss://delayed.polygon.io').stocks(); // 15-min delay websocket
-// const ws  = websocketClient('API KEY', 'wss://socket.polygon.io').stocks(); // real-time webscoket
+// create a websocket client using the massive client-js library
+const ws  = websocketClient('API KEY', 'wss://delayed.massive.com').stocks(); // 15-min delay websocket
+// const ws  = websocketClient('API KEY', 'wss://socket.massive.com').stocks(); // real-time webscoket
 
 // register a handler to log errors
 ws.onerror = (err) => console.log('Failed to connect', err);
