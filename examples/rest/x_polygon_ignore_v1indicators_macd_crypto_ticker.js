@@ -1,15 +1,15 @@
-import { restClient } from '@polygon.io/client-js';
+import { restClient } from '@massive.com/client-js';
 
-const apiKey = "GLOBAL_POLYGON_API_KEY";
-const rest = restClient(apiKey, 'https://api.polygon.io');
+const apiKey = "GLOBAL_MASSIVE_API_KEY";
+const rest = restClient(apiKey, 'https://api.massive.com');
 
-async function example_xPolygonIgnoreV1IndicatorsMacdCryptoTicker() {
+async function example_xMassiveIgnoreV1IndicatorsMacdCryptoTicker() {
   try {
-    const response = await rest.xPolygonIgnoreV1IndicatorsMacdCryptoTicker();
+    const response = await rest.xMassiveIgnoreV1IndicatorsMacdCryptoTicker();
     console.log('Response:', response);
   } catch (e) {
     console.error('An error happened:', e);
   }
 }
 
-example_xPolygonIgnoreV1IndicatorsMacdCryptoTicker();
+example_xMassiveIgnoreV1IndicatorsMacdCryptoTicker();

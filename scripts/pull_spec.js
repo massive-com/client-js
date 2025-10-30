@@ -19,7 +19,7 @@ const saveSpec = (spec, filename) => {
 };
 
 const main = async () => {
-  const specUrl = 'https://api.polygon.io/openapi';
+  const specUrl = 'https://api.massive.com/openapi';
   const specFilename = path.join('./', 'src', 'openapi.json');
 
   try {
@@ -29,7 +29,7 @@ const main = async () => {
     for (const [path, pathObj] of Object.entries(spec.paths)) {
 
       // Skip paths marked as drafts
-      if (pathObj["x-polygon-draft"]) continue;
+      if (pathObj["x-massive-draft"]) continue;
 
       // Since all endpoints use GET, process the 'get' method
       const operation = pathObj.get;

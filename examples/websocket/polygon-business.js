@@ -1,12 +1,12 @@
-import { websocketClient } from "@polygon.io/client-js";
+import { websocketClient } from "@massive.com/client-js";
 
 /* 
-	This example uses polygon client-js library to connect to the polygon stocks for business 
+	This example uses massive client-js library to connect to the massive stocks for business 
 	websocket to subscribe to the fair market value channel for the ticker AAPL.
 */
 
-// create a websocket client using the polygon client-js library
-const ws  = websocketClient('API KEY', 'wss://business.polygon.io').stocks();
+// create a websocket client using the massive client-js library
+const ws  = websocketClient('API KEY', 'wss://business.massive.com').stocks();
 
 // register a handler to log errors
 ws.onerror = (err) => console.log('Failed to connect', err);
