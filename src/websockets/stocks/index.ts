@@ -59,6 +59,20 @@ export interface ILULDStockEvent {
   q: number; // Sequence Number ( The sequence in which events ocurred )
 }
 
+// Stocks NOI:
+export interface INOIStockEvent {
+  ev: string; // Event Type
+  T: string; // Ticker Symbol
+  t: number; // Timestamp ( Unix MS )
+  at: number; // Auction Time
+  a: string; // Auction Type
+  i: number; // Symbol sequence
+  x: string; // Exchange ID
+  o: number; // Imbalance Quantity
+  p: number; // Paired Quantity
+  b: number; // Book Clearing Price
+}
+
 // Stocks FMV:
 export interface IFMVStockEvent {
   ev: string; // Event Type
