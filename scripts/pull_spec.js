@@ -29,7 +29,10 @@ const main = async () => {
     for (const [path, pathObj] of Object.entries(spec.paths)) {
 
       // Skip paths marked as drafts
-      if (pathObj["x-massive-draft"]) continue;
+      if (pathObj["x-polygon-draft"]) continue;
+
+      // Skip paths starting with /v1/reference/
+      if (path.startsWith('/v1/reference/')) continue;
 
       // Since all endpoints use GET, process the 'get' method
       const operation = pathObj.get;

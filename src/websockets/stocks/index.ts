@@ -83,5 +83,5 @@ export interface IFMVStockEvent {
 
 export const getStocksWebsocket = (
   apiKey: string,
-  apiBase = "wss://socket.polygon.io"
+  apiBase = "wss://socket.massive.com"
 ): websocket.w3cwebsocket => getWsClient(`${apiBase}/stocks`, apiKey);

@@ -24,7 +24,7 @@ export interface ITradeCryptoEvent {
   c: number[]; // Condition
   i: string; // Trade ID ( Optional )
   x: number; // Exchange ID
-  r: number; // Received @ Polygon Timestamp
+  r: number; // Received @ Massive Timestamp
 }
 
 // Crypto Quote:
@@ -37,7 +37,7 @@ export interface IQuoteCryptoEvent {
   as: number; // Ask Size
   t: number; // Exchange Timestamp Unix ( ms )
   x: number; // Exchange ID
-  r: number; // Received @ Polygon Timestamp
+  r: number; // Received @ Massive Timestamp
 }
 
 // Crypto FMV:
@@ -50,5 +50,5 @@ export interface IFMVCryptoEvent {
 
 export const getCryptoWebsocket = (
   apiKey: string,
-  apiBase = "wss://socket.polygon.io"
+  apiBase = "wss://socket.massive.com"
 ): websocket.w3cwebsocket => getWsClient(`${apiBase}/crypto`, apiKey);
