@@ -1,7 +1,7 @@
 {
-  "name": "@polygon.io/client-js",
-  "version": "8.2.0",
-  "description": "Isomorphic Javascript client for Polygon.io Stocks, Forex, and Crypto APIs",
+  "name": "@massive.com/client-js",
+  "version": "9.1.0",
+  "description": "Isomorphic Javascript client for Massive.com Stocks, Options, Indices, Futures, Forex, and Crypto APIs",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "type": "module",
@@ -22,29 +22,32 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/polygon-io/client-js.git"
+    "url": "git+https://github.com/massive-com/client-js.git"
   },
   "keywords": [
-    "polygon.io",
+    "massive.com",
     "stock api",
     "options api",
+    "indices api",
+    "futures api",
     "forex api",
     "crypto api"
   ],
   "contributors": [
     {
-      "name": "Polygon Support",
-      "email": "support@polygon.io"
+      "name": "Massive Support",
+      "email": "support@massive.com"
     }
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/polygon-io/client-js/issues"
+    "url": "https://github.com/massive-com/client-js/issues"
   },
-  "homepage": "https://github.com/polygon-io/client-js#readme",
+  "homepage": "https://github.com/massive-com/client-js#readme",
   "dependencies": {
     "axios": "^1.8.4",
     "cross-fetch": "^3.1.4",
+    "openapi-generator-cli": "^1.0.0",
     "query-string": "^7.0.1",
     "websocket": "^1.0.34"
   },

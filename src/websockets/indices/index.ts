@@ -24,5 +24,5 @@ export interface IIndexValueEvent {
 
 export const getIndicesWebsocket = (
   apiKey: string,
-  apiBase = "wss://socket.polygon.io"
+  apiBase = "wss://socket.massive.com"
 ): websocket.w3cwebsocket => getWsClient(`${apiBase}/indices`, apiKey);

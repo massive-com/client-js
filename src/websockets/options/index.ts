@@ -55,5 +55,5 @@ export interface IFMVOptionsEvent {
 
 export const getOptionsWebsocket = (
   apiKey: string,
-  apiBase = "wss://socket.polygon.io"
+  apiBase = "wss://socket.massive.com"
 ): websocket.w3cwebsocket => getWsClient(`${apiBase}/options`, apiKey);

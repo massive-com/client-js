@@ -29,7 +29,8 @@ const main = async () => {
     for (const [path, pathObj] of Object.entries(spec.paths)) {
 
       // Skip paths marked as drafts
-      if (pathObj["x-massive-draft"]) continue;
+      if (pathObj["x-polygon-draft"]) continue;
+
 
       // Since all endpoints use GET, process the 'get' method
       const operation = pathObj.get;

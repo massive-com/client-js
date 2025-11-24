@@ -5,7 +5,7 @@ import axios from 'axios';
 import websocketClient, { IWebsocketClient } from "./websockets/index.js";
 import { DefaultApi, Configuration } from "./rest/index.js";
 
-export interface IPolygonClient {
+export interface IMassiveClient {
   rest: DefaultApi;
   websockets: IWebsocketClient;
 }
@@ -14,7 +14,7 @@ export const restClient = (apikey: string, restApiBase?: string, globalFetchOpti
   // This function creates a generated REST client using the DefaultApi from the generated REST code
   // Note: This does not include any custom interceptors or configurations
   const config = new Configuration({ apiKey: apikey });
-  const SERVICE_BASE_URL = 'https://api.polygon.io'; // Fallback to default if not set
+  const SERVICE_BASE_URL = 'https://api.massive.com'; // Fallback to default if not set
 
   // Create a new axios instance to avoid global interceptor pollution
   const axiosInstance = axios.create();
@@ -31,14 +31,14 @@ export const restClient = (apikey: string, restApiBase?: string, globalFetchOpti
   return new DefaultApi(config, restApiBase || SERVICE_BASE_URL, axiosInstance);
 }
 
-export const polygonClient = (
+export const MassiveClient = (
   apiKey: string,
   restApiBase?: string,
   websocketApiBase?: string,
   globalFetchOptions?: { pagination: boolean }
-): IPolygonClient => ({
+): IMassiveClient => ({
   rest: restClient(apiKey, restApiBase, globalFetchOptions),
   websockets: websocketClient(apiKey, websocketApiBase),
 });
 
-export default polygonClient;
+export default MassiveClient;
