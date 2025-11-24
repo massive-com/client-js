@@ -31,8 +31,6 @@ const main = async () => {
       // Skip paths marked as drafts
       if (pathObj["x-polygon-draft"]) continue;
 
-      // Skip paths starting with /v1/reference/
-      if (path.startsWith('/v1/reference/')) continue;
 
       // Since all endpoints use GET, process the 'get' method
       const operation = pathObj.get;
