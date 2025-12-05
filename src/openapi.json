@@ -283,7 +283,7 @@
         "type": "boolean"
       },
       "AskExchangeId": {
-        "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+        "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
         "type": "integer"
       },
       "AskPrice": {
@@ -296,7 +296,7 @@
         "type": "integer"
       },
       "BidExchangeId": {
-        "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+        "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
         "type": "integer"
       },
       "BidPrice": {
@@ -429,7 +429,7 @@
             "type": "array"
           },
           "type": {
-            "description": "The type or class of the security.  (<a alt=\"Full List of Ticker Types\" href=\"https://massive.com/docs/stocks/get_v3_reference_tickers_types\">Full List of Ticker Types</a>)",
+            "description": "The type or class of the security.  (<a alt=\"Full List of Ticker Types\" href=\"https://massive.com/docs/rest/stocks/tickers/ticker-types\">Full List of Ticker Types</a>)",
             "type": "string"
           },
           "updated": {
@@ -447,7 +447,7 @@
       "ConditionTypeMap": {
         "properties": {
           "condition": {
-            "description": "Massive.com's mapping for condition codes.  For more information, see our <a href=\"https://massive.com/glossary/us/stocks/trade-conditions\" alt=\"Trade Conditions Glossary\" target=\"_blank\">Trade Conditions Glossary</a>.\n",
+            "description": "Massive.com's mapping for condition codes.  For more information, see our <a href=\"https://massive.com/glossary/trade-conditions\" alt=\"Trade Conditions Glossary\" target=\"_blank\">Trade Conditions Glossary</a>.\n",
             "type": "string"
           }
         },
@@ -456,7 +456,7 @@
       "Conditions": {
         "description": "A list of condition codes.\n",
         "items": {
-          "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+          "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
           "type": "integer"
         },
         "type": "array"
@@ -469,7 +469,7 @@
         "items": {
           "properties": {
             "id": {
-              "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+              "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
               "type": "integer"
             },
             "market": {
@@ -590,7 +590,7 @@
                 "c": {
                   "description": "A list of condition codes.\n",
                   "items": {
-                    "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                    "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                     "type": "integer"
                   },
                   "type": "array"
@@ -614,7 +614,7 @@
                   "type": "integer"
                 },
                 "x": {
-                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                   "type": "integer"
                 }
               },
@@ -647,13 +647,13 @@
               "conditions": {
                 "description": "A list of condition codes.\n",
                 "items": {
-                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                   "type": "integer"
                 },
                 "type": "array"
               },
               "exchange": {
-                "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                 "type": "integer"
               },
               "price": {
@@ -704,7 +704,7 @@
                 "c": {
                   "description": "A list of condition codes.\n",
                   "items": {
-                    "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                    "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                     "type": "integer"
                   },
                   "type": "array"
@@ -728,7 +728,7 @@
                   "type": "integer"
                 },
                 "x": {
-                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                   "type": "integer"
                 }
               },
@@ -765,7 +765,7 @@
                 "c": {
                   "description": "A list of condition codes.\n",
                   "items": {
-                    "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                    "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                     "type": "integer"
                   },
                   "type": "array"
@@ -789,7 +789,7 @@
                   "type": "integer"
                 },
                 "x": {
-                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                   "type": "integer"
                 }
               },
@@ -956,7 +956,7 @@
                     "type": "integer"
                   },
                   "x": {
-                    "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                    "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                     "type": "integer"
                   }
                 },
@@ -1269,7 +1269,7 @@
                       "type": "integer"
                     },
                     "x": {
-                      "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                      "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                       "type": "integer"
                     }
                   },
@@ -1422,7 +1422,7 @@
           "c": {
             "description": "A list of condition codes.\n",
             "items": {
-              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
               "type": "integer"
             },
             "type": "array"
@@ -1446,7 +1446,7 @@
             "type": "integer"
           },
           "x": {
-            "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+            "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
             "type": "integer"
           }
         },
@@ -1461,7 +1461,7 @@
         "type": "object"
       },
       "CryptoTradeExchange": {
-        "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+        "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
         "type": "integer"
       },
       "Date": {
@@ -1513,7 +1513,7 @@
         "type": "array"
       },
       "ExchangeId": {
-        "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+        "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
         "type": "integer"
       },
       "Financial": {
@@ -2032,7 +2032,7 @@
                 "type": "number"
               },
               "exchange": {
-                "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                 "type": "integer"
               },
               "timestamp": {
@@ -2062,7 +2062,7 @@
         "type": "object"
       },
       "ForexExchangeId": {
-        "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+        "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
         "type": "integer"
       },
       "ForexGroupedResults": {
@@ -2167,7 +2167,7 @@
                   "type": "integer"
                 },
                 "x": {
-                  "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                  "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                   "type": "integer"
                 }
               },
@@ -2206,7 +2206,7 @@
                 "type": "number"
               },
               "exchange": {
-                "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                 "type": "integer"
               },
               "timestamp": {
@@ -2860,7 +2860,7 @@
         "type": "object"
       },
       "Indicators": {
-        "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/us/stocks/conditions-indicators).\n",
+        "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/conditions-indicators).\n",
         "items": {
           "description": "The indicator code.\n",
           "type": "integer"
@@ -3989,7 +3989,7 @@
                     "type": "integer"
                   },
                   "x": {
-                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                     "type": "integer"
                   }
                 },
@@ -4260,7 +4260,7 @@
                       "type": "integer"
                     },
                     "x": {
-                      "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                      "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                       "type": "integer"
                     }
                   },
@@ -4555,19 +4555,19 @@
                 "type": "integer"
               },
               "X": {
-                "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                 "type": "integer"
               },
               "c": {
                 "description": "A list of condition codes.\n",
                 "items": {
-                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                   "type": "integer"
                 },
                 "type": "array"
               },
               "i": {
-                "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/us/stocks/conditions-indicators).\n",
+                "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/conditions-indicators).\n",
                 "items": {
                   "description": "The indicator code.\n",
                   "type": "integer"
@@ -4584,7 +4584,7 @@
                 "type": "integer"
               },
               "x": {
-                "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                 "type": "integer"
               },
               "z": {
@@ -4657,19 +4657,19 @@
                       "type": "integer"
                     },
                     "X": {
-                      "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                      "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                       "type": "integer"
                     },
                     "c": {
                       "description": "A list of condition codes.\n",
                       "items": {
-                        "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                        "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                         "type": "integer"
                       },
                       "type": "array"
                     },
                     "i": {
-                      "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/us/stocks/conditions-indicators).\n",
+                      "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/conditions-indicators).\n",
                       "items": {
                         "description": "The indicator code.\n",
                         "type": "integer"
@@ -4686,7 +4686,7 @@
                       "type": "integer"
                     },
                     "x": {
-                      "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                      "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                       "type": "integer"
                     },
                     "z": {
@@ -4754,7 +4754,7 @@
               "c": {
                 "description": "A list of condition codes.\n",
                 "items": {
-                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                   "type": "integer"
                 },
                 "type": "array"
@@ -4782,7 +4782,7 @@
                 "type": "number"
               },
               "x": {
-                "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                 "type": "integer"
               },
               "z": {
@@ -4847,7 +4847,7 @@
                     "c": {
                       "description": "A list of condition codes.\n",
                       "items": {
-                        "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                        "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                         "type": "integer"
                       },
                       "type": "array"
@@ -4875,7 +4875,7 @@
                       "type": "number"
                     },
                     "x": {
-                      "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                      "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                       "type": "integer"
                     },
                     "z": {
@@ -5257,7 +5257,7 @@
             }
           },
           {
-            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system.",
+            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_updated",
             "schema": {
@@ -5265,15 +5265,7 @@
             }
           },
           {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "last_updated.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
+            "description": "Filter greater than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_updated.gt",
             "schema": {
@@ -5281,7 +5273,7 @@
             }
           },
           {
-            "description": "Filter greater than or equal to the value.",
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_updated.gte",
             "schema": {
@@ -5289,7 +5281,7 @@
             }
           },
           {
-            "description": "Filter less than the value.",
+            "description": "Filter less than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_updated.lt",
             "schema": {
@@ -5297,7 +5289,7 @@
             }
           },
           {
-            "description": "Filter less than or equal to the value.",
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_updated.lte",
             "schema": {
@@ -5508,11 +5500,11 @@
             }
           },
           {
-            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'last_updated' if not specified. The sort order defaults to 'desc' if not specified.",
             "in": "query",
             "name": "sort",
             "schema": {
-              "default": "date.desc",
+              "default": "last_updated.desc",
               "type": "string"
             }
           }
@@ -5584,11 +5576,12 @@
                           },
                           "last_updated": {
                             "description": "The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system.",
+                            "format": "date-time",
                             "type": "string"
                           },
                           "price_target": {
                             "description": "The current price target set by the analyst.",
-                            "format": "float",
+                            "format": "double",
                             "type": "number"
                           },
                           "rating": {
@@ -6039,7 +6032,7 @@
         "operationId": "get_benzinga_v1_consensus-ratings",
         "parameters": [
           {
-            "description": "The publication date of the news article.",
+            "description": "The date range to aggregate analyst ratings over. For example, date.gte=2024-10-01 and date.lt=2025-01-01 for ratings published in Q4 2024. By default, all ratings are aggregated regardless of date.",
             "in": "query",
             "name": "date",
             "schema": {
@@ -13935,7 +13928,7 @@
             }
           },
           {
-            "description": "The first date the contract trades. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "The first date the contract trades. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "first_trade_date",
             "schema": {
@@ -13943,7 +13936,7 @@
             }
           },
           {
-            "description": "Filter greater than the value. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "first_trade_date.gt",
             "schema": {
@@ -13951,7 +13944,7 @@
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "first_trade_date.gte",
             "schema": {
@@ -13959,7 +13952,7 @@
             }
           },
           {
-            "description": "Filter less than the value. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "first_trade_date.lt",
             "schema": {
@@ -13967,7 +13960,7 @@
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "first_trade_date.lte",
             "schema": {
@@ -13975,7 +13968,7 @@
             }
           },
           {
-            "description": "The last date the contract trades. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "The last date the contract trades. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_trade_date",
             "schema": {
@@ -13983,7 +13976,7 @@
             }
           },
           {
-            "description": "Filter greater than the value. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_trade_date.gt",
             "schema": {
@@ -13991,7 +13984,7 @@
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_trade_date.gte",
             "schema": {
@@ -13999,7 +13992,7 @@
             }
           },
           {
-            "description": "Filter less than the value. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_trade_date.lt",
             "schema": {
@@ -14007,7 +14000,7 @@
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_trade_date.lte",
             "schema": {
@@ -14068,8 +14061,8 @@
                           },
                           "first_trade_date": {
                             "description": "The first date the contract trades.",
-                            "format": "int64",
-                            "type": "integer"
+                            "format": "date",
+                            "type": "string"
                           },
                           "group_code": {
                             "type": "string"
@@ -14079,11 +14072,8 @@
                           },
                           "last_trade_date": {
                             "description": "The last date the contract trades.",
-                            "format": "int64",
-                            "type": "integer"
-                          },
-                          "latest": {
-                            "type": "boolean"
+                            "format": "date",
+                            "type": "string"
                           },
                           "maturity_month": {
                             "type": "string"
@@ -14108,8 +14098,8 @@
                             "type": "string"
                           },
                           "settlement_date": {
-                            "format": "int64",
-                            "type": "integer"
+                            "format": "date-time",
+                            "type": "string"
                           },
                           "settlement_tick_size": {
                             "description": "The tick size for settlement.",
@@ -14137,15 +14127,11 @@
                           "type": {
                             "description": "The type of product, one of 'single' or 'combo'.",
                             "type": "string"
-                          },
-                          "year_month": {
-                            "type": "string"
                           }
                         },
                         "required": [
                           "active",
-                          "date",
-                          "year_month"
+                          "date"
                         ],
                         "type": "object"
                       },
@@ -15486,11 +15472,8 @@
                             "type": "string"
                           },
                           "last_updated": {
-                            "format": "int64",
-                            "type": "integer"
-                          },
-                          "latest": {
-                            "type": "boolean"
+                            "format": "date-time",
+                            "type": "string"
                           },
                           "name": {
                             "description": "The full name of the product.",
@@ -15896,7 +15879,6 @@
                   "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
                   "results": [
                     {
-                      "example": "E-Mini S&P 500 Futures",
                       "product_code": "ES",
                       "product_name": "E-Mini S&P 500 Futures",
                       "schedule": [
@@ -20413,6 +20395,373 @@
         ]
       }
     },
+    "/stocks/v1/dividends": {
+      "get": {
+        "description": "Contains historical dividend payment records for US stocks with split-adjusted amounts and historical adjustment factors for price normalization.",
+        "operationId": "get_stocks_v1_dividends",
+        "parameters": [
+          {
+            "description": "Stock symbol for the company issuing the dividend",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date when the stock begins trading without the dividend value Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "ex_dividend_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "ex_dividend_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "ex_dividend_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "ex_dividend_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "ex_dividend_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many times per year this dividend is expected to occur. A value of 0 means the distribution is non-recurring or irregular (e.g., special, supplemental, or a one-off dividend). Other possible values include 1 (annual), 2 (semi-annual), 3 (trimester), 4 (quarterly), 12 (monthly), 24 (bi-monthly), 26 (bi-weekly), 52 (weekly), and 365 (daily) depending on the issuer's declared or inferred payout cadence. Value must be an integer.",
+            "in": "query",
+            "name": "frequency",
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be an integer.",
+            "in": "query",
+            "name": "frequency.gt",
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be an integer.",
+            "in": "query",
+            "name": "frequency.gte",
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be an integer.",
+            "in": "query",
+            "name": "frequency.lt",
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be an integer.",
+            "in": "query",
+            "name": "frequency.lte",
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Classification describing the nature of this dividend's recurrence pattern: recurring (paid on a regular schedule), special (one-time or commemorative), supplemental (extra beyond the regular schedule), irregular (unpredictable or non-recurring), unknown (cannot be classified from available data)",
+            "in": "query",
+            "name": "distribution_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "distribution_type.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "distribution_type.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "distribution_type.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "distribution_type.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "distribution_type.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '5000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 5001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'ticker' if not specified. The sort order defaults to 'asc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "ticker.asc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "request_id": 1,
+                  "results": [
+                    {
+                      "cash_amount": 0.26,
+                      "currency": "USD",
+                      "declaration_date": "2025-07-31",
+                      "distribution_type": "recurring",
+                      "ex_dividend_date": "2025-08-11",
+                      "frequency": 4,
+                      "historical_adjustment_factor": 0.997899,
+                      "id": "Ed2c9da60abda1e3f0e99a43f6465863c137b671e1f5cd3f833d1fcb4f4eb27fe",
+                      "pay_date": "2025-08-14",
+                      "record_date": "2025-08-11",
+                      "split_adjusted_cash_amount": 0.26,
+                      "ticker": "AAPL"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "cash_amount": {
+                            "description": "Original dividend amount per share in the specified currency",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "currency": {
+                            "description": "Currency code for the dividend payment (e.g., USD, CAD)",
+                            "type": "string"
+                          },
+                          "declaration_date": {
+                            "description": "Date when the company officially announced the dividend",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "distribution_type": {
+                            "description": "Classification describing the nature of this dividend's recurrence pattern: recurring (paid on a regular schedule), special (one-time or commemorative), supplemental (extra beyond the regular schedule), irregular (unpredictable or non-recurring), unknown (cannot be classified from available data)",
+                            "type": "string"
+                          },
+                          "ex_dividend_date": {
+                            "description": "Date when the stock begins trading without the dividend value",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "frequency": {
+                            "description": "How many times per year this dividend is expected to occur. A value of 0 means the distribution is non-recurring or irregular (e.g., special, supplemental, or a one-off dividend). Other possible values include 1 (annual), 2 (semi-annual), 3 (trimester), 4 (quarterly), 12 (monthly), 24 (bi-monthly), 26 (bi-weekly), 52 (weekly), and 365 (daily) depending on the issuer's declared or inferred payout cadence.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "historical_adjustment_factor": {
+                            "description": "Cumulative adjustment factor used to offset dividend effects on historical prices. To adjust a historical price for dividends: for a price on date D, find the first dividend whose `ex_dividend_date` is after date D and multiply the price by that dividend's `historical_adjustment_factor`.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "id": {
+                            "description": "Unique identifier for each dividend record",
+                            "type": "string"
+                          },
+                          "pay_date": {
+                            "description": "Date when the dividend payment is distributed to shareholders",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "record_date": {
+                            "description": "Date when shareholders must be on record to be eligible for the dividend payment",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "split_adjusted_cash_amount": {
+                            "description": "Dividend amount adjusted for stock splits that occurred after the dividend was paid, expressed on a current share basis",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "ticker": {
+                            "description": "Stock symbol for the company issuing the dividend",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "distribution_type"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/stocks/v1/exchanges": {
       "get": {
         "description": "US stock exchanges, trading venues, and reporting facilities including exchanges (NYSE, Nasdaq), Trade Reporting Facilities (TRF), Securities Information Processors (SIP), and OTC Reporting Facilities (ORF) for equity trading.",
@@ -21336,6 +21685,299 @@
         ]
       }
     },
+    "/stocks/v1/splits": {
+      "get": {
+        "description": "Contains historical stock split and reverse split events for US equities with historical adjustment factors for price normalization.",
+        "operationId": "get_stocks_v1_splits",
+        "parameters": [
+          {
+            "description": "Stock symbol for the company that executed the split",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date when the stock split was applied and shares adjusted Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "execution_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "execution_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "execution_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "execution_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "execution_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Classification of the share-change event. Possible values include: forward_split (share count increases), reverse_split (share count decreases), stock_dividend (shares issued as a dividend)",
+            "in": "query",
+            "name": "adjustment_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "adjustment_type.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "adjustment_type.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "adjustment_type.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "adjustment_type.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "adjustment_type.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '5000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 5001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'execution_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "execution_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "request_id": 1,
+                  "results": [
+                    {
+                      "adjustment_type": "forward_split",
+                      "execution_date": "2005-02-28",
+                      "historical_adjustment_factor": 0.017857,
+                      "id": "E90a77bdf742661741ed7c8fc086415f0457c2816c45899d73aaa88bdc8ff6025",
+                      "split_from": 1,
+                      "split_to": 2,
+                      "ticker": "AAPL"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "adjustment_type": {
+                            "description": "Classification of the share-change event. Possible values include: forward_split (share count increases), reverse_split (share count decreases), stock_dividend (shares issued as a dividend)",
+                            "type": "string"
+                          },
+                          "execution_date": {
+                            "description": "Date when the stock split was applied and shares adjusted",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "historical_adjustment_factor": {
+                            "description": "Cumulative adjustment factor used to offset split effects on historical prices. To adjust a historical price for splits: for a price on date D, find the first split whose `execution_date` is after date D and multiply the unadjusted price by the `historical_adjustment_factor`.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "id": {
+                            "description": "Unique identifier for each stock split event",
+                            "type": "string"
+                          },
+                          "split_from": {
+                            "description": "Denominator of the split ratio (old shares)",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "split_to": {
+                            "description": "Numerator of the split ratio (new shares)",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "ticker": {
+                            "description": "Stock symbol for the company that executed the split",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "adjustment_type"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/tmx/v1/corporate-events": {
       "get": {
         "description": "Contains corporate events and announcements for publicly traded companies, including earnings releases, conferences, dividends, and business updates sourced from TMX.",
@@ -21992,7 +22634,7 @@
                           "type": "number"
                         },
                         "exchange": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "timestamp": {
@@ -22194,7 +22836,7 @@
                               "c": {
                                 "description": "A list of condition codes.\n",
                                 "items": {
-                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                                   "type": "integer"
                                 },
                                 "type": "array"
@@ -22218,7 +22860,7 @@
                                 "type": "integer"
                               },
                               "x": {
-                                "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                                "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                                 "type": "integer"
                               }
                             },
@@ -22416,7 +23058,7 @@
                                 "type": "integer"
                               },
                               "x": {
-                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                 "type": "integer"
                               }
                             },
@@ -29307,7 +29949,7 @@
                         "conditions": {
                           "description": "A list of condition codes.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -29317,7 +29959,7 @@
                           }
                         },
                         "exchange": {
-                          "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.",
+                          "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.",
                           "type": "integer"
                         },
                         "price": {
@@ -29455,7 +30097,7 @@
                           "type": "number"
                         },
                         "exchange": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "timestamp": {
@@ -29887,7 +30529,7 @@
                           "c": {
                             "description": "A list of condition codes.\n",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                               "type": "integer"
                             },
                             "type": "array"
@@ -29911,7 +30553,7 @@
                             "type": "integer"
                           },
                           "x": {
-                            "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                            "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                             "type": "integer"
                           }
                         },
@@ -29948,7 +30590,7 @@
                           "c": {
                             "description": "A list of condition codes.\n",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                               "type": "integer"
                             },
                             "type": "array"
@@ -29972,7 +30614,7 @@
                             "type": "integer"
                           },
                           "x": {
-                            "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                            "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                             "type": "integer"
                           }
                         },
@@ -30565,7 +31207,7 @@
         "operationId": "GetSnapshotSummary",
         "parameters": [
           {
-            "description": "Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/docs/stocks/get_v3_reference_tickers\">the tickers endpoint</a> for more details on supported tickers. If no tickers are passed then no results will be returned.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.",
+            "description": "Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/docs/rest/stocks/tickers/all-tickers\">the tickers endpoint</a> for more details on supported tickers. If no tickers are passed then no results will be returned.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.",
             "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD",
             "in": "query",
             "name": "ticker.any_of",
@@ -33831,13 +34473,13 @@
                           "type": "string"
                         },
                         "X": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "c": {
                           "description": "A list of condition codes.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -33853,7 +34495,7 @@
                         "i": {
                           "description": "A list of indicator codes.",
                           "items": {
-                            "description": "The indicator codes. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/us/stocks/conditions-indicators).",
+                            "description": "The indicator codes. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/conditions-indicators).",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -33881,7 +34523,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "y": {
@@ -34010,7 +34652,7 @@
                         "c": {
                           "description": "A list of condition codes.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -34055,7 +34697,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "y": {
@@ -34190,7 +34832,7 @@
                         "c": {
                           "description": "A list of condition codes.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -34235,7 +34877,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "y": {
@@ -34896,7 +35538,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                                    "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                                     "type": "integer"
                                   }
                                 },
@@ -35258,7 +35900,7 @@
                                   "type": "integer"
                                 },
                                 "x": {
-                                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                                   "type": "integer"
                                 }
                               },
@@ -35796,7 +36438,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
+                                    "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                                     "type": "integer"
                                   }
                                 },
@@ -37165,7 +37807,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                     "type": "integer"
                                   }
                                 },
@@ -37578,7 +38220,7 @@
                                   "type": "integer"
                                 },
                                 "x": {
-                                  "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                  "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                   "type": "integer"
                                 }
                               },
@@ -37990,7 +38632,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                     "type": "integer"
                                   }
                                 },
@@ -38411,19 +39053,19 @@
                                     "type": "integer"
                                   },
                                   "X": {
-                                    "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                     "type": "integer"
                                   },
                                   "c": {
                                     "description": "A list of condition codes.\n",
                                     "items": {
-                                      "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                                      "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                                       "type": "integer"
                                     },
                                     "type": "array"
                                   },
                                   "i": {
-                                    "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/us/stocks/conditions-indicators).\n",
+                                    "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/conditions-indicators).\n",
                                     "items": {
                                       "description": "The indicator code.\n",
                                       "type": "integer"
@@ -38440,7 +39082,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                     "type": "integer"
                                   },
                                   "z": {
@@ -38720,7 +39362,7 @@
                                   "c": {
                                     "description": "A list of condition codes.\n",
                                     "items": {
-                                      "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.\n",
+                                      "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
                                       "type": "integer"
                                     },
                                     "type": "array"
@@ -38748,7 +39390,7 @@
                                     "type": "number"
                                   },
                                   "x": {
-                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                     "type": "integer"
                                   },
                                   "z": {
@@ -39469,7 +40111,7 @@
                           "conditions": {
                             "description": "A list of condition codes.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -39481,7 +40123,7 @@
                           "indicators": {
                             "description": "A list of indicator codes.",
                             "items": {
-                              "description": "The indicator codes. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/us/stocks/conditions-indicators).",
+                              "description": "The indicator codes. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/conditions-indicators).",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -39600,7 +40242,7 @@
     },
     "/v3/reference/conditions": {
       "get": {
-        "description": "List all conditions that Massive.com uses.",
+        "description": "List all conditions that Massive uses.",
         "operationId": "ListConditions",
         "parameters": [
           {
@@ -39638,7 +40280,7 @@
             "in": "query",
             "name": "id",
             "schema": {
-              "description": "An identifier used by Massive.com for this condition. Unique per data type.",
+              "description": "An identifier used by Massive for this condition. Unique per data type.",
               "type": "integer"
             }
           },
@@ -39790,11 +40432,11 @@
                             "type": "string"
                           },
                           "exchange": {
-                            "description": "If present, mapping this condition from a Massive.com code to a SIP symbol depends on this attribute.\nIn other words, data with this condition attached comes exclusively from the given exchange.",
+                            "description": "If present, mapping this condition from a Massive code to a SIP symbol depends on this attribute.\nIn other words, data with this condition attached comes exclusively from the given exchange.",
                             "type": "integer"
                           },
                           "id": {
-                            "description": "An identifier used by Massive.com for this condition. Unique per data type.",
+                            "description": "An identifier used by Massive for this condition. Unique per data type.",
                             "type": "integer"
                           },
                           "legacy": {
@@ -39807,7 +40449,7 @@
                             "type": "string"
                           },
                           "sip_mapping": {
-                            "description": "A comprehensive mapping that translates condition codes from individual SIPs (CTA, OPRA, UTP) to a unified code used by Massive.com. This facilitates consistent interpretation and application of market data conditions across different data streams, ensuring that users can accurately apply these conditions to their data analysis and reporting.",
+                            "description": "A comprehensive mapping that translates condition codes from individual SIPs (CTA, OPRA, UTP) to a unified code used by Massive. This facilitates consistent interpretation and application of market data conditions across different data streams, ensuring that users can accurately apply these conditions to their data analysis and reporting.",
                             "properties": {
                               "CTA": {
                                 "description": "Condition code from the Consolidated Tape Association (CTA).",
@@ -39988,11 +40630,11 @@
                             "type": "string"
                           },
                           "exchange": {
-                            "description": "If present, mapping this condition from a Massive.com code to a SIP symbol depends on this attribute.\nIn other words, data with this condition attached comes exclusively from the given exchange.",
+                            "description": "If present, mapping this condition from a Massive code to a SIP symbol depends on this attribute.\nIn other words, data with this condition attached comes exclusively from the given exchange.",
                             "type": "integer"
                           },
                           "id": {
-                            "description": "An identifier used by Massive.com for this condition. Unique per data type.",
+                            "description": "An identifier used by Massive for this condition. Unique per data type.",
                             "type": "integer"
                           },
                           "legacy": {
@@ -40005,7 +40647,7 @@
                             "type": "string"
                           },
                           "sip_mapping": {
-                            "description": "A comprehensive mapping that translates condition codes from individual SIPs (CTA, OPRA, UTP) to a unified code used by Massive.com. This facilitates consistent interpretation and application of market data conditions across different data streams, ensuring that users can accurately apply these conditions to their data analysis and reporting.",
+                            "description": "A comprehensive mapping that translates condition codes from individual SIPs (CTA, OPRA, UTP) to a unified code used by Massive. This facilitates consistent interpretation and application of market data conditions across different data streams, ensuring that users can accurately apply these conditions to their data analysis and reporting.",
                             "properties": {
                               "CTA": {
                                 "description": "Condition code from the Consolidated Tape Association (CTA).",
@@ -40180,11 +40822,11 @@
                             "type": "string"
                           },
                           "exchange": {
-                            "description": "If present, mapping this condition from a Massive.com code to a SIP symbol depends on this attribute.\nIn other words, data with this condition attached comes exclusively from the given exchange.",
+                            "description": "If present, mapping this condition from a Massive code to a SIP symbol depends on this attribute.\nIn other words, data with this condition attached comes exclusively from the given exchange.",
                             "type": "integer"
                           },
                           "id": {
-                            "description": "An identifier used by Massive.com for this condition. Unique per data type.",
+                            "description": "An identifier used by Massive for this condition. Unique per data type.",
                             "type": "integer"
                           },
                           "legacy": {
@@ -40197,7 +40839,7 @@
                             "type": "string"
                           },
                           "sip_mapping": {
-                            "description": "A comprehensive mapping that translates condition codes from individual SIPs (CTA, OPRA, UTP) to a unified code used by Massive.com. This facilitates consistent interpretation and application of market data conditions across different data streams, ensuring that users can accurately apply these conditions to their data analysis and reporting.",
+                            "description": "A comprehensive mapping that translates condition codes from individual SIPs (CTA, OPRA, UTP) to a unified code used by Massive. This facilitates consistent interpretation and application of market data conditions across different data streams, ensuring that users can accurately apply these conditions to their data analysis and reporting.",
                             "properties": {
                               "CTA": {
                                 "description": "Condition code from the Consolidated Tape Association (CTA).",
@@ -40873,7 +41515,7 @@
     },
     "/v3/reference/exchanges": {
       "get": {
-        "description": "List all exchanges that Massive.com knows about.",
+        "description": "List all exchanges that Massive knows about.",
         "operationId": "ListExchanges",
         "parameters": [
           {
@@ -40947,7 +41589,7 @@
                             "type": "string"
                           },
                           "id": {
-                            "description": "A unique identifier used by Massive.com for this exchange.",
+                            "description": "A unique identifier used by Massive for this exchange.",
                             "example": 1,
                             "type": "integer"
                           },
@@ -41120,7 +41762,7 @@
             }
           },
           {
-            "description": "This parameter has been deprecated. To search by specific options ticker, use the Options Contract endpoint [here](https://massive.com/docs/options/get_v3_reference_options_contracts__options_ticker).",
+            "description": "This parameter has been deprecated. To search by specific options ticker, use the Options Contract endpoint [here](https://massive.com/docs/rest/options/contracts/contract-overview).",
             "in": "query",
             "name": "ticker",
             "schema": {
@@ -41954,7 +42596,7 @@
             }
           },
           {
-            "description": "Specify the type of the tickers. Find the types that we support via our [Ticker Types API](https://massive.com/docs/stocks/get_v3_reference_tickers_types).\nDefaults to empty string which queries all types.",
+            "description": "Specify the type of the tickers. Find the types that we support via our [Ticker Types API](https://massive.com/docs/rest/stocks/tickers/ticker-types).\nDefaults to empty string which queries all types.",
             "in": "query",
             "name": "type",
             "schema": {
@@ -42254,7 +42896,7 @@
                             "type": "string"
                           },
                           "type": {
-                            "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://massive.com/docs/stocks/get_v3_reference_tickers_types).",
+                            "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://massive.com/docs/rest/stocks/tickers/ticker-types).",
                             "type": "string"
                           }
                         },
@@ -42752,7 +43394,7 @@
                           "type": "number"
                         },
                         "type": {
-                          "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://massive.com/docs/stocks/get_v3_reference_tickers_types).",
+                          "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://massive.com/docs/rest/stocks/tickers/ticker-types).",
                           "type": "string"
                         },
                         "weighted_shares_outstanding": {
@@ -43247,7 +43889,7 @@
                                 "type": "number"
                               },
                               "ask_exchange": {
-                                "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                 "type": "integer"
                               },
                               "ask_size": {
@@ -43261,7 +43903,7 @@
                                 "type": "number"
                               },
                               "bid_exchange": {
-                                "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                 "type": "integer"
                               },
                               "bid_size": {
@@ -43309,14 +43951,14 @@
                               "conditions": {
                                 "description": "A list of condition codes.",
                                 "items": {
-                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                                   "format": "int32",
                                   "type": "integer"
                                 },
                                 "type": "array"
                               },
                               "exchange": {
-                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                 "type": "integer"
                               },
                               "id": {
@@ -44371,7 +45013,7 @@
                                 "type": "number"
                               },
                               "ask_exchange": {
-                                "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                 "format": "int32",
                                 "type": "number"
                               },
@@ -44386,7 +45028,7 @@
                                 "type": "number"
                               },
                               "bid_exchange": {
-                                "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                 "format": "int32",
                                 "type": "number"
                               },
@@ -44436,14 +45078,14 @@
                               "conditions": {
                                 "description": "A list of condition codes.",
                                 "items": {
-                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/options/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/options/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                                   "format": "int32",
                                   "type": "integer"
                                 },
                                 "type": "array"
                               },
                               "exchange": {
-                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                                 "type": "integer"
                               },
                               "price": {
@@ -44912,7 +45554,7 @@
                               "type": "number"
                             },
                             "ask_exchange": {
-                              "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                              "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                               "format": "int32",
                               "type": "number"
                             },
@@ -44927,7 +45569,7 @@
                               "type": "number"
                             },
                             "bid_exchange": {
-                              "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                              "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                               "format": "int32",
                               "type": "number"
                             },
@@ -44977,14 +45619,14 @@
                             "conditions": {
                               "description": "A list of condition codes.",
                               "items": {
-                                "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/options/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                                "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/options/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                                 "format": "int32",
                                 "type": "integer"
                               },
                               "type": "array"
                             },
                             "exchange": {
-                              "description": "The exchange ID. See <a href=\"https://massive.com/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                              "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                               "type": "integer"
                             },
                             "price": {
@@ -45282,7 +45924,7 @@
                           "conditions": {
                             "description": "A list of condition codes.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -45292,7 +45934,7 @@
                             }
                           },
                           "exchange": {
-                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                             "type": "integer"
                           },
                           "id": {
@@ -45531,7 +46173,7 @@
                           "conditions": {
                             "description": "A list of condition codes.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -45545,7 +46187,7 @@
                             "type": "integer"
                           },
                           "exchange": {
-                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                             "type": "integer"
                           },
                           "participant_timestamp": {
@@ -45794,7 +46436,7 @@
                           "conditions": {
                             "description": "A list of condition codes.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -45808,7 +46450,7 @@
                             "type": "integer"
                           },
                           "exchange": {
-                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
                             "type": "integer"
                           },
                           "id": {
@@ -47036,7 +47678,7 @@
         "operationId": "GetEvents",
         "parameters": [
           {
-            "description": "Identifier of an asset, which can be a Ticker, CUSIP, or Composite FIGI. Specify a case-sensitive \nticker symbol (e.g. AAPL for Apple Inc). When provided a ticker, events for the entity currently \nrepresented by that ticker are returned. To find events for entities previously associated with a \nticker, obtain the relevant identifier using the [Ticker Details Endpoint](https://massive.com/docs/stocks/get_v3_reference_tickers__ticker).",
+            "description": "Identifier of an asset, which can be a Ticker, CUSIP, or Composite FIGI. Specify a case-sensitive \nticker symbol (e.g. AAPL for Apple Inc). When provided a ticker, events for the entity currently \nrepresented by that ticker are returned. To find events for entities previously associated with a \nticker, obtain the relevant identifier using the [Ticker Details Endpoint](https://massive.com/docs/rest/stocks/tickers/ticker-overview).",
             "example": "META",
             "in": "path",
             "name": "id",
