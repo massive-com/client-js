@@ -27,7 +27,7 @@ const rest = restClient(process.env.POLY_API_KEY);
 
 ## Using the client
 
-After creating the client, making calls to the Massive API is easy. For example, here's how to get aggregates (bars):
+After creating the client, making calls to the Massive API is easy. For example, here's a complete example on how to get aggregates (bars):
 
 ```javascript
 import { restClient } from '@massive.com/client-js';
@@ -78,7 +78,7 @@ async function example_getLastStocksTrade() {
 example_getLastStocksTrade();
 ```
 
-```
+```javascript
 import { restClient } from '@massive.com/client-js';
 
 const apiKey = "XXXXX";
