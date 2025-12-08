@@ -30,39 +30,90 @@ const rest = restClient(process.env.POLY_API_KEY);
 After creating the client, making calls to the Massive API is easy. For example, here's how to get aggregates (bars):
 
 ```javascript
-rest.getStocksAggregates("AAPL", 1, GetStocksAggregatesTimespanEnum.Day, "2023-01-01", "2023-04-14").then((response) => {
-	console.log(response);
-}).catch(e => {
-	console.error('An error happened:', e);
-});
+import { restClient } from '@massive.com/client-js';
+
+const apiKey = "XXXX";
+const rest = restClient(apiKey, 'https://api.massive.com');
+
+async function example_getStocksAggregates() {
+  try {
+    const response = await rest.getStocksAggregates(
+      {
+        stocksTicker: "AAPL",
+        multiplier: "1",
+        timespan: "day",
+        from: "2025-11-01",
+        to: "2025-11-30",
+        adjusted: "true",
+        sort: "asc",
+        limit: "120"
+      }
+    );
+    console.log('Response:', response);
+  } catch (e) {
+    console.error('An error happened:', e);
+  }
+}
+
+example_getStocksAggregates();
 ```
 
 Or, maybe you want to get the last trades or quotes for a ticker:
 
 ```javascript
-// last trade
-rest.getLastStocksTrade("AAPL").then((response) => {
-	console.log(response);
-}).catch(e => {
-	console.error('An error happened:', e);
-});
+import { restClient } from '@massive.com/client-js';
 
-// last quote (NBBO)
-rest.getLastStocksQuote("AAPL").then((response) => {
-	console.log(response);
-}).catch(e => {
-	console.error('An error happened:', e);
-});
+const apiKey = "XXXX";
+const rest = restClient(apiKey, 'https://api.massive.com');
+
+async function example_getLastStocksTrade() {
+  try {
+    const response = await rest.getLastStocksTrade("AAPL");
+    console.log('Response:', response);
+  } catch (e) {
+    console.error('An error happened:', e);
+  }
+}
+
+example_getLastStocksTrade();
 ```
 
-Finally, maybe you want a market-wide snapshot of all tickers:
+```
+import { restClient } from '@massive.com/client-js';
+
+const apiKey = "XXXXX";
+const rest = restClient(apiKey, 'https://api.massive.com');
+
+async function example_getLastStocksQuote() {
+  try {
+    const response = await rest.getLastStocksQuote("AAPL");
+    console.log('Response:', response);
+  } catch (e) {
+    console.error('An error happened:', e);
+  }
+}
+
+example_getLastStocksQuote();
+```
+
+Finally, maybe you want a snapshot of a ticker:
 
 ```javascript
-rest.getSnapshots().then((response) => {
-	console.log(response);
-}).catch(e => {
-	console.error('An error happened:', e);
-});
+import { restClient } from '@massive.com/client-js';
+
+const apiKey = "XXXXX";
+const rest = restClient(apiKey, 'https://api.massive.com');
+
+async function example_getStocksSnapshotTicker() {
+  try {
+    const response = await rest.getStocksSnapshotTicker("AAPL");
+    console.log('Response:', response);
+  } catch (e) {
+    console.error('An error happened:', e);
+  }
+}
+
+example_getStocksSnapshotTicker();
 ```
 
 See [full examples](./examples/rest/) for more details on how to use this client effectively. 
@@ -79,7 +130,13 @@ const globalFetchOptions = {
 };
 const rest = restClient(process.env.POLY_API_KEY, "https://api.massive.com", globalFetchOptions);
 
-rest.getStocksAggregates("AAPL", 1, GetStocksAggregatesTimespanEnum.Day, "2023-01-01", "2023-04-14").then((response) => {
+rest.getStocksAggregates({
+  stocksTicker: "AAPL",
+  multiplier: "1",
+  timespan: "day",
+  from: "2025-11-01",
+  to: "2025-11-30"
+}).then((response) => {
 	const data = response.data; // convert axios-wrapped response
 	const resultCount = data.resultsCount;
 	console.log("Result count:", resultCount);
