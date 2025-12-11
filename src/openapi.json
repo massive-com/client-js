@@ -283,7 +283,7 @@
         "type": "boolean"
       },
       "AskExchangeId": {
-        "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+        "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
         "type": "integer"
       },
       "AskPrice": {
@@ -296,7 +296,7 @@
         "type": "integer"
       },
       "BidExchangeId": {
-        "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+        "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
         "type": "integer"
       },
       "BidPrice": {
@@ -447,7 +447,7 @@
       "ConditionTypeMap": {
         "properties": {
           "condition": {
-            "description": "Massive.com's mapping for condition codes.  For more information, see our <a href=\"https://massive.com/glossary/trade-conditions\" alt=\"Trade Conditions Glossary\" target=\"_blank\">Trade Conditions Glossary</a>.\n",
+            "description": "Massive's mapping for condition codes.  For more information, see our <a href=\"https://massive.com/glossary/trade-conditions\" alt=\"Trade Conditions Glossary\" target=\"_blank\">Trade Conditions Glossary</a>.\n",
             "type": "string"
           }
         },
@@ -469,7 +469,7 @@
         "items": {
           "properties": {
             "id": {
-              "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+              "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
               "type": "integer"
             },
             "market": {
@@ -1480,7 +1480,7 @@
         "items": {
           "properties": {
             "code": {
-              "description": "A unique identifier for the exchange internal to Massive.com.  This is not an industry code or ISO standard.",
+              "description": "A unique identifier for the exchange internal to Massive.  This is not an industry code or ISO standard.",
               "type": "string"
             },
             "id": {
@@ -1513,7 +1513,7 @@
         "type": "array"
       },
       "ExchangeId": {
-        "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+        "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
         "type": "integer"
       },
       "Financial": {
@@ -2032,7 +2032,7 @@
                 "type": "number"
               },
               "exchange": {
-                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                 "type": "integer"
               },
               "timestamp": {
@@ -2062,7 +2062,7 @@
         "type": "object"
       },
       "ForexExchangeId": {
-        "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+        "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
         "type": "integer"
       },
       "ForexGroupedResults": {
@@ -2167,7 +2167,7 @@
                   "type": "integer"
                 },
                 "x": {
-                  "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                  "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                   "type": "integer"
                 }
               },
@@ -2206,7 +2206,7 @@
                 "type": "number"
               },
               "exchange": {
-                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                 "type": "integer"
               },
               "timestamp": {
@@ -3989,7 +3989,7 @@
                     "type": "integer"
                   },
                   "x": {
-                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                     "type": "integer"
                   }
                 },
@@ -4260,7 +4260,7 @@
                       "type": "integer"
                     },
                     "x": {
-                      "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                      "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                       "type": "integer"
                     }
                   },
@@ -4555,7 +4555,7 @@
                 "type": "integer"
               },
               "X": {
-                "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                 "type": "integer"
               },
               "c": {
@@ -4584,7 +4584,7 @@
                 "type": "integer"
               },
               "x": {
-                "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                 "type": "integer"
               },
               "z": {
@@ -4657,7 +4657,7 @@
                       "type": "integer"
                     },
                     "X": {
-                      "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                      "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                       "type": "integer"
                     },
                     "c": {
@@ -4686,7 +4686,7 @@
                       "type": "integer"
                     },
                     "x": {
-                      "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                      "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                       "type": "integer"
                     },
                     "z": {
@@ -4782,7 +4782,7 @@
                 "type": "number"
               },
               "x": {
-                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                 "type": "integer"
               },
               "z": {
@@ -4875,7 +4875,7 @@
                       "type": "number"
                     },
                     "x": {
-                      "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                      "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                       "type": "integer"
                     },
                     "z": {
@@ -7684,424 +7684,6 @@
                           },
                           "time": {
                             "description": "The time of day the guidance was announced, in HH:mm:ss format.",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "enum": [
-                        "OK"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id",
-                    "results"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "A list of results."
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "error": {
-                      "description": "A message describing the source of the error.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A request id assigned by the server.",
-                      "type": "string"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "enum": [
-                        "ERROR"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id",
-                    "error"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "An error message."
-          }
-        },
-        "tags": [
-          "default"
-        ]
-      }
-    },
-    "/benzinga/v1/news": {
-      "get": {
-        "description": "A comprehensive news article database from Benzinga, containing detailed information about financial news articles including metadata, content, and associated financial information.",
-        "operationId": "get_benzinga_v1_news",
-        "parameters": [
-          {
-            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published.",
-            "in": "query",
-            "name": "published",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "published.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "published.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "published.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "published.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "published.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the news article was last updated in the system.",
-            "in": "query",
-            "name": "last_updated",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "last_updated.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "last_updated.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "last_updated.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "last_updated.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "last_updated.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for arrays that contain the value.",
-            "in": "query",
-            "name": "tickers",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "tickers.all_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "tickers.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for arrays that contain the value.",
-            "in": "query",
-            "name": "channels",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "channels.all_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "channels.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for arrays that contain the value.",
-            "in": "query",
-            "name": "tags",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "tags.all_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "tags.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The name of the journalist or entity that authored the news article.",
-            "in": "query",
-            "name": "author",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "author.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "author.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "author.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "author.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "author.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 100,
-              "maximum": 50001,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'published' if not specified. The sort order defaults to 'desc' if not specified.",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "published.desc",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "count": 1,
-                  "request_id": 1,
-                  "results": [
-                    {
-                      "author": "Adam Eckert",
-                      "benzinga_id": 39046904,
-                      "body": "<p><strong>CAVA Group Inc</strong> (NYSE:<a class=\"ticker\" href=\"https://www.benzinga.com/stock/CAVA#NYSE\">CAVA</a>) reported financial results for the first quarter of fiscal 2024 after market close on Tuesday. Here&#8217;s a look at the <a href=\"https://www.benzinga.com/pressreleases/24/05/b39046606/cava-group-reports-first-quarter-2024-results\">key metrics from the quarter</a>.</p>",
-                      "channels": [
-                        "earnings",
-                        "news",
-                        "restaurants",
-                        "after-hours center",
-                        "movers"
-                      ],
-                      "images": [
-                        "https://cdn.benzinga.com/files/imagecache/250x187xUP/images/story/2024/05/28/CAVA-group.jpeg",
-                        "https://cdn.benzinga.com/files/imagecache/1024x768xUP/images/story/2024/05/28/CAVA-group.jpeg",
-                        "https://cdn.benzinga.com/files/imagecache/2048x1536xUP/images/story/2024/05/28/CAVA-group.jpeg"
-                      ],
-                      "last_updated": "2024-05-28T20:27:42Z",
-                      "published": "2024-05-28T20:27:41Z",
-                      "tags": [
-                        "why it's moving"
-                      ],
-                      "teaser": "Cava&#39;s first-quarter revenue increased 30.3% year-over-year to $256.3 million, which beat the consensus estimate of $245.935 million, according to Benzinga Pro.",
-                      "tickers": [
-                        "CAVA"
-                      ],
-                      "title": "Cava Group Q1 Earnings: Revenue Beat, EPS Beat, Guidance Raise, Continued Investments In Scalable Infrastructure And More",
-                      "url": "https://www.benzinga.com/news/earnings/24/05/39046904/cava-group-q1-earnings-revenue-beat-eps-beat-guidance-raise-continued-investments-in-scalable-infra"
-                    }
-                  ],
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "next_url": {
-                      "description": "If present, this value can be used to fetch the next page.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A request id assigned by the server.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "description": "The results for this request.",
-                      "items": {
-                        "properties": {
-                          "author": {
-                            "description": "The name of the journalist or entity that authored the news article.",
-                            "type": "string"
-                          },
-                          "benzinga_id": {
-                            "description": "The identifer used by Benzinga for this record.",
-                            "format": "int64",
-                            "type": "integer"
-                          },
-                          "body": {
-                            "description": "The full text content of the news article.",
-                            "type": "string"
-                          },
-                          "channels": {
-                            "description": "A list of categories or topics that the article belongs to (e.g., 'News', 'Price Target').",
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array"
-                          },
-                          "images": {
-                            "description": "A list of images associated with the article.",
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array"
-                          },
-                          "last_updated": {
-                            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the news article was last updated in the system.",
-                            "type": "string"
-                          },
-                          "published": {
-                            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published.",
-                            "type": "string"
-                          },
-                          "tags": {
-                            "description": "A list of tags that describe the themes or content of the article.",
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array"
-                          },
-                          "teaser": {
-                            "description": "A short summary or lead-in to the news article's content.",
-                            "type": "string"
-                          },
-                          "tickers": {
-                            "description": "A list of stock or crypto tickers mentioned in the article.",
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array"
-                          },
-                          "title": {
-                            "description": "The headline of the news article.",
-                            "type": "string"
-                          },
-                          "url": {
-                            "description": "The direct link to the source of the news article.",
                             "type": "string"
                           }
                         },
@@ -13732,11 +13314,11 @@
     },
     "/futures/vX/contracts-new": {
       "get": {
-        "description": "Retrieve detailed information about a specific futures contract identified by its ticker. The response includes comprehensive attributes such as active status, trade dates, days to maturity, exchange code, order quantity limits, settlement date, tick sizes, and other key metrics. Users can specify a point-in-time (as_of) to view the contract's state on a particular date, supporting informed trading decisions and historical analysis.\n\nUse Cases: Contract specification, historical product checks, system integration, trading decision support.",
+        "description": "The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.\n\nUse Cases: Historical research, trading system integration, portfolio workflows, risk management.",
         "operationId": "get_futures_vX_contracts-new",
         "parameters": [
           {
-            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day (default=today). Value must be formatted 'yyyy-mm-dd'.",
+            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about contracts for the specified day. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "date",
             "schema": {
@@ -13776,7 +13358,7 @@
             }
           },
           {
-            "description": "The unique identifier for the product.",
+            "description": "The identifier for the contract's product.",
             "in": "query",
             "name": "product_code",
             "schema": {
@@ -13880,7 +13462,7 @@
             }
           },
           {
-            "description": "The type of product, one of 'single' or 'combo'.",
+            "description": "The type of contract, one of 'single' or 'combo'.",
             "in": "query",
             "name": "type",
             "schema": {
@@ -14032,6 +13614,31 @@
           "200": {
             "content": {
               "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/futures/vX/contracts?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
+                  "results": [
+                    {
+                      "active": true,
+                      "date": "2025-02-26",
+                      "days_to_maturity": 138,
+                      "first_trade_date": "2025-01-15",
+                      "last_trade_date": "2025-07-14",
+                      "max_order_quantity": 1999,
+                      "min_order_quantity": 1,
+                      "name": "00CN5 Future",
+                      "product_code": "00C",
+                      "settlement_date": "2025-07-14",
+                      "settlement_tick_size": 0.0025,
+                      "spread_tick_size": 0.0025,
+                      "ticker": "00CN5",
+                      "trade_tick_size": 0.0025,
+                      "trading_venue": "XCBT",
+                      "type": "single"
+                    }
+                  ],
+                  "status": "OK"
+                },
                 "schema": {
                   "properties": {
                     "next_url": {
@@ -14051,7 +13658,7 @@
                             "type": "boolean"
                           },
                           "date": {
-                            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day (default=today).",
+                            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about contracts for the specified day.",
                             "format": "date",
                             "type": "string"
                           },
@@ -14087,11 +13694,11 @@
                             "type": "string"
                           },
                           "name": {
-                            "description": "The full name of the product.",
+                            "description": "The name of this contract.",
                             "type": "string"
                           },
                           "product_code": {
-                            "description": "The unique identifier for the product.",
+                            "description": "The identifier for the contract's product.",
                             "type": "string"
                           },
                           "security_id": {
@@ -14125,7 +13732,7 @@
                             "type": "string"
                           },
                           "type": {
-                            "description": "The type of product, one of 'single' or 'combo'.",
+                            "description": "The type of contract, one of 'single' or 'combo'.",
                             "type": "string"
                           }
                         },
@@ -15033,7 +14640,7 @@
     },
     "/futures/vX/products-new": {
       "get": {
-        "description": "Retrieve detailed information about a single futures product as of a specified date, including its asset class, exchange code, full product name, settlement details, pricing quotation, sector classifications, and unit of measure. Optional parameters such as product type (single or combo) and as_of allow you to capture the product’s state on a specific day, providing essential context for trading decisions and system integrations.\n\nUse Cases: Product specification, historical product checks, risk management, trading system integration.",
+        "description": "The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.\n\nUse Cases: Product specification, historical product checks, risk management, trading system integration.",
         "operationId": "get_futures_vX_products-new",
         "parameters": [
           {
@@ -15085,7 +14692,7 @@
             }
           },
           {
-            "description": "The unique identifier for the product.",
+            "description": "The identifier for the product.",
             "in": "query",
             "name": "product_code",
             "schema": {
@@ -15133,7 +14740,7 @@
             }
           },
           {
-            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day (default=today). Value must be formatted 'yyyy-mm-dd'.",
+            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "date",
             "schema": {
@@ -15437,6 +15044,33 @@
           "200": {
             "content": {
               "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/futures/vX/products?cursor=YXA9MTAwJmFzPSZhc19vZj0yMDI1LTA3LTA3JmxpbWl0PTEwMCZzb3J0PW5hbWUuYXNj",
+                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
+                  "results": [
+                    {
+                      "asset_class": "commodity",
+                      "asset_sub_class": "energy",
+                      "clearing_channel": "exchange_only",
+                      "date": "2025-07-07",
+                      "last_updated": "2025-02-22",
+                      "name": "1% Fuel Oil Barges FOB Rdam (Platts) vs. 1% Fuel Oil Cargoes FOB NWE (Platts) BALMO Futures",
+                      "price_quotation": "U.S. dollars and cents per metric ton",
+                      "product_code": "EBE",
+                      "sector": "refined_products",
+                      "settlement_currency_code": "USD",
+                      "settlement_method": "financially_settled",
+                      "settlement_type": "cash",
+                      "sub_sector": "european",
+                      "trade_currency_code": "USD",
+                      "trading_venue": "XNYM",
+                      "type": "single",
+                      "unit_of_measure": "MTONS",
+                      "unit_of_measure_quantity": 1000
+                    }
+                  ],
+                  "status": "OK"
+                },
                 "schema": {
                   "properties": {
                     "next_url": {
@@ -15460,7 +15094,7 @@
                             "type": "string"
                           },
                           "date": {
-                            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day (default=today).",
+                            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day.",
                             "format": "date",
                             "type": "string"
                           },
@@ -15472,6 +15106,7 @@
                             "type": "string"
                           },
                           "last_updated": {
+                            "description": "The date and time at which this product was last updated.",
                             "format": "date-time",
                             "type": "string"
                           },
@@ -15484,7 +15119,7 @@
                             "type": "string"
                           },
                           "product_code": {
-                            "description": "The unique identifier for the product.",
+                            "description": "The identifier for the product.",
                             "type": "string"
                           },
                           "sector": {
@@ -15508,11 +15143,11 @@
                             "type": "string"
                           },
                           "trade_currency_code": {
-                            "description": "The currency in which this product trades.",
+                            "description": "The currency in which this product's contracts trade.",
                             "type": "string"
                           },
                           "trading_venue": {
-                            "description": "The trading venue (MIC) for the exchange on which this contract trades.",
+                            "description": "The trading venue (MIC) for the exchange on which this product's contracts trade.",
                             "type": "string"
                           },
                           "type": {
@@ -15588,7 +15223,7 @@
             "description": "An error message."
           }
         },
-        "summary": "futures_products_v1 API",
+        "summary": "Futures Products API",
         "tags": [
           "default"
         ]
@@ -17262,6 +16897,689 @@
                           "type",
                           "name"
                         ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
+    "/stocks/filings/vX/risk-factors": {
+      "get": {
+        "description": "The risk factors identified in companies' 10K filings.",
+        "operationId": "get_stocks_filings_vX_risk-factors",
+        "parameters": [
+          {
+            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
+            "in": "query",
+            "name": "filing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "filing_date.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "filing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "filing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "filing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "filing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Stock ticker symbol for the company.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC Central Index Key (10 digits, zero-padded).",
+            "in": "query",
+            "name": "cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "cik.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "cik.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "cik.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "cik.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '49999'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'filing_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "filing_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "c7856101f86c20d855b0ea1c5a6d6efa",
+                  "results": [
+                    {
+                      "cik": "0001005101",
+                      "filing_date": "2025-09-19",
+                      "primary_category": "financial_and_market",
+                      "secondary_category": "credit_and_liquidity",
+                      "supporting_text": "In addition to the net proceeds we received from our recent equity and debt financings, we may need to raise additional equity or debt financing to continue the development and marketing of our Fintech app, to fund ongoing operations, invest in acquisitions, and for working capital purposes. Our inability to raise such additional financing may limit our ability to continue the development of our Fintech app.",
+                      "tertiary_category": "access_to_capital_and_financing",
+                      "ticker": "MGLD"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "cik": {
+                            "description": "SEC Central Index Key (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "filing_date": {
+                            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
+                            "type": "string"
+                          },
+                          "primary_category": {
+                            "description": "Top-level risk category",
+                            "type": "string"
+                          },
+                          "secondary_category": {
+                            "description": "Mid-level risk category",
+                            "type": "string"
+                          },
+                          "supporting_text": {
+                            "description": "Snippet of text to support the given label",
+                            "type": "string"
+                          },
+                          "tertiary_category": {
+                            "description": "Most specific risk classification",
+                            "type": "string"
+                          },
+                          "ticker": {
+                            "description": "Stock ticker symbol for the company.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
+    "/stocks/filings/vX/text": {
+      "get": {
+        "description": "SEC document text sections providing raw text content from specific sections of SEC filings (10-K, 10-Q, etc.).",
+        "operationId": "get_stocks_filings_vX_text",
+        "parameters": [
+          {
+            "description": "SEC Central Index Key (10 digits, zero-padded).",
+            "in": "query",
+            "name": "cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "cik.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "cik.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "cik.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "cik.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Stock ticker symbol for the company.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC form type (e.g., '10-K' for annual reports, '10-Q' for quarterly reports).",
+            "in": "query",
+            "name": "form_type",
+            "schema": {
+              "enum": [
+                "10-K"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "form_type.any_of",
+            "schema": {
+              "enum": [
+                "10-K"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Standardized section identifier from the filing (e.g. 'business', 'risk_factors', etc.).",
+            "in": "query",
+            "name": "section",
+            "schema": {
+              "enum": [
+                "business",
+                "risk_factors"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "section.any_of",
+            "schema": {
+              "enum": [
+                "business",
+                "risk_factors"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Period end date that the filing relates to (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '9999'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 10000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'period_end' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "period_end.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 2,
+                  "next_url": "https://api.massive.com/stocks/filings/vX/text?cursor=eyJsaW1pd...",
+                  "request_id": "a3f8b2c1d4e5f6g7",
+                  "results": [
+                    {
+                      "cik": "0000320193",
+                      "filing_date": "2023-11-03",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/320193/0000320193-23-000106.txt",
+                      "form_type": "10-K",
+                      "period_end": "2023-09-30",
+                      "section": "risk_factors",
+                      "text": "Item 1A. Risk Factors\n\nInvesting in our stock involves risk. In addition to the other information in this Annual Report on Form 10-K, the following risk factors should be carefully considered...",
+                      "ticker": "AAPL"
+                    },
+                    {
+                      "cik": "0000789019",
+                      "filing_date": "2023-07-27",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/789019/0000950170-23-035122.txt",
+                      "form_type": "10-K",
+                      "period_end": "2023-06-30",
+                      "section": "risk_factors",
+                      "text": "Item 1A. RISK FACTORS\n\nOur operations and financial results are subject to various risks and uncertainties...",
+                      "ticker": "MSFT"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "cik": {
+                            "description": "SEC Central Index Key (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "filing_date": {
+                            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "filing_url": {
+                            "description": "SEC URL source for the full filing.",
+                            "type": "string"
+                          },
+                          "form_type": {
+                            "description": "SEC form type (e.g., '10-K' for annual reports, '10-Q' for quarterly reports).",
+                            "type": "string"
+                          },
+                          "period_end": {
+                            "description": "Period end date that the filing relates to (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "section": {
+                            "description": "Standardized section identifier from the filing (e.g. 'business', 'risk_factors', etc.).",
+                            "type": "string"
+                          },
+                          "text": {
+                            "description": "Full raw text content of the section, including headers and formatting.",
+                            "type": "string"
+                          },
+                          "ticker": {
+                            "description": "Stock ticker symbol for the company.",
+                            "type": "string"
+                          }
+                        },
                         "type": "object"
                       },
                       "type": "array"
@@ -20395,6 +20713,345 @@
         ]
       }
     },
+    "/stocks/taxonomies/vX/risk-factors": {
+      "get": {
+        "description": "The complete list of risk factor classifications used in the risk factors endpoint.",
+        "operationId": "get_stocks_taxonomies_vX_risk-factors",
+        "parameters": [
+          {
+            "description": "Version identifier (e.g., '1.0', '1.1') for the taxonomy Value must be a floating point number.",
+            "in": "query",
+            "name": "taxonomy",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "taxonomy.gt",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "taxonomy.gte",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "taxonomy.lt",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "taxonomy.lte",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Top-level risk category",
+            "in": "query",
+            "name": "primary_category",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "primary_category.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "primary_category.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "primary_category.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "primary_category.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "primary_category.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Mid-level risk category",
+            "in": "query",
+            "name": "secondary_category",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "secondary_category.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "secondary_category.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "secondary_category.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "secondary_category.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "secondary_category.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Most specific risk classification",
+            "in": "query",
+            "name": "tertiary_category",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tertiary_category.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "tertiary_category.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "tertiary_category.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "tertiary_category.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "tertiary_category.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '200' if not specified. The maximum allowed limit is '999'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 200,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'taxonomy' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "taxonomy.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "daac836f71724420b66011d55d88b30b",
+                  "results": [
+                    {
+                      "description": "Risk from inadequate performance management systems, unclear accountability structures, or ineffective measurement and incentive systems that could affect employee performance, goal achievement, and organizational effectiveness.",
+                      "primary_category": "Governance & Stakeholder",
+                      "secondary_category": "Organizational & Management",
+                      "taxonomy": "1.0",
+                      "tertiary_category": "Performance management and accountability"
+                    },
+                    {
+                      "description": "Risk from requirements to monitor, document, and report on compliance with privacy and data protection regulations including risks from compliance program effectiveness, record-keeping requirements, and breach notification obligations.",
+                      "primary_category": "Regulatory & Compliance",
+                      "secondary_category": "Data & Privacy",
+                      "taxonomy": "1.0",
+                      "tertiary_category": "Compliance monitoring and reporting"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "description": {
+                            "description": "Detailed explanation of what this risk category encompasses, including specific examples and potential impacts",
+                            "type": "string"
+                          },
+                          "primary_category": {
+                            "description": "Top-level risk category",
+                            "type": "string"
+                          },
+                          "secondary_category": {
+                            "description": "Mid-level risk category",
+                            "type": "string"
+                          },
+                          "taxonomy": {
+                            "description": "Version identifier (e.g., '1.0', '1.1') for the taxonomy",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "tertiary_category": {
+                            "description": "Most specific risk classification",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "taxonomy"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/stocks/v1/dividends": {
       "get": {
         "description": "Contains historical dividend payment records for US stocks with split-adjusted amounts and historical adjustment factors for price normalization.",
@@ -20538,6 +21195,13 @@
             "in": "query",
             "name": "distribution_type",
             "schema": {
+              "enum": [
+                "recurring",
+                "special",
+                "supplemental",
+                "irregular",
+                "unknown"
+              ],
               "type": "string"
             }
           },
@@ -20546,38 +21210,13 @@
             "in": "query",
             "name": "distribution_type.any_of",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "distribution_type.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "distribution_type.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "distribution_type.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "distribution_type.lte",
-            "schema": {
+              "enum": [
+                "recurring",
+                "special",
+                "supplemental",
+                "irregular",
+                "unknown"
+              ],
               "type": "string"
             }
           },
@@ -20607,7 +21246,6 @@
             "content": {
               "application/json": {
                 "example": {
-                  "count": 1,
                   "request_id": 1,
                   "results": [
                     {
@@ -21783,6 +22421,11 @@
             "in": "query",
             "name": "adjustment_type",
             "schema": {
+              "enum": [
+                "forward_split",
+                "reverse_split",
+                "stock_dividend"
+              ],
               "type": "string"
             }
           },
@@ -21791,38 +22434,11 @@
             "in": "query",
             "name": "adjustment_type.any_of",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "adjustment_type.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "adjustment_type.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "adjustment_type.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "adjustment_type.lte",
-            "schema": {
+              "enum": [
+                "forward_split",
+                "reverse_split",
+                "stock_dividend"
+              ],
               "type": "string"
             }
           },
@@ -21852,7 +22468,6 @@
             "content": {
               "application/json": {
                 "example": {
-                  "count": 1,
                   "request_id": 1,
                   "results": [
                     {
@@ -22634,7 +23249,7 @@
                           "type": "number"
                         },
                         "exchange": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "timestamp": {
@@ -23058,7 +23673,7 @@
                                 "type": "integer"
                               },
                               "x": {
-                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                 "type": "integer"
                               }
                             },
@@ -30097,7 +30712,7 @@
                           "type": "number"
                         },
                         "exchange": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "timestamp": {
@@ -34473,7 +35088,7 @@
                           "type": "string"
                         },
                         "X": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "c": {
@@ -34523,7 +35138,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "y": {
@@ -34697,7 +35312,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "y": {
@@ -34877,7 +35492,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "y": {
@@ -37807,7 +38422,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                     "type": "integer"
                                   }
                                 },
@@ -38220,7 +38835,7 @@
                                   "type": "integer"
                                 },
                                 "x": {
-                                  "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                  "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                   "type": "integer"
                                 }
                               },
@@ -38632,7 +39247,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                     "type": "integer"
                                   }
                                 },
@@ -39053,7 +39668,7 @@
                                     "type": "integer"
                                   },
                                   "X": {
-                                    "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                     "type": "integer"
                                   },
                                   "c": {
@@ -39082,7 +39697,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                     "type": "integer"
                                   },
                                   "z": {
@@ -39390,7 +40005,7 @@
                                     "type": "number"
                                   },
                                   "x": {
-                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                    "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                     "type": "integer"
                                   },
                                   "z": {
@@ -42581,7 +43196,7 @@
     },
     "/v3/reference/tickers": {
       "get": {
-        "description": "Query all ticker symbols which are supported by Massive.com. This API currently includes Stocks/Equities, Indices, Forex, and Crypto.",
+        "description": "Query all ticker symbols which are supported by Massive. This API currently includes Stocks/Equities, Indices, Forex, and Crypto.",
         "operationId": "ListTickers",
         "parameters": [
           {
@@ -42973,7 +43588,7 @@
     },
     "/v3/reference/tickers/types": {
       "get": {
-        "description": "List all ticker types that Massive.com has.",
+        "description": "List all ticker types that Massive has.",
         "operationId": "ListTickerTypes",
         "parameters": [
           {
@@ -43025,6 +43640,7 @@
                       "type": "string"
                     },
                     "results": {
+                      "description": "An array of results containing the requested data.",
                       "items": {
                         "description": "Describes the type of financial instrument represented by a ticker.",
                         "properties": {
@@ -43041,7 +43657,7 @@
                             "type": "string"
                           },
                           "code": {
-                            "description": "A code used by Massive.com to refer to this ticker type.",
+                            "description": "A code used by Massive to refer to this ticker type.",
                             "example": "CS",
                             "type": "string"
                           },
@@ -43167,7 +43783,7 @@
     },
     "/v3/reference/tickers/{ticker}": {
       "get": {
-        "description": "Get a single ticker supported by Massive.com. This response will have detailed information about the ticker and the company behind it.",
+        "description": "Get a single ticker supported by Massive. This response will have detailed information about the ticker and the company behind it.",
         "operationId": "GetTicker",
         "parameters": [
           {
@@ -43889,7 +44505,7 @@
                                 "type": "number"
                               },
                               "ask_exchange": {
-                                "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                 "type": "integer"
                               },
                               "ask_size": {
@@ -43903,7 +44519,7 @@
                                 "type": "number"
                               },
                               "bid_exchange": {
-                                "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                 "type": "integer"
                               },
                               "bid_size": {
@@ -43958,7 +44574,7 @@
                                 "type": "array"
                               },
                               "exchange": {
-                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                 "type": "integer"
                               },
                               "id": {
@@ -45013,7 +45629,7 @@
                                 "type": "number"
                               },
                               "ask_exchange": {
-                                "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                 "format": "int32",
                                 "type": "number"
                               },
@@ -45028,7 +45644,7 @@
                                 "type": "number"
                               },
                               "bid_exchange": {
-                                "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                 "format": "int32",
                                 "type": "number"
                               },
@@ -45085,7 +45701,7 @@
                                 "type": "array"
                               },
                               "exchange": {
-                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                                "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                 "type": "integer"
                               },
                               "price": {
@@ -45554,7 +46170,7 @@
                               "type": "number"
                             },
                             "ask_exchange": {
-                              "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                              "description": "The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                               "format": "int32",
                               "type": "number"
                             },
@@ -45569,7 +46185,7 @@
                               "type": "number"
                             },
                             "bid_exchange": {
-                              "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                              "description": "The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                               "format": "int32",
                               "type": "number"
                             },
@@ -45626,7 +46242,7 @@
                               "type": "array"
                             },
                             "exchange": {
-                              "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                              "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                               "type": "integer"
                             },
                             "price": {
@@ -45934,7 +46550,7 @@
                             }
                           },
                           "exchange": {
-                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                             "type": "integer"
                           },
                           "id": {
@@ -46187,7 +46803,7 @@
                             "type": "integer"
                           },
                           "exchange": {
-                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                             "type": "integer"
                           },
                           "participant_timestamp": {
@@ -46450,7 +47066,7 @@
                             "type": "integer"
                           },
                           "exchange": {
-                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs.",
+                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                             "type": "integer"
                           },
                           "id": {
@@ -48457,6 +49073,11 @@
         },
         {
           "paths": [
+            "/futures/vX/contracts-new"
+          ]
+        },
+        {
+          "paths": [
             "/futures/vX/contracts/{ticker}"
           ]
         },
@@ -48472,6 +49093,11 @@
         },
         {
           "paths": [
+            "/futures/vX/products-new"
+          ]
+        },
+        {
+          "paths": [
             "/futures/vX/products/{product_code}"
           ]
         },
@@ -48482,9 +49108,19 @@
         },
         {
           "paths": [
+            "/futures/vX/market-status-new"
+          ]
+        },
+        {
+          "paths": [
             "stocks/vX/listings",
             "stocks/vX/listing/{identifier_type}/{identifier}",
             "stocks/vX/listings/updates"
+          ]
+        },
+        {
+          "paths": [
+            "/futures/vX/schedules-new"
           ]
         }
       ]
