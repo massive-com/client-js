@@ -12,7 +12,7 @@
       },
       "AggregateDate": {
         "description": "The beginning date for the aggregate window.",
-        "example": "2023-01-09",
+        "example": "2025-11-03",
         "in": "path",
         "name": "date",
         "required": true,
@@ -53,7 +53,7 @@
       },
       "AggregateTimeFrom": {
         "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-01-09",
+        "example": "2025-11-03",
         "in": "path",
         "name": "from",
         "required": true,
@@ -63,7 +63,7 @@
       },
       "AggregateTimeTo": {
         "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-02-10",
+        "example": "2025-11-28",
         "in": "path",
         "name": "to",
         "required": true,
@@ -153,7 +153,7 @@
       },
       "IndicesAggregateTimeFrom": {
         "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-03-13",
+        "example": "2025-11-03",
         "in": "path",
         "name": "from",
         "required": true,
@@ -163,7 +163,7 @@
       },
       "IndicesAggregateTimeTo": {
         "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-03-24",
+        "example": "2025-11-28",
         "in": "path",
         "name": "to",
         "required": true,
@@ -6026,6 +6026,283 @@
         ]
       }
     },
+    "/benzinga/v1/bulls-bears-say": {
+      "get": {
+        "description": "A comprehensive database of analyst bull and bear case summaries for publicly traded companies, providing concise summaries of both bullish and bearish investment arguments to help investors see both sides of the story before making investment decisions.",
+        "operationId": "get_benzinga_v1_bulls-bears-say",
+        "parameters": [
+          {
+            "description": "The stock ticker symbol for the company associated with the bull and bear case summaries.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique identifier used by Benzinga for this bull/bear case record.",
+            "in": "query",
+            "name": "benzinga_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "benzinga_id.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "benzinga_id.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "benzinga_id.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "benzinga_id.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "benzinga_id.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_updated",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_updated.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_updated.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_updated.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_updated.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '5000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 5001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'ticker' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "ticker.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "request_id": 1,
+                  "results": [
+                    {
+                      "bear_case": "Apple faces increasing regulatory scrutiny globally, potential market saturation in core iPhone markets, and intense competition in emerging categories. Supply chain vulnerabilities and dependence on China for manufacturing pose significant risks, while slowing innovation cycles could impact premium pricing.",
+                      "benzinga_id": "550e8400-e29b-41d4-a716-446655440000",
+                      "bull_case": "Apple's strong ecosystem integration, loyal customer base, and continued innovation in services and hardware drive sustainable revenue growth. The company's expanding services segment provides high-margin recurring revenue, while its brand strength and pricing power maintain premium market positioning.",
+                      "last_updated": "2025-12-16T10:30:00Z",
+                      "ticker": "AAPL"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "bear_case": {
+                            "description": "A concise summary of the bearish investment thesis, highlighting potential risks, challenges, and reasons why the stock could decline in value.",
+                            "type": "string"
+                          },
+                          "benzinga_id": {
+                            "description": "The unique identifier used by Benzinga for this bull/bear case record.",
+                            "type": "string"
+                          },
+                          "bull_case": {
+                            "description": "A concise summary of the bullish investment thesis, highlighting positive aspects, growth opportunities, and reasons why the stock could appreciate in value.",
+                            "type": "string"
+                          },
+                          "last_updated": {
+                            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system.",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "ticker": {
+                            "description": "The stock ticker symbol for the company associated with the bull and bear case summaries.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/benzinga/v1/consensus-ratings/{ticker}": {
       "get": {
         "description": "A comprehensive financial consensus ratings table that aggregates analyst recommendations and price targets for individual stock tickers, capturing detailed rating breakdowns and statistical insights.",
@@ -6161,7 +6438,7 @@
                           },
                           "high_price_target": {
                             "description": "The highest price target among all contributing analysts.",
-                            "format": "float",
+                            "format": "double",
                             "type": "number"
                           },
                           "hold_ratings": {
@@ -6171,7 +6448,7 @@
                           },
                           "low_price_target": {
                             "description": "The lowest price target among all contributing analysts.",
-                            "format": "float",
+                            "format": "double",
                             "type": "number"
                           },
                           "price_target_contributors": {
@@ -6768,7 +7045,7 @@
                       "currency": "USD",
                       "date": "2029-09-24",
                       "date_status": "confirmed",
-                      "earnings_method": "GAAP",
+                      "eps_method": "GAAP",
                       "fiscal_period": "H1",
                       "fiscal_year": 2024,
                       "importance": 1,
@@ -10247,6 +10524,7 @@
                       "asset_class": "Equity",
                       "composite_ticker": "SPY",
                       "constituent_name": "CAESARS ENTERTAINMENT INC COMMON STOCK",
+                      "constituent_rank": 42,
                       "constituent_ticker": "CZR",
                       "country_of_exchange": "US",
                       "currency_traded": "USD",
@@ -10289,6 +10567,11 @@
                           "constituent_name": {
                             "description": "The full company or security name of the constituent holding.",
                             "type": "string"
+                          },
+                          "constituent_rank": {
+                            "description": "The rank of this constituent within the ETF for a given effective_date, ordered by weight (descending), market_value (descending), and constituent_ticker (ascending). A rank of 1 indicates the largest holding.",
+                            "format": "int64",
+                            "type": "integer"
                           },
                           "constituent_ticker": {
                             "description": "The stock ticker symbol of the individual security held within the ETF.",
@@ -10352,6 +10635,9 @@
                             "type": "number"
                           }
                         },
+                        "required": [
+                          "constituent_rank"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -12445,6 +12731,198 @@
         ]
       }
     },
+    "/fed/v1/labor-market": {
+      "get": {
+        "description": "Labor market indicators from the Federal Reserve, including unemployment rate, labor force participation, average hourly earnings, and job openings data.",
+        "operationId": "get_fed_v1_labor-market",
+        "parameters": [
+          {
+            "description": "Calendar date of the observation (YYYY-MM-DD).",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "date.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'asc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "date.asc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "request_id": 1,
+                  "results": [
+                    {
+                      "avg_hourly_earnings": 35.06,
+                      "date": "2024-12-01",
+                      "job_openings": 8098,
+                      "labor_force_participation_rate": 62.5,
+                      "unemployment_rate": 4.2
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "avg_hourly_earnings": {
+                            "description": "Average hourly earnings of all employees on private nonfarm payrolls in USD (CES0500000003 series from FRED).",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "date": {
+                            "description": "Calendar date of the observation (YYYY-MM-DD).",
+                            "type": "string"
+                          },
+                          "job_openings": {
+                            "description": "Total nonfarm job openings in thousands (JTSJOL series from FRED).",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "labor_force_participation_rate": {
+                            "description": "Civilian labor force participation rate as a percentage of the civilian noninstitutional population (CIVPART series from FRED).",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "unemployment_rate": {
+                            "description": "Civilian unemployment rate as a percentage of the labor force (UNRATE series from FRED).",
+                            "format": "float",
+                            "type": "number"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/fed/v1/treasury-yields": {
       "get": {
         "description": "A record of U.S. Treasury bond yields across various maturity periods, tracking historical interest rates from short-term to long-term government securities.",
@@ -13043,279 +13521,8 @@
     },
     "/futures/vX/contracts": {
       "get": {
-        "description": "The Contracts endpoint returns a list of futures contracts. This endpoint can be used to query for contracts based on a variety of parameters, including the contract's ticker, product code, first trade date, last trade date, and whether or not the contract was active on a given date.",
-        "operationId": "GetFuturesContracts",
-        "parameters": [
-          {
-            "description": "A unique identifier for the Product a Contract belongs to. Note that multiple contracts can belong to the same product.",
-            "in": "query",
-            "name": "product_code",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The first day that a contract was tradeable. A date with the format YYYY-MM-DD.",
-            "in": "query",
-            "name": "first_trade_date",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The last day that the contract was tradeable. A date with the format YYYY-MM-DD.",
-            "in": "query",
-            "name": "last_trade_date",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Specify the point-in-time for which you want to retrieve information. Note that the contract data returned for a given date is the state of that contract as of that day. A date in the format YYYY-MM-DD (default=today).",
-            "in": "query",
-            "name": "as_of",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter for contracts based on whether or not they were tradeable at the given point in time. For example, if the date queried is greater-than or equal-to a contract's 'first_trade_date' and less-than-or-equal-to its 'last_trade_date', then the contract was active. If the date queried is greater-than-or-equal-to the contract's 'last_trade_date' or less-than-or-equal-to its 'first_trade_date', then the contract was inactive.",
-            "in": "query",
-            "name": "active",
-            "schema": {
-              "default": "all",
-              "enum": [
-                "all",
-                "true",
-                "false"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of contract, one of \"all\", \"single\", or \"combo\" (default=all).",
-            "in": "query",
-            "name": "type",
-            "schema": {
-              "default": "all",
-              "enum": [
-                "all",
-                "single",
-                "combo"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The number of results to return per page (default=100, max=1000, min=1).",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 100,
-              "maximum": 1000,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Sort results by field and direction using dotted notation (e.g., 'ticker.asc', 'name.desc').",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "product_code.asc",
-              "enum": [
-                "product_code.asc",
-                "product_code.desc",
-                "first_trade_date.asc",
-                "first_trade_date.desc",
-                "last_trade_date.asc",
-                "last_trade_date.desc"
-              ],
-              "example": "product_code.asc",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "next_url": "https://api.massive.com/futures/vX/contracts?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
-                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
-                  "results": [
-                    {
-                      "active": true,
-                      "as_of": "2025-02-26",
-                      "days_to_maturity": 138,
-                      "first_trade_date": "2025-01-15",
-                      "last_trade_date": "2025-07-14",
-                      "max_order_quantity": 1999,
-                      "min_order_quantity": 1,
-                      "name": "00CN5 Future",
-                      "product_code": "00C",
-                      "settlement_date": "2025-07-14",
-                      "settlement_tick_size": 0.0025,
-                      "spread_tick_size": 0.0025,
-                      "ticker": "00CN5",
-                      "trade_tick_size": 0.0025,
-                      "trading_venue": "XCBT",
-                      "type": "single"
-                    },
-                    {
-                      "active": false,
-                      "as_of": "2025-02-26",
-                      "days_to_maturity": -12,
-                      "first_trade_date": "2024-09-16",
-                      "last_trade_date": "2025-02-14",
-                      "max_order_quantity": 1999,
-                      "min_order_quantity": 1,
-                      "name": "00CG5 Future",
-                      "product_code": "00C",
-                      "settlement_date": "2025-02-14",
-                      "ticker": "00CG5XXX",
-                      "trading_venue": "XCBT",
-                      "type": "single"
-                    }
-                  ],
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "next_url": {
-                      "description": "If present, this value can be used to fetch the next page of data.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A unique identifier for this request.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "items": {
-                        "properties": {
-                          "active": {
-                            "description": "Whether or not this contract was tradeable at the given point-in-time specified in the 'as_of' attribute (a contract was active if the given day was after the 'first_trade_date' and before the 'last_trade_date').",
-                            "type": "boolean"
-                          },
-                          "as_of": {
-                            "description": "The point-in-time date for the given contract - e.g. if 'as_of' is set to 2021-04-25, then the data retrieved describes the contract(s) as of 2021-04-25.",
-                            "format": "date",
-                            "type": "string"
-                          },
-                          "days_to_maturity": {
-                            "description": "The number of days until this contract matures (since the point-in-time date). Note that the absence of this field means there are 0 days until maturity.",
-                            "type": "integer"
-                          },
-                          "first_trade_date": {
-                            "description": "The date on which this contract first became tradeable.",
-                            "format": "date",
-                            "type": "string"
-                          },
-                          "last_trade_date": {
-                            "description": "The date on which this contract last became tradeable.",
-                            "format": "date",
-                            "type": "string"
-                          },
-                          "maturity": {
-                            "description": "This field provides the calendar month reflected in the instrument symbol. For futures spreads and options spreads, this field contains the first leg's calendar month reflected in the instrument symbol. For daily products, this tag contains the full calendar date (YYYYMMDD) as reflected in the instrument symbol.",
-                            "type": "string"
-                          },
-                          "max_order_quantity": {
-                            "description": "The maximum order quantity for this contract.",
-                            "type": "integer"
-                          },
-                          "min_order_quantity": {
-                            "description": "The minimum order quantity for this contract.",
-                            "type": "integer"
-                          },
-                          "name": {
-                            "description": "The name of the contract.",
-                            "type": "string"
-                          },
-                          "product_code": {
-                            "description": "The unique identifier for the product to which this contract belongs.",
-                            "type": "string"
-                          },
-                          "settlement_date": {
-                            "description": "The final settlement date for the contract.",
-                            "format": "date",
-                            "type": "string"
-                          },
-                          "settlement_tick_size": {
-                            "description": "The settlement tick size for this contract.",
-                            "type": "number"
-                          },
-                          "spread_tick_size": {
-                            "description": "The spread tick size for this contract.",
-                            "type": "number"
-                          },
-                          "ticker": {
-                            "description": "The unique identifier for the contract, typically consisting of the product code and expiration date.",
-                            "type": "string"
-                          },
-                          "trade_tick_size": {
-                            "description": "The tick size for this contract.",
-                            "type": "number"
-                          },
-                          "trading_venue": {
-                            "description": "The trading venue (MIC) for the exchange on which this contract trades.",
-                            "type": "string"
-                          },
-                          "type": {
-                            "description": "The type of contract, one of \"single\" or \"combo\".",
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "ticker",
-                          "product_code",
-                          "first_trade_date",
-                          "last_trade_date",
-                          "trading_venue",
-                          "active",
-                          "type"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "Contract"
-                        }
-                      },
-                      "type": "array"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "example": "OK",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "A list of contracts which satify all query parameters."
-          }
-        },
-        "summary": "Contracts",
-        "tags": [
-          "default"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
-        }
-      }
-    },
-    "/futures/vX/contracts-new": {
-      "get": {
         "description": "The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.\n\nUse Cases: Historical research, trading system integration, portfolio workflows, risk management.",
-        "operationId": "get_futures_vX_contracts-new",
+        "operationId": "get_futures_vX_contracts",
         "parameters": [
           {
             "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about contracts for the specified day. Value must be formatted 'yyyy-mm-dd'.",
@@ -13454,18 +13661,22 @@
             }
           },
           {
-            "description": "The contract is still trading. Value must be 'true', 'false', '1' or '0'.",
+            "description": "Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date <= date >= last_trade_date) and false otherwise.",
             "in": "query",
             "name": "active",
             "schema": {
-              "type": "string"
+              "type": "boolean"
             }
           },
           {
-            "description": "The type of contract, one of 'single' or 'combo'.",
+            "description": "The type of contract, one of 'single' or 'combo'. Leaving this filter blank will query for both 'single' and 'combo' types.",
             "in": "query",
             "name": "type",
             "schema": {
+              "enum": [
+                "single",
+                "combo"
+              ],
               "type": "string"
             }
           },
@@ -13474,43 +13685,15 @@
             "in": "query",
             "name": "type.any_of",
             "schema": {
+              "enum": [
+                "single",
+                "combo"
+              ],
               "type": "string"
             }
           },
           {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "type.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "type.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "type.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "type.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The first date the contract trades. Value must be formatted 'yyyy-mm-dd'.",
+            "description": "The first day on which the contract was tradeable. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "first_trade_date",
             "schema": {
@@ -13550,7 +13733,7 @@
             }
           },
           {
-            "description": "The last date the contract trades. Value must be formatted 'yyyy-mm-dd'.",
+            "description": "The last day on which the contract was tradeable. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "last_trade_date",
             "schema": {
@@ -13623,6 +13806,7 @@
                       "date": "2025-02-26",
                       "days_to_maturity": 138,
                       "first_trade_date": "2025-01-15",
+                      "group_code": "CN",
                       "last_trade_date": "2025-07-14",
                       "max_order_quantity": 1999,
                       "min_order_quantity": 1,
@@ -13654,7 +13838,7 @@
                       "items": {
                         "properties": {
                           "active": {
-                            "description": "The contract is still trading.",
+                            "description": "Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date <= date >= last_trade_date) and false otherwise.",
                             "type": "boolean"
                           },
                           "date": {
@@ -13663,35 +13847,33 @@
                             "type": "string"
                           },
                           "days_to_maturity": {
+                            "description": "The number of calendar days between the 'date' and the contract's final settlement date.",
                             "format": "int64",
                             "type": "integer"
                           },
                           "first_trade_date": {
-                            "description": "The first date the contract trades.",
+                            "description": "The first day on which the contract was tradeable.",
                             "format": "date",
                             "type": "string"
                           },
                           "group_code": {
-                            "type": "string"
-                          },
-                          "guid": {
+                            "description": "An identifier used to identify logical groups of products. The group_code is only populated for contracts listed for trading on CME Globex.",
                             "type": "string"
                           },
                           "last_trade_date": {
-                            "description": "The last date the contract trades.",
+                            "description": "The last day on which the contract was tradeable.",
                             "format": "date",
-                            "type": "string"
-                          },
-                          "maturity_month": {
                             "type": "string"
                           },
                           "max_order_quantity": {
                             "description": "The maximum order quantity.",
-                            "type": "string"
+                            "format": "int64",
+                            "type": "integer"
                           },
                           "min_order_quantity": {
                             "description": "The minimum order quantity.",
-                            "type": "string"
+                            "format": "int64",
+                            "type": "integer"
                           },
                           "name": {
                             "description": "The name of this contract.",
@@ -13701,11 +13883,9 @@
                             "description": "The identifier for the contract's product.",
                             "type": "string"
                           },
-                          "security_id": {
-                            "type": "string"
-                          },
                           "settlement_date": {
-                            "format": "date-time",
+                            "description": "The date on which this contract settles.",
+                            "format": "date",
                             "type": "string"
                           },
                           "settlement_tick_size": {
@@ -13732,7 +13912,7 @@
                             "type": "string"
                           },
                           "type": {
-                            "description": "The type of contract, one of 'single' or 'combo'.",
+                            "description": "The type of contract, one of 'single' or 'combo'. Leaving this filter blank will query for both 'single' and 'combo' types.",
                             "type": "string"
                           }
                         },
@@ -13796,181 +13976,10 @@
             "description": "An error message."
           }
         },
-        "summary": "futures_contracts_v1 API",
+        "summary": "futures contracts API",
         "tags": [
           "default"
         ]
-      }
-    },
-    "/futures/vX/contracts/{ticker}": {
-      "get": {
-        "description": "The Contract Details endpoint returns the details for a single contract at a specific point in time.",
-        "operationId": "GetFuturesContractDetails",
-        "parameters": [
-          {
-            "description": "The ticker symbol of the contract to retrieve.",
-            "example": "ESU0",
-            "in": "path",
-            "name": "ticker",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The point-in-time of the data to be retrieved. Note that the contract data returned for a given date represents the state of that contract on that day. A date in the format YYYY-MM-DD (default=today).",
-            "in": "query",
-            "name": "as_of",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
-                  "results": {
-                    "active": true,
-                    "as_of": "2025-07-07",
-                    "days_to_maturity": 1901,
-                    "first_trade_date": "2025-06-20",
-                    "last_trade_date": "2030-09-20",
-                    "max_order_quantity": 3000,
-                    "min_order_quantity": 1,
-                    "name": "ESU0 Future",
-                    "product_code": "ES",
-                    "settlement_tick_size": 0.25,
-                    "spread_tick_size": 0.01,
-                    "ticker": "ESU0",
-                    "trade_tick_size": 0.25,
-                    "trading_venue": "XCME",
-                    "type": "single"
-                  },
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "request_id": {
-                      "description": "A unique identifier for this request.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "properties": {
-                        "active": {
-                          "description": "Whether or not this contract was tradeable at the given point-in-time specified in the 'as_of' attribute (a contract was active if the given day was after the 'first_trade_date' and before the 'last_trade_date').",
-                          "type": "boolean"
-                        },
-                        "as_of": {
-                          "description": "The point-in-time date for the given contract - e.g. if 'as_of' is set to 2021-04-25, then the data retrieved describes the contract(s) as of 2021-04-25.",
-                          "format": "date",
-                          "type": "string"
-                        },
-                        "days_to_maturity": {
-                          "description": "The number of days until this contract matures (since the point-in-time date). Note that the absence of this field means there are 0 days until maturity.",
-                          "type": "integer"
-                        },
-                        "first_trade_date": {
-                          "description": "The date on which this contract first became tradeable.",
-                          "format": "date",
-                          "type": "string"
-                        },
-                        "last_trade_date": {
-                          "description": "The date on which this contract last became tradeable.",
-                          "format": "date",
-                          "type": "string"
-                        },
-                        "maturity": {
-                          "description": "This field provides the calendar month reflected in the instrument symbol. For futures spreads and options spreads, this field contains the first leg's calendar month reflected in the instrument symbol. For daily products, this tag contains the full calendar date (YYYYMMDD) as reflected in the instrument symbol.",
-                          "type": "string"
-                        },
-                        "max_order_quantity": {
-                          "description": "The maximum order quantity for this contract.",
-                          "type": "integer"
-                        },
-                        "min_order_quantity": {
-                          "description": "The minimum order quantity for this contract.",
-                          "type": "integer"
-                        },
-                        "name": {
-                          "description": "The name of the contract.",
-                          "type": "string"
-                        },
-                        "product_code": {
-                          "description": "The unique identifier for the product to which this contract belongs.",
-                          "type": "string"
-                        },
-                        "settlement_date": {
-                          "description": "The final settlement date for the contract.",
-                          "format": "date",
-                          "type": "string"
-                        },
-                        "settlement_tick_size": {
-                          "description": "The settlement tick size for this contract.",
-                          "type": "number"
-                        },
-                        "spread_tick_size": {
-                          "description": "The spread tick size for this contract.",
-                          "type": "number"
-                        },
-                        "ticker": {
-                          "description": "The unique identifier for the contract, typically consisting of the product code and expiration date.",
-                          "type": "string"
-                        },
-                        "trade_tick_size": {
-                          "description": "The tick size for this contract.",
-                          "type": "number"
-                        },
-                        "trading_venue": {
-                          "description": "The trading venue (MIC) for the exchange on which this contract trades.",
-                          "type": "string"
-                        },
-                        "type": {
-                          "description": "The type of contract, one of \"single\" or \"combo\".",
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "ticker",
-                        "product_code",
-                        "first_trade_date",
-                        "last_trade_date",
-                        "trading_venue",
-                        "active",
-                        "type"
-                      ],
-                      "type": "object",
-                      "x-polygon-go-type": {
-                        "name": "Contract"
-                      }
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "A single contract as it was at the given point-in-time."
-          }
-        },
-        "summary": "Contract Details",
-        "tags": [
-          "default"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
-        }
       }
     },
     "/futures/vX/exchanges": {
@@ -14126,335 +14135,66 @@
     },
     "/futures/vX/market-status": {
       "get": {
-        "description": "The market status endpoint returns the current status of the futures market for the given product code(s).",
-        "operationId": "GetFuturesMarketStatuses",
+        "description": "Retrieve the current market status for a specific product or products. This endpoint returns real-time indicators, such as open, pause, close, for futures products, along with the corresponding exchange and product codes and an evaluation timestamp. This information enables users to monitor operational conditions and adjust their trading strategies accordingly.\n\nUse Cases: Real-time monitoring, algorithm scheduling, UI updates, operational planning.",
+        "operationId": "get_futures_vX_market-status",
         "parameters": [
           {
-            "description": "The product code(s) to return market statuses for.\n\nMultiple product codes can be specified by separating them with a comma. Currently, the limit is 250 product codes.",
-            "in": "query",
-            "name": "product_code.any_of",
-            "schema": {
-              "example": "ES,CL",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The product code to return market statuses for.",
+            "description": "The product code of the futures contracts for which you want statuses.",
             "in": "query",
             "name": "product_code",
             "schema": {
-              "example": "ES",
               "type": "string"
             }
           },
           {
-            "description": "The number of results to return per page (default=100, max=1000, min=1).",
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "product_code.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "product_code.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "product_code.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "product_code.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "product_code.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 1000,
+              "maximum": 50001,
               "minimum": 1,
               "type": "integer"
-            }
-          },
-          {
-            "description": "Sort results by field and direction using dotted notation (e.g., 'ticker.asc', 'name.desc').",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "product_code.asc",
-              "enum": [
-                "product_code.asc",
-                "product_code.desc"
-              ],
-              "example": "product_code.asc",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "next_url": {
-                      "description": "If present, this value can be used to fetch the next page of data.",
-                      "example": "https://api.massive.com/futures/vX/products?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A unique identifier for this request.",
-                      "example": "ac0a1b0b-0b0b-4b0b-8b0b-0b0b0b0b0b0b",
-                      "type": "string"
-                    },
-                    "results": {
-                      "items": {
-                        "properties": {
-                          "market_status": {
-                            "description": "The current status of the market.",
-                            "enum": [
-                              "pre_open",
-                              "open",
-                              "close",
-                              "pause",
-                              "post_close_pre_open"
-                            ],
-                            "example": "open",
-                            "type": "string"
-                          },
-                          "product_code": {
-                            "description": "The product code for the product.",
-                            "example": "ES",
-                            "type": "string"
-                          },
-                          "trading_venue": {
-                            "description": "The trading venue (MIC) for the exchange on which the corresponding product trades.",
-                            "example": "XNYM",
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "market_status",
-                          "product_code"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "MarketStatusesResult"
-                        }
-                      },
-                      "type": "array"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "example": "OK",
-                      "type": "string"
-                    },
-                    "timestamp": {
-                      "description": "An RFC3339 timestamp representing the moment at which the market statuses were evaluated.",
-                      "example": "2025-02-27T13:26:35.905149Z",
-                      "format": "date-time",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id",
-                    "timestamp"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "A list of statuses for each product and market identifier code."
-          }
-        },
-        "summary": "Market Status",
-        "tags": [
-          "default"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
-        }
-      }
-    },
-    "/futures/vX/products": {
-      "get": {
-        "description": "The Products endpoint returns a list of futures products. This endpoint can be used to query for products based on a variety of parameters, including by the product's name, exchange, sector, sub-sector, asset class, asset sub-class, and type.",
-        "operationId": "GetFuturesProducts",
-        "parameters": [
-          {
-            "description": "Search for products by Product Name. This parameter supports an exact match, while a name-contains search can be performed using the `name.search` parameter. Note that the search is case-sensitive.",
-            "in": "query",
-            "name": "name",
-            "schema": {
-              "type": "string"
-            },
-            "x-polygon-filter-field": {
-              "search": true
-            }
-          },
-          {
-            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day (default=today).",
-            "in": "query",
-            "name": "as_of",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The trading venue (MIC) for the exchange on which the products trades.",
-            "in": "query",
-            "name": "trading_venue",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The sector to which the products belong.",
-            "in": "query",
-            "name": "sector",
-            "schema": {
-              "enum": [
-                "asia",
-                "base",
-                "biofuels",
-                "coal",
-                "cross_rates",
-                "crude_oil",
-                "custom_index",
-                "dairy",
-                "dj_ubs_ci",
-                "electricity",
-                "emissions",
-                "europe",
-                "fertilizer",
-                "forestry",
-                "grains_and_oilseeds",
-                "intl_index",
-                "liq_nat_gas_lng",
-                "livestock",
-                "long_term_gov",
-                "long_term_non_gov",
-                "majors",
-                "minors",
-                "nat_gas",
-                "nat_gas_liq_petro",
-                "precious",
-                "refined_products",
-                "s_and_p_gsci",
-                "sel_sector_index",
-                "short_term_gov",
-                "short_term_non_gov",
-                "softs",
-                "us",
-                "us_index",
-                "wet_bulk"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The sub-sector to which the products belong.",
-            "in": "query",
-            "name": "sub_sector",
-            "schema": {
-              "enum": [
-                "asian",
-                "canadian",
-                "cat",
-                "cooling_degree_days",
-                "ercot",
-                "european",
-                "gulf",
-                "heating_degree_days",
-                "iso_ne",
-                "large_cap_index",
-                "mid_cap_index",
-                "miso",
-                "north_american",
-                "nyiso",
-                "pjm",
-                "small_cap_index",
-                "west",
-                "western_power"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The asset class to which the products belong.",
-            "in": "query",
-            "name": "asset_class",
-            "schema": {
-              "enum": [
-                "alt_investment",
-                "commodity",
-                "financials"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The asset sub-class to which the products belong.",
-            "in": "query",
-            "name": "asset_sub_class",
-            "schema": {
-              "enum": [
-                "agricultural",
-                "commodity_index",
-                "energy",
-                "equity",
-                "foreign_exchange",
-                "freight",
-                "housing",
-                "interest_rate",
-                "metals",
-                "weather"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of products to return. One of \"all\", \"single\", or \"combo\" (default=all).",
-            "in": "query",
-            "name": "type",
-            "schema": {
-              "default": "all",
-              "enum": [
-                "all",
-                "single",
-                "combo"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The number of results to return per page (default=100, maximum=1000, minimum=1).",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 100,
-              "maximum": 1000,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Search by name.",
-            "in": "query",
-            "name": "name.search",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Sort results by field and direction using dotted notation (e.g., 'ticker.asc', 'name.desc').",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "name.asc",
-              "enum": [
-                "name.asc",
-                "name.desc",
-                "trading_venue.asc",
-                "trading_venue.desc",
-                "sector.asc",
-                "sector.desc",
-                "sub_sector.asc",
-                "sub_sector.desc",
-                "asset_class.asc",
-                "asset_class.desc",
-                "asset_sub_class.asc",
-                "asset_sub_class.desc",
-                "type.asc",
-                "type.desc"
-              ],
-              "example": "name.asc",
-              "type": "string"
             }
           }
         ],
@@ -14463,48 +14203,15 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.massive.com/futures/vX/products?cursor=YXA9MTAwJmFzPSZhc19vZj0yMDI1LTA3LTA3JmxpbWl0PTEwMCZzb3J0PW5hbWUuYXNj",
-                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
+                  "request_id": "445ebfcfe5bb4b688b7971e1600c952d",
                   "results": [
                     {
-                      "asset_class": "commodity",
-                      "asset_sub_class": "energy",
-                      "clearing_channel": "exchange_only",
-                      "date": "2025-07-07",
-                      "last_updated": "2025-02-22",
-                      "name": "1% Fuel Oil Barges FOB Rdam (Platts) vs. 1% Fuel Oil Cargoes FOB NWE (Platts) BALMO Futures",
-                      "price_quotation": "U.S. dollars and cents per metric ton",
-                      "product_code": "EBE",
-                      "sector": "refined_products",
-                      "settlement_currency_code": "USD",
-                      "settlement_method": "financially_settled",
-                      "settlement_type": "cash",
-                      "sub_sector": "european",
-                      "trade_currency_code": "USD",
-                      "trading_venue": "XNYM",
-                      "type": "single",
-                      "unit_of_measure": "MTONS",
-                      "unit_of_measure_quantity": 1000
-                    },
-                    {
-                      "asset_class": "commodity",
-                      "asset_sub_class": "energy",
-                      "clearing_channel": "exchange_only",
-                      "date": "2025-07-07",
-                      "last_updated": "2025-06-25",
-                      "name": "1% Fuel Oil Cargoes CIF MED (Platts) BALMO Futures",
-                      "price_quotation": "U.S. dollars and cents per metric ton",
-                      "product_code": "AOB",
-                      "sector": "refined_products",
-                      "settlement_currency_code": "USD",
-                      "settlement_method": "financially_settled",
-                      "settlement_type": "cash",
-                      "sub_sector": "european",
-                      "trade_currency_code": "USD",
-                      "trading_venue": "XNYM",
-                      "type": "single",
-                      "unit_of_measure": "MTONS",
-                      "unit_of_measure_quantity": 1000
+                      "market_event": "open",
+                      "name": "ERCOT North 345 kV Hub Day-Ahead 5 MW Off-Peak Futures",
+                      "product_code": "ERL",
+                      "session_end_date": "2025-12-05",
+                      "timestamp": "2025-12-04T23:00:00+00:00",
+                      "trading_venue": "XNYM"
                     }
                   ],
                   "status": "OK"
@@ -14512,136 +14219,108 @@
                 "schema": {
                   "properties": {
                     "next_url": {
-                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "description": "If present, this value can be used to fetch the next page.",
                       "type": "string"
                     },
                     "request_id": {
-                      "description": "A unique identifier for this request.",
+                      "description": "A request id assigned by the server.",
                       "type": "string"
                     },
                     "results": {
+                      "description": "The results for this request.",
                       "items": {
                         "properties": {
-                          "as_of": {
-                            "description": "The point-in-time date for the given product - e.g. if 'as_of' is set to 2024-11-05, then these were the details for this product on that day.",
-                            "format": "date",
-                            "type": "string"
-                          },
-                          "asset_class": {
-                            "description": "The asset class to which the product belongs.",
-                            "type": "string"
-                          },
-                          "asset_sub_class": {
-                            "description": "The asset sub-class to which the product belongs.",
-                            "type": "string"
-                          },
-                          "clearing_channel": {
-                            "description": "The clearing channel for this product. Indicates whether the product can be cleared only through exchanges or through both exchanges and over-the-counter.",
-                            "enum": [
-                              "exchange_only",
-                              "exchange_and_otc"
-                            ],
-                            "type": "string"
-                          },
-                          "last_updated": {
-                            "description": "The date and time at which this product was last updated.",
-                            "format": "date-time",
+                          "market_event": {
+                            "description": "The current status of the market for the product.",
                             "type": "string"
                           },
                           "name": {
-                            "description": "The full name of the product.",
-                            "type": "string"
-                          },
-                          "price_quotation": {
-                            "description": "The quoted price for this product.",
+                            "description": "The name of the futures product.",
                             "type": "string"
                           },
                           "product_code": {
-                            "description": "The unique identifier for the product.",
+                            "description": "The product code of the futures contracts for which you want statuses.",
                             "type": "string"
                           },
-                          "sector": {
-                            "description": "The sector to which the product belongs.",
+                          "session_end_date": {
+                            "description": "The trading date for the current session.",
                             "type": "string"
                           },
-                          "settlement_currency_code": {
-                            "description": "The currency in which this product settles.",
-                            "type": "string"
-                          },
-                          "settlement_method": {
-                            "description": "The method of settlement for this product (Financially Settled or Deliverable).",
-                            "type": "string"
-                          },
-                          "settlement_type": {
-                            "description": "The type of settlement for this product.",
-                            "type": "string"
-                          },
-                          "sub_sector": {
-                            "description": "The sub-sector to which the product belongs.",
-                            "type": "string"
-                          },
-                          "trade_currency_code": {
-                            "description": "The currency in which this product trades.",
+                          "timestamp": {
+                            "description": "The timestamp for the given market event.",
                             "type": "string"
                           },
                           "trading_venue": {
-                            "description": "The trading venue (MIC) for the exchange on which this contract trades.",
+                            "description": "The trading venue (MIC) for the exchange on which the corresponding product trades.",
                             "type": "string"
-                          },
-                          "type": {
-                            "description": "The type of product, one of \"single\" or \"combo\".",
-                            "type": "string"
-                          },
-                          "unit_of_measure": {
-                            "description": "The unit of measure for this product.",
-                            "type": "string"
-                          },
-                          "unit_of_measure_quantity": {
-                            "description": "The quantity of the unit of measure for this product.",
-                            "type": "number"
                           }
                         },
-                        "required": [
-                          "product_code"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "Product"
-                        }
+                        "type": "object"
                       },
                       "type": "array"
                     },
                     "status": {
                       "description": "The status of this request's response.",
-                      "example": "OK",
+                      "enum": [
+                        "OK"
+                      ],
                       "type": "string"
                     }
                   },
                   "required": [
                     "status",
-                    "request_id"
+                    "request_id",
+                    "results"
                   ],
                   "type": "object"
                 }
               }
             },
-            "description": "A list of products which match all of the query parameters."
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
           }
         },
-        "summary": "Products",
+        "summary": "Market Status API",
         "tags": [
           "default"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
-        }
+        ]
       }
     },
-    "/futures/vX/products-new": {
+    "/futures/vX/products": {
       "get": {
         "description": "The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.\n\nUse Cases: Product specification, historical product checks, risk management, trading system integration.",
-        "operationId": "get_futures_vX_products-new",
+        "operationId": "get_futures_vX_products",
         "parameters": [
           {
             "description": "The full name of the product.",
@@ -14780,10 +14459,94 @@
             }
           },
           {
+            "description": "The trading venue (MIC) for the exchange on which this product's contracts trade.",
+            "in": "query",
+            "name": "trading_venue",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "trading_venue.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "trading_venue.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "trading_venue.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "trading_venue.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "trading_venue.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The sector to which the product belongs.",
             "in": "query",
             "name": "sector",
             "schema": {
+              "enum": [
+                "asia",
+                "base",
+                "biofuels",
+                "coal",
+                "cross_rates",
+                "crude_oil",
+                "custom_index",
+                "dairy",
+                "dj_ubs_ci",
+                "electricity",
+                "emissions",
+                "europe",
+                "fertilizer",
+                "forestry",
+                "grains_and_oilseeds",
+                "intl_index",
+                "liq_nat_gas_lng",
+                "livestock",
+                "long_term_gov",
+                "long_term_non_gov",
+                "majors",
+                "minors",
+                "nat_gas",
+                "nat_gas_liq_petro",
+                "precious",
+                "refined_products",
+                "s_and_p_gsci",
+                "sel_sector_index",
+                "short_term_gov",
+                "short_term_non_gov",
+                "softs",
+                "us",
+                "us_index",
+                "wet_bulk"
+              ],
               "type": "string"
             }
           },
@@ -14792,38 +14555,42 @@
             "in": "query",
             "name": "sector.any_of",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "sector.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "sector.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "sector.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "sector.lte",
-            "schema": {
+              "enum": [
+                "asia",
+                "base",
+                "biofuels",
+                "coal",
+                "cross_rates",
+                "crude_oil",
+                "custom_index",
+                "dairy",
+                "dj_ubs_ci",
+                "electricity",
+                "emissions",
+                "europe",
+                "fertilizer",
+                "forestry",
+                "grains_and_oilseeds",
+                "intl_index",
+                "liq_nat_gas_lng",
+                "livestock",
+                "long_term_gov",
+                "long_term_non_gov",
+                "majors",
+                "minors",
+                "nat_gas",
+                "nat_gas_liq_petro",
+                "precious",
+                "refined_products",
+                "s_and_p_gsci",
+                "sel_sector_index",
+                "short_term_gov",
+                "short_term_non_gov",
+                "softs",
+                "us",
+                "us_index",
+                "wet_bulk"
+              ],
               "type": "string"
             }
           },
@@ -14832,6 +14599,26 @@
             "in": "query",
             "name": "sub_sector",
             "schema": {
+              "enum": [
+                "asian",
+                "canadian",
+                "cat",
+                "cooling_degree_days",
+                "ercot",
+                "european",
+                "gulf",
+                "heating_degree_days",
+                "iso_ne",
+                "large_cap_index",
+                "mid_cap_index",
+                "miso",
+                "north_american",
+                "nyiso",
+                "pjm",
+                "small_cap_index",
+                "west",
+                "western_power"
+              ],
               "type": "string"
             }
           },
@@ -14840,38 +14627,26 @@
             "in": "query",
             "name": "sub_sector.any_of",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "sub_sector.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "sub_sector.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "sub_sector.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "sub_sector.lte",
-            "schema": {
+              "enum": [
+                "asian",
+                "canadian",
+                "cat",
+                "cooling_degree_days",
+                "ercot",
+                "european",
+                "gulf",
+                "heating_degree_days",
+                "iso_ne",
+                "large_cap_index",
+                "mid_cap_index",
+                "miso",
+                "north_american",
+                "nyiso",
+                "pjm",
+                "small_cap_index",
+                "west",
+                "western_power"
+              ],
               "type": "string"
             }
           },
@@ -14880,6 +14655,11 @@
             "in": "query",
             "name": "asset_class",
             "schema": {
+              "enum": [
+                "alt_investment",
+                "commodity",
+                "financials"
+              ],
               "type": "string"
             }
           },
@@ -14888,38 +14668,11 @@
             "in": "query",
             "name": "asset_class.any_of",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "asset_class.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "asset_class.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "asset_class.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "asset_class.lte",
-            "schema": {
+              "enum": [
+                "alt_investment",
+                "commodity",
+                "financials"
+              ],
               "type": "string"
             }
           },
@@ -14928,6 +14681,18 @@
             "in": "query",
             "name": "asset_sub_class",
             "schema": {
+              "enum": [
+                "agricultural",
+                "commodity_index",
+                "energy",
+                "equity",
+                "foreign_exchange",
+                "freight",
+                "housing",
+                "interest_rate",
+                "metals",
+                "weather"
+              ],
               "type": "string"
             }
           },
@@ -14936,46 +14701,30 @@
             "in": "query",
             "name": "asset_sub_class.any_of",
             "schema": {
+              "enum": [
+                "agricultural",
+                "commodity_index",
+                "energy",
+                "equity",
+                "foreign_exchange",
+                "freight",
+                "housing",
+                "interest_rate",
+                "metals",
+                "weather"
+              ],
               "type": "string"
             }
           },
           {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "asset_sub_class.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "asset_sub_class.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "asset_sub_class.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "asset_sub_class.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of product, one of 'single' or 'combo'.",
+            "description": "The type of product, one of 'single' or 'combo'. Leaving this filter blank will query for both 'single' and 'combo' types.",
             "in": "query",
             "name": "type",
             "schema": {
+              "enum": [
+                "single",
+                "combo"
+              ],
               "type": "string"
             }
           },
@@ -14984,38 +14733,10 @@
             "in": "query",
             "name": "type.any_of",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "type.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "type.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "type.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "type.lte",
-            "schema": {
+              "enum": [
+                "single",
+                "combo"
+              ],
               "type": "string"
             }
           },
@@ -15051,7 +14772,6 @@
                     {
                       "asset_class": "commodity",
                       "asset_sub_class": "energy",
-                      "clearing_channel": "exchange_only",
                       "date": "2025-07-07",
                       "last_updated": "2025-02-22",
                       "name": "1% Fuel Oil Barges FOB Rdam (Platts) vs. 1% Fuel Oil Cargoes FOB NWE (Platts) BALMO Futures",
@@ -15066,7 +14786,7 @@
                       "trading_venue": "XNYM",
                       "type": "single",
                       "unit_of_measure": "MTONS",
-                      "unit_of_measure_quantity": 1000
+                      "unit_of_measure_qty": 1000
                     }
                   ],
                   "status": "OK"
@@ -15096,13 +14816,6 @@
                           "date": {
                             "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day.",
                             "format": "date",
-                            "type": "string"
-                          },
-                          "display_factor": {
-                            "format": "int64",
-                            "type": "integer"
-                          },
-                          "group_code": {
                             "type": "string"
                           },
                           "last_updated": {
@@ -15151,7 +14864,7 @@
                             "type": "string"
                           },
                           "type": {
-                            "description": "The type of product, one of 'single' or 'combo'.",
+                            "description": "The type of product, one of 'single' or 'combo'. Leaving this filter blank will query for both 'single' and 'combo' types.",
                             "type": "string"
                           },
                           "unit_of_measure": {
@@ -15227,435 +14940,6 @@
         "tags": [
           "default"
         ]
-      }
-    },
-    "/futures/vX/products/{product_code}": {
-      "get": {
-        "description": "The Product Details endpoint returns the details for a single product as of a specific day.",
-        "operationId": "GetFuturesProductDetails",
-        "parameters": [
-          {
-            "description": "The unique identifier for a product.",
-            "example": "ES",
-            "in": "path",
-            "name": "product_code",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of product to return. One of \"single\" or \"combo\" (default=single).",
-            "in": "query",
-            "name": "type",
-            "schema": {
-              "default": "single",
-              "enum": [
-                "single",
-                "combo"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "A date string in the format YYYY-MM-DD. Note that the data returned is the state of this product's data at that point-in-time.",
-            "in": "query",
-            "name": "as_of",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
-                  "results": {
-                    "asset_class": "financials",
-                    "asset_sub_class": "equity",
-                    "clearing_channel": "exchange_only",
-                    "date": "2025-07-07",
-                    "last_updated": "2025-07-04",
-                    "name": "E-mini S&P 500 Futures",
-                    "price_quotation": "U.S. dollars and cents per index point",
-                    "product_code": "ES",
-                    "sector": "us_index",
-                    "settlement_currency_code": "USD",
-                    "settlement_method": "financially_settled",
-                    "settlement_type": "cash",
-                    "sub_sector": "small_cap_index",
-                    "trade_currency_code": "USD",
-                    "trading_venue": "XCME",
-                    "type": "single",
-                    "unit_of_measure": "IPNT",
-                    "unit_of_measure_quantity": 50
-                  },
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "request_id": {
-                      "description": "A unique identifier for this request.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "properties": {
-                        "as_of": {
-                          "description": "The point-in-time date for the given product - e.g. if 'as_of' is set to 2024-11-05, then these were the details for this product on that day.",
-                          "format": "date",
-                          "type": "string"
-                        },
-                        "asset_class": {
-                          "description": "The asset class to which the product belongs.",
-                          "type": "string"
-                        },
-                        "asset_sub_class": {
-                          "description": "The asset sub-class to which the product belongs.",
-                          "type": "string"
-                        },
-                        "clearing_channel": {
-                          "description": "The clearing channel for this product. Indicates whether the product can be cleared only through exchanges or through both exchanges and over-the-counter.",
-                          "enum": [
-                            "exchange_only",
-                            "exchange_and_otc"
-                          ],
-                          "type": "string"
-                        },
-                        "last_updated": {
-                          "description": "The date and time at which this product was last updated.",
-                          "format": "date-time",
-                          "type": "string"
-                        },
-                        "name": {
-                          "description": "The full name of the product.",
-                          "type": "string"
-                        },
-                        "price_quotation": {
-                          "description": "The quoted price for this product.",
-                          "type": "string"
-                        },
-                        "product_code": {
-                          "description": "The unique identifier for the product.",
-                          "type": "string"
-                        },
-                        "sector": {
-                          "description": "The sector to which the product belongs.",
-                          "type": "string"
-                        },
-                        "settlement_currency_code": {
-                          "description": "The currency in which this product settles.",
-                          "type": "string"
-                        },
-                        "settlement_method": {
-                          "description": "The method of settlement for this product (Financially Settled or Deliverable).",
-                          "type": "string"
-                        },
-                        "settlement_type": {
-                          "description": "The type of settlement for this product.",
-                          "type": "string"
-                        },
-                        "sub_sector": {
-                          "description": "The sub-sector to which the product belongs.",
-                          "type": "string"
-                        },
-                        "trade_currency_code": {
-                          "description": "The currency in which this product trades.",
-                          "type": "string"
-                        },
-                        "trading_venue": {
-                          "description": "The trading venue (MIC) for the exchange on which this contract trades.",
-                          "type": "string"
-                        },
-                        "type": {
-                          "description": "The type of product, one of \"single\" or \"combo\".",
-                          "type": "string"
-                        },
-                        "unit_of_measure": {
-                          "description": "The unit of measure for this product.",
-                          "type": "string"
-                        },
-                        "unit_of_measure_quantity": {
-                          "description": "The quantity of the unit of measure for this product.",
-                          "type": "number"
-                        }
-                      },
-                      "required": [
-                        "product_code"
-                      ],
-                      "type": "object",
-                      "x-polygon-go-type": {
-                        "name": "Product"
-                      }
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "A single Product as it was at the given point-in-time."
-          }
-        },
-        "summary": "Product Details",
-        "tags": [
-          "default"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
-        }
-      }
-    },
-    "/futures/vX/products/{product_code}/schedules": {
-      "get": {
-        "description": "The Product-Specific Futures Schedules API provides detailed trading schedules for a specific futures product. This API allows you to query schedules for a single product across a range of dates. Users can access comprehensive information about trading sessions, including market events such as preopen, open, and closed, along with their precise timestamps.",
-        "operationId": "GetFuturesProductSchedules",
-        "parameters": [
-          {
-            "description": "The product code for the futures product.",
-            "example": "ES",
-            "in": "path",
-            "name": "product_code",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date on which the schedule's trading day ended (sometimes referred to as trading date). Defaults to today. Formatted as `YYYY-MM-DD`. Note that although there is no time component the day is assumed to be that day in Central Time.",
-            "in": "query",
-            "name": "session_end_date",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            },
-            "x-polygon-filter-field": {
-              "range": true
-            }
-          },
-          {
-            "description": "The number of results to return per page (default=100, max=1000, min=1).",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 100,
-              "maximum": 1000,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Range by session_end_date.",
-            "in": "query",
-            "name": "session_end_date.gte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Range by session_end_date.",
-            "in": "query",
-            "name": "session_end_date.gt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Range by session_end_date.",
-            "in": "query",
-            "name": "session_end_date.lte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Range by session_end_date.",
-            "in": "query",
-            "name": "session_end_date.lt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Sort results by field and direction using dotted notation (e.g., 'ticker.asc', 'name.desc').",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "session_end_date.desc",
-              "enum": [
-                "session_end_date.asc",
-                "session_end_date.desc"
-              ],
-              "example": "session_end_date.desc",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "next_url": "https://api.massive.com/futures/vX/products/ES/schedules?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
-                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
-                  "results": [
-                    {
-                      "product_code": "ES",
-                      "product_name": "E-Mini S&P 500 Futures",
-                      "schedule": [
-                        {
-                          "event": "pre_open",
-                          "timestamp": "2025-11-24T18:45:00:00-06:00"
-                        },
-                        {
-                          "event": "open",
-                          "timestamp": "2025-11-24T19:00:00-06:00"
-                        },
-                        {
-                          "event": "close",
-                          "timestamp": "2025-11-25T18:00:00-06:00"
-                        }
-                      ],
-                      "session_end_date": "2025-11-24",
-                      "trading_venue": "XNYM"
-                    },
-                    {
-                      "product_code": "ES",
-                      "product_name": "E-Mini S&P 500 Futures",
-                      "schedule": [
-                        {
-                          "event": "pre_open",
-                          "timestamp": "2025-11-24T18:45:00:00-06:00"
-                        },
-                        {
-                          "event": "open",
-                          "timestamp": "2025-11-24T19:00:00-06:00"
-                        },
-                        {
-                          "event": "close",
-                          "timestamp": "2025-11-25T18:00:00-06:00"
-                        }
-                      ],
-                      "session_end_date": "2025-11-21",
-                      "trading_venue": "XNYM"
-                    }
-                  ],
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "error": {
-                      "description": "An optional error message for failed requests when available.",
-                      "type": "string"
-                    },
-                    "next_url": {
-                      "description": "If present, this value can be used to fetch the next page of data.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "The unique identifier for the request.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "description": "The list of schedules for the specified product.",
-                      "items": {
-                        "properties": {
-                          "product_code": {
-                            "description": "The product code for the futures product to which this schedule applies.",
-                            "type": "string"
-                          },
-                          "product_name": {
-                            "description": "The name of the futures product to which this schedule applies.",
-                            "type": "string"
-                          },
-                          "schedule": {
-                            "items": {
-                              "properties": {
-                                "event": {
-                                  "description": "The market event for this schedule.",
-                                  "enum": [
-                                    "pre_open",
-                                    "open",
-                                    "close",
-                                    "pause",
-                                    "post_close_pre_open"
-                                  ],
-                                  "type": "string"
-                                },
-                                "timestamp": {
-                                  "description": "The timestamp for this market event in Central Time.",
-                                  "format": "time",
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "event",
-                                "timestamp"
-                              ],
-                              "type": "object"
-                            },
-                            "type": "array"
-                          },
-                          "session_end_date": {
-                            "description": "The date on which the schedule's trading day ended (sometimes referred to as trading date) formatted as `YYYY-MM-DD`. Note that although there is no time component on this attribute, the day refers to Central Time.",
-                            "format": "date",
-                            "type": "string"
-                          },
-                          "trading_venue": {
-                            "description": "The trading venue (MIC) for the exchange on which this schedule's product trades.",
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "session_end_date",
-                          "product_code",
-                          "schedule"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "SchedulesResult"
-                        }
-                      },
-                      "type": "array"
-                    },
-                    "status": {
-                      "description": "The status of the response.",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "A list of schedules for each product."
-          }
-        },
-        "summary": "Product Schedules",
-        "tags": [
-          "default"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
-        }
       }
     },
     "/futures/vX/quotes/{ticker}": {
@@ -15930,20 +15214,107 @@
     },
     "/futures/vX/schedules": {
       "get": {
-        "description": "The Trading-Date Based Futures Schedules API provides detailed trading schedules for all products on a specific day. This API allows you to retrieve detailed information about trading sessions, including market events like preopen, open, and closed, along with their precise timestamps.",
-        "operationId": "GetFuturesDailySchedules",
+        "description": "The Schedules API provides a unified way to retrieve trading schedules for futures markets, returning precise session open and close times, intraday breaks, and any adjustments for holidays or special events. You can request the full set of schedules for all products on a specific trading date or retrieve the schedule for a single product using its product code. All times are returned in Coordinated Universal Time (UTC), making it straightforward to align trading, execution, and operational workflows across systems.\n\nUse Cases: Schedule planning, market analysis, strategy alignment, risk and operations management.",
+        "operationId": "get_futures_vX_schedules",
         "parameters": [
+          {
+            "description": "The product code of the futures contract.",
+            "in": "query",
+            "name": "product_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "product_code.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "product_code.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "product_code.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "product_code.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "product_code.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "description": "The session end date for the schedules (also known as the trading date). This is the day in CT for which the user wants to retrieve data. If left blank, this value defaults to 'today' in Central Time. e.g. If a request is made from Pacific Time on '2025-01-01' at 11:00 pm with no 'session_end_date' a default value of `2025-01-02` will be used.",
             "in": "query",
             "name": "session_end_date",
             "schema": {
-              "format": "date",
               "type": "string"
             }
           },
           {
-            "description": "The trading venue (MIC) of the exchange for the schedules.",
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "session_end_date.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "session_end_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "session_end_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "session_end_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "session_end_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The trading venue (MIC) for the exchange on which this schedule's product trades.",
             "in": "query",
             "name": "trading_venue",
             "schema": {
@@ -15951,27 +15322,62 @@
             }
           },
           {
-            "description": "The number of results to return per page (default=100, max=1000, min=1).",
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "trading_venue.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "trading_venue.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "trading_venue.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "trading_venue.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "trading_venue.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '1000'.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 100,
-              "maximum": 1000,
+              "default": 10,
+              "maximum": 1001,
               "minimum": 1,
               "type": "integer"
             }
           },
           {
-            "description": "Sort results by field and direction using dotted notation (e.g., 'ticker.asc', 'name.desc').",
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'product_code' if not specified. The sort order defaults to 'asc' if not specified.",
             "in": "query",
             "name": "sort",
             "schema": {
-              "default": "trading_venue.asc",
-              "enum": [
-                "trading_venue.asc",
-                "trading_venue.desc"
-              ],
-              "example": "trading_venue.asc",
+              "default": "product_code.asc",
               "type": "string"
             }
           }
@@ -15981,48 +15387,32 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "http://api.massive.com/futures/vX/schedules?cursor=YXA9MUUmYXM9WE5ZTSZsaW1pdD0yJm9yZGVyPWFzYyZzb3J0PXByb2R1Y3RfY29kZSZ0cmFkaW5nX2RhdGU9MjAyNC0xMS0yNQ",
-                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
+                  "next_url": "https://api.staging.massive.com/futures/vX/schedules?cursor=AQANA0VSTAIAAAEFAAEBAwACAQ0DRVJMAQ0ZMjAyNC0wNi0xMFQyMTowMDowMCswMDowMA==",
+                  "request_id": "a83620d1ec6a4cd5b84ea669e377fd47",
                   "results": [
                     {
-                      "product_code": "10Y",
-                      "product_name": "10-YEAR YIELD CAL SPD",
-                      "schedule": [
-                        {
-                          "event": "pre_open",
-                          "timestamp": "2025-07-06T16:00:00-05:00"
-                        },
-                        {
-                          "event": "open",
-                          "timestamp": "2025-07-06T17:00:00-05:00"
-                        },
-                        {
-                          "event": "close",
-                          "timestamp": "2025-07-07T16:00:00-05:00"
-                        }
-                      ],
-                      "session_end_date": "2025-07-07",
-                      "trading_venue": "XCBT"
+                      "event": "pre_open",
+                      "product_code": "ERL",
+                      "product_name": "ERCOT North 345 kV Hub Day-Ahead 5 MW Off-Peak Futures",
+                      "session_end_date": "2024-06-10",
+                      "timestamp": "2024-06-09T21:00:00+00:00",
+                      "trading_venue": "XNYM"
                     },
                     {
-                      "product_code": "10Y",
-                      "product_name": "10-Year Yield Futures",
-                      "schedule": [
-                        {
-                          "event": "pre_open",
-                          "timestamp": "2025-07-06T16:00:00-05:00"
-                        },
-                        {
-                          "event": "open",
-                          "timestamp": "2025-07-06T17:00:00-05:00"
-                        },
-                        {
-                          "event": "close",
-                          "timestamp": "2025-07-07T16:00:00-05:00"
-                        }
-                      ],
-                      "session_end_date": "2025-07-07",
-                      "trading_venue": "XCBT"
+                      "event": "open",
+                      "product_code": "ERL",
+                      "product_name": "ERCOT North 345 kV Hub Day-Ahead 5 MW Off-Peak Futures",
+                      "session_end_date": "2024-06-10",
+                      "timestamp": "2024-06-09T22:00:00+00:00",
+                      "trading_venue": "XNYM"
+                    },
+                    {
+                      "event": "close",
+                      "product_code": "ERL",
+                      "product_name": "ERCOT North 345 kV Hub Day-Ahead 5 MW Off-Peak Futures",
+                      "session_end_date": "2024-06-10",
+                      "timestamp": "2024-06-10T21:00:00+00:00",
+                      "trading_venue": "XNYM"
                     }
                   ],
                   "status": "OK"
@@ -16030,56 +15420,35 @@
                 "schema": {
                   "properties": {
                     "next_url": {
-                      "description": "The URL for the next page of results.",
+                      "description": "If present, this value can be used to fetch the next page.",
                       "type": "string"
                     },
                     "request_id": {
-                      "description": "The unique identifier for this request.",
+                      "description": "A request id assigned by the server.",
                       "type": "string"
                     },
                     "results": {
-                      "description": "A list of schedules for each product.",
+                      "description": "The results for this request.",
                       "items": {
                         "properties": {
+                          "event": {
+                            "description": "The type of session on the given trading date.",
+                            "type": "string"
+                          },
                           "product_code": {
-                            "description": "The product code for the futures product to which this schedule applies.",
+                            "description": "The product code of the futures contract.",
                             "type": "string"
                           },
                           "product_name": {
                             "description": "The name of the futures product to which this schedule applies.",
                             "type": "string"
                           },
-                          "schedule": {
-                            "items": {
-                              "properties": {
-                                "event": {
-                                  "description": "The market event for this schedule.",
-                                  "enum": [
-                                    "pre_open",
-                                    "open",
-                                    "close",
-                                    "pause",
-                                    "post_close_pre_open"
-                                  ],
-                                  "type": "string"
-                                },
-                                "timestamp": {
-                                  "description": "The timestamp for this market event in Central Time.",
-                                  "format": "time",
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "event",
-                                "timestamp"
-                              ],
-                              "type": "object"
-                            },
-                            "type": "array"
-                          },
                           "session_end_date": {
-                            "description": "The date on which the schedule's trading day ended (sometimes referred to as trading date) formatted as `YYYY-MM-DD`. Note that although there is no time component on this attribute, the day refers to Central Time.",
-                            "format": "date",
+                            "description": "The session end date for the schedules (also known as the trading date). This is the day in CT for which the user wants to retrieve data. If left blank, this value defaults to 'today' in Central Time. e.g. If a request is made from Pacific Time on '2025-01-01' at 11:00 pm with no 'session_end_date' a default value of `2025-01-02` will be used.",
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "description": "The timestamp for the given market event.",
                             "type": "string"
                           },
                           "trading_venue": {
@@ -16087,42 +15456,66 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "session_end_date",
-                          "product_code",
-                          "schedule"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "SchedulesResult"
-                        }
+                        "type": "object"
                       },
                       "type": "array"
                     },
                     "status": {
-                      "description": "The status of the response.",
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
                       "type": "string"
                     }
                   },
                   "required": [
                     "status",
-                    "request_id"
+                    "request_id",
+                    "results"
                   ],
                   "type": "object"
                 }
               }
             },
-            "description": "A list of schedules for a given day."
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
           }
         },
-        "summary": "Daily Schedules",
+        "summary": "Futures Schedules API",
         "tags": [
           "default"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
-        }
+        ]
       }
     },
     "/futures/vX/snapshot": {
@@ -16321,8 +15714,8 @@
                               },
                               "settlement_date": {
                                 "description": "The day that this contract is settled.",
-                                "format": "int64",
-                                "type": "integer"
+                                "format": "date",
+                                "type": "string"
                               },
                               "ticker": {
                                 "type": "string"
@@ -16958,6 +16351,368 @@
         ]
       }
     },
+    "/stocks/filings/10-K/vX/sections": {
+      "get": {
+        "description": "SEC document text sections providing raw text content from specific sections of SEC filings (10-K, 10-Q, etc.).",
+        "operationId": "get_stocks_filings_10-K_vX_sections",
+        "parameters": [
+          {
+            "description": "SEC Central Index Key (10 digits, zero-padded).",
+            "in": "query",
+            "name": "cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "cik.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "cik.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "cik.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "cik.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Stock ticker symbol for the company.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Standardized section identifier from the filing (e.g. 'business', 'risk_factors', etc.).",
+            "in": "query",
+            "name": "section",
+            "schema": {
+              "enum": [
+                "business",
+                "risk_factors"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "section.any_of",
+            "schema": {
+              "enum": [
+                "business",
+                "risk_factors"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Period end date that the filing relates to (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "period_end.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '9999'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 10000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'period_end' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "period_end.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 2,
+                  "next_url": "https://api.massive.com/stocks/filings/10-K/vX/sections?cursor=eyJsaW1pd...",
+                  "request_id": "a3f8b2c1d4e5f6g7",
+                  "results": [
+                    {
+                      "cik": "0000320193",
+                      "filing_date": "2023-11-03",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/320193/0000320193-23-000106.txt",
+                      "period_end": "2023-09-30",
+                      "section": "risk_factors",
+                      "text": "Item 1A. Risk Factors\n\nInvesting in our stock involves risk. In addition to the other information in this Annual Report on Form 10-K, the following risk factors should be carefully considered...",
+                      "ticker": "AAPL"
+                    },
+                    {
+                      "cik": "0000789019",
+                      "filing_date": "2023-07-27",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/789019/0000950170-23-035122.txt",
+                      "period_end": "2023-06-30",
+                      "section": "risk_factors",
+                      "text": "Item 1A. RISK FACTORS\n\nOur operations and financial results are subject to various risks and uncertainties...",
+                      "ticker": "MSFT"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "cik": {
+                            "description": "SEC Central Index Key (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "filing_date": {
+                            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "filing_url": {
+                            "description": "SEC URL source for the full filing.",
+                            "type": "string"
+                          },
+                          "period_end": {
+                            "description": "Period end date that the filing relates to (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "section": {
+                            "description": "Standardized section identifier from the filing (e.g. 'business', 'risk_factors', etc.).",
+                            "type": "string"
+                          },
+                          "text": {
+                            "description": "Full raw text content of the section, including headers and formatting.",
+                            "type": "string"
+                          },
+                          "ticker": {
+                            "description": "Stock ticker symbol for the company.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/stocks/filings/vX/risk-factors": {
       "get": {
         "description": "The risk factors identified in companies' 10K filings.",
@@ -17183,396 +16938,6 @@
                           },
                           "tertiary_category": {
                             "description": "Most specific risk classification",
-                            "type": "string"
-                          },
-                          "ticker": {
-                            "description": "Stock ticker symbol for the company.",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "enum": [
-                        "OK"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id",
-                    "results"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "A list of results."
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "error": {
-                      "description": "A message describing the source of the error.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A request id assigned by the server.",
-                      "type": "string"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "enum": [
-                        "ERROR"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id",
-                    "error"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "An error message."
-          }
-        },
-        "tags": [
-          "default"
-        ]
-      }
-    },
-    "/stocks/filings/vX/text": {
-      "get": {
-        "description": "SEC document text sections providing raw text content from specific sections of SEC filings (10-K, 10-Q, etc.).",
-        "operationId": "get_stocks_filings_vX_text",
-        "parameters": [
-          {
-            "description": "SEC Central Index Key (10 digits, zero-padded).",
-            "in": "query",
-            "name": "cik",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "cik.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "cik.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "cik.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "cik.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "cik.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Stock ticker symbol for the company.",
-            "in": "query",
-            "name": "ticker",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "ticker.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "ticker.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "ticker.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "ticker.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "ticker.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "SEC form type (e.g., '10-K' for annual reports, '10-Q' for quarterly reports).",
-            "in": "query",
-            "name": "form_type",
-            "schema": {
-              "enum": [
-                "10-K"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "form_type.any_of",
-            "schema": {
-              "enum": [
-                "10-K"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Standardized section identifier from the filing (e.g. 'business', 'risk_factors', etc.).",
-            "in": "query",
-            "name": "section",
-            "schema": {
-              "enum": [
-                "business",
-                "risk_factors"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "section.any_of",
-            "schema": {
-              "enum": [
-                "business",
-                "risk_factors"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "filing_date",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "filing_date.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "filing_date.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "filing_date.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "filing_date.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Period end date that the filing relates to (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "period_end",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "period_end.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "period_end.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "period_end.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "period_end.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '9999'.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 100,
-              "maximum": 10000,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'period_end' if not specified. The sort order defaults to 'desc' if not specified.",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "period_end.desc",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "count": 2,
-                  "next_url": "https://api.massive.com/stocks/filings/vX/text?cursor=eyJsaW1pd...",
-                  "request_id": "a3f8b2c1d4e5f6g7",
-                  "results": [
-                    {
-                      "cik": "0000320193",
-                      "filing_date": "2023-11-03",
-                      "filing_url": "https://www.sec.gov/Archives/edgar/data/320193/0000320193-23-000106.txt",
-                      "form_type": "10-K",
-                      "period_end": "2023-09-30",
-                      "section": "risk_factors",
-                      "text": "Item 1A. Risk Factors\n\nInvesting in our stock involves risk. In addition to the other information in this Annual Report on Form 10-K, the following risk factors should be carefully considered...",
-                      "ticker": "AAPL"
-                    },
-                    {
-                      "cik": "0000789019",
-                      "filing_date": "2023-07-27",
-                      "filing_url": "https://www.sec.gov/Archives/edgar/data/789019/0000950170-23-035122.txt",
-                      "form_type": "10-K",
-                      "period_end": "2023-06-30",
-                      "section": "risk_factors",
-                      "text": "Item 1A. RISK FACTORS\n\nOur operations and financial results are subject to various risks and uncertainties...",
-                      "ticker": "MSFT"
-                    }
-                  ],
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "next_url": {
-                      "description": "If present, this value can be used to fetch the next page.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A request id assigned by the server.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "description": "The results for this request.",
-                      "items": {
-                        "properties": {
-                          "cik": {
-                            "description": "SEC Central Index Key (10 digits, zero-padded).",
-                            "type": "string"
-                          },
-                          "filing_date": {
-                            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
-                            "format": "date",
-                            "type": "string"
-                          },
-                          "filing_url": {
-                            "description": "SEC URL source for the full filing.",
-                            "type": "string"
-                          },
-                          "form_type": {
-                            "description": "SEC form type (e.g., '10-K' for annual reports, '10-Q' for quarterly reports).",
-                            "type": "string"
-                          },
-                          "period_end": {
-                            "description": "Period end date that the filing relates to (formatted as YYYY-MM-DD).",
-                            "format": "date",
-                            "type": "string"
-                          },
-                          "section": {
-                            "description": "Standardized section identifier from the filing (e.g. 'business', 'risk_factors', etc.).",
-                            "type": "string"
-                          },
-                          "text": {
-                            "description": "Full raw text content of the section, including headers and formatting.",
                             "type": "string"
                           },
                           "ticker": {
@@ -17932,6 +17297,102 @@
             "description": "Filter less than or equal to the value.",
             "in": "query",
             "name": "timeframe.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "max_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "max_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "max_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "max_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "min_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "min_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "min_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "min_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.lte",
             "schema": {
               "type": "string"
             }
@@ -18566,6 +18027,102 @@
             }
           },
           {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "max_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "max_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "max_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "max_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "min_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "min_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "min_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "min_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
             "in": "query",
             "name": "limit",
@@ -19151,6 +18708,102 @@
             "description": "Filter less than or equal to the value.",
             "in": "query",
             "name": "timeframe.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "max_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "max_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "max_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "max_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "min_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "min_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "min_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "min_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.lte",
             "schema": {
               "type": "string"
             }
@@ -21146,7 +20799,7 @@
             }
           },
           {
-            "description": "How many times per year this dividend is expected to occur. A value of 0 means the distribution is non-recurring or irregular (e.g., special, supplemental, or a one-off dividend). Other possible values include 1 (annual), 2 (semi-annual), 3 (trimester), 4 (quarterly), 12 (monthly), 24 (bi-monthly), 26 (bi-weekly), 52 (weekly), and 365 (daily) depending on the issuer's declared or inferred payout cadence. Value must be an integer.",
+            "description": "How many times per year this dividend is expected to occur. A value of 0 means the distribution is non-recurring or irregular (e.g., special, supplemental, or a one-off dividend). Other possible values include 1 (annual), 2 (semi-annual), 3 (trimester), 4 (quarterly), 12 (monthly), 24 (bi-monthly), 52 (weekly), 104 (bi-weekly), and 365 (daily) depending on the issuer's declared or inferred payout cadence. Value must be an integer.",
             "in": "query",
             "name": "frequency",
             "schema": {
@@ -21303,7 +20956,7 @@
                             "type": "string"
                           },
                           "frequency": {
-                            "description": "How many times per year this dividend is expected to occur. A value of 0 means the distribution is non-recurring or irregular (e.g., special, supplemental, or a one-off dividend). Other possible values include 1 (annual), 2 (semi-annual), 3 (trimester), 4 (quarterly), 12 (monthly), 24 (bi-monthly), 26 (bi-weekly), 52 (weekly), and 365 (daily) depending on the issuer's declared or inferred payout cadence.",
+                            "description": "How many times per year this dividend is expected to occur. A value of 0 means the distribution is non-recurring or irregular (e.g., special, supplemental, or a one-off dividend). Other possible values include 1 (annual), 2 (semi-annual), 3 (trimester), 4 (quarterly), 12 (monthly), 24 (bi-monthly), 52 (weekly), 104 (bi-weekly), and 365 (daily) depending on the issuer's declared or inferred payout cadence.",
                             "format": "int64",
                             "type": "integer"
                           },
@@ -22532,6 +22185,236 @@
                         "required": [
                           "adjustment_type"
                         ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
+    "/stocks/vX/float": {
+      "get": {
+        "description": "Contains free float data for US-listed securities, showing the most recent available number of shares available for public trading and the percentage of total shares outstanding.",
+        "operationId": "get_stocks_vX_float",
+        "parameters": [
+          {
+            "description": "The primary ticker symbol for the stock.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Percentage of total shares outstanding that are available for public trading, rounded to two decimal places. Value must be a floating point number.",
+            "in": "query",
+            "name": "free_float_percent",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "free_float_percent.gt",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "free_float_percent.gte",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "free_float_percent.lt",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "free_float_percent.lte",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '5000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 5001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'ticker' if not specified. The sort order defaults to 'asc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "ticker.asc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": 1,
+                  "results": [
+                    {
+                      "effective_date": "2025-11-01",
+                      "free_float": 15000000000,
+                      "free_float_percent": 98.5,
+                      "ticker": "AAPL"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "effective_date": {
+                            "description": "The effective date of the free float measurement.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "free_float": {
+                            "description": "Number of shares freely tradable in the market. Free float shares represent the portion of a company's outstanding shares that is freely tradable in the market, excluding any holdings considered strategic, controlling, or long term. This excludes insiders, directors, founders, 5 percent plus shareholders, cross holdings, government stakes except pensions, restricted or locked up shares, employee plans, and any entities with board influence, leaving only shares that are genuinely available for public trading.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "free_float_percent": {
+                            "description": "Percentage of total shares outstanding that are available for public trading, rounded to two decimal places.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "ticker": {
+                            "description": "The primary ticker symbol for the stock.",
+                            "type": "string"
+                          }
+                        },
                         "type": "object"
                       },
                       "type": "array"
@@ -32208,7 +32091,7 @@
         "parameters": [
           {
             "description": "The beginning date for the aggregate window.",
-            "example": "2023-01-09",
+            "example": "2025-11-03",
             "in": "path",
             "name": "date",
             "required": true,
@@ -32411,7 +32294,7 @@
         "parameters": [
           {
             "description": "The beginning date for the aggregate window.",
-            "example": "2023-01-09",
+            "example": "2025-11-03",
             "in": "path",
             "name": "date",
             "required": true,
@@ -32614,7 +32497,7 @@
         "parameters": [
           {
             "description": "The beginning date for the aggregate window.",
-            "example": "2023-01-09",
+            "example": "2025-11-03",
             "in": "path",
             "name": "date",
             "required": true,
@@ -33059,7 +32942,7 @@
           },
           {
             "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2025-11-03",
             "in": "path",
             "name": "from",
             "required": true,
@@ -33069,7 +32952,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-02-10",
+            "example": "2025-11-28",
             "in": "path",
             "name": "to",
             "required": true,
@@ -33516,7 +33399,7 @@
           },
           {
             "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2025-11-03",
             "in": "path",
             "name": "from",
             "required": true,
@@ -33526,7 +33409,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-02-10",
+            "example": "2025-11-28",
             "in": "path",
             "name": "to",
             "required": true,
@@ -33926,7 +33809,7 @@
           },
           {
             "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-03-13",
+            "example": "2025-11-03",
             "in": "path",
             "name": "from",
             "required": true,
@@ -33936,7 +33819,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-03-24",
+            "example": "2025-11-28",
             "in": "path",
             "name": "to",
             "required": true,
@@ -34343,7 +34226,7 @@
           },
           {
             "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2025-11-03",
             "in": "path",
             "name": "from",
             "required": true,
@@ -34353,7 +34236,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-02-10",
+            "example": "2025-11-28",
             "in": "path",
             "name": "to",
             "required": true,
@@ -34795,7 +34678,7 @@
           },
           {
             "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2025-11-03",
             "in": "path",
             "name": "from",
             "required": true,
@@ -34805,7 +34688,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-02-10",
+            "example": "2025-11-28",
             "in": "path",
             "name": "to",
             "required": true,
@@ -49073,17 +48956,7 @@
         },
         {
           "paths": [
-            "/futures/vX/contracts-new"
-          ]
-        },
-        {
-          "paths": [
-            "/futures/vX/contracts/{ticker}"
-          ]
-        },
-        {
-          "paths": [
-            "/futures/vX/products/{product_code}/schedules"
+            "/futures/vX/schedules"
           ]
         },
         {
@@ -49093,22 +48966,7 @@
         },
         {
           "paths": [
-            "/futures/vX/products-new"
-          ]
-        },
-        {
-          "paths": [
-            "/futures/vX/products/{product_code}"
-          ]
-        },
-        {
-          "paths": [
             "/futures/vX/market-status"
-          ]
-        },
-        {
-          "paths": [
-            "/futures/vX/market-status-new"
           ]
         },
         {
@@ -49116,11 +48974,6 @@
             "stocks/vX/listings",
             "stocks/vX/listing/{identifier_type}/{identifier}",
             "stocks/vX/listings/updates"
-          ]
-        },
-        {
-          "paths": [
-            "/futures/vX/schedules-new"
           ]
         }
       ]
