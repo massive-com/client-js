@@ -5257,7 +5257,7 @@
             }
           },
           {
-            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated",
             "schema": {
@@ -5265,7 +5265,7 @@
             }
           },
           {
-            "description": "Filter greater than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.gt",
             "schema": {
@@ -5273,7 +5273,7 @@
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.gte",
             "schema": {
@@ -5281,7 +5281,7 @@
             }
           },
           {
-            "description": "Filter less than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.lt",
             "schema": {
@@ -5289,7 +5289,7 @@
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.lte",
             "schema": {
@@ -6128,7 +6128,7 @@
             }
           },
           {
-            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated",
             "schema": {
@@ -6136,7 +6136,7 @@
             }
           },
           {
-            "description": "Filter greater than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.gt",
             "schema": {
@@ -6144,7 +6144,7 @@
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.gte",
             "schema": {
@@ -6152,7 +6152,7 @@
             }
           },
           {
-            "description": "Filter less than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.lt",
             "schema": {
@@ -6160,7 +6160,7 @@
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.lte",
             "schema": {
@@ -6706,7 +6706,7 @@
             }
           },
           {
-            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated",
             "schema": {
@@ -6714,7 +6714,7 @@
             }
           },
           {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.any_of",
             "schema": {
@@ -6722,7 +6722,7 @@
             }
           },
           {
-            "description": "Filter greater than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.gt",
             "schema": {
@@ -6730,7 +6730,7 @@
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.gte",
             "schema": {
@@ -6738,7 +6738,7 @@
             }
           },
           {
-            "description": "Filter less than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.lt",
             "schema": {
@@ -6746,7 +6746,7 @@
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.lte",
             "schema": {
@@ -8172,7 +8172,7 @@
             }
           },
           {
-            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated",
             "schema": {
@@ -8180,7 +8180,7 @@
             }
           },
           {
-            "description": "Filter greater than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.gt",
             "schema": {
@@ -8188,7 +8188,7 @@
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.gte",
             "schema": {
@@ -8196,7 +8196,7 @@
             }
           },
           {
-            "description": "Filter less than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.lt",
             "schema": {
@@ -8204,7 +8204,7 @@
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "last_updated.lte",
             "schema": {
@@ -8693,7 +8693,7 @@
         "operationId": "get_benzinga_v2_news",
         "parameters": [
           {
-            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "published",
             "schema": {
@@ -8701,7 +8701,7 @@
             }
           },
           {
-            "description": "Filter greater than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "published.gt",
             "schema": {
@@ -8709,7 +8709,7 @@
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "published.gte",
             "schema": {
@@ -8717,7 +8717,7 @@
             }
           },
           {
-            "description": "Filter less than the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "published.lt",
             "schema": {
@@ -8725,7 +8725,7 @@
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted 'yyyy-mm-dd'.",
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "published.lte",
             "schema": {
@@ -15075,29 +15075,32 @@
             "content": {
               "application/json": {
                 "example": {
+                  "next_url": "https://api.massive.com/futures/vX/quotes/GCJ5?cursor=YXA9MTczNDQ2MDIzMDcwODEyNjI4MSZhcz0mbGltaXQ9MTAwMCZzZXNzaW9uX2VuZF9kYXRlPTIwMjQtMTItMTcmc29ydD10aW1lc3RhbXAuZGVzYw",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": [
                     {
-                      "ask_price": 604075,
-                      "ask_size": 6,
-                      "ask_timestamp": 1734467086235923000,
-                      "bid_price": 604075,
-                      "bid_size": 6,
-                      "bid_timestamp": 1734415473057885400,
-                      "session_end_date": "2024-12-17",
-                      "ticker": "ESZ4",
-                      "timestamp": 1734476400002853000
+                      "ask_timestamp": "1734472800076125400,",
+                      "bid_price": "2660,",
+                      "bid_size": "1,",
+                      "bid_timestamp": "1734472800076125400,",
+                      "report_sequence": "2250337,",
+                      "sequence_number": 15357766,
+                      "session_end_date": "2024-12-17,",
+                      "ticker": "GCJ5,",
+                      "timestamp": "1734472800076125400,"
                     },
                     {
-                      "ask_price": 604100,
-                      "ask_size": 2,
-                      "ask_timestamp": 1734466901129138400,
-                      "bid_price": 604100,
-                      "bid_size": 2,
-                      "bid_timestamp": 1734415473057885400,
-                      "session_end_date": "2024-12-17",
-                      "ticker": "ESZ4",
-                      "timestamp": 1734466901128680000
+                      "ask_price": "2685.9,",
+                      "ask_size": "1,",
+                      "ask_timestamp": "1734472755134391800,",
+                      "bid_price": "2684.7,",
+                      "bid_size": "1,",
+                      "bid_timestamp": "1734472736352455200,",
+                      "report_sequence": "2249723,",
+                      "sequence_number": 15354716,
+                      "session_end_date": "2024-12-17,",
+                      "ticker": "GCJ5,",
+                      "timestamp": "1734472755134391800,"
                     }
                   ],
                   "status": "OK"
@@ -15147,6 +15150,14 @@
                               "path": "github.com/polygon-io/ptime"
                             }
                           },
+                          "report_sequence": {
+                            "description": "The reporting sequence number.",
+                            "type": "integer"
+                          },
+                          "sequence_number": {
+                            "description": "The unique sequence number assigned to this quote by the exchange.",
+                            "type": "integer"
+                          },
                           "session_end_date": {
                             "description": "Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.",
                             "type": "string"
@@ -15167,7 +15178,9 @@
                         "required": [
                           "ticker",
                           "timestamp",
-                          "session_end_date"
+                          "session_end_date",
+                          "report_sequence",
+                          "sequence_number"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {
@@ -16073,28 +16086,35 @@
             "content": {
               "application/json": {
                 "example": {
+                  "next_url": "https://api.massive.com/futures/vX/trades/ESZ4?cursor=YXA9MTczNDQ3MDk3MDAwODU5OTI2MSZhcz0yNzIzNTI4MyZsaW1pdD0xMDAwJnNlc3Npb25fZW5kX2RhdGU9MjAyNC0xMi0xNyZzb3J0PXRpbWVzdGFtcC5kZXNj",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": [
                     {
-                      "price": 605400,
+                      "price": 6052,
+                      "report_sequence": 12033289,
+                      "sequence_number": 27317882,
                       "session_end_date": "2024-12-17",
-                      "size": 12,
+                      "size": 3,
                       "ticker": "ESZ4",
-                      "timestamp": 1734484219379895800
+                      "timestamp": 1734472799000509200
                     },
                     {
-                      "price": 605412,
+                      "price": 6051.75,
+                      "report_sequence": 12033276,
+                      "sequence_number": 27317863,
                       "session_end_date": "2024-12-17",
-                      "size": 55,
+                      "size": 1,
                       "ticker": "ESZ4",
-                      "timestamp": 1734484212100118500
+                      "timestamp": 1734472798789679900
                     },
                     {
-                      "price": 605544,
+                      "price": 6052,
+                      "report_sequence": 12033255,
+                      "sequence_number": 27317826,
                       "session_end_date": "2024-12-17",
-                      "size": 36,
+                      "size": 2,
                       "ticker": "ESZ4",
-                      "timestamp": 1734484212099944200
+                      "timestamp": 1734472797000893000
                     }
                   ],
                   "status": "OK"
@@ -16112,6 +16132,14 @@
                             "description": "The price of the trade. This is the actual dollar value per whole contract of this trade. A trade of 100 contracts with a price of $2.00 would be worth a total dollar value of $200.00.",
                             "format": "double",
                             "type": "number"
+                          },
+                          "report_sequence": {
+                            "description": "The reporting sequence number.",
+                            "type": "integer"
+                          },
+                          "sequence_number": {
+                            "description": "The unique sequence number assigned to this trade.",
+                            "type": "integer"
                           },
                           "session_end_date": {
                             "description": "Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.",
@@ -16140,7 +16168,9 @@
                           "timestamp",
                           "session_end_date",
                           "price",
-                          "size"
+                          "size",
+                          "report_sequence",
+                          "sequence_number"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {

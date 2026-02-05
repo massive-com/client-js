@@ -6693,6 +6693,18 @@ export interface GetFuturesQuotes200ResponseResultsInner {
      */
     'bid_timestamp'?: number;
     /**
+     * The reporting sequence number.
+     * @type {number}
+     * @memberof GetFuturesQuotes200ResponseResultsInner
+     */
+    'report_sequence': number;
+    /**
+     * The unique sequence number assigned to this quote by the exchange.
+     * @type {number}
+     * @memberof GetFuturesQuotes200ResponseResultsInner
+     */
+    'sequence_number': number;
+    /**
      * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
      * @type {string}
      * @memberof GetFuturesQuotes200ResponseResultsInner
@@ -6748,6 +6760,18 @@ export interface GetFuturesTrades200ResponseResultsInner {
      * @memberof GetFuturesTrades200ResponseResultsInner
      */
     'price': number;
+    /**
+     * The reporting sequence number.
+     * @type {number}
+     * @memberof GetFuturesTrades200ResponseResultsInner
+     */
+    'report_sequence': number;
+    /**
+     * The unique sequence number assigned to this trade.
+     * @type {number}
+     * @memberof GetFuturesTrades200ResponseResultsInner
+     */
+    'sequence_number': number;
     /**
      * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
      * @type {string}
@@ -16684,11 +16708,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [tickerGte] Filter greater than or equal to the value.
          * @param {string} [tickerLt] Filter less than the value.
          * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [firm] The name of the research firm or investment bank issuing the rating.
          * @param {string} [firmAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [firmGt] Filter greater than the value.
@@ -17093,11 +17117,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [benzingaIdGte] Filter greater than or equal to the value.
          * @param {string} [benzingaIdLt] Filter less than the value.
          * @param {string} [benzingaIdLte] Filter less than or equal to the value.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;5000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;ticker\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
@@ -17297,12 +17321,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} [importanceGte] Filter greater than or equal to the value. Value must be an integer.
          * @param {number} [importanceLt] Filter less than the value. Value must be an integer.
          * @param {number} [importanceLte] Filter less than or equal to the value. Value must be an integer.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [dateStatus] Indicates whether the date of the earnings report has been confirmed. Possible values include: projected, confirmed.
          * @param {string} [dateStatusAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [dateStatusGt] Filter greater than the value.
@@ -17932,11 +17956,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} [importanceGte] Filter greater than or equal to the value. Value must be an integer.
          * @param {number} [importanceLt] Filter less than the value. Value must be an integer.
          * @param {number} [importanceLte] Filter less than or equal to the value. Value must be an integer.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [ratingAction] The description of the change in rating from the firm\&#39;s last rating. Possible values include: downgrades, maintains, reinstates, reiterates, upgrades, assumes, initiates_coverage_on, terminates_coverage_on, removes, suspends, firm_dissolved.
          * @param {string} [ratingActionAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [ratingActionGt] Filter greater than the value.
@@ -18217,11 +18241,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * A comprehensive news article database from Benzinga, containing detailed information about financial news articles including metadata, content, and associated financial information.
-         * @param {string} [published] The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [publishedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [publishedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [publishedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [publishedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [published] The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [publishedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [publishedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [publishedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [publishedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [channels] Filter for arrays that contain the value.
          * @param {string} [channelsAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [channelsAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
@@ -29355,11 +29379,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [tickerGte] Filter greater than or equal to the value.
          * @param {string} [tickerLt] Filter less than the value.
          * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [firm] The name of the research firm or investment bank issuing the rating.
          * @param {string} [firmAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [firmGt] Filter greater than the value.
@@ -29446,11 +29470,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [benzingaIdGte] Filter greater than or equal to the value.
          * @param {string} [benzingaIdLt] Filter less than the value.
          * @param {string} [benzingaIdLte] Filter less than or equal to the value.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;5000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;ticker\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
@@ -29501,12 +29525,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} [importanceGte] Filter greater than or equal to the value. Value must be an integer.
          * @param {number} [importanceLt] Filter less than the value. Value must be an integer.
          * @param {number} [importanceLte] Filter less than or equal to the value. Value must be an integer.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [dateStatus] Indicates whether the date of the earnings report has been confirmed. Possible values include: projected, confirmed.
          * @param {string} [dateStatusAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [dateStatusGt] Filter greater than the value.
@@ -29641,11 +29665,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} [importanceGte] Filter greater than or equal to the value. Value must be an integer.
          * @param {number} [importanceLt] Filter less than the value. Value must be an integer.
          * @param {number} [importanceLte] Filter less than or equal to the value. Value must be an integer.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [ratingAction] The description of the change in rating from the firm\&#39;s last rating. Possible values include: downgrades, maintains, reinstates, reiterates, upgrades, assumes, initiates_coverage_on, terminates_coverage_on, removes, suspends, firm_dissolved.
          * @param {string} [ratingActionAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [ratingActionGt] Filter greater than the value.
@@ -29689,11 +29713,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * A comprehensive news article database from Benzinga, containing detailed information about financial news articles including metadata, content, and associated financial information.
-         * @param {string} [published] The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [publishedGt] Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [publishedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [publishedLt] Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [publishedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [published] The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [publishedGt] Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [publishedGte] Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [publishedLt] Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [publishedLte] Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [channels] Filter for arrays that contain the value.
          * @param {string} [channelsAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [channelsAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
@@ -34034,35 +34058,35 @@ export interface DefaultApiGetBenzingaV1AnalystInsightsRequest {
     readonly tickerLte?: string
 
     /**
-     * The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1AnalystInsights
      */
     readonly lastUpdated?: string
 
     /**
-     * Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1AnalystInsights
      */
     readonly lastUpdatedGt?: string
 
     /**
-     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1AnalystInsights
      */
     readonly lastUpdatedGte?: string
 
     /**
-     * Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1AnalystInsights
      */
     readonly lastUpdatedLt?: string
 
     /**
-     * Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1AnalystInsights
      */
@@ -34531,35 +34555,35 @@ export interface DefaultApiGetBenzingaV1BullsBearsSayRequest {
     readonly benzingaIdLte?: string
 
     /**
-     * The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1BullsBearsSay
      */
     readonly lastUpdated?: string
 
     /**
-     * Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1BullsBearsSay
      */
     readonly lastUpdatedGt?: string
 
     /**
-     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1BullsBearsSay
      */
     readonly lastUpdatedGte?: string
 
     /**
-     * Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1BullsBearsSay
      */
     readonly lastUpdatedLt?: string
 
     /**
-     * Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1BullsBearsSay
      */
@@ -34776,42 +34800,42 @@ export interface DefaultApiGetBenzingaV1EarningsRequest {
     readonly importanceLte?: number
 
     /**
-     * The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Earnings
      */
     readonly lastUpdated?: string
 
     /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Earnings
      */
     readonly lastUpdatedAnyOf?: string
 
     /**
-     * Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Earnings
      */
     readonly lastUpdatedGt?: string
 
     /**
-     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Earnings
      */
     readonly lastUpdatedGte?: string
 
     /**
-     * Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Earnings
      */
     readonly lastUpdatedLt?: string
 
     /**
-     * Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Earnings
      */
@@ -35546,35 +35570,35 @@ export interface DefaultApiGetBenzingaV1RatingsRequest {
     readonly importanceLte?: number
 
     /**
-     * The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Ratings
      */
     readonly lastUpdated?: string
 
     /**
-     * Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Ratings
      */
     readonly lastUpdatedGt?: string
 
     /**
-     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Ratings
      */
     readonly lastUpdatedGte?: string
 
     /**
-     * Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Ratings
      */
     readonly lastUpdatedLt?: string
 
     /**
-     * Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Ratings
      */
@@ -35812,35 +35836,35 @@ export interface DefaultApiGetBenzingaV1RatingsRequest {
  */
 export interface DefaultApiGetBenzingaV2NewsRequest {
     /**
-     * The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV2News
      */
     readonly published?: string
 
     /**
-     * Filter greater than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV2News
      */
     readonly publishedGt?: string
 
     /**
-     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter greater than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV2News
      */
     readonly publishedGte?: string
 
     /**
-     * Filter less than the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV2News
      */
     readonly publishedLt?: string
 
     /**
-     * Filter less than or equal to the value. Value must be an integer timestamp in seconds or formatted \&#39;yyyy-mm-dd\&#39;.
+     * Filter less than or equal to the value. Value must be an integer timestamp in seconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV2News
      */
