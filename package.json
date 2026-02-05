@@ -1,6 +1,6 @@
 {
   "name": "@massive.com/client-js",
-  "version": "10.2.0",
+  "version": "10.3.0",
   "description": "Isomorphic Javascript client for Massive.com Stocks, Options, Indices, Futures, Forex, and Crypto APIs",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
