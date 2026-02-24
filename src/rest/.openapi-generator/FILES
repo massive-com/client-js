@@ -143,6 +143,8 @@ docs/GetFuturesVXMarketStatus200Response.md
 docs/GetFuturesVXMarketStatus200ResponseResultsInner.md
 docs/GetFuturesVXProducts200Response.md
 docs/GetFuturesVXProducts200ResponseResultsInner.md
+docs/GetFuturesVXQuotesNew200Response.md
+docs/GetFuturesVXQuotesNew200ResponseResultsInner.md
 docs/GetFuturesVXSchedules200Response.md
 docs/GetFuturesVXSchedules200ResponseResultsInner.md
 docs/GetFuturesVXSnapshot200Response.md
@@ -152,6 +154,8 @@ docs/GetFuturesVXSnapshot200ResponseResultsInnerLastMinute.md
 docs/GetFuturesVXSnapshot200ResponseResultsInnerLastQuote.md
 docs/GetFuturesVXSnapshot200ResponseResultsInnerLastTrade.md
 docs/GetFuturesVXSnapshot200ResponseResultsInnerSession.md
+docs/GetFuturesVXTradesNew200Response.md
+docs/GetFuturesVXTradesNew200ResponseResultsInner.md
 docs/GetGroupedCryptoAggregates200Response.md
 docs/GetGroupedCryptoAggregates200ResponseAllOfResultsInner.md
 docs/GetGroupedStocksAggregates200Response.md
@@ -167,6 +171,8 @@ docs/GetLastOptionsTrade200Response.md
 docs/GetLastOptionsTrade200ResponseResults.md
 docs/GetLastStocksQuote200Response.md
 docs/GetLastStocksQuote200ResponseResults.md
+docs/GetLastStocksTrade200Response.md
+docs/GetLastStocksTrade200ResponseResults.md
 docs/GetMarketHolidays200ResponseInner.md
 docs/GetMarketStatus200Response.md
 docs/GetMarketStatus200ResponseCurrencies.md
@@ -211,6 +217,8 @@ docs/GetStocksAggregates200Response.md
 docs/GetStocksAggregates200ResponseAllOfResultsInner.md
 docs/GetStocksFilings10KVXSections200Response.md
 docs/GetStocksFilings10KVXSections200ResponseResultsInner.md
+docs/GetStocksFilingsVXIndex200Response.md
+docs/GetStocksFilingsVXIndex200ResponseResultsInner.md
 docs/GetStocksFilingsVXRiskFactors200Response.md
 docs/GetStocksFilingsVXRiskFactors200ResponseResultsInner.md
 docs/GetStocksFinancialsV1BalanceSheets200Response.md
@@ -255,6 +263,8 @@ docs/GetTicker200ResponseResultsAddress.md
 docs/GetTicker200ResponseResultsBranding.md
 docs/GetTmxV1CorporateEvents200Response.md
 docs/GetTmxV1CorporateEvents200ResponseResultsInner.md
+docs/GetV1ReferenceIpos200Response.md
+docs/GetV1ReferenceIpos200ResponseResultsInner.md
 docs/IndexAggsBase.md
 docs/IndicesGroupedResults.md
 docs/IndicesOpenClose.md
@@ -318,6 +328,7 @@ docs/StocksOpenClose.md
 docs/StocksSnapshotLastQuote.md
 docs/StocksSnapshotMinute.md
 docs/StocksSnapshotMinuteOTC.md
+docs/StocksSnapshotPrevDay.md
 docs/StocksSnapshotTicker.md
 docs/StocksSnapshotTickers.md
 docs/StocksTickerResultsOTC.md

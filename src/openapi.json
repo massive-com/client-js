@@ -3471,6 +3471,10 @@
             "format": "double",
             "type": "number"
           },
+          "dv": {
+            "description": "The volume including fractional shares, respresented as a string.",
+            "type": "string"
+          },
           "h": {
             "description": "The highest price for the symbol in the given time period.",
             "format": "double",
@@ -3759,6 +3763,14 @@
             "format": "double",
             "type": "number"
           },
+          "dav": {
+            "description": "The accumulated volume including fractional shares, respresented as a string.",
+            "type": "string"
+          },
+          "dv": {
+            "description": "The volume including fractional shares, respresented as a string.",
+            "type": "string"
+          },
           "h": {
             "description": "The highest price for the symbol in the given time period.",
             "format": "double",
@@ -3795,6 +3807,7 @@
         },
         "required": [
           "av",
+          "dav",
           "o",
           "h",
           "l",
@@ -3816,6 +3829,14 @@
             "description": "The close price for the symbol in the given time period.",
             "format": "double",
             "type": "number"
+          },
+          "dav": {
+            "description": "The accumulated volume including fractional shares, respresented as a string.",
+            "type": "string"
+          },
+          "dv": {
+            "description": "The volume including fractional shares, respresented as a string.",
+            "type": "string"
           },
           "h": {
             "description": "The highest price for the symbol in the given time period.",
@@ -3857,6 +3878,7 @@
         },
         "required": [
           "av",
+          "dav",
           "o",
           "h",
           "l",
@@ -3865,6 +3887,53 @@
           "vw",
           "t",
           "n"
+        ],
+        "type": "object"
+      },
+      "StocksSnapshotPrevDay": {
+        "properties": {
+          "c": {
+            "description": "The close price for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "h": {
+            "description": "The highest price for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "l": {
+            "description": "The lowest price for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "o": {
+            "description": "The open price for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "otc": {
+            "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
+            "type": "boolean"
+          },
+          "v": {
+            "description": "The trading volume of the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "vw": {
+            "description": "The volume weighted average price.",
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "required": [
+          "o",
+          "h",
+          "l",
+          "c",
+          "v",
+          "vw"
         ],
         "type": "object"
       },
@@ -3880,6 +3949,10 @@
                     "description": "The close price for the symbol in the given time period.",
                     "format": "double",
                     "type": "number"
+                  },
+                  "dv": {
+                    "description": "The volume including fractional shares, respresented as a string.",
+                    "type": "string"
                   },
                   "h": {
                     "description": "The highest price for the symbol in the given time period.",
@@ -3971,6 +4044,10 @@
                     },
                     "type": "array"
                   },
+                  "ds": {
+                    "description": "The size of the trade including fractional shares, respresented as a string.",
+                    "type": "string"
+                  },
                   "i": {
                     "description": "The Trade ID which uniquely identifies a trade. These are unique per\ncombination of ticker, exchange, and TRF. For example: A trade for AAPL\nexecuted on NYSE and a trade for AAPL executed on NASDAQ could potentially\nhave the same Trade ID.\n",
                     "type": "string"
@@ -3999,7 +4076,8 @@
                   "p",
                   "s",
                   "t",
-                  "x"
+                  "x",
+                  "ds"
                 ],
                 "type": "object"
               },
@@ -4014,6 +4092,14 @@
                     "description": "The close price for the symbol in the given time period.",
                     "format": "double",
                     "type": "number"
+                  },
+                  "dav": {
+                    "description": "The accumulated volume including fractional shares, respresented as a string.",
+                    "type": "string"
+                  },
+                  "dv": {
+                    "description": "The volume including fractional shares, respresented as a string.",
+                    "type": "string"
                   },
                   "h": {
                     "description": "The highest price for the symbol in the given time period.",
@@ -4055,6 +4141,7 @@
                 },
                 "required": [
                   "av",
+                  "dav",
                   "o",
                   "h",
                   "l",
@@ -4152,6 +4239,10 @@
                       "format": "double",
                       "type": "number"
                     },
+                    "dv": {
+                      "description": "The volume including fractional shares, respresented as a string.",
+                      "type": "string"
+                    },
                     "h": {
                       "description": "The highest price for the symbol in the given time period.",
                       "format": "double",
@@ -4242,6 +4333,10 @@
                       },
                       "type": "array"
                     },
+                    "ds": {
+                      "description": "The size of the trade including fractional shares, respresented as a string.",
+                      "type": "string"
+                    },
                     "i": {
                       "description": "The Trade ID which uniquely identifies a trade. These are unique per\ncombination of ticker, exchange, and TRF. For example: A trade for AAPL\nexecuted on NYSE and a trade for AAPL executed on NASDAQ could potentially\nhave the same Trade ID.\n",
                       "type": "string"
@@ -4270,7 +4365,8 @@
                     "p",
                     "s",
                     "t",
-                    "x"
+                    "x",
+                    "ds"
                   ],
                   "type": "object"
                 },
@@ -4285,6 +4381,14 @@
                       "description": "The close price for the symbol in the given time period.",
                       "format": "double",
                       "type": "number"
+                    },
+                    "dav": {
+                      "description": "The accumulated volume including fractional shares, respresented as a string.",
+                      "type": "string"
+                    },
+                    "dv": {
+                      "description": "The volume including fractional shares, respresented as a string.",
+                      "type": "string"
                     },
                     "h": {
                       "description": "The highest price for the symbol in the given time period.",
@@ -4326,6 +4430,7 @@
                   },
                   "required": [
                     "av",
+                    "dav",
                     "o",
                     "h",
                     "l",
@@ -14942,6 +15047,233 @@
         ]
       }
     },
+    "/futures/vX/quotes-new/{ticker}": {
+      "get": {
+        "operationId": "get_futures_vX_quotes-new",
+        "parameters": [
+          {
+            "description": "The nanosecond accuracy Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The trade date representing the session end date for this quote. Used for partitioning and filtering quotes by trading session.",
+            "in": "query",
+            "name": "session_end_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '49999'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'timestamp' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "timestamp.desc",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The exchange symbol that this item is traded under.",
+            "in": "path",
+            "name": "ticker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "ask_price": {
+                            "description": "The ask price.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "ask_size": {
+                            "description": "The ask size.",
+                            "format": "int32",
+                            "type": "integer"
+                          },
+                          "ask_timestamp": {
+                            "description": "The nanosecond accuracy Unix Timestamp when the ask price was submitted to the exchange.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "bid_price": {
+                            "description": "The bid price.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "bid_size": {
+                            "description": "The bid size.",
+                            "format": "int32",
+                            "type": "integer"
+                          },
+                          "bid_timestamp": {
+                            "description": "The nanosecond accuracy Unix Timestamp when the bid price was submitted to the exchange.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "exchange": {
+                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
+                            "format": "int32",
+                            "type": "integer"
+                          },
+                          "report_sequence": {
+                            "description": "The report sequence number.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "sequence_number": {
+                            "description": "The sequence number represents the order in which quote events occurred for this ticker.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "session_end_date": {
+                            "description": "The trade date representing the session end date for this quote. Used for partitioning and filtering quotes by trading session.",
+                            "type": "string"
+                          },
+                          "ticker": {
+                            "description": "The exchange symbol that this item is traded under.",
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "description": "The nanosecond accuracy Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.",
+                            "format": "int64",
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "ticker",
+                          "timestamp",
+                          "sequence_number",
+                          "report_sequence",
+                          "session_end_date"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/futures/vX/quotes/{ticker}": {
       "get": {
         "description": "Get quotes for a contract in a given time range.",
@@ -15953,6 +16285,649 @@
         ]
       }
     },
+    "/futures/vX/snapshot-native": {
+      "get": {
+        "description": "Retrieve a snapshot of the most recent futures contract data.",
+        "operationId": "get_futures_vX_snapshot-native",
+        "parameters": [
+          {
+            "description": "The code for the contracts' underlying product.",
+            "in": "query",
+            "name": "product_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "product_code.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "product_code.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "product_code.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "product_code.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "product_code.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The futures contract identifier, including the base symbol and contract expiration (e.g., ESZ24 for the December 2024 S&P 500 E-mini contract).",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'ticker' if not specified. The sort order defaults to 'asc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "ticker.asc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "next_url": "https://api.massive.com/v1/futures/vX/snapshot?cursor=AQANAkNCBVNQ",
+                  "request_id": "c4d50f4801874e30b63e674b844cf51f",
+                  "results": [
+                    {
+                      "details": {
+                        "open_interest": 112,
+                        "settlement_date": 1753851600000000000
+                      },
+                      "last_minute": {
+                        "close": 240.00000000000003,
+                        "high": 240.00000000000003,
+                        "last_updated": 1746045300000,
+                        "low": 240.00000000000003,
+                        "open": 240.00000000000003,
+                        "volume": 5
+                      },
+                      "last_quote": {
+                        "ask": 240.50000000000003,
+                        "ask_size": 3,
+                        "ask_timestamp": 1746036204386194000,
+                        "bid": 239.50000000000003,
+                        "bid_size": 2,
+                        "bid_timestamp": 1746035747932118000,
+                        "last_updated": 1746046798024234200
+                      },
+                      "last_trade": {
+                        "last_updated": 1746045242858242600,
+                        "price": 240.00000000000003,
+                        "size": 5
+                      },
+                      "product_code": "CB",
+                      "session": {
+                        "change": 21.11,
+                        "change_percent": 0.09622134,
+                        "close": 240.00000000000003,
+                        "high": 241.00000000000003,
+                        "low": 240.00000000000003,
+                        "open": 240.00000000000003,
+                        "previous_settlement": 219.39,
+                        "settlement_price": 240.50000000000003,
+                        "volume": 55
+                      },
+                      "ticker": "CBN5"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "details": {
+                            "properties": {
+                              "product_code": {
+                                "type": "string"
+                              },
+                              "settlement_date": {
+                                "description": "The day that this contract is settled.",
+                                "format": "date",
+                                "type": "string"
+                              },
+                              "ticker": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "last_minute": {
+                            "properties": {
+                              "close": {
+                                "description": "The price at the end of the minute bar.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "high": {
+                                "description": "The highest price reached in the minute bar.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "last_updated": {
+                                "description": "The timestamp indicating the most recent update to the minute bar.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "low": {
+                                "description": "The lowest price reached in the minute bar.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "open": {
+                                "description": "The opening price at the start of the minute bar.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "timeframe": {
+                                "type": "string"
+                              },
+                              "volume": {
+                                "description": "The number of contracts traded in the minute bar.",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "last_quote": {
+                            "properties": {
+                              "ask": {
+                                "description": "The lowest price a seller is willing to accept.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "ask_size": {
+                                "description": "The number of contracts available at the ask price.",
+                                "format": "int32",
+                                "type": "integer"
+                              },
+                              "ask_timestamp": {
+                                "description": "The time when the best ask price was last updated.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "bid": {
+                                "description": "The highest price a buyer is willing to pay.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "bid_size": {
+                                "description": "The number of contracts available at the bid price.",
+                                "format": "int32",
+                                "type": "integer"
+                              },
+                              "bid_timestamp": {
+                                "description": "The time when the best bid price was last updated.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "last_updated": {
+                                "description": "The time when the quote was generated at the exchange to nanosecond precision.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "timeframe": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "last_trade": {
+                            "properties": {
+                              "last_updated": {
+                                "description": "The time when the trade was generated at the exchange to nanosecond precision.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "price": {
+                                "description": "The price of the trade. This is the actual dollar value per whole contract of this trade. A trade of 100 contracts with a price of $2.00 would be worth a total dollar value of $200.00.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "size": {
+                                "description": "The total number of contracts exchanged between buyers and sellers on a given trade.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "timeframe": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "session": {
+                            "properties": {
+                              "change": {
+                                "description": "The change in price during this session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "change_percent": {
+                                "description": "The percentage change in price during this session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "close": {
+                                "description": "The price at the end of the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "high": {
+                                "description": "The highest price reached in the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "low": {
+                                "description": "The lowest price reached in the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "open": {
+                                "description": "The opening price at the start of the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "previous_settlement": {
+                                "description": "The settlement price of the previous session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "settlement_price": {
+                                "description": "The final settlement price at the end of the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "volume": {
+                                "description": "The number of contracts traded in the session.",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "summary": "futures_snapshot_v1 API",
+        "tags": [
+          "default"
+        ]
+      }
+    },
+    "/futures/vX/trades-new/{ticker}": {
+      "get": {
+        "operationId": "get_futures_vX_trades-new",
+        "parameters": [
+          {
+            "description": "The time when the trade was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The trade date representing the session end date for this trade. Used for partitioning and filtering trades by trading session.",
+            "in": "query",
+            "name": "session_end_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '49999'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'timestamp' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "timestamp.desc",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The futures contract identifier, including the base symbol and contract expiration (e.g., ESZ24 for the December 2024 S&P 500 E-mini contract).",
+            "in": "path",
+            "name": "ticker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "conditions": {
+                            "description": "A list of condition codes.",
+                            "items": {
+                              "format": "int32",
+                              "type": "integer"
+                            },
+                            "type": "array"
+                          },
+                          "correction": {
+                            "description": "The trade correction indicator.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "exchange": {
+                            "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
+                            "format": "int32",
+                            "type": "integer"
+                          },
+                          "price": {
+                            "description": "The price of the trade. This is the actual dollar value per whole contract of this trade. A trade of 100 contracts with a price of $2.00 would be worth a total dollar value of $200.00.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "report_sequence": {
+                            "description": "The report sequence number.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "sequence_number": {
+                            "description": "The sequence number represents the sequence in which trade events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11). Values reset after each trading session/day.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "session_end_date": {
+                            "description": "The trade date representing the session end date for this trade. Used for partitioning and filtering trades by trading session.",
+                            "type": "string"
+                          },
+                          "size": {
+                            "description": "The total number of contracts exchanged between buyers and sellers on a given trade.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "ticker": {
+                            "description": "The futures contract identifier, including the base symbol and contract expiration (e.g., ESZ24 for the December 2024 S&P 500 E-mini contract).",
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "description": "The time when the trade was generated at the exchange to nanosecond precision.",
+                            "format": "int64",
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "ticker",
+                          "timestamp",
+                          "sequence_number",
+                          "report_sequence",
+                          "price",
+                          "session_end_date"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/futures/vX/trades/{ticker}": {
       "get": {
         "description": "Get trades for a contract in a given time range.",
@@ -16679,6 +17654,351 @@
                           },
                           "ticker": {
                             "description": "Stock ticker symbol for the company.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
+    "/stocks/filings/vX/index": {
+      "get": {
+        "description": "SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.",
+        "operationId": "get_stocks_filings_vX_index",
+        "parameters": [
+          {
+            "description": "SEC Central Index Key (CIK) identifying the filing entity.",
+            "in": "query",
+            "name": "cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "cik.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "cik.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "cik.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "cik.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Stock ticker symbol for the filing entity, if available.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC form type (e.g., '10-K', '10-Q', '8-K', 'S-1', '4', etc.).",
+            "in": "query",
+            "name": "form_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "form_type.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "form_type.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "form_type.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "form_type.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "form_type.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '1000' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 1000,
+              "maximum": 50001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'filing_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "filing_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 2,
+                  "next_url": "https://api.massive.com/stocks/filings/vX/index?cursor=eyJsaW1pd...",
+                  "request_id": "1daccfd9794e482e96d104dee6ed432b",
+                  "results": [
+                    {
+                      "accession_number": "0000320193-25-000079",
+                      "cik": "0000320193",
+                      "filing_date": "2025-10-31",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/320193/0000320193-25-000079.txt",
+                      "form_type": "10-K",
+                      "issuer_name": "Apple Inc.",
+                      "ticker": "AAPL"
+                    },
+                    {
+                      "accession_number": "0000950170-25-010491",
+                      "cik": "0000789019",
+                      "filing_date": "2025-01-29",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/789019/0000950170-25-010491.txt",
+                      "form_type": "10-Q",
+                      "issuer_name": "MICROSOFT CORP",
+                      "ticker": "MSFT"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "accession_number": {
+                            "description": "SEC accession number uniquely identifying the filing (e.g., '0000320193-24-000123').",
+                            "type": "string"
+                          },
+                          "cik": {
+                            "description": "SEC Central Index Key (CIK) identifying the filing entity.",
+                            "type": "string"
+                          },
+                          "filing_date": {
+                            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "filing_url": {
+                            "description": "Direct URL to the filing on the SEC EDGAR website.",
+                            "type": "string"
+                          },
+                          "form_type": {
+                            "description": "SEC form type (e.g., '10-K', '10-Q', '8-K', 'S-1', '4', etc.).",
+                            "type": "string"
+                          },
+                          "issuer_name": {
+                            "description": "Name of the company or entity that submitted the filing.",
+                            "type": "string"
+                          },
+                          "ticker": {
+                            "description": "Stock ticker symbol for the filing entity, if available.",
                             "type": "string"
                           }
                         },
@@ -20332,8 +21652,7 @@
                         },
                         "required": [
                           "ticker",
-                          "date",
-                          "price"
+                          "date"
                         ],
                         "type": "object"
                       },
@@ -31620,6 +32939,449 @@
         }
       }
     },
+    "/v1/reference/ipos": {
+      "get": {
+        "description": "Contains comprehensive data about Initial Public Offerings (IPOs) and direct listings for US stocks, tracking both historical and pending offerings with detailed pricing, share, and timing information.",
+        "operationId": "get_v1_reference_ipos",
+        "parameters": [
+          {
+            "description": "The ticker symbol of the IPO event.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Nine-character alphanumeric code that uniquely identifies a financial security in North America.",
+            "in": "query",
+            "name": "us_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "us_code.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "us_code.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "us_code.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "us_code.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "us_code.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "International Securities Identification Number. This is a unique twelve-digit code that is assigned to every security issuance in the world.",
+            "in": "query",
+            "name": "isin",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "isin.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "isin.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "isin.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "isin.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "isin.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "First trading date for the newly listed entity. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "listing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "listing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "listing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "listing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "listing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The status of the IPO.",
+            "in": "query",
+            "name": "ipo_status",
+            "schema": {
+              "enum": [
+                "direct_listing_process",
+                "history",
+                "new",
+                "pending",
+                "postponed",
+                "rumor",
+                "withdrawn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ipo_status.any_of",
+            "schema": {
+              "enum": [
+                "direct_listing_process",
+                "history",
+                "new",
+                "pending",
+                "postponed",
+                "rumor",
+                "withdrawn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '1000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "maximum": 1001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'listing_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "listing_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "6a7e466379af0a71039d60cc78e72282",
+                  "results": [
+                    {
+                      "announced_date": "2024-06-01",
+                      "currency_code": "USD",
+                      "final_issue_price": 17,
+                      "highest_offer_price": 17,
+                      "ipo_status": "history",
+                      "isin": "US75383L1026",
+                      "issuer_name": "Rapport Therapeutics Inc.",
+                      "last_updated": "2024-06-27",
+                      "listing_date": "2024-06-07",
+                      "lot_size": 100,
+                      "lowest_offer_price": 17,
+                      "max_shares_offered": 8000000,
+                      "min_shares_offered": 1000000,
+                      "primary_exchange": "XNAS",
+                      "security_description": "Ordinary Shares",
+                      "security_type": "CS",
+                      "shares_outstanding": 35376457,
+                      "ticker": "RAPP",
+                      "total_offer_size": 136000000,
+                      "us_code": "75383L102"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "announced_date": {
+                            "description": "The date when the IPO event was announced.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "currency_code": {
+                            "description": "Underlying currency of the security.",
+                            "type": "string"
+                          },
+                          "final_issue_price": {
+                            "description": "The price set by the company and its underwriters before the IPO goes live.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "highest_offer_price": {
+                            "description": "The highest price within the IPO price range that the company might use to price the shares.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "ipo_status": {
+                            "description": "The status of the IPO.",
+                            "type": "string"
+                          },
+                          "isin": {
+                            "description": "International Securities Identification Number. This is a unique twelve-digit code that is assigned to every security issuance in the world.",
+                            "type": "string"
+                          },
+                          "issuer_name": {
+                            "description": "Name of issuer.",
+                            "type": "string"
+                          },
+                          "last_updated": {
+                            "description": "The date when the IPO event was last modified.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "listing_date": {
+                            "description": "First trading date for the newly listed entity.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "lot_size": {
+                            "description": "The minimum number of shares that an investor may apply for during an IPO.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "lowest_offer_price": {
+                            "description": "The lowest price within the IPO price range that the company is willing to offer its shares to investors.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "max_shares_offered": {
+                            "description": "The upper limit of the shares that the company is offering to investors.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "min_shares_offered": {
+                            "description": "The lower limit of shares that the company is willing to sell in the IPO.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "primary_exchange": {
+                            "description": "Market Identifier Code (MIC) of the primary exchange where the security is listed. The Market Identifier Code (MIC) (ISO 10383) is a unique identification code used to identify securities trading exchanges, regulated and non-regulated trading markets.",
+                            "type": "string"
+                          },
+                          "security_description": {
+                            "description": "A brief description of the security. e.g. Class A Shares",
+                            "type": "string"
+                          },
+                          "security_type": {
+                            "description": "The classification of the stock. For example, CS stands for Common Stock.",
+                            "type": "string"
+                          },
+                          "shares_outstanding": {
+                            "description": "The total number of shares that the company has issued and are held by investors.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "ticker": {
+                            "description": "The ticker symbol of the IPO event.",
+                            "type": "string"
+                          },
+                          "total_offer_size": {
+                            "description": "The total amount raised by the company for IPO.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "us_code": {
+                            "description": "Nine-character alphanumeric code that uniquely identifies a financial security in North America.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/v1/related-companies/{ticker}": {
       "get": {
         "description": "Get a list of tickers related to the queried ticker based on News and Returns data.",
@@ -31764,6 +33526,7 @@
                         "change": -1.05,
                         "change_percent": -4.67,
                         "close": 21.4,
+                        "decimal_volume": "37.0",
                         "early_trading_change": -0.39,
                         "early_trading_change_percent": -0.07,
                         "high": 22.49,
@@ -31983,6 +33746,10 @@
                                 "description": "The closing price of the asset for the day.",
                                 "format": "double",
                                 "type": "number"
+                              },
+                              "decimal_volume": {
+                                "description": "The trading volume for the asset for the day with decimal precision. This field provides support for fractional shares, representing volume as a decimal string. This field is only returned for stocks snapshots.",
+                                "type": "string"
                               },
                               "early_trading_change": {
                                 "description": "Today's early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.",
@@ -35332,6 +37099,7 @@
                     "c": [
                       37
                     ],
+                    "ds": "25.0",
                     "f": 1617901342969796400,
                     "i": "118749",
                     "p": 129.8473,
@@ -35368,6 +37136,10 @@
                           "x-polygon-go-type": {
                             "name": "Int32Array"
                           }
+                        },
+                        "ds": {
+                          "description": "The size of the trade including the fractional component. This is represented as a decimal string.",
+                          "type": "string"
                         },
                         "e": {
                           "description": "The trade correction indicator.",
@@ -35424,7 +37196,8 @@
                         "q",
                         "i",
                         "p",
-                        "x"
+                        "x",
+                        "ds"
                       ],
                       "type": "object",
                       "x-polygon-go-type": {
@@ -35444,7 +37217,7 @@
                 }
               },
               "text/csv": {
-                "example": "T,c,f,i,p,q,r,s,t,x,y,z\nAAPL,37,1617901342969796400,118749,129.8473,3135876,202,25,1617901342969834000,4,1617901342968000000,3\n",
+                "example": "T,c,f,i,p,q,r,s,t,x,y,z,ds\nAAPL,37,1617901342969796400,118749,129.8473,3135876,202,25,1617901342969834000,4,1617901342968000000,3,25.0\n",
                 "schema": {
                   "type": "string"
                 }
@@ -38145,6 +39918,7 @@
                     {
                       "day": {
                         "c": 20.506,
+                        "dv": "37216.0",
                         "h": 20.64,
                         "l": 20.506,
                         "o": 20.64,
@@ -38163,6 +39937,7 @@
                           14,
                           41
                         ],
+                        "ds": "2416.0",
                         "i": "71675577320245",
                         "p": 20.506,
                         "s": 2416,
@@ -38172,6 +39947,8 @@
                       "min": {
                         "av": 37216,
                         "c": 20.506,
+                        "dav": "37216.0",
+                        "dv": "5000.0",
                         "h": 20.506,
                         "l": 20.506,
                         "n": 1,
@@ -38226,6 +40003,10 @@
                                     "description": "The close price for the symbol in the given time period.",
                                     "format": "double",
                                     "type": "number"
+                                  },
+                                  "dv": {
+                                    "description": "The volume including fractional shares, respresented as a string.",
+                                    "type": "string"
                                   },
                                   "h": {
                                     "description": "The highest price for the symbol in the given time period.",
@@ -38317,6 +40098,10 @@
                                     },
                                     "type": "array"
                                   },
+                                  "ds": {
+                                    "description": "The size of the trade including fractional shares, respresented as a string.",
+                                    "type": "string"
+                                  },
                                   "i": {
                                     "description": "The Trade ID which uniquely identifies a trade. These are unique per\ncombination of ticker, exchange, and TRF. For example: A trade for AAPL\nexecuted on NYSE and a trade for AAPL executed on NASDAQ could potentially\nhave the same Trade ID.\n",
                                     "type": "string"
@@ -38345,7 +40130,8 @@
                                   "p",
                                   "s",
                                   "t",
-                                  "x"
+                                  "x",
+                                  "ds"
                                 ],
                                 "type": "object"
                               },
@@ -38360,6 +40146,14 @@
                                     "description": "The close price for the symbol in the given time period.",
                                     "format": "double",
                                     "type": "number"
+                                  },
+                                  "dav": {
+                                    "description": "The accumulated volume including fractional shares, respresented as a string.",
+                                    "type": "string"
+                                  },
+                                  "dv": {
+                                    "description": "The volume including fractional shares, respresented as a string.",
+                                    "type": "string"
                                   },
                                   "h": {
                                     "description": "The highest price for the symbol in the given time period.",
@@ -38401,6 +40195,7 @@
                                 },
                                 "required": [
                                   "av",
+                                  "dav",
                                   "o",
                                   "h",
                                   "l",
@@ -38490,7 +40285,7 @@
                 }
               },
               "text/csv": {
-                "example": "day_c,day_h,day_l,day_o,day_v,lastQuote_a,lastQuote_b,lastQuote_i,lastQuote_t,lastQuote_x,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,min_c,min_h,min_l,min_o,min_v,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n120.4229,120.53,118.81,119.62,28727868,119.725,120.47,4,120.46,8,1605195918507251817,\"[14,41]\",4046,120.47,236,1605195918306274031,10,28724441,120.4201,120.468,120.37,120.435,270796,120.4129,119.49,119.63,116.44,117.19,110597265,118.4998\n",
+                "example": "day_o,day_h,day_l,day_c,day_v,day_vw,day_dv,quoteResponse_P,quoteResponse_S,quoteResponse_p,quoteResponse_s,quoteResponse_t,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,lastTrade_ds,min_o,min_h,min_l,min_c,min_v,min_vw,min_av,min_t,min_n,min_dv,min_dav,prevDay_o,prevDay_h,prevDay_l,prevDay_c,prevDay_v,prevDay_vw\n20.64,20.64,20.506,20.506,37216,20.616,\"37216.0\",20.6,22,20.5,13,1605192959994246144,\"[14,41]\",71675577320245,20.506,2416,1605192894630916608,4,\"2416.0\",20.506,20.506,20.506,20.506,5000,20.5105,37216,1684428600000,1,\"5000.0\",\"37216.0\",20.79,21,20.5,20.63,292738,20.6939\n",
                 "schema": {
                   "type": "string"
                 }
@@ -38552,6 +40347,7 @@
                   "ticker": {
                     "day": {
                       "c": 120.4229,
+                      "dv": "28727868.0",
                       "h": 120.53,
                       "l": 118.81,
                       "o": 119.62,
@@ -38570,6 +40366,7 @@
                         14,
                         41
                       ],
+                      "ds": "236.0",
                       "i": "4046",
                       "p": 120.47,
                       "s": 236,
@@ -38579,6 +40376,8 @@
                     "min": {
                       "av": 28724441,
                       "c": 120.4201,
+                      "dav": "28724441.0",
+                      "dv": "270796.0",
                       "h": 120.468,
                       "l": 120.37,
                       "n": 762,
@@ -38639,6 +40438,10 @@
                                   "description": "The close price for the symbol in the given time period.",
                                   "format": "double",
                                   "type": "number"
+                                },
+                                "dv": {
+                                  "description": "The volume including fractional shares, respresented as a string.",
+                                  "type": "string"
                                 },
                                 "h": {
                                   "description": "The highest price for the symbol in the given time period.",
@@ -38730,6 +40533,10 @@
                                   },
                                   "type": "array"
                                 },
+                                "ds": {
+                                  "description": "The size of the trade including fractional shares, respresented as a string.",
+                                  "type": "string"
+                                },
                                 "i": {
                                   "description": "The Trade ID which uniquely identifies a trade. These are unique per\ncombination of ticker, exchange, and TRF. For example: A trade for AAPL\nexecuted on NYSE and a trade for AAPL executed on NASDAQ could potentially\nhave the same Trade ID.\n",
                                   "type": "string"
@@ -38758,7 +40565,8 @@
                                 "p",
                                 "s",
                                 "t",
-                                "x"
+                                "x",
+                                "ds"
                               ],
                               "type": "object"
                             },
@@ -38773,6 +40581,14 @@
                                   "description": "The close price for the symbol in the given time period.",
                                   "format": "double",
                                   "type": "number"
+                                },
+                                "dav": {
+                                  "description": "The accumulated volume including fractional shares, respresented as a string.",
+                                  "type": "string"
+                                },
+                                "dv": {
+                                  "description": "The volume including fractional shares, respresented as a string.",
+                                  "type": "string"
                                 },
                                 "h": {
                                   "description": "The highest price for the symbol in the given time period.",
@@ -38814,6 +40630,7 @@
                               },
                               "required": [
                                 "av",
+                                "dav",
                                 "o",
                                 "h",
                                 "l",
@@ -38901,7 +40718,7 @@
                 }
               },
               "text/csv": {
-                "example": "day_c,day_h,day_l,day_o,day_v,lastQuote_a,lastQuote_b,lastQuote_i,lastQuote_t,lastQuote_x,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,min_c,min_h,min_l,min_o,min_v,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n120.4229,120.53,118.81,119.62,28727868,119.725,120.47,4,120.46,8,1605195918507251817,\"[14,41]\",4046,120.47,236,1605195918306274031,10,28724441,120.4201,120.468,120.37,120.435,270796,120.4129,119.49,119.63,116.44,117.19,110597265,118.4998\n",
+                "example": "day_o,day_h,day_l,day_c,day_v,day_vw,day_dv,quoteResponse_P,quoteResponse_S,quoteResponse_p,quoteResponse_s,quoteResponse_t,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,lastTrade_ds,min_o,min_h,min_l,min_c,min_v,min_vw,min_av,min_t,min_n,min_dv,min_dav,prevDay_o,prevDay_h,prevDay_l,prevDay_c,prevDay_v,prevDay_vw\n119.62,120.53,118.81,120.4229,28727868,119.725,\"28727868.0\",120.47,4,120.46,8,1605195918507251817,\"[14,41]\",4046,120.47,236,1605195918306274031,10,\"236.0\",120.435,120.468,120.37,120.4201,270796,120.4129,28724441,1684428720000,762,\"270796.0\",\"28724441.0\",117.19,119.63,116.44,119.49,110597265,118.4998\n",
                 "schema": {
                   "type": "string"
                 }
@@ -38975,6 +40792,7 @@
                     {
                       "day": {
                         "c": 14.2284,
+                        "dv": "133963.0",
                         "h": 15.09,
                         "l": 14.2,
                         "o": 14.33,
@@ -38992,6 +40810,7 @@
                         "c": [
                           63
                         ],
+                        "ds": "536.0",
                         "i": "79372124707124",
                         "p": 14.2284,
                         "s": 536,
@@ -39001,6 +40820,8 @@
                       "min": {
                         "av": 133963,
                         "c": 14.2284,
+                        "dav": "133963.0",
+                        "dv": "6108.0",
                         "h": 14.325,
                         "l": 14.2,
                         "n": 5,
@@ -39051,6 +40872,10 @@
                                     "description": "The close price for the symbol in the given time period.",
                                     "format": "double",
                                     "type": "number"
+                                  },
+                                  "dv": {
+                                    "description": "The volume including fractional shares, respresented as a string.",
+                                    "type": "string"
                                   },
                                   "h": {
                                     "description": "The highest price for the symbol in the given time period.",
@@ -39142,6 +40967,10 @@
                                     },
                                     "type": "array"
                                   },
+                                  "ds": {
+                                    "description": "The size of the trade including fractional shares, respresented as a string.",
+                                    "type": "string"
+                                  },
                                   "i": {
                                     "description": "The Trade ID which uniquely identifies a trade. These are unique per\ncombination of ticker, exchange, and TRF. For example: A trade for AAPL\nexecuted on NYSE and a trade for AAPL executed on NASDAQ could potentially\nhave the same Trade ID.\n",
                                     "type": "string"
@@ -39170,7 +40999,8 @@
                                   "p",
                                   "s",
                                   "t",
-                                  "x"
+                                  "x",
+                                  "ds"
                                 ],
                                 "type": "object"
                               },
@@ -39185,6 +41015,14 @@
                                     "description": "The close price for the symbol in the given time period.",
                                     "format": "double",
                                     "type": "number"
+                                  },
+                                  "dav": {
+                                    "description": "The accumulated volume including fractional shares, respresented as a string.",
+                                    "type": "string"
+                                  },
+                                  "dv": {
+                                    "description": "The volume including fractional shares, respresented as a string.",
+                                    "type": "string"
                                   },
                                   "h": {
                                     "description": "The highest price for the symbol in the given time period.",
@@ -39226,6 +41064,7 @@
                                 },
                                 "required": [
                                   "av",
+                                  "dav",
                                   "o",
                                   "h",
                                   "l",
@@ -39315,7 +41154,7 @@
                 }
               },
               "text/csv": {
-                "example": "day_c,day_h,day_l,day_o,day_v,day_vw,lastQuote_P,lastQuote_S,lastQuote_p,lastQuote_s,lastQuote_t,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,min_av,min_c,min_h,min_l,min_o,min_v,min_vw,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n14.2284,15.09,14.2,14.33,133963,14.5311,14.44,11,14.2,25,1605195929997325568,\"[63]\",79372124707124,14.2284,536,1605195848258266112,4,133963,14.2284,14.325,14.2,14.28,6108,14.2426,0.73,0.799,0.73,0.75,1568097,0.7721\n",
+                "example": "day_o,day_h,day_l,day_c,day_v,day_vw,day_dv,quoteResponse_P,quoteResponse_S,quoteResponse_p,quoteResponse_s,quoteResponse_t,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,lastTrade_ds,min_o,min_h,min_l,min_c,min_v,min_vw,min_av,min_t,min_n,min_dv,min_dav,prevDay_o,prevDay_h,prevDay_l,prevDay_c,prevDay_v,prevDay_vw\n14.33,15.09,14.2,14.2284,133963,14.5311,\"133963.0\",14.44,11,14.2,25,1605195929997325568,\"[63]\",79372124707124,14.2284,536,1605195848258266112,4,\"536.0\",14.28,14.325,14.2,14.2284,6108,14.2426,133963,1684428600000,5,\"6108.0\",\"133963.0\",0.75,0.799,0.73,0.73,1568097,0.7721\n",
                 "schema": {
                   "type": "string"
                 }
@@ -44148,6 +45987,7 @@
                         "change": -0.05,
                         "change_percent": -1.07,
                         "close": 6.65,
+                        "decimal_volume": "67.0",
                         "early_trading_change": -0.01,
                         "early_trading_change_percent": -0.03,
                         "high": 7.01,
@@ -44175,6 +46015,7 @@
                       "fmv_last_updated": 1636573458757383400,
                       "last_minute": {
                         "close": 412.05,
+                        "decimal_volume": "610.0",
                         "high": 412.1,
                         "low": 412.05,
                         "open": 412.1,
@@ -44196,6 +46037,7 @@
                         "conditions": [
                           209
                         ],
+                        "decimal_size": "2.0",
                         "exchange": 316,
                         "id": "4064",
                         "last_updated": 1675280958783136800,
@@ -44209,6 +46051,7 @@
                         "change": -1.05,
                         "change_percent": -4.67,
                         "close": 21.4,
+                        "decimal_volume": "37.0",
                         "early_trading_change": -0.39,
                         "early_trading_change_percent": -0.07,
                         "high": 22.49,
@@ -44363,6 +46206,10 @@
                                 "format": "double",
                                 "type": "number"
                               },
+                              "decimal_volume": {
+                                "description": "The trading volume for the minute aggregate with decimal precision. This field provides support for fractional shares, representing volume as a decimal string where the fractional part is expressed in millionths. This field is only returned for stocks snapshots.",
+                                "type": "string"
+                              },
                               "high": {
                                 "description": "The highest value for the minute aggregate.",
                                 "format": "double",
@@ -44486,6 +46333,10 @@
                                 },
                                 "type": "array"
                               },
+                              "decimal_size": {
+                                "description": "The size of a trade, including fractional shares, represented as a decimal string where the fractional part is expressed in millionths. This field is only returned for stocks snapshots.",
+                                "type": "string"
+                              },
                               "exchange": {
                                 "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
                                 "type": "integer"
@@ -44584,6 +46435,10 @@
                                 "description": "The closing price of the asset for the day.",
                                 "format": "double",
                                 "type": "number"
+                              },
+                              "decimal_volume": {
+                                "description": "The trading volume for the asset for the day with decimal precision. This field provides support for fractional shares, representing volume as a decimal string. This field is only returned for stocks snapshots.",
+                                "type": "string"
                               },
                               "early_trading_change": {
                                 "description": "Today's early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.",
@@ -45310,6 +47165,7 @@
                         "conditions": [
                           209
                         ],
+                        "decimal_size": "2.0",
                         "exchange": 316,
                         "price": 0.05,
                         "sip_timestamp": 1675280958783136800,
@@ -46922,6 +48778,7 @@
                         12,
                         41
                       ],
+                      "decimal_size": "100.0",
                       "exchange": 11,
                       "id": "1",
                       "participant_timestamp": 1517562000015577000,
@@ -46936,6 +48793,7 @@
                         12,
                         41
                       ],
+                      "decimal_size": "100.0",
                       "exchange": 11,
                       "id": "2",
                       "participant_timestamp": 1517562000015577600,
@@ -46977,6 +48835,10 @@
                           "correction": {
                             "description": "The trade correction indicator.",
                             "type": "integer"
+                          },
+                          "decimal_size": {
+                            "description": "The size of the trade including the fractional component. This is represented as a decimal string.",
+                            "type": "string"
                           },
                           "exchange": {
                             "description": "The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive's mapping of exchange IDs.",
@@ -47045,7 +48907,8 @@
                           "sequence_number",
                           "sip_timestamp",
                           "participant_timestamp",
-                          "size"
+                          "size",
+                          "decimal_size"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {
@@ -47066,7 +48929,7 @@
                 }
               },
               "text/csv": {
-                "example": "conditions,exchange,id,participant_timestamp,price,sequence_number,sip_timestamp,size,tape\n\"12,41\",11,1,1517562000015577088,171.55,1063,1517562000016036581,100,3\n\"12,41\",11,2,1517562000015577600,171.55,1064,1517562000016038175,100,3\n",
+                "example": "conditions,exchange,id,participant_timestamp,price,sequence_number,sip_timestamp,size,tape,decimal_size\n\"12,41\",11,1,1517562000015577088,171.55,1063,1517562000016036581,100,3,100.0\n\"12,41\",11,2,1517562000015577600,171.55,1064,1517562000016038175,100,3,100.0\n",
                 "schema": {
                   "type": "string"
                 }
