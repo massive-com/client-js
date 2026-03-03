@@ -17718,6 +17718,351 @@
         ]
       }
     },
+    "/stocks/filings/8-K/vX/text": {
+      "get": {
+        "description": "SEC 8-K filings text providing parsed content from current report filings. 8-K forms report material events such as earnings, acquisitions, executive changes, and other significant corporate events.",
+        "operationId": "get_stocks_filings_8-K_vX_text",
+        "parameters": [
+          {
+            "description": "SEC Central Index Key (10 digits, zero-padded).",
+            "in": "query",
+            "name": "cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "cik.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "cik.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "cik.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "cik.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Stock ticker symbol for the company.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC form type (e.g., '8-K', '8-K/A' for amendments).",
+            "in": "query",
+            "name": "form_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "form_type.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "form_type.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "form_type.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "form_type.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "form_type.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '999'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'filing_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "filing_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 2,
+                  "next_url": "https://api.massive.com/stocks/filings/8-K/vX/text?cursor=eyJsaW1pd...",
+                  "request_id": "a3f8b2c1d4e5f6g7",
+                  "results": [
+                    {
+                      "accession_number": "0000004962-25-000002",
+                      "cik": "0000004962",
+                      "filing_date": "2025-01-15",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/4962/0000004962-25-000002.txt",
+                      "form_type": "8-K",
+                      "items_text": "Item 7.01\tRegulation FD Disclosure\n\nAmerican Express Company is hereby furnishing below delinquency and write-off statistics...",
+                      "ticker": "AXP"
+                    },
+                    {
+                      "accession_number": "0000320193-25-000010",
+                      "cik": "0000320193",
+                      "filing_date": "2025-01-14",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/320193/0000320193-25-000010.txt",
+                      "form_type": "8-K",
+                      "items_text": "Item 2.02\tResults of Operations and Financial Condition\n\nOn January 14, 2025, Apple Inc. announced financial results...",
+                      "ticker": "AAPL"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "accession_number": {
+                            "description": "SEC accession number uniquely identifying the filing (e.g., '0000004962-25-000002').",
+                            "type": "string"
+                          },
+                          "cik": {
+                            "description": "SEC Central Index Key (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "filing_date": {
+                            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "filing_url": {
+                            "description": "SEC URL source for the full filing.",
+                            "type": "string"
+                          },
+                          "form_type": {
+                            "description": "SEC form type (e.g., '8-K', '8-K/A' for amendments).",
+                            "type": "string"
+                          },
+                          "items_text": {
+                            "description": "Parsed text content from the 8-K filing, including item numbers and descriptions.",
+                            "type": "string"
+                          },
+                          "ticker": {
+                            "description": "Stock ticker symbol for the company.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/stocks/filings/vX/index": {
       "get": {
         "description": "SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.",
@@ -23072,59 +23417,6 @@
             }
           },
           {
-            "description": "Total reported volume across all venues for the ticker on the given date. Value must be an integer.",
-            "in": "query",
-            "name": "total_volume",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer.",
-            "in": "query",
-            "name": "total_volume.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value. Value must be an integer.",
-            "in": "query",
-            "name": "total_volume.gt",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value. Value must be an integer.",
-            "in": "query",
-            "name": "total_volume.gte",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Filter less than the value. Value must be an integer.",
-            "in": "query",
-            "name": "total_volume.lt",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value. Value must be an integer.",
-            "in": "query",
-            "name": "total_volume.lte",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
             "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '50000'.",
             "in": "query",
             "name": "limit",
@@ -23203,8 +23495,8 @@
                           },
                           "exempt_volume": {
                             "description": "Portion of short volume that was marked as exempt from regulation SHO.",
-                            "format": "int64",
-                            "type": "integer"
+                            "format": "double",
+                            "type": "number"
                           },
                           "nasdaq_carteret_short_volume": {
                             "description": "Short volume reported from Nasdaq's Carteret facility, excluding exempt volume.",
@@ -23228,8 +23520,8 @@
                           },
                           "non_exempt_volume": {
                             "description": "Portion of short volume that was not exempt from regulation SHO (i.e., short_volume - exempt_volume).",
-                            "format": "int64",
-                            "type": "integer"
+                            "format": "double",
+                            "type": "number"
                           },
                           "nyse_short_volume": {
                             "description": "Short volume reported from NYSE facilities, excluding exempt volume.",
@@ -23243,8 +23535,8 @@
                           },
                           "short_volume": {
                             "description": "Total number of shares sold short across all venues for the ticker on the given date.",
-                            "format": "int64",
-                            "type": "integer"
+                            "format": "double",
+                            "type": "number"
                           },
                           "short_volume_ratio": {
                             "description": "The percentage of total volume that was sold short. Calculated as (short_volume / total_volume) * 100.",
@@ -23257,8 +23549,8 @@
                           },
                           "total_volume": {
                             "description": "Total reported volume across all venues for the ticker on the given date.",
-                            "format": "int64",
-                            "type": "integer"
+                            "format": "double",
+                            "type": "number"
                           }
                         },
                         "required": [

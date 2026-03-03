@@ -18,1873 +18,764 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from './common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from './common';
 import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
-/**
- * 
- * @export
- * @interface Company
- */
 export interface Company {
     /**
      * Indicates if the security is actively listed.  If false, this means the company is no longer listed and cannot be traded.
-     * @type {boolean}
-     * @memberof Company
      */
     'active'?: boolean;
     /**
      * The Bloomberg guid for the symbol.
-     * @type {string}
-     * @memberof Company
      */
     'bloomberg'?: string;
     /**
      * The name of the company\'s current CEO.
-     * @type {string}
-     * @memberof Company
      */
     'ceo'?: string;
     /**
      * The official CIK guid used for SEC database/filings.
-     * @type {string}
-     * @memberof Company
      */
     'cik'?: string;
     /**
      * The country in which the company is registered.
-     * @type {string}
-     * @memberof Company
      */
     'country'?: string;
     /**
      * A description of the company and what they do/offer.
-     * @type {string}
-     * @memberof Company
      */
     'description'?: string;
     /**
      * The approximate number of employees for the company.
-     * @type {number}
-     * @memberof Company
      */
     'employees'?: number;
     /**
      * The symbol\'s primary exchange.
-     * @type {string}
-     * @memberof Company
      */
     'exchange'?: string;
     /**
      * The exchange code (id) of the symbol\'s primary exchange.
-     * @type {string}
-     * @memberof Company
      */
     'exchangeSymbol'?: string;
     /**
      * The OpenFigi project guid for the symbol. (<a rel=\"nofollow\" target=\"_blank\" href=\"https://openfigi.com/\">https://openfigi.com/</a>)
-     * @type {string}
-     * @memberof Company
      */
     'figi'?: string;
     /**
      * The street address for the company\'s headquarters.
-     * @type {string}
-     * @memberof Company
      */
     'hq_address'?: string;
     /**
      * The country in which the company\'s headquarters is located.
-     * @type {string}
-     * @memberof Company
      */
     'hq_country'?: string;
     /**
      * The state in which the company\'s headquarters is located.
-     * @type {string}
-     * @memberof Company
      */
     'hq_state'?: string;
     /**
      * The industry in which the company operates.
-     * @type {string}
-     * @memberof Company
      */
     'industry'?: string;
     /**
      * The Legal Entity Identifier (LEI) guid for the symbol. (<a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Legal_Entity_Identifier\">https://en.wikipedia.org/wiki/Legal_Entity_Identifier</a>)
-     * @type {string}
-     * @memberof Company
      */
     'lei'?: string;
     /**
      * The date that the symbol was listed on the exchange.
-     * @type {string}
-     * @memberof Company
      */
     'listdate'?: string;
     /**
      * The URL of the entity\'s logo.
-     * @type {string}
-     * @memberof Company
      */
     'logo'?: string;
     /**
      * The current market cap for the company.
-     * @type {number}
-     * @memberof Company
      */
     'marketcap'?: number;
     /**
      * The name of the company/entity.
-     * @type {string}
-     * @memberof Company
      */
     'name'?: string;
     /**
      * The phone number for the company. This is usually a corporate contact number.
-     * @type {string}
-     * @memberof Company
      */
     'phone'?: string;
     /**
      * The sector of the indsutry in which the symbol operates.
-     * @type {string}
-     * @memberof Company
      */
     'sector'?: string;
     /**
      * Standard Industrial Classification (SIC) id for the symbol. (<a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Standard_Industrial_Classification\">https://en.wikipedia.org/wiki/Legal_Entity_Identifier</a>)
-     * @type {number}
-     * @memberof Company
      */
     'sic'?: number;
     /**
      * A list of ticker symbols for similar companies.
-     * @type {Array<string>}
-     * @memberof Company
      */
     'similar'?: Array<string>;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof Company
      */
     'symbol'?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof Company
-     */
     'tags'?: Array<string>;
     /**
      * The type or class of the security.  (<a alt=\"Full List of Ticker Types\" href=\"https://massive.com/docs/rest/stocks/tickers/ticker-types\">Full List of Ticker Types</a>)
-     * @type {string}
-     * @memberof Company
      */
     'type'?: string;
     /**
      * The last time this company record was updated.
-     * @type {string}
-     * @memberof Company
      */
     'updated'?: string;
     /**
      * The URL of the company\'s website
-     * @type {string}
-     * @memberof Company
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface ConditionTypeMap
- */
 export interface ConditionTypeMap {
     /**
      * Massive\'s mapping for condition codes.  For more information, see our <a href=\"https://massive.com/glossary/trade-conditions\" alt=\"Trade Conditions Glossary\" target=\"_blank\">Trade Conditions Glossary</a>. 
-     * @type {string}
-     * @memberof ConditionTypeMap
      */
     'condition'?: string;
 }
-/**
- * 
- * @export
- * @interface CryptoExchangeInner
- */
 export interface CryptoExchangeInner {
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof CryptoExchangeInner
      */
     'id': number;
     /**
      * Market data type this exchange contains ( crypto only currently )
-     * @type {string}
-     * @memberof CryptoExchangeInner
      */
     'market': string;
     /**
      * Name of the exchange
-     * @type {string}
-     * @memberof CryptoExchangeInner
      */
     'name': string;
     /**
      * Type of exchange feed
-     * @type {string}
-     * @memberof CryptoExchangeInner
      */
     'type': string;
     /**
      * URL of this exchange
-     * @type {string}
-     * @memberof CryptoExchangeInner
      */
     'url': string;
 }
-/**
- * 
- * @export
- * @interface CryptoGroupedResults
- */
 export interface CryptoGroupedResults {
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetGroupedCryptoAggregates200ResponseAllOfResultsInner>}
-     * @memberof CryptoGroupedResults
      */
     'results'?: Array<GetGroupedCryptoAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface CryptoHistoricTrades
- */
 export interface CryptoHistoricTrades {
     /**
      * The date that was evaluated from the request.
-     * @type {string}
-     * @memberof CryptoHistoricTrades
      */
     'day': string;
     /**
      * A map for shortened result keys.
-     * @type {object}
-     * @memberof CryptoHistoricTrades
      */
     'map': object;
     /**
      * The milliseconds of latency for the query results.
-     * @type {number}
-     * @memberof CryptoHistoricTrades
      */
     'msLatency': number;
     /**
      * The symbol pair that was evaluated from the request.
-     * @type {string}
-     * @memberof CryptoHistoricTrades
      */
     'symbol': string;
-    /**
-     * 
-     * @type {Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>}
-     * @memberof CryptoHistoricTrades
-     */
     'ticks': Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>;
 }
-/**
- * 
- * @export
- * @interface CryptoLastTrade
- */
 export interface CryptoLastTrade {
-    /**
-     * 
-     * @type {CryptoLastTradeLast}
-     * @memberof CryptoLastTrade
-     */
     'last'?: CryptoLastTradeLast;
     /**
      * The symbol pair that was evaluated from the request.
-     * @type {string}
-     * @memberof CryptoLastTrade
      */
     'symbol': string;
 }
-/**
- * 
- * @export
- * @interface CryptoLastTradeLast
- */
 export interface CryptoLastTradeLast {
     /**
      * A list of condition codes. 
-     * @type {Array<number>}
-     * @memberof CryptoLastTradeLast
      */
     'conditions': Array<number>;
     /**
      * The exchange that this crypto trade happened on.   See <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs. 
-     * @type {number}
-     * @memberof CryptoLastTradeLast
      */
     'exchange': number;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00. 
-     * @type {number}
-     * @memberof CryptoLastTradeLast
      */
     'price': number;
     /**
      * The size of a trade (also known as volume). 
-     * @type {number}
-     * @memberof CryptoLastTradeLast
      */
     'size': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof CryptoLastTradeLast
      */
     'timestamp': number;
 }
-/**
- * 
- * @export
- * @interface CryptoOpenClose
- */
 export interface CryptoOpenClose {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof CryptoOpenClose
      */
     'close': number;
     /**
      * An array of results containing the requested data.
-     * @type {Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>}
-     * @memberof CryptoOpenClose
      */
     'closingTrades': Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>;
     /**
      * The date requested.
-     * @type {string}
-     * @memberof CryptoOpenClose
      */
     'day': string;
     /**
      * Whether or not the timestamps are in UTC timezone.
-     * @type {boolean}
-     * @memberof CryptoOpenClose
      */
     'isUTC': boolean;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof CryptoOpenClose
      */
     'open': number;
     /**
      * An array of results containing the requested data.
-     * @type {Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>}
-     * @memberof CryptoOpenClose
      */
     'openTrades': Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>;
     /**
      * The symbol pair that was evaluated from the request.
-     * @type {string}
-     * @memberof CryptoOpenClose
      */
     'symbol': string;
 }
-/**
- * 
- * @export
- * @interface CryptoSnapshotMinute
- */
 export interface CryptoSnapshotMinute {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof CryptoSnapshotMinute
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof CryptoSnapshotMinute
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof CryptoSnapshotMinute
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof CryptoSnapshotMinute
      */
     'n': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof CryptoSnapshotMinute
      */
     'o': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof CryptoSnapshotMinute
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof CryptoSnapshotMinute
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof CryptoSnapshotMinute
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface CryptoSnapshotTicker
- */
 export interface CryptoSnapshotTicker {
-    /**
-     * 
-     * @type {GetCryptoSnapshotTicker200ResponseAllOfTicker}
-     * @memberof CryptoSnapshotTicker
-     */
     'ticker'?: GetCryptoSnapshotTicker200ResponseAllOfTicker;
 }
-/**
- * 
- * @export
- * @interface CryptoSnapshotTickerFullBook
- */
 export interface CryptoSnapshotTickerFullBook {
-    /**
-     * 
-     * @type {DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData}
-     * @memberof CryptoSnapshotTickerFullBook
-     */
     'data'?: DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData;
 }
-/**
- * 
- * @export
- * @interface CryptoSnapshotTickers
- */
 export interface CryptoSnapshotTickers {
     /**
      * An array of snapshot data for the specified tickers.
-     * @type {Array<GetCryptoSnapshotTickers200ResponseAllOfTickersInner>}
-     * @memberof CryptoSnapshotTickers
      */
     'tickers'?: Array<GetCryptoSnapshotTickers200ResponseAllOfTickersInner>;
 }
-/**
- * 
- * @export
- * @interface CryptoTick
- */
 export interface CryptoTick {
     /**
      * A list of condition codes. 
-     * @type {Array<number>}
-     * @memberof CryptoTick
      */
     'c': Array<number>;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID. 
-     * @type {string}
-     * @memberof CryptoTick
      */
     'i': string;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00. 
-     * @type {number}
-     * @memberof CryptoTick
      */
     'p': number;
     /**
      * The size of a trade (also known as volume). 
-     * @type {number}
-     * @memberof CryptoTick
      */
     's': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof CryptoTick
      */
     't': number;
     /**
      * The exchange that this crypto trade happened on.   See <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs. 
-     * @type {number}
-     * @memberof CryptoTick
      */
     'x': number;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetCryptoSnapshotTickerBook200Response
- */
 export interface DeprecatedGetCryptoSnapshotTickerBook200Response {
-    /**
-     * 
-     * @type {DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200Response
-     */
     'data'?: DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData
- */
 export interface DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData {
     /**
      * The combined total number of asks in the book.
-     * @type {number}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData
      */
     'askCount': number;
-    /**
-     * 
-     * @type {Array<DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfDataAsksInner>}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData
-     */
     'asks': Array<DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfDataAsksInner>;
     /**
      * The combined total number of bids in the book.
-     * @type {number}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData
      */
     'bidCount': number;
-    /**
-     * 
-     * @type {Array<DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfDataAsksInner>}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData
-     */
     'bids': Array<DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfDataAsksInner>;
     /**
      * The difference between the best bid and the best ask price across exchanges.
-     * @type {number}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData
      */
     'spread': number;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData
      */
     'ticker': string;
     /**
      * The last updated timestamp.
-     * @type {number}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfData
      */
     'updated': number;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfDataAsksInner
- */
 export interface DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfDataAsksInner {
     /**
      * The price of this book level.
-     * @type {number}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfDataAsksInner
      */
     'p': number;
     /**
      * A map of the exchange ID to number of shares at this price level. <br /> <br /> **Example:** <br /> `{   \"p\": 16302.94,   \"x\": {     \"1\": 0.02859424,     \"6\": 0.023455   } }` <br /> <br /> In this example, exchange ID 1 has 0.02859424 shares available at $16,302.94, and exchange ID 6 has 0.023455 shares at the same price level. 
-     * @type {object}
-     * @memberof DeprecatedGetCryptoSnapshotTickerBook200ResponseAllOfDataAsksInner
      */
     'x': object;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetHistoricCryptoTrades200Response
- */
 export interface DeprecatedGetHistoricCryptoTrades200Response {
     /**
      * The date that was evaluated from the request.
-     * @type {string}
-     * @memberof DeprecatedGetHistoricCryptoTrades200Response
      */
     'day': string;
     /**
      * A map for shortened result keys.
-     * @type {object}
-     * @memberof DeprecatedGetHistoricCryptoTrades200Response
      */
     'map': object;
     /**
      * The milliseconds of latency for the query results.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricCryptoTrades200Response
      */
     'msLatency': number;
     /**
      * The symbol pair that was evaluated from the request.
-     * @type {string}
-     * @memberof DeprecatedGetHistoricCryptoTrades200Response
      */
     'symbol': string;
-    /**
-     * 
-     * @type {Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>}
-     * @memberof DeprecatedGetHistoricCryptoTrades200Response
-     */
     'ticks': Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner
- */
 export interface DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner {
     /**
      * A list of condition codes. 
-     * @type {Array<number>}
-     * @memberof DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner
      */
     'c': Array<number>;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID. 
-     * @type {string}
-     * @memberof DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner
      */
     'i': string;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00. 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner
      */
     'p': number;
     /**
      * The size of a trade (also known as volume). 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner
      */
     's': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner
      */
     't': number;
     /**
      * The exchange that this crypto trade happened on.   See <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs. 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner
      */
     'x': number;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetHistoricForexQuotes200Response
- */
 export interface DeprecatedGetHistoricForexQuotes200Response {
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof DeprecatedGetHistoricForexQuotes200Response
      */
     'status': string;
     /**
      * The date that was evaluated from the request.
-     * @type {string}
-     * @memberof DeprecatedGetHistoricForexQuotes200Response
      */
     'day': string;
     /**
      * A map for shortened result keys.
-     * @type {object}
-     * @memberof DeprecatedGetHistoricForexQuotes200Response
      */
     'map': object;
     /**
      * The milliseconds of latency for the query results.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricForexQuotes200Response
      */
     'msLatency': number;
     /**
      * The currency pair that was evaluated from the request.
-     * @type {string}
-     * @memberof DeprecatedGetHistoricForexQuotes200Response
      */
     'pair': string;
-    /**
-     * 
-     * @type {Array<DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner>}
-     * @memberof DeprecatedGetHistoricForexQuotes200Response
-     */
     'ticks': Array<DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner>;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner
- */
 export interface DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner
      */
     'a': number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner
      */
     'b': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner
      */
     't': number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner
      */
     'x': number;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetHistoricStocksQuotes200Response
- */
 export interface DeprecatedGetHistoricStocksQuotes200Response {
     /**
      * Latency in milliseconds for the query results from the database.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200Response
      */
     'db_latency'?: number;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200Response
      */
     'results_count'?: number;
     /**
      * Whether or not this query was executed successfully.
-     * @type {boolean}
-     * @memberof DeprecatedGetHistoricStocksQuotes200Response
      */
     'success'?: boolean;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof DeprecatedGetHistoricStocksQuotes200Response
      */
     'ticker'?: string;
-    /**
-     * 
-     * @type {Array<DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner>}
-     * @memberof DeprecatedGetHistoricStocksQuotes200Response
-     */
     'results'?: Array<DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
- */
 export interface DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'T': string;
     /**
      * The nanosecond accuracy TRF(Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this message.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'f': number;
     /**
      * The sequence number represents the sequence in which message events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11). 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'q': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     't': number;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'y': number;
     /**
      * The ask price.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'P': number;
     /**
      * The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'S': number;
     /**
      * The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'X': number;
     /**
      * A list of condition codes. 
-     * @type {Array<number>}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'c': Array<number>;
     /**
      * The indicators. For more information, see our glossary of [Conditions and Indicators](https://massive.com/glossary/conditions-indicators). 
-     * @type {Array<number>}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'i': Array<number>;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'p': number;
     /**
      * The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     's': number;
     /**
      * The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'x': number;
     /**
      * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner
      */
     'z': number;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetHistoricStocksTrades200Response
- */
 export interface DeprecatedGetHistoricStocksTrades200Response {
     /**
      * Latency in milliseconds for the query results from the database.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200Response
      */
     'db_latency'?: number;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200Response
      */
     'results_count'?: number;
     /**
      * Whether or not this query was executed successfully.
-     * @type {boolean}
-     * @memberof DeprecatedGetHistoricStocksTrades200Response
      */
     'success'?: boolean;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof DeprecatedGetHistoricStocksTrades200Response
      */
     'ticker'?: string;
-    /**
-     * 
-     * @type {Array<DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner>}
-     * @memberof DeprecatedGetHistoricStocksTrades200Response
-     */
     'results'?: Array<DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
- */
 export interface DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'T': string;
     /**
      * The nanosecond accuracy TRF(Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this message.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'f': number;
     /**
      * The sequence number represents the sequence in which message events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11). 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'q': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     't': number;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'y': number;
     /**
      * A list of condition codes. 
-     * @type {Array<number>}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'c': Array<number>;
     /**
      * The trade correction indicator. 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'e': number;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID. 
-     * @type {string}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'i': string;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00. 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'p': number;
     /**
      * The ID for the Trade Reporting Facility where the trade took place. 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'r': number;
     /**
      * The size of a trade (also known as volume). 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     's': number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'x': number;
     /**
      * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ 
-     * @type {number}
-     * @memberof DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner
      */
     'z': number;
 }
-/**
- * 
- * @export
- * @interface ExchangeInner
- */
 export interface ExchangeInner {
     /**
      * A unique identifier for the exchange internal to Massive.  This is not an industry code or ISO standard.
-     * @type {string}
-     * @memberof ExchangeInner
      */
     'code'?: string;
     /**
      * The ID of the exchange.
-     * @type {number}
-     * @memberof ExchangeInner
      */
     'id'?: number;
     /**
      * The market data type that this exchange contains.
-     * @type {string}
-     * @memberof ExchangeInner
      */
     'market'?: string;
     /**
      * The Market Identification Code or MIC as defined in ISO 10383 (<a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Market_Identifier_Code\">https://en.wikipedia.org/wiki/Market_Identifier_Code</a>).
-     * @type {string}
-     * @memberof ExchangeInner
      */
     'mic'?: string;
     /**
      * The name of the exchange.
-     * @type {string}
-     * @memberof ExchangeInner
      */
     'name'?: string;
     /**
      * The tape id of the exchange.
-     * @type {string}
-     * @memberof ExchangeInner
      */
     'tape'?: string;
     /**
      * The type of exchange. - TRF = Trade Reporting Facility - exchange = Reporting exchange on the tape 
-     * @type {string}
-     * @memberof ExchangeInner
      */
     'type'?: string;
 }
-/**
- * 
- * @export
- * @interface Financial
- */
 export interface Financial {
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'cashChange'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'cashFlow'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'costOfRevenue'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'currentAssets'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'currentCash'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'currentDebt'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'grossProfit'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'netIncome'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'operatingExpense'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'operatingGainsLosses'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'operatingIncome'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'operatingRevenue'?: number;
     /**
      * Report Date
-     * @type {string}
-     * @memberof Financial
      */
     'reportDate': string;
     /**
      * Report date as non date format
-     * @type {string}
-     * @memberof Financial
      */
     'reportDateStr': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'researchAndDevelopment'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'shareholderEquity'?: number;
     /**
      * Stock Symbol
-     * @type {string}
-     * @memberof Financial
      */
     'symbol': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'totalAssets'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'totalCash'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'totalDebt'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'totalLiabilities'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financial
-     */
     'totalRevenue'?: number;
 }
 /**
  * Financials
- * @export
- * @interface Financials
  */
 export interface Financials {
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'EBITDAMargin'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'accumulatedOtherComprehensiveIncome'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'accumulatedRetainedEarningsDeficit'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'assetTurnover'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'assets'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'assetsAverage'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'assetsCurrent'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'assetsNonCurrent'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'averageEquity'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'bookValuePerShare'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Financials
-     */
     'calendarDate'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'capitalExpenditure'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'cashAndEquivalents'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'cashAndEquivalentsUSD'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'consolidatedIncome'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'costOfRevenue'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'currentLiabilities'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'currentRatio'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'debt'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'debtCurrent'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'debtNonCurrent'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'debtToEquityRatio'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'debtUSD'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'deferredRevenue'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'deposits'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'depreciationAmortizationAndAccretion'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'dividendYield'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'dividendsPerBasicCommonShare'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'earningBeforeInterestTaxes'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'earningBeforeInterestTaxesUSD'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'earningsBeforeInterestTaxesDepreciationAmortization'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'earningsBeforeInterestTaxesDepreciationAmortizationUSD'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'earningsBeforeTax'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'earningsPerBasicShare'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'earningsPerBasicShareUSD'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'earningsPerDilutedShare'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'effectOfExchangeRateChangesOnCash'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'enterpriseValue'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'enterpriseValueOverEBIT'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'enterpriseValueOverEBITDA'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'foreignCurrencyUSDExchangeRate'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'freeCashFlow'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'freeCashFlowPerShare'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'goodwillAndIntangibleAssets'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'grossMargin'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'grossProfit'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'incomeTaxExpense'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'interestExpense'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'inventory'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'investedCapital'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'investedCapitalAverage'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'investments'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'investmentsCurrent'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'investmentsNonCurrent'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'issuanceDebtSecurities'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'issuanceEquityShares'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'liabilitiesNonCurrent'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'marketCapitalization'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netCashFlow'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netCashFlowBusinessAcquisitionsDisposals'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netCashFlowFromFinancing'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netCashFlowFromInvesting'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netCashFlowFromOperations'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netCashFlowInvestmentAcquisitionsDisposals'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netIncome'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netIncomeCommonStock'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netIncomeCommonStockUSD'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netIncomeToNonControllingInterests'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'netLossIncomeFromDiscontinuedOperations'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'operatingExpenses'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'operatingIncome'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'paymentDividendsOtherCashDistributions'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'payoutRatio'?: number;
     /**
      * Reporting period.
-     * @type {string}
-     * @memberof Financials
      */
     'period'?: FinancialsPeriodEnum;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'preferredDividendsIncomeStatementImpact'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'priceEarnings'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'priceSales'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'priceToBookValue'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'priceToEarningsRatio'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'priceToSalesRatio'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'profitMargin'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'propertyPlantEquipmentNet'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Financials
-     */
     'reportPeriod'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'researchAndDevelopmentExpense'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'returnOnAverageAssets'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'returnOnAverageEquity'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'returnOnInvestedCapital'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'returnOnSales'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'revenues'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'revenuesUSD'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'salesPerShare'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'sellingGeneralAndAdministrativeExpense'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'shareBasedCompensation'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'shareFactor'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'sharePriceAdjustedClose'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'shareholdersEquity'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'shareholdersEquityUSD'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'shares'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'tangibleAssetValue'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'tangibleAssetsBookValuePerShare'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'taxAssets'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'taxLiabilities'?: number;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof Financials
      */
     'ticker': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'totalLiabilities'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'tradeAndNonTradePayables'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'tradeAndNonTradeReceivables'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Financials
-     */
     'updated'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'weightedAverageShares'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'weightedAverageSharesDiluted'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Financials
-     */
     'workingCapital'?: number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum FinancialsPeriodEnum {
     Q = 'Q',
     T = 'T',
@@ -1894,7334 +785,4346 @@ export enum FinancialsPeriodEnum {
     Ya = 'YA'
 }
 
-/**
- * 
- * @export
- * @interface ForexConversion
- */
 export interface ForexConversion {
     /**
      * The result of the conversion.
-     * @type {number}
-     * @memberof ForexConversion
      */
     'converted': number;
     /**
      * The \"from\" currency symbol.
-     * @type {string}
-     * @memberof ForexConversion
      */
     'from': string;
     /**
      * The amount to convert.
-     * @type {number}
-     * @memberof ForexConversion
      */
     'initialAmount': number;
-    /**
-     * 
-     * @type {ForexConversionLast}
-     * @memberof ForexConversion
-     */
     'last'?: ForexConversionLast;
     /**
      * The \"to\" currency symbol.
-     * @type {string}
-     * @memberof ForexConversion
      */
     'to': string;
 }
-/**
- * 
- * @export
- * @interface ForexConversionLast
- */
 export interface ForexConversionLast {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof ForexConversionLast
      */
     'ask': number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof ForexConversionLast
      */
     'bid': number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof ForexConversionLast
      */
     'exchange': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof ForexConversionLast
      */
     'timestamp': number;
 }
-/**
- * 
- * @export
- * @interface ForexGroupedResults
- */
 export interface ForexGroupedResults {
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetGroupedCryptoAggregates200ResponseAllOfResultsInner>}
-     * @memberof ForexGroupedResults
      */
     'results'?: Array<GetGroupedCryptoAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface ForexHistoricTrades
- */
 export interface ForexHistoricTrades {
     /**
      * The date that was evaluated from the request.
-     * @type {string}
-     * @memberof ForexHistoricTrades
      */
     'day': string;
     /**
      * A map for shortened result keys.
-     * @type {object}
-     * @memberof ForexHistoricTrades
      */
     'map': object;
     /**
      * The milliseconds of latency for the query results.
-     * @type {number}
-     * @memberof ForexHistoricTrades
      */
     'msLatency': number;
     /**
      * The currency pair that was evaluated from the request.
-     * @type {string}
-     * @memberof ForexHistoricTrades
      */
     'pair': string;
-    /**
-     * 
-     * @type {Array<DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner>}
-     * @memberof ForexHistoricTrades
-     */
     'ticks': Array<DeprecatedGetHistoricForexQuotes200ResponseAllOfTicksInner>;
 }
-/**
- * 
- * @export
- * @interface ForexPairLastQuote
- */
 export interface ForexPairLastQuote {
-    /**
-     * 
-     * @type {ForexConversionLast}
-     * @memberof ForexPairLastQuote
-     */
     'last'?: ForexConversionLast;
     /**
      * The symbol pair that was evaluated from the request.
-     * @type {string}
-     * @memberof ForexPairLastQuote
      */
     'symbol': string;
 }
-/**
- * 
- * @export
- * @interface ForexPreviousClose
- */
 export interface ForexPreviousClose {
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetPreviousForexAggregates200ResponseAllOfResultsInner>}
-     * @memberof ForexPreviousClose
      */
     'results'?: Array<GetPreviousForexAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface ForexSnapshotLastQuote
- */
 export interface ForexSnapshotLastQuote {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof ForexSnapshotLastQuote
      */
     'a': number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof ForexSnapshotLastQuote
      */
     'b': number;
     /**
      * The millisecond accuracy timestamp of the quote.
-     * @type {number}
-     * @memberof ForexSnapshotLastQuote
      */
     't': number;
     /**
      * The exchange ID on which this quote happened.
-     * @type {number}
-     * @memberof ForexSnapshotLastQuote
      */
     'x': number;
 }
-/**
- * 
- * @export
- * @interface ForexSnapshotPrevDay
- */
 export interface ForexSnapshotPrevDay {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof ForexSnapshotPrevDay
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof ForexSnapshotPrevDay
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof ForexSnapshotPrevDay
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof ForexSnapshotPrevDay
      */
     'o': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof ForexSnapshotPrevDay
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof ForexSnapshotPrevDay
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface ForexSnapshotTicker
- */
 export interface ForexSnapshotTicker {
-    /**
-     * 
-     * @type {GetForexSnapshotTicker200ResponseAllOfTicker}
-     * @memberof ForexSnapshotTicker
-     */
     'ticker'?: GetForexSnapshotTicker200ResponseAllOfTicker;
 }
-/**
- * 
- * @export
- * @interface ForexSnapshotTickers
- */
 export interface ForexSnapshotTickers {
     /**
      * An array of snapshot data for the specified tickers.
-     * @type {Array<GetForexSnapshotTickers200ResponseAllOfTickersInner>}
-     * @memberof ForexSnapshotTickers
      */
     'tickers'?: Array<GetForexSnapshotTickers200ResponseAllOfTickersInner>;
 }
-/**
- * 
- * @export
- * @interface ForexTickerResults
- */
 export interface ForexTickerResults {
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetCryptoAggregates200ResponseAllOfResultsInner>}
-     * @memberof ForexTickerResults
      */
     'results'?: Array<GetCryptoAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface GetBenzingaV1AnalystInsights200Response
- */
 export interface GetBenzingaV1AnalystInsights200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetBenzingaV1AnalystInsights200ResponseResultsInner>}
-     * @memberof GetBenzingaV1AnalystInsights200Response
      */
     'results': Array<GetBenzingaV1AnalystInsights200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200Response
      */
     'status': GetBenzingaV1AnalystInsights200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV1AnalystInsights200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV1AnalystInsights200ResponseResultsInner
- */
 export interface GetBenzingaV1AnalystInsights200ResponseResultsInner {
     /**
      * The identifer used by Benzinga for the firm record.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'benzinga_firm_id'?: string;
     /**
      * The identifer used by Benzinga for this record.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'benzinga_id'?: string;
     /**
      * The identifier used by Benzinga for the rating record.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'benzinga_rating_id'?: string;
     /**
      * The name of the company being rated.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'company_name'?: string;
     /**
      * The calendar date (formatted as YYYY-MM-DD) when the rating was issued.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'date'?: string;
     /**
      * The name of the research firm or investment bank issuing the rating.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'firm'?: string;
     /**
      * Narrative commentary or reasoning provided by the analyst or firm to explain the rating or price target.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'insight'?: string;
     /**
      * The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'last_updated'?: string;
     /**
      * The current price target set by the analyst.
-     * @type {number}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'price_target'?: number;
     /**
      * The current rating set by the analyst.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'rating'?: string;
     /**
      * The description of the change in rating from the firm\'s last rating. Possible values include: downgrades, maintains, reinstates, reiterates, upgrades, assumes, initiates_coverage_on, terminates_coverage_on, removes, suspends, firm_dissolved.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'rating_action'?: string;
     /**
      * The stock symbol of the company being rated.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetBenzingaV1AnalystInsights400Response
- */
 export interface GetBenzingaV1AnalystInsights400Response {
     /**
      * A message describing the source of the error.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights400Response
      */
     'error': string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights400Response
      */
     'request_id': string;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV1AnalystInsights400Response
      */
     'status': GetBenzingaV1AnalystInsights400ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV1AnalystInsights400ResponseStatusEnum {
     Error = 'ERROR'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV1Analysts200Response
- */
 export interface GetBenzingaV1Analysts200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetBenzingaV1Analysts200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV1Analysts200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetBenzingaV1Analysts200ResponseResultsInner>}
-     * @memberof GetBenzingaV1Analysts200Response
      */
     'results': Array<GetBenzingaV1Analysts200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV1Analysts200Response
      */
     'status': GetBenzingaV1Analysts200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV1Analysts200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV1Analysts200ResponseResultsInner
- */
 export interface GetBenzingaV1Analysts200ResponseResultsInner {
     /**
      * The unique identifier assigned by Benzinga to the research firm or investment bank.
-     * @type {string}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'benzinga_firm_id'?: string;
     /**
      * The identifier used by Benzinga for this record.
-     * @type {string}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'benzinga_id'?: string;
     /**
      * The name of the research firm or investment bank issuing the ratings.
-     * @type {string}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'firm_name'?: string;
     /**
      * The full name of the analyst associated with the ratings.
-     * @type {string}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'full_name'?: string;
     /**
      * The timestamp (formatted as an ISO 8601 timestamp) when the analyst record was last updated in the system.
-     * @type {string}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'last_updated'?: string;
     /**
      * The average percent price difference per rating since the date of recommendation.
-     * @type {number}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'overall_avg_return'?: number;
     /**
      * The analyst\'s percentile rank based on average return, relative to other analysts.
-     * @type {number}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'overall_avg_return_percentile'?: number;
     /**
      * The percentage of gain/loss ratings that resulted in a gain overall.
-     * @type {number}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'overall_success_rate'?: number;
     /**
      * A weighted average of the total_ratings_percentile, overall_avg_return_percentile, and overall_success_rate.
-     * @type {number}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'smart_score'?: number;
     /**
      * The total number of ratings issued by the analyst included in the performance calculation.
-     * @type {number}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'total_ratings'?: number;
     /**
      * The analyst\'s percentile rank based on the total number of ratings issued, relative to other analysts.
-     * @type {number}
-     * @memberof GetBenzingaV1Analysts200ResponseResultsInner
      */
     'total_ratings_percentile'?: number;
 }
-/**
- * 
- * @export
- * @interface GetBenzingaV1BullsBearsSay200Response
- */
 export interface GetBenzingaV1BullsBearsSay200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetBenzingaV1BullsBearsSay200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV1BullsBearsSay200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetBenzingaV1BullsBearsSay200ResponseResultsInner>}
-     * @memberof GetBenzingaV1BullsBearsSay200Response
      */
     'results': Array<GetBenzingaV1BullsBearsSay200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV1BullsBearsSay200Response
      */
     'status': GetBenzingaV1BullsBearsSay200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV1BullsBearsSay200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV1BullsBearsSay200ResponseResultsInner
- */
 export interface GetBenzingaV1BullsBearsSay200ResponseResultsInner {
     /**
      * A concise summary of the bearish investment thesis, highlighting potential risks, challenges, and reasons why the stock could decline in value.
-     * @type {string}
-     * @memberof GetBenzingaV1BullsBearsSay200ResponseResultsInner
      */
     'bear_case'?: string;
     /**
      * The unique identifier used by Benzinga for this bull/bear case record.
-     * @type {string}
-     * @memberof GetBenzingaV1BullsBearsSay200ResponseResultsInner
      */
     'benzinga_id'?: string;
     /**
      * A concise summary of the bullish investment thesis, highlighting positive aspects, growth opportunities, and reasons why the stock could appreciate in value.
-     * @type {string}
-     * @memberof GetBenzingaV1BullsBearsSay200ResponseResultsInner
      */
     'bull_case'?: string;
     /**
      * The timestamp (formatted as an ISO 8601 timestamp) when the bull/bear case was last updated in the system.
-     * @type {string}
-     * @memberof GetBenzingaV1BullsBearsSay200ResponseResultsInner
      */
     'last_updated'?: string;
     /**
      * The stock ticker symbol for the company associated with the bull and bear case summaries.
-     * @type {string}
-     * @memberof GetBenzingaV1BullsBearsSay200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetBenzingaV1ConsensusRatings200Response
- */
 export interface GetBenzingaV1ConsensusRatings200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetBenzingaV1ConsensusRatings200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV1ConsensusRatings200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetBenzingaV1ConsensusRatings200ResponseResultsInner>}
-     * @memberof GetBenzingaV1ConsensusRatings200Response
      */
     'results': Array<GetBenzingaV1ConsensusRatings200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV1ConsensusRatings200Response
      */
     'status': GetBenzingaV1ConsensusRatings200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV1ConsensusRatings200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV1ConsensusRatings200ResponseResultsInner
- */
 export interface GetBenzingaV1ConsensusRatings200ResponseResultsInner {
     /**
      * The count of \'Buy\' ratings from contributing analysts.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'buy_ratings': number;
     /**
      * The average price target across all analysts, rounded to 2 decimal places.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'consensus_price_target'?: number;
     /**
      * The overall rating category determined by the average consensus weight. Possible values: \'strong_buy\', \'buy\', \'hold\', \'sell\', \'strong_sell\'.
-     * @type {string}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'consensus_rating'?: string;
     /**
      * The numerical average of all consensus weights, rounded to 2 decimal places. Scale ranges from 1 (Strong Sell) to 5 (Strong Buy).
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'consensus_rating_value'?: number;
     /**
      * The highest price target among all contributing analysts.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'high_price_target'?: number;
     /**
      * The count of \'Hold\' ratings from contributing analysts.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'hold_ratings': number;
     /**
      * The lowest price target among all contributing analysts.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'low_price_target'?: number;
     /**
      * The number of unique analysts contributing price targets.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'price_target_contributors': number;
     /**
      * The number of unique analysts contributing to the overall ratings consensus.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'ratings_contributors': number;
     /**
      * The count of \'Sell\' ratings from contributing analysts.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'sell_ratings': number;
     /**
      * The count of \'Strong Buy\' ratings from contributing analysts.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'strong_buy_ratings': number;
     /**
      * The count of \'Strong Sell\' ratings from contributing analysts.
-     * @type {number}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'strong_sell_ratings': number;
     /**
      * The requested ticker.
-     * @type {string}
-     * @memberof GetBenzingaV1ConsensusRatings200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetBenzingaV1Earnings200Response
- */
 export interface GetBenzingaV1Earnings200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetBenzingaV1Earnings200ResponseResultsInner>}
-     * @memberof GetBenzingaV1Earnings200Response
      */
     'results': Array<GetBenzingaV1Earnings200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200Response
      */
     'status': GetBenzingaV1Earnings200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV1Earnings200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV1Earnings200ResponseResultsInner
- */
 export interface GetBenzingaV1Earnings200ResponseResultsInner {
     /**
      * The actual earnings per share (EPS) reported by the company for the given period.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'actual_eps'?: number;
     /**
      * The actual revenue reported by the company for the given fiscal period.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'actual_revenue'?: number;
     /**
      * The identifer used by Benzinga for this record.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'benzinga_id'?: string;
     /**
      * The name of the company releasing earnings.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'company_name'?: string;
     /**
      * The ISO 4217 currency code indicating the denomination in which the figures are reported.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'currency'?: string;
     /**
      * The calendar date (formatted as YYYY-MM-DD) when the earnings are scheduled or were reported.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'date'?: string;
     /**
      * Indicates whether the date of the earnings report has been confirmed. Possible values include: projected, confirmed.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'date_status'?: string;
     /**
      * The methodology of the EPS figure. Possible values are gaap (standardized financials under Generally Accepted Accounting Principles), ffo (Funds From Operations, a non-GAAP metric commonly used to assess the operating performance of REITs), and adj (adjusted, non-GAAP).
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'eps_method'?: string;
     /**
      * The difference between the actual and estimated EPS.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'eps_surprise'?: number;
     /**
      * The percentage difference between the actual and estimated EPS.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'eps_surprise_percent'?: number;
     /**
      * The analyst consensus estimate for earnings per share (EPS) for the given period.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'estimated_eps'?: number;
     /**
      * The analyst consensus estimate for the company\'s revenue in the given period.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'estimated_revenue'?: number;
     /**
      * The fiscal period for which the earnings are reported. Examples include: Q1, Q2, H1, FY.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'fiscal_period'?: string;
     /**
      * The fiscal year in which the earnings period falls.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'fiscal_year'?: number;
     /**
      * A subjective indicator of the importance of the event, on a scale from 0 (lowest) to 5 (highest).
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'importance'?: number;
     /**
      * The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'last_updated'?: string;
     /**
      * Additional context, commentary, or clarifying notes related to the earnings event.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'notes'?: string;
     /**
      * The company\'s reported earnings per share (EPS) for the previous comparable period.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'previous_eps'?: number;
     /**
      * The company\'s revenue for the previous comparable fiscal period.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'previous_revenue'?: number;
     /**
      * The methodology of the revenue figure. Possible values are gaap (standardized financials under Generally Accepted Accounting Principles), adj (adjusted, non-GAAP figures that exclude certain items like one-time charges or divestitures), and rental (revenue specifically derived from rental operations, typically used by REITs, leasing companies, or businesses with a rental-based model).
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'revenue_method'?: string;
     /**
      * The difference between the actual and estimated revenue.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'revenue_surprise'?: number;
     /**
      * The percentage difference between the actual and estimated revenue.
-     * @type {number}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'revenue_surprise_percent'?: number;
     /**
      * The stock symbol of the company reporting earnings.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'ticker'?: string;
     /**
      * The time (formatted as 24-hour HH:MM:SS UTC) when the earnings are scheduled or were reported.
-     * @type {string}
-     * @memberof GetBenzingaV1Earnings200ResponseResultsInner
      */
     'time'?: string;
 }
-/**
- * 
- * @export
- * @interface GetBenzingaV1Firms200Response
- */
 export interface GetBenzingaV1Firms200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetBenzingaV1Firms200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV1Firms200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetBenzingaV1Firms200ResponseResultsInner>}
-     * @memberof GetBenzingaV1Firms200Response
      */
     'results': Array<GetBenzingaV1Firms200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV1Firms200Response
      */
     'status': GetBenzingaV1Firms200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV1Firms200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV1Firms200ResponseResultsInner
- */
 export interface GetBenzingaV1Firms200ResponseResultsInner {
     /**
      * The identifer used by Benzinga for this record.
-     * @type {string}
-     * @memberof GetBenzingaV1Firms200ResponseResultsInner
      */
     'benzinga_id'?: string;
     /**
      * Primary currency used by the financial firm, with some entries having null values.
-     * @type {string}
-     * @memberof GetBenzingaV1Firms200ResponseResultsInner
      */
     'currency'?: string;
     /**
      * Timestamp indicating when the firm\'s information was last modified or verified in the database.
-     * @type {string}
-     * @memberof GetBenzingaV1Firms200ResponseResultsInner
      */
     'last_updated'?: string;
     /**
      * The name of a research firm or investment bank which issues ratings.
-     * @type {string}
-     * @memberof GetBenzingaV1Firms200ResponseResultsInner
      */
     'name'?: string;
 }
-/**
- * 
- * @export
- * @interface GetBenzingaV1Guidance200Response
- */
 export interface GetBenzingaV1Guidance200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetBenzingaV1Guidance200ResponseResultsInner>}
-     * @memberof GetBenzingaV1Guidance200Response
      */
     'results': Array<GetBenzingaV1Guidance200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200Response
      */
     'status': GetBenzingaV1Guidance200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV1Guidance200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV1Guidance200ResponseResultsInner
- */
 export interface GetBenzingaV1Guidance200ResponseResultsInner {
     /**
      * A unique identifier assigned by Benzinga to the guidance record.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'benzinga_id'?: string;
     /**
      * The name of the company issuing guidance.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'company_name'?: string;
     /**
      * The ISO 4217 code representing the currency in which the company issued its guidance figures.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'currency'?: string;
     /**
      * The calendar date (formatted as YYYY-MM-DD) when the guidance was issued.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'date'?: string;
     /**
      * The methodology of the EPS figure. Possible values are gaap (standardized financials under Generally Accepted Accounting Principles), ffo (Funds From Operations, a non-GAAP metric commonly used to assess the operating performance of REITs), and adj (adjusted, non-GAAP).
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'eps_method'?: string;
     /**
      * The midpoint or central earnings per share (EPS) value the company expects for the given fiscal period.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'estimated_eps_guidance'?: number;
     /**
      * The midpoint or central revenue figure the company expects for the given fiscal period.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'estimated_revenue_guidance'?: number;
     /**
      * The fiscal quarter to which the guidance applies, such as Q1, Q2, Q3, or Q4.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'fiscal_period'?: string;
     /**
      * The fiscal year corresponding to the period for which the guidance is issued.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'fiscal_year'?: number;
     /**
      * A subjective indicator of the importance of the event, on a scale from 0 (lowest) to 5 (highest).
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'importance'?: number;
     /**
      * The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'last_updated'?: string;
     /**
      * The highest EPS value the company expects for the fiscal period if a range was provided.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'max_eps_guidance'?: number;
     /**
      * The highest revenue figure the company expects for the fiscal period if a range was provided.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'max_revenue_guidance'?: number;
     /**
      * The lowest EPS value the company expects for the fiscal period if a range was provided.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'min_eps_guidance'?: number;
     /**
      * The lowest revenue figure the company expects for the fiscal period if a range was provided.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'min_revenue_guidance'?: number;
     /**
      * Additional descriptive text or commentary provided about the guidance record.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'notes'?: string;
     /**
      * Indicates how a particular guidance value is presented relative to other figures disclosed by the company. Possible values are \'primary\' (the emphasized figure) and \'secondary\' (a supporting or alternate figure)
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'positioning'?: string;
     /**
      * The highest EPS value issued in a previous guidance record for the same fiscal period.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'previous_max_eps_guidance'?: number;
     /**
      * The highest revenue value issued in a previous guidance record for the same fiscal period.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'previous_max_revenue_guidance'?: number;
     /**
      * The lowest EPS value issued in a previous guidance record for the same fiscal period.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'previous_min_eps_guidance'?: number;
     /**
      * The lowest revenue value issued in a previous guidance record for the same fiscal period.
-     * @type {number}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'previous_min_revenue_guidance'?: number;
     /**
      * Indicates whether the guidance was issued as part of a scheduled earnings release (\'official\') or as an unscheduled update (\'preliminary\').
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'release_type'?: string;
     /**
      * The methodology of the revenue figure. Possible values are gaap (standardized financials under Generally Accepted Accounting Principles) and adj (adjusted, non-GAAP).
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'revenue_method'?: string;
     /**
      * The stock symbol of the company issuing guidance.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'ticker'?: string;
     /**
      * The time of day the guidance was announced, in HH:mm:ss format.
-     * @type {string}
-     * @memberof GetBenzingaV1Guidance200ResponseResultsInner
      */
     'time'?: string;
 }
-/**
- * 
- * @export
- * @interface GetBenzingaV1Ratings200Response
- */
 export interface GetBenzingaV1Ratings200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetBenzingaV1Ratings200ResponseResultsInner>}
-     * @memberof GetBenzingaV1Ratings200Response
      */
     'results': Array<GetBenzingaV1Ratings200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200Response
      */
     'status': GetBenzingaV1Ratings200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV1Ratings200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV1Ratings200ResponseResultsInner
- */
 export interface GetBenzingaV1Ratings200ResponseResultsInner {
     /**
      * The current price target adjusted for stock splits and dividends.
-     * @type {number}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'adjusted_price_target'?: number;
     /**
      * The name of the individual analyst who issued the rating.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'analyst'?: string;
     /**
      * The identifer used by Benzinga for this analyst.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'benzinga_analyst_id'?: string;
     /**
      * A link to the Benzinga calendar page for this ticker
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'benzinga_calendar_url'?: string;
     /**
      * The identifer used by Benzinga for this firm.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'benzinga_firm_id'?: string;
     /**
      * The identifer used by Benzinga for this record.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'benzinga_id'?: string;
     /**
      * A link to the Benzinga articles page for this ticker
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'benzinga_news_url'?: string;
     /**
      * The name of the company being rated.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'company_name'?: string;
     /**
      * The ISO 4217 currency code in which the price target is denominated.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'currency'?: string;
     /**
      * The calendar date (formatted as YYYY-MM-DD) when the rating was issued.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'date'?: string;
     /**
      * The name of the research firm or investment bank issuing the rating.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'firm'?: string;
     /**
      * A subjective indicator of the importance of the earnings event, on a scale from 0 (lowest) to 5 (highest).
-     * @type {number}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'importance'?: number;
     /**
      * The timestamp (formatted as an ISO 8601 timestamp) when the rating was last updated in the system.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'last_updated'?: string;
     /**
      * Additional context or commentary.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'notes'?: string;
     /**
      * The previous price target adjusted for stock splits and dividends.
-     * @type {number}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'previous_adjusted_price_target'?: number;
     /**
      * The previous price target set by the analyst.
-     * @type {number}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'previous_price_target'?: number;
     /**
      * The previous rating set by the analyst.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'previous_rating'?: string;
     /**
      * The percentage change in price target if price target and previous price target exists
-     * @type {number}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'price_percent_change'?: number;
     /**
      * The current price target set by the analyst.
-     * @type {number}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'price_target'?: number;
     /**
      * The description of the directional change in price target. Possible values include: raises, lowers, maintains, announces, sets.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'price_target_action'?: string;
     /**
      * The current rating set by the analyst.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'rating'?: string;
     /**
      * The description of the change in rating from the firm\'s last rating. Possible values include: downgrades, maintains, reinstates, reiterates, upgrades, assumes, initiates_coverage_on, terminates_coverage_on, removes, suspends, firm_dissolved.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'rating_action'?: string;
     /**
      * The stock symbol of the company being rated.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'ticker'?: string;
     /**
      * The time (formatted as 24-hour HH:MM:SS UTC) when the rating was issued.
-     * @type {string}
-     * @memberof GetBenzingaV1Ratings200ResponseResultsInner
      */
     'time'?: string;
 }
-/**
- * 
- * @export
- * @interface GetBenzingaV2News200Response
- */
 export interface GetBenzingaV2News200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetBenzingaV2News200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetBenzingaV2News200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetBenzingaV2News200ResponseResultsInner>}
-     * @memberof GetBenzingaV2News200Response
      */
     'results': Array<GetBenzingaV2News200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetBenzingaV2News200Response
      */
     'status': GetBenzingaV2News200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetBenzingaV2News200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetBenzingaV2News200ResponseResultsInner
- */
 export interface GetBenzingaV2News200ResponseResultsInner {
     /**
      * The name of the journalist or entity that authored the news article.
-     * @type {string}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'author': string;
     /**
      * The identifer used by Benzinga for this record.
-     * @type {number}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'benzinga_id': number;
     /**
      * The full text content of the news article.
-     * @type {string}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'body'?: string;
     /**
      * A list of categories or topics that the article belongs to (e.g., \'News\', \'Price Target\').
-     * @type {Array<string>}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'channels'?: Array<string>;
     /**
      * A list of images associated with the article.
-     * @type {Array<string>}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'images'?: Array<string>;
     /**
      * The timestamp (formatted as an ISO 8601 timestamp) when the news article was last updated in the system.
-     * @type {string}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'last_updated': string;
     /**
      * The timestamp (formatted as an ISO 8601 timestamp) when the news article was originally published.
-     * @type {string}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'published': string;
     /**
      * A list of tags that describe the themes or content of the article.
-     * @type {Array<string>}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'tags'?: Array<string>;
     /**
      * A short summary or lead-in to the news article\'s content.
-     * @type {string}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'teaser'?: string;
     /**
      * A list of stock or crypto tickers mentioned in the article.
-     * @type {Array<string>}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'tickers'?: Array<string>;
     /**
      * The headline of the news article.
-     * @type {string}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'title': string;
     /**
      * The direct link to the source of the news article.
-     * @type {string}
-     * @memberof GetBenzingaV2News200ResponseResultsInner
      */
     'url': string;
 }
-/**
- * 
- * @export
- * @interface GetCryptoAggregates200Response
- */
 export interface GetCryptoAggregates200Response {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetCryptoAggregates200Response
      */
     'ticker': string;
     /**
      * Whether or not this response was adjusted for splits.
-     * @type {boolean}
-     * @memberof GetCryptoAggregates200Response
      */
     'adjusted': boolean;
     /**
      * The number of aggregates (minute or day) used to generate the response.
-     * @type {number}
-     * @memberof GetCryptoAggregates200Response
      */
     'queryCount': number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetCryptoAggregates200Response
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof GetCryptoAggregates200Response
      */
     'resultsCount': number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCryptoAggregates200Response
      */
     'status': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetCryptoAggregates200ResponseAllOfResultsInner>}
-     * @memberof GetCryptoAggregates200Response
      */
     'results'?: Array<GetCryptoAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface GetCryptoAggregates200ResponseAllOfResultsInner
- */
 export interface GetCryptoAggregates200ResponseAllOfResultsInner {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoAggregates200ResponseAllOfResultsInner
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoAggregates200ResponseAllOfResultsInner
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoAggregates200ResponseAllOfResultsInner
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof GetCryptoAggregates200ResponseAllOfResultsInner
      */
     'n'?: number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoAggregates200ResponseAllOfResultsInner
      */
     'o': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof GetCryptoAggregates200ResponseAllOfResultsInner
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoAggregates200ResponseAllOfResultsInner
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetCryptoAggregates200ResponseAllOfResultsInner
      */
     'vw'?: number;
 }
-/**
- * 
- * @export
- * @interface GetCryptoEMA200Response
- */
 export interface GetCryptoEMA200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetCryptoEMA200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetCryptoEMA200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetCryptoEMA200ResponseResults}
-     * @memberof GetCryptoEMA200Response
-     */
     'results': GetCryptoEMA200ResponseResults;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCryptoEMA200Response
      */
     'status': string;
 }
 /**
  * The results of the EMA indicator calculation.
- * @export
- * @interface GetCryptoEMA200ResponseResults
  */
 export interface GetCryptoEMA200ResponseResults {
-    /**
-     * 
-     * @type {GetCryptoEMA200ResponseResultsUnderlying}
-     * @memberof GetCryptoEMA200ResponseResults
-     */
     'underlying'?: GetCryptoEMA200ResponseResultsUnderlying;
     /**
      * Timestamp or indicator value.
-     * @type {Array<GetCryptoEMA200ResponseResultsValuesInner>}
-     * @memberof GetCryptoEMA200ResponseResults
      */
     'values'?: Array<GetCryptoEMA200ResponseResultsValuesInner>;
 }
 /**
  * The underlying aggregates used.
- * @export
- * @interface GetCryptoEMA200ResponseResultsUnderlying
  */
 export interface GetCryptoEMA200ResponseResultsUnderlying {
     /**
      * The array of aggregates used in the calculation of this indicator.
-     * @type {Array<GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner>}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlying
      */
     'aggregates'?: Array<GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner>;
     /**
      * The URL which can be used to request the underlying aggregates used in this request.
-     * @type {string}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlying
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
- */
 export interface GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
      */
     'n': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
      */
     'o': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
      */
     'otc'?: boolean;
     /**
      * The Unix Msec timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsUnderlyingAggregatesInner
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface GetCryptoEMA200ResponseResultsValuesInner
- */
 export interface GetCryptoEMA200ResponseResultsValuesInner {
     /**
      * The Unix Msec timestamp from the last aggregate used in this calculation.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsValuesInner
      */
     'timestamp'?: number;
     /**
      * The MACD line value, calculated as the difference between the short-term and long-term exponential moving averages (EMAs) based on the periods specified in the request parameters.
-     * @type {number}
-     * @memberof GetCryptoEMA200ResponseResultsValuesInner
      */
     'value'?: number;
 }
-/**
- * 
- * @export
- * @interface GetCryptoMACD200Response
- */
 export interface GetCryptoMACD200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetCryptoMACD200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetCryptoMACD200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetCryptoMACD200ResponseResults}
-     * @memberof GetCryptoMACD200Response
-     */
     'results': GetCryptoMACD200ResponseResults;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCryptoMACD200Response
      */
     'status': string;
 }
 /**
  * The results of the MACD indicator calculation.
- * @export
- * @interface GetCryptoMACD200ResponseResults
  */
 export interface GetCryptoMACD200ResponseResults {
-    /**
-     * 
-     * @type {GetCryptoEMA200ResponseResultsUnderlying}
-     * @memberof GetCryptoMACD200ResponseResults
-     */
     'underlying'?: GetCryptoEMA200ResponseResultsUnderlying;
     /**
      * Each entry in the values array represents MACD indicator data for a specific timestamp and includes:
-     * @type {Array<GetCryptoMACD200ResponseResultsValuesInner>}
-     * @memberof GetCryptoMACD200ResponseResults
      */
     'values'?: Array<GetCryptoMACD200ResponseResultsValuesInner>;
 }
-/**
- * 
- * @export
- * @interface GetCryptoMACD200ResponseResultsValuesInner
- */
 export interface GetCryptoMACD200ResponseResultsValuesInner {
     /**
      * The difference between the MACD line (value) and the signal line (signal). Positive histogram values indicate upward (bullish) momentum, while negative histogram values indicate downward (bearish) momentum.
-     * @type {number}
-     * @memberof GetCryptoMACD200ResponseResultsValuesInner
      */
     'histogram'?: number;
     /**
      * The signal line value, calculated as the exponential moving average (EMA) of the MACD line (value) over the signal period defined in the request parameters. Traders typically use crossovers between the MACD and signal lines as trading signals.
-     * @type {number}
-     * @memberof GetCryptoMACD200ResponseResultsValuesInner
      */
     'signal'?: number;
     /**
      * The Unix Msec timestamp from the last aggregate used in this calculation.
-     * @type {number}
-     * @memberof GetCryptoMACD200ResponseResultsValuesInner
      */
     'timestamp'?: number;
     /**
      * The MACD line value, calculated as the difference between the short-term and long-term exponential moving averages (EMAs) based on the periods specified in the request parameters.
-     * @type {number}
-     * @memberof GetCryptoMACD200ResponseResultsValuesInner
      */
     'value'?: number;
 }
-/**
- * 
- * @export
- * @interface GetCryptoOpenClose200Response
- */
 export interface GetCryptoOpenClose200Response {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoOpenClose200Response
      */
     'close': number;
     /**
      * An array of results containing the requested data.
-     * @type {Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>}
-     * @memberof GetCryptoOpenClose200Response
      */
     'closingTrades': Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>;
     /**
      * The date requested.
-     * @type {string}
-     * @memberof GetCryptoOpenClose200Response
      */
     'day': string;
     /**
      * Whether or not the timestamps are in UTC timezone.
-     * @type {boolean}
-     * @memberof GetCryptoOpenClose200Response
      */
     'isUTC': boolean;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoOpenClose200Response
      */
     'open': number;
     /**
      * An array of results containing the requested data.
-     * @type {Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>}
-     * @memberof GetCryptoOpenClose200Response
      */
     'openTrades': Array<DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner>;
     /**
      * The symbol pair that was evaluated from the request.
-     * @type {string}
-     * @memberof GetCryptoOpenClose200Response
      */
     'symbol': string;
 }
-/**
- * 
- * @export
- * @interface GetCryptoRSI200Response
- */
 export interface GetCryptoRSI200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetCryptoRSI200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetCryptoRSI200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetCryptoRSI200ResponseResults}
-     * @memberof GetCryptoRSI200Response
-     */
     'results': GetCryptoRSI200ResponseResults;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCryptoRSI200Response
      */
     'status': string;
 }
 /**
  * The results of the RSI indicator calculation.
- * @export
- * @interface GetCryptoRSI200ResponseResults
  */
 export interface GetCryptoRSI200ResponseResults {
-    /**
-     * 
-     * @type {GetCryptoEMA200ResponseResultsUnderlying}
-     * @memberof GetCryptoRSI200ResponseResults
-     */
     'underlying'?: GetCryptoEMA200ResponseResultsUnderlying;
     /**
      * Timestamp or indicator value.
-     * @type {Array<GetCryptoEMA200ResponseResultsValuesInner>}
-     * @memberof GetCryptoRSI200ResponseResults
      */
     'values'?: Array<GetCryptoEMA200ResponseResultsValuesInner>;
 }
-/**
- * 
- * @export
- * @interface GetCryptoSMA200Response
- */
 export interface GetCryptoSMA200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetCryptoSMA200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetCryptoSMA200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetCryptoSMA200ResponseResults}
-     * @memberof GetCryptoSMA200Response
-     */
     'results': GetCryptoSMA200ResponseResults;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCryptoSMA200Response
      */
     'status': string;
 }
 /**
  * The results of the SMA indicator calculation.
- * @export
- * @interface GetCryptoSMA200ResponseResults
  */
 export interface GetCryptoSMA200ResponseResults {
-    /**
-     * 
-     * @type {GetCryptoEMA200ResponseResultsUnderlying}
-     * @memberof GetCryptoSMA200ResponseResults
-     */
     'underlying'?: GetCryptoEMA200ResponseResultsUnderlying;
     /**
      * Timestamp or indicator value.
-     * @type {Array<GetCryptoEMA200ResponseResultsValuesInner>}
-     * @memberof GetCryptoSMA200ResponseResults
      */
     'values'?: Array<GetCryptoEMA200ResponseResultsValuesInner>;
 }
-/**
- * 
- * @export
- * @interface GetCryptoSnapshotDirection200Response
- */
 export interface GetCryptoSnapshotDirection200Response {
     /**
      * An array of snapshot data for the specified tickers.
-     * @type {Array<GetCryptoSnapshotTickers200ResponseAllOfTickersInner>}
-     * @memberof GetCryptoSnapshotDirection200Response
      */
     'tickers'?: Array<GetCryptoSnapshotTickers200ResponseAllOfTickersInner>;
 }
-/**
- * 
- * @export
- * @interface GetCryptoSnapshotTicker200Response
- */
 export interface GetCryptoSnapshotTicker200Response {
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCryptoSnapshotTicker200Response
      */
     'status': string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetCryptoSnapshotTicker200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetCryptoSnapshotTicker200ResponseAllOfTicker}
-     * @memberof GetCryptoSnapshotTicker200Response
-     */
     'ticker'?: GetCryptoSnapshotTicker200ResponseAllOfTicker;
 }
 /**
  * Contains the requested snapshot data for the specified ticker.
- * @export
- * @interface GetCryptoSnapshotTicker200ResponseAllOfTicker
  */
 export interface GetCryptoSnapshotTicker200ResponseAllOfTicker {
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay}
-     * @memberof GetCryptoSnapshotTicker200ResponseAllOfTicker
-     */
     'day': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay;
     /**
      * Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTicker200ResponseAllOfTicker
      */
     'fmv'?: number;
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade}
-     * @memberof GetCryptoSnapshotTicker200ResponseAllOfTicker
-     */
     'lastTrade': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade;
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin}
-     * @memberof GetCryptoSnapshotTicker200ResponseAllOfTicker
-     */
     'min': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin;
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay}
-     * @memberof GetCryptoSnapshotTicker200ResponseAllOfTicker
-     */
     'prevDay': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetCryptoSnapshotTicker200ResponseAllOfTicker
      */
     'ticker': string;
     /**
      * The value of the change from the previous day.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTicker200ResponseAllOfTicker
      */
     'todaysChange': number;
     /**
      * The percentage change since the previous day.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTicker200ResponseAllOfTicker
      */
     'todaysChangePerc': number;
     /**
      * The last updated timestamp.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTicker200ResponseAllOfTicker
      */
     'updated': number;
 }
-/**
- * 
- * @export
- * @interface GetCryptoSnapshotTickers200Response
- */
 export interface GetCryptoSnapshotTickers200Response {
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCryptoSnapshotTickers200Response
      */
     'status': string;
     /**
      * An array of snapshot data for the specified tickers.
-     * @type {Array<GetCryptoSnapshotTickers200ResponseAllOfTickersInner>}
-     * @memberof GetCryptoSnapshotTickers200Response
      */
     'tickers'?: Array<GetCryptoSnapshotTickers200ResponseAllOfTickersInner>;
 }
-/**
- * 
- * @export
- * @interface GetCryptoSnapshotTickers200ResponseAllOfTickersInner
- */
 export interface GetCryptoSnapshotTickers200ResponseAllOfTickersInner {
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInner
-     */
     'day': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay;
     /**
      * Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInner
      */
     'fmv'?: number;
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInner
-     */
     'lastTrade': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade;
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInner
-     */
     'min': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin;
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInner
-     */
     'prevDay': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInner
      */
     'ticker': string;
     /**
      * The value of the change from the previous day.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInner
      */
     'todaysChange': number;
     /**
      * The percentage change since the previous day.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInner
      */
     'todaysChangePerc': number;
     /**
      * The last updated timestamp.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInner
      */
     'updated': number;
 }
 /**
  * The most recent daily bar for this ticker.
- * @export
- * @interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay
  */
 export interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'o': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'vw': number;
 }
 /**
  * The most recent trade for this ticker.
- * @export
- * @interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade
  */
 export interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade {
     /**
      * The trade conditions.
-     * @type {Array<number>}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     'c': Array<number>;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID. 
-     * @type {string}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     'i': string;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00. 
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     'p': number;
     /**
      * The size (volume) of the trade.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     's': number;
     /**
      * The millisecond accuracy timestamp. This is the timestamp of when the trade was generated at the exchange.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     't': number;
     /**
      * The exchange that this crypto trade happened on.   See <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs. 
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     'x': number;
 }
 /**
  * The most recent minute bar for this ticker.
- * @export
- * @interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin
  */
 export interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'n': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'o': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'vw': number;
 }
 /**
  * The previous day\'s bar for this ticker.
- * @export
- * @interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay
  */
 export interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'o': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface GetCryptoTrades200Response
- */
 export interface GetCryptoTrades200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetCryptoTrades200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetCryptoTrades200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetCryptoTrades200ResponseResultsInner>}
-     * @memberof GetCryptoTrades200Response
      */
     'results'?: Array<GetCryptoTrades200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCryptoTrades200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetCryptoTrades200ResponseResultsInner
- */
 export interface GetCryptoTrades200ResponseResultsInner {
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetCryptoTrades200ResponseResultsInner
      */
     'conditions'?: Array<number>;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetCryptoTrades200ResponseResultsInner
      */
     'exchange': number;
     /**
      * The Trade ID which uniquely identifies a trade on the exchange that the trade happened on.
-     * @type {string}
-     * @memberof GetCryptoTrades200ResponseResultsInner
      */
     'id'?: string;
     /**
      * The nanosecond Exchange Unix Timestamp. This is the timestamp of when the trade was generated at the exchange.
-     * @type {number}
-     * @memberof GetCryptoTrades200ResponseResultsInner
      */
     'participant_timestamp'?: number;
     /**
      * The price of the trade in the base currency of the crypto pair.
-     * @type {number}
-     * @memberof GetCryptoTrades200ResponseResultsInner
      */
     'price': number;
     /**
      * The size of a trade (also known as volume).
-     * @type {number}
-     * @memberof GetCryptoTrades200ResponseResultsInner
      */
     'size': number;
 }
-/**
- * 
- * @export
- * @interface GetCryptoV1Exchanges200Response
- */
 export interface GetCryptoV1Exchanges200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetCryptoV1Exchanges200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetCryptoV1Exchanges200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetCryptoV1Exchanges200ResponseResultsInner>}
-     * @memberof GetCryptoV1Exchanges200Response
      */
     'results': Array<GetCryptoV1Exchanges200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCryptoV1Exchanges200Response
      */
     'status': GetCryptoV1Exchanges200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetCryptoV1Exchanges200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetCryptoV1Exchanges200ResponseResultsInner
- */
 export interface GetCryptoV1Exchanges200ResponseResultsInner {
     /**
      * Numeric identifier for the cryptocurrency exchange or trading platform.
-     * @type {string}
-     * @memberof GetCryptoV1Exchanges200ResponseResultsInner
      */
     'id': string;
     /**
      * Full official name of the cryptocurrency exchange or digital asset trading platform.
-     * @type {string}
-     * @memberof GetCryptoV1Exchanges200ResponseResultsInner
      */
     'name': string;
     /**
      * Type of crypto venue - \'exchange\' for cryptocurrency exchanges and digital asset trading platforms.
-     * @type {string}
-     * @memberof GetCryptoV1Exchanges200ResponseResultsInner
      */
     'type': string;
     /**
      * Official website URL of the cryptocurrency exchange.
-     * @type {string}
-     * @memberof GetCryptoV1Exchanges200ResponseResultsInner
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface GetCurrencyConversion200Response
- */
 export interface GetCurrencyConversion200Response {
     /**
      * The result of the conversion.
-     * @type {number}
-     * @memberof GetCurrencyConversion200Response
      */
     'converted': number;
     /**
      * The \"from\" currency symbol.
-     * @type {string}
-     * @memberof GetCurrencyConversion200Response
      */
     'from': string;
     /**
      * The amount to convert.
-     * @type {number}
-     * @memberof GetCurrencyConversion200Response
      */
     'initialAmount': number;
-    /**
-     * 
-     * @type {GetCurrencyConversion200ResponseLast}
-     * @memberof GetCurrencyConversion200Response
-     */
     'last'?: GetCurrencyConversion200ResponseLast;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetCurrencyConversion200Response
      */
     'request_id': string;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetCurrencyConversion200Response
      */
     'status': string;
     /**
      * The symbol pair that was evaluated from the request.
-     * @type {string}
-     * @memberof GetCurrencyConversion200Response
      */
     'symbol': string;
     /**
      * The \"to\" currency symbol.
-     * @type {string}
-     * @memberof GetCurrencyConversion200Response
      */
     'to': string;
 }
 /**
  * Contains the requested quote data for the specified forex currency pair.
- * @export
- * @interface GetCurrencyConversion200ResponseLast
  */
 export interface GetCurrencyConversion200ResponseLast {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetCurrencyConversion200ResponseLast
      */
     'ask': number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetCurrencyConversion200ResponseLast
      */
     'bid': number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/forex/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetCurrencyConversion200ResponseLast
      */
     'exchange': number;
     /**
      * The Unix millisecond timestamp.
-     * @type {number}
-     * @memberof GetCurrencyConversion200ResponseLast
      */
     'timestamp': number;
 }
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1Analytics200Response
- */
 export interface GetEtfGlobalV1Analytics200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Analytics200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Analytics200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetEtfGlobalV1Analytics200ResponseResultsInner>}
-     * @memberof GetEtfGlobalV1Analytics200Response
      */
     'results': Array<GetEtfGlobalV1Analytics200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Analytics200Response
      */
     'status': GetEtfGlobalV1Analytics200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetEtfGlobalV1Analytics200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1Analytics200ResponseResultsInner
- */
 export interface GetEtfGlobalV1Analytics200ResponseResultsInner {
     /**
      * The stock ticker symbol used to identify this ETF product on exchanges.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'composite_ticker'?: string;
     /**
      * The date showing when the information was accurate or valid; some issuers, such as Vanguard, release their data on a delay, so the effective_date can be several weeks earlier than the processed_date.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'effective_date'?: string;
     /**
      * The date showing when ETF Global received and processed the data.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'processed_date'?: string;
     /**
      * Behavioral analysis score measuring investor psychology and market behavior patterns.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_composite_behavioral'?: number;
     /**
      * Overall fundamental analysis score combining P/E, P/CF, P/B, and dividend yield metrics.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_composite_fundamental'?: number;
     /**
      * Overall global theme score combining sector and country analysis for macro investment views.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_composite_global'?: number;
     /**
      * Overall quality assessment score combining liquidity, diversification, and issuing firm factors.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_composite_quality'?: number;
     /**
      * Overall market sentiment score combining put/call ratios, short interest, and implied volatility.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_composite_sentiment'?: number;
     /**
      * Combined technical analysis score aggregating short, intermediate, and long-term technical factors.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_composite_technical'?: number;
     /**
      * Fundamental analysis score based on dividend yields of the ETF\'s underlying securities.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_fundamental_div'?: number;
     /**
      * Fundamental analysis score based on price-to-book value ratios of the ETF\'s holdings.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_fundamental_pb'?: number;
     /**
      * Fundamental analysis score based on price-to-cash-flow ratios of the ETF\'s underlying assets.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_fundamental_pcf'?: number;
     /**
      * Fundamental analysis score based on price-to-earnings ratios of the ETF\'s underlying holdings.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_fundamental_pe'?: number;
     /**
      * Quantitative score analyzing global country themes and country-specific market factors.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_global_country'?: number;
     /**
      * Quantitative score analyzing global sector themes and sector-specific performance factors.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_global_sector'?: number;
     /**
      * Letter grade summarizing the ETF\'s overall quantitative assessment, where A = 71-100, B = 56-70, etc.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_grade'?: string;
     /**
      * Quality assessment score evaluating the diversification benefits and risk distribution of the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_quality_diversification'?: number;
     /**
      * Quality assessment score evaluating the reputation and capabilities of the ETF\'s issuing firm.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_quality_firm'?: number;
     /**
      * Quality assessment score measuring the liquidity characteristics and trading ease of the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_quality_liquidity'?: number;
     /**
      * Market sentiment score derived from implied volatility levels in options markets.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_sentiment_iv'?: number;
     /**
      * Market sentiment score derived from put/call option ratios and options activity.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_sentiment_pc'?: number;
     /**
      * Market sentiment score based on short interest levels and short selling activity.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_sentiment_si'?: number;
     /**
      * Intermediate-term technical analysis score evaluating medium-term price trends.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_technical_it'?: number;
     /**
      * Long-term technical analysis score assessing extended price trend patterns.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_technical_lt'?: number;
     /**
      * Short-term technical analysis score based on recent price movements and trading patterns.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_technical_st'?: number;
     /**
      * ETF Global\'s comprehensive quantitative analysis score combining all quantitative factors.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'quant_total_score'?: number;
     /**
      * ETF Global\'s proprietary Green Diamond score measuring the potential reward and return prospects of the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'reward_score'?: number;
     /**
      * A component score assessing country-specific risks based on the ETF\'s geographic exposure.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'risk_country'?: number;
     /**
      * A component score measuring how much the ETF deviates from expected performance.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'risk_deviation'?: number;
     /**
      * A component score assessing the operational efficiency and cost-effectiveness of the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'risk_efficiency'?: number;
     /**
      * A component score measuring the liquidity risk and ease of trading the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'risk_liquidity'?: number;
     /**
      * A component score evaluating risks related to the ETF\'s structural design and mechanics.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'risk_structure'?: number;
     /**
      * ETF Global\'s proprietary Red Diamond overall risk assessment score for the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'risk_total_score'?: number;
     /**
      * A component score measuring the volatility risk of the ETF\'s price movements.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Analytics200ResponseResultsInner
      */
     'risk_volatility'?: number;
 }
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1Constituents200Response
- */
 export interface GetEtfGlobalV1Constituents200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetEtfGlobalV1Constituents200ResponseResultsInner>}
-     * @memberof GetEtfGlobalV1Constituents200Response
      */
     'results': Array<GetEtfGlobalV1Constituents200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200Response
      */
     'status': GetEtfGlobalV1Constituents200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetEtfGlobalV1Constituents200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1Constituents200ResponseResultsInner
- */
 export interface GetEtfGlobalV1Constituents200ResponseResultsInner {
     /**
      * The broad category of asset type, such as Equity, Corporate Bond, Municipal Bond, etc.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'asset_class'?: string;
     /**
      * The stock ticker symbol of the ETF that holds these constituent securities.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'composite_ticker'?: string;
     /**
      * The full company or security name of the constituent holding.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'constituent_name'?: string;
     /**
      * The rank of this constituent within the ETF for a given effective_date, ordered by weight (descending), market_value (descending), and constituent_ticker (ascending). A rank of 1 indicates the largest holding.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'constituent_rank': number;
     /**
      * The stock ticker symbol of the individual security held within the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'constituent_ticker'?: string;
     /**
      * The country where the exchange that lists this constituent security is located.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'country_of_exchange'?: string;
     /**
      * The local currency in which this constituent security is denominated and traded.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'currency_traded'?: string;
     /**
      * The date showing when the information was accurate or valid; some issuers, such as Vanguard, release their data on a delay, so the effective_date can be several weeks earlier than the processed_date.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'effective_date'?: string;
     /**
      * The name of the stock exchange where this constituent security is primarily traded.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'exchange'?: string;
     /**
      * The Financial Instrument Global Identifier, an open standard for uniquely identifying financial instruments.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'figi'?: string;
     /**
      * The International Securities Identification Number, a global standard for identifying securities.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'isin'?: string;
     /**
      * The total market value of this constituent position held by the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'market_value'?: number;
     /**
      * The date showing when ETF Global received and processed the data.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'processed_date'?: string;
     /**
      * The specific classification of security type using ETF Global\'s taxonomy, such as Common Equity, Domestic, Global, etc.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'security_type'?: string;
     /**
      * The Stock Exchange Daily Official List code, primarily used for securities trading in the UK.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'sedol'?: string;
     /**
      * The number of shares of this constituent security that the ETF currently owns.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'shares_held'?: number;
     /**
      * A unique identifier code for the constituent security in US markets.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'us_code'?: string;
     /**
      * The percentage weight of this constituent security within the ETF\'s total portfolio.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Constituents200ResponseResultsInner
      */
     'weight'?: number;
 }
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1FundFlows200Response
- */
 export interface GetEtfGlobalV1FundFlows200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetEtfGlobalV1FundFlows200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetEtfGlobalV1FundFlows200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetEtfGlobalV1FundFlows200ResponseResultsInner>}
-     * @memberof GetEtfGlobalV1FundFlows200Response
      */
     'results': Array<GetEtfGlobalV1FundFlows200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetEtfGlobalV1FundFlows200Response
      */
     'status': GetEtfGlobalV1FundFlows200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetEtfGlobalV1FundFlows200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1FundFlows200ResponseResultsInner
- */
 export interface GetEtfGlobalV1FundFlows200ResponseResultsInner {
     /**
      * The stock ticker symbol used to identify this ETF on exchanges.
-     * @type {string}
-     * @memberof GetEtfGlobalV1FundFlows200ResponseResultsInner
      */
     'composite_ticker'?: string;
     /**
      * The date showing when the information was accurate or valid; some issuers, such as Vanguard, release their data on a delay, so the effective_date can be several weeks earlier than the processed_date.
-     * @type {string}
-     * @memberof GetEtfGlobalV1FundFlows200ResponseResultsInner
      */
     'effective_date'?: string;
     /**
      * The net daily capital flow into or out of the ETF through the creation and redemption process, where positive values indicate inflows and negative values indicate outflows.
-     * @type {number}
-     * @memberof GetEtfGlobalV1FundFlows200ResponseResultsInner
      */
     'fund_flow'?: number;
     /**
      * The net asset value per share, representing the per-share value of the ETF\'s underlying holdings.
-     * @type {number}
-     * @memberof GetEtfGlobalV1FundFlows200ResponseResultsInner
      */
     'nav'?: number;
     /**
      * The date showing when ETF Global received and processed the data.
-     * @type {string}
-     * @memberof GetEtfGlobalV1FundFlows200ResponseResultsInner
      */
     'processed_date'?: string;
     /**
      * The total number of ETF shares currently issued and outstanding in the market.
-     * @type {number}
-     * @memberof GetEtfGlobalV1FundFlows200ResponseResultsInner
      */
     'shares_outstanding'?: number;
 }
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1Profiles200Response
- */
 export interface GetEtfGlobalV1Profiles200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetEtfGlobalV1Profiles200ResponseResultsInner>}
-     * @memberof GetEtfGlobalV1Profiles200Response
      */
     'results': Array<GetEtfGlobalV1Profiles200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200Response
      */
     'status': GetEtfGlobalV1Profiles200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetEtfGlobalV1Profiles200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1Profiles200ResponseResultsInner
- */
 export interface GetEtfGlobalV1Profiles200ResponseResultsInner {
     /**
      * The administrator of the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'administrator'?: string;
     /**
      * The investment advisor of the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'advisor'?: string;
     /**
      * The primary type of assets held by the ETF, such as equities, bonds, commodities, or other securities.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'asset_class'?: string;
     /**
      * The total assets under management, representing the current market value of all assets held by the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'aum'?: number;
     /**
      * The average number of shares traded daily over the past month, indicating liquidity and investor interest.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'avg_daily_trading_volume'?: number;
     /**
      * The average intraday bid-ask spread as a percentage, calculated by dividing the spread by the lowest ask price sampled during the day.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'bid_ask_spread'?: number;
     /**
      * Call options volume.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'call_volume'?: number;
     /**
      * The broad investment category that describes the ETF\'s investment focus and strategy.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'category'?: string;
     /**
      * The stock ticker symbol used to identify this ETF product on exchanges.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'composite_ticker'?: string;
     /**
      * Coupon exposure breakdown for fixed income ETFs.
-     * @type {Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'coupon_exposure'?: Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>;
     /**
      * The fee for creating new shares of the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'creation_fee'?: number;
     /**
      * The size of creation units for the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'creation_unit_size'?: number;
     /**
      * Currency exposure breakdown of the ETF.
-     * @type {Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'currency_exposure'?: Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>;
     /**
      * The custodian of the ETF assets.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'custodian'?: string;
     /**
      * The official name and description of the ETF product.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'description'?: string;
     /**
      * The economic development classification of the markets the ETF invests in, such as developed, emerging, or frontier markets.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'development_class'?: string;
     /**
      * Discount or premium to net asset value.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'discount_premium'?: number;
     /**
      * How frequently the ETF makes distributions.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'distribution_frequency'?: string;
     /**
      * The distributor of the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'distributor'?: string;
     /**
      * The date showing when the information was accurate or valid; some issuers, such as Vanguard, release their data on a delay, so the effective_date can be several weeks earlier than the processed_date.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'effective_date'?: string;
     /**
      * Any fee waivers applied to the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'fee_waivers'?: number;
     /**
      * The fiscal year end date for the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'fiscal_year_end'?: string;
     /**
      * The specific investment focus or exposure that the ETF provides, such as sector, geography, or investment style.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'focus'?: string;
     /**
      * The futures commission merchant, if applicable.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'futures_commission_merchant'?: string;
     /**
      * Geographic exposure breakdown of the ETF.
-     * @type {Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'geographic_exposure'?: Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>;
     /**
      * The date when this ETF was first launched and became available for trading.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'inception_date'?: string;
     /**
      * Industry exposure breakdown of the ETF.
-     * @type {Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'industry_exposure'?: Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>;
     /**
      * Industry group exposure breakdown of the ETF.
-     * @type {Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'industry_group_exposure'?: Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>;
     /**
      * The financial institution or fund company that created and sponsors this ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'issuer'?: string;
     /**
      * The lead market maker for the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'lead_market_maker'?: string;
     /**
      * Indicates whether the ETF uses leverage to amplify returns (\'leveraged\'), or does not use leverage (\'unleveraged\').
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'leverage_style': string;
     /**
      * The leverage multiplier applied by the ETF, where positive numbers indicate leveraged exposure and negative numbers indicate inverse exposure.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'levered_amount'?: number;
     /**
      * The primary exchange where the ETF is listed.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'listing_exchange'?: string;
     /**
      * Defines whether an ETF is considered active under SEC rules, with managers making investment decisions, or passive, tracking an index.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'management_classification': string;
     /**
      * The annual fee charged by the fund manager for managing the ETF\'s portfolio and operations.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'management_fee'?: number;
     /**
      * Maturity exposure breakdown for fixed income ETFs.
-     * @type {Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'maturity_exposure'?: Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>;
     /**
      * Net expenses after waivers.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'net_expenses'?: number;
     /**
      * Number of holdings in the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'num_holdings'?: number;
     /**
      * Availability of options on the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'options_available'?: number;
     /**
      * Options trading volume for the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'options_volume'?: number;
     /**
      * Other expenses charged by the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'other_expenses'?: number;
     /**
      * The portfolio manager of the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'portfolio_manager'?: string;
     /**
      * The main index or benchmark that this ETF is designed to track or replicate.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'primary_benchmark'?: string;
     /**
      * The date showing when ETF Global received and processed the data.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'processed_date'?: string;
     /**
      * Indicates whether the product is an Exchange-Traded Note (\'etn\') or an Exchange-Traded Fund (\'etf\').
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'product_type': string;
     /**
      * Put/call ratio for options on the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'put_call_ratio'?: number;
     /**
      * Put options volume.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'put_volume'?: number;
     /**
      * The geographic region or area of the world where the ETF concentrates its investments.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'region'?: string;
     /**
      * Sector exposure breakdown of the ETF.
-     * @type {Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'sector_exposure'?: Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>;
     /**
      * Short interest in the ETF.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'short_interest'?: number;
     /**
      * The subadvisor of the ETF, if applicable.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'subadvisor'?: string;
     /**
      * Sub-industry exposure breakdown of the ETF.
-     * @type {Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'subindustry_exposure'?: Array<GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner>;
     /**
      * The tax structure of the ETF, determining whether investors receive 1099 or K1 tax forms (RIC, Partnership, or UIT).
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'tax_classification'?: string;
     /**
      * The total annual expense ratio of the ETF, including all fees and costs passed on to investors.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'total_expenses'?: number;
     /**
      * The transfer agent for the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'transfer_agent'?: string;
     /**
      * The trustee of the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInner
      */
     'trustee'?: string;
 }
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner
- */
 export interface GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner
-     */
     'key': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetEtfGlobalV1Profiles200ResponseResultsInnerCouponExposureInner
-     */
     'value': number;
 }
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1Taxonomies200Response
- */
 export interface GetEtfGlobalV1Taxonomies200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetEtfGlobalV1Taxonomies200ResponseResultsInner>}
-     * @memberof GetEtfGlobalV1Taxonomies200Response
      */
     'results': Array<GetEtfGlobalV1Taxonomies200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200Response
      */
     'status': GetEtfGlobalV1Taxonomies200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetEtfGlobalV1Taxonomies200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetEtfGlobalV1Taxonomies200ResponseResultsInner
- */
 export interface GetEtfGlobalV1Taxonomies200ResponseResultsInner {
     /**
      * The primary type of assets held by the ETF, such as equities, bonds, commodities, or other securities.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'asset_class'?: string;
     /**
      * The broad investment category that describes the ETF\'s investment focus and strategy.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'category'?: string;
     /**
      * The stock ticker symbol used to identify this ETF product on exchanges.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'composite_ticker'?: string;
     /**
      * The specific country focus of the ETF, if applicable.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'country'?: string;
     /**
      * Credit quality rating for fixed income ETFs.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'credit_quality_rating'?: string;
     /**
      * The official name and description of the ETF product.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'description'?: string;
     /**
      * The economic development classification of the markets the ETF invests in, such as developed, emerging, or frontier markets.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'development_class'?: string;
     /**
      * The duration characteristics for fixed income ETFs.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'duration'?: string;
     /**
      * The date showing when the information was accurate or valid; some issuers, such as Vanguard, release their data on a delay, so the effective_date can be several weeks earlier than the processed_date.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'effective_date'?: string;
     /**
      * Environmental, Social, and Governance characteristics.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'esg'?: string;
     /**
      * The mechanism used to achieve exposure.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'exposure_mechanism'?: string;
     /**
      * Factor exposure characteristics of the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'factor'?: string;
     /**
      * The specific investment focus or exposure that the ETF provides, such as sector, geography, or investment style.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'focus'?: string;
     /**
      * The frequency of hedge reset, if applicable.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'hedge_reset'?: string;
     /**
      * How frequently holdings are disclosed.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'holdings_disclosure_frequency'?: string;
     /**
      * The date when this ETF was first launched and became available for trading.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'inception_date'?: string;
     /**
      * The International Securities Identification Number, a global standard code for uniquely identifying this ETF worldwide.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'isin'?: string;
     /**
      * The financial institution or fund company that created and sponsors this ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'issuer'?: string;
     /**
      * The frequency of leverage reset, if applicable.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'leverage_reset'?: string;
     /**
      * Indicates whether the ETF uses leverage to amplify returns (\'leveraged\'), or does not use leverage (\'unleveraged\').
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'leverage_style': string;
     /**
      * The leverage multiplier applied by the ETF, where positive numbers indicate leveraged exposure and negative numbers indicate inverse exposure.
-     * @type {number}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'levered_amount'?: number;
     /**
      * Defines whether an ETF is considered active under SEC rules, with managers making investment decisions, or passive, tracking an index.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'management_classification': string;
     /**
      * Indicates whether an ETF is managed actively or passively, and the level of transparency or replication method used.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'management_style'?: string;
     /**
      * The maturity profile for fixed income ETFs.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'maturity'?: string;
     /**
      * The primary investment objective of the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'objective'?: string;
     /**
      * The main index or benchmark that this ETF is designed to track or replicate.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'primary_benchmark'?: string;
     /**
      * The date showing when ETF Global received and processed the data.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'processed_date'?: string;
     /**
      * Indicates whether the product is an Exchange-Traded Note (\'etn\') or an Exchange-Traded Fund (\'etf\').
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'product_type': string;
     /**
      * How frequently the ETF rebalances its holdings.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'rebalance_frequency'?: string;
     /**
      * How frequently the index is reconstituted.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'reconstitution_frequency'?: string;
     /**
      * The geographic region or area of the world where the ETF concentrates its investments.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'region'?: string;
     /**
      * The secondary investment objective, if applicable.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'secondary_objective'?: string;
     /**
      * The methodology used to select securities.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'selection_methodology'?: string;
     /**
      * The universe from which securities are selected.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'selection_universe'?: string;
     /**
      * The strategic investment focus of the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'strategic_focus'?: string;
     /**
      * The targeted investment focus of the ETF.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'targeted_focus'?: string;
     /**
      * The tax structure of the ETF, determining whether investors receive 1099 or K1 tax forms (RIC, Partnership, or UIT).
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'tax_classification'?: string;
     /**
      * A unique identifier code that identifies this ETF in US markets.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'us_code'?: string;
     /**
      * The methodology used to weight holdings.
-     * @type {string}
-     * @memberof GetEtfGlobalV1Taxonomies200ResponseResultsInner
      */
     'weighting_methodology'?: string;
 }
-/**
- * 
- * @export
- * @interface GetEvents200Response
- */
 export interface GetEvents200Response {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetEvents200Response
      */
     'request_id'?: string;
-    /**
-     * 
-     * @type {GetEvents200ResponseResults}
-     * @memberof GetEvents200Response
-     */
     'results'?: GetEvents200ResponseResults;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetEvents200Response
      */
     'status'?: string;
 }
 /**
  * Contains the requested event data for the specified ticker.
- * @export
- * @interface GetEvents200ResponseResults
  */
 export interface GetEvents200ResponseResults {
     /**
      * An array of event containing the requested data.
-     * @type {Array<GetEvents200ResponseResultsEventsInner>}
-     * @memberof GetEvents200ResponseResults
      */
     'events'?: Array<GetEvents200ResponseResultsEventsInner>;
     /**
      * The name of the asset.
-     * @type {string}
-     * @memberof GetEvents200ResponseResults
      */
     'name'?: string;
 }
 /**
  * @type GetEvents200ResponseResultsEventsInner
- * @export
  */
 export type GetEvents200ResponseResultsEventsInner = GetEvents200ResponseResultsEventsInnerOneOf;
 
-/**
- * 
- * @export
- * @interface GetEvents200ResponseResultsEventsInnerOneOf
- */
 export interface GetEvents200ResponseResultsEventsInnerOneOf {
     /**
      * The date the event took place
-     * @type {string}
-     * @memberof GetEvents200ResponseResultsEventsInnerOneOf
      */
     'date': string;
     /**
      * The type of historical event for the asset
-     * @type {string}
-     * @memberof GetEvents200ResponseResultsEventsInnerOneOf
      */
     'event_type': string;
-    /**
-     * 
-     * @type {GetEvents200ResponseResultsEventsInnerOneOfTickerChange}
-     * @memberof GetEvents200ResponseResultsEventsInnerOneOf
-     */
     'ticker_change'?: GetEvents200ResponseResultsEventsInnerOneOfTickerChange;
 }
 /**
  * Details about a ticker change
- * @export
- * @interface GetEvents200ResponseResultsEventsInnerOneOfTickerChange
  */
 export interface GetEvents200ResponseResultsEventsInnerOneOfTickerChange {
     /**
      * A ticker symbol
-     * @type {string}
-     * @memberof GetEvents200ResponseResultsEventsInnerOneOfTickerChange
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetFedV1Inflation200Response
- */
 export interface GetFedV1Inflation200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFedV1Inflation200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFedV1Inflation200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFedV1Inflation200ResponseResultsInner>}
-     * @memberof GetFedV1Inflation200Response
      */
     'results': Array<GetFedV1Inflation200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFedV1Inflation200Response
      */
     'status': GetFedV1Inflation200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFedV1Inflation200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFedV1Inflation200ResponseResultsInner
- */
 export interface GetFedV1Inflation200ResponseResultsInner {
     /**
      * Consumer Price Index (CPI) for All Urban Consumers — a standard measure of headline inflation based on a fixed basket of goods and services, not seasonally adjusted.
-     * @type {number}
-     * @memberof GetFedV1Inflation200ResponseResultsInner
      */
     'cpi'?: number;
     /**
      * Core Consumer Price Index — the CPI excluding food and energy, used to understand underlying inflation trends without short-term volatility.
-     * @type {number}
-     * @memberof GetFedV1Inflation200ResponseResultsInner
      */
     'cpi_core'?: number;
     /**
      * Year-over-year percentage change in the headline CPI — the most commonly cited inflation rate in public discourse and economic policy.
-     * @type {number}
-     * @memberof GetFedV1Inflation200ResponseResultsInner
      */
     'cpi_year_over_year'?: number;
     /**
      * Calendar date of the observation (YYYY‑MM‑DD).
-     * @type {string}
-     * @memberof GetFedV1Inflation200ResponseResultsInner
      */
     'date'?: string;
     /**
      * Personal Consumption Expenditures (PCE) Price Index — a broader measure of inflation used by the Federal Reserve, reflecting actual consumer spending patterns and updated basket weights.
-     * @type {number}
-     * @memberof GetFedV1Inflation200ResponseResultsInner
      */
     'pce'?: number;
     /**
      * Core PCE Price Index — excludes food and energy prices from the PCE index, and is the Fed\'s preferred measure of underlying inflation.
-     * @type {number}
-     * @memberof GetFedV1Inflation200ResponseResultsInner
      */
     'pce_core'?: number;
     /**
      * Nominal Personal Consumption Expenditures — total dollar value of consumer spending in the U.S. economy, reported in billions of dollars and not adjusted for inflation.
-     * @type {number}
-     * @memberof GetFedV1Inflation200ResponseResultsInner
      */
     'pce_spending'?: number;
 }
-/**
- * 
- * @export
- * @interface GetFedV1InflationExpectations200Response
- */
 export interface GetFedV1InflationExpectations200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFedV1InflationExpectations200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFedV1InflationExpectations200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFedV1InflationExpectations200ResponseResultsInner>}
-     * @memberof GetFedV1InflationExpectations200Response
      */
     'results': Array<GetFedV1InflationExpectations200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFedV1InflationExpectations200Response
      */
     'status': GetFedV1InflationExpectations200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFedV1InflationExpectations200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFedV1InflationExpectations200ResponseResultsInner
- */
 export interface GetFedV1InflationExpectations200ResponseResultsInner {
     /**
      * Calendar date of the observation (YYYY‑MM‑DD).
-     * @type {string}
-     * @memberof GetFedV1InflationExpectations200ResponseResultsInner
      */
     'date'?: string;
     /**
      * 5-Year, 5-Year Forward Inflation Expectation Rate — the market\'s expectation of average annual inflation for the 5-year period beginning 5 years from now, based on the spread between forward nominal and real yields.
-     * @type {number}
-     * @memberof GetFedV1InflationExpectations200ResponseResultsInner
      */
     'forward_years_5_to_10'?: number;
     /**
      * 10-Year Breakeven Inflation Rate — the market\'s expectation of average annual inflation over the next 10 years, based on the spread between 10-year nominal Treasury yields and 10-year TIPS yields.
-     * @type {number}
-     * @memberof GetFedV1InflationExpectations200ResponseResultsInner
      */
     'market_10_year'?: number;
     /**
      * 5-Year Breakeven Inflation Rate — the market\'s expectation of average annual inflation over the next 5 years, based on the spread between 5-year nominal Treasury yields and 5-year TIPS yields.
-     * @type {number}
-     * @memberof GetFedV1InflationExpectations200ResponseResultsInner
      */
     'market_5_year'?: number;
     /**
      * The Cleveland Fed’s 10-year inflation expectations data estimated expected inflation, risk premiums, and the real interest rate using a model based on Treasury yields, inflation data, swaps, and surveys.
-     * @type {number}
-     * @memberof GetFedV1InflationExpectations200ResponseResultsInner
      */
     'model_10_year'?: number;
     /**
      * The Cleveland Fed’s 1-year inflation expectations data estimated expected inflation, risk premiums, and the real interest rate using a model based on Treasury yields, inflation data, swaps, and surveys.
-     * @type {number}
-     * @memberof GetFedV1InflationExpectations200ResponseResultsInner
      */
     'model_1_year'?: number;
     /**
      * The Cleveland Fed’s 30-year inflation expectations data estimated expected inflation, risk premiums, and the real interest rate using a model based on Treasury yields, inflation data, swaps, and surveys.
-     * @type {number}
-     * @memberof GetFedV1InflationExpectations200ResponseResultsInner
      */
     'model_30_year'?: number;
     /**
      * The Cleveland Fed’s 5-year inflation expectations data estimated expected inflation, risk premiums, and the real interest rate using a model based on Treasury yields, inflation data, swaps, and surveys.
-     * @type {number}
-     * @memberof GetFedV1InflationExpectations200ResponseResultsInner
      */
     'model_5_year'?: number;
 }
-/**
- * 
- * @export
- * @interface GetFedV1LaborMarket200Response
- */
 export interface GetFedV1LaborMarket200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFedV1LaborMarket200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFedV1LaborMarket200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFedV1LaborMarket200ResponseResultsInner>}
-     * @memberof GetFedV1LaborMarket200Response
      */
     'results': Array<GetFedV1LaborMarket200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFedV1LaborMarket200Response
      */
     'status': GetFedV1LaborMarket200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFedV1LaborMarket200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFedV1LaborMarket200ResponseResultsInner
- */
 export interface GetFedV1LaborMarket200ResponseResultsInner {
     /**
      * Average hourly earnings of all employees on private nonfarm payrolls in USD (CES0500000003 series from FRED).
-     * @type {number}
-     * @memberof GetFedV1LaborMarket200ResponseResultsInner
      */
     'avg_hourly_earnings'?: number;
     /**
      * Calendar date of the observation (YYYY-MM-DD).
-     * @type {string}
-     * @memberof GetFedV1LaborMarket200ResponseResultsInner
      */
     'date'?: string;
     /**
      * Total nonfarm job openings in thousands (JTSJOL series from FRED).
-     * @type {number}
-     * @memberof GetFedV1LaborMarket200ResponseResultsInner
      */
     'job_openings'?: number;
     /**
      * Civilian labor force participation rate as a percentage of the civilian noninstitutional population (CIVPART series from FRED).
-     * @type {number}
-     * @memberof GetFedV1LaborMarket200ResponseResultsInner
      */
     'labor_force_participation_rate'?: number;
     /**
      * Civilian unemployment rate as a percentage of the labor force (UNRATE series from FRED).
-     * @type {number}
-     * @memberof GetFedV1LaborMarket200ResponseResultsInner
      */
     'unemployment_rate'?: number;
 }
-/**
- * 
- * @export
- * @interface GetFedV1TreasuryYields200Response
- */
 export interface GetFedV1TreasuryYields200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFedV1TreasuryYields200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFedV1TreasuryYields200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFedV1TreasuryYields200ResponseResultsInner>}
-     * @memberof GetFedV1TreasuryYields200Response
      */
     'results': Array<GetFedV1TreasuryYields200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFedV1TreasuryYields200Response
      */
     'status': GetFedV1TreasuryYields200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFedV1TreasuryYields200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFedV1TreasuryYields200ResponseResultsInner
- */
 export interface GetFedV1TreasuryYields200ResponseResultsInner {
     /**
      * Calendar date of the yield observation (YYYY-MM-DD).
-     * @type {string}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'date'?: string;
     /**
      * Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_10_year'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 1-Month Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_1_month'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 1-Year Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_1_year'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 20-Year Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_20_year'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 2-Year Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_2_year'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 30-Year Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_30_year'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 3-Month Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_3_month'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 3-Year Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_3_year'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 5-Year Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_5_year'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 6-Month Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_6_month'?: number;
     /**
      * Market Yield on U.S. Treasury Securities at 7-Year Constant Maturity, Quoted on an Investment Basis
-     * @type {number}
-     * @memberof GetFedV1TreasuryYields200ResponseResultsInner
      */
     'yield_7_year'?: number;
 }
-/**
- * 
- * @export
- * @interface GetForexQuotes200Response
- */
 export interface GetForexQuotes200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetForexQuotes200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetForexQuotes200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetForexQuotes200ResponseResultsInner>}
-     * @memberof GetForexQuotes200Response
      */
     'results'?: Array<GetForexQuotes200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetForexQuotes200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetForexQuotes200ResponseResultsInner
- */
 export interface GetForexQuotes200ResponseResultsInner {
     /**
      * The ask exchange ID
-     * @type {number}
-     * @memberof GetForexQuotes200ResponseResultsInner
      */
     'ask_exchange'?: number;
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetForexQuotes200ResponseResultsInner
      */
     'ask_price'?: number;
     /**
      * The bid exchange ID
-     * @type {number}
-     * @memberof GetForexQuotes200ResponseResultsInner
      */
     'bid_exchange'?: number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetForexQuotes200ResponseResultsInner
      */
     'bid_price'?: number;
     /**
      * The nanosecond Exchange Unix Timestamp. This is the timestamp of when the quote was generated at the exchange.
-     * @type {number}
-     * @memberof GetForexQuotes200ResponseResultsInner
      */
     'participant_timestamp': number;
 }
-/**
- * 
- * @export
- * @interface GetForexSnapshotTicker200Response
- */
 export interface GetForexSnapshotTicker200Response {
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetForexSnapshotTicker200Response
      */
     'status': string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetForexSnapshotTicker200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetForexSnapshotTicker200ResponseAllOfTicker}
-     * @memberof GetForexSnapshotTicker200Response
-     */
     'ticker'?: GetForexSnapshotTicker200ResponseAllOfTicker;
 }
 /**
  * Contains the requested snapshot data for the specified ticker.
- * @export
- * @interface GetForexSnapshotTicker200ResponseAllOfTicker
  */
 export interface GetForexSnapshotTicker200ResponseAllOfTicker {
-    /**
-     * 
-     * @type {GetForexSnapshotTickers200ResponseAllOfTickersInnerDay}
-     * @memberof GetForexSnapshotTicker200ResponseAllOfTicker
-     */
     'day': GetForexSnapshotTickers200ResponseAllOfTickersInnerDay;
     /**
      * Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.
-     * @type {number}
-     * @memberof GetForexSnapshotTicker200ResponseAllOfTicker
      */
     'fmv'?: number;
-    /**
-     * 
-     * @type {GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote}
-     * @memberof GetForexSnapshotTicker200ResponseAllOfTicker
-     */
     'lastQuote': GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote;
-    /**
-     * 
-     * @type {GetForexSnapshotTickers200ResponseAllOfTickersInnerMin}
-     * @memberof GetForexSnapshotTicker200ResponseAllOfTicker
-     */
     'min': GetForexSnapshotTickers200ResponseAllOfTickersInnerMin;
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay}
-     * @memberof GetForexSnapshotTicker200ResponseAllOfTicker
-     */
     'prevDay': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetForexSnapshotTicker200ResponseAllOfTicker
      */
     'ticker': string;
     /**
      * The value of the change from the previous day.
-     * @type {number}
-     * @memberof GetForexSnapshotTicker200ResponseAllOfTicker
      */
     'todaysChange': number;
     /**
      * The percentage change since the previous day.
-     * @type {number}
-     * @memberof GetForexSnapshotTicker200ResponseAllOfTicker
      */
     'todaysChangePerc': number;
     /**
      * The last updated timestamp.
-     * @type {number}
-     * @memberof GetForexSnapshotTicker200ResponseAllOfTicker
      */
     'updated': number;
 }
-/**
- * 
- * @export
- * @interface GetForexSnapshotTickers200Response
- */
 export interface GetForexSnapshotTickers200Response {
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetForexSnapshotTickers200Response
      */
     'status': string;
     /**
      * An array of snapshot data for the specified tickers.
-     * @type {Array<GetForexSnapshotTickers200ResponseAllOfTickersInner>}
-     * @memberof GetForexSnapshotTickers200Response
      */
     'tickers'?: Array<GetForexSnapshotTickers200ResponseAllOfTickersInner>;
 }
-/**
- * 
- * @export
- * @interface GetForexSnapshotTickers200ResponseAllOfTickersInner
- */
 export interface GetForexSnapshotTickers200ResponseAllOfTickersInner {
-    /**
-     * 
-     * @type {GetForexSnapshotTickers200ResponseAllOfTickersInnerDay}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInner
-     */
     'day': GetForexSnapshotTickers200ResponseAllOfTickersInnerDay;
     /**
      * Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInner
      */
     'fmv'?: number;
-    /**
-     * 
-     * @type {GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInner
-     */
     'lastQuote': GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote;
-    /**
-     * 
-     * @type {GetForexSnapshotTickers200ResponseAllOfTickersInnerMin}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInner
-     */
     'min': GetForexSnapshotTickers200ResponseAllOfTickersInnerMin;
-    /**
-     * 
-     * @type {GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInner
-     */
     'prevDay': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInner
      */
     'ticker': string;
     /**
      * The value of the change from the previous day.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInner
      */
     'todaysChange': number;
     /**
      * The percentage change since the previous day.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInner
      */
     'todaysChangePerc': number;
     /**
      * The last updated timestamp.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInner
      */
     'updated': number;
 }
 /**
  * The most recent daily bar for this ticker.
- * @export
- * @interface GetForexSnapshotTickers200ResponseAllOfTickersInnerDay
  */
 export interface GetForexSnapshotTickers200ResponseAllOfTickersInnerDay {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'o': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'v': number;
 }
 /**
  * The most recent quote for this ticker.
- * @export
- * @interface GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote
  */
 export interface GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote
      */
     'a': number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote
      */
     'b': number;
     /**
      * The millisecond accuracy timestamp of the quote.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote
      */
     't': number;
     /**
      * The exchange ID on which this quote happened.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote
      */
     'x': number;
 }
 /**
  * The most recent minute bar for this ticker.
- * @export
- * @interface GetForexSnapshotTickers200ResponseAllOfTickersInnerMin
  */
 export interface GetForexSnapshotTickers200ResponseAllOfTickersInnerMin {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'c'?: number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'h'?: number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'l'?: number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'n'?: number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'o'?: number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     't'?: number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetForexSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'v'?: number;
 }
-/**
- * 
- * @export
- * @interface GetForexV1Exchanges200Response
- */
 export interface GetForexV1Exchanges200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetForexV1Exchanges200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetForexV1Exchanges200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetForexV1Exchanges200ResponseResultsInner>}
-     * @memberof GetForexV1Exchanges200Response
      */
     'results': Array<GetForexV1Exchanges200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetForexV1Exchanges200Response
      */
     'status': GetForexV1Exchanges200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetForexV1Exchanges200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetForexV1Exchanges200ResponseResultsInner
- */
 export interface GetForexV1Exchanges200ResponseResultsInner {
     /**
      * Numeric identifier for the forex trading venue or institution.
-     * @type {string}
-     * @memberof GetForexV1Exchanges200ResponseResultsInner
      */
     'id': string;
     /**
      * Full name of the foreign exchange trading venue, platform, or financial institution.
-     * @type {string}
-     * @memberof GetForexV1Exchanges200ResponseResultsInner
      */
     'name': string;
     /**
      * Type of forex venue - \'exchange\' for electronic trading platforms and institutional trading venues.
-     * @type {string}
-     * @memberof GetForexV1Exchanges200ResponseResultsInner
      */
     'type': string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesAggregates200Response
- */
 export interface GetFuturesAggregates200Response {
     /**
      * If present, the URL to the next page of results.
-     * @type {string}
-     * @memberof GetFuturesAggregates200Response
      */
     'next_url'?: string;
-    /**
-     * 
-     * @type {Array<GetFuturesAggregates200ResponseResultsInner>}
-     * @memberof GetFuturesAggregates200Response
-     */
     'results': Array<GetFuturesAggregates200ResponseResultsInner>;
     /**
      * The status of the response.
-     * @type {string}
-     * @memberof GetFuturesAggregates200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesAggregates200ResponseResultsInner
- */
 export interface GetFuturesAggregates200ResponseResultsInner {
     /**
      * The last price within the timeframe.
-     * @type {number}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'close': number;
     /**
      * The total dollar volume of the transactions that occurred within the timeframe.
-     * @type {number}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'dollar_volume': number;
     /**
      * The highest price within the timeframe.
-     * @type {number}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'high': number;
     /**
      * The lowest price within the timeframe.
-     * @type {number}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'low': number;
     /**
      * The opening price within the timeframe.
-     * @type {number}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'open': number;
     /**
      * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'session_end_date': string;
     /**
      * The price the contract would have cost to settle for this session.
-     * @type {number}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'settlement_price'?: number;
     /**
      * The ticker for the contract.
-     * @type {string}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The number of transactions that occurred within the timeframe.
-     * @type {number}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'transactions': number;
     /**
      * The number of contracts that traded within the timeframe.
-     * @type {number}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'volume': number;
     /**
      * The timestamp of the beginning of the candlestick’s aggregation window.
-     * @type {number}
-     * @memberof GetFuturesAggregates200ResponseResultsInner
      */
     'window_start': number;
 }
-/**
- * 
- * @export
- * @interface GetFuturesQuotes200Response
- */
 export interface GetFuturesQuotes200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetFuturesQuotes200Response
      */
     'next_url'?: string;
-    /**
-     * 
-     * @type {Array<GetFuturesQuotes200ResponseResultsInner>}
-     * @memberof GetFuturesQuotes200Response
-     */
     'results'?: Array<GetFuturesQuotes200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesQuotes200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesQuotes200ResponseResultsInner
- */
 export interface GetFuturesQuotes200ResponseResultsInner {
     /**
      * The ask price is expressed per unit of the underlying asset, and you apply the contract multiplier to get the full contract value.
-     * @type {number}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'ask_price'?: number;
     /**
      * The quote size represents the number of futures contracts available at the given ask price.
-     * @type {number}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'ask_size'?: number;
     /**
      * The time when the ask price was submitted to the exchange.
-     * @type {number}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'ask_timestamp'?: number;
     /**
      * The bid price is expressed per unit of the underlying asset, and you apply the contract multiplier to get the full contract value.
-     * @type {number}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'bid_price'?: number;
     /**
      * The quote size represents the number of futures contracts available at the given bid price.
-     * @type {number}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'bid_size'?: number;
     /**
      * The time when the bid price was submitted to the exchange.
-     * @type {number}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'bid_timestamp'?: number;
     /**
      * The reporting sequence number.
-     * @type {number}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'report_sequence': number;
     /**
      * The unique sequence number assigned to this quote by the exchange.
-     * @type {number}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'sequence_number': number;
     /**
      * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'session_end_date': string;
     /**
      * The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-     * @type {string}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The time when the quote was generated at the exchange to nanosecond precision.
-     * @type {number}
-     * @memberof GetFuturesQuotes200ResponseResultsInner
      */
     'timestamp': number;
 }
-/**
- * 
- * @export
- * @interface GetFuturesTrades200Response
- */
 export interface GetFuturesTrades200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetFuturesTrades200Response
      */
     'next_url'?: string;
-    /**
-     * 
-     * @type {Array<GetFuturesTrades200ResponseResultsInner>}
-     * @memberof GetFuturesTrades200Response
-     */
     'results'?: Array<GetFuturesTrades200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesTrades200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesTrades200ResponseResultsInner
- */
 export interface GetFuturesTrades200ResponseResultsInner {
     /**
      * The price of the trade. This is the actual dollar value per whole contract of this trade. A trade of 100 contracts with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetFuturesTrades200ResponseResultsInner
      */
     'price': number;
     /**
      * The reporting sequence number.
-     * @type {number}
-     * @memberof GetFuturesTrades200ResponseResultsInner
      */
     'report_sequence': number;
     /**
      * The unique sequence number assigned to this trade.
-     * @type {number}
-     * @memberof GetFuturesTrades200ResponseResultsInner
      */
     'sequence_number': number;
     /**
      * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof GetFuturesTrades200ResponseResultsInner
      */
     'session_end_date': string;
     /**
      * The total number of contracts exchanged between buyers and sellers on a given trade.
-     * @type {number}
-     * @memberof GetFuturesTrades200ResponseResultsInner
      */
     'size': number;
     /**
      * ticker of the trade
-     * @type {string}
-     * @memberof GetFuturesTrades200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The time when the trade was generated at the exchange to nanosecond precision.
-     * @type {number}
-     * @memberof GetFuturesTrades200ResponseResultsInner
      */
     'timestamp': number;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXContracts200Response
- */
 export interface GetFuturesVXContracts200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFuturesVXContracts200ResponseResultsInner>}
-     * @memberof GetFuturesVXContracts200Response
      */
     'results': Array<GetFuturesVXContracts200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200Response
      */
     'status': GetFuturesVXContracts200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFuturesVXContracts200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFuturesVXContracts200ResponseResultsInner
- */
 export interface GetFuturesVXContracts200ResponseResultsInner {
     /**
      * Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date <= date >= last_trade_date) and false otherwise.
-     * @type {boolean}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'active': boolean;
     /**
      * A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about contracts for the specified day.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'date': string;
     /**
      * The number of calendar days between the \'date\' and the contract\'s final settlement date.
-     * @type {number}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'days_to_maturity'?: number;
     /**
      * The first day on which the contract was tradeable.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'first_trade_date'?: string;
     /**
      * An identifier used to identify logical groups of products. The group_code is only populated for contracts listed for trading on CME Globex.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'group_code'?: string;
     /**
      * The last day on which the contract was tradeable.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'last_trade_date'?: string;
     /**
      * The maximum order quantity.
-     * @type {number}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'max_order_quantity'?: number;
     /**
      * The minimum order quantity.
-     * @type {number}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'min_order_quantity'?: number;
     /**
      * The name of this contract.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'name'?: string;
     /**
      * The identifier for the contract\'s product.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'product_code'?: string;
     /**
      * The date on which this contract settles.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'settlement_date'?: string;
     /**
      * The tick size for settlement.
-     * @type {number}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'settlement_tick_size'?: number;
     /**
      * The tick size for spreads.
-     * @type {number}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'spread_tick_size'?: number;
     /**
      * The ticker for the contract.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'ticker'?: string;
     /**
      * The tick size for trades.
-     * @type {number}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'trade_tick_size'?: number;
     /**
      * The trading venue (MIC) for the exchange on which this contract trades.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'trading_venue'?: string;
     /**
      * The type of contract, one of \'single\' or \'combo\'. Leaving this filter blank will query for both \'single\' and \'combo\' types.
-     * @type {string}
-     * @memberof GetFuturesVXContracts200ResponseResultsInner
      */
     'type'?: string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXExchanges200Response
- */
 export interface GetFuturesVXExchanges200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFuturesVXExchanges200ResponseResultsInner>}
-     * @memberof GetFuturesVXExchanges200Response
      */
     'results': Array<GetFuturesVXExchanges200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200Response
      */
     'status': GetFuturesVXExchanges200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFuturesVXExchanges200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFuturesVXExchanges200ResponseResultsInner
- */
 export interface GetFuturesVXExchanges200ResponseResultsInner {
     /**
      * Well-known acronym for the exchange (e.g., \'CME\', \'NYMEX\', \'CBOT\', \'COMEX\').
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200ResponseResultsInner
      */
     'acronym'?: string;
     /**
      * Numeric identifier for the futures exchange or trading venue.
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200ResponseResultsInner
      */
     'id': string;
     /**
      * Geographic location code where the exchange operates.
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200ResponseResultsInner
      */
     'locale'?: string;
     /**
      * Market Identifier Code (MIC) - ISO 10383 standard four-character code for the futures market.
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200ResponseResultsInner
      */
     'mic'?: string;
     /**
      * Full official name of the futures exchange (e.g., \'Chicago Mercantile Exchange\', \'New York Mercantile Exchange\').
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200ResponseResultsInner
      */
     'name': string;
     /**
      * Operating Market Identifier Code for the futures exchange.
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200ResponseResultsInner
      */
     'operating_mic'?: string;
     /**
      * Type of venue - \'exchange\' for futures exchanges and derivatives trading platforms.
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200ResponseResultsInner
      */
     'type': string;
     /**
      * Official website URL of the futures exchange organization.
-     * @type {string}
-     * @memberof GetFuturesVXExchanges200ResponseResultsInner
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXMarketStatus200Response
- */
 export interface GetFuturesVXMarketStatus200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFuturesVXMarketStatus200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFuturesVXMarketStatus200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFuturesVXMarketStatus200ResponseResultsInner>}
-     * @memberof GetFuturesVXMarketStatus200Response
      */
     'results': Array<GetFuturesVXMarketStatus200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesVXMarketStatus200Response
      */
     'status': GetFuturesVXMarketStatus200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFuturesVXMarketStatus200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFuturesVXMarketStatus200ResponseResultsInner
- */
 export interface GetFuturesVXMarketStatus200ResponseResultsInner {
     /**
      * The current status of the market for the product.
-     * @type {string}
-     * @memberof GetFuturesVXMarketStatus200ResponseResultsInner
      */
     'market_event'?: string;
     /**
      * The name of the futures product.
-     * @type {string}
-     * @memberof GetFuturesVXMarketStatus200ResponseResultsInner
      */
     'name'?: string;
     /**
      * The product code of the futures contracts for which you want statuses.
-     * @type {string}
-     * @memberof GetFuturesVXMarketStatus200ResponseResultsInner
      */
     'product_code'?: string;
     /**
      * The trading date for the current session.
-     * @type {string}
-     * @memberof GetFuturesVXMarketStatus200ResponseResultsInner
      */
     'session_end_date'?: string;
     /**
      * The timestamp for the given market event.
-     * @type {string}
-     * @memberof GetFuturesVXMarketStatus200ResponseResultsInner
      */
     'timestamp'?: string;
     /**
      * The trading venue (MIC) for the exchange on which the corresponding product trades.
-     * @type {string}
-     * @memberof GetFuturesVXMarketStatus200ResponseResultsInner
      */
     'trading_venue'?: string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXProducts200Response
- */
 export interface GetFuturesVXProducts200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFuturesVXProducts200ResponseResultsInner>}
-     * @memberof GetFuturesVXProducts200Response
      */
     'results': Array<GetFuturesVXProducts200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200Response
      */
     'status': GetFuturesVXProducts200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFuturesVXProducts200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFuturesVXProducts200ResponseResultsInner
- */
 export interface GetFuturesVXProducts200ResponseResultsInner {
     /**
      * The asset class to which the product belongs.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'asset_class'?: string;
     /**
      * The asset sub-class to which the product belongs.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'asset_sub_class'?: string;
     /**
      * A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'date': string;
     /**
      * The date and time at which this product was last updated.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'last_updated'?: string;
     /**
      * The full name of the product.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'name'?: string;
     /**
      * The quoted price for this product.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'price_quotation'?: string;
     /**
      * The identifier for the product.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'product_code'?: string;
     /**
      * The sector to which the product belongs.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'sector'?: string;
     /**
      * The currency in which this product settles.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'settlement_currency_code'?: string;
     /**
      * The method of settlement for this product (Financially Settled or Deliverable).
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'settlement_method'?: string;
     /**
      * The type of settlement for this product.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'settlement_type'?: string;
     /**
      * The sub-sector to which the product belongs.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'sub_sector'?: string;
     /**
      * The currency in which this product\'s contracts trade.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'trade_currency_code'?: string;
     /**
      * The trading venue (MIC) for the exchange on which this product\'s contracts trade.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'trading_venue'?: string;
     /**
      * The type of product, one of \'single\' or \'combo\'. Leaving this filter blank will query for both \'single\' and \'combo\' types.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'type'?: string;
     /**
      * The unit of measure for this product.
-     * @type {string}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'unit_of_measure'?: string;
     /**
      * The quantity of the unit of measure for this product.
-     * @type {number}
-     * @memberof GetFuturesVXProducts200ResponseResultsInner
      */
     'unit_of_measure_qty'?: number;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXQuotesNew200Response
- */
 export interface GetFuturesVXQuotesNew200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFuturesVXQuotesNew200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFuturesVXQuotesNew200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFuturesVXQuotesNew200ResponseResultsInner>}
-     * @memberof GetFuturesVXQuotesNew200Response
      */
     'results': Array<GetFuturesVXQuotesNew200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesVXQuotesNew200Response
      */
     'status': GetFuturesVXQuotesNew200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFuturesVXQuotesNew200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFuturesVXQuotesNew200ResponseResultsInner
- */
 export interface GetFuturesVXQuotesNew200ResponseResultsInner {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'ask_price'?: number;
     /**
      * The ask size.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'ask_size'?: number;
     /**
      * The nanosecond accuracy Unix Timestamp when the ask price was submitted to the exchange.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'ask_timestamp'?: number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'bid_price'?: number;
     /**
      * The bid size.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'bid_size'?: number;
     /**
      * The nanosecond accuracy Unix Timestamp when the bid price was submitted to the exchange.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'bid_timestamp'?: number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'exchange'?: number;
     /**
      * The report sequence number.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'report_sequence': number;
     /**
      * The sequence number represents the order in which quote events occurred for this ticker.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'sequence_number': number;
     /**
      * The trade date representing the session end date for this quote. Used for partitioning and filtering quotes by trading session.
-     * @type {string}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'session_end_date': string;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The nanosecond accuracy Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof GetFuturesVXQuotesNew200ResponseResultsInner
      */
     'timestamp': number;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXSchedules200Response
- */
 export interface GetFuturesVXSchedules200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFuturesVXSchedules200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFuturesVXSchedules200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFuturesVXSchedules200ResponseResultsInner>}
-     * @memberof GetFuturesVXSchedules200Response
      */
     'results': Array<GetFuturesVXSchedules200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesVXSchedules200Response
      */
     'status': GetFuturesVXSchedules200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFuturesVXSchedules200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFuturesVXSchedules200ResponseResultsInner
- */
 export interface GetFuturesVXSchedules200ResponseResultsInner {
     /**
      * The type of session on the given trading date.
-     * @type {string}
-     * @memberof GetFuturesVXSchedules200ResponseResultsInner
      */
     'event'?: string;
     /**
      * The product code of the futures contract.
-     * @type {string}
-     * @memberof GetFuturesVXSchedules200ResponseResultsInner
      */
     'product_code'?: string;
     /**
      * The name of the futures product to which this schedule applies.
-     * @type {string}
-     * @memberof GetFuturesVXSchedules200ResponseResultsInner
      */
     'product_name'?: string;
     /**
      * The session end date for the schedules (also known as the trading date). This is the day in CT for which the user wants to retrieve data. If left blank, this value defaults to \'today\' in Central Time. e.g. If a request is made from Pacific Time on \'2025-01-01\' at 11:00 pm with no \'session_end_date\' a default value of `2025-01-02` will be used.
-     * @type {string}
-     * @memberof GetFuturesVXSchedules200ResponseResultsInner
      */
     'session_end_date'?: string;
     /**
      * The timestamp for the given market event.
-     * @type {string}
-     * @memberof GetFuturesVXSchedules200ResponseResultsInner
      */
     'timestamp'?: string;
     /**
      * The trading venue (MIC) for the exchange on which this schedule\'s product trades.
-     * @type {string}
-     * @memberof GetFuturesVXSchedules200ResponseResultsInner
      */
     'trading_venue'?: string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXSnapshot200Response
- */
 export interface GetFuturesVXSnapshot200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFuturesVXSnapshot200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFuturesVXSnapshot200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFuturesVXSnapshot200ResponseResultsInner>}
-     * @memberof GetFuturesVXSnapshot200Response
      */
     'results': Array<GetFuturesVXSnapshot200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesVXSnapshot200Response
      */
     'status': GetFuturesVXSnapshot200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFuturesVXSnapshot200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFuturesVXSnapshot200ResponseResultsInner
- */
 export interface GetFuturesVXSnapshot200ResponseResultsInner {
-    /**
-     * 
-     * @type {GetFuturesVXSnapshot200ResponseResultsInnerDetails}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInner
-     */
     'details'?: GetFuturesVXSnapshot200ResponseResultsInnerDetails;
-    /**
-     * 
-     * @type {GetFuturesVXSnapshot200ResponseResultsInnerLastMinute}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInner
-     */
     'last_minute'?: GetFuturesVXSnapshot200ResponseResultsInnerLastMinute;
-    /**
-     * 
-     * @type {GetFuturesVXSnapshot200ResponseResultsInnerLastQuote}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInner
-     */
     'last_quote'?: GetFuturesVXSnapshot200ResponseResultsInnerLastQuote;
-    /**
-     * 
-     * @type {GetFuturesVXSnapshot200ResponseResultsInnerLastTrade}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInner
-     */
     'last_trade'?: GetFuturesVXSnapshot200ResponseResultsInnerLastTrade;
-    /**
-     * 
-     * @type {GetFuturesVXSnapshot200ResponseResultsInnerSession}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInner
-     */
     'session'?: GetFuturesVXSnapshot200ResponseResultsInnerSession;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXSnapshot200ResponseResultsInnerDetails
- */
 export interface GetFuturesVXSnapshot200ResponseResultsInnerDetails {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerDetails
-     */
     'product_code'?: string;
     /**
      * The day that this contract is settled.
-     * @type {string}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerDetails
      */
     'settlement_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerDetails
-     */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXSnapshot200ResponseResultsInnerLastMinute
- */
 export interface GetFuturesVXSnapshot200ResponseResultsInnerLastMinute {
     /**
      * The price at the end of the minute bar.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastMinute
      */
     'close'?: number;
     /**
      * The highest price reached in the minute bar.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastMinute
      */
     'high'?: number;
     /**
      * The timestamp indicating the most recent update to the minute bar.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastMinute
      */
     'last_updated'?: number;
     /**
      * The lowest price reached in the minute bar.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastMinute
      */
     'low'?: number;
     /**
      * The opening price at the start of the minute bar.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastMinute
      */
     'open'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastMinute
-     */
     'timeframe'?: string;
     /**
      * The number of contracts traded in the minute bar.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastMinute
      */
     'volume'?: number;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXSnapshot200ResponseResultsInnerLastQuote
- */
 export interface GetFuturesVXSnapshot200ResponseResultsInnerLastQuote {
     /**
      * The lowest price a seller is willing to accept.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastQuote
      */
     'ask'?: number;
     /**
      * The number of contracts available at the ask price.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastQuote
      */
     'ask_size'?: number;
     /**
      * The time when the best ask price was last updated.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastQuote
      */
     'ask_timestamp'?: number;
     /**
      * The highest price a buyer is willing to pay.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastQuote
      */
     'bid'?: number;
     /**
      * The number of contracts available at the bid price.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastQuote
      */
     'bid_size'?: number;
     /**
      * The time when the best bid price was last updated.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastQuote
      */
     'bid_timestamp'?: number;
     /**
      * The time when the quote was generated at the exchange to nanosecond precision.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastQuote
      */
     'last_updated'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastQuote
-     */
     'timeframe'?: string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXSnapshot200ResponseResultsInnerLastTrade
- */
 export interface GetFuturesVXSnapshot200ResponseResultsInnerLastTrade {
     /**
      * The time when the trade was generated at the exchange to nanosecond precision.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastTrade
      */
     'last_updated'?: number;
     /**
      * The price of the trade. This is the actual dollar value per whole contract of this trade. A trade of 100 contracts with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastTrade
      */
     'price'?: number;
     /**
      * The total number of contracts exchanged between buyers and sellers on a given trade.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastTrade
      */
     'size'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerLastTrade
-     */
     'timeframe'?: string;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXSnapshot200ResponseResultsInnerSession
- */
 export interface GetFuturesVXSnapshot200ResponseResultsInnerSession {
     /**
      * The change in price during this session.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerSession
      */
     'change'?: number;
     /**
      * The percentage change in price during this session.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerSession
      */
     'change_percent'?: number;
     /**
      * The price at the end of the session.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerSession
      */
     'close'?: number;
     /**
      * The highest price reached in the session.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerSession
      */
     'high'?: number;
     /**
      * The lowest price reached in the session.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerSession
      */
     'low'?: number;
     /**
      * The opening price at the start of the session.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerSession
      */
     'open'?: number;
     /**
      * The settlement price of the previous session.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerSession
      */
     'previous_settlement'?: number;
     /**
      * The final settlement price at the end of the session.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerSession
      */
     'settlement_price'?: number;
     /**
      * The number of contracts traded in the session.
-     * @type {number}
-     * @memberof GetFuturesVXSnapshot200ResponseResultsInnerSession
      */
     'volume'?: number;
 }
-/**
- * 
- * @export
- * @interface GetFuturesVXTradesNew200Response
- */
 export interface GetFuturesVXTradesNew200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetFuturesVXTradesNew200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetFuturesVXTradesNew200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetFuturesVXTradesNew200ResponseResultsInner>}
-     * @memberof GetFuturesVXTradesNew200Response
      */
     'results': Array<GetFuturesVXTradesNew200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetFuturesVXTradesNew200Response
      */
     'status': GetFuturesVXTradesNew200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetFuturesVXTradesNew200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetFuturesVXTradesNew200ResponseResultsInner
- */
 export interface GetFuturesVXTradesNew200ResponseResultsInner {
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'conditions'?: Array<number>;
     /**
      * The trade correction indicator.
-     * @type {number}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'correction'?: number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'exchange'?: number;
     /**
      * The price of the trade. This is the actual dollar value per whole contract of this trade. A trade of 100 contracts with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'price': number;
     /**
      * The report sequence number.
-     * @type {number}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'report_sequence': number;
     /**
      * The sequence number represents the sequence in which trade events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11). Values reset after each trading session/day.
-     * @type {number}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'sequence_number': number;
     /**
      * The trade date representing the session end date for this trade. Used for partitioning and filtering trades by trading session.
-     * @type {string}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'session_end_date': string;
     /**
      * The total number of contracts exchanged between buyers and sellers on a given trade.
-     * @type {number}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'size'?: number;
     /**
      * The futures contract identifier, including the base symbol and contract expiration (e.g., ESZ24 for the December 2024 S&P 500 E-mini contract).
-     * @type {string}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The time when the trade was generated at the exchange to nanosecond precision.
-     * @type {number}
-     * @memberof GetFuturesVXTradesNew200ResponseResultsInner
      */
     'timestamp': number;
 }
-/**
- * 
- * @export
- * @interface GetGroupedCryptoAggregates200Response
- */
 export interface GetGroupedCryptoAggregates200Response {
     /**
      * Whether or not this response was adjusted for splits.
-     * @type {boolean}
-     * @memberof GetGroupedCryptoAggregates200Response
      */
     'adjusted': boolean;
     /**
      * The number of aggregates (minute or day) used to generate the response.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200Response
      */
     'queryCount': number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetGroupedCryptoAggregates200Response
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200Response
      */
     'resultsCount': number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetGroupedCryptoAggregates200Response
      */
     'status': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetGroupedCryptoAggregates200ResponseAllOfResultsInner>}
-     * @memberof GetGroupedCryptoAggregates200Response
      */
     'results'?: Array<GetGroupedCryptoAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface GetGroupedCryptoAggregates200ResponseAllOfResultsInner
- */
 export interface GetGroupedCryptoAggregates200ResponseAllOfResultsInner {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetGroupedCryptoAggregates200ResponseAllOfResultsInner
      */
     'T': string;
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200ResponseAllOfResultsInner
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200ResponseAllOfResultsInner
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200ResponseAllOfResultsInner
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200ResponseAllOfResultsInner
      */
     'n'?: number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200ResponseAllOfResultsInner
      */
     'o': number;
     /**
      * The Unix millisecond timestamp for the end of the aggregate window.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200ResponseAllOfResultsInner
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200ResponseAllOfResultsInner
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetGroupedCryptoAggregates200ResponseAllOfResultsInner
      */
     'vw'?: number;
 }
-/**
- * 
- * @export
- * @interface GetGroupedStocksAggregates200Response
- */
 export interface GetGroupedStocksAggregates200Response {
     /**
      * Whether or not this response was adjusted for splits.
-     * @type {boolean}
-     * @memberof GetGroupedStocksAggregates200Response
      */
     'adjusted': boolean;
     /**
      * The number of aggregates (minute or day) used to generate the response.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200Response
      */
     'queryCount': number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetGroupedStocksAggregates200Response
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200Response
      */
     'resultsCount': number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetGroupedStocksAggregates200Response
      */
     'status': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetGroupedStocksAggregates200ResponseAllOfResultsInner>}
-     * @memberof GetGroupedStocksAggregates200Response
      */
     'results'?: Array<GetGroupedStocksAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface GetGroupedStocksAggregates200ResponseAllOfResultsInner
- */
 export interface GetGroupedStocksAggregates200ResponseAllOfResultsInner {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     'T': string;
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     'n'?: number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     'o': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     'otc'?: boolean;
     /**
      * The Unix millisecond timestamp for the end of the aggregate window.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetGroupedStocksAggregates200ResponseAllOfResultsInner
      */
     'vw'?: number;
 }
-/**
- * 
- * @export
- * @interface GetIndicesOpenClose200Response
- */
 export interface GetIndicesOpenClose200Response {
     /**
      * The close value of the ticker symbol in after hours trading.
-     * @type {number}
-     * @memberof GetIndicesOpenClose200Response
      */
     'afterHours'?: number;
     /**
      * The close value for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetIndicesOpenClose200Response
      */
     'close': number;
     /**
      * The requested date.
-     * @type {string}
-     * @memberof GetIndicesOpenClose200Response
      */
     'from': string;
     /**
      * The highest value for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetIndicesOpenClose200Response
      */
     'high': number;
     /**
      * The lowest value for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetIndicesOpenClose200Response
      */
     'low': number;
     /**
      * The open value for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetIndicesOpenClose200Response
      */
     'open': number;
     /**
      * The open value of the ticker symbol in pre-market trading.
-     * @type {number}
-     * @memberof GetIndicesOpenClose200Response
      */
     'preMarket'?: number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetIndicesOpenClose200Response
      */
     'status': string;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetIndicesOpenClose200Response
      */
     'symbol': string;
 }
-/**
- * 
- * @export
- * @interface GetIndicesSnapshot200Response
- */
 export interface GetIndicesSnapshot200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200Response
      */
     'request_id': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetIndicesSnapshot200ResponseResultsInner>}
-     * @memberof GetIndicesSnapshot200Response
      */
     'results'?: Array<GetIndicesSnapshot200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetIndicesSnapshot200ResponseResultsInner
- */
 export interface GetIndicesSnapshot200ResponseResultsInner {
     /**
      * The error while looking for this ticker.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
      */
     'error'?: string;
     /**
      * The nanosecond timestamp of when this information was updated.
-     * @type {number}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
      */
     'last_updated'?: number;
     /**
      * The market status for the market that trades this ticker.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
      */
     'market_status'?: string;
     /**
      * The error message while looking for this ticker.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
      */
     'message'?: string;
     /**
      * Name of Index.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
      */
     'name'?: string;
-    /**
-     * 
-     * @type {GetIndicesSnapshot200ResponseResultsInnerSession}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
-     */
     'session'?: GetIndicesSnapshot200ResponseResultsInnerSession;
     /**
      * Ticker of asset queried.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The time relevance of the data.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
      */
     'timeframe'?: GetIndicesSnapshot200ResponseResultsInnerTimeframeEnum;
     /**
      * The indices market.
-     * @type {string}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
      */
     'type'?: GetIndicesSnapshot200ResponseResultsInnerTypeEnum;
     /**
      * Value of Index.
-     * @type {number}
-     * @memberof GetIndicesSnapshot200ResponseResultsInner
      */
     'value'?: number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetIndicesSnapshot200ResponseResultsInnerTimeframeEnum {
     Delayed = 'DELAYED',
     RealTime = 'REAL-TIME'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetIndicesSnapshot200ResponseResultsInnerTypeEnum {
     Indices = 'indices'
 }
 
 /**
  * Trading session metrics, detailing change percentages and key price points (open, close, high, low) for the asset within the current trading day.
- * @export
- * @interface GetIndicesSnapshot200ResponseResultsInnerSession
  */
 export interface GetIndicesSnapshot200ResponseResultsInnerSession {
     /**
      * The value of the change for the index from the previous trading day.
-     * @type {number}
-     * @memberof GetIndicesSnapshot200ResponseResultsInnerSession
      */
     'change'?: number;
     /**
      * The percent of the change for the index from the previous trading day.
-     * @type {number}
-     * @memberof GetIndicesSnapshot200ResponseResultsInnerSession
      */
     'change_percent'?: number;
     /**
      * The closing value for the index of the day.
-     * @type {number}
-     * @memberof GetIndicesSnapshot200ResponseResultsInnerSession
      */
     'close'?: number;
     /**
      * The highest value for the index of the day.
-     * @type {number}
-     * @memberof GetIndicesSnapshot200ResponseResultsInnerSession
      */
     'high'?: number;
     /**
      * The lowest value for the index of the day.
-     * @type {number}
-     * @memberof GetIndicesSnapshot200ResponseResultsInnerSession
      */
     'low'?: number;
     /**
      * The open value for the index of the day.
-     * @type {number}
-     * @memberof GetIndicesSnapshot200ResponseResultsInnerSession
      */
     'open'?: number;
     /**
      * The closing value for the index of previous trading day.
-     * @type {number}
-     * @memberof GetIndicesSnapshot200ResponseResultsInnerSession
      */
     'previous_close'?: number;
 }
-/**
- * 
- * @export
- * @interface GetLastCryptoTrade200Response
- */
 export interface GetLastCryptoTrade200Response {
-    /**
-     * 
-     * @type {GetLastCryptoTrade200ResponseLast}
-     * @memberof GetLastCryptoTrade200Response
-     */
     'last'?: GetLastCryptoTrade200ResponseLast;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetLastCryptoTrade200Response
      */
     'request_id': string;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetLastCryptoTrade200Response
      */
     'status': string;
     /**
      * The symbol pair that was evaluated from the request.
-     * @type {string}
-     * @memberof GetLastCryptoTrade200Response
      */
     'symbol': string;
 }
 /**
  * Contains the requested trade data for the specified cryptocurrency pair.
- * @export
- * @interface GetLastCryptoTrade200ResponseLast
  */
 export interface GetLastCryptoTrade200ResponseLast {
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetLastCryptoTrade200ResponseLast
      */
     'conditions'?: Array<number>;
     /**
      * The exchange that this crypto trade happened on.   See <a href=\"https://massive.com/docs/rest/crypto/market-operations/exchanges\">Exchanges</a> for a mapping of exchanges to IDs.
-     * @type {number}
-     * @memberof GetLastCryptoTrade200ResponseLast
      */
     'exchange': number;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetLastCryptoTrade200ResponseLast
      */
     'price': number;
     /**
      * The size of a trade (also known as volume).
-     * @type {number}
-     * @memberof GetLastCryptoTrade200ResponseLast
      */
     'size': number;
     /**
      * The Unix millisecond timestamp.
-     * @type {number}
-     * @memberof GetLastCryptoTrade200ResponseLast
      */
     'timestamp': number;
 }
-/**
- * 
- * @export
- * @interface GetLastCurrencyQuote200Response
- */
 export interface GetLastCurrencyQuote200Response {
-    /**
-     * 
-     * @type {GetCurrencyConversion200ResponseLast}
-     * @memberof GetLastCurrencyQuote200Response
-     */
     'last'?: GetCurrencyConversion200ResponseLast;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetLastCurrencyQuote200Response
      */
     'request_id': string;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetLastCurrencyQuote200Response
      */
     'status': string;
     /**
      * The symbol pair that was evaluated from the request.
-     * @type {string}
-     * @memberof GetLastCurrencyQuote200Response
      */
     'symbol': string;
 }
-/**
- * 
- * @export
- * @interface GetLastOptionsTrade200Response
- */
 export interface GetLastOptionsTrade200Response {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetLastOptionsTrade200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetLastOptionsTrade200ResponseResults}
-     * @memberof GetLastOptionsTrade200Response
-     */
     'results'?: GetLastOptionsTrade200ResponseResults;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetLastOptionsTrade200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetLastOptionsTrade200ResponseResults
- */
 export interface GetLastOptionsTrade200ResponseResults {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'T': string;
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'c'?: Array<number>;
     /**
      * The trade correction indicator.
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'e'?: number;
     /**
      * The nanosecond accuracy TRF(Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this message.
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'f'?: number;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID.
-     * @type {string}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'i': string;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'p': number;
     /**
      * The sequence number represents the sequence in which message events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11).
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'q': number;
     /**
      * The ID for the Trade Reporting Facility where the trade took place.
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'r'?: number;
     /**
      * The size of a trade (also known as volume).
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     's'?: number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     't': number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'x': number;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'y': number;
     /**
      * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ
-     * @type {number}
-     * @memberof GetLastOptionsTrade200ResponseResults
      */
     'z'?: number;
 }
-/**
- * 
- * @export
- * @interface GetLastStocksQuote200Response
- */
 export interface GetLastStocksQuote200Response {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetLastStocksQuote200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetLastStocksQuote200ResponseResults}
-     * @memberof GetLastStocksQuote200Response
-     */
     'results'?: GetLastStocksQuote200ResponseResults;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetLastStocksQuote200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetLastStocksQuote200ResponseResults
- */
 export interface GetLastStocksQuote200ResponseResults {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'P'?: number;
     /**
      * The total number of shares available for sale at the current ask price.
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'S'?: number;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'T': string;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'X'?: number;
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'c'?: Array<number>;
     /**
      * The nanosecond accuracy TRF(Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this message.
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'f'?: number;
     /**
      * A list of indicator codes.
-     * @type {Array<number>}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'i'?: Array<number>;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'p'?: number;
     /**
      * The sequence number represents the sequence in which message events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11).
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'q': number;
     /**
      * The total number of shares that buyers want to purchase at the current bid price.
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     's'?: number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     't': number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'x'?: number;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'y': number;
     /**
      * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ
-     * @type {number}
-     * @memberof GetLastStocksQuote200ResponseResults
      */
     'z'?: number;
 }
-/**
- * 
- * @export
- * @interface GetLastStocksTrade200Response
- */
 export interface GetLastStocksTrade200Response {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetLastStocksTrade200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetLastStocksTrade200ResponseResults}
-     * @memberof GetLastStocksTrade200Response
-     */
     'results'?: GetLastStocksTrade200ResponseResults;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetLastStocksTrade200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetLastStocksTrade200ResponseResults
- */
 export interface GetLastStocksTrade200ResponseResults {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'T': string;
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'c'?: Array<number>;
     /**
      * The size of the trade including the fractional component. This is represented as a decimal string.
-     * @type {string}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'ds': string;
     /**
      * The trade correction indicator.
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'e'?: number;
     /**
      * The nanosecond accuracy TRF(Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this message.
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'f'?: number;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID.
-     * @type {string}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'i': string;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'p': number;
     /**
      * The sequence number represents the sequence in which message events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11).
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'q': number;
     /**
      * The ID for the Trade Reporting Facility where the trade took place.
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'r'?: number;
     /**
      * The size of a trade (also known as volume).
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     's'?: number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     't': number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'x': number;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'y': number;
     /**
      * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ
-     * @type {number}
-     * @memberof GetLastStocksTrade200ResponseResults
      */
     'z'?: number;
 }
-/**
- * 
- * @export
- * @interface GetMarketHolidays200ResponseInner
- */
 export interface GetMarketHolidays200ResponseInner {
     /**
      * The market close time on the holiday (if it\'s not closed).
-     * @type {string}
-     * @memberof GetMarketHolidays200ResponseInner
      */
     'close'?: string;
     /**
      * The date of the holiday.
-     * @type {string}
-     * @memberof GetMarketHolidays200ResponseInner
      */
     'date'?: string;
     /**
      * Which market the record is for.
-     * @type {string}
-     * @memberof GetMarketHolidays200ResponseInner
      */
     'exchange'?: string;
     /**
      * The name of the holiday.
-     * @type {string}
-     * @memberof GetMarketHolidays200ResponseInner
      */
     'name'?: string;
     /**
      * The market open time on the holiday (if it\'s not closed).
-     * @type {string}
-     * @memberof GetMarketHolidays200ResponseInner
      */
     'open'?: string;
     /**
      * The status of the market on the holiday.
-     * @type {string}
-     * @memberof GetMarketHolidays200ResponseInner
      */
     'status'?: string;
 }
-/**
- * 
- * @export
- * @interface GetMarketStatus200Response
- */
 export interface GetMarketStatus200Response {
     /**
      * Whether or not the market is in post-market hours.
-     * @type {boolean}
-     * @memberof GetMarketStatus200Response
      */
     'afterHours'?: boolean;
-    /**
-     * 
-     * @type {GetMarketStatus200ResponseCurrencies}
-     * @memberof GetMarketStatus200Response
-     */
     'currencies'?: GetMarketStatus200ResponseCurrencies;
     /**
      * Whether or not the market is in pre-market hours.
-     * @type {boolean}
-     * @memberof GetMarketStatus200Response
      */
     'earlyHours'?: boolean;
-    /**
-     * 
-     * @type {GetMarketStatus200ResponseExchanges}
-     * @memberof GetMarketStatus200Response
-     */
     'exchanges'?: GetMarketStatus200ResponseExchanges;
-    /**
-     * 
-     * @type {GetMarketStatus200ResponseIndicesGroups}
-     * @memberof GetMarketStatus200Response
-     */
     'indicesGroups'?: GetMarketStatus200ResponseIndicesGroups;
     /**
      * The status of the market as a whole.
-     * @type {string}
-     * @memberof GetMarketStatus200Response
      */
     'market'?: string;
     /**
      * The current time of the server, returned as a date-time in RFC3339 format.
-     * @type {string}
-     * @memberof GetMarketStatus200Response
      */
     'serverTime'?: string;
 }
 /**
  * Contains the status of various currency markets.
- * @export
- * @interface GetMarketStatus200ResponseCurrencies
  */
 export interface GetMarketStatus200ResponseCurrencies {
     /**
      * The status of the crypto market.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseCurrencies
      */
     'crypto'?: string;
     /**
      * The status of the forex market.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseCurrencies
      */
     'fx'?: string;
 }
 /**
  * Contains the status of different US stock exchanges (e.g., Nasdaq, NYSE).
- * @export
- * @interface GetMarketStatus200ResponseExchanges
  */
 export interface GetMarketStatus200ResponseExchanges {
     /**
      * The status of the Nasdaq market.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseExchanges
      */
     'nasdaq'?: string;
     /**
      * The status of the NYSE market.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseExchanges
      */
     'nyse'?: string;
     /**
      * The status of the OTC market.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseExchanges
      */
     'otc'?: string;
 }
 /**
  * Contains the status of various index groups (e.g., MSCI, FTSE Russell).
- * @export
- * @interface GetMarketStatus200ResponseIndicesGroups
  */
 export interface GetMarketStatus200ResponseIndicesGroups {
     /**
      * The status of Cboe Streaming Market Indices Cryptocurrency (\"CCCY\") indices trading hours.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     'cccy'?: string;
     /**
      * The status of Cboe Global Indices (\"CGI\") trading hours.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     'cgi'?: string;
     /**
      * The status of Dow Jones indices trading hours
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     'dow_jones'?: string;
     /**
      * The status of Financial Times Stock Exchange Group (\"FTSE\") Russell indices trading hours.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     'ftse_russell'?: string;
     /**
      * The status of Morgan Stanley Capital International (\"MSCI\") indices trading hours.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     'msci'?: string;
     /**
      * The status of Morningstar (\"MSTAR\") indices trading hours.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     'mstar'?: string;
     /**
      * The status of Morningstar Customer (\"MSTARC\") indices trading hours.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     'mstarc'?: string;
     /**
      * The status of National Association of Securities Dealers Automated Quotations (\"Nasdaq\") indices trading hours.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     'nasdaq'?: string;
     /**
      * The status of Standard & Poor\'s (\"S&P\") indices trading hours.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     's_and_p'?: string;
     /**
      * The status of Societe Generale indices trading hours.
-     * @type {string}
-     * @memberof GetMarketStatus200ResponseIndicesGroups
      */
     'societe_generale'?: string;
 }
-/**
- * 
- * @export
- * @interface GetOptionContract200Response
- */
 export interface GetOptionContract200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetOptionContract200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetOptionContract200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetOptionsChain200ResponseResultsInner}
-     * @memberof GetOptionContract200Response
-     */
     'results'?: GetOptionsChain200ResponseResultsInner;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetOptionContract200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetOptionsChain200Response
- */
 export interface GetOptionsChain200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetOptionsChain200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetOptionsChain200Response
      */
     'request_id': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetOptionsChain200ResponseResultsInner>}
-     * @memberof GetOptionsChain200Response
      */
     'results'?: Array<GetOptionsChain200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetOptionsChain200Response
      */
     'status': string;
 }
 /**
  * Contains the requested snapshot data for the specified contract.
- * @export
- * @interface GetOptionsChain200ResponseResultsInner
  */
 export interface GetOptionsChain200ResponseResultsInner {
     /**
      * The price of the underlying asset for the contract to break even. For a call, this value is (strike price + premium paid). For a put, this value is (strike price - premium paid).
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInner
      */
     'break_even_price': number;
-    /**
-     * 
-     * @type {GetOptionsChain200ResponseResultsInnerDay}
-     * @memberof GetOptionsChain200ResponseResultsInner
-     */
     'day': GetOptionsChain200ResponseResultsInnerDay;
-    /**
-     * 
-     * @type {GetOptionsChain200ResponseResultsInnerDetails}
-     * @memberof GetOptionsChain200ResponseResultsInner
-     */
     'details': GetOptionsChain200ResponseResultsInnerDetails;
     /**
      * Fair Market Value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInner
      */
     'fmv'?: number;
     /**
      * If Fair Market Value (FMV) is available, this field is the nanosecond timestamp of the last FMV calculation.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInner
      */
     'fmv_last_updated'?: number;
-    /**
-     * 
-     * @type {GetSnapshots200ResponseResultsInnerGreeks}
-     * @memberof GetOptionsChain200ResponseResultsInner
-     */
     'greeks'?: GetSnapshots200ResponseResultsInnerGreeks;
     /**
      * The market\'s forecast for the volatility of the underlying asset, based on this option\'s current price.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInner
      */
     'implied_volatility'?: number;
-    /**
-     * 
-     * @type {GetOptionsChain200ResponseResultsInnerLastQuote}
-     * @memberof GetOptionsChain200ResponseResultsInner
-     */
     'last_quote': GetOptionsChain200ResponseResultsInnerLastQuote;
-    /**
-     * 
-     * @type {GetOptionsChain200ResponseResultsInnerLastTrade}
-     * @memberof GetOptionsChain200ResponseResultsInner
-     */
     'last_trade'?: GetOptionsChain200ResponseResultsInnerLastTrade;
     /**
      * The quantity of this contract held at the end of the last trading day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInner
      */
     'open_interest': number;
-    /**
-     * 
-     * @type {GetSnapshots200ResponseResultsInnerUnderlyingAsset}
-     * @memberof GetOptionsChain200ResponseResultsInner
-     */
     'underlying_asset': GetSnapshots200ResponseResultsInnerUnderlyingAsset;
 }
 /**
  * The most recent daily bar for this contract.
- * @export
- * @interface GetOptionsChain200ResponseResultsInnerDay
  */
 export interface GetOptionsChain200ResponseResultsInnerDay {
     /**
      * The value of the price change for the contract from the previous trading day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'change': number;
     /**
      * The percent of the price change for the contract from the previous trading day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'change_percent': number;
     /**
      * The closing price for the contract of the day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'close': number;
     /**
      * The highest price for the contract of the day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'high': number;
     /**
      * The nanosecond timestamp of when this information was updated.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'last_updated'?: number;
     /**
      * The lowest price for the contract of the day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'low': number;
     /**
      * The open price for the contract of the day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'open': number;
     /**
      * The closing price for the contract of previous trading day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'previous_close': number;
     /**
      * The trading volume for the contract of the day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'volume': number;
     /**
      * The trading volume weighted average price for the contract of the day.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDay
      */
     'vwap': number;
 }
 /**
  * The details for this contract.
- * @export
- * @interface GetOptionsChain200ResponseResultsInnerDetails
  */
 export interface GetOptionsChain200ResponseResultsInnerDetails {
     /**
      * The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".
-     * @type {string}
-     * @memberof GetOptionsChain200ResponseResultsInnerDetails
      */
     'contract_type': GetOptionsChain200ResponseResultsInnerDetailsContractTypeEnum;
     /**
      * The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.
-     * @type {string}
-     * @memberof GetOptionsChain200ResponseResultsInnerDetails
      */
     'exercise_style': GetOptionsChain200ResponseResultsInnerDetailsExerciseStyleEnum;
     /**
      * The contract\'s expiration date in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof GetOptionsChain200ResponseResultsInnerDetails
      */
     'expiration_date': string;
     /**
      * The number of shares per contract for this contract.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDetails
      */
     'shares_per_contract': number;
     /**
      * The strike price of the option contract.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerDetails
      */
     'strike_price': number;
     /**
      * The ticker symbol for the asset.
-     * @type {string}
-     * @memberof GetOptionsChain200ResponseResultsInnerDetails
      */
     'ticker': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetOptionsChain200ResponseResultsInnerDetailsContractTypeEnum {
     Put = 'put',
     Call = 'call',
     Other = 'other'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetOptionsChain200ResponseResultsInnerDetailsExerciseStyleEnum {
     American = 'american',
     European = 'european',
@@ -9230,70 +5133,46 @@ export enum GetOptionsChain200ResponseResultsInnerDetailsExerciseStyleEnum {
 
 /**
  * The most recent quote for this contract. This is only returned if your current plan includes quotes.
- * @export
- * @interface GetOptionsChain200ResponseResultsInnerLastQuote
  */
 export interface GetOptionsChain200ResponseResultsInnerLastQuote {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastQuote
      */
     'ask': number;
     /**
      * The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastQuote
      */
     'ask_exchange'?: number;
     /**
      * The ask size.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastQuote
      */
     'ask_size': number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastQuote
      */
     'bid': number;
     /**
      * The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastQuote
      */
     'bid_exchange'?: number;
     /**
      * The bid size.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastQuote
      */
     'bid_size': number;
     /**
      * The nanosecond timestamp of when this information was updated.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastQuote
      */
     'last_updated'?: number;
     /**
      * The average of the bid and ask price.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastQuote
      */
     'midpoint': number;
     /**
      * The time relevance of the data.
-     * @type {string}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastQuote
      */
     'timeframe'?: GetOptionsChain200ResponseResultsInnerLastQuoteTimeframeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetOptionsChain200ResponseResultsInnerLastQuoteTimeframeEnum {
     Delayed = 'DELAYED',
     RealTime = 'REAL-TIME'
@@ -9301,808 +5180,482 @@ export enum GetOptionsChain200ResponseResultsInnerLastQuoteTimeframeEnum {
 
 /**
  * The most recent trade for this contract. This is only returned if your current plan includes trades.
- * @export
- * @interface GetOptionsChain200ResponseResultsInnerLastTrade
  */
 export interface GetOptionsChain200ResponseResultsInnerLastTrade {
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastTrade
      */
     'conditions'?: Array<number>;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastTrade
      */
     'exchange': number;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastTrade
      */
     'price': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it.
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastTrade
      */
     'sip_timestamp': number;
     /**
      * The size of a trade (also known as volume).
-     * @type {number}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastTrade
      */
     'size': number;
     /**
      * The time relevance of the data.
-     * @type {string}
-     * @memberof GetOptionsChain200ResponseResultsInnerLastTrade
      */
     'timeframe'?: GetOptionsChain200ResponseResultsInnerLastTradeTimeframeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetOptionsChain200ResponseResultsInnerLastTradeTimeframeEnum {
     Delayed = 'DELAYED',
     RealTime = 'REAL-TIME'
 }
 
-/**
- * 
- * @export
- * @interface GetOptionsContract200Response
- */
 export interface GetOptionsContract200Response {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetOptionsContract200Response
      */
     'request_id'?: string;
-    /**
-     * 
-     * @type {ListOptionsContracts200ResponseResultsInner}
-     * @memberof GetOptionsContract200Response
-     */
     'results'?: ListOptionsContracts200ResponseResultsInner;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetOptionsContract200Response
      */
     'status'?: string;
 }
-/**
- * 
- * @export
- * @interface GetOptionsOpenClose200Response
- */
 export interface GetOptionsOpenClose200Response {
     /**
      * The close price of the ticker symbol in after hours trading.
-     * @type {number}
-     * @memberof GetOptionsOpenClose200Response
      */
     'afterHours'?: number;
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetOptionsOpenClose200Response
      */
     'close': number;
     /**
      * The requested date.
-     * @type {string}
-     * @memberof GetOptionsOpenClose200Response
      */
     'from': string;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetOptionsOpenClose200Response
      */
     'high': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetOptionsOpenClose200Response
      */
     'low': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetOptionsOpenClose200Response
      */
     'open': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof GetOptionsOpenClose200Response
      */
     'otc'?: boolean;
     /**
      * The open price of the ticker symbol in pre-market trading.
-     * @type {number}
-     * @memberof GetOptionsOpenClose200Response
      */
     'preMarket'?: number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetOptionsOpenClose200Response
      */
     'status': string;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetOptionsOpenClose200Response
      */
     'symbol': string;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetOptionsOpenClose200Response
      */
     'volume': number;
 }
-/**
- * 
- * @export
- * @interface GetOptionsQuotes200Response
- */
 export interface GetOptionsQuotes200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetOptionsQuotes200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetOptionsQuotes200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetOptionsQuotes200ResponseResultsInner>}
-     * @memberof GetOptionsQuotes200Response
      */
     'results'?: Array<GetOptionsQuotes200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetOptionsQuotes200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetOptionsQuotes200ResponseResultsInner
- */
 export interface GetOptionsQuotes200ResponseResultsInner {
     /**
      * The ask exchange ID
-     * @type {number}
-     * @memberof GetOptionsQuotes200ResponseResultsInner
      */
     'ask_exchange'?: number;
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetOptionsQuotes200ResponseResultsInner
      */
     'ask_price'?: number;
     /**
      * The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.
-     * @type {number}
-     * @memberof GetOptionsQuotes200ResponseResultsInner
      */
     'ask_size'?: number;
     /**
      * The bid exchange ID
-     * @type {number}
-     * @memberof GetOptionsQuotes200ResponseResultsInner
      */
     'bid_exchange'?: number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetOptionsQuotes200ResponseResultsInner
      */
     'bid_price'?: number;
     /**
      * The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.
-     * @type {number}
-     * @memberof GetOptionsQuotes200ResponseResultsInner
      */
     'bid_size'?: number;
     /**
      * The sequence number represents the sequence in which quote events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11).
-     * @type {number}
-     * @memberof GetOptionsQuotes200ResponseResultsInner
      */
     'sequence_number': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this quote from the exchange which produced it.
-     * @type {number}
-     * @memberof GetOptionsQuotes200ResponseResultsInner
      */
     'sip_timestamp': number;
 }
-/**
- * 
- * @export
- * @interface GetOptionsTrades200Response
- */
 export interface GetOptionsTrades200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetOptionsTrades200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetOptionsTrades200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetOptionsTrades200ResponseResultsInner>}
-     * @memberof GetOptionsTrades200Response
      */
     'results'?: Array<GetOptionsTrades200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetOptionsTrades200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetOptionsTrades200ResponseResultsInner
- */
 export interface GetOptionsTrades200ResponseResultsInner {
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetOptionsTrades200ResponseResultsInner
      */
     'conditions'?: Array<number>;
     /**
      * The trade correction indicator.
-     * @type {number}
-     * @memberof GetOptionsTrades200ResponseResultsInner
      */
     'correction'?: number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetOptionsTrades200ResponseResultsInner
      */
     'exchange': number;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the trade was actually generated at the exchange.
-     * @type {number}
-     * @memberof GetOptionsTrades200ResponseResultsInner
      */
     'participant_timestamp'?: number;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetOptionsTrades200ResponseResultsInner
      */
     'price': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it.
-     * @type {number}
-     * @memberof GetOptionsTrades200ResponseResultsInner
      */
     'sip_timestamp': number;
     /**
      * The size of a trade (also known as volume).
-     * @type {number}
-     * @memberof GetOptionsTrades200ResponseResultsInner
      */
     'size': number;
 }
-/**
- * 
- * @export
- * @interface GetOptionsV1Exchanges200Response
- */
 export interface GetOptionsV1Exchanges200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetOptionsV1Exchanges200ResponseResultsInner>}
-     * @memberof GetOptionsV1Exchanges200Response
      */
     'results': Array<GetOptionsV1Exchanges200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200Response
      */
     'status': GetOptionsV1Exchanges200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetOptionsV1Exchanges200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetOptionsV1Exchanges200ResponseResultsInner
- */
 export interface GetOptionsV1Exchanges200ResponseResultsInner {
     /**
      * Exchange acronym or short name (e.g., \'ISE\', \'GEMX\') - may be null for some venues.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200ResponseResultsInner
      */
     'acronym'?: string;
     /**
      * Numeric identifier for the options trading venue or exchange.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200ResponseResultsInner
      */
     'id': string;
     /**
      * Geographic location code.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200ResponseResultsInner
      */
     'locale'?: string;
     /**
      * Market Identifier Code (MIC) - ISO 10383 standard four-character code identifying the specific options market.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200ResponseResultsInner
      */
     'mic'?: string;
     /**
      * Full official name of the options exchange or trading venue.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200ResponseResultsInner
      */
     'name': string;
     /**
      * Operating Market Identifier Code - identifies the parent organization or operating entity.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200ResponseResultsInner
      */
     'operating_mic'?: string;
     /**
      * Single-character participant identifier used in consolidator market data feeds and options trade reporting.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200ResponseResultsInner
      */
     'participant_id'?: string;
     /**
      * Type of venue: \'exchange\' for options exchanges, \'SIP\' for Securities Information Processors like OPRA (Options Price Reporting Authority).
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200ResponseResultsInner
      */
     'type': string;
     /**
      * Official website URL of the organization operating the options exchange.
-     * @type {string}
-     * @memberof GetOptionsV1Exchanges200ResponseResultsInner
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface GetPreviousCryptoAggregates200Response
- */
 export interface GetPreviousCryptoAggregates200Response {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetPreviousCryptoAggregates200Response
      */
     'ticker': string;
     /**
      * Whether or not this response was adjusted for splits.
-     * @type {boolean}
-     * @memberof GetPreviousCryptoAggregates200Response
      */
     'adjusted': boolean;
     /**
      * The number of aggregates (minute or day) used to generate the response.
-     * @type {number}
-     * @memberof GetPreviousCryptoAggregates200Response
      */
     'queryCount': number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetPreviousCryptoAggregates200Response
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof GetPreviousCryptoAggregates200Response
      */
     'resultsCount': number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetPreviousCryptoAggregates200Response
      */
     'status': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetGroupedCryptoAggregates200ResponseAllOfResultsInner>}
-     * @memberof GetPreviousCryptoAggregates200Response
      */
     'results'?: Array<GetGroupedCryptoAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface GetPreviousForexAggregates200Response
- */
 export interface GetPreviousForexAggregates200Response {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetPreviousForexAggregates200Response
      */
     'ticker': string;
     /**
      * Whether or not this response was adjusted for splits.
-     * @type {boolean}
-     * @memberof GetPreviousForexAggregates200Response
      */
     'adjusted': boolean;
     /**
      * The number of aggregates (minute or day) used to generate the response.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200Response
      */
     'queryCount': number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetPreviousForexAggregates200Response
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200Response
      */
     'resultsCount': number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetPreviousForexAggregates200Response
      */
     'status': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetPreviousForexAggregates200ResponseAllOfResultsInner>}
-     * @memberof GetPreviousForexAggregates200Response
      */
     'results'?: Array<GetPreviousForexAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface GetPreviousForexAggregates200ResponseAllOfResultsInner
- */
 export interface GetPreviousForexAggregates200ResponseAllOfResultsInner {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetPreviousForexAggregates200ResponseAllOfResultsInner
      */
     'T': string;
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200ResponseAllOfResultsInner
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200ResponseAllOfResultsInner
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200ResponseAllOfResultsInner
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200ResponseAllOfResultsInner
      */
     'n'?: number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200ResponseAllOfResultsInner
      */
     'o': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200ResponseAllOfResultsInner
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200ResponseAllOfResultsInner
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetPreviousForexAggregates200ResponseAllOfResultsInner
      */
     'vw'?: number;
 }
-/**
- * 
- * @export
- * @interface GetPreviousIndicesAggregates200Response
- */
 export interface GetPreviousIndicesAggregates200Response {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetPreviousIndicesAggregates200Response
      */
     'ticker': string;
     /**
      * The number of aggregates (minute or day) used to generate the response.
-     * @type {number}
-     * @memberof GetPreviousIndicesAggregates200Response
      */
     'queryCount': number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetPreviousIndicesAggregates200Response
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof GetPreviousIndicesAggregates200Response
      */
     'resultsCount': number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetPreviousIndicesAggregates200Response
      */
     'status': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetPreviousIndicesAggregates200ResponseAllOfResultsInner>}
-     * @memberof GetPreviousIndicesAggregates200Response
      */
     'results'?: Array<GetPreviousIndicesAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface GetPreviousIndicesAggregates200ResponseAllOfResultsInner
- */
 export interface GetPreviousIndicesAggregates200ResponseAllOfResultsInner {
     /**
      * The close value for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetPreviousIndicesAggregates200ResponseAllOfResultsInner
      */
     'c': number;
     /**
      * The highest value for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetPreviousIndicesAggregates200ResponseAllOfResultsInner
      */
     'h': number;
     /**
      * The lowest value for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetPreviousIndicesAggregates200ResponseAllOfResultsInner
      */
     'l': number;
     /**
      * The open value for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetPreviousIndicesAggregates200ResponseAllOfResultsInner
      */
     'o': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof GetPreviousIndicesAggregates200ResponseAllOfResultsInner
      */
     't': number;
 }
-/**
- * 
- * @export
- * @interface GetRelatedCompanies200Response
- */
 export interface GetRelatedCompanies200Response {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetRelatedCompanies200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetRelatedCompanies200ResponseResultsInner>}
-     * @memberof GetRelatedCompanies200Response
      */
     'results'?: Array<GetRelatedCompanies200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetRelatedCompanies200Response
      */
     'status'?: string;
     /**
      * The ticker being queried.
-     * @type {string}
-     * @memberof GetRelatedCompanies200Response
      */
     'ticker'?: string;
 }
 /**
  * The tickers related to the requested ticker.
- * @export
- * @interface GetRelatedCompanies200ResponseResultsInner
  */
 export interface GetRelatedCompanies200ResponseResultsInner {
     /**
      * A ticker related to the requested ticker.
-     * @type {string}
-     * @memberof GetRelatedCompanies200ResponseResultsInner
      */
     'ticker': string;
 }
-/**
- * 
- * @export
- * @interface GetSnapshotSummary200Response
- */
 export interface GetSnapshotSummary200Response {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetSnapshotSummary200Response
      */
     'request_id': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetSnapshotSummary200ResponseResultsInner>}
-     * @memberof GetSnapshotSummary200Response
      */
     'results'?: Array<GetSnapshotSummary200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetSnapshotSummary200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetSnapshotSummary200ResponseResultsInner
- */
 export interface GetSnapshotSummary200ResponseResultsInner {
-    /**
-     * 
-     * @type {GetSnapshotSummary200ResponseResultsInnerBranding}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
-     */
     'branding'?: GetSnapshotSummary200ResponseResultsInnerBranding;
     /**
      * The error while looking for this ticker.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
      */
     'error'?: string;
     /**
      * The nanosecond timestamp of when this information was updated.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
      */
     'last_updated'?: number;
     /**
      * The market status for the market that trades this ticker.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
      */
     'market_status'?: string;
     /**
      * The error message while looking for this ticker.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
      */
     'message'?: string;
     /**
      * Name of ticker, forex, or crypto asset.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
      */
     'name'?: string;
-    /**
-     * 
-     * @type {GetSnapshotSummary200ResponseResultsInnerOptions}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
-     */
     'options'?: GetSnapshotSummary200ResponseResultsInnerOptions;
     /**
      * The most up to date ticker price.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
      */
     'price'?: number;
-    /**
-     * 
-     * @type {GetSnapshotSummary200ResponseResultsInnerSession}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
-     */
     'session'?: GetSnapshotSummary200ResponseResultsInnerSession;
     /**
      * Ticker of asset queried.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The market for this ticker of stock, crypto, fx, option.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInner
      */
     'type'?: GetSnapshotSummary200ResponseResultsInnerTypeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshotSummary200ResponseResultsInnerTypeEnum {
     Stocks = 'stocks',
     Crypto = 'crypto',
@@ -10110,82 +5663,48 @@ export enum GetSnapshotSummary200ResponseResultsInnerTypeEnum {
     Fx = 'fx'
 }
 
-/**
- * 
- * @export
- * @interface GetSnapshotSummary200ResponseResultsInnerBranding
- */
 export interface GetSnapshotSummary200ResponseResultsInnerBranding {
     /**
      * A link to this ticker\'s company\'s icon. Icon\'s are generally smaller, square images that represent the company at a glance. Note that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerBranding
      */
     'icon_url'?: string;
     /**
      * A link to this ticker\'s company\'s logo. Note that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerBranding
      */
     'logo_url'?: string;
 }
-/**
- * 
- * @export
- * @interface GetSnapshotSummary200ResponseResultsInnerOptions
- */
 export interface GetSnapshotSummary200ResponseResultsInnerOptions {
     /**
      * The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerOptions
      */
     'contract_type': GetSnapshotSummary200ResponseResultsInnerOptionsContractTypeEnum;
     /**
      * The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerOptions
      */
     'exercise_style': GetSnapshotSummary200ResponseResultsInnerOptionsExerciseStyleEnum;
     /**
      * The contract\'s expiration date in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerOptions
      */
     'expiration_date': string;
     /**
      * The number of shares per contract for this contract.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerOptions
      */
     'shares_per_contract': number;
     /**
      * The strike price of the option contract.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerOptions
      */
     'strike_price': number;
     /**
      * The ticker for the option contract.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerOptions
      */
     'underlying_ticker': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshotSummary200ResponseResultsInnerOptionsContractTypeEnum {
     Put = 'put',
     Call = 'call',
     Other = 'other'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshotSummary200ResponseResultsInnerOptionsExerciseStyleEnum {
     American = 'american',
     European = 'european',
@@ -10194,284 +5713,161 @@ export enum GetSnapshotSummary200ResponseResultsInnerOptionsExerciseStyleEnum {
 
 /**
  * Comprehensive trading session metrics, detailing price changes, trading volume, and key price points (open, close, high, low) for the asset within the current trading day. Includes specific changes during early, regular, and late trading periods to enable detailed performance analysis and trend tracking.
- * @export
- * @interface GetSnapshotSummary200ResponseResultsInnerSession
  */
 export interface GetSnapshotSummary200ResponseResultsInnerSession {
     /**
      * The value of the price change for the asset from the previous trading day.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'change': number;
     /**
      * The percent of the price change for the asset from the previous trading day.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'change_percent': number;
     /**
      * The closing price of the asset for the day.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'close': number;
     /**
      * The trading volume for the asset for the day with decimal precision. This field provides support for fractional shares, representing volume as a decimal string. This field is only returned for stocks snapshots.
-     * @type {string}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'decimal_volume'?: string;
     /**
      * Today\'s early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'early_trading_change'?: number;
     /**
      * Today\'s early trading change as a percentage.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'early_trading_change_percent'?: number;
     /**
      * The highest price of the asset for the day.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'high': number;
     /**
      * Today\'s late trading change amount, difference between price and today\'s close if in late trading hours, otherwise difference between last price during late trading and today\'s close.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'late_trading_change'?: number;
     /**
      * Today\'s late trading change as a percentage.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'late_trading_change_percent'?: number;
     /**
      * The lowest price of the asset for the day.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'low': number;
     /**
      * The open price of the asset for the day.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'open': number;
     /**
      * The closing price of the asset for the previous trading day.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'previous_close': number;
     /**
      * The price of the most recent trade or bid price for this asset.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'price'?: number;
     /**
      * Today\'s change in regular trading hours, difference between current price and previous trading day\'s close, otherwise difference between today\'s close and previous day\'s close.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'regular_trading_change'?: number;
     /**
      * Today\'s regular trading change as a percentage.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'regular_trading_change_percent'?: number;
     /**
      * The trading volume for the asset for the day.
-     * @type {number}
-     * @memberof GetSnapshotSummary200ResponseResultsInnerSession
      */
     'volume'?: number;
 }
-/**
- * 
- * @export
- * @interface GetSnapshots200Response
- */
 export interface GetSnapshots200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetSnapshots200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetSnapshots200Response
      */
     'request_id': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetSnapshots200ResponseResultsInner>}
-     * @memberof GetSnapshots200Response
      */
     'results'?: Array<GetSnapshots200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetSnapshots200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetSnapshots200ResponseResultsInner
- */
 export interface GetSnapshots200ResponseResultsInner {
     /**
      * The price of the underlying asset for the contract to break even. For a call, this value is (strike price + premium paid). For a put, this value is (strike price - premium paid).
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'break_even_price'?: number;
-    /**
-     * 
-     * @type {GetSnapshots200ResponseResultsInnerDetails}
-     * @memberof GetSnapshots200ResponseResultsInner
-     */
     'details'?: GetSnapshots200ResponseResultsInnerDetails;
     /**
      * The error while looking for this ticker.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'error'?: string;
     /**
      * Fair Market Value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'fmv'?: number;
     /**
      * If Fair Market Value (FMV) is available, this field is the nanosecond timestamp of the last FMV calculation.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'fmv_last_updated'?: number;
-    /**
-     * 
-     * @type {GetSnapshots200ResponseResultsInnerGreeks}
-     * @memberof GetSnapshots200ResponseResultsInner
-     */
     'greeks'?: GetSnapshots200ResponseResultsInnerGreeks;
     /**
      * The market\'s forecast for the volatility of the underlying asset, based on this option\'s current price.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'implied_volatility'?: number;
-    /**
-     * 
-     * @type {GetSnapshots200ResponseResultsInnerLastMinute}
-     * @memberof GetSnapshots200ResponseResultsInner
-     */
     'last_minute'?: GetSnapshots200ResponseResultsInnerLastMinute;
-    /**
-     * 
-     * @type {GetSnapshots200ResponseResultsInnerLastQuote}
-     * @memberof GetSnapshots200ResponseResultsInner
-     */
     'last_quote'?: GetSnapshots200ResponseResultsInnerLastQuote;
-    /**
-     * 
-     * @type {GetSnapshots200ResponseResultsInnerLastTrade}
-     * @memberof GetSnapshots200ResponseResultsInner
-     */
     'last_trade'?: GetSnapshots200ResponseResultsInnerLastTrade;
     /**
      * The nanosecond timestamp of when this information was updated.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'last_updated'?: number;
     /**
      * The market status for the market that trades this ticker. Possible values for stocks, options, crypto, and forex snapshots are open, closed, early_trading, or late_trading. Possible values for indices snapshots are regular_trading, closed, early_trading, and late_trading.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'market_status'?: string;
     /**
      * The error message while looking for this ticker.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'message'?: string;
     /**
      * The name of this contract.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'name'?: string;
     /**
      * The quantity of this contract held at the end of the last trading day.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'open_interest'?: number;
-    /**
-     * 
-     * @type {GetSnapshotSummary200ResponseResultsInnerSession}
-     * @memberof GetSnapshots200ResponseResultsInner
-     */
     'session'?: GetSnapshotSummary200ResponseResultsInnerSession;
     /**
      * The ticker symbol for the asset.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The time relevance of the data.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'timeframe'?: GetSnapshots200ResponseResultsInnerTimeframeEnum;
     /**
      * The asset class for this ticker.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'type'?: GetSnapshots200ResponseResultsInnerTypeEnum;
-    /**
-     * 
-     * @type {GetSnapshots200ResponseResultsInnerUnderlyingAsset}
-     * @memberof GetSnapshots200ResponseResultsInner
-     */
     'underlying_asset'?: GetSnapshots200ResponseResultsInnerUnderlyingAsset;
     /**
      * Value of Index.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInner
      */
     'value'?: number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshots200ResponseResultsInnerTimeframeEnum {
     Delayed = 'DELAYED',
     RealTime = 'REAL-TIME'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshots200ResponseResultsInnerTypeEnum {
     Stocks = 'stocks',
     Options = 'options',
@@ -10482,55 +5878,35 @@ export enum GetSnapshots200ResponseResultsInnerTypeEnum {
 
 /**
  * The details for this contract.
- * @export
- * @interface GetSnapshots200ResponseResultsInnerDetails
  */
 export interface GetSnapshots200ResponseResultsInnerDetails {
     /**
      * The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerDetails
      */
     'contract_type': GetSnapshots200ResponseResultsInnerDetailsContractTypeEnum;
     /**
      * The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerDetails
      */
     'exercise_style': GetSnapshots200ResponseResultsInnerDetailsExerciseStyleEnum;
     /**
      * The contract\'s expiration date in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerDetails
      */
     'expiration_date': string;
     /**
      * The number of shares per contract for this contract.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerDetails
      */
     'shares_per_contract': number;
     /**
      * The strike price of the option contract.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerDetails
      */
     'strike_price': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshots200ResponseResultsInnerDetailsContractTypeEnum {
     Put = 'put',
     Call = 'call',
     Other = 'other'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshots200ResponseResultsInnerDetailsExerciseStyleEnum {
     American = 'american',
     European = 'european',
@@ -10539,156 +5915,104 @@ export enum GetSnapshots200ResponseResultsInnerDetailsExerciseStyleEnum {
 
 /**
  * The greeks for this contract. There are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money. See this <a href=\"https://massive.com/blog/greeks-and-implied-volatility/#testing\" alt=\"link\">article</a> for more information.
- * @export
- * @interface GetSnapshots200ResponseResultsInnerGreeks
  */
 export interface GetSnapshots200ResponseResultsInnerGreeks {
     /**
      * The change in the option\'s price per $0.01 increment in the price of the underlying asset.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerGreeks
      */
     'delta': number;
     /**
      * The change in delta per $0.01 change in the price of the underlying asset.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerGreeks
      */
     'gamma': number;
     /**
      * The change in the option\'s price per day.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerGreeks
      */
     'theta': number;
     /**
      * The change in the option\'s price per 1% increment in volatility.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerGreeks
      */
     'vega': number;
 }
 /**
  * The most recent minute aggregate for this stock.
- * @export
- * @interface GetSnapshots200ResponseResultsInnerLastMinute
  */
 export interface GetSnapshots200ResponseResultsInnerLastMinute {
     /**
      * The closing value for the minute aggreate.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastMinute
      */
     'close': number;
     /**
      * The trading volume for the minute aggregate with decimal precision. This field provides support for fractional shares, representing volume as a decimal string where the fractional part is expressed in millionths. This field is only returned for stocks snapshots.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerLastMinute
      */
     'decimal_volume'?: string;
     /**
      * The highest value for the minute aggregate.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastMinute
      */
     'high': number;
     /**
      * The lowest value for the minute aggregate.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastMinute
      */
     'low': number;
     /**
      * The open value for the minute aggregate.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastMinute
      */
     'open': number;
     /**
      * The number of transactions that took place within the minute aggregate.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastMinute
      */
     'transactions': number;
     /**
      * The trading volume for the minute aggregate.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastMinute
      */
     'volume': number;
     /**
      * The trading volume weighted average price for the minute aggregate.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastMinute
      */
     'vwap': number;
 }
 /**
  * The most recent quote for this contract. This is only returned if your current plan includes quotes.
- * @export
- * @interface GetSnapshots200ResponseResultsInnerLastQuote
  */
 export interface GetSnapshots200ResponseResultsInnerLastQuote {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastQuote
      */
     'ask': number;
     /**
      * The ask side exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastQuote
      */
     'ask_exchange'?: number;
     /**
      * The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastQuote
      */
     'ask_size'?: number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastQuote
      */
     'bid': number;
     /**
      * The bid side exchange ID. See <a href=\"https://massive.com/docs/rest/options/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastQuote
      */
     'bid_exchange'?: number;
     /**
      * The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastQuote
      */
     'bid_size'?: number;
     /**
      * The nanosecond timestamp of when this information was updated.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastQuote
      */
     'last_updated': number;
     /**
      * The average of the bid and ask price.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastQuote
      */
     'midpoint'?: number;
     /**
      * The time relevance of the data.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerLastQuote
      */
     'timeframe': GetSnapshots200ResponseResultsInnerLastQuoteTimeframeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshots200ResponseResultsInnerLastQuoteTimeframeEnum {
     Delayed = 'DELAYED',
     RealTime = 'REAL-TIME'
@@ -10696,76 +6020,50 @@ export enum GetSnapshots200ResponseResultsInnerLastQuoteTimeframeEnum {
 
 /**
  * The most recent quote for this contract. This is only returned if your current plan includes trades.
- * @export
- * @interface GetSnapshots200ResponseResultsInnerLastTrade
  */
 export interface GetSnapshots200ResponseResultsInnerLastTrade {
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'conditions'?: Array<number>;
     /**
      * The size of a trade, including fractional shares, represented as a decimal string where the fractional part is expressed in millionths. This field is only returned for stocks snapshots.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'decimal_size'?: string;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'exchange'?: number;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'id'?: string;
     /**
      * The nanosecond timestamp of when this information was updated.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'last_updated'?: number;
     /**
      * The nanosecond Exchange Unix Timestamp. This is the timestamp of when the trade was generated at the exchange.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'participant_timestamp'?: number;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'price': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'sip_timestamp'?: number;
     /**
      * The size of a trade (also known as volume).
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'size': number;
     /**
      * The time relevance of the data.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerLastTrade
      */
     'timeframe'?: GetSnapshots200ResponseResultsInnerLastTradeTimeframeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshots200ResponseResultsInnerLastTradeTimeframeEnum {
     Delayed = 'DELAYED',
     RealTime = 'REAL-TIME'
@@ -10773,2978 +6071,1878 @@ export enum GetSnapshots200ResponseResultsInnerLastTradeTimeframeEnum {
 
 /**
  * Information on the underlying stock for this options contract.  The market data returned depends on your current stocks plan.
- * @export
- * @interface GetSnapshots200ResponseResultsInnerUnderlyingAsset
  */
 export interface GetSnapshots200ResponseResultsInnerUnderlyingAsset {
     /**
      * The change in price for the contract to break even.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerUnderlyingAsset
      */
     'change_to_break_even': number;
     /**
      * The nanosecond timestamp of when this information was updated.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerUnderlyingAsset
      */
     'last_updated'?: number;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerUnderlyingAsset
      */
     'price'?: number;
     /**
      * The ticker symbol for the contract\'s underlying asset.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerUnderlyingAsset
      */
     'ticker': string;
     /**
      * The time relevance of the data.
-     * @type {string}
-     * @memberof GetSnapshots200ResponseResultsInnerUnderlyingAsset
      */
     'timeframe'?: GetSnapshots200ResponseResultsInnerUnderlyingAssetTimeframeEnum;
     /**
      * The value of the underlying index.
-     * @type {number}
-     * @memberof GetSnapshots200ResponseResultsInnerUnderlyingAsset
      */
     'value'?: number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetSnapshots200ResponseResultsInnerUnderlyingAssetTimeframeEnum {
     Delayed = 'DELAYED',
     RealTime = 'REAL-TIME'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksAggregates200Response
- */
 export interface GetStocksAggregates200Response {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetStocksAggregates200Response
      */
     'ticker': string;
     /**
      * Whether or not this response was adjusted for splits.
-     * @type {boolean}
-     * @memberof GetStocksAggregates200Response
      */
     'adjusted': boolean;
     /**
      * The number of aggregates (minute or day) used to generate the response.
-     * @type {number}
-     * @memberof GetStocksAggregates200Response
      */
     'queryCount': number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksAggregates200Response
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof GetStocksAggregates200Response
      */
     'resultsCount': number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksAggregates200Response
      */
     'status': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetStocksAggregates200ResponseAllOfResultsInner>}
-     * @memberof GetStocksAggregates200Response
      */
     'results'?: Array<GetStocksAggregates200ResponseAllOfResultsInner>;
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetStocksAggregates200Response
      */
     'next_url'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksAggregates200ResponseAllOfResultsInner
- */
 export interface GetStocksAggregates200ResponseAllOfResultsInner {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksAggregates200ResponseAllOfResultsInner
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksAggregates200ResponseAllOfResultsInner
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksAggregates200ResponseAllOfResultsInner
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof GetStocksAggregates200ResponseAllOfResultsInner
      */
     'n'?: number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksAggregates200ResponseAllOfResultsInner
      */
     'o': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof GetStocksAggregates200ResponseAllOfResultsInner
      */
     'otc'?: boolean;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof GetStocksAggregates200ResponseAllOfResultsInner
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksAggregates200ResponseAllOfResultsInner
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetStocksAggregates200ResponseAllOfResultsInner
      */
     'vw'?: number;
 }
-/**
- * 
- * @export
- * @interface GetStocksFilings10KVXSections200Response
- */
 export interface GetStocksFilings10KVXSections200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksFilings10KVXSections200ResponseResultsInner>}
-     * @memberof GetStocksFilings10KVXSections200Response
      */
     'results': Array<GetStocksFilings10KVXSections200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200Response
      */
     'status': GetStocksFilings10KVXSections200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksFilings10KVXSections200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksFilings10KVXSections200ResponseResultsInner
- */
 export interface GetStocksFilings10KVXSections200ResponseResultsInner {
     /**
      * SEC Central Index Key (10 digits, zero-padded).
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200ResponseResultsInner
      */
     'cik'?: string;
     /**
      * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200ResponseResultsInner
      */
     'filing_date'?: string;
     /**
      * SEC URL source for the full filing.
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200ResponseResultsInner
      */
     'filing_url'?: string;
     /**
      * Period end date that the filing relates to (formatted as YYYY-MM-DD).
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200ResponseResultsInner
      */
     'period_end'?: string;
     /**
      * Standardized section identifier from the filing (e.g. \'business\', \'risk_factors\', etc.).
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200ResponseResultsInner
      */
     'section'?: string;
     /**
      * Full raw text content of the section, including headers and formatting.
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200ResponseResultsInner
      */
     'text'?: string;
     /**
      * Stock ticker symbol for the company.
-     * @type {string}
-     * @memberof GetStocksFilings10KVXSections200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksFilingsVXIndex200Response
- */
-export interface GetStocksFilingsVXIndex200Response {
+export interface GetStocksFilings8KVXText200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksFilingsVXIndex200ResponseResultsInner>}
-     * @memberof GetStocksFilingsVXIndex200Response
+     */
+    'results': Array<GetStocksFilings8KVXText200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetStocksFilings8KVXText200ResponseStatusEnum;
+}
+
+export enum GetStocksFilings8KVXText200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetStocksFilings8KVXText200ResponseResultsInner {
+    /**
+     * SEC accession number uniquely identifying the filing (e.g., \'0000004962-25-000002\').
+     */
+    'accession_number'?: string;
+    /**
+     * SEC Central Index Key (10 digits, zero-padded).
+     */
+    'cik'?: string;
+    /**
+     * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).
+     */
+    'filing_date'?: string;
+    /**
+     * SEC URL source for the full filing.
+     */
+    'filing_url'?: string;
+    /**
+     * SEC form type (e.g., \'8-K\', \'8-K/A\' for amendments).
+     */
+    'form_type'?: string;
+    /**
+     * Parsed text content from the 8-K filing, including item numbers and descriptions.
+     */
+    'items_text'?: string;
+    /**
+     * Stock ticker symbol for the company.
+     */
+    'ticker'?: string;
+}
+export interface GetStocksFilingsVXIndex200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
      */
     'results': Array<GetStocksFilingsVXIndex200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200Response
      */
     'status': GetStocksFilingsVXIndex200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksFilingsVXIndex200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksFilingsVXIndex200ResponseResultsInner
- */
 export interface GetStocksFilingsVXIndex200ResponseResultsInner {
     /**
      * SEC accession number uniquely identifying the filing (e.g., \'0000320193-24-000123\').
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200ResponseResultsInner
      */
     'accession_number'?: string;
     /**
      * SEC Central Index Key (CIK) identifying the filing entity.
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200ResponseResultsInner
      */
     'cik'?: string;
     /**
      * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200ResponseResultsInner
      */
     'filing_date'?: string;
     /**
      * Direct URL to the filing on the SEC EDGAR website.
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200ResponseResultsInner
      */
     'filing_url'?: string;
     /**
      * SEC form type (e.g., \'10-K\', \'10-Q\', \'8-K\', \'S-1\', \'4\', etc.).
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200ResponseResultsInner
      */
     'form_type'?: string;
     /**
      * Name of the company or entity that submitted the filing.
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200ResponseResultsInner
      */
     'issuer_name'?: string;
     /**
      * Stock ticker symbol for the filing entity, if available.
-     * @type {string}
-     * @memberof GetStocksFilingsVXIndex200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksFilingsVXRiskFactors200Response
- */
 export interface GetStocksFilingsVXRiskFactors200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksFilingsVXRiskFactors200ResponseResultsInner>}
-     * @memberof GetStocksFilingsVXRiskFactors200Response
      */
     'results': Array<GetStocksFilingsVXRiskFactors200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200Response
      */
     'status': GetStocksFilingsVXRiskFactors200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksFilingsVXRiskFactors200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksFilingsVXRiskFactors200ResponseResultsInner
- */
 export interface GetStocksFilingsVXRiskFactors200ResponseResultsInner {
     /**
      * SEC Central Index Key (10 digits, zero-padded).
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200ResponseResultsInner
      */
     'cik'?: string;
     /**
      * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200ResponseResultsInner
      */
     'filing_date'?: string;
     /**
      * Top-level risk category
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200ResponseResultsInner
      */
     'primary_category'?: string;
     /**
      * Mid-level risk category
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200ResponseResultsInner
      */
     'secondary_category'?: string;
     /**
      * Snippet of text to support the given label
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200ResponseResultsInner
      */
     'supporting_text'?: string;
     /**
      * Most specific risk classification
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200ResponseResultsInner
      */
     'tertiary_category'?: string;
     /**
      * Stock ticker symbol for the company.
-     * @type {string}
-     * @memberof GetStocksFilingsVXRiskFactors200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksFinancialsV1BalanceSheets200Response
- */
 export interface GetStocksFinancialsV1BalanceSheets200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1BalanceSheets200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1BalanceSheets200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksFinancialsV1BalanceSheets200ResponseResultsInner>}
-     * @memberof GetStocksFinancialsV1BalanceSheets200Response
      */
     'results': Array<GetStocksFinancialsV1BalanceSheets200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1BalanceSheets200Response
      */
     'status': GetStocksFinancialsV1BalanceSheets200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksFinancialsV1BalanceSheets200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
- */
 export interface GetStocksFinancialsV1BalanceSheets200ResponseResultsInner {
     /**
      * Amounts owed to suppliers and vendors for goods and services purchased on credit.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'accounts_payable'?: number;
     /**
      * Current liabilities not classified elsewhere, including accrued expenses, taxes payable, and other obligations due within one year.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'accrued_and_other_current_liabilities'?: number;
     /**
      * Cumulative gains and losses that bypass the income statement, including foreign currency translation adjustments and unrealized gains/losses on securities.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'accumulated_other_comprehensive_income'?: number;
     /**
      * Amount received from shareholders in excess of the par or stated value of shares issued.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'additional_paid_in_capital'?: number;
     /**
      * Cash on hand and short-term, highly liquid investments that are readily convertible to known amounts of cash.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'cash_and_equivalents'?: number;
     /**
      * The company\'s Central Index Key (CIK), a unique identifier assigned by the U.S. Securities and Exchange Commission (SEC). You can look up a company\'s CIK using the [SEC CIK Lookup tool](https://www.sec.gov/search-filings/cik-lookup).
-     * @type {string}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'cik'?: string;
     /**
      * Disclosed amount related to contractual commitments and potential liabilities that may arise from uncertain future events.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'commitments_and_contingencies'?: number;
     /**
      * Par or stated value of common shares outstanding representing basic ownership in the company.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'common_stock'?: number;
     /**
      * Short-term borrowings and the current portion of long-term debt due within one year.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'debt_current'?: number;
     /**
      * Customer payments received in advance for goods or services to be delivered within one year.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'deferred_revenue_current'?: number;
     /**
      * The date when the financial statement was filed with the SEC.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'filing_date'?: string;
     /**
      * The fiscal quarter number (1, 2, 3, or 4) for the reporting period.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'fiscal_quarter'?: number;
     /**
      * The fiscal year for the reporting period.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'fiscal_year'?: number;
     /**
      * Intangible asset representing the excess of purchase price over fair value of net assets acquired in business combinations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'goodwill'?: number;
     /**
      * Intangible assets other than goodwill, including patents, trademarks, and customer relationships, net of accumulated amortization.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'intangible_assets_net'?: number;
     /**
      * Raw materials, work-in-process, and finished goods held for sale in the ordinary course of business.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'inventories'?: number;
     /**
      * Long-term borrowings and capital lease obligations with maturities greater than one year.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'long_term_debt_and_capital_lease_obligations'?: number;
     /**
      * Equity in consolidated subsidiaries not owned by the parent company, representing minority shareholders\' ownership.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'noncontrolling_interest'?: number;
     /**
      * Non-current assets not classified elsewhere, including long-term investments, deferred tax assets, and other long-term assets.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'other_assets'?: number;
     /**
      * Current assets not classified elsewhere, including prepaid expenses, taxes receivable, and other assets expected to be converted to cash within one year.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'other_current_assets'?: number;
     /**
      * Equity components not classified elsewhere in shareholders\' equity.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'other_equity'?: number;
     /**
      * Non-current liabilities not classified elsewhere, including deferred tax liabilities, pension obligations, and other long-term liabilities.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'other_noncurrent_liabilities'?: number;
     /**
      * The last date of the reporting period, representing the specific point in time when the balance sheet snapshot was taken.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'period_end'?: string;
     /**
      * Par or stated value of preferred shares outstanding with preferential rights over common stock.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'preferred_stock'?: number;
     /**
      * Tangible fixed assets used in operations, reported net of accumulated depreciation.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'property_plant_equipment_net'?: number;
     /**
      * Amounts owed to the company by customers and other parties, primarily accounts receivable, net of allowances for doubtful accounts.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'receivables'?: number;
     /**
      * Cumulative net income earned by the company less dividends paid to shareholders since inception.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'retained_earnings_deficit'?: number;
     /**
      * Marketable securities and other investments with maturities of one year or less that are not classified as cash equivalents.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'short_term_investments'?: number;
     /**
      * A list of ticker symbols under which the company is listed. Multiple symbols may indicate different share classes for the same company.
-     * @type {Array<string>}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'tickers'?: Array<string>;
     /**
      * The reporting period type. Possible values include: quarterly, annual.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'timeframe': string;
     /**
      * Sum of all current and non-current assets representing everything the company owns or controls.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'total_assets'?: number;
     /**
      * Sum of all current assets expected to be converted to cash, sold, or consumed within one year.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'total_current_assets'?: number;
     /**
      * Sum of all liabilities expected to be settled within one year.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'total_current_liabilities'?: number;
     /**
      * Sum of all equity components representing shareholders\' total ownership interest in the company.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'total_equity'?: number;
     /**
      * Total shareholders\' equity attributable to the parent company, excluding noncontrolling interests.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'total_equity_attributable_to_parent'?: number;
     /**
      * Sum of all current and non-current liabilities representing everything the company owes.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'total_liabilities'?: number;
     /**
      * Sum of total liabilities and total equity, which should equal total assets per the fundamental accounting equation.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'total_liabilities_and_equity'?: number;
     /**
      * Cost of the company\'s own shares that have been repurchased and are held in treasury, typically reported as a negative value.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1BalanceSheets200ResponseResultsInner
      */
     'treasury_stock'?: number;
 }
-/**
- * 
- * @export
- * @interface GetStocksFinancialsV1CashFlowStatements200Response
- */
 export interface GetStocksFinancialsV1CashFlowStatements200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner>}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200Response
      */
     'results': Array<GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200Response
      */
     'status': GetStocksFinancialsV1CashFlowStatements200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksFinancialsV1CashFlowStatements200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
- */
 export interface GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner {
     /**
      * Cash generated from continuing business operations before discontinued operations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'cash_from_operating_activities_continuing_operations'?: number;
     /**
      * Net change in cash and cash equivalents during the period, representing the sum of operating, investing, and financing cash flows plus currency effects.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'change_in_cash_and_equivalents'?: number;
     /**
      * Net change in working capital components including accounts receivable, inventory, accounts payable, and other operating items.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'change_in_other_operating_assets_and_liabilities_net'?: number;
     /**
      * The company\'s Central Index Key (CIK), a unique identifier assigned by the U.S. Securities and Exchange Commission (SEC). You can look up a company’s CIK using the [SEC CIK Lookup tool](https://www.sec.gov/search-filings/cik-lookup).
-     * @type {string}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'cik'?: string;
     /**
      * Non-cash charges for the reduction in value of tangible and intangible assets over time.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'depreciation_depletion_and_amortization'?: number;
     /**
      * Cash payments to shareholders in the form of dividends, typically reported as negative values.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'dividends'?: number;
     /**
      * Impact of foreign exchange rate changes on cash and cash equivalents denominated in foreign currencies.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'effect_of_currency_exchange_rate'?: number;
     /**
      * The date when the financial statement was filed with the SEC.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'filing_date'?: string;
     /**
      * The fiscal quarter number (1, 2, 3, or 4) for the reporting period.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'fiscal_quarter'?: number;
     /**
      * The fiscal year for the reporting period.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'fiscal_year'?: number;
     /**
      * After-tax income or loss from business operations that have been discontinued.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'income_loss_from_discontinued_operations'?: number;
     /**
      * Net cash flows from issuing or repaying long-term debt obligations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'long_term_debt_issuances_repayments'?: number;
     /**
      * Total cash generated or used by financing activities, including debt issuance, debt repayment, dividends, and share transactions.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'net_cash_from_financing_activities'?: number;
     /**
      * Cash flows from financing activities of continuing operations before discontinued operations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'net_cash_from_financing_activities_continuing_operations'?: number;
     /**
      * Cash flows from financing activities of discontinued business segments.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'net_cash_from_financing_activities_discontinued_operations'?: number;
     /**
      * Total cash generated or used by investing activities, including capital expenditures, acquisitions, and asset sales.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'net_cash_from_investing_activities'?: number;
     /**
      * Cash flows from investing activities of continuing operations before discontinued operations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'net_cash_from_investing_activities_continuing_operations'?: number;
     /**
      * Cash flows from investing activities of discontinued business segments.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'net_cash_from_investing_activities_discontinued_operations'?: number;
     /**
      * Total cash generated or used by operating activities, representing cash flow from core business operations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'net_cash_from_operating_activities'?: number;
     /**
      * Cash flows from operating activities of discontinued business segments.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'net_cash_from_operating_activities_discontinued_operations'?: number;
     /**
      * Net income used as the starting point for operating cash flow calculations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'net_income'?: number;
     /**
      * Cash flows related to minority shareholders in consolidated subsidiaries.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'noncontrolling_interests'?: number;
     /**
      * Other miscellaneous adjustments to cash flows not classified elsewhere.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'other_cash_adjustments'?: number;
     /**
      * Cash flows from financing activities not classified elsewhere, including share repurchases and other equity transactions.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'other_financing_activities'?: number;
     /**
      * Cash flows from investing activities not classified elsewhere, including acquisitions, divestitures, and investments.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'other_investing_activities'?: number;
     /**
      * Other adjustments to reconcile net income to operating cash flow not classified elsewhere.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'other_operating_activities'?: number;
     /**
      * The last date of the reporting period (formatted as YYYY-MM-DD).
-     * @type {string}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'period_end'?: string;
     /**
      * Cash outflows for capital expenditures on fixed assets, typically reported as negative values.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'purchase_of_property_plant_and_equipment'?: number;
     /**
      * Cash inflows from disposing of fixed assets, typically reported as positive values.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'sale_of_property_plant_and_equipment'?: number;
     /**
      * Net cash flows from issuing or repaying short-term debt obligations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'short_term_debt_issuances_repayments'?: number;
     /**
      * A list of ticker symbols under which the company is listed. Multiple symbols may indicate different share classes for the same company.
-     * @type {Array<string>}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'tickers'?: Array<string>;
     /**
      * The reporting period type. Possible values include: quarterly, annual, trailing_twelve_months.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner
      */
     'timeframe'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksFinancialsV1IncomeStatements200Response
- */
 export interface GetStocksFinancialsV1IncomeStatements200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1IncomeStatements200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1IncomeStatements200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksFinancialsV1IncomeStatements200ResponseResultsInner>}
-     * @memberof GetStocksFinancialsV1IncomeStatements200Response
      */
     'results': Array<GetStocksFinancialsV1IncomeStatements200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1IncomeStatements200Response
      */
     'status': GetStocksFinancialsV1IncomeStatements200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksFinancialsV1IncomeStatements200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
- */
 export interface GetStocksFinancialsV1IncomeStatements200ResponseResultsInner {
     /**
      * Earnings per share calculated using the weighted average number of basic shares outstanding. For TTM records, recalculated as TTM net income divided by average basic shares outstanding over the four quarters.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'basic_earnings_per_share'?: number;
     /**
      * Weighted average number of common shares outstanding during the period, used in basic EPS calculation. For TTM records, represents the average over the four most recent quarters.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'basic_shares_outstanding'?: number;
     /**
      * The company\'s Central Index Key (CIK), a unique identifier assigned by the U.S. Securities and Exchange Commission (SEC). You can look up a company’s CIK using the [SEC CIK Lookup tool](https://www.sec.gov/search-filings/cik-lookup).
-     * @type {string}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'cik'?: string;
     /**
      * Total net income or loss for the consolidated entity including all subsidiaries.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'consolidated_net_income_loss'?: number;
     /**
      * Direct costs attributable to the production of goods or services sold, also known as cost of goods sold (COGS).
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'cost_of_revenue'?: number;
     /**
      * Non-cash expenses representing the allocation of asset costs over their useful lives.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'depreciation_depletion_amortization'?: number;
     /**
      * Earnings per share calculated using diluted shares outstanding, including the effect of potentially dilutive securities. For TTM records, recalculated as TTM net income divided by average diluted shares outstanding over the four quarters.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'diluted_earnings_per_share'?: number;
     /**
      * Weighted average number of shares outstanding including the dilutive effect of stock options, warrants, and convertible securities. For TTM records, represents the average over the four most recent quarters.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'diluted_shares_outstanding'?: number;
     /**
      * After-tax results from business segments that have been or will be disposed of.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'discontinued_operations'?: number;
     /**
      * Earnings before interest, taxes, depreciation, and amortization, a measure of operating performance.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'ebitda'?: number;
     /**
      * The company\'s share of income or losses from equity method investments in affiliated companies.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'equity_in_affiliates'?: number;
     /**
      * Unusual and infrequent gains or losses that are both unusual in nature and infrequent in occurrence.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'extraordinary_items'?: number;
     /**
      * The date when the financial statement was filed with the SEC.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'filing_date'?: string;
     /**
      * The fiscal quarter number (1, 2, 3, or 4) for the reporting period.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'fiscal_quarter'?: number;
     /**
      * The fiscal year for the reporting period.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'fiscal_year'?: number;
     /**
      * Revenue minus cost of revenue, representing profit before operating expenses.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'gross_profit'?: number;
     /**
      * Pre-tax income calculated as operating income plus total other income/expense.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'income_before_income_taxes'?: number;
     /**
      * Income tax expense or benefit for the period.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'income_taxes'?: number;
     /**
      * Cost of borrowed funds, including interest on debt and other financing obligations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'interest_expense'?: number;
     /**
      * Income earned from interest-bearing investments and cash equivalents.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'interest_income'?: number;
     /**
      * Net income or loss available to common shareholders after preferred dividends and noncontrolling interests.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'net_income_loss_attributable_common_shareholders'?: number;
     /**
      * The portion of net income attributable to minority shareholders in consolidated subsidiaries.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'noncontrolling_interest'?: number;
     /**
      * Income from operations calculated as gross profit minus total operating expenses, excluding non-operating items.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'operating_income'?: number;
     /**
      * Non-operating income and expenses not related to the company\'s core business operations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'other_income_expense'?: number;
     /**
      * Operating expenses not classified in the main expense categories.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'other_operating_expenses'?: number;
     /**
      * The last date of the reporting period (formatted as YYYY-MM-DD).
-     * @type {string}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'period_end'?: string;
     /**
      * Dividends declared on preferred stock during the period.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'preferred_stock_dividends_declared'?: number;
     /**
      * Expenses incurred for research and development activities to create new products or improve existing ones.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'research_development'?: number;
     /**
      * Total revenue or net sales for the period, representing the company\'s gross income from operations.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'revenue'?: number;
     /**
      * Expenses related to selling products and general administrative costs not directly tied to production.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'selling_general_administrative'?: number;
     /**
      * A list of ticker symbols under which the company is listed. Multiple symbols may indicate different share classes for the same company.
-     * @type {Array<string>}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'tickers'?: Array<string>;
     /**
      * The reporting period type. Possible values include: quarterly, annual, trailing_twelve_months.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'timeframe'?: string;
     /**
      * Sum of all operating expenses including cost of revenue, SG&A, R&D, depreciation, and other operating expenses.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'total_operating_expenses'?: number;
     /**
      * Net total of all non-operating income and expenses including interest income, interest expense, and other items.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1IncomeStatements200ResponseResultsInner
      */
     'total_other_income_expense'?: number;
 }
-/**
- * 
- * @export
- * @interface GetStocksFinancialsV1Ratios200Response
- */
 export interface GetStocksFinancialsV1Ratios200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1Ratios200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1Ratios200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksFinancialsV1Ratios200ResponseResultsInner>}
-     * @memberof GetStocksFinancialsV1Ratios200Response
      */
     'results': Array<GetStocksFinancialsV1Ratios200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1Ratios200Response
      */
     'status': GetStocksFinancialsV1Ratios200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksFinancialsV1Ratios200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksFinancialsV1Ratios200ResponseResultsInner
- */
 export interface GetStocksFinancialsV1Ratios200ResponseResultsInner {
     /**
      * Average trading volume over the last 30 trading days, providing context for liquidity.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'average_volume'?: number;
     /**
      * Cash ratio, calculated as cash and cash equivalents divided by current liabilities, measuring the most liquid form of liquidity coverage.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'cash'?: number;
     /**
      * Central Index Key (CIK) number assigned by the SEC to identify the company.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'cik'?: string;
     /**
      * Current ratio, calculated as total current assets divided by total current liabilities, measuring short-term liquidity.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'current'?: number;
     /**
      * Date for which the ratios are calculated, representing the trading date with available price data.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'date': string;
     /**
      * Debt-to-equity ratio, calculated as total debt (current debt plus long-term debt) divided by total shareholders\' equity, measuring financial leverage.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'debt_to_equity'?: number;
     /**
      * Dividend yield, calculated as annual dividends per share divided by stock price, measuring the income return on investment.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'dividend_yield'?: number;
     /**
      * Earnings per share, calculated as net income available to common shareholders divided by weighted shares outstanding.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'earnings_per_share'?: number;
     /**
      * Enterprise value, calculated as market capitalization plus total debt minus cash and cash equivalents, representing total company value.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'enterprise_value'?: number;
     /**
      * Enterprise value to EBITDA ratio, calculated as enterprise value divided by EBITDA, measuring company valuation relative to earnings before interest, taxes, depreciation, and amortization.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'ev_to_ebitda'?: number;
     /**
      * Enterprise value to sales ratio, calculated as enterprise value divided by revenue, measuring company valuation relative to sales.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'ev_to_sales'?: number;
     /**
      * Free cash flow, calculated as operating cash flow minus capital expenditures (purchase of property, plant, and equipment).
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'free_cash_flow'?: number;
     /**
      * Market capitalization, calculated as stock price multiplied by total shares outstanding.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'market_cap'?: number;
     /**
      * Stock price used in ratio calculations, typically the closing price for the given date.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'price'?: number;
     /**
      * Price-to-book ratio, calculated as stock price divided by book value per share, comparing market value to book value.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'price_to_book'?: number;
     /**
      * Price-to-cash-flow ratio, calculated as stock price divided by operating cash flow per share. Only calculated when operating cash flow per share is positive.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'price_to_cash_flow'?: number;
     /**
      * Price-to-earnings ratio, calculated as stock price divided by earnings per share. Only calculated when earnings per share is positive.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'price_to_earnings'?: number;
     /**
      * Price-to-free-cash-flow ratio, calculated as stock price divided by free cash flow per share. Only calculated when free cash flow per share is positive.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'price_to_free_cash_flow'?: number;
     /**
      * Price-to-sales ratio, calculated as stock price divided by revenue per share, measuring valuation relative to sales.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'price_to_sales'?: number;
     /**
      * Quick ratio (acid-test ratio), calculated as (current assets minus inventories) divided by current liabilities, measuring immediate liquidity.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'quick'?: number;
     /**
      * Return on assets ratio, calculated as net income divided by total assets, measuring how efficiently a company uses its assets to generate profit.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'return_on_assets'?: number;
     /**
      * Return on equity ratio, calculated as net income divided by total shareholders\' equity, measuring profitability relative to shareholders\' equity.
-     * @type {number}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'return_on_equity'?: number;
     /**
      * Stock ticker symbol for the company.
-     * @type {string}
-     * @memberof GetStocksFinancialsV1Ratios200ResponseResultsInner
      */
     'ticker': string;
 }
-/**
- * 
- * @export
- * @interface GetStocksQuotes200Response
- */
 export interface GetStocksQuotes200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetStocksQuotes200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksQuotes200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetStocksQuotes200ResponseResultsInner>}
-     * @memberof GetStocksQuotes200Response
      */
     'results'?: Array<GetStocksQuotes200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksQuotes200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetStocksQuotes200ResponseResultsInner
- */
 export interface GetStocksQuotes200ResponseResultsInner {
     /**
      * The ask exchange ID
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'ask_exchange'?: number;
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'ask_price'?: number;
     /**
      * The total number of shares available for sale at the current ask price.
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'ask_size'?: number;
     /**
      * The bid exchange ID
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'bid_exchange'?: number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'bid_price'?: number;
     /**
      * The total number of shares that buyers want to purchase at the current bid price.
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'bid_size'?: number;
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'conditions'?: Array<number>;
     /**
      * A list of indicator codes.
-     * @type {Array<number>}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'indicators'?: Array<number>;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'participant_timestamp': number;
     /**
      * The sequence number represents the sequence in which quote events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11). Values reset after each trading session/day.
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'sequence_number': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this quote from the exchange which produced it.
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'sip_timestamp': number;
     /**
      * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'tape'?: number;
     /**
      * The nanosecond accuracy TRF (Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this quote.
-     * @type {number}
-     * @memberof GetStocksQuotes200ResponseResultsInner
      */
     'trf_timestamp'?: number;
 }
-/**
- * 
- * @export
- * @interface GetStocksSnapshotDirection200Response
- */
 export interface GetStocksSnapshotDirection200Response {
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksSnapshotDirection200Response
      */
     'status': string;
     /**
      * An array of snapshot data for the specified tickers.
-     * @type {Array<GetStocksSnapshotTickers200ResponseAllOfTickersInner>}
-     * @memberof GetStocksSnapshotDirection200Response
      */
     'tickers'?: Array<GetStocksSnapshotTickers200ResponseAllOfTickersInner>;
 }
-/**
- * 
- * @export
- * @interface GetStocksSnapshotTicker200Response
- */
 export interface GetStocksSnapshotTicker200Response {
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksSnapshotTicker200Response
      */
     'status': string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksSnapshotTicker200Response
      */
     'request_id': string;
-    /**
-     * 
-     * @type {GetStocksSnapshotTicker200ResponseAllOfTicker}
-     * @memberof GetStocksSnapshotTicker200Response
-     */
     'ticker'?: GetStocksSnapshotTicker200ResponseAllOfTicker;
 }
 /**
  * Contains the requested snapshot data for the specified ticker.
- * @export
- * @interface GetStocksSnapshotTicker200ResponseAllOfTicker
  */
 export interface GetStocksSnapshotTicker200ResponseAllOfTicker {
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
-     */
     'day'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay;
     /**
      * Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.
-     * @type {number}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
      */
     'fmv'?: number;
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
-     */
     'lastQuote'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote;
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
-     */
     'lastTrade'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade;
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
-     */
     'min'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin;
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
-     */
     'prevDay'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
      */
     'ticker'?: string;
     /**
      * The value of the change from the previous day.
-     * @type {number}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
      */
     'todaysChange'?: number;
     /**
      * The percentage change since the previous day.
-     * @type {number}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
      */
     'todaysChangePerc'?: number;
     /**
      * The last updated timestamp.
-     * @type {number}
-     * @memberof GetStocksSnapshotTicker200ResponseAllOfTicker
      */
     'updated'?: number;
 }
-/**
- * 
- * @export
- * @interface GetStocksSnapshotTickers200Response
- */
 export interface GetStocksSnapshotTickers200Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200Response
      */
     'count'?: number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksSnapshotTickers200Response
      */
     'status': string;
     /**
      * An array of snapshot data for the specified tickers.
-     * @type {Array<GetStocksSnapshotTickers200ResponseAllOfTickersInner>}
-     * @memberof GetStocksSnapshotTickers200Response
      */
     'tickers'?: Array<GetStocksSnapshotTickers200ResponseAllOfTickersInner>;
 }
-/**
- * 
- * @export
- * @interface GetStocksSnapshotTickers200ResponseAllOfTickersInner
- */
 export interface GetStocksSnapshotTickers200ResponseAllOfTickersInner {
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
-     */
     'day'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay;
     /**
      * Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
      */
     'fmv'?: number;
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
-     */
     'lastQuote'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote;
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
-     */
     'lastTrade'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade;
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
-     */
     'min'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin;
-    /**
-     * 
-     * @type {GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
-     */
     'prevDay'?: GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
      */
     'ticker'?: string;
     /**
      * The value of the change from the previous day.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
      */
     'todaysChange'?: number;
     /**
      * The percentage change since the previous day.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
      */
     'todaysChangePerc'?: number;
     /**
      * The last updated timestamp.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInner
      */
     'updated'?: number;
 }
 /**
  * The most recent daily bar for this ticker.
- * @export
- * @interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay
  */
 export interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'c': number;
     /**
      * The volume including fractional shares, respresented as a string.
-     * @type {string}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'dv'?: string;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'o': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'otc'?: boolean;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerDay
      */
     'vw': number;
 }
 /**
  * The most recent quote for this ticker.  This is only returned if your current plan includes quotes.
- * @export
- * @interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote
  */
 export interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote
      */
     'P': number;
     /**
      * The ask size in lots.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote
      */
     'S': number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote
      */
     'p': number;
     /**
      * The bid size in lots.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote
      */
     's': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote
      */
     't': number;
 }
 /**
  * The most recent trade for this ticker.  This is only returned if your current plan includes trades.
- * @export
- * @interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade
  */
 export interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade {
     /**
      * The trade conditions.
-     * @type {Array<number>}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     'c': Array<number>;
     /**
      * The size of the trade including fractional shares, respresented as a string.
-     * @type {string}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     'ds': string;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID. 
-     * @type {string}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     'i': string;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00. 
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     'p': number;
     /**
      * The size (volume) of the trade.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     's': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     't': number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade
      */
     'x': number;
 }
 /**
  * The most recent minute bar for this ticker.
- * @export
- * @interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
  */
 export interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin {
     /**
      * The accumulated volume.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'av': number;
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'c': number;
     /**
      * The accumulated volume including fractional shares, respresented as a string.
-     * @type {string}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'dav': string;
     /**
      * The volume including fractional shares, respresented as a string.
-     * @type {string}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'dv'?: string;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'n': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'o': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'otc'?: boolean;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerMin
      */
     'vw': number;
 }
 /**
  * The previous day\'s bar for this ticker.
- * @export
- * @interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay
  */
 export interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'o': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'otc'?: boolean;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface GetStocksTaxonomiesVXRiskFactors200Response
- */
 export interface GetStocksTaxonomiesVXRiskFactors200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksTaxonomiesVXRiskFactors200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksTaxonomiesVXRiskFactors200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksTaxonomiesVXRiskFactors200ResponseResultsInner>}
-     * @memberof GetStocksTaxonomiesVXRiskFactors200Response
      */
     'results': Array<GetStocksTaxonomiesVXRiskFactors200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksTaxonomiesVXRiskFactors200Response
      */
     'status': GetStocksTaxonomiesVXRiskFactors200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksTaxonomiesVXRiskFactors200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksTaxonomiesVXRiskFactors200ResponseResultsInner
- */
 export interface GetStocksTaxonomiesVXRiskFactors200ResponseResultsInner {
     /**
      * Detailed explanation of what this risk category encompasses, including specific examples and potential impacts
-     * @type {string}
-     * @memberof GetStocksTaxonomiesVXRiskFactors200ResponseResultsInner
      */
     'description'?: string;
     /**
      * Top-level risk category
-     * @type {string}
-     * @memberof GetStocksTaxonomiesVXRiskFactors200ResponseResultsInner
      */
     'primary_category'?: string;
     /**
      * Mid-level risk category
-     * @type {string}
-     * @memberof GetStocksTaxonomiesVXRiskFactors200ResponseResultsInner
      */
     'secondary_category'?: string;
     /**
      * Version identifier (e.g., \'1.0\', \'1.1\') for the taxonomy
-     * @type {number}
-     * @memberof GetStocksTaxonomiesVXRiskFactors200ResponseResultsInner
      */
     'taxonomy': number;
     /**
      * Most specific risk classification
-     * @type {string}
-     * @memberof GetStocksTaxonomiesVXRiskFactors200ResponseResultsInner
      */
     'tertiary_category'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksTrades200Response
- */
 export interface GetStocksTrades200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof GetStocksTrades200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksTrades200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetStocksTrades200ResponseResultsInner>}
-     * @memberof GetStocksTrades200Response
      */
     'results'?: Array<GetStocksTrades200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksTrades200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface GetStocksTrades200ResponseResultsInner
- */
 export interface GetStocksTrades200ResponseResultsInner {
     /**
      * A list of condition codes.
-     * @type {Array<number>}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'conditions'?: Array<number>;
     /**
      * The trade correction indicator.
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'correction'?: number;
     /**
      * The size of the trade including the fractional component. This is represented as a decimal string.
-     * @type {string}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'decimal_size': string;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'exchange': number;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID.
-     * @type {string}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'id': string;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the trade was actually generated at the exchange.
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'participant_timestamp': number;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'price': number;
     /**
      * The sequence number represents the sequence in which trade events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11). Values reset after each trading session/day.
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'sequence_number': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it.
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'sip_timestamp': number;
     /**
      * The size of a trade (also known as volume).
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'size': number;
     /**
      * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'tape'?: number;
     /**
      * The ID for the Trade Reporting Facility where the trade took place.
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'trf_id'?: number;
     /**
      * The nanosecond accuracy TRF (Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this trade.
-     * @type {number}
-     * @memberof GetStocksTrades200ResponseResultsInner
      */
     'trf_timestamp'?: number;
 }
-/**
- * 
- * @export
- * @interface GetStocksV1Dividends200Response
- */
 export interface GetStocksV1Dividends200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksV1Dividends200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksV1Dividends200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksV1Dividends200ResponseResultsInner>}
-     * @memberof GetStocksV1Dividends200Response
      */
     'results': Array<GetStocksV1Dividends200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksV1Dividends200Response
      */
     'status': GetStocksV1Dividends200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksV1Dividends200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksV1Dividends200ResponseResultsInner
- */
 export interface GetStocksV1Dividends200ResponseResultsInner {
     /**
      * Original dividend amount per share in the specified currency
-     * @type {number}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'cash_amount'?: number;
     /**
      * Currency code for the dividend payment (e.g., USD, CAD)
-     * @type {string}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'currency'?: string;
     /**
      * Date when the company officially announced the dividend
-     * @type {string}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'declaration_date'?: string;
     /**
      * Classification describing the nature of this dividend\'s recurrence pattern: recurring (paid on a regular schedule), special (one-time or commemorative), supplemental (extra beyond the regular schedule), irregular (unpredictable or non-recurring), unknown (cannot be classified from available data)
-     * @type {string}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'distribution_type': string;
     /**
      * Date when the stock begins trading without the dividend value
-     * @type {string}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'ex_dividend_date'?: string;
     /**
      * How many times per year this dividend is expected to occur. A value of 0 means the distribution is non-recurring or irregular (e.g., special, supplemental, or a one-off dividend). Other possible values include 1 (annual), 2 (semi-annual), 3 (trimester), 4 (quarterly), 12 (monthly), 24 (bi-monthly), 52 (weekly), 104 (bi-weekly), and 365 (daily) depending on the issuer\'s declared or inferred payout cadence.
-     * @type {number}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'frequency'?: number;
     /**
      * Cumulative adjustment factor used to offset dividend effects on historical prices. To adjust a historical price for dividends: for a price on date D, find the first dividend whose `ex_dividend_date` is after date D and multiply the price by that dividend\'s `historical_adjustment_factor`.
-     * @type {number}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'historical_adjustment_factor'?: number;
     /**
      * Unique identifier for each dividend record
-     * @type {string}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'id'?: string;
     /**
      * Date when the dividend payment is distributed to shareholders
-     * @type {string}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'pay_date'?: string;
     /**
      * Date when shareholders must be on record to be eligible for the dividend payment
-     * @type {string}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'record_date'?: string;
     /**
      * Dividend amount adjusted for stock splits that occurred after the dividend was paid, expressed on a current share basis
-     * @type {number}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'split_adjusted_cash_amount'?: number;
     /**
      * Stock symbol for the company issuing the dividend
-     * @type {string}
-     * @memberof GetStocksV1Dividends200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksV1Exchanges200Response
- */
 export interface GetStocksV1Exchanges200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksV1Exchanges200ResponseResultsInner>}
-     * @memberof GetStocksV1Exchanges200Response
      */
     'results': Array<GetStocksV1Exchanges200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200Response
      */
     'status': GetStocksV1Exchanges200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksV1Exchanges200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksV1Exchanges200ResponseResultsInner
- */
 export interface GetStocksV1Exchanges200ResponseResultsInner {
     /**
      * Short acronym or abbreviation (may be null for some venues).
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200ResponseResultsInner
      */
     'acronym'?: string;
     /**
      * Numeric identifier for the trading venue or exchange.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200ResponseResultsInner
      */
     'id': string;
     /**
      * Geographic location code.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200ResponseResultsInner
      */
     'locale'?: string;
     /**
      * Market Identifier Code (MIC) - ISO 10383 standard four-character code for the market (may be empty for some venues).
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200ResponseResultsInner
      */
     'mic'?: string;
     /**
      * Full official name of the exchange, trading venue, or reporting facility.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200ResponseResultsInner
      */
     'name': string;
     /**
      * Operating Market Identifier Code - identifies the specific operating entity or parent organization.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200ResponseResultsInner
      */
     'operating_mic'?: string;
     /**
      * Single-character participant identifier used in market data feeds and trade reporting.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200ResponseResultsInner
      */
     'participant_id'?: string;
     /**
      * Type of trading venue: \'exchange\' for stock exchanges, \'TRF\' for Trade Reporting Facilities, \'SIP\' for Securities Information Processors, \'ORF\' for OTC Reporting Facility.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200ResponseResultsInner
      */
     'type': string;
     /**
      * Official website URL of the organization operating the venue.
-     * @type {string}
-     * @memberof GetStocksV1Exchanges200ResponseResultsInner
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksV1ShortInterest200Response
- */
 export interface GetStocksV1ShortInterest200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksV1ShortInterest200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksV1ShortInterest200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksV1ShortInterest200ResponseResultsInner>}
-     * @memberof GetStocksV1ShortInterest200Response
      */
     'results': Array<GetStocksV1ShortInterest200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksV1ShortInterest200Response
      */
     'status': GetStocksV1ShortInterest200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksV1ShortInterest200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksV1ShortInterest200ResponseResultsInner
- */
 export interface GetStocksV1ShortInterest200ResponseResultsInner {
     /**
      * The average daily trading volume for the stock over a specified period, typically used to contextualize short interest.
-     * @type {number}
-     * @memberof GetStocksV1ShortInterest200ResponseResultsInner
      */
     'avg_daily_volume': number;
     /**
      * Calculated as short_interest divided by avg_daily_volume, representing the estimated number of days it would take to cover all short positions based on average trading volume.
-     * @type {number}
-     * @memberof GetStocksV1ShortInterest200ResponseResultsInner
      */
     'days_to_cover': number;
     /**
      * The date (formatted as YYYY-MM-DD) on which the short interest data is considered settled, typically based on exchange reporting schedules.
-     * @type {string}
-     * @memberof GetStocksV1ShortInterest200ResponseResultsInner
      */
     'settlement_date': string;
     /**
      * The total number of shares that have been sold short but have not yet been covered or closed out.
-     * @type {number}
-     * @memberof GetStocksV1ShortInterest200ResponseResultsInner
      */
     'short_interest'?: number;
     /**
      * The primary ticker symbol for the stock.
-     * @type {string}
-     * @memberof GetStocksV1ShortInterest200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksV1ShortVolume200Response
- */
 export interface GetStocksV1ShortVolume200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksV1ShortVolume200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksV1ShortVolume200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksV1ShortVolume200ResponseResultsInner>}
-     * @memberof GetStocksV1ShortVolume200Response
      */
     'results': Array<GetStocksV1ShortVolume200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksV1ShortVolume200Response
      */
     'status': GetStocksV1ShortVolume200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksV1ShortVolume200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksV1ShortVolume200ResponseResultsInner
- */
 export interface GetStocksV1ShortVolume200ResponseResultsInner {
     /**
      * Short volume reported via the Alternative Display Facility (ADF), excluding exempt volume.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'adf_short_volume'?: number;
     /**
      * Short volume reported via ADF that was marked as exempt.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'adf_short_volume_exempt'?: number;
     /**
      * The date of trade activity reported in the format YYYY-MM-DD
-     * @type {string}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'date': string;
     /**
      * Portion of short volume that was marked as exempt from regulation SHO.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'exempt_volume'?: number;
     /**
      * Short volume reported from Nasdaq\'s Carteret facility, excluding exempt volume.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'nasdaq_carteret_short_volume'?: number;
     /**
      * Short volume from Nasdaq Carteret that was marked as exempt.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'nasdaq_carteret_short_volume_exempt'?: number;
     /**
      * Short volume reported from Nasdaq\'s Chicago facility, excluding exempt volume.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'nasdaq_chicago_short_volume'?: number;
     /**
      * Short volume from Nasdaq Chicago that was marked as exempt.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'nasdaq_chicago_short_volume_exempt'?: number;
     /**
      * Portion of short volume that was not exempt from regulation SHO (i.e., short_volume - exempt_volume).
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'non_exempt_volume'?: number;
     /**
      * Short volume reported from NYSE facilities, excluding exempt volume.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'nyse_short_volume'?: number;
     /**
      * Short volume from NYSE facilities that was marked as exempt.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'nyse_short_volume_exempt'?: number;
     /**
      * Total number of shares sold short across all venues for the ticker on the given date.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'short_volume'?: number;
     /**
      * The percentage of total volume that was sold short. Calculated as (short_volume / total_volume) * 100.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'short_volume_ratio'?: number;
     /**
      * The primary ticker symbol for the stock.
-     * @type {string}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'ticker'?: string;
     /**
      * Total reported volume across all venues for the ticker on the given date.
-     * @type {number}
-     * @memberof GetStocksV1ShortVolume200ResponseResultsInner
      */
     'total_volume'?: number;
 }
-/**
- * 
- * @export
- * @interface GetStocksV1Splits200Response
- */
 export interface GetStocksV1Splits200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksV1Splits200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksV1Splits200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksV1Splits200ResponseResultsInner>}
-     * @memberof GetStocksV1Splits200Response
      */
     'results': Array<GetStocksV1Splits200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksV1Splits200Response
      */
     'status': GetStocksV1Splits200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksV1Splits200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksV1Splits200ResponseResultsInner
- */
 export interface GetStocksV1Splits200ResponseResultsInner {
     /**
      * Classification of the share-change event. Possible values include: forward_split (share count increases), reverse_split (share count decreases), stock_dividend (shares issued as a dividend)
-     * @type {string}
-     * @memberof GetStocksV1Splits200ResponseResultsInner
      */
     'adjustment_type': string;
     /**
      * Date when the stock split was applied and shares adjusted
-     * @type {string}
-     * @memberof GetStocksV1Splits200ResponseResultsInner
      */
     'execution_date'?: string;
     /**
      * Cumulative adjustment factor used to offset split effects on historical prices. To adjust a historical price for splits: for a price on date D, find the first split whose `execution_date` is after date D and multiply the unadjusted price by the `historical_adjustment_factor`.
-     * @type {number}
-     * @memberof GetStocksV1Splits200ResponseResultsInner
      */
     'historical_adjustment_factor'?: number;
     /**
      * Unique identifier for each stock split event
-     * @type {string}
-     * @memberof GetStocksV1Splits200ResponseResultsInner
      */
     'id'?: string;
     /**
      * Denominator of the split ratio (old shares)
-     * @type {number}
-     * @memberof GetStocksV1Splits200ResponseResultsInner
      */
     'split_from'?: number;
     /**
      * Numerator of the split ratio (new shares)
-     * @type {number}
-     * @memberof GetStocksV1Splits200ResponseResultsInner
      */
     'split_to'?: number;
     /**
      * Stock symbol for the company that executed the split
-     * @type {string}
-     * @memberof GetStocksV1Splits200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetStocksVXFloat200Response
- */
 export interface GetStocksVXFloat200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetStocksVXFloat200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetStocksVXFloat200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetStocksVXFloat200ResponseResultsInner>}
-     * @memberof GetStocksVXFloat200Response
      */
     'results': Array<GetStocksVXFloat200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetStocksVXFloat200Response
      */
     'status': GetStocksVXFloat200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetStocksVXFloat200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetStocksVXFloat200ResponseResultsInner
- */
 export interface GetStocksVXFloat200ResponseResultsInner {
     /**
      * The effective date of the free float measurement.
-     * @type {string}
-     * @memberof GetStocksVXFloat200ResponseResultsInner
      */
     'effective_date'?: string;
     /**
      * Number of shares freely tradable in the market. Free float shares represent the portion of a company\'s outstanding shares that is freely tradable in the market, excluding any holdings considered strategic, controlling, or long term. This excludes insiders, directors, founders, 5 percent plus shareholders, cross holdings, government stakes except pensions, restricted or locked up shares, employee plans, and any entities with board influence, leaving only shares that are genuinely available for public trading.
-     * @type {number}
-     * @memberof GetStocksVXFloat200ResponseResultsInner
      */
     'free_float'?: number;
     /**
      * Percentage of total shares outstanding that are available for public trading, rounded to two decimal places.
-     * @type {number}
-     * @memberof GetStocksVXFloat200ResponseResultsInner
      */
     'free_float_percent'?: number;
     /**
      * The primary ticker symbol for the stock.
-     * @type {string}
-     * @memberof GetStocksVXFloat200ResponseResultsInner
      */
     'ticker'?: string;
 }
-/**
- * 
- * @export
- * @interface GetTicker200Response
- */
 export interface GetTicker200Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof GetTicker200Response
      */
     'count'?: number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetTicker200Response
      */
     'request_id'?: string;
-    /**
-     * 
-     * @type {GetTicker200ResponseResults}
-     * @memberof GetTicker200Response
-     */
     'results'?: GetTicker200ResponseResults;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetTicker200Response
      */
     'status'?: string;
 }
 /**
  * Ticker with details.
- * @export
- * @interface GetTicker200ResponseResults
  */
 export interface GetTicker200ResponseResults {
     /**
      * Whether or not the asset is actively traded. False means the asset has been delisted.
-     * @type {boolean}
-     * @memberof GetTicker200ResponseResults
      */
     'active': boolean;
-    /**
-     * 
-     * @type {GetTicker200ResponseResultsAddress}
-     * @memberof GetTicker200ResponseResults
-     */
     'address'?: GetTicker200ResponseResultsAddress;
-    /**
-     * 
-     * @type {GetTicker200ResponseResultsBranding}
-     * @memberof GetTicker200ResponseResults
-     */
     'branding'?: GetTicker200ResponseResultsBranding;
     /**
      * The CIK number for this ticker. Find more information [here](https://en.wikipedia.org/wiki/Central_Index_Key).
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'cik'?: string;
     /**
      * The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/about/figi)
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'composite_figi'?: string;
     /**
      * The name of the currency that this asset is traded with.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'currency_name': string;
     /**
      * The last date that the asset was traded.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'delisted_utc'?: string;
     /**
      * A description of the company and what they do/offer.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'description'?: string;
     /**
      * The URL of the company\'s website homepage.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'homepage_url'?: string;
     /**
      * The date that the symbol was first publicly listed in the format YYYY-MM-DD.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'list_date'?: string;
     /**
      * The locale of the asset.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'locale': GetTicker200ResponseResultsLocaleEnum;
     /**
      * The market type of the asset.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'market': GetTicker200ResponseResultsMarketEnum;
     /**
      * The most recent close price of the ticker multiplied by weighted outstanding shares.
-     * @type {number}
-     * @memberof GetTicker200ResponseResults
      */
     'market_cap'?: number;
     /**
      * The name of the asset. For stocks/equities this will be the companies registered name. For crypto/fx this will be the name of the currency or coin pair.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'name': string;
     /**
      * The phone number for the company behind this ticker.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'phone_number'?: string;
     /**
      * The ISO code of the primary listing exchange for this asset.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'primary_exchange'?: string;
     /**
      * Round lot size of this security.
-     * @type {number}
-     * @memberof GetTicker200ResponseResults
      */
     'round_lot'?: number;
     /**
      * The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/about/figi)
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'share_class_figi'?: string;
     /**
      * The recorded number of outstanding shares for this particular share class.
-     * @type {number}
-     * @memberof GetTicker200ResponseResults
      */
     'share_class_shares_outstanding'?: number;
     /**
      * The standard industrial classification code for this ticker.  For a list of SIC Codes, see the SEC\'s <a rel=\"nofollow\" target=\"_blank\" href=\"https://www.sec.gov/info/edgar/siccodes.htm\">SIC Code List</a>.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'sic_code'?: string;
     /**
      * A description of this ticker\'s SIC code.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'sic_description'?: string;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'ticker': string;
     /**
      * The root of a specified ticker. For example, the root of BRK.A is BRK.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'ticker_root'?: string;
     /**
      * The suffix of a specified ticker. For example, the suffix of BRK.A is A.
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'ticker_suffix'?: string;
     /**
      * The approximate number of employees for the company.
-     * @type {number}
-     * @memberof GetTicker200ResponseResults
      */
     'total_employees'?: number;
     /**
      * The type of the asset. Find the types that we support via our [Ticker Types API](https://massive.com/docs/rest/stocks/tickers/ticker-types).
-     * @type {string}
-     * @memberof GetTicker200ResponseResults
      */
     'type'?: string;
     /**
      * The shares outstanding calculated assuming all shares of other share classes are converted to this share class.
-     * @type {number}
-     * @memberof GetTicker200ResponseResults
      */
     'weighted_shares_outstanding'?: number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetTicker200ResponseResultsLocaleEnum {
     Us = 'us',
     Global = 'global'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetTicker200ResponseResultsMarketEnum {
     Stocks = 'stocks',
     Crypto = 'crypto',
@@ -13755,635 +7953,387 @@ export enum GetTicker200ResponseResultsMarketEnum {
 
 /**
  * Company headquarters address details.
- * @export
- * @interface GetTicker200ResponseResultsAddress
  */
 export interface GetTicker200ResponseResultsAddress {
     /**
      * The first line of the company\'s headquarters address.
-     * @type {string}
-     * @memberof GetTicker200ResponseResultsAddress
      */
     'address1'?: string;
     /**
      * The second line of the company\'s headquarters address, if applicable.
-     * @type {string}
-     * @memberof GetTicker200ResponseResultsAddress
      */
     'address2'?: string;
     /**
      * The city of the company\'s headquarters address.
-     * @type {string}
-     * @memberof GetTicker200ResponseResultsAddress
      */
     'city'?: string;
     /**
      * The postal code of the company\'s headquarters address.
-     * @type {string}
-     * @memberof GetTicker200ResponseResultsAddress
      */
     'postal_code'?: string;
     /**
      * The state of the company\'s headquarters address.
-     * @type {string}
-     * @memberof GetTicker200ResponseResultsAddress
      */
     'state'?: string;
 }
 /**
  * Provides URLs aiding in visual identification.
- * @export
- * @interface GetTicker200ResponseResultsBranding
  */
 export interface GetTicker200ResponseResultsBranding {
     /**
      * A link to this ticker\'s company\'s icon. Icon\'s are generally smaller, square images that represent the company at a glance. Note that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.
-     * @type {string}
-     * @memberof GetTicker200ResponseResultsBranding
      */
     'icon_url'?: string;
     /**
      * A link to this ticker\'s company\'s logo. Note that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.
-     * @type {string}
-     * @memberof GetTicker200ResponseResultsBranding
      */
     'logo_url'?: string;
 }
-/**
- * 
- * @export
- * @interface GetTmxV1CorporateEvents200Response
- */
 export interface GetTmxV1CorporateEvents200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetTmxV1CorporateEvents200ResponseResultsInner>}
-     * @memberof GetTmxV1CorporateEvents200Response
      */
     'results': Array<GetTmxV1CorporateEvents200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200Response
      */
     'status': GetTmxV1CorporateEvents200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetTmxV1CorporateEvents200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetTmxV1CorporateEvents200ResponseResultsInner
- */
 export interface GetTmxV1CorporateEvents200ResponseResultsInner {
     /**
      * Full name of the company.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'company_name'?: string;
     /**
      * Scheduled date of the corporate event, formatted as YYYY-MM-DD.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'date'?: string;
     /**
      * Standard international identifier for the company\'s common stock.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'isin'?: string;
     /**
      * Name or title of the event.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'name'?: string;
     /**
      * The current status of the event. Possible values include: approved, canceled, confirmed, historical, pending_approval, postponed, and unconfirmed.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'status'?: string;
     /**
      * The company\'s stock symbol.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'ticker'?: string;
     /**
      * Unique numeric identifier for the company used by TMX.
-     * @type {number}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'tmx_company_id'?: number;
     /**
      * The unique alphanumeric identifier for the event record used by TMX.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'tmx_record_id'?: string;
     /**
      * MIC (Market Identifier Code) of the exchange where the company\'s stock is listed.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'trading_venue'?: string;
     /**
      * The normalized type of corporate event. Possible values include: analyst_day, business_update, capital_markets_day, conference, dividend, earnings_announcement_date, earnings_conference_call, earnings_results_announcement, forum, interim_statement, other_interim_announcement, production_update, research_and_development_day, seminar, shareholder_meeting, sales_update, stock_split, summit, service_level_update, tradeshow, company_travel, and workshop.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'type'?: string;
     /**
      * URL linking to the primary public source of the event announcement, if available.
-     * @type {string}
-     * @memberof GetTmxV1CorporateEvents200ResponseResultsInner
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface GetV1ReferenceIpos200Response
- */
 export interface GetV1ReferenceIpos200Response {
     /**
      * If present, this value can be used to fetch the next page.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200Response
      */
     'request_id': string;
     /**
      * The results for this request.
-     * @type {Array<GetV1ReferenceIpos200ResponseResultsInner>}
-     * @memberof GetV1ReferenceIpos200Response
      */
     'results': Array<GetV1ReferenceIpos200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200Response
      */
     'status': GetV1ReferenceIpos200ResponseStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum GetV1ReferenceIpos200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-/**
- * 
- * @export
- * @interface GetV1ReferenceIpos200ResponseResultsInner
- */
 export interface GetV1ReferenceIpos200ResponseResultsInner {
     /**
      * The date when the IPO event was announced.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'announced_date'?: number;
     /**
      * Underlying currency of the security.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'currency_code'?: string;
     /**
      * The price set by the company and its underwriters before the IPO goes live.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'final_issue_price'?: number;
     /**
      * The highest price within the IPO price range that the company might use to price the shares.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'highest_offer_price'?: number;
     /**
      * The status of the IPO.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'ipo_status'?: string;
     /**
      * International Securities Identification Number. This is a unique twelve-digit code that is assigned to every security issuance in the world.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'isin'?: string;
     /**
      * Name of issuer.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'issuer_name'?: string;
     /**
      * The date when the IPO event was last modified.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'last_updated'?: number;
     /**
      * First trading date for the newly listed entity.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'listing_date'?: number;
     /**
      * The minimum number of shares that an investor may apply for during an IPO.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'lot_size'?: number;
     /**
      * The lowest price within the IPO price range that the company is willing to offer its shares to investors.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'lowest_offer_price'?: number;
     /**
      * The upper limit of the shares that the company is offering to investors.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'max_shares_offered'?: number;
     /**
      * The lower limit of shares that the company is willing to sell in the IPO.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'min_shares_offered'?: number;
     /**
      * Market Identifier Code (MIC) of the primary exchange where the security is listed. The Market Identifier Code (MIC) (ISO 10383) is a unique identification code used to identify securities trading exchanges, regulated and non-regulated trading markets.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'primary_exchange'?: string;
     /**
      * A brief description of the security. e.g. Class A Shares
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'security_description'?: string;
     /**
      * The classification of the stock. For example, CS stands for Common Stock.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'security_type'?: string;
     /**
      * The total number of shares that the company has issued and are held by investors.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'shares_outstanding'?: number;
     /**
      * The ticker symbol of the IPO event.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'ticker'?: string;
     /**
      * The total amount raised by the company for IPO.
-     * @type {number}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'total_offer_size'?: number;
     /**
      * Nine-character alphanumeric code that uniquely identifies a financial security in North America.
-     * @type {string}
-     * @memberof GetV1ReferenceIpos200ResponseResultsInner
      */
     'us_code'?: string;
 }
-/**
- * 
- * @export
- * @interface IndexAggsBase
- */
 export interface IndexAggsBase {
     /**
      * The number of aggregates (minute or day) used to generate the response.
-     * @type {number}
-     * @memberof IndexAggsBase
      */
     'queryCount': number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof IndexAggsBase
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof IndexAggsBase
      */
     'resultsCount': number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof IndexAggsBase
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface IndicesGroupedResults
- */
 export interface IndicesGroupedResults {
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetPreviousIndicesAggregates200ResponseAllOfResultsInner>}
-     * @memberof IndicesGroupedResults
      */
     'results'?: Array<GetPreviousIndicesAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface IndicesOpenClose
- */
 export interface IndicesOpenClose {
     /**
      * The close value of the ticker symbol in after hours trading.
-     * @type {number}
-     * @memberof IndicesOpenClose
      */
     'afterHours'?: number;
     /**
      * The close value for the symbol in the given time period.
-     * @type {number}
-     * @memberof IndicesOpenClose
      */
     'close': number;
     /**
      * The requested date.
-     * @type {string}
-     * @memberof IndicesOpenClose
      */
     'from': string;
     /**
      * The highest value for the symbol in the given time period.
-     * @type {number}
-     * @memberof IndicesOpenClose
      */
     'high': number;
     /**
      * The lowest value for the symbol in the given time period.
-     * @type {number}
-     * @memberof IndicesOpenClose
      */
     'low': number;
     /**
      * The open value for the symbol in the given time period.
-     * @type {number}
-     * @memberof IndicesOpenClose
      */
     'open': number;
     /**
      * The open value of the ticker symbol in pre-market trading.
-     * @type {number}
-     * @memberof IndicesOpenClose
      */
     'preMarket'?: number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof IndicesOpenClose
      */
     'status': string;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof IndicesOpenClose
      */
     'symbol': string;
 }
-/**
- * 
- * @export
- * @interface IndicesTickerResults
- */
 export interface IndicesTickerResults {
     /**
      * An array of results containing the requested data.
-     * @type {Array<IndicesTickerResultsResultsInner>}
-     * @memberof IndicesTickerResults
      */
     'results'?: Array<IndicesTickerResultsResultsInner>;
 }
-/**
- * 
- * @export
- * @interface IndicesTickerResultsResultsInner
- */
 export interface IndicesTickerResultsResultsInner {
     /**
      * The close value for the symbol in the given time period.
-     * @type {number}
-     * @memberof IndicesTickerResultsResultsInner
      */
     'c': number;
     /**
      * The highest value for the symbol in the given time period.
-     * @type {number}
-     * @memberof IndicesTickerResultsResultsInner
      */
     'h': number;
     /**
      * The lowest value for the symbol in the given time period.
-     * @type {number}
-     * @memberof IndicesTickerResultsResultsInner
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof IndicesTickerResultsResultsInner
      */
     'n'?: number;
     /**
      * The open value for the symbol in the given time period.
-     * @type {number}
-     * @memberof IndicesTickerResultsResultsInner
      */
     'o': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof IndicesTickerResultsResultsInner
      */
     't': number;
 }
-/**
- * 
- * @export
- * @interface ListConditions200Response
- */
 export interface ListConditions200Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof ListConditions200Response
      */
     'count': number;
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof ListConditions200Response
      */
     'next_url'?: string;
     /**
      * A request ID assigned by the server.
-     * @type {string}
-     * @memberof ListConditions200Response
      */
     'request_id': string;
     /**
      * An array of conditions that match your query.
-     * @type {Array<ListConditions200ResponseResultsInner>}
-     * @memberof ListConditions200Response
      */
     'results': Array<ListConditions200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListConditions200Response
      */
     'status': string;
 }
 /**
  * A condition generally refers to any extra information passed in a trade or a quote. These conditions may or may not affect the behavior of aggregates.
- * @export
- * @interface ListConditions200ResponseResultsInner
  */
 export interface ListConditions200ResponseResultsInner {
     /**
      * A commonly-used abbreviation for this condition.
-     * @type {string}
-     * @memberof ListConditions200ResponseResultsInner
      */
     'abbreviation'?: string;
     /**
      * An identifier for a group of similar financial instruments.
-     * @type {string}
-     * @memberof ListConditions200ResponseResultsInner
      */
     'asset_class': ListConditions200ResponseResultsInnerAssetClassEnum;
     /**
      * Data types that this condition applies to.
-     * @type {Array<string>}
-     * @memberof ListConditions200ResponseResultsInner
      */
     'data_types': Array<ListConditions200ResponseResultsInnerDataTypesEnum>;
     /**
      * A short description of the semantics of this condition.
-     * @type {string}
-     * @memberof ListConditions200ResponseResultsInner
      */
     'description'?: string;
     /**
      * If present, mapping this condition from a Massive code to a SIP symbol depends on this attribute. In other words, data with this condition attached comes exclusively from the given exchange.
-     * @type {number}
-     * @memberof ListConditions200ResponseResultsInner
      */
     'exchange'?: number;
     /**
      * An identifier used by Massive for this condition. Unique per data type.
-     * @type {number}
-     * @memberof ListConditions200ResponseResultsInner
      */
     'id': number;
     /**
      * If true, this condition is from an old version of the SIPs\' specs and no longer is used. Other conditions may or may not reuse the same symbol as this one.
-     * @type {boolean}
-     * @memberof ListConditions200ResponseResultsInner
      */
     'legacy'?: boolean;
     /**
      * The name of this condition.
-     * @type {string}
-     * @memberof ListConditions200ResponseResultsInner
      */
     'name': string;
-    /**
-     * 
-     * @type {ListConditions200ResponseResultsInnerSipMapping}
-     * @memberof ListConditions200ResponseResultsInner
-     */
     'sip_mapping': ListConditions200ResponseResultsInnerSipMapping;
     /**
      * An identifier for a collection of related conditions.
-     * @type {string}
-     * @memberof ListConditions200ResponseResultsInner
      */
     'type': ListConditions200ResponseResultsInnerTypeEnum;
-    /**
-     * 
-     * @type {ListConditions200ResponseResultsInnerUpdateRules}
-     * @memberof ListConditions200ResponseResultsInner
-     */
     'update_rules'?: ListConditions200ResponseResultsInnerUpdateRules;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListConditions200ResponseResultsInnerAssetClassEnum {
     Stocks = 'stocks',
     Options = 'options',
     Crypto = 'crypto',
     Fx = 'fx'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListConditions200ResponseResultsInnerDataTypesEnum {
     Trade = 'trade',
     Bbo = 'bbo',
     Nbbo = 'nbbo'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListConditions200ResponseResultsInnerTypeEnum {
     SaleCondition = 'sale_condition',
     QuoteCondition = 'quote_condition',
@@ -14397,238 +8347,148 @@ export enum ListConditions200ResponseResultsInnerTypeEnum {
 
 /**
  * A comprehensive mapping that translates condition codes from individual SIPs (CTA, OPRA, UTP) to a unified code used by Massive. This facilitates consistent interpretation and application of market data conditions across different data streams, ensuring that users can accurately apply these conditions to their data analysis and reporting.
- * @export
- * @interface ListConditions200ResponseResultsInnerSipMapping
  */
 export interface ListConditions200ResponseResultsInnerSipMapping {
     /**
      * Condition code from the Consolidated Tape Association (CTA).
-     * @type {string}
-     * @memberof ListConditions200ResponseResultsInnerSipMapping
      */
     'CTA'?: string;
     /**
      * Condition code from the Options Price Reporting Authority (OPRA).
-     * @type {string}
-     * @memberof ListConditions200ResponseResultsInnerSipMapping
      */
     'OPRA'?: string;
     /**
      * Condition code from UTP Plan (UTP).
-     * @type {string}
-     * @memberof ListConditions200ResponseResultsInnerSipMapping
      */
     'UTP'?: string;
 }
 /**
  * A list of aggregation rules.
- * @export
- * @interface ListConditions200ResponseResultsInnerUpdateRules
  */
 export interface ListConditions200ResponseResultsInnerUpdateRules {
-    /**
-     * 
-     * @type {ListConditions200ResponseResultsInnerUpdateRulesConsolidated}
-     * @memberof ListConditions200ResponseResultsInnerUpdateRules
-     */
     'consolidated': ListConditions200ResponseResultsInnerUpdateRulesConsolidated;
-    /**
-     * 
-     * @type {ListConditions200ResponseResultsInnerUpdateRulesMarketCenter}
-     * @memberof ListConditions200ResponseResultsInnerUpdateRules
-     */
     'market_center': ListConditions200ResponseResultsInnerUpdateRulesMarketCenter;
 }
 /**
  * Describes aggregation rules on a consolidated (all exchanges) basis.
- * @export
- * @interface ListConditions200ResponseResultsInnerUpdateRulesConsolidated
  */
 export interface ListConditions200ResponseResultsInnerUpdateRulesConsolidated {
     /**
      * Whether or not trades with this condition update the high/low.
-     * @type {boolean}
-     * @memberof ListConditions200ResponseResultsInnerUpdateRulesConsolidated
      */
     'updates_high_low': boolean;
     /**
      * Whether or not trades with this condition update the open/close.
-     * @type {boolean}
-     * @memberof ListConditions200ResponseResultsInnerUpdateRulesConsolidated
      */
     'updates_open_close': boolean;
     /**
      * Whether or not trades with this condition update the volume.
-     * @type {boolean}
-     * @memberof ListConditions200ResponseResultsInnerUpdateRulesConsolidated
      */
     'updates_volume': boolean;
 }
 /**
  * Describes aggregation rules on a per-market-center basis.
- * @export
- * @interface ListConditions200ResponseResultsInnerUpdateRulesMarketCenter
  */
 export interface ListConditions200ResponseResultsInnerUpdateRulesMarketCenter {
     /**
      * Whether or not trades with this condition update the high/low.
-     * @type {boolean}
-     * @memberof ListConditions200ResponseResultsInnerUpdateRulesMarketCenter
      */
     'updates_high_low': boolean;
     /**
      * Whether or not trades with this condition update the open/close.
-     * @type {boolean}
-     * @memberof ListConditions200ResponseResultsInnerUpdateRulesMarketCenter
      */
     'updates_open_close': boolean;
     /**
      * Whether or not trades with this condition update the volume.
-     * @type {boolean}
-     * @memberof ListConditions200ResponseResultsInnerUpdateRulesMarketCenter
      */
     'updates_volume': boolean;
 }
-/**
- * 
- * @export
- * @interface ListConditions400Response
- */
 export interface ListConditions400Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof ListConditions400Response
      */
     'count': number;
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof ListConditions400Response
      */
     'next_url'?: string;
     /**
      * A request ID assigned by the server.
-     * @type {string}
-     * @memberof ListConditions400Response
      */
     'request_id': string;
     /**
      * An array of conditions that match your query.
-     * @type {Array<ListConditions200ResponseResultsInner>}
-     * @memberof ListConditions400Response
      */
     'results': Array<ListConditions200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListConditions400Response
      */
     'status': string;
 }
 /**
  * A list of dividends.
- * @export
- * @interface ListDividends200Response
  */
 export interface ListDividends200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof ListDividends200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof ListDividends200Response
      */
     'request_id': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<ListDividends200ResponseResultsInner>}
-     * @memberof ListDividends200Response
      */
     'results'?: Array<ListDividends200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListDividends200Response
      */
     'status'?: string;
 }
-/**
- * 
- * @export
- * @interface ListDividends200ResponseResultsInner
- */
 export interface ListDividends200ResponseResultsInner {
     /**
      * The cash amount of the dividend per share owned.
-     * @type {number}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'cash_amount': number;
     /**
      * The currency in which the dividend is paid.
-     * @type {string}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'currency'?: string;
     /**
      * The date that the dividend was announced.
-     * @type {string}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'declaration_date'?: string;
     /**
      * The type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD. Special Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC. Long-Term and Short-Term capital gain distributions are denoted as LT and ST, respectively.
-     * @type {string}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'dividend_type': ListDividends200ResponseResultsInnerDividendTypeEnum;
     /**
      * The date that the stock first trades without the dividend, determined by the exchange.
-     * @type {string}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'ex_dividend_date': string;
     /**
      * The number of times per year the dividend is paid out. Possible values are 0 (one-time), 1 (annually), 2 (bi-annually), 4 (quarterly), 12 (monthly), 24 (bi-monthly), and 52 (weekly).
-     * @type {number}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'frequency': number;
     /**
      * The unique identifier of the dividend.
-     * @type {string}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'id': string;
     /**
      * The date that the dividend is paid out.
-     * @type {string}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'pay_date'?: string;
     /**
      * The date that the stock must be held to receive the dividend, set by the company.
-     * @type {string}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'record_date'?: string;
     /**
      * The ticker symbol of the dividend.
-     * @type {string}
-     * @memberof ListDividends200ResponseResultsInner
      */
     'ticker': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListDividends200ResponseResultsInnerDividendTypeEnum {
     Cd = 'CD',
     Sc = 'SC',
@@ -14636,109 +8496,70 @@ export enum ListDividends200ResponseResultsInnerDividendTypeEnum {
     St = 'ST'
 }
 
-/**
- * 
- * @export
- * @interface ListExchanges200Response
- */
 export interface ListExchanges200Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof ListExchanges200Response
      */
     'count'?: number;
     /**
      * A request ID assigned by the server.
-     * @type {string}
-     * @memberof ListExchanges200Response
      */
     'request_id': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<ListExchanges200ResponseResultsInner>}
-     * @memberof ListExchanges200Response
      */
     'results'?: Array<ListExchanges200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListExchanges200Response
      */
     'status': string;
 }
 /**
  * An entity that reports trades.
- * @export
- * @interface ListExchanges200ResponseResultsInner
  */
 export interface ListExchanges200ResponseResultsInner {
     /**
      * A commonly used abbreviation for this exchange.
-     * @type {string}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'acronym'?: string;
     /**
      * An identifier for a group of similar financial instruments.
-     * @type {string}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'asset_class': ListExchanges200ResponseResultsInnerAssetClassEnum;
     /**
      * A unique identifier used by Massive for this exchange.
-     * @type {number}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'id': number;
     /**
      * An identifier for a geographical location.
-     * @type {string}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'locale': ListExchanges200ResponseResultsInnerLocaleEnum;
     /**
      * The Market Identifier Code of this exchange (see ISO 10383).
-     * @type {string}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'mic'?: string;
     /**
      * Name of this exchange.
-     * @type {string}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'name': string;
     /**
      * The MIC of the entity that operates this exchange.
-     * @type {string}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'operating_mic'?: string;
     /**
      * The ID used by SIP\'s to represent this exchange.
-     * @type {string}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'participant_id'?: string;
     /**
      * Represents the type of exchange.
-     * @type {string}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'type': ListExchanges200ResponseResultsInnerTypeEnum;
     /**
      * A link to this exchange\'s website, if one exists.
-     * @type {string}
-     * @memberof ListExchanges200ResponseResultsInner
      */
     'url'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListExchanges200ResponseResultsInnerAssetClassEnum {
     Stocks = 'stocks',
     Options = 'options',
@@ -14746,384 +8567,232 @@ export enum ListExchanges200ResponseResultsInnerAssetClassEnum {
     Fx = 'fx',
     Futures = 'futures'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListExchanges200ResponseResultsInnerLocaleEnum {
     Us = 'us',
     Global = 'global'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListExchanges200ResponseResultsInnerTypeEnum {
     Exchange = 'exchange',
     Trf = 'TRF',
     Sip = 'SIP'
 }
 
-/**
- * 
- * @export
- * @interface ListExchanges400Response
- */
 export interface ListExchanges400Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof ListExchanges400Response
      */
     'count'?: number;
     /**
      * A request ID assigned by the server.
-     * @type {string}
-     * @memberof ListExchanges400Response
      */
     'request_id': string;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListExchanges400Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface ListFinancials200Response
- */
 export interface ListFinancials200Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof ListFinancials200Response
      */
     'count': number;
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof ListFinancials200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof ListFinancials200Response
      */
     'request_id': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<ListFinancials200ResponseResultsInner>}
-     * @memberof ListFinancials200Response
      */
     'results': Array<ListFinancials200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListFinancials200Response
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface ListFinancials200ResponseResultsInner
- */
 export interface ListFinancials200ResponseResultsInner {
     /**
      * The datetime (EST timezone) the filing was accepted by EDGAR in YYYYMMDDHHMMSS format.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'acceptance_datetime'?: string;
     /**
      * The CIK number for the company.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'cik': string;
     /**
      * The company name.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'company_name': string;
     /**
      * The end date of the period that these financials cover in YYYYMMDD format.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'end_date'?: string;
     /**
      * The date that the SEC filing which these financials were derived from was made available. Note that this is not necessarily the date when this information became public, as some companies may publish a press release before filing with the SEC.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'filing_date'?: string;
-    /**
-     * 
-     * @type {ListFinancials200ResponseResultsInnerFinancials}
-     * @memberof ListFinancials200ResponseResultsInner
-     */
     'financials': ListFinancials200ResponseResultsInnerFinancials;
     /**
      * Fiscal period of the report according to the company (Q1, Q2, Q3, Q4, or FY).
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'fiscal_period': string;
     /**
      * Fiscal year of the report according to the company.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'fiscal_year'?: string;
     /**
      * The Standard Industrial Classification (SIC) code for the company.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'sic'?: string;
     /**
      * The URL of the specific XBRL instance document within the SEC filing that these financials were derived from.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'source_filing_file_url'?: string;
     /**
      * The URL of the SEC filing that these financials were derived from.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'source_filing_url'?: string;
     /**
      * The start date of the period that these financials cover in YYYYMMDD format.
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'start_date'?: string;
     /**
      * The list of ticker symbols for the company.
-     * @type {Array<string>}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'tickers'?: Array<string>;
     /**
      * The timeframe of the report (quarterly, annual or ttm).
-     * @type {string}
-     * @memberof ListFinancials200ResponseResultsInner
      */
     'timeframe': string;
 }
 /**
  * Structured financial statements with detailed data points and metadata.
- * @export
- * @interface ListFinancials200ResponseResultsInnerFinancials
  */
 export interface ListFinancials200ResponseResultsInnerFinancials {
-    /**
-     * 
-     * @type {ListFinancials200ResponseResultsInnerFinancialsBalanceSheet}
-     * @memberof ListFinancials200ResponseResultsInnerFinancials
-     */
     'balance_sheet'?: ListFinancials200ResponseResultsInnerFinancialsBalanceSheet;
     /**
      * Cash flow statement. The keys in this object can be any of the fields listed in the Cash Flow Statement section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>. See the attributes of the objects within `balance_sheet` for more details.
-     * @type {object}
-     * @memberof ListFinancials200ResponseResultsInnerFinancials
      */
     'cash_flow_statement'?: object;
     /**
      * Comprehensive income. The keys in this object can be any of the fields listed in the Comprehensive Income section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>. See the attributes of the objects within `balance_sheet` for more details.
-     * @type {object}
-     * @memberof ListFinancials200ResponseResultsInnerFinancials
      */
     'comprehensive_income'?: object;
     /**
      * Income statement. The keys in this object can be any of the fields listed in the Income Statement section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>. See the attributes of the objects within `balance_sheet` for more details.
-     * @type {object}
-     * @memberof ListFinancials200ResponseResultsInnerFinancials
      */
     'income_statement'?: object;
 }
 /**
  * Balance sheet. The keys in this object can be any of the fields listed in the Balance Sheet section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.
- * @export
- * @interface ListFinancials200ResponseResultsInnerFinancialsBalanceSheet
  */
 export interface ListFinancials200ResponseResultsInnerFinancialsBalanceSheet {
-    /**
-     * 
-     * @type {ListFinancials200ResponseResultsInnerFinancialsBalanceSheet}
-     * @memberof ListFinancials200ResponseResultsInnerFinancialsBalanceSheet
-     */
     '*'?: ListFinancials200ResponseResultsInnerFinancialsBalanceSheet;
 }
-/**
- * 
- * @export
- * @interface ListIPOs200Response
- */
 export interface ListIPOs200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof ListIPOs200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof ListIPOs200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<ListIPOs200ResponseResultsInner>}
-     * @memberof ListIPOs200Response
      */
     'results'?: Array<ListIPOs200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListIPOs200Response
      */
     'status'?: string;
 }
-/**
- * 
- * @export
- * @interface ListIPOs200ResponseResultsInner
- */
 export interface ListIPOs200ResponseResultsInner {
     /**
      * The date when the IPO event was announced.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'announced_date'?: string;
     /**
      * Underlying currency of the security.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'currency_code'?: string;
     /**
      * The price set by the company and its underwriters before the IPO goes live.
-     * @type {number}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'final_issue_price'?: number;
     /**
      * The highest price within the IPO price range that the company might use to price the shares.
-     * @type {number}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'highest_offer_price'?: number;
     /**
      * The status of the IPO event. IPO events start out as status \"rumor\" or \"pending\". On listing day, the status changes to \"new\". After the listing day, the status changes to \"history\".  The status \"direct_listing_process\" corresponds to a type of offering where, instead of going through all the IPO processes, the company decides to list its shares directly on an exchange, without using an investment bank or other intermediaries. This is called a direct listing, direct placement, or direct public offering (DPO).
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'ipo_status': ListIPOs200ResponseResultsInnerIpoStatusEnum;
     /**
      * International Securities Identification Number. This is a unique twelve-digit code that is assigned to every security issuance in the world.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'isin'?: string;
     /**
      * Name of issuer.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'issuer_name': string;
     /**
      * The date when the IPO event was last modified.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'last_updated': string;
     /**
      * First trading date for the newly listed entity.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'listing_date'?: string;
     /**
      * The minimum number of shares that can be bought or sold in a single transaction.
-     * @type {number}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'lot_size'?: number;
     /**
      * The lowest price within the IPO price range that the company is willing to offer its shares to investors.
-     * @type {number}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'lowest_offer_price'?: number;
     /**
      * The upper limit of the shares that the company is offering to investors.
-     * @type {number}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'max_shares_offered'?: number;
     /**
      * The lower limit of shares that the company is willing to sell in the IPO.
-     * @type {number}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'min_shares_offered'?: number;
     /**
      * Market Identifier Code (MIC) of the primary exchange where the security is listed. The Market Identifier Code (MIC) (ISO 10383) is a unique identification code used to identify securities trading exchanges, regulated and non-regulated trading markets.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'primary_exchange'?: string;
     /**
      * Description of the security.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'security_description'?: string;
     /**
      * The classification of the stock. For example, \"CS\" stands for Common Stock.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'security_type': string;
     /**
      * The total number of shares that the company has issued and are held by investors.
-     * @type {number}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'shares_outstanding'?: number;
     /**
      * The ticker symbol of the IPO event.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The total amount raised by the company for IPO.
-     * @type {number}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'total_offer_size'?: number;
     /**
      * This is a unique nine-character alphanumeric code that identifies a North American financial security for the purposes of facilitating clearing and settlement of trades.
-     * @type {string}
-     * @memberof ListIPOs200ResponseResultsInner
      */
     'us_code'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListIPOs200ResponseResultsInnerIpoStatusEnum {
     DirectListingProcess = 'direct_listing_process',
     History = 'history',
@@ -15134,152 +8803,90 @@ export enum ListIPOs200ResponseResultsInnerIpoStatusEnum {
     Withdrawn = 'withdrawn'
 }
 
-/**
- * 
- * @export
- * @interface ListNews200Response
- */
 export interface ListNews200Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof ListNews200Response
      */
     'count'?: number;
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof ListNews200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof ListNews200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<ListNews200ResponseResultsInner>}
-     * @memberof ListNews200Response
      */
     'results'?: Array<ListNews200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListNews200Response
      */
     'status'?: string;
 }
-/**
- * 
- * @export
- * @interface ListNews200ResponseResultsInner
- */
 export interface ListNews200ResponseResultsInner {
     /**
      * The mobile friendly Accelerated Mobile Page (AMP) URL.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInner
      */
     'amp_url'?: string;
     /**
      * A link to the news article.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInner
      */
     'article_url': string;
     /**
      * The article\'s author.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInner
      */
     'author': string;
     /**
      * A description of the article.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInner
      */
     'description'?: string;
     /**
      * Unique identifier for the article.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInner
      */
     'id': string;
     /**
      * The article\'s image URL.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInner
      */
     'image_url'?: string;
     /**
      * The insights related to the article.
-     * @type {Array<ListNews200ResponseResultsInnerInsightsInner>}
-     * @memberof ListNews200ResponseResultsInner
      */
     'insights'?: Array<ListNews200ResponseResultsInnerInsightsInner>;
     /**
      * The keywords associated with the article (which will vary depending on the publishing source).
-     * @type {Array<string>}
-     * @memberof ListNews200ResponseResultsInner
      */
     'keywords'?: Array<string>;
     /**
      * The UTC date and time when the article was published, formatted in RFC3339 standard (e.g. YYYY-MM-DDTHH:MM:SSZ).
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInner
      */
     'published_utc': string;
-    /**
-     * 
-     * @type {ListNews200ResponseResultsInnerPublisher}
-     * @memberof ListNews200ResponseResultsInner
-     */
     'publisher': ListNews200ResponseResultsInnerPublisher;
     /**
      * The ticker symbols associated with the article.
-     * @type {Array<string>}
-     * @memberof ListNews200ResponseResultsInner
      */
     'tickers': Array<string>;
     /**
      * The title of the news article.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInner
      */
     'title': string;
 }
-/**
- * 
- * @export
- * @interface ListNews200ResponseResultsInnerInsightsInner
- */
 export interface ListNews200ResponseResultsInnerInsightsInner {
     /**
      * The sentiment of the insight.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInnerInsightsInner
      */
     'sentiment': ListNews200ResponseResultsInnerInsightsInnerSentimentEnum;
     /**
      * The reasoning behind the sentiment.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInnerInsightsInner
      */
     'sentiment_reasoning': string;
     /**
      * The ticker symbol associated with the insight.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInnerInsightsInner
      */
     'ticker': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListNews200ResponseResultsInnerInsightsInnerSentimentEnum {
     Positive = 'positive',
     Neutral = 'neutral',
@@ -15288,316 +8895,198 @@ export enum ListNews200ResponseResultsInnerInsightsInnerSentimentEnum {
 
 /**
  * Details the source of the news article, including the publisher\'s name, logo, and homepage URLs. This information helps users identify and access the original source of news content.
- * @export
- * @interface ListNews200ResponseResultsInnerPublisher
  */
 export interface ListNews200ResponseResultsInnerPublisher {
     /**
      * The publisher\'s homepage favicon URL.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInnerPublisher
      */
     'favicon_url'?: string;
     /**
      * The publisher\'s homepage URL.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInnerPublisher
      */
     'homepage_url': string;
     /**
      * The publisher\'s logo URL.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInnerPublisher
      */
     'logo_url': string;
     /**
      * The publisher\'s name.
-     * @type {string}
-     * @memberof ListNews200ResponseResultsInnerPublisher
      */
     'name': string;
 }
 /**
  * @type ListNewsPublishedUtcParameter
- * @export
  */
 export type ListNewsPublishedUtcParameter = string;
 
-/**
- * 
- * @export
- * @interface ListOptionsContracts200Response
- */
 export interface ListOptionsContracts200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof ListOptionsContracts200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof ListOptionsContracts200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<ListOptionsContracts200ResponseResultsInner>}
-     * @memberof ListOptionsContracts200Response
      */
     'results'?: Array<ListOptionsContracts200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListOptionsContracts200Response
      */
     'status'?: string;
 }
 /**
  * Contains the requested data for the specified options contract.
- * @export
- * @interface ListOptionsContracts200ResponseResultsInner
  */
 export interface ListOptionsContracts200ResponseResultsInner {
     /**
      * If an option contract has additional underlyings or deliverables associated with it, they will appear here. See <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.optionseducation.org/referencelibrary/faq/splits-mergers-spinoffs-bankruptcies\">here</a> for some examples of what might cause a contract to have additional underlyings.
-     * @type {Array<ListOptionsContracts200ResponseResultsInnerAdditionalUnderlyingsInner>}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'additional_underlyings'?: Array<ListOptionsContracts200ResponseResultsInnerAdditionalUnderlyingsInner>;
     /**
      * The 6 letter CFI code of the contract (defined in <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/ISO_10962\">ISO 10962</a>)
-     * @type {string}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'cfi'?: string;
     /**
      * The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".
-     * @type {string}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'contract_type'?: string;
     /**
      * The correction number for this option contract.
-     * @type {number}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'correction'?: number;
     /**
      * The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.
-     * @type {string}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'exercise_style'?: ListOptionsContracts200ResponseResultsInnerExerciseStyleEnum;
     /**
      * The contract\'s expiration date in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'expiration_date'?: string;
     /**
      * The MIC code of the primary exchange that this contract is listed on.
-     * @type {string}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'primary_exchange'?: string;
     /**
      * The number of shares per contract for this contract.
-     * @type {number}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'shares_per_contract'?: number;
     /**
      * The strike price of the option contract.
-     * @type {number}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'strike_price'?: number;
     /**
      * The ticker for the option contract.
-     * @type {string}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'ticker'?: string;
     /**
      * The underlying ticker that the option contract relates to.
-     * @type {string}
-     * @memberof ListOptionsContracts200ResponseResultsInner
      */
     'underlying_ticker'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListOptionsContracts200ResponseResultsInnerExerciseStyleEnum {
     American = 'american',
     European = 'european',
     Bermudan = 'bermudan'
 }
 
-/**
- * 
- * @export
- * @interface ListOptionsContracts200ResponseResultsInnerAdditionalUnderlyingsInner
- */
 export interface ListOptionsContracts200ResponseResultsInnerAdditionalUnderlyingsInner {
     /**
      * The number of shares per contract of the additional underlying, or the cash-in-lieu amount of the currency.
-     * @type {number}
-     * @memberof ListOptionsContracts200ResponseResultsInnerAdditionalUnderlyingsInner
      */
     'amount'?: number;
     /**
      * The type of the additional underlying asset, either equity or currency.
-     * @type {string}
-     * @memberof ListOptionsContracts200ResponseResultsInnerAdditionalUnderlyingsInner
      */
     'type'?: string;
     /**
      * The name of the additional underlying asset.
-     * @type {string}
-     * @memberof ListOptionsContracts200ResponseResultsInnerAdditionalUnderlyingsInner
      */
     'underlying'?: string;
 }
-/**
- * 
- * @export
- * @interface ListStockSplits200Response
- */
 export interface ListStockSplits200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof ListStockSplits200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof ListStockSplits200Response
      */
     'request_id'?: string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<ListStockSplits200ResponseResultsInner>}
-     * @memberof ListStockSplits200Response
      */
     'results'?: Array<ListStockSplits200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListStockSplits200Response
      */
     'status'?: string;
 }
-/**
- * 
- * @export
- * @interface ListStockSplits200ResponseResultsInner
- */
 export interface ListStockSplits200ResponseResultsInner {
     /**
      * The execution date of the stock split. On this date the stock split was applied.
-     * @type {string}
-     * @memberof ListStockSplits200ResponseResultsInner
      */
     'execution_date': string;
     /**
      * The unique identifier for this stock split.
-     * @type {string}
-     * @memberof ListStockSplits200ResponseResultsInner
      */
     'id': string;
     /**
      * The second number in the split ratio.  For example: In a 2-for-1 split, split_from would be 1.
-     * @type {number}
-     * @memberof ListStockSplits200ResponseResultsInner
      */
     'split_from': number;
     /**
      * The first number in the split ratio.  For example: In a 2-for-1 split, split_to would be 2.
-     * @type {number}
-     * @memberof ListStockSplits200ResponseResultsInner
      */
     'split_to': number;
     /**
      * The ticker symbol of the stock split.
-     * @type {string}
-     * @memberof ListStockSplits200ResponseResultsInner
      */
     'ticker': string;
 }
-/**
- * 
- * @export
- * @interface ListTickerTypes200Response
- */
 export interface ListTickerTypes200Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof ListTickerTypes200Response
      */
     'count'?: number;
     /**
      * A request ID assigned by the server.
-     * @type {string}
-     * @memberof ListTickerTypes200Response
      */
     'request_id': string;
     /**
      * An array of results containing the requested data.
-     * @type {Array<ListTickerTypes200ResponseResultsInner>}
-     * @memberof ListTickerTypes200Response
      */
     'results'?: Array<ListTickerTypes200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListTickerTypes200Response
      */
     'status': string;
 }
 /**
  * Describes the type of financial instrument represented by a ticker.
- * @export
- * @interface ListTickerTypes200ResponseResultsInner
  */
 export interface ListTickerTypes200ResponseResultsInner {
     /**
      * An identifier for a group of similar financial instruments.
-     * @type {string}
-     * @memberof ListTickerTypes200ResponseResultsInner
      */
     'asset_class': ListTickerTypes200ResponseResultsInnerAssetClassEnum;
     /**
      * A code used by Massive to refer to this ticker type.
-     * @type {string}
-     * @memberof ListTickerTypes200ResponseResultsInner
      */
     'code': string;
     /**
      * A short description of this ticker type.
-     * @type {string}
-     * @memberof ListTickerTypes200ResponseResultsInner
      */
     'description': string;
     /**
      * An identifier for a geographical location.
-     * @type {string}
-     * @memberof ListTickerTypes200ResponseResultsInner
      */
     'locale': ListTickerTypes200ResponseResultsInnerLocaleEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListTickerTypes200ResponseResultsInnerAssetClassEnum {
     Stocks = 'stocks',
     Options = 'options',
@@ -15605,168 +9094,104 @@ export enum ListTickerTypes200ResponseResultsInnerAssetClassEnum {
     Fx = 'fx',
     Indices = 'indices'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListTickerTypes200ResponseResultsInnerLocaleEnum {
     Us = 'us',
     Global = 'global'
 }
 
-/**
- * 
- * @export
- * @interface ListTickers200Response
- */
 export interface ListTickers200Response {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof ListTickers200Response
      */
     'count'?: number;
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof ListTickers200Response
      */
     'next_url'?: string;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof ListTickers200Response
      */
     'request_id'?: string;
     /**
      * An array of tickers that match your query.  Note: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.
-     * @type {Array<ListTickers200ResponseResultsInner>}
-     * @memberof ListTickers200Response
      */
     'results'?: Array<ListTickers200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof ListTickers200Response
      */
     'status'?: string;
 }
-/**
- * 
- * @export
- * @interface ListTickers200ResponseResultsInner
- */
 export interface ListTickers200ResponseResultsInner {
     /**
      * Whether or not the asset is actively traded. False means the asset has been delisted.
-     * @type {boolean}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'active'?: boolean;
     /**
      * The name of the currency that this asset is priced against.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'base_currency_name'?: string;
     /**
      * The ISO 4217 code of the currency that this asset is priced against.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'base_currency_symbol'?: string;
     /**
      * The CIK number for this ticker. Find more information [here](https://en.wikipedia.org/wiki/Central_Index_Key).
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'cik'?: string;
     /**
      * The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/about/figi)
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'composite_figi'?: string;
     /**
      * The name of the currency that this asset is traded with.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'currency_name'?: string;
     /**
      * The ISO 4217 code of the currency that this asset is traded with.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'currency_symbol'?: string;
     /**
      * The last date that the asset was traded.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'delisted_utc'?: string;
     /**
      * The information is accurate up to this time.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'last_updated_utc'?: string;
     /**
      * The locale of the asset.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'locale': ListTickers200ResponseResultsInnerLocaleEnum;
     /**
      * The market type of the asset.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'market': ListTickers200ResponseResultsInnerMarketEnum;
     /**
      * The name of the asset. For stocks/equities this will be the companies registered name. For crypto/fx this will be the name of the currency or coin pair.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'name': string;
     /**
      * The ISO code of the primary listing exchange for this asset.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'primary_exchange'?: string;
     /**
      * The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/about/figi)
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'share_class_figi'?: string;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'ticker': string;
     /**
      * The type of the asset. Find the types that we support via our [Ticker Types API](https://massive.com/docs/rest/stocks/tickers/ticker-types).
-     * @type {string}
-     * @memberof ListTickers200ResponseResultsInner
      */
     'type'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListTickers200ResponseResultsInnerLocaleEnum {
     Us = 'us',
     Global = 'global'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListTickers200ResponseResultsInnerMarketEnum {
     Stocks = 'stocks',
     Crypto = 'crypto',
@@ -15775,62 +9200,33 @@ export enum ListTickers200ResponseResultsInnerMarketEnum {
     Indices = 'indices'
 }
 
-/**
- * 
- * @export
- * @interface Locales
- */
 export interface Locales {
-    /**
-     * 
-     * @type {Array<LocalesResultsInner>}
-     * @memberof Locales
-     */
     'results'?: Array<LocalesResultsInner>;
 }
-/**
- * 
- * @export
- * @interface LocalesResultsInner
- */
 export interface LocalesResultsInner {
     /**
      * An abbreviated country name.
-     * @type {string}
-     * @memberof LocalesResultsInner
      */
     'locale'?: string;
     /**
      * The name of the country.
-     * @type {string}
-     * @memberof LocalesResultsInner
      */
     'name'?: string;
 }
 /**
  * A dynamic key from the results set
- * @export
- * @interface MapKey
  */
 export interface MapKey {
     /**
      * The descriptive name of this results key
-     * @type {string}
-     * @memberof MapKey
      */
     'name'?: string;
     /**
      * The data type of this results key
-     * @type {string}
-     * @memberof MapKey
      */
     'type'?: MapKeyTypeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum MapKeyTypeEnum {
     String = 'string',
     Int = 'int',
@@ -15838,1308 +9234,755 @@ export enum MapKeyTypeEnum {
     Float64 = 'float64'
 }
 
-/**
- * 
- * @export
- * @interface MarketHolidayInner
- */
 export interface MarketHolidayInner {
     /**
      * The market close time on the holiday (if it\'s not closed).
-     * @type {string}
-     * @memberof MarketHolidayInner
      */
     'close'?: string;
     /**
      * The date of the holiday.
-     * @type {string}
-     * @memberof MarketHolidayInner
      */
     'date': string;
     /**
      * Which market the record is for.
-     * @type {string}
-     * @memberof MarketHolidayInner
      */
     'exchange': string;
     /**
      * The name of the holiday.
-     * @type {string}
-     * @memberof MarketHolidayInner
      */
     'name': string;
     /**
      * The market open time on the holiday (if it\'s not closed).
-     * @type {string}
-     * @memberof MarketHolidayInner
      */
     'open'?: string;
     /**
      * The status of the market on the holiday.
-     * @type {string}
-     * @memberof MarketHolidayInner
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface MarketStatus
- */
 export interface MarketStatus {
     /**
      * Whether or not the market is in post-market hours.
-     * @type {boolean}
-     * @memberof MarketStatus
      */
     'afterHours'?: boolean;
-    /**
-     * 
-     * @type {MarketStatusCurrencies}
-     * @memberof MarketStatus
-     */
     'currencies'?: MarketStatusCurrencies;
     /**
      * Whether or not the market is in pre-market hours.
-     * @type {boolean}
-     * @memberof MarketStatus
      */
     'earlyHours'?: boolean;
-    /**
-     * 
-     * @type {MarketStatusExchanges}
-     * @memberof MarketStatus
-     */
     'exchanges'?: MarketStatusExchanges;
     /**
      * The status of the market as a whole.
-     * @type {string}
-     * @memberof MarketStatus
      */
     'market'?: string;
     /**
      * The current time of the server.
-     * @type {string}
-     * @memberof MarketStatus
      */
     'serverTime'?: string;
 }
-/**
- * 
- * @export
- * @interface MarketStatusCurrencies
- */
 export interface MarketStatusCurrencies {
     /**
      * The status of the crypto market.
-     * @type {string}
-     * @memberof MarketStatusCurrencies
      */
     'crypto'?: string;
     /**
      * The status of the forex market.
-     * @type {string}
-     * @memberof MarketStatusCurrencies
      */
     'fx'?: string;
 }
-/**
- * 
- * @export
- * @interface MarketStatusExchanges
- */
 export interface MarketStatusExchanges {
     /**
      * The status of the Nasdaq market.
-     * @type {string}
-     * @memberof MarketStatusExchanges
      */
     'nasdaq'?: string;
     /**
      * The status of the NYSE market.
-     * @type {string}
-     * @memberof MarketStatusExchanges
      */
     'nyse'?: string;
     /**
      * The status of the OTC market.
-     * @type {string}
-     * @memberof MarketStatusExchanges
      */
     'otc'?: string;
 }
-/**
- * 
- * @export
- * @interface Markets
- */
 export interface Markets {
     /**
      * A list of supported markets.
-     * @type {Array<MarketsResultsInner>}
-     * @memberof Markets
      */
     'results'?: Array<MarketsResultsInner>;
 }
-/**
- * 
- * @export
- * @interface MarketsResultsInner
- */
 export interface MarketsResultsInner {
     /**
      * A description of the market.
-     * @type {string}
-     * @memberof MarketsResultsInner
      */
     'desc'?: string;
     /**
      * The name of the market.
-     * @type {string}
-     * @memberof MarketsResultsInner
      */
     'market'?: string;
 }
 /**
  * @type ModelDate
- * @export
  */
 export type ModelDate = string;
 
 /**
  * A mapping of the keys returned in the results to their descriptive name and data types.
- * @export
- * @interface ModelMap
  */
 export interface ModelMap {
-    /**
-     * 
-     * @type {MapKey}
-     * @memberof ModelMap
-     */
     'key'?: MapKey;
 }
-/**
- * 
- * @export
- * @interface NewsInner
- */
 export interface NewsInner {
     /**
      * A URL of the image for the news article, if found.
-     * @type {string}
-     * @memberof NewsInner
      */
     'image'?: string;
     /**
      * A list of common keywords related to the news article.
-     * @type {Array<string>}
-     * @memberof NewsInner
      */
     'keywords'?: Array<string>;
     /**
      * The publication source of the article.
-     * @type {string}
-     * @memberof NewsInner
      */
     'source'?: string;
     /**
      * A summary of the news article.
-     * @type {string}
-     * @memberof NewsInner
      */
     'summary'?: string;
     /**
      * A list of ticker symbols relating to the article.
-     * @type {Array<string>}
-     * @memberof NewsInner
      */
     'symbols'?: Array<string>;
     /**
      * The timestamp of the news article.
-     * @type {string}
-     * @memberof NewsInner
      */
     'timestamp'?: string;
     /**
      * The title of the news article.
-     * @type {string}
-     * @memberof NewsInner
      */
     'title'?: string;
     /**
      * A direct link to the news article from its source publication.
-     * @type {string}
-     * @memberof NewsInner
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface PaginationHooksBase
- */
 export interface PaginationHooksBase {
     /**
      * If present, this value can be used to fetch the next page of data.
-     * @type {string}
-     * @memberof PaginationHooksBase
      */
     'next_url'?: string;
 }
-/**
- * 
- * @export
- * @interface RatingSection
- */
 export interface RatingSection {
     /**
      * Analyst Rating at current month
-     * @type {number}
-     * @memberof RatingSection
      */
     'current': number;
     /**
      * Analyst Ratings at 1 month in the future
-     * @type {number}
-     * @memberof RatingSection
      */
     'month1': number;
     /**
      * Analyst Ratings at 2 month in the future
-     * @type {number}
-     * @memberof RatingSection
      */
     'month2': number;
     /**
      * Analyst Ratings at 3 month in the future
-     * @type {number}
-     * @memberof RatingSection
      */
     'month3': number;
     /**
      * Analyst Ratings at 4 month in the future
-     * @type {number}
-     * @memberof RatingSection
      */
     'month4'?: number;
     /**
      * Analyst Ratings at 5 month in the future
-     * @type {number}
-     * @memberof RatingSection
      */
     'month5'?: number;
 }
-/**
- * 
- * @export
- * @interface RequestIdBase
- */
 export interface RequestIdBase {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof RequestIdBase
      */
     'request_id': string;
 }
-/**
- * 
- * @export
- * @interface SnapshotMinOHLCV
- */
 export interface SnapshotMinOHLCV {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotMinOHLCV
      */
     'c'?: number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotMinOHLCV
      */
     'h'?: number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotMinOHLCV
      */
     'l'?: number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof SnapshotMinOHLCV
      */
     'n'?: number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotMinOHLCV
      */
     'o'?: number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof SnapshotMinOHLCV
      */
     't'?: number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotMinOHLCV
      */
     'v'?: number;
 }
-/**
- * 
- * @export
- * @interface SnapshotOHLCV
- */
 export interface SnapshotOHLCV {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCV
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCV
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCV
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCV
      */
     'o': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCV
      */
     'v': number;
 }
-/**
- * 
- * @export
- * @interface SnapshotOHLCVVW
- */
 export interface SnapshotOHLCVVW {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVW
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVW
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVW
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVW
      */
     'o': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVW
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof SnapshotOHLCVVW
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface SnapshotOHLCVVWOtc
- */
 export interface SnapshotOHLCVVWOtc {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVWOtc
      */
     'c': number;
     /**
      * The volume including fractional shares, respresented as a string.
-     * @type {string}
-     * @memberof SnapshotOHLCVVWOtc
      */
     'dv'?: string;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVWOtc
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVWOtc
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVWOtc
      */
     'o': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof SnapshotOHLCVVWOtc
      */
     'otc'?: boolean;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof SnapshotOHLCVVWOtc
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof SnapshotOHLCVVWOtc
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface StandardBase
- */
 export interface StandardBase {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof StandardBase
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof StandardBase
      */
     'count'?: number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof StandardBase
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface StatusBase
- */
 export interface StatusBase {
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof StatusBase
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface StatusCountBase
- */
 export interface StatusCountBase {
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof StatusCountBase
      */
     'count'?: number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof StatusCountBase
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface StocksGroupedResults
- */
 export interface StocksGroupedResults {
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetGroupedStocksAggregates200ResponseAllOfResultsInner>}
-     * @memberof StocksGroupedResults
      */
     'results'?: Array<GetGroupedStocksAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface StocksOpenClose
- */
 export interface StocksOpenClose {
     /**
      * The close price of the ticker symbol in after hours trading.
-     * @type {number}
-     * @memberof StocksOpenClose
      */
     'afterHours'?: number;
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksOpenClose
      */
     'close': number;
     /**
      * The requested date.
-     * @type {string}
-     * @memberof StocksOpenClose
      */
     'from': string;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksOpenClose
      */
     'high': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksOpenClose
      */
     'low': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksOpenClose
      */
     'open': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof StocksOpenClose
      */
     'otc'?: boolean;
     /**
      * The open price of the ticker symbol in pre-market trading.
-     * @type {number}
-     * @memberof StocksOpenClose
      */
     'preMarket'?: number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof StocksOpenClose
      */
     'status': string;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof StocksOpenClose
      */
     'symbol': string;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksOpenClose
      */
     'volume': number;
 }
-/**
- * 
- * @export
- * @interface StocksSnapshotLastQuote
- */
 export interface StocksSnapshotLastQuote {
     /**
      * The ask price.
-     * @type {number}
-     * @memberof StocksSnapshotLastQuote
      */
     'P': number;
     /**
      * The ask size in lots.
-     * @type {number}
-     * @memberof StocksSnapshotLastQuote
      */
     'S': number;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof StocksSnapshotLastQuote
      */
     'p': number;
     /**
      * The bid size in lots.
-     * @type {number}
-     * @memberof StocksSnapshotLastQuote
      */
     's': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof StocksSnapshotLastQuote
      */
     't': number;
 }
-/**
- * 
- * @export
- * @interface StocksSnapshotMinute
- */
 export interface StocksSnapshotMinute {
     /**
      * The accumulated volume.
-     * @type {number}
-     * @memberof StocksSnapshotMinute
      */
     'av': number;
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinute
      */
     'c': number;
     /**
      * The accumulated volume including fractional shares, respresented as a string.
-     * @type {string}
-     * @memberof StocksSnapshotMinute
      */
     'dav': string;
     /**
      * The volume including fractional shares, respresented as a string.
-     * @type {string}
-     * @memberof StocksSnapshotMinute
      */
     'dv'?: string;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinute
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinute
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof StocksSnapshotMinute
      */
     'n': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinute
      */
     'o': number;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof StocksSnapshotMinute
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinute
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof StocksSnapshotMinute
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface StocksSnapshotMinuteOTC
- */
 export interface StocksSnapshotMinuteOTC {
     /**
      * The accumulated volume.
-     * @type {number}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'av': number;
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'c': number;
     /**
      * The accumulated volume including fractional shares, respresented as a string.
-     * @type {string}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'dav': string;
     /**
      * The volume including fractional shares, respresented as a string.
-     * @type {string}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'dv'?: string;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'l': number;
     /**
      * The number of transactions in the aggregate window.
-     * @type {number}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'n': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'o': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'otc'?: boolean;
     /**
      * The Unix millisecond timestamp for the start of the aggregate window.
-     * @type {number}
-     * @memberof StocksSnapshotMinuteOTC
      */
     't': number;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof StocksSnapshotMinuteOTC
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface StocksSnapshotPrevDay
- */
 export interface StocksSnapshotPrevDay {
     /**
      * The close price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotPrevDay
      */
     'c': number;
     /**
      * The highest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotPrevDay
      */
     'h': number;
     /**
      * The lowest price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotPrevDay
      */
     'l': number;
     /**
      * The open price for the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotPrevDay
      */
     'o': number;
     /**
      * Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
-     * @type {boolean}
-     * @memberof StocksSnapshotPrevDay
      */
     'otc'?: boolean;
     /**
      * The trading volume of the symbol in the given time period.
-     * @type {number}
-     * @memberof StocksSnapshotPrevDay
      */
     'v': number;
     /**
      * The volume weighted average price.
-     * @type {number}
-     * @memberof StocksSnapshotPrevDay
      */
     'vw': number;
 }
-/**
- * 
- * @export
- * @interface StocksSnapshotTicker
- */
 export interface StocksSnapshotTicker {
-    /**
-     * 
-     * @type {GetStocksSnapshotTicker200ResponseAllOfTicker}
-     * @memberof StocksSnapshotTicker
-     */
     'ticker'?: GetStocksSnapshotTicker200ResponseAllOfTicker;
 }
-/**
- * 
- * @export
- * @interface StocksSnapshotTickers
- */
 export interface StocksSnapshotTickers {
     /**
      * An array of snapshot data for the specified tickers.
-     * @type {Array<GetStocksSnapshotTickers200ResponseAllOfTickersInner>}
-     * @memberof StocksSnapshotTickers
      */
     'tickers'?: Array<GetStocksSnapshotTickers200ResponseAllOfTickersInner>;
 }
-/**
- * 
- * @export
- * @interface StocksTickerResultsOTC
- */
 export interface StocksTickerResultsOTC {
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetStocksAggregates200ResponseAllOfResultsInner>}
-     * @memberof StocksTickerResultsOTC
      */
     'results'?: Array<GetStocksAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface StocksV2Base
- */
 export interface StocksV2Base {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof StocksV2Base
      */
     'T': string;
     /**
      * The nanosecond accuracy TRF(Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this message.
-     * @type {number}
-     * @memberof StocksV2Base
      */
     'f': number;
     /**
      * The sequence number represents the sequence in which message events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11). 
-     * @type {number}
-     * @memberof StocksV2Base
      */
     'q': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof StocksV2Base
      */
     't': number;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof StocksV2Base
      */
     'y': number;
 }
-/**
- * 
- * @export
- * @interface StocksV2NBBO
- */
 export interface StocksV2NBBO {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof StocksV2NBBO
      */
     'T': string;
     /**
      * The nanosecond accuracy TRF(Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this message.
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     'f': number;
     /**
      * The sequence number represents the sequence in which message events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11). 
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     'q': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     't': number;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     'y': number;
     /**
      * The ask price.
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     'P': number;
     /**
      * The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     'S': number;
     /**
      * The ask exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     'X': number;
     /**
      * A list of condition codes. 
-     * @type {Array<number>}
-     * @memberof StocksV2NBBO
      */
     'c': Array<number>;
     /**
      * The indicators. For more information, see our glossary of [Conditions and Indicators](https://massive.com/glossary/conditions-indicators). 
-     * @type {Array<number>}
-     * @memberof StocksV2NBBO
      */
     'i': Array<number>;
     /**
      * The bid price.
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     'p': number;
     /**
      * The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     's': number;
     /**
      * The bid exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     'x': number;
     /**
      * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ 
-     * @type {number}
-     * @memberof StocksV2NBBO
      */
     'z': number;
 }
-/**
- * 
- * @export
- * @interface StocksV2NBBOs
- */
 export interface StocksV2NBBOs {
-    /**
-     * 
-     * @type {Array<DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner>}
-     * @memberof StocksV2NBBOs
-     */
     'results'?: Array<DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface StocksV2Trade
- */
 export interface StocksV2Trade {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof StocksV2Trade
      */
     'T': string;
     /**
      * The nanosecond accuracy TRF(Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this message.
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     'f': number;
     /**
      * The sequence number represents the sequence in which message events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11). 
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     'q': number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this message from the exchange which produced it.
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     't': number;
     /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     'y': number;
     /**
      * A list of condition codes. 
-     * @type {Array<number>}
-     * @memberof StocksV2Trade
      */
     'c': Array<number>;
     /**
      * The trade correction indicator. 
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     'e': number;
     /**
      * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID. 
-     * @type {string}
-     * @memberof StocksV2Trade
      */
     'i': string;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00. 
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     'p': number;
     /**
      * The ID for the Trade Reporting Facility where the trade took place. 
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     'r': number;
     /**
      * The size of a trade (also known as volume). 
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     's': number;
     /**
      * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     'x': number;
     /**
      * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ 
-     * @type {number}
-     * @memberof StocksV2Trade
      */
     'z': number;
 }
-/**
- * 
- * @export
- * @interface StocksV2Trades
- */
 export interface StocksV2Trades {
-    /**
-     * 
-     * @type {Array<DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner>}
-     * @memberof StocksV2Trades
-     */
     'results'?: Array<DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface TickerBase
- */
 export interface TickerBase {
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof TickerBase
      */
     'ticker': string;
 }
-/**
- * 
- * @export
- * @interface TickerResults
- */
 export interface TickerResults {
     /**
      * An array of results containing the requested data.
-     * @type {Array<GetCryptoAggregates200ResponseAllOfResultsInner>}
-     * @memberof TickerResults
      */
     'results'?: Array<GetCryptoAggregates200ResponseAllOfResultsInner>;
 }
-/**
- * 
- * @export
- * @interface TradeDetailsMapItem
- */
 export interface TradeDetailsMapItem {
     /**
      * Name of the trade detail item
-     * @type {string}
-     * @memberof TradeDetailsMapItem
      */
     'name'?: string;
     /**
      * Actual type of the trade detail item
-     * @type {string}
-     * @memberof TradeDetailsMapItem
      */
     'type'?: string;
 }
-/**
- * 
- * @export
- * @interface V1LastBase
- */
 export interface V1LastBase {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof V1LastBase
      */
     'request_id': string;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof V1LastBase
      */
     'status': string;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof V1LastBase
      */
     'symbol': string;
 }
-/**
- * 
- * @export
- * @interface V2AggsBase
- */
 export interface V2AggsBase {
     /**
      * Whether or not this response was adjusted for splits.
-     * @type {boolean}
-     * @memberof V2AggsBase
      */
     'adjusted': boolean;
     /**
      * The number of aggregates (minute or day) used to generate the response.
-     * @type {number}
-     * @memberof V2AggsBase
      */
     'queryCount': number;
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof V2AggsBase
      */
     'request_id': string;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof V2AggsBase
      */
     'resultsCount': number;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof V2AggsBase
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface V2LastBase
- */
 export interface V2LastBase {
     /**
      * A request id assigned by the server.
-     * @type {string}
-     * @memberof V2LastBase
      */
     'request_id': string;
     /**
      * The status of this request\'s response.
-     * @type {string}
-     * @memberof V2LastBase
      */
     'status': string;
 }
-/**
- * 
- * @export
- * @interface V2TicksBase
- */
 export interface V2TicksBase {
     /**
      * Latency in milliseconds for the query results from the database.
-     * @type {number}
-     * @memberof V2TicksBase
      */
     'db_latency'?: number;
     /**
      * The total number of results for this request.
-     * @type {number}
-     * @memberof V2TicksBase
      */
     'results_count'?: number;
     /**
      * Whether or not this query was executed successfully.
-     * @type {boolean}
-     * @memberof V2TicksBase
      */
     'success'?: boolean;
     /**
      * The exchange symbol that this item is traded under.
-     * @type {string}
-     * @memberof V2TicksBase
      */
     'ticker'?: string;
 }
@@ -25753,6 +18596,163 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * SEC 8-K filings text providing parsed content from current report filings. 8-K forms report material events such as earnings, acquisitions, executive changes, and other significant corporate events.
+         * @param {string} [cik] SEC Central Index Key (10 digits, zero-padded).
+         * @param {string} [cikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [cikGt] Filter greater than the value.
+         * @param {string} [cikGte] Filter greater than or equal to the value.
+         * @param {string} [cikLt] Filter less than the value.
+         * @param {string} [cikLte] Filter less than or equal to the value.
+         * @param {string} [ticker] Stock ticker symbol for the company.
+         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickerGt] Filter greater than the value.
+         * @param {string} [tickerGte] Filter greater than or equal to the value.
+         * @param {string} [tickerLt] Filter less than the value.
+         * @param {string} [tickerLte] Filter less than or equal to the value.
+         * @param {string} [formType] SEC form type (e.g., \&#39;8-K\&#39;, \&#39;8-K/A\&#39; for amendments).
+         * @param {string} [formTypeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [formTypeGt] Filter greater than the value.
+         * @param {string} [formTypeGte] Filter greater than or equal to the value.
+         * @param {string} [formTypeLt] Filter less than the value.
+         * @param {string} [formTypeLte] Filter less than or equal to the value.
+         * @param {string} [filingDate] Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksFilings8KVXText: async (cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, formType?: string, formTypeAnyOf?: string, formTypeGt?: string, formTypeGte?: string, formTypeLt?: string, formTypeLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/stocks/filings/8-K/vX/text`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (cik !== undefined) {
+                localVarQueryParameter['cik'] = cik;
+            }
+
+            if (cikAnyOf !== undefined) {
+                localVarQueryParameter['cik.any_of'] = cikAnyOf;
+            }
+
+            if (cikGt !== undefined) {
+                localVarQueryParameter['cik.gt'] = cikGt;
+            }
+
+            if (cikGte !== undefined) {
+                localVarQueryParameter['cik.gte'] = cikGte;
+            }
+
+            if (cikLt !== undefined) {
+                localVarQueryParameter['cik.lt'] = cikLt;
+            }
+
+            if (cikLte !== undefined) {
+                localVarQueryParameter['cik.lte'] = cikLte;
+            }
+
+            if (ticker !== undefined) {
+                localVarQueryParameter['ticker'] = ticker;
+            }
+
+            if (tickerAnyOf !== undefined) {
+                localVarQueryParameter['ticker.any_of'] = tickerAnyOf;
+            }
+
+            if (tickerGt !== undefined) {
+                localVarQueryParameter['ticker.gt'] = tickerGt;
+            }
+
+            if (tickerGte !== undefined) {
+                localVarQueryParameter['ticker.gte'] = tickerGte;
+            }
+
+            if (tickerLt !== undefined) {
+                localVarQueryParameter['ticker.lt'] = tickerLt;
+            }
+
+            if (tickerLte !== undefined) {
+                localVarQueryParameter['ticker.lte'] = tickerLte;
+            }
+
+            if (formType !== undefined) {
+                localVarQueryParameter['form_type'] = formType;
+            }
+
+            if (formTypeAnyOf !== undefined) {
+                localVarQueryParameter['form_type.any_of'] = formTypeAnyOf;
+            }
+
+            if (formTypeGt !== undefined) {
+                localVarQueryParameter['form_type.gt'] = formTypeGt;
+            }
+
+            if (formTypeGte !== undefined) {
+                localVarQueryParameter['form_type.gte'] = formTypeGte;
+            }
+
+            if (formTypeLt !== undefined) {
+                localVarQueryParameter['form_type.lt'] = formTypeLt;
+            }
+
+            if (formTypeLte !== undefined) {
+                localVarQueryParameter['form_type.lte'] = formTypeLte;
+            }
+
+            if (filingDate !== undefined) {
+                localVarQueryParameter['filing_date'] = filingDate;
+            }
+
+            if (filingDateGt !== undefined) {
+                localVarQueryParameter['filing_date.gt'] = filingDateGt;
+            }
+
+            if (filingDateGte !== undefined) {
+                localVarQueryParameter['filing_date.gte'] = filingDateGte;
+            }
+
+            if (filingDateLt !== undefined) {
+                localVarQueryParameter['filing_date.lt'] = filingDateLt;
+            }
+
+            if (filingDateLte !== undefined) {
+                localVarQueryParameter['filing_date.lte'] = filingDateLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.
          * @param {string} [cik] SEC Central Index Key (CIK) identifying the filing entity.
          * @param {string} [cikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
@@ -28605,18 +21605,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} [shortVolumeRatioGte] Filter greater than or equal to the value. Value must be a floating point number.
          * @param {number} [shortVolumeRatioLt] Filter less than the value. Value must be a floating point number.
          * @param {number} [shortVolumeRatioLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [totalVolume] Total reported volume across all venues for the ticker on the given date. Value must be an integer.
-         * @param {string} [totalVolumeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer.
-         * @param {number} [totalVolumeGt] Filter greater than the value. Value must be an integer.
-         * @param {number} [totalVolumeGte] Filter greater than or equal to the value. Value must be an integer.
-         * @param {number} [totalVolumeLt] Filter less than the value. Value must be an integer.
-         * @param {number} [totalVolumeLte] Filter less than or equal to the value. Value must be an integer.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;ticker\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStocksV1ShortVolume: async (ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, date?: string, dateAnyOf?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, shortVolumeRatio?: number, shortVolumeRatioAnyOf?: string, shortVolumeRatioGt?: number, shortVolumeRatioGte?: number, shortVolumeRatioLt?: number, shortVolumeRatioLte?: number, totalVolume?: number, totalVolumeAnyOf?: string, totalVolumeGt?: number, totalVolumeGte?: number, totalVolumeLt?: number, totalVolumeLte?: number, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStocksV1ShortVolume: async (ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, date?: string, dateAnyOf?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, shortVolumeRatio?: number, shortVolumeRatioAnyOf?: string, shortVolumeRatioGt?: number, shortVolumeRatioGte?: number, shortVolumeRatioLt?: number, shortVolumeRatioLte?: number, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/stocks/v1/short-volume`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -28702,30 +21696,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (shortVolumeRatioLte !== undefined) {
                 localVarQueryParameter['short_volume_ratio.lte'] = shortVolumeRatioLte;
-            }
-
-            if (totalVolume !== undefined) {
-                localVarQueryParameter['total_volume'] = totalVolume;
-            }
-
-            if (totalVolumeAnyOf !== undefined) {
-                localVarQueryParameter['total_volume.any_of'] = totalVolumeAnyOf;
-            }
-
-            if (totalVolumeGt !== undefined) {
-                localVarQueryParameter['total_volume.gt'] = totalVolumeGt;
-            }
-
-            if (totalVolumeGte !== undefined) {
-                localVarQueryParameter['total_volume.gte'] = totalVolumeGte;
-            }
-
-            if (totalVolumeLt !== undefined) {
-                localVarQueryParameter['total_volume.lt'] = totalVolumeLt;
-            }
-
-            if (totalVolumeLte !== undefined) {
-                localVarQueryParameter['total_volume.lte'] = totalVolumeLte;
             }
 
             if (limit !== undefined) {
@@ -32836,6 +25806,42 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * SEC 8-K filings text providing parsed content from current report filings. 8-K forms report material events such as earnings, acquisitions, executive changes, and other significant corporate events.
+         * @param {string} [cik] SEC Central Index Key (10 digits, zero-padded).
+         * @param {string} [cikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [cikGt] Filter greater than the value.
+         * @param {string} [cikGte] Filter greater than or equal to the value.
+         * @param {string} [cikLt] Filter less than the value.
+         * @param {string} [cikLte] Filter less than or equal to the value.
+         * @param {string} [ticker] Stock ticker symbol for the company.
+         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickerGt] Filter greater than the value.
+         * @param {string} [tickerGte] Filter greater than or equal to the value.
+         * @param {string} [tickerLt] Filter less than the value.
+         * @param {string} [tickerLte] Filter less than or equal to the value.
+         * @param {string} [formType] SEC form type (e.g., \&#39;8-K\&#39;, \&#39;8-K/A\&#39; for amendments).
+         * @param {string} [formTypeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [formTypeGt] Filter greater than the value.
+         * @param {string} [formTypeGte] Filter greater than or equal to the value.
+         * @param {string} [formTypeLt] Filter less than the value.
+         * @param {string} [formTypeLte] Filter less than or equal to the value.
+         * @param {string} [filingDate] Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStocksFilings8KVXText(cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, formType?: string, formTypeAnyOf?: string, formTypeGt?: string, formTypeGte?: string, formTypeLt?: string, formTypeLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFilings8KVXText200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilings8KVXText(cik, cikAnyOf, cikGt, cikGte, cikLt, cikLte, ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, formType, formTypeAnyOf, formTypeGt, formTypeGte, formTypeLt, formTypeLte, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFilings8KVXText']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.
          * @param {string} [cik] SEC Central Index Key (CIK) identifying the filing entity.
          * @param {string} [cikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
@@ -33518,19 +26524,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} [shortVolumeRatioGte] Filter greater than or equal to the value. Value must be a floating point number.
          * @param {number} [shortVolumeRatioLt] Filter less than the value. Value must be a floating point number.
          * @param {number} [shortVolumeRatioLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [totalVolume] Total reported volume across all venues for the ticker on the given date. Value must be an integer.
-         * @param {string} [totalVolumeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer.
-         * @param {number} [totalVolumeGt] Filter greater than the value. Value must be an integer.
-         * @param {number} [totalVolumeGte] Filter greater than or equal to the value. Value must be an integer.
-         * @param {number} [totalVolumeLt] Filter less than the value. Value must be an integer.
-         * @param {number} [totalVolumeLte] Filter less than or equal to the value. Value must be an integer.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;ticker\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStocksV1ShortVolume(ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, date?: string, dateAnyOf?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, shortVolumeRatio?: number, shortVolumeRatioAnyOf?: string, shortVolumeRatioGt?: number, shortVolumeRatioGte?: number, shortVolumeRatioLt?: number, shortVolumeRatioLte?: number, totalVolume?: number, totalVolumeAnyOf?: string, totalVolumeGt?: number, totalVolumeGte?: number, totalVolumeLt?: number, totalVolumeLte?: number, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksV1ShortVolume200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksV1ShortVolume(ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, date, dateAnyOf, dateGt, dateGte, dateLt, dateLte, shortVolumeRatio, shortVolumeRatioAnyOf, shortVolumeRatioGt, shortVolumeRatioGte, shortVolumeRatioLt, shortVolumeRatioLte, totalVolume, totalVolumeAnyOf, totalVolumeGt, totalVolumeGte, totalVolumeLt, totalVolumeLte, limit, sort, options);
+        async getStocksV1ShortVolume(ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, date?: string, dateAnyOf?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, shortVolumeRatio?: number, shortVolumeRatioAnyOf?: string, shortVolumeRatioGt?: number, shortVolumeRatioGte?: number, shortVolumeRatioLt?: number, shortVolumeRatioLte?: number, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksV1ShortVolume200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksV1ShortVolume(ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, date, dateAnyOf, dateGt, dateGte, dateLt, dateLte, shortVolumeRatio, shortVolumeRatioAnyOf, shortVolumeRatioGt, shortVolumeRatioGte, shortVolumeRatioLt, shortVolumeRatioLte, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksV1ShortVolume']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -34924,6 +27924,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getStocksFilings10KVXSections(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.section, requestParameters.sectionAnyOf, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
+         * SEC 8-K filings text providing parsed content from current report filings. 8-K forms report material events such as earnings, acquisitions, executive changes, and other significant corporate events.
+         * @param {DefaultApiGetStocksFilings8KVXTextRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksFilings8KVXText(requestParameters: DefaultApiGetStocksFilings8KVXTextRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFilings8KVXText200Response> {
+            return localVarFp.getStocksFilings8KVXText(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.formType, requestParameters.formTypeAnyOf, requestParameters.formTypeGt, requestParameters.formTypeGte, requestParameters.formTypeLt, requestParameters.formTypeLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
          * SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.
          * @param {DefaultApiGetStocksFilingsVXIndexRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -35110,7 +28119,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getStocksV1ShortVolume(requestParameters: DefaultApiGetStocksV1ShortVolumeRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksV1ShortVolume200Response> {
-            return localVarFp.getStocksV1ShortVolume(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.date, requestParameters.dateAnyOf, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.shortVolumeRatio, requestParameters.shortVolumeRatioAnyOf, requestParameters.shortVolumeRatioGt, requestParameters.shortVolumeRatioGte, requestParameters.shortVolumeRatioLt, requestParameters.shortVolumeRatioLte, requestParameters.totalVolume, requestParameters.totalVolumeAnyOf, requestParameters.totalVolumeGt, requestParameters.totalVolumeGte, requestParameters.totalVolumeLt, requestParameters.totalVolumeLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+            return localVarFp.getStocksV1ShortVolume(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.date, requestParameters.dateAnyOf, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.shortVolumeRatio, requestParameters.shortVolumeRatioAnyOf, requestParameters.shortVolumeRatioGt, requestParameters.shortVolumeRatioGte, requestParameters.shortVolumeRatioLt, requestParameters.shortVolumeRatioLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * Contains historical stock split and reverse split events for US equities with historical adjustment factors for price normalization.
@@ -43620,6 +36629,188 @@ export interface DefaultApiGetStocksFilings10KVXSectionsRequest {
 }
 
 /**
+ * Request parameters for getStocksFilings8KVXText operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetStocksFilings8KVXTextRequest
+ */
+export interface DefaultApiGetStocksFilings8KVXTextRequest {
+    /**
+     * SEC Central Index Key (10 digits, zero-padded).
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly cik?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly cikAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly cikGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly cikGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly cikLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly cikLte?: string
+
+    /**
+     * Stock ticker symbol for the company.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly ticker?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly tickerAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly tickerGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly tickerGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly tickerLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly tickerLte?: string
+
+    /**
+     * SEC form type (e.g., \&#39;8-K\&#39;, \&#39;8-K/A\&#39; for amendments).
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly formType?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly formTypeAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly formTypeGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly formTypeGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly formTypeLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly formTypeLte?: string
+
+    /**
+     * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly filingDate?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly filingDateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly filingDateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly filingDateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly filingDateLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXText
+     */
+    readonly sort?: string
+}
+
+/**
  * Request parameters for getStocksFilingsVXIndex operation in DefaultApi.
  * @export
  * @interface DefaultApiGetStocksFilingsVXIndexRequest
@@ -47000,48 +40191,6 @@ export interface DefaultApiGetStocksV1ShortVolumeRequest {
     readonly shortVolumeRatioLte?: number
 
     /**
-     * Total reported volume across all venues for the ticker on the given date. Value must be an integer.
-     * @type {number}
-     * @memberof DefaultApiGetStocksV1ShortVolume
-     */
-    readonly totalVolume?: number
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer.
-     * @type {string}
-     * @memberof DefaultApiGetStocksV1ShortVolume
-     */
-    readonly totalVolumeAnyOf?: string
-
-    /**
-     * Filter greater than the value. Value must be an integer.
-     * @type {number}
-     * @memberof DefaultApiGetStocksV1ShortVolume
-     */
-    readonly totalVolumeGt?: number
-
-    /**
-     * Filter greater than or equal to the value. Value must be an integer.
-     * @type {number}
-     * @memberof DefaultApiGetStocksV1ShortVolume
-     */
-    readonly totalVolumeGte?: number
-
-    /**
-     * Filter less than the value. Value must be an integer.
-     * @type {number}
-     * @memberof DefaultApiGetStocksV1ShortVolume
-     */
-    readonly totalVolumeLt?: number
-
-    /**
-     * Filter less than or equal to the value. Value must be an integer.
-     * @type {number}
-     * @memberof DefaultApiGetStocksV1ShortVolume
-     */
-    readonly totalVolumeLte?: number
-
-    /**
      * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksV1ShortVolume
@@ -50061,6 +43210,17 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * SEC 8-K filings text providing parsed content from current report filings. 8-K forms report material events such as earnings, acquisitions, executive changes, and other significant corporate events.
+     * @param {DefaultApiGetStocksFilings8KVXTextRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getStocksFilings8KVXText(requestParameters: DefaultApiGetStocksFilings8KVXTextRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getStocksFilings8KVXText(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.formType, requestParameters.formTypeAnyOf, requestParameters.formTypeGt, requestParameters.formTypeGte, requestParameters.formTypeLt, requestParameters.formTypeLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.
      * @param {DefaultApiGetStocksFilingsVXIndexRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -50286,7 +43446,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public getStocksV1ShortVolume(requestParameters: DefaultApiGetStocksV1ShortVolumeRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getStocksV1ShortVolume(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.date, requestParameters.dateAnyOf, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.shortVolumeRatio, requestParameters.shortVolumeRatioAnyOf, requestParameters.shortVolumeRatioGt, requestParameters.shortVolumeRatioGte, requestParameters.shortVolumeRatioLt, requestParameters.shortVolumeRatioLte, requestParameters.totalVolume, requestParameters.totalVolumeAnyOf, requestParameters.totalVolumeGt, requestParameters.totalVolumeGte, requestParameters.totalVolumeLt, requestParameters.totalVolumeLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+        return DefaultApiFp(this.configuration).getStocksV1ShortVolume(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.date, requestParameters.dateAnyOf, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.shortVolumeRatio, requestParameters.shortVolumeRatioAnyOf, requestParameters.shortVolumeRatioGt, requestParameters.shortVolumeRatioGte, requestParameters.shortVolumeRatioLt, requestParameters.shortVolumeRatioLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
