@@ -9603,6 +9603,9 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "user_country"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -10005,6 +10008,9 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "listing_status"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -10137,6 +10143,11 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "id",
+                          "type",
+                          "name"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -11614,6 +11625,7 @@
                           }
                         },
                         "required": [
+                          "constituent_rank",
                           "effective_date"
                         ],
                         "type": "object"
@@ -12789,6 +12801,11 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "product_type",
+                          "leverage_style",
+                          "management_classification"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -13224,6 +13241,11 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "product_type",
+                          "leverage_style",
+                          "management_classification"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -14177,6 +14199,11 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "id",
+                          "type",
+                          "name"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -14879,6 +14906,10 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "active",
+                          "date"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -15026,6 +15057,11 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "id",
+                          "type",
+                          "name"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -15989,28 +16025,31 @@
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": [
                     {
-                      "ask_timestamp": "1734472800076125400,",
-                      "bid_price": "2660,",
-                      "bid_size": "1,",
-                      "bid_timestamp": "1734472800076125400,",
-                      "report_sequence": "2250337,",
+                      "ask_size": 0,
+                      "ask_timestamp": 1734472800076125400,
+                      "bid_price": 2660,
+                      "bid_size": 1,
+                      "bid_timestamp": 1734472800076125400,
+                      "channel": 360,
+                      "report_sequence": 2250337,
                       "sequence_number": 15357766,
-                      "session_end_date": "2024-12-17,",
-                      "ticker": "GCJ5,",
-                      "timestamp": "1734472800076125400,"
+                      "session_end_date": "2024-12-17",
+                      "ticker": "GCJ5",
+                      "timestamp": 1734472800076125400
                     },
                     {
-                      "ask_price": "2685.9,",
-                      "ask_size": "1,",
-                      "ask_timestamp": "1734472755134391800,",
-                      "bid_price": "2684.7,",
-                      "bid_size": "1,",
-                      "bid_timestamp": "1734472736352455200,",
-                      "report_sequence": "2249723,",
-                      "sequence_number": 15354716,
-                      "session_end_date": "2024-12-17,",
-                      "ticker": "GCJ5,",
-                      "timestamp": "1734472755134391800,"
+                      "ask_price": 2686,
+                      "ask_size": 1,
+                      "ask_timestamp": 1734472770000588000,
+                      "bid_price": 2684.7,
+                      "bid_size": 1,
+                      "bid_timestamp": 1734472736352455200,
+                      "channel": 360,
+                      "report_sequence": 2249866,
+                      "sequence_number": 15355476,
+                      "session_end_date": "2024-12-17",
+                      "ticker": "GCJ5",
+                      "timestamp": 1734472770000588000
                     }
                   ],
                   "status": "OK"
@@ -16088,6 +16127,13 @@
                             "type": "integer"
                           }
                         },
+                        "required": [
+                          "ticker",
+                          "timestamp",
+                          "sequence_number",
+                          "report_sequence",
+                          "channel"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -16448,6 +16494,431 @@
         ]
       }
     },
+    "/futures/v1/snapshot": {
+      "get": {
+        "description": "Retrieve a snapshot of the most recent futures contract data.",
+        "operationId": "get_futures_v1_snapshot",
+        "parameters": [
+          {
+            "description": "The code for the contracts' underlying product.",
+            "in": "query",
+            "name": "product_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "product_code.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "product_code.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "product_code.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "product_code.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "product_code.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The futures contract identifier, including the base symbol and contract expiration (e.g., ESZ24 for the December 2024 S&P 500 E-mini contract).",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'ticker' if not specified. The sort order defaults to 'asc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "ticker.asc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "next_url": "https://api.massive.com/futures/v1/snapshot?cursor=AQANAkNCBVNQ",
+                  "request_id": "c4d50f4801874e30b63e674b844cf51f",
+                  "results": [
+                    {
+                      "details": {
+                        "open_interest": 112,
+                        "settlement_date": 1753851600000000000
+                      },
+                      "last_minute": {
+                        "close": 240.00000000000003,
+                        "high": 240.00000000000003,
+                        "last_updated": 1746045300000,
+                        "low": 240.00000000000003,
+                        "open": 240.00000000000003,
+                        "volume": 5
+                      },
+                      "last_quote": {
+                        "ask": 240.50000000000003,
+                        "ask_size": 3,
+                        "ask_timestamp": 1746036204386194000,
+                        "bid": 239.50000000000003,
+                        "bid_size": 2,
+                        "bid_timestamp": 1746035747932118000,
+                        "last_updated": 1746046798024234200
+                      },
+                      "last_trade": {
+                        "last_updated": 1746045242858242600,
+                        "price": 240.00000000000003,
+                        "size": 5
+                      },
+                      "product_code": "CB",
+                      "session": {
+                        "change": 21.11,
+                        "change_percent": 0.09622134,
+                        "close": 240.00000000000003,
+                        "high": 241.00000000000003,
+                        "low": 240.00000000000003,
+                        "open": 240.00000000000003,
+                        "previous_settlement": 219.39,
+                        "settlement_price": 240.50000000000003,
+                        "volume": 55
+                      },
+                      "ticker": "CBN5"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "details": {
+                            "properties": {
+                              "product_code": {
+                                "type": "string"
+                              },
+                              "settlement_date": {
+                                "description": "The day that this contract is settled.",
+                                "format": "date",
+                                "type": "string"
+                              },
+                              "ticker": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "last_minute": {
+                            "properties": {
+                              "close": {
+                                "description": "The price at the end of the minute bar.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "high": {
+                                "description": "The highest price reached in the minute bar.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "last_updated": {
+                                "description": "The timestamp indicating the most recent update to the minute bar.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "low": {
+                                "description": "The lowest price reached in the minute bar.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "open": {
+                                "description": "The opening price at the start of the minute bar.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "timeframe": {
+                                "description": "The timeliness of the data as determined by your subscription. One of REAL-TIME or DELAYED.",
+                                "type": "string"
+                              },
+                              "volume": {
+                                "description": "The number of contracts traded in the minute bar.",
+                                "format": "int64",
+                                "type": "integer"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "last_quote": {
+                            "properties": {
+                              "ask": {
+                                "description": "The lowest price a seller is willing to accept.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "ask_size": {
+                                "description": "The number of contracts available at the ask price.",
+                                "format": "int32",
+                                "type": "integer"
+                              },
+                              "ask_timestamp": {
+                                "description": "The time when the best ask price was last updated.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "bid": {
+                                "description": "The highest price a buyer is willing to pay.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "bid_size": {
+                                "description": "The number of contracts available at the bid price.",
+                                "format": "int32",
+                                "type": "integer"
+                              },
+                              "bid_timestamp": {
+                                "description": "The time when the best bid price was last updated.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "last_updated": {
+                                "description": "The time when the quote was generated at the exchange to nanosecond precision.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "timeframe": {
+                                "description": "The timeliness of the data as determined by your subscription. One of REAL-TIME or DELAYED.",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "last_trade": {
+                            "properties": {
+                              "last_updated": {
+                                "description": "The time when the trade was generated at the exchange to nanosecond precision.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "price": {
+                                "description": "The price of the trade. This is the actual dollar value per whole contract of this trade. A trade of 100 contracts with a price of $2.00 would be worth a total dollar value of $200.00.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "size": {
+                                "description": "The total number of contracts exchanged between buyers and sellers on a given trade.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "timeframe": {
+                                "description": "The timeliness of the data as determined by your subscription. One of REAL-TIME or DELAYED.",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "session": {
+                            "properties": {
+                              "change": {
+                                "description": "The change in price during this session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "change_percent": {
+                                "description": "The percentage change in price during this session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "close": {
+                                "description": "The price at the end of the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "high": {
+                                "description": "The highest price reached in the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "low": {
+                                "description": "The lowest price reached in the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "open": {
+                                "description": "The opening price at the start of the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "previous_settlement": {
+                                "description": "The settlement price of the previous session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "settlement_price": {
+                                "description": "The final settlement price at the end of the session.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "volume": {
+                                "description": "The number of contracts traded in the session.",
+                                "format": "int64",
+                                "type": "integer"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "summary": "futures_snapshot_v1 API",
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/futures/v1/trades/{ticker}": {
       "get": {
         "description": "Retrieve comprehensive, tick-level trade data for a specified futures contract ticker over a defined time range. Each record includes the trade price, size, session start date, and precise timestamps, capturing individual trade events throughout the period. This granular data is essential for constructing aggregated bars and performing detailed analyses of intraday price movements, making it a valuable tool for backtesting, algorithmic strategy development, and market research.\n\nUse Cases: Intraday analysis, algorithmic trading, backtesting, market research.",
@@ -16622,6 +17093,13 @@
                             "type": "integer"
                           }
                         },
+                        "required": [
+                          "ticker",
+                          "timestamp",
+                          "sequence_number",
+                          "report_sequence",
+                          "channel"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -17324,6 +17802,10 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "active",
+                          "date"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -17471,6 +17953,11 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "id",
+                          "type",
+                          "name"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -18434,28 +18921,31 @@
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": [
                     {
-                      "ask_timestamp": "1734472800076125400,",
-                      "bid_price": "2660,",
-                      "bid_size": "1,",
-                      "bid_timestamp": "1734472800076125400,",
-                      "report_sequence": "2250337,",
+                      "ask_size": 0,
+                      "ask_timestamp": 1734472800076125400,
+                      "bid_price": 2660,
+                      "bid_size": 1,
+                      "bid_timestamp": 1734472800076125400,
+                      "channel": 360,
+                      "report_sequence": 2250337,
                       "sequence_number": 15357766,
-                      "session_end_date": "2024-12-17,",
-                      "ticker": "GCJ5,",
-                      "timestamp": "1734472800076125400,"
+                      "session_end_date": "2024-12-17",
+                      "ticker": "GCJ5",
+                      "timestamp": 1734472800076125400
                     },
                     {
-                      "ask_price": "2685.9,",
-                      "ask_size": "1,",
-                      "ask_timestamp": "1734472755134391800,",
-                      "bid_price": "2684.7,",
-                      "bid_size": "1,",
-                      "bid_timestamp": "1734472736352455200,",
-                      "report_sequence": "2249723,",
-                      "sequence_number": 15354716,
-                      "session_end_date": "2024-12-17,",
-                      "ticker": "GCJ5,",
-                      "timestamp": "1734472755134391800,"
+                      "ask_price": 2686,
+                      "ask_size": 1,
+                      "ask_timestamp": 1734472770000588000,
+                      "bid_price": 2684.7,
+                      "bid_size": 1,
+                      "bid_timestamp": 1734472736352455200,
+                      "channel": 360,
+                      "report_sequence": 2249866,
+                      "sequence_number": 15355476,
+                      "session_end_date": "2024-12-17",
+                      "ticker": "GCJ5",
+                      "timestamp": 1734472770000588000
                     }
                   ],
                   "status": "OK"
@@ -18533,6 +19023,13 @@
                             "type": "integer"
                           }
                         },
+                        "required": [
+                          "ticker",
+                          "timestamp",
+                          "sequence_number",
+                          "report_sequence",
+                          "channel"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -19021,7 +19518,7 @@
               "application/json": {
                 "example": {
                   "count": 1,
-                  "next_url": "https://api.massive.com/v1/futures/vX/snapshot?cursor=AQANAkNCBVNQ",
+                  "next_url": "https://api.massive.com/futures/vX/snapshot?cursor=AQANAkNCBVNQ",
                   "request_id": "c4d50f4801874e30b63e674b844cf51f",
                   "results": [
                     {
@@ -19131,8 +19628,8 @@
                               },
                               "volume": {
                                 "description": "The number of contracts traded in the minute bar.",
-                                "format": "double",
-                                "type": "number"
+                                "format": "int64",
+                                "type": "integer"
                               }
                             },
                             "type": "object"
@@ -19249,8 +19746,8 @@
                               },
                               "volume": {
                                 "description": "The number of contracts traded in the session.",
-                                "format": "double",
-                                "type": "number"
+                                "format": "int64",
+                                "type": "integer"
                               }
                             },
                             "type": "object"
@@ -19492,6 +19989,13 @@
                             "type": "integer"
                           }
                         },
+                        "required": [
+                          "ticker",
+                          "timestamp",
+                          "sequence_number",
+                          "report_sequence",
+                          "channel"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -19653,6 +20157,11 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "id",
+                          "type",
+                          "name"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -20443,54 +20952,6 @@
             }
           },
           {
-            "description": "Unique SEC accession number for the filing (e.g., '0000950123-24-011775').",
-            "in": "query",
-            "name": "accession_number",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "accession_number.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "accession_number.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "accession_number.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "accession_number.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "accession_number.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "filing_date",
@@ -20578,10 +21039,6 @@
                       "put_call": null,
                       "shares_or_principal_amount": 7724000,
                       "shares_or_principal_type": "SH",
-                      "tickers": [
-                        "BRK.A",
-                        "BRK.B"
-                      ],
                       "title_of_class": "COM",
                       "voting_authority_none": 0,
                       "voting_authority_shared": 0,
@@ -20606,10 +21063,6 @@
                       "put_call": null,
                       "shares_or_principal_amount": 1149942,
                       "shares_or_principal_type": "SH",
-                      "tickers": [
-                        "BRK.A",
-                        "BRK.B"
-                      ],
                       "title_of_class": "COM",
                       "voting_authority_none": 0,
                       "voting_authority_shared": 0,
@@ -20703,13 +21156,6 @@
                             "description": "Type of amount reported. Possible values: SH (shares), PRN (principal amount).",
                             "type": "string"
                           },
-                          "tickers": {
-                            "description": "A list of ticker symbols for the filing entity. Multiple symbols may indicate different share classes (e.g., BRK.A and BRK.B for Berkshire Hathaway).",
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array"
-                          },
                           "title_of_class": {
                             "description": "Description of the class of securities held (e.g., 'COM', 'CL A').",
                             "type": "string"
@@ -20728,6 +21174,1054 @@
                             "description": "Number of shares with sole voting authority.",
                             "format": "int64",
                             "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
+    "/stocks/filings/vX/form-3": {
+      "get": {
+        "description": "SEC Form 3 filings reporting initial statements of beneficial ownership of securities. Filed by corporate insiders (directors, officers, and 10%+ shareholders) when they first acquire a position.",
+        "operationId": "get_stocks_filings_vX_form-3",
+        "parameters": [
+          {
+            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+            "in": "query",
+            "name": "issuer_cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "issuer_cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC Central Index Key of the reporting owner (10 digits, zero-padded).",
+            "in": "query",
+            "name": "owner_cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "owner_cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain the value.",
+            "in": "query",
+            "name": "tickers",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.all_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC form type ('3' for initial filing, '3/A' for amendments).",
+            "in": "query",
+            "name": "form_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "max_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "max_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "max_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "max_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "min_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "min_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "min_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "min_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '10000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 10001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'filing_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "filing_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "next_url": "https://api.massive.com/stocks/filings/vX/form-3?cursor=eyJsaW1pd...",
+                  "request_id": "047c7035a86042b1925118e5f68d81b0",
+                  "results": [
+                    {
+                      "accession_number": "0001628280-26-022046",
+                      "aff_10b5_one": null,
+                      "date_of_original_submission": null,
+                      "direct_or_indirect": "D",
+                      "exercise_date": null,
+                      "exercise_price": null,
+                      "filing_date": "2026-03-30",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/1903508/0001628280-26-022046.txt",
+                      "footnotes": [
+                        {
+                          "description": "The options granted on May 17, 2022 vested 100% on the third anniversary of the grant date.",
+                          "id": "F1"
+                        },
+                        {
+                          "description": "The exercise price of the options granted on May 17, 2022 was GPB 8.85, or approximately $11.80 based on a GBP to USD exchange rate as of March 27, 2026 of 1.3336.",
+                          "id": "F2"
+                        }
+                      ],
+                      "form_type": "3",
+                      "is_director": false,
+                      "is_officer": true,
+                      "is_other": false,
+                      "is_ten_percent_owner": false,
+                      "issuer_cik": "0001903508",
+                      "issuer_name": "Public Policy Holding Company, Inc.",
+                      "nature_of_ownership": null,
+                      "not_subject_to_section_16": null,
+                      "officer_title": "Chief Administrative Officer",
+                      "owner_cik": "0002125791",
+                      "owner_name": "Mazzanti Matthew Ross",
+                      "period_of_report": "2026-03-20",
+                      "remarks": null,
+                      "security_title": "Options",
+                      "security_type": "derivative",
+                      "shares_owned": null,
+                      "tickers": [
+                        "PPHC"
+                      ],
+                      "underlying_security_shares": 9000,
+                      "underlying_security_title": "Common Stock, $0.001 par value"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "accession_number": {
+                            "description": "Unique SEC accession number for the filing (e.g., '0001209191-25-012345').",
+                            "type": "string"
+                          },
+                          "aff_10b5_one": {
+                            "description": "Whether the transaction was made pursuant to a Rule 10b5-1 trading plan.",
+                            "type": "boolean"
+                          },
+                          "date_of_original_submission": {
+                            "description": "Date of the original filing submission for amendment filings (3/A). Null for initial filings (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "direct_or_indirect": {
+                            "description": "Whether ownership is direct ('D') or indirect ('I').",
+                            "type": "string"
+                          },
+                          "exercise_date": {
+                            "description": "Date exercisable for derivative securities (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "exercise_price": {
+                            "description": "Exercise or conversion price of derivative securities in USD.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "filing_date": {
+                            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "filing_url": {
+                            "description": "Direct URL to the filing on the SEC EDGAR website.",
+                            "type": "string"
+                          },
+                          "footnotes": {
+                            "description": "List of footnotes from the filing that are relevant to this row, each with an id and description.",
+                            "items": {
+                              "properties": {
+                                "description": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "form_type": {
+                            "description": "SEC form type ('3' for initial filing, '3/A' for amendments).",
+                            "type": "string"
+                          },
+                          "is_director": {
+                            "description": "Whether the reporting owner is a director of the issuer.",
+                            "type": "boolean"
+                          },
+                          "is_officer": {
+                            "description": "Whether the reporting owner is an officer of the issuer.",
+                            "type": "boolean"
+                          },
+                          "is_other": {
+                            "description": "Whether the reporting owner has another relationship with the issuer.",
+                            "type": "boolean"
+                          },
+                          "is_ten_percent_owner": {
+                            "description": "Whether the reporting owner holds 10% or more of a class of equity securities.",
+                            "type": "boolean"
+                          },
+                          "issuer_cik": {
+                            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "issuer_name": {
+                            "description": "Name of the issuer company as reported in the filing.",
+                            "type": "string"
+                          },
+                          "nature_of_ownership": {
+                            "description": "Nature of indirect ownership (e.g., 'By Trust', 'By Spouse').",
+                            "type": "string"
+                          },
+                          "not_subject_to_section_16": {
+                            "description": "Whether the reporting owner is not subject to Section 16 of the Securities Exchange Act.",
+                            "type": "boolean"
+                          },
+                          "officer_title": {
+                            "description": "Title of the officer, if the reporting owner is an officer.",
+                            "type": "string"
+                          },
+                          "owner_cik": {
+                            "description": "SEC Central Index Key of the reporting owner (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "owner_name": {
+                            "description": "Name of the reporting owner (individual or entity).",
+                            "type": "string"
+                          },
+                          "period_of_report": {
+                            "description": "Date of the event triggering the filing (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "remarks": {
+                            "description": "Additional remarks included in the filing.",
+                            "type": "string"
+                          },
+                          "security_title": {
+                            "description": "Title or description of the security (e.g., 'Common Stock', 'Stock Option').",
+                            "type": "string"
+                          },
+                          "security_type": {
+                            "description": "Type of security ('non-derivative' or 'derivative').",
+                            "type": "string"
+                          },
+                          "shares_owned": {
+                            "description": "Number of shares beneficially owned.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "tickers": {
+                            "description": "A list of ticker symbols for the issuer company. Multiple symbols may indicate different share classes.",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "underlying_security_shares": {
+                            "description": "Number of underlying shares for derivative holdings.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_security_title": {
+                            "description": "Title of the underlying security for derivative holdings.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
+    "/stocks/filings/vX/form-4": {
+      "get": {
+        "description": "SEC Form 4 filings reporting changes in beneficial ownership of securities. Filed by corporate insiders (directors, officers, and 10%+ shareholders) within two business days of a transaction.",
+        "operationId": "get_stocks_filings_vX_form-4",
+        "parameters": [
+          {
+            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+            "in": "query",
+            "name": "issuer_cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "issuer_cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC Central Index Key of the reporting owner (10 digits, zero-padded).",
+            "in": "query",
+            "name": "owner_cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "owner_cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain the value.",
+            "in": "query",
+            "name": "tickers",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.all_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC form type ('4' for standard filing, '4/A' for amendments).",
+            "in": "query",
+            "name": "form_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC transaction code indicating the type of transaction (e.g., 'P' for purchase, 'S' for sale, 'A' for grant/award, 'M' for exercise/conversion).",
+            "in": "query",
+            "name": "transaction_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "max_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "max_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "max_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "max_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "max_ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to the value.",
+            "in": "query",
+            "name": "min_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "min_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "min_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "min_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "min_ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '10000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 10001,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'filing_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "filing_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/stocks/filings/vX/form-4?cursor=eyJsaW1pd...",
+                  "request_id": "047c7035a86042b1925118e5f68d81b0",
+                  "results": [
+                    {
+                      "accession_number": "0002123147-26-000002",
+                      "aff_10b5_one": false,
+                      "date_of_original_submission": null,
+                      "deemed_execution_date": "2026-03-27",
+                      "direct_or_indirect": "D",
+                      "equity_swap_involved": false,
+                      "exercise_date": "2026-03-27",
+                      "exercise_price": 88.167,
+                      "expiration_date": "2026-03-27",
+                      "filing_date": "2026-03-30",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/1469395/0002123147-26-000002.txt",
+                      "footnotes": [
+                        {
+                          "description": "These shares were acquired at a price of 4955 argentine pesos per share. For reporting purposes, the exercise price has been converted to US dollars based on the exchange rate reported by Banco de la Nacion Argentina for the date of the acquisition, which was 1405 argentine pesos per US dollar. Then multiplied by 25, the Par value or rate of common shares to one ADR.",
+                          "id": "F1"
+                        }
+                      ],
+                      "form_type": "4",
+                      "is_director": false,
+                      "is_officer": true,
+                      "is_other": false,
+                      "is_ten_percent_owner": false,
+                      "issuer_cik": "0001469395",
+                      "issuer_name": "Pampa Energy Inc.",
+                      "not_subject_to_section_16": false,
+                      "officer_title": "Chief Financial Officer",
+                      "owner_cik": "0002123147",
+                      "owner_name": "Zuberbuhler Adolfo Fernando",
+                      "period_of_report": "2026-03-27",
+                      "record_type": "transaction",
+                      "security_title": "Common Stock, $25 Par Value",
+                      "security_type": "derivative",
+                      "shares_owned_following_transaction": 2759,
+                      "tickers": [
+                        "PAM"
+                      ],
+                      "transaction_acquired_disposed": "A",
+                      "transaction_code": "A",
+                      "transaction_date": "2026-03-27",
+                      "transaction_price_per_share": 88.167,
+                      "transaction_shares": 12923,
+                      "transaction_timeliness": "O",
+                      "transaction_value": 1139382.141,
+                      "underlying_security_shares": 12923,
+                      "underlying_security_title": "PAMP"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "accession_number": {
+                            "description": "Unique SEC accession number for the filing (e.g., '0001209191-25-012345').",
+                            "type": "string"
+                          },
+                          "aff_10b5_one": {
+                            "description": "Whether the transaction was made pursuant to a Rule 10b5-1 trading plan.",
+                            "type": "boolean"
+                          },
+                          "date_of_original_submission": {
+                            "description": "Date of the original filing submission for amendment filings (4/A). Null for standard filings (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "deemed_execution_date": {
+                            "description": "Deemed execution date if different from transaction date (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "direct_or_indirect": {
+                            "description": "Whether ownership is direct ('D') or indirect ('I').",
+                            "type": "string"
+                          },
+                          "equity_swap_involved": {
+                            "description": "Whether an equity swap was involved in the transaction.",
+                            "type": "boolean"
+                          },
+                          "exercise_date": {
+                            "description": "Date exercisable for derivative securities (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "exercise_price": {
+                            "description": "Exercise or conversion price of derivative securities in USD.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "expiration_date": {
+                            "description": "Expiration date for derivative securities (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "filing_date": {
+                            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "filing_url": {
+                            "description": "Direct URL to the filing on the SEC EDGAR website.",
+                            "type": "string"
+                          },
+                          "footnotes": {
+                            "description": "List of footnotes from the filing that are relevant to this row, each with an id and description.",
+                            "items": {
+                              "properties": {
+                                "description": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "form_type": {
+                            "description": "SEC form type ('4' for standard filing, '4/A' for amendments).",
+                            "type": "string"
+                          },
+                          "is_director": {
+                            "description": "Whether the reporting owner is a director of the issuer.",
+                            "type": "boolean"
+                          },
+                          "is_officer": {
+                            "description": "Whether the reporting owner is an officer of the issuer.",
+                            "type": "boolean"
+                          },
+                          "is_other": {
+                            "description": "Whether the reporting owner has another relationship with the issuer.",
+                            "type": "boolean"
+                          },
+                          "is_ten_percent_owner": {
+                            "description": "Whether the reporting owner holds 10% or more of a class of equity securities.",
+                            "type": "boolean"
+                          },
+                          "issuer_cik": {
+                            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "issuer_name": {
+                            "description": "Name of the issuer company as reported in the filing.",
+                            "type": "string"
+                          },
+                          "nature_of_ownership": {
+                            "description": "Nature of indirect ownership (e.g., 'By Trust', 'By Spouse').",
+                            "type": "string"
+                          },
+                          "not_subject_to_section_16": {
+                            "description": "Whether the reporting owner is not subject to Section 16 of the Securities Exchange Act.",
+                            "type": "boolean"
+                          },
+                          "officer_title": {
+                            "description": "Title of the officer, if the reporting owner is an officer.",
+                            "type": "string"
+                          },
+                          "owner_cik": {
+                            "description": "SEC Central Index Key of the reporting owner (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "owner_name": {
+                            "description": "Name of the reporting owner (individual or entity).",
+                            "type": "string"
+                          },
+                          "period_of_report": {
+                            "description": "Date of the event triggering the filing (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "record_type": {
+                            "description": "Type of record in the filing (e.g., 'transaction', 'holding').",
+                            "type": "string"
+                          },
+                          "remarks": {
+                            "description": "Additional remarks included in the filing.",
+                            "type": "string"
+                          },
+                          "security_title": {
+                            "description": "Title or description of the security (e.g., 'Common Stock', 'Stock Option').",
+                            "type": "string"
+                          },
+                          "security_type": {
+                            "description": "Type of security ('non-derivative' or 'derivative').",
+                            "type": "string"
+                          },
+                          "shares_owned_following_transaction": {
+                            "description": "Total shares beneficially owned after the transaction.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "tickers": {
+                            "description": "A list of ticker symbols for the issuer company. Multiple symbols may indicate different share classes.",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "transaction_acquired_disposed": {
+                            "description": "Whether shares were acquired ('A') or disposed of ('D').",
+                            "type": "string"
+                          },
+                          "transaction_code": {
+                            "description": "SEC transaction code indicating the type of transaction (e.g., 'P' for purchase, 'S' for sale, 'A' for grant/award, 'M' for exercise/conversion).",
+                            "type": "string"
+                          },
+                          "transaction_date": {
+                            "description": "Date of the transaction (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "transaction_price_per_share": {
+                            "description": "Price per share of the transaction in USD.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "transaction_shares": {
+                            "description": "Number of shares involved in the transaction.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "transaction_timeliness": {
+                            "description": "Timeliness of the filing: 'O' (on time) or 'L' (late).",
+                            "type": "string"
+                          },
+                          "transaction_value": {
+                            "description": "Total value of the transaction in USD (transaction_shares x transaction_price_per_share). Null when shares or price is not reported.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_security_shares": {
+                            "description": "Number of underlying shares for derivative transactions.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_security_title": {
+                            "description": "Title of the underlying security for derivative transactions.",
+                            "type": "string"
                           }
                         },
                         "type": "object"
@@ -22089,6 +23583,9 @@
                             "type": "number"
                           }
                         },
+                        "required": [
+                          "timeframe"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -24719,6 +26216,10 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "ticker",
+                          "date"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -25055,6 +26556,9 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "taxonomy"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -25400,6 +26904,9 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "distribution_type"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -25560,6 +27067,11 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "id",
+                          "type",
+                          "name"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -25905,6 +27417,11 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "settlement_date",
+                          "avg_daily_volume",
+                          "days_to_cover"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -26257,6 +27774,9 @@
                             "type": "number"
                           }
                         },
+                        "required": [
+                          "date"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -26524,6 +28044,9 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "adjustment_type"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -51267,6 +52790,7 @@
                       "id": "191450340",
                       "participant_timestamp": 1625097600103000000,
                       "price": 35060,
+                      "received_timestamp": 1625097600125000000,
                       "size": 1.0434526
                     },
                     {
@@ -51277,6 +52801,7 @@
                       "id": "191450341",
                       "participant_timestamp": 1625097600368000000,
                       "price": 35059.99,
+                      "received_timestamp": 1625097600390000000,
                       "size": 0.0058883
                     }
                   ],
@@ -51330,6 +52855,15 @@
                             "format": "double",
                             "type": "number"
                           },
+                          "received_timestamp": {
+                            "description": "The nanosecond accuracy timestamp of when the tick was received by Massive.",
+                            "format": "int64",
+                            "type": "integer",
+                            "x-polygon-go-type": {
+                              "name": "INanoseconds",
+                              "path": "github.com/polygon-io/ptime"
+                            }
+                          },
                           "size": {
                             "description": "The size of a trade (also known as volume).",
                             "format": "double",
@@ -51357,7 +52891,7 @@
                 }
               },
               "text/csv": {
-                "example": "conditions,exchange,id,participant_timestamp,price,size\n1,1,191450340,1625097600103000000,35060,1.0434526\n2,1,191450341,1625097600368000000,35059.99,0.0058883\n",
+                "example": "conditions,exchange,id,participant_timestamp,price,received_timestamp,size\n1,1,191450340,1625097600103000000,35060,1625097600125000000,1.0434526\n2,1,191450341,1625097600368000000,35059.99,1625097600390000000,0.0058883\n",
                 "schema": {
                   "type": "string"
                 }
@@ -51515,6 +53049,7 @@
                       "exchange": 46,
                       "participant_timestamp": 1401715883806000000,
                       "price": 6.91,
+                      "sequence_number": 1,
                       "sip_timestamp": 1401715883806000000,
                       "size": 1
                     },
@@ -51525,6 +53060,7 @@
                       "exchange": 67,
                       "participant_timestamp": 1401716547786000000,
                       "price": 7.2,
+                      "sequence_number": 2,
                       "sip_timestamp": 1401716547786000000,
                       "size": 1
                     }
@@ -51579,6 +53115,11 @@
                             "format": "double",
                             "type": "number"
                           },
+                          "sequence_number": {
+                            "description": "The sequence number represents the sequence in which message events happened. These are increasing and unique per ticker symbol, but will not always be consecutive (e.g. 1, 2, 6, 9, 10, 11).",
+                            "format": "int64",
+                            "type": "integer"
+                          },
                           "sip_timestamp": {
                             "description": "The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it.",
                             "format": "int64",
@@ -51616,7 +53157,7 @@
                 }
               },
               "text/csv": {
-                "example": "conditions,exchange,participant_timestamp,price,sip_timestamp,size\n,46,1401715883806000000,6.91,1401715883806000000,1\n209,67,1401716547786000000,7.2,1401716547786000000,1\n",
+                "example": "conditions,exchange,participant_timestamp,price,sequence_number,sip_timestamp,size\n,46,1401715883806000000,6.91,1,1401715883806000000,1\n209,67,1401716547786000000,7.2,2,1401716547786000000,1\n",
                 "schema": {
                   "type": "string"
                 }
