@@ -13,10 +13,10 @@
     "test": "mocha",
     "test:watch": "mocha --watch",
     "format": "prettier --write '**/*.ts'",
-    "generate": "sh ./scripts/generate.sh",
+    "generate": "bash ./scripts/generate.sh",
     "pull-spec": "node ./scripts/pull_spec.js",
     "generate-examples": "node ./scripts/generate-examples-with-tokens.js",
-    "build": "rm -rf ./dist && npm run pull-spec && npm run generate && tsup src/main.ts --dts --format esm --minify",
+    "build": "rm -rf ./dist && npm run generate && tsup src/main.ts --dts --format esm --minify",
     "generate-doc": "typedoc src/main.ts",
     "release": "release-it"
   },
