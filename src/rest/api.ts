@@ -1001,11 +1001,11 @@ export enum GetBenzingaV1AnalystInsights200ResponseStatusEnum {
 
 export interface GetBenzingaV1AnalystInsights200ResponseResultsInner {
     /**
-     * The identifer used by Benzinga for the firm record.
+     * The identifier used by Benzinga for the firm record.
      */
     'benzinga_firm_id'?: string;
     /**
-     * The identifer used by Benzinga for this record.
+     * The identifier used by Benzinga for this record.
      */
     'benzinga_id'?: string;
     /**
@@ -1182,7 +1182,7 @@ export interface GetBenzingaV1BullsBearsSay200ResponseResultsInner {
      */
     'ticker'?: string;
 }
-export interface GetBenzingaV1ConsensusRatings200Response {
+export interface GetBenzingaV1ConsensusRatingsTicker200Response {
     /**
      * If present, this value can be used to fetch the next page.
      */
@@ -1194,18 +1194,18 @@ export interface GetBenzingaV1ConsensusRatings200Response {
     /**
      * The results for this request.
      */
-    'results': Array<GetBenzingaV1ConsensusRatings200ResponseResultsInner>;
+    'results': Array<GetBenzingaV1ConsensusRatingsTicker200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
      */
-    'status': GetBenzingaV1ConsensusRatings200ResponseStatusEnum;
+    'status': GetBenzingaV1ConsensusRatingsTicker200ResponseStatusEnum;
 }
 
-export enum GetBenzingaV1ConsensusRatings200ResponseStatusEnum {
+export enum GetBenzingaV1ConsensusRatingsTicker200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-export interface GetBenzingaV1ConsensusRatings200ResponseResultsInner {
+export interface GetBenzingaV1ConsensusRatingsTicker200ResponseResultsInner {
     /**
      * The count of \'Buy\' ratings from contributing analysts.
      */
@@ -1292,7 +1292,7 @@ export interface GetBenzingaV1Earnings200ResponseResultsInner {
      */
     'actual_revenue'?: number;
     /**
-     * The identifer used by Benzinga for this record.
+     * The identifier used by Benzinga for this record.
      */
     'benzinga_id'?: string;
     /**
@@ -1405,7 +1405,7 @@ export enum GetBenzingaV1Firms200ResponseStatusEnum {
 
 export interface GetBenzingaV1Firms200ResponseResultsInner {
     /**
-     * The identifer used by Benzinga for this record.
+     * The identifier used by Benzinga for this record.
      */
     'benzinga_id'?: string;
     /**
@@ -1579,7 +1579,7 @@ export interface GetBenzingaV1Ratings200ResponseResultsInner {
      */
     'analyst'?: string;
     /**
-     * The identifer used by Benzinga for this analyst.
+     * The identifier used by Benzinga for this analyst.
      */
     'benzinga_analyst_id'?: string;
     /**
@@ -1587,11 +1587,11 @@ export interface GetBenzingaV1Ratings200ResponseResultsInner {
      */
     'benzinga_calendar_url'?: string;
     /**
-     * The identifer used by Benzinga for this firm.
+     * The identifier used by Benzinga for this firm.
      */
     'benzinga_firm_id'?: string;
     /**
-     * The identifer used by Benzinga for this record.
+     * The identifier used by Benzinga for this record.
      */
     'benzinga_id'?: string;
     /**
@@ -1696,7 +1696,7 @@ export interface GetBenzingaV2News200ResponseResultsInner {
      */
     'author': string;
     /**
-     * The identifer used by Benzinga for this record.
+     * The identifier used by Benzinga for this record.
      */
     'benzinga_id': number;
     /**
@@ -4120,7 +4120,7 @@ export interface GetFuturesV1Products200ResponseResultsInner {
      */
     'unit_of_measure_qty'?: number;
 }
-export interface GetFuturesV1Quotes200Response {
+export interface GetFuturesV1QuotesTicker200Response {
     /**
      * If present, this value can be used to fetch the next page.
      */
@@ -4132,18 +4132,18 @@ export interface GetFuturesV1Quotes200Response {
     /**
      * The results for this request.
      */
-    'results': Array<GetFuturesV1Quotes200ResponseResultsInner>;
+    'results': Array<GetFuturesV1QuotesTicker200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
      */
-    'status': GetFuturesV1Quotes200ResponseStatusEnum;
+    'status': GetFuturesV1QuotesTicker200ResponseStatusEnum;
 }
 
-export enum GetFuturesV1Quotes200ResponseStatusEnum {
+export enum GetFuturesV1QuotesTicker200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-export interface GetFuturesV1Quotes200ResponseResultsInner {
+export interface GetFuturesV1QuotesTicker200ResponseResultsInner {
     /**
      * The ask price is expressed per unit of the underlying asset, and you apply the contract multiplier to get the full contract value.
      */
@@ -4400,7 +4400,7 @@ export interface GetFuturesV1Snapshot200ResponseResultsInnerSession {
      */
     'volume'?: number;
 }
-export interface GetFuturesV1Trades200Response {
+export interface GetFuturesV1TradesTicker200Response {
     /**
      * If present, this value can be used to fetch the next page.
      */
@@ -4412,18 +4412,18 @@ export interface GetFuturesV1Trades200Response {
     /**
      * The results for this request.
      */
-    'results': Array<GetFuturesV1Trades200ResponseResultsInner>;
+    'results': Array<GetFuturesV1TradesTicker200ResponseResultsInner>;
     /**
      * The status of this request\'s response.
      */
-    'status': GetFuturesV1Trades200ResponseStatusEnum;
+    'status': GetFuturesV1TradesTicker200ResponseStatusEnum;
 }
 
-export enum GetFuturesV1Trades200ResponseStatusEnum {
+export enum GetFuturesV1TradesTicker200ResponseStatusEnum {
     Ok = 'OK'
 }
 
-export interface GetFuturesV1Trades200ResponseResultsInner {
+export interface GetFuturesV1TradesTicker200ResponseResultsInner {
     /**
      * The CME multicast channel this event was sourced from.
      */
@@ -5560,6 +5560,124 @@ export interface GetOptionsV1Exchanges200ResponseResultsInner {
      */
     'url'?: string;
 }
+export interface GetOptionsV3QuotesTicker200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetOptionsV3QuotesTicker200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetOptionsV3QuotesTicker200ResponseStatusEnum;
+}
+
+export enum GetOptionsV3QuotesTicker200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetOptionsV3QuotesTicker200ResponseResultsInner {
+    /**
+     * The exchange ID reporting the ask side of the quote.
+     */
+    'ask_exchange': number;
+    /**
+     * The ask price.
+     */
+    'ask_price': number;
+    /**
+     * The size available at the ask price.
+     */
+    'ask_size': number;
+    /**
+     * The exchange ID reporting the bid side of the quote.
+     */
+    'bid_exchange': number;
+    /**
+     * The bid price.
+     */
+    'bid_price': number;
+    /**
+     * The size available at the bid price.
+     */
+    'bid_size': number;
+    /**
+     * The sequence number represents the sequence in which quote events happened. These are increasing and unique per ticker symbol, but will not always be sequential. Values reset after each trading session/day.
+     */
+    'sequence_number': number;
+    /**
+     * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this quote from the exchange which produced it.
+     */
+    'sip_timestamp': number;
+    /**
+     * The options ticker symbol (e.g., O:SPY260123C00687000).
+     */
+    'ticker': string;
+}
+export interface GetOptionsV3TradesTicker200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetOptionsV3TradesTicker200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetOptionsV3TradesTicker200ResponseStatusEnum;
+}
+
+export enum GetOptionsV3TradesTicker200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetOptionsV3TradesTicker200ResponseResultsInner {
+    /**
+     * A list of condition codes.
+     */
+    'conditions': Array<number>;
+    /**
+     * The exchange ID.
+     */
+    'exchange': number;
+    /**
+     * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the trade was actually generated at the exchange.
+     */
+    'participant_timestamp'?: number;
+    /**
+     * The price of the trade. This is the actual dollar value per whole contract of this trade.
+     */
+    'price': number;
+    /**
+     * The sequence number represents the sequence in which trade events happened. These are increasing and unique per ticker symbol, but will not always be sequential. Values reset after each trading session/day.
+     */
+    'sequence_number': number;
+    /**
+     * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it.
+     */
+    'sip_timestamp': number;
+    /**
+     * The size of a trade (also known as volume).
+     */
+    'size': number;
+    /**
+     * The options ticker symbol (e.g., O:SPY260123C00687000).
+     */
+    'ticker': string;
+}
 export interface GetPreviousCryptoAggregates200Response {
     /**
      * The exchange symbol that this item is traded under.
@@ -6305,6 +6423,87 @@ export interface GetStocksAggregates200ResponseAllOfResultsInner {
      */
     'vw'?: number;
 }
+export interface GetStocksDevTradesTicker200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetStocksDevTradesTicker200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetStocksDevTradesTicker200ResponseStatusEnum;
+}
+
+export enum GetStocksDevTradesTicker200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetStocksDevTradesTicker200ResponseResultsInner {
+    /**
+     * A list of condition codes.
+     */
+    'conditions'?: Array<number>;
+    /**
+     * The trade correction indicator.
+     */
+    'correction'?: number;
+    /**
+     * The exchange ID. See <a href=\"https://massive.com/docs/rest/stocks/market-operations/exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive\'s mapping of exchange IDs.
+     */
+    'exchange'?: number;
+    /**
+     * The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID.
+     */
+    'id'?: string;
+    /**
+     * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the trade was actually generated at the exchange.
+     */
+    'participant_timestamp'?: number;
+    /**
+     * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
+     */
+    'price': number;
+    /**
+     * The sequence number represents the sequence in which trade events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11). Values reset after each trading session/day.
+     */
+    'sequence_number': number;
+    /**
+     * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it.
+     */
+    'sip_timestamp': number;
+    /**
+     * The size of a trade (also known as volume).
+     */
+    'size': number;
+    /**
+     * The fractional size of a trade (also known as volume).
+     */
+    'size_fraction': number;
+    /**
+     * There are 3 tapes which define which exchange the ticker is listed on. These are integers in our objects which represent the letter of the alphabet. Eg: 1 = A, 2 = B, 3 = C. * Tape A is NYSE listed securities * Tape B is NYSE ARCA / NYSE American * Tape C is NASDAQ
+     */
+    'tape'?: number;
+    /**
+     * The ticker symbol.
+     */
+    'ticker': string;
+    /**
+     * The ID for the Trade Reporting Facility where the trade took place.
+     */
+    'trf_id'?: number;
+    /**
+     * The nanosecond accuracy TRF (Trade Reporting Facility) Unix Timestamp. This is the timestamp of when the trade reporting facility received this trade.
+     */
+    'trf_timestamp'?: number;
+}
 export interface GetStocksFilings10KVXSections200Response {
     /**
      * If present, this value can be used to fetch the next page.
@@ -6357,6 +6556,67 @@ export interface GetStocksFilings10KVXSections200ResponseResultsInner {
      * Stock ticker symbol for the company.
      */
     'ticker'?: string;
+}
+export interface GetStocksFilings8KVXDisclosures200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetStocksFilings8KVXDisclosures200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetStocksFilings8KVXDisclosures200ResponseStatusEnum;
+}
+
+export enum GetStocksFilings8KVXDisclosures200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetStocksFilings8KVXDisclosures200ResponseResultsInner {
+    /**
+     * Unique SEC accession number for the filing (e.g., \'0000320193-25-000010\').
+     */
+    'accession_number'?: string;
+    /**
+     * SEC Central Index Key of the filer (10 digits, zero-padded).
+     */
+    'cik'?: string;
+    /**
+     * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).
+     */
+    'filing_date'?: string;
+    /**
+     * Direct URL to the full submission text file for the filing on SEC EDGAR.
+     */
+    'filing_url'?: string;
+    /**
+     * Top-level disclosure category (e.g., \'financial_results\'). See the full taxonomy at /stocks/taxonomies/vX/disclosures.
+     */
+    'primary_category'?: string;
+    /**
+     * Mid-level disclosure category (e.g., \'earnings_announcement\'). See the full taxonomy at /stocks/taxonomies/vX/disclosures.
+     */
+    'secondary_category'?: string;
+    /**
+     * A verbatim excerpt from the filing text supporting the assigned categories.
+     */
+    'supporting_text'?: string;
+    /**
+     * Most specific disclosure category (e.g., \'quarterly_results\'). Filtering on this column must use an exact match. See the full taxonomy at /stocks/taxonomies/vX/disclosures.
+     */
+    'tertiary_category'?: string;
+    /**
+     * A list of ticker symbols for the filing company. Multiple symbols may indicate different share classes; empty if no ticker is currently mapped to the filer.
+     */
+    'tickers'?: Array<string>;
 }
 export interface GetStocksFilings8KVXText200Response {
     /**
@@ -7522,7 +7782,7 @@ export interface GetStocksFinancialsV1Ratios200ResponseResultsInner {
     /**
      * Stock price used in ratio calculations, typically the closing price for the given date.
      */
-    'price'?: number;
+    'price': number;
     /**
      * Price-to-book ratio, calculated as stock price divided by book value per share, comparing market value to book value.
      */
@@ -7904,6 +8164,51 @@ export interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerPrevDay {
      * The volume weighted average price.
      */
     'vw': number;
+}
+export interface GetStocksTaxonomiesVXDisclosures200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetStocksTaxonomiesVXDisclosures200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetStocksTaxonomiesVXDisclosures200ResponseStatusEnum;
+}
+
+export enum GetStocksTaxonomiesVXDisclosures200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetStocksTaxonomiesVXDisclosures200ResponseResultsInner {
+    /**
+     * Detailed explanation of what the disclosure category covers, including typical examples.
+     */
+    'description'?: string;
+    /**
+     * Top-level disclosure category.
+     */
+    'primary_category'?: string;
+    /**
+     * Mid-level disclosure category.
+     */
+    'secondary_category'?: string;
+    /**
+     * Taxonomy version that defines this classification (e.g., \'1.0\').
+     */
+    'taxonomy': string;
+    /**
+     * Most specific disclosure category.
+     */
+    'tertiary_category'?: string;
 }
 export interface GetStocksTaxonomiesVXRiskFactors200Response {
     /**
@@ -10934,7 +11239,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [ratingActionGte] Filter greater than or equal to the value.
          * @param {string} [ratingActionLt] Filter less than the value.
          * @param {string} [ratingActionLte] Filter less than or equal to the value.
-         * @param {string} [benzingaFirmId] The identifer used by Benzinga for the firm record.
+         * @param {string} [benzingaFirmId] The identifier used by Benzinga for the firm record.
          * @param {string} [benzingaFirmIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaFirmIdGt] Filter greater than the value.
          * @param {string} [benzingaFirmIdGte] Filter greater than or equal to the value.
@@ -11452,9 +11757,9 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBenzingaV1ConsensusRatings: async (ticker: string, date?: string, dateAnyOf?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getBenzingaV1ConsensusRatingsTicker: async (ticker: string, date?: string, dateAnyOf?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'ticker' is not null or undefined
-            assertParamExists('getBenzingaV1ConsensusRatings', 'ticker', ticker)
+            assertParamExists('getBenzingaV1ConsensusRatingsTicker', 'ticker', ticker)
             const localVarPath = `/benzinga/v1/consensus-ratings/{ticker}`
                 .replace(`{${"ticker"}}`, encodeURIComponent(String(ticker)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11824,7 +12129,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * A comprehensive database of financial firms, tracking unique identifiers, names, and basic metadata for various financial institutions and research firms.
-         * @param {string} [benzingaId] The identifer used by Benzinga for this record.
+         * @param {string} [benzingaId] The identifier used by Benzinga for this record.
          * @param {string} [benzingaIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaIdGt] Filter greater than the value.
          * @param {string} [benzingaIdGte] Filter greater than or equal to the value.
@@ -11920,12 +12225,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} [importanceGte] Filter greater than or equal to the value. Value must be an integer.
          * @param {number} [importanceLt] Filter less than the value. Value must be an integer.
          * @param {number} [importanceLte] Filter less than or equal to the value. Value must be an integer.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system.
-         * @param {string} [lastUpdatedAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [lastUpdatedGt] Filter greater than the value.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value.
-         * @param {string} [lastUpdatedLt] Filter less than the value.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {number} [fiscalYear] The fiscal year corresponding to the period for which the guidance is issued. Value must be an integer.
          * @param {string} [fiscalYearAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer.
          * @param {number} [fiscalYearGt] Filter greater than the value. Value must be an integer.
@@ -12182,19 +12487,19 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [priceTargetActionGte] Filter greater than or equal to the value.
          * @param {string} [priceTargetActionLt] Filter less than the value.
          * @param {string} [priceTargetActionLte] Filter less than or equal to the value.
-         * @param {string} [benzingaId] The identifer used by Benzinga for this record.
+         * @param {string} [benzingaId] The identifier used by Benzinga for this record.
          * @param {string} [benzingaIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaIdGt] Filter greater than the value.
          * @param {string} [benzingaIdGte] Filter greater than or equal to the value.
          * @param {string} [benzingaIdLt] Filter less than the value.
          * @param {string} [benzingaIdLte] Filter less than or equal to the value.
-         * @param {string} [benzingaAnalystId] The identifer used by Benzinga for this analyst.
+         * @param {string} [benzingaAnalystId] The identifier used by Benzinga for this analyst.
          * @param {string} [benzingaAnalystIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaAnalystIdGt] Filter greater than the value.
          * @param {string} [benzingaAnalystIdGte] Filter greater than or equal to the value.
          * @param {string} [benzingaAnalystIdLt] Filter less than the value.
          * @param {string} [benzingaAnalystIdLte] Filter less than or equal to the value.
-         * @param {string} [benzingaFirmId] The identifer used by Benzinga for this firm.
+         * @param {string} [benzingaFirmId] The identifier used by Benzinga for this firm.
          * @param {string} [benzingaFirmIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaFirmIdGt] Filter greater than the value.
          * @param {string} [benzingaFirmIdGte] Filter greater than or equal to the value.
@@ -15735,83 +16040,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Get aggregates for a contract in a given time range.
-         * @summary Aggregates
-         * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-         * @param {string} [resolution] The size of each aggregate candle, specified as a number followed by a unit: &#x60;sec&#x60;, &#x60;min&#x60;, &#x60;hour&#x60;, &#x60;session&#x60;, &#x60;week&#x60;, &#x60;month&#x60;, &#x60;quarter&#x60;, or &#x60;year&#x60;.   Each unit has a maximum multiplier. For instance, minute candles go up to &#x60;59min&#x60; — after that, use &#x60;1hour&#x60;. Requesting an unsupported size returns a &#x60;400 Bad Request&#x60;.
-         * @param {string} [windowStart] Filter by the start time of each candle. Accepts a &#x60;YYYY-MM-DD&#x60; date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval.  When omitted, the API returns the most recent candles up to &#x60;limit&#x60;.  Use comparison suffixes to query a range: - &#x60;window_start.gte&#x60; — greater than or equal to - &#x60;window_start.gt&#x60; — greater than - &#x60;window_start.lte&#x60; — less than or equal to - &#x60;window_start.lt&#x60; — less than  **Examples** - Most recent minute candles: &#x60;/vX/aggs/ESU5?resolution&#x3D;1min&amp;limit&#x3D;5&#x60; - Single daily candle: &#x60;/vX/aggs/ESU5?resolution&#x3D;1session&amp;window_start&#x3D;2025-08-05&#x60; - Date range: &#x60;/vX/aggs/ESU5?resolution&#x3D;1session&amp;window_start.gte&#x3D;2025-07-01&amp;window_start.lte&#x3D;2025-07-31&#x60; - After a timestamp: &#x60;/vX/aggs/ESU5?resolution&#x3D;1sec&amp;window_start.gt&#x3D;1751409877000000000&amp;limit&#x3D;1000&#x60;
-         * @param {number} [limit] The number of results to return per page (default&#x3D;1000, maximum&#x3D;50000, minimum&#x3D;1).
-         * @param {string} [windowStartGte] Range by window_start.
-         * @param {string} [windowStartGt] Range by window_start.
-         * @param {string} [windowStartLte] Range by window_start.
-         * @param {string} [windowStartLt] Range by window_start.
-         * @param {GetFuturesAggregatesSortEnum} [sort] Sort results by field and direction using dotted notation (e.g., \&#39;ticker.asc\&#39;, \&#39;name.desc\&#39;).
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesAggregates: async (ticker: string, resolution?: string, windowStart?: string, limit?: number, windowStartGte?: string, windowStartGt?: string, windowStartLte?: string, windowStartLt?: string, sort?: GetFuturesAggregatesSortEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'ticker' is not null or undefined
-            assertParamExists('getFuturesAggregates', 'ticker', ticker)
-            const localVarPath = `/futures/vX/aggs/{ticker}`
-                .replace(`{${"ticker"}}`, encodeURIComponent(String(ticker)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (resolution !== undefined) {
-                localVarQueryParameter['resolution'] = resolution;
-            }
-
-            if (windowStart !== undefined) {
-                localVarQueryParameter['window_start'] = windowStart;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-            if (windowStartGte !== undefined) {
-                localVarQueryParameter['window_start.gte'] = windowStartGte;
-            }
-
-            if (windowStartGt !== undefined) {
-                localVarQueryParameter['window_start.gt'] = windowStartGt;
-            }
-
-            if (windowStartLte !== undefined) {
-                localVarQueryParameter['window_start.lte'] = windowStartLte;
-            }
-
-            if (windowStartLt !== undefined) {
-                localVarQueryParameter['window_start.lt'] = windowStartLt;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.  Use Cases: Historical research, trading system integration, portfolio workflows, risk management.
          * @summary futures contracts API
          * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about contracts for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -16331,9 +16559,9 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFuturesV1Quotes: async (ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getFuturesV1QuotesTicker: async (ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'ticker' is not null or undefined
-            assertParamExists('getFuturesV1Quotes', 'ticker', ticker)
+            assertParamExists('getFuturesV1QuotesTicker', 'ticker', ticker)
             const localVarPath = `/futures/v1/quotes/{ticker}`
                 .replace(`{${"ticker"}}`, encodeURIComponent(String(ticker)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -16638,899 +16866,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFuturesV1Trades: async (ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getFuturesV1TradesTicker: async (ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'ticker' is not null or undefined
-            assertParamExists('getFuturesV1Trades', 'ticker', ticker)
+            assertParamExists('getFuturesV1TradesTicker', 'ticker', ticker)
             const localVarPath = `/futures/v1/trades/{ticker}`
-                .replace(`{${"ticker"}}`, encodeURIComponent(String(ticker)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (timestamp !== undefined) {
-                localVarQueryParameter['timestamp'] = timestamp;
-            }
-
-            if (timestampGt !== undefined) {
-                localVarQueryParameter['timestamp.gt'] = timestampGt;
-            }
-
-            if (timestampGte !== undefined) {
-                localVarQueryParameter['timestamp.gte'] = timestampGte;
-            }
-
-            if (timestampLt !== undefined) {
-                localVarQueryParameter['timestamp.lt'] = timestampLt;
-            }
-
-            if (timestampLte !== undefined) {
-                localVarQueryParameter['timestamp.lte'] = timestampLte;
-            }
-
-            if (sessionEndDate !== undefined) {
-                localVarQueryParameter['session_end_date'] = sessionEndDate;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.  Use Cases: Historical research, trading system integration, portfolio workflows, risk management.
-         * @summary futures contracts API
-         * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about contracts for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [productCode] The identifier for the contract\&#39;s product.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {string} [ticker] The ticker for the contract.
-         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [tickerGt] Filter greater than the value.
-         * @param {string} [tickerGte] Filter greater than or equal to the value.
-         * @param {string} [tickerLt] Filter less than the value.
-         * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {boolean} [active] Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date &lt;&#x3D; date &gt;&#x3D; last_trade_date) and false otherwise.
-         * @param {GetFuturesVXContractsTypeEnum} [type] The type of contract, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for contracts where type is \&#39;single\&#39;, \&#39;combo\&#39; or empty. This field only exists on contracts as of 2025-03-12 and later. It will be null when date &lt; 2025-03-12.
-         * @param {GetFuturesVXContractsTypeAnyOfEnum} [typeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [firstTradeDate] The first day on which the contract was tradeable. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [firstTradeDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [firstTradeDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [firstTradeDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [firstTradeDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDate] The last day on which the contract was tradeable. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;product_code\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXContracts: async (date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, active?: boolean, type?: GetFuturesVXContractsTypeEnum, typeAnyOf?: GetFuturesVXContractsTypeAnyOfEnum, firstTradeDate?: string, firstTradeDateGt?: string, firstTradeDateGte?: string, firstTradeDateLt?: string, firstTradeDateLte?: string, lastTradeDate?: string, lastTradeDateGt?: string, lastTradeDateGte?: string, lastTradeDateLt?: string, lastTradeDateLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/futures/vX/contracts`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (date !== undefined) {
-                localVarQueryParameter['date'] = date;
-            }
-
-            if (dateGt !== undefined) {
-                localVarQueryParameter['date.gt'] = dateGt;
-            }
-
-            if (dateGte !== undefined) {
-                localVarQueryParameter['date.gte'] = dateGte;
-            }
-
-            if (dateLt !== undefined) {
-                localVarQueryParameter['date.lt'] = dateLt;
-            }
-
-            if (dateLte !== undefined) {
-                localVarQueryParameter['date.lte'] = dateLte;
-            }
-
-            if (productCode !== undefined) {
-                localVarQueryParameter['product_code'] = productCode;
-            }
-
-            if (productCodeAnyOf !== undefined) {
-                localVarQueryParameter['product_code.any_of'] = productCodeAnyOf;
-            }
-
-            if (productCodeGt !== undefined) {
-                localVarQueryParameter['product_code.gt'] = productCodeGt;
-            }
-
-            if (productCodeGte !== undefined) {
-                localVarQueryParameter['product_code.gte'] = productCodeGte;
-            }
-
-            if (productCodeLt !== undefined) {
-                localVarQueryParameter['product_code.lt'] = productCodeLt;
-            }
-
-            if (productCodeLte !== undefined) {
-                localVarQueryParameter['product_code.lte'] = productCodeLte;
-            }
-
-            if (ticker !== undefined) {
-                localVarQueryParameter['ticker'] = ticker;
-            }
-
-            if (tickerAnyOf !== undefined) {
-                localVarQueryParameter['ticker.any_of'] = tickerAnyOf;
-            }
-
-            if (tickerGt !== undefined) {
-                localVarQueryParameter['ticker.gt'] = tickerGt;
-            }
-
-            if (tickerGte !== undefined) {
-                localVarQueryParameter['ticker.gte'] = tickerGte;
-            }
-
-            if (tickerLt !== undefined) {
-                localVarQueryParameter['ticker.lt'] = tickerLt;
-            }
-
-            if (tickerLte !== undefined) {
-                localVarQueryParameter['ticker.lte'] = tickerLte;
-            }
-
-            if (active !== undefined) {
-                localVarQueryParameter['active'] = active;
-            }
-
-            if (type !== undefined) {
-                localVarQueryParameter['type'] = type;
-            }
-
-            if (typeAnyOf !== undefined) {
-                localVarQueryParameter['type.any_of'] = typeAnyOf;
-            }
-
-            if (firstTradeDate !== undefined) {
-                localVarQueryParameter['first_trade_date'] = firstTradeDate;
-            }
-
-            if (firstTradeDateGt !== undefined) {
-                localVarQueryParameter['first_trade_date.gt'] = firstTradeDateGt;
-            }
-
-            if (firstTradeDateGte !== undefined) {
-                localVarQueryParameter['first_trade_date.gte'] = firstTradeDateGte;
-            }
-
-            if (firstTradeDateLt !== undefined) {
-                localVarQueryParameter['first_trade_date.lt'] = firstTradeDateLt;
-            }
-
-            if (firstTradeDateLte !== undefined) {
-                localVarQueryParameter['first_trade_date.lte'] = firstTradeDateLte;
-            }
-
-            if (lastTradeDate !== undefined) {
-                localVarQueryParameter['last_trade_date'] = lastTradeDate;
-            }
-
-            if (lastTradeDateGt !== undefined) {
-                localVarQueryParameter['last_trade_date.gt'] = lastTradeDateGt;
-            }
-
-            if (lastTradeDateGte !== undefined) {
-                localVarQueryParameter['last_trade_date.gte'] = lastTradeDateGte;
-            }
-
-            if (lastTradeDateLt !== undefined) {
-                localVarQueryParameter['last_trade_date.lt'] = lastTradeDateLt;
-            }
-
-            if (lastTradeDateLte !== undefined) {
-                localVarQueryParameter['last_trade_date.lte'] = lastTradeDateLte;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * US futures exchanges and trading venues including major derivatives exchanges (CME, CBOT, NYMEX, COMEX) and other futures market infrastructure for commodity, financial, and other derivative contract trading.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXExchanges: async (limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/futures/vX/exchanges`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve the current market status for a specific product or products. This endpoint returns real-time indicators, such as open, pause, close, for futures products, along with the corresponding exchange and product codes and an evaluation timestamp. This information enables users to monitor operational conditions and adjust their trading strategies accordingly.  Use Cases: Real-time monitoring, algorithm scheduling, UI updates, operational planning.
-         * @summary Market Status API
-         * @param {string} [productCode] The product code of the futures contracts for which you want statuses.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXMarketStatus: async (productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/futures/vX/market-status`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (productCode !== undefined) {
-                localVarQueryParameter['product_code'] = productCode;
-            }
-
-            if (productCodeAnyOf !== undefined) {
-                localVarQueryParameter['product_code.any_of'] = productCodeAnyOf;
-            }
-
-            if (productCodeGt !== undefined) {
-                localVarQueryParameter['product_code.gt'] = productCodeGt;
-            }
-
-            if (productCodeGte !== undefined) {
-                localVarQueryParameter['product_code.gte'] = productCodeGte;
-            }
-
-            if (productCodeLt !== undefined) {
-                localVarQueryParameter['product_code.lt'] = productCodeLt;
-            }
-
-            if (productCodeLte !== undefined) {
-                localVarQueryParameter['product_code.lte'] = productCodeLte;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.  Use Cases: Product specification, historical product checks, risk management, trading system integration.
-         * @summary Futures Products API
-         * @param {string} [name] The full name of the product.
-         * @param {string} [nameAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [nameGt] Filter greater than the value.
-         * @param {string} [nameGte] Filter greater than or equal to the value.
-         * @param {string} [nameLt] Filter less than the value.
-         * @param {string} [nameLte] Filter less than or equal to the value.
-         * @param {string} [productCode] The identifier for the product.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [tradingVenue] The trading venue (MIC) for the exchange on which this product\&#39;s contracts trade.
-         * @param {string} [tradingVenueAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [tradingVenueGt] Filter greater than the value.
-         * @param {string} [tradingVenueGte] Filter greater than or equal to the value.
-         * @param {string} [tradingVenueLt] Filter less than the value.
-         * @param {string} [tradingVenueLte] Filter less than or equal to the value.
-         * @param {GetFuturesVXProductsSectorEnum} [sector] The sector to which the product belongs.
-         * @param {GetFuturesVXProductsSectorAnyOfEnum} [sectorAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {GetFuturesVXProductsSubSectorEnum} [subSector] The sub-sector to which the product belongs.
-         * @param {GetFuturesVXProductsSubSectorAnyOfEnum} [subSectorAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {GetFuturesVXProductsAssetClassEnum} [assetClass] The asset class to which the product belongs.
-         * @param {GetFuturesVXProductsAssetClassAnyOfEnum} [assetClassAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {GetFuturesVXProductsAssetSubClassEnum} [assetSubClass] The asset sub-class to which the product belongs.
-         * @param {GetFuturesVXProductsAssetSubClassAnyOfEnum} [assetSubClassAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {GetFuturesVXProductsTypeEnum} [type] The type of product, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for both \&#39;single\&#39; and \&#39;combo\&#39; types.
-         * @param {GetFuturesVXProductsTypeAnyOfEnum} [typeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXProducts: async (name?: string, nameAnyOf?: string, nameGt?: string, nameGte?: string, nameLt?: string, nameLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, sector?: GetFuturesVXProductsSectorEnum, sectorAnyOf?: GetFuturesVXProductsSectorAnyOfEnum, subSector?: GetFuturesVXProductsSubSectorEnum, subSectorAnyOf?: GetFuturesVXProductsSubSectorAnyOfEnum, assetClass?: GetFuturesVXProductsAssetClassEnum, assetClassAnyOf?: GetFuturesVXProductsAssetClassAnyOfEnum, assetSubClass?: GetFuturesVXProductsAssetSubClassEnum, assetSubClassAnyOf?: GetFuturesVXProductsAssetSubClassAnyOfEnum, type?: GetFuturesVXProductsTypeEnum, typeAnyOf?: GetFuturesVXProductsTypeAnyOfEnum, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/futures/vX/products`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (name !== undefined) {
-                localVarQueryParameter['name'] = name;
-            }
-
-            if (nameAnyOf !== undefined) {
-                localVarQueryParameter['name.any_of'] = nameAnyOf;
-            }
-
-            if (nameGt !== undefined) {
-                localVarQueryParameter['name.gt'] = nameGt;
-            }
-
-            if (nameGte !== undefined) {
-                localVarQueryParameter['name.gte'] = nameGte;
-            }
-
-            if (nameLt !== undefined) {
-                localVarQueryParameter['name.lt'] = nameLt;
-            }
-
-            if (nameLte !== undefined) {
-                localVarQueryParameter['name.lte'] = nameLte;
-            }
-
-            if (productCode !== undefined) {
-                localVarQueryParameter['product_code'] = productCode;
-            }
-
-            if (productCodeAnyOf !== undefined) {
-                localVarQueryParameter['product_code.any_of'] = productCodeAnyOf;
-            }
-
-            if (productCodeGt !== undefined) {
-                localVarQueryParameter['product_code.gt'] = productCodeGt;
-            }
-
-            if (productCodeGte !== undefined) {
-                localVarQueryParameter['product_code.gte'] = productCodeGte;
-            }
-
-            if (productCodeLt !== undefined) {
-                localVarQueryParameter['product_code.lt'] = productCodeLt;
-            }
-
-            if (productCodeLte !== undefined) {
-                localVarQueryParameter['product_code.lte'] = productCodeLte;
-            }
-
-            if (date !== undefined) {
-                localVarQueryParameter['date'] = date;
-            }
-
-            if (dateGt !== undefined) {
-                localVarQueryParameter['date.gt'] = dateGt;
-            }
-
-            if (dateGte !== undefined) {
-                localVarQueryParameter['date.gte'] = dateGte;
-            }
-
-            if (dateLt !== undefined) {
-                localVarQueryParameter['date.lt'] = dateLt;
-            }
-
-            if (dateLte !== undefined) {
-                localVarQueryParameter['date.lte'] = dateLte;
-            }
-
-            if (tradingVenue !== undefined) {
-                localVarQueryParameter['trading_venue'] = tradingVenue;
-            }
-
-            if (tradingVenueAnyOf !== undefined) {
-                localVarQueryParameter['trading_venue.any_of'] = tradingVenueAnyOf;
-            }
-
-            if (tradingVenueGt !== undefined) {
-                localVarQueryParameter['trading_venue.gt'] = tradingVenueGt;
-            }
-
-            if (tradingVenueGte !== undefined) {
-                localVarQueryParameter['trading_venue.gte'] = tradingVenueGte;
-            }
-
-            if (tradingVenueLt !== undefined) {
-                localVarQueryParameter['trading_venue.lt'] = tradingVenueLt;
-            }
-
-            if (tradingVenueLte !== undefined) {
-                localVarQueryParameter['trading_venue.lte'] = tradingVenueLte;
-            }
-
-            if (sector !== undefined) {
-                localVarQueryParameter['sector'] = sector;
-            }
-
-            if (sectorAnyOf !== undefined) {
-                localVarQueryParameter['sector.any_of'] = sectorAnyOf;
-            }
-
-            if (subSector !== undefined) {
-                localVarQueryParameter['sub_sector'] = subSector;
-            }
-
-            if (subSectorAnyOf !== undefined) {
-                localVarQueryParameter['sub_sector.any_of'] = subSectorAnyOf;
-            }
-
-            if (assetClass !== undefined) {
-                localVarQueryParameter['asset_class'] = assetClass;
-            }
-
-            if (assetClassAnyOf !== undefined) {
-                localVarQueryParameter['asset_class.any_of'] = assetClassAnyOf;
-            }
-
-            if (assetSubClass !== undefined) {
-                localVarQueryParameter['asset_sub_class'] = assetSubClass;
-            }
-
-            if (assetSubClassAnyOf !== undefined) {
-                localVarQueryParameter['asset_sub_class.any_of'] = assetSubClassAnyOf;
-            }
-
-            if (type !== undefined) {
-                localVarQueryParameter['type'] = type;
-            }
-
-            if (typeAnyOf !== undefined) {
-                localVarQueryParameter['type.any_of'] = typeAnyOf;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
-         * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-         * @param {string} [timestamp] The time when the quote was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXQuotes: async (ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'ticker' is not null or undefined
-            assertParamExists('getFuturesVXQuotes', 'ticker', ticker)
-            const localVarPath = `/futures/vX/quotes/{ticker}`
-                .replace(`{${"ticker"}}`, encodeURIComponent(String(ticker)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (timestamp !== undefined) {
-                localVarQueryParameter['timestamp'] = timestamp;
-            }
-
-            if (timestampGt !== undefined) {
-                localVarQueryParameter['timestamp.gt'] = timestampGt;
-            }
-
-            if (timestampGte !== undefined) {
-                localVarQueryParameter['timestamp.gte'] = timestampGte;
-            }
-
-            if (timestampLt !== undefined) {
-                localVarQueryParameter['timestamp.lt'] = timestampLt;
-            }
-
-            if (timestampLte !== undefined) {
-                localVarQueryParameter['timestamp.lte'] = timestampLte;
-            }
-
-            if (sessionEndDate !== undefined) {
-                localVarQueryParameter['session_end_date'] = sessionEndDate;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * The Schedules API provides a unified way to retrieve trading schedules for futures markets, returning precise session open and close times, intraday breaks, and any adjustments for holidays or special events. You can filter schedules by session_end_date or retrieve the schedule for a single product using its product code. All times are returned in Coordinated Universal Time (UTC), making it straightforward to align trading, execution, and operational workflows across systems.  Use Cases: Schedule planning, market analysis, strategy alignment, risk and operations management.
-         * @summary Futures Schedules API
-         * @param {string} [productCode] The product code of the futures contract.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {string} [sessionEndDate] The session end date for the schedules (also known as the trading date). This field is optional and can be used to filter results by a specific session end date. If left blank, schedules for all dates will be returned. Note that trading sessions end at 5 PM Central Time, so a session ending at 5 PM CT on January 1st would have a session_end_date of 2025-01-01. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [sessionEndDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [sessionEndDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [sessionEndDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [sessionEndDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [tradingVenue] The trading venue (MIC) for the exchange on which this schedule\&#39;s product trades.
-         * @param {string} [tradingVenueAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [tradingVenueGt] Filter greater than the value.
-         * @param {string} [tradingVenueGte] Filter greater than or equal to the value.
-         * @param {string} [tradingVenueLt] Filter less than the value.
-         * @param {string} [tradingVenueLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;product_code\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXSchedules: async (productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, sessionEndDate?: string, sessionEndDateGt?: string, sessionEndDateGte?: string, sessionEndDateLt?: string, sessionEndDateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/futures/vX/schedules`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (productCode !== undefined) {
-                localVarQueryParameter['product_code'] = productCode;
-            }
-
-            if (productCodeAnyOf !== undefined) {
-                localVarQueryParameter['product_code.any_of'] = productCodeAnyOf;
-            }
-
-            if (productCodeGt !== undefined) {
-                localVarQueryParameter['product_code.gt'] = productCodeGt;
-            }
-
-            if (productCodeGte !== undefined) {
-                localVarQueryParameter['product_code.gte'] = productCodeGte;
-            }
-
-            if (productCodeLt !== undefined) {
-                localVarQueryParameter['product_code.lt'] = productCodeLt;
-            }
-
-            if (productCodeLte !== undefined) {
-                localVarQueryParameter['product_code.lte'] = productCodeLte;
-            }
-
-            if (sessionEndDate !== undefined) {
-                localVarQueryParameter['session_end_date'] = sessionEndDate;
-            }
-
-            if (sessionEndDateGt !== undefined) {
-                localVarQueryParameter['session_end_date.gt'] = sessionEndDateGt;
-            }
-
-            if (sessionEndDateGte !== undefined) {
-                localVarQueryParameter['session_end_date.gte'] = sessionEndDateGte;
-            }
-
-            if (sessionEndDateLt !== undefined) {
-                localVarQueryParameter['session_end_date.lt'] = sessionEndDateLt;
-            }
-
-            if (sessionEndDateLte !== undefined) {
-                localVarQueryParameter['session_end_date.lte'] = sessionEndDateLte;
-            }
-
-            if (tradingVenue !== undefined) {
-                localVarQueryParameter['trading_venue'] = tradingVenue;
-            }
-
-            if (tradingVenueAnyOf !== undefined) {
-                localVarQueryParameter['trading_venue.any_of'] = tradingVenueAnyOf;
-            }
-
-            if (tradingVenueGt !== undefined) {
-                localVarQueryParameter['trading_venue.gt'] = tradingVenueGt;
-            }
-
-            if (tradingVenueGte !== undefined) {
-                localVarQueryParameter['trading_venue.gte'] = tradingVenueGte;
-            }
-
-            if (tradingVenueLt !== undefined) {
-                localVarQueryParameter['trading_venue.lt'] = tradingVenueLt;
-            }
-
-            if (tradingVenueLte !== undefined) {
-                localVarQueryParameter['trading_venue.lte'] = tradingVenueLte;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve a snapshot of the most recent futures contract data.
-         * @summary futures_snapshot_v1 API
-         * @param {string} [productCode] The code for the contracts\&#39; underlying product.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {string} [ticker] The futures contract identifier, including the base symbol and contract expiration (e.g., ESZ24 for the December 2024 S&amp;P 500 E-mini contract).
-         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [tickerGt] Filter greater than the value.
-         * @param {string} [tickerGte] Filter greater than or equal to the value.
-         * @param {string} [tickerLt] Filter less than the value.
-         * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;ticker\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXSnapshot: async (productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/futures/vX/snapshot`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (productCode !== undefined) {
-                localVarQueryParameter['product_code'] = productCode;
-            }
-
-            if (productCodeAnyOf !== undefined) {
-                localVarQueryParameter['product_code.any_of'] = productCodeAnyOf;
-            }
-
-            if (productCodeGt !== undefined) {
-                localVarQueryParameter['product_code.gt'] = productCodeGt;
-            }
-
-            if (productCodeGte !== undefined) {
-                localVarQueryParameter['product_code.gte'] = productCodeGte;
-            }
-
-            if (productCodeLt !== undefined) {
-                localVarQueryParameter['product_code.lt'] = productCodeLt;
-            }
-
-            if (productCodeLte !== undefined) {
-                localVarQueryParameter['product_code.lte'] = productCodeLte;
-            }
-
-            if (ticker !== undefined) {
-                localVarQueryParameter['ticker'] = ticker;
-            }
-
-            if (tickerAnyOf !== undefined) {
-                localVarQueryParameter['ticker.any_of'] = tickerAnyOf;
-            }
-
-            if (tickerGt !== undefined) {
-                localVarQueryParameter['ticker.gt'] = tickerGt;
-            }
-
-            if (tickerGte !== undefined) {
-                localVarQueryParameter['ticker.gte'] = tickerGte;
-            }
-
-            if (tickerLt !== undefined) {
-                localVarQueryParameter['ticker.lt'] = tickerLt;
-            }
-
-            if (tickerLte !== undefined) {
-                localVarQueryParameter['ticker.lte'] = tickerLte;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve comprehensive, tick-level trade data for a specified futures contract ticker over a defined time range. Each record includes the trade price, size, session start date, and precise timestamps, capturing individual trade events throughout the period. This granular data is essential for constructing aggregated bars and performing detailed analyses of intraday price movements, making it a valuable tool for backtesting, algorithmic strategy development, and market research.  Use Cases: Intraday analysis, algorithmic trading, backtesting, market research.
-         * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-         * @param {string} [timestamp] The time when the trade was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXTrades: async (ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'ticker' is not null or undefined
-            assertParamExists('getFuturesVXTrades', 'ticker', ticker)
-            const localVarPath = `/futures/vX/trades/{ticker}`
                 .replace(`{${"ticker"}}`, encodeURIComponent(String(ticker)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -19453,6 +18792,148 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Contains NBBO (National Best Bid and Offer) quote records for US options contracts, capturing bid/ask prices, sizes, and exchange attribution at nanosecond precision.
+         * @param {string} ticker The options ticker symbol (e.g., O:SPY260123C00687000).
+         * @param {string} [timestamp] The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this quote from the exchange which produced it. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV3QuotesTicker: async (ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'ticker' is not null or undefined
+            assertParamExists('getOptionsV3QuotesTicker', 'ticker', ticker)
+            const localVarPath = `/options/v3/quotes/{ticker}`
+                .replace(`{${"ticker"}}`, encodeURIComponent(String(ticker)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (timestamp !== undefined) {
+                localVarQueryParameter['timestamp'] = timestamp;
+            }
+
+            if (timestampGt !== undefined) {
+                localVarQueryParameter['timestamp.gt'] = timestampGt;
+            }
+
+            if (timestampGte !== undefined) {
+                localVarQueryParameter['timestamp.gte'] = timestampGte;
+            }
+
+            if (timestampLt !== undefined) {
+                localVarQueryParameter['timestamp.lt'] = timestampLt;
+            }
+
+            if (timestampLte !== undefined) {
+                localVarQueryParameter['timestamp.lte'] = timestampLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Contains individual trade transactions for US options contracts, capturing trade execution details including pricing, timing, and exchange information.
+         * @param {string} ticker The options ticker symbol (e.g., O:SPY260123C00687000).
+         * @param {string} [timestamp] The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV3TradesTicker: async (ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'ticker' is not null or undefined
+            assertParamExists('getOptionsV3TradesTicker', 'ticker', ticker)
+            const localVarPath = `/options/v3/trades/{ticker}`
+                .replace(`{${"ticker"}}`, encodeURIComponent(String(ticker)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (timestamp !== undefined) {
+                localVarQueryParameter['timestamp'] = timestamp;
+            }
+
+            if (timestampGt !== undefined) {
+                localVarQueryParameter['timestamp.gt'] = timestampGt;
+            }
+
+            if (timestampGte !== undefined) {
+                localVarQueryParameter['timestamp.gte'] = timestampGte;
+            }
+
+            if (timestampLt !== undefined) {
+                localVarQueryParameter['timestamp.lt'] = timestampLt;
+            }
+
+            if (timestampLte !== undefined) {
+                localVarQueryParameter['timestamp.lte'] = timestampLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Get the previous day\'s open, high, low, and close (OHLC) for the specified cryptocurrency pair. 
          * @summary Previous Close
          * @param {string} cryptoTicker The ticker symbol of the currency pair.
@@ -19884,6 +19365,77 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Contains individual trade transactions for US stocks, capturing trade execution details including pricing, timing, and exchange information.
+         * @param {string} ticker The ticker symbol.
+         * @param {string} [sipTimestamp] The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [sipTimestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [sipTimestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [sipTimestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [sipTimestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;sip_timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksDevTradesTicker: async (ticker: string, sipTimestamp?: string, sipTimestampGt?: string, sipTimestampGte?: string, sipTimestampLt?: string, sipTimestampLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'ticker' is not null or undefined
+            assertParamExists('getStocksDevTradesTicker', 'ticker', ticker)
+            const localVarPath = `/stocks/dev/trades/{ticker}`
+                .replace(`{${"ticker"}}`, encodeURIComponent(String(ticker)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (sipTimestamp !== undefined) {
+                localVarQueryParameter['sip_timestamp'] = sipTimestamp;
+            }
+
+            if (sipTimestampGt !== undefined) {
+                localVarQueryParameter['sip_timestamp.gt'] = sipTimestampGt;
+            }
+
+            if (sipTimestampGte !== undefined) {
+                localVarQueryParameter['sip_timestamp.gte'] = sipTimestampGte;
+            }
+
+            if (sipTimestampLt !== undefined) {
+                localVarQueryParameter['sip_timestamp.lt'] = sipTimestampLt;
+            }
+
+            if (sipTimestampLte !== undefined) {
+                localVarQueryParameter['sip_timestamp.lte'] = sipTimestampLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Get the exponential moving average (EMA) for a ticker symbol over a given time range.
          * @summary Exponential Moving Average (EMA)
          * @param {string} stockTicker Specify a case-sensitive ticker symbol for which to get exponential moving average (EMA) data. For example, AAPL represents Apple Inc.
@@ -19967,6 +19519,168 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (timestampLt !== undefined) {
                 localVarQueryParameter['timestamp.lt'] = timestampLt;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * SEC document text sections providing raw text content from specific sections of SEC filings (10-K, 10-Q, etc.).
+         * @param {string} [cik] SEC Central Index Key (10 digits, zero-padded).
+         * @param {string} [cikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [cikGt] Filter greater than the value.
+         * @param {string} [cikGte] Filter greater than or equal to the value.
+         * @param {string} [cikLt] Filter less than the value.
+         * @param {string} [cikLte] Filter less than or equal to the value.
+         * @param {string} [ticker] Stock ticker symbol for the company.
+         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickerGt] Filter greater than the value.
+         * @param {string} [tickerGte] Filter greater than or equal to the value.
+         * @param {string} [tickerLt] Filter less than the value.
+         * @param {string} [tickerLte] Filter less than or equal to the value.
+         * @param {GetStocksFilings10KVX0SectionsSectionEnum} [section] Standardized section identifier from the filing (e.g. \&#39;business\&#39;, \&#39;risk_factors\&#39;, etc.).
+         * @param {GetStocksFilings10KVX0SectionsSectionAnyOfEnum} [sectionAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [filingDate] Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEnd] Period end date that the filing relates to (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEndGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksFilings10KVX0Sections: async (cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, section?: GetStocksFilings10KVX0SectionsSectionEnum, sectionAnyOf?: GetStocksFilings10KVX0SectionsSectionAnyOfEnum, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/stocks/filings/10-K/vX_0/sections`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (cik !== undefined) {
+                localVarQueryParameter['cik'] = cik;
+            }
+
+            if (cikAnyOf !== undefined) {
+                localVarQueryParameter['cik.any_of'] = cikAnyOf;
+            }
+
+            if (cikGt !== undefined) {
+                localVarQueryParameter['cik.gt'] = cikGt;
+            }
+
+            if (cikGte !== undefined) {
+                localVarQueryParameter['cik.gte'] = cikGte;
+            }
+
+            if (cikLt !== undefined) {
+                localVarQueryParameter['cik.lt'] = cikLt;
+            }
+
+            if (cikLte !== undefined) {
+                localVarQueryParameter['cik.lte'] = cikLte;
+            }
+
+            if (ticker !== undefined) {
+                localVarQueryParameter['ticker'] = ticker;
+            }
+
+            if (tickerAnyOf !== undefined) {
+                localVarQueryParameter['ticker.any_of'] = tickerAnyOf;
+            }
+
+            if (tickerGt !== undefined) {
+                localVarQueryParameter['ticker.gt'] = tickerGt;
+            }
+
+            if (tickerGte !== undefined) {
+                localVarQueryParameter['ticker.gte'] = tickerGte;
+            }
+
+            if (tickerLt !== undefined) {
+                localVarQueryParameter['ticker.lt'] = tickerLt;
+            }
+
+            if (tickerLte !== undefined) {
+                localVarQueryParameter['ticker.lte'] = tickerLte;
+            }
+
+            if (section !== undefined) {
+                localVarQueryParameter['section'] = section;
+            }
+
+            if (sectionAnyOf !== undefined) {
+                localVarQueryParameter['section.any_of'] = sectionAnyOf;
+            }
+
+            if (filingDate !== undefined) {
+                localVarQueryParameter['filing_date'] = filingDate;
+            }
+
+            if (filingDateGt !== undefined) {
+                localVarQueryParameter['filing_date.gt'] = filingDateGt;
+            }
+
+            if (filingDateGte !== undefined) {
+                localVarQueryParameter['filing_date.gte'] = filingDateGte;
+            }
+
+            if (filingDateLt !== undefined) {
+                localVarQueryParameter['filing_date.lt'] = filingDateLt;
+            }
+
+            if (filingDateLte !== undefined) {
+                localVarQueryParameter['filing_date.lte'] = filingDateLte;
+            }
+
+            if (periodEnd !== undefined) {
+                localVarQueryParameter['period_end'] = periodEnd;
+            }
+
+            if (periodEndGt !== undefined) {
+                localVarQueryParameter['period_end.gt'] = periodEndGt;
+            }
+
+            if (periodEndGte !== undefined) {
+                localVarQueryParameter['period_end.gte'] = periodEndGte;
+            }
+
+            if (periodEndLt !== undefined) {
+                localVarQueryParameter['period_end.lt'] = periodEndLt;
+            }
+
+            if (periodEndLte !== undefined) {
+                localVarQueryParameter['period_end.lte'] = periodEndLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
 
@@ -20121,6 +19835,108 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (periodEndLte !== undefined) {
                 localVarQueryParameter['period_end.lte'] = periodEndLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * SEC 8-K filing disclosure categorization. A single 8-K filing can produce multiple rows when it covers multiple disclosure types — each row represents one tagged disclosure within the filing, classified into primary, secondary, and tertiary categories with a supporting text excerpt. The full classification list is available at /stocks/taxonomies/vX/disclosures.
+         * @param {string} [cik] SEC Central Index Key of the filer (10 digits, zero-padded).
+         * @param {string} [cikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickers] Filter for arrays that contain the value.
+         * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [filingDate] Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).
+         * @param {string} [filingDateAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [filingDateGt] Filter greater than the value.
+         * @param {string} [filingDateGte] Filter greater than or equal to the value.
+         * @param {string} [filingDateLt] Filter less than the value.
+         * @param {string} [filingDateLte] Filter less than or equal to the value.
+         * @param {string} [tertiaryCategory] Most specific disclosure category (e.g., \&#39;quarterly_results\&#39;). Filtering on this column must use an exact match. See the full taxonomy at /stocks/taxonomies/vX/disclosures.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksFilings8KVXDisclosures: async (cik?: string, cikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, filingDate?: string, filingDateAnyOf?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, tertiaryCategory?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/stocks/filings/8-K/vX/disclosures`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (cik !== undefined) {
+                localVarQueryParameter['cik'] = cik;
+            }
+
+            if (cikAnyOf !== undefined) {
+                localVarQueryParameter['cik.any_of'] = cikAnyOf;
+            }
+
+            if (tickers !== undefined) {
+                localVarQueryParameter['tickers'] = tickers;
+            }
+
+            if (tickersAllOf !== undefined) {
+                localVarQueryParameter['tickers.all_of'] = tickersAllOf;
+            }
+
+            if (tickersAnyOf !== undefined) {
+                localVarQueryParameter['tickers.any_of'] = tickersAnyOf;
+            }
+
+            if (filingDate !== undefined) {
+                localVarQueryParameter['filing_date'] = filingDate;
+            }
+
+            if (filingDateAnyOf !== undefined) {
+                localVarQueryParameter['filing_date.any_of'] = filingDateAnyOf;
+            }
+
+            if (filingDateGt !== undefined) {
+                localVarQueryParameter['filing_date.gt'] = filingDateGt;
+            }
+
+            if (filingDateGte !== undefined) {
+                localVarQueryParameter['filing_date.gte'] = filingDateGte;
+            }
+
+            if (filingDateLt !== undefined) {
+                localVarQueryParameter['filing_date.lt'] = filingDateLt;
+            }
+
+            if (filingDateLte !== undefined) {
+                localVarQueryParameter['filing_date.lte'] = filingDateLte;
+            }
+
+            if (tertiaryCategory !== undefined) {
+                localVarQueryParameter['tertiary_category'] = tertiaryCategory;
             }
 
             if (limit !== undefined) {
@@ -20391,24 +20207,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStocksFilingsVXForm3: async (issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStocksFilingsVXForm3: async (issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/stocks/filings/vX/form-3`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -20476,54 +20280,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['filing_date.lte'] = filingDateLte;
             }
 
-            if (maxTicker !== undefined) {
-                localVarQueryParameter['max_ticker'] = maxTicker;
-            }
-
-            if (maxTickerAnyOf !== undefined) {
-                localVarQueryParameter['max_ticker.any_of'] = maxTickerAnyOf;
-            }
-
-            if (maxTickerGt !== undefined) {
-                localVarQueryParameter['max_ticker.gt'] = maxTickerGt;
-            }
-
-            if (maxTickerGte !== undefined) {
-                localVarQueryParameter['max_ticker.gte'] = maxTickerGte;
-            }
-
-            if (maxTickerLt !== undefined) {
-                localVarQueryParameter['max_ticker.lt'] = maxTickerLt;
-            }
-
-            if (maxTickerLte !== undefined) {
-                localVarQueryParameter['max_ticker.lte'] = maxTickerLte;
-            }
-
-            if (minTicker !== undefined) {
-                localVarQueryParameter['min_ticker'] = minTicker;
-            }
-
-            if (minTickerAnyOf !== undefined) {
-                localVarQueryParameter['min_ticker.any_of'] = minTickerAnyOf;
-            }
-
-            if (minTickerGt !== undefined) {
-                localVarQueryParameter['min_ticker.gt'] = minTickerGt;
-            }
-
-            if (minTickerGte !== undefined) {
-                localVarQueryParameter['min_ticker.gte'] = minTickerGte;
-            }
-
-            if (minTickerLt !== undefined) {
-                localVarQueryParameter['min_ticker.lt'] = minTickerLt;
-            }
-
-            if (minTickerLte !== undefined) {
-                localVarQueryParameter['min_ticker.lte'] = minTickerLte;
-            }
-
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
             }
@@ -20559,24 +20315,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [transactionCode] SEC transaction code indicating the type of transaction (e.g., \&#39;P\&#39; for purchase, \&#39;S\&#39; for sale, \&#39;A\&#39; for grant/award, \&#39;M\&#39; for exercise/conversion).
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStocksFilingsVXForm4: async (issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, transactionCode?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStocksFilingsVXForm4: async (issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, transactionCode?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/stocks/filings/vX/form-4`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -20648,54 +20392,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['transaction_code'] = transactionCode;
             }
 
-            if (maxTicker !== undefined) {
-                localVarQueryParameter['max_ticker'] = maxTicker;
-            }
-
-            if (maxTickerAnyOf !== undefined) {
-                localVarQueryParameter['max_ticker.any_of'] = maxTickerAnyOf;
-            }
-
-            if (maxTickerGt !== undefined) {
-                localVarQueryParameter['max_ticker.gt'] = maxTickerGt;
-            }
-
-            if (maxTickerGte !== undefined) {
-                localVarQueryParameter['max_ticker.gte'] = maxTickerGte;
-            }
-
-            if (maxTickerLt !== undefined) {
-                localVarQueryParameter['max_ticker.lt'] = maxTickerLt;
-            }
-
-            if (maxTickerLte !== undefined) {
-                localVarQueryParameter['max_ticker.lte'] = maxTickerLte;
-            }
-
-            if (minTicker !== undefined) {
-                localVarQueryParameter['min_ticker'] = minTicker;
-            }
-
-            if (minTickerAnyOf !== undefined) {
-                localVarQueryParameter['min_ticker.any_of'] = minTickerAnyOf;
-            }
-
-            if (minTickerGt !== undefined) {
-                localVarQueryParameter['min_ticker.gt'] = minTickerGt;
-            }
-
-            if (minTickerGte !== undefined) {
-                localVarQueryParameter['min_ticker.gte'] = minTickerGte;
-            }
-
-            if (minTickerLt !== undefined) {
-                localVarQueryParameter['min_ticker.lt'] = minTickerLt;
-            }
-
-            if (minTickerLte !== undefined) {
-                localVarQueryParameter['min_ticker.lte'] = minTickerLte;
-            }
-
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
             }
@@ -20740,7 +20436,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21041,24 +20737,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [timeframeGte] Filter greater than or equal to the value.
          * @param {string} [timeframeLt] Filter less than the value.
          * @param {string} [timeframeLte] Filter less than or equal to the value.
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStocksFinancialsV1BalanceSheets: async (cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStocksFinancialsV1BalanceSheets: async (cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/stocks/financials/v1/balance-sheets`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -21214,54 +20898,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['timeframe.lte'] = timeframeLte;
             }
 
-            if (maxTicker !== undefined) {
-                localVarQueryParameter['max_ticker'] = maxTicker;
-            }
-
-            if (maxTickerAnyOf !== undefined) {
-                localVarQueryParameter['max_ticker.any_of'] = maxTickerAnyOf;
-            }
-
-            if (maxTickerGt !== undefined) {
-                localVarQueryParameter['max_ticker.gt'] = maxTickerGt;
-            }
-
-            if (maxTickerGte !== undefined) {
-                localVarQueryParameter['max_ticker.gte'] = maxTickerGte;
-            }
-
-            if (maxTickerLt !== undefined) {
-                localVarQueryParameter['max_ticker.lt'] = maxTickerLt;
-            }
-
-            if (maxTickerLte !== undefined) {
-                localVarQueryParameter['max_ticker.lte'] = maxTickerLte;
-            }
-
-            if (minTicker !== undefined) {
-                localVarQueryParameter['min_ticker'] = minTicker;
-            }
-
-            if (minTickerAnyOf !== undefined) {
-                localVarQueryParameter['min_ticker.any_of'] = minTickerAnyOf;
-            }
-
-            if (minTickerGt !== undefined) {
-                localVarQueryParameter['min_ticker.gt'] = minTickerGt;
-            }
-
-            if (minTickerGte !== undefined) {
-                localVarQueryParameter['min_ticker.gte'] = minTickerGte;
-            }
-
-            if (minTickerLt !== undefined) {
-                localVarQueryParameter['min_ticker.lt'] = minTickerLt;
-            }
-
-            if (minTickerLte !== undefined) {
-                localVarQueryParameter['min_ticker.lte'] = minTickerLte;
-            }
-
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
             }
@@ -21318,24 +20954,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [timeframeGte] Filter greater than or equal to the value.
          * @param {string} [timeframeLt] Filter less than the value.
          * @param {string} [timeframeLte] Filter less than or equal to the value.
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStocksFinancialsV1CashFlowStatements: async (cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStocksFinancialsV1CashFlowStatements: async (cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/stocks/financials/v1/cash-flow-statements`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -21491,54 +21115,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['timeframe.lte'] = timeframeLte;
             }
 
-            if (maxTicker !== undefined) {
-                localVarQueryParameter['max_ticker'] = maxTicker;
-            }
-
-            if (maxTickerAnyOf !== undefined) {
-                localVarQueryParameter['max_ticker.any_of'] = maxTickerAnyOf;
-            }
-
-            if (maxTickerGt !== undefined) {
-                localVarQueryParameter['max_ticker.gt'] = maxTickerGt;
-            }
-
-            if (maxTickerGte !== undefined) {
-                localVarQueryParameter['max_ticker.gte'] = maxTickerGte;
-            }
-
-            if (maxTickerLt !== undefined) {
-                localVarQueryParameter['max_ticker.lt'] = maxTickerLt;
-            }
-
-            if (maxTickerLte !== undefined) {
-                localVarQueryParameter['max_ticker.lte'] = maxTickerLte;
-            }
-
-            if (minTicker !== undefined) {
-                localVarQueryParameter['min_ticker'] = minTicker;
-            }
-
-            if (minTickerAnyOf !== undefined) {
-                localVarQueryParameter['min_ticker.any_of'] = minTickerAnyOf;
-            }
-
-            if (minTickerGt !== undefined) {
-                localVarQueryParameter['min_ticker.gt'] = minTickerGt;
-            }
-
-            if (minTickerGte !== undefined) {
-                localVarQueryParameter['min_ticker.gte'] = minTickerGte;
-            }
-
-            if (minTickerLt !== undefined) {
-                localVarQueryParameter['min_ticker.lt'] = minTickerLt;
-            }
-
-            if (minTickerLte !== undefined) {
-                localVarQueryParameter['min_ticker.lte'] = minTickerLte;
-            }
-
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
             }
@@ -21595,24 +21171,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [timeframeGte] Filter greater than or equal to the value.
          * @param {string} [timeframeLt] Filter less than the value.
          * @param {string} [timeframeLte] Filter less than or equal to the value.
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStocksFinancialsV1IncomeStatements: async (cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStocksFinancialsV1IncomeStatements: async (cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/stocks/financials/v1/income-statements`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -21766,54 +21330,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (timeframeLte !== undefined) {
                 localVarQueryParameter['timeframe.lte'] = timeframeLte;
-            }
-
-            if (maxTicker !== undefined) {
-                localVarQueryParameter['max_ticker'] = maxTicker;
-            }
-
-            if (maxTickerAnyOf !== undefined) {
-                localVarQueryParameter['max_ticker.any_of'] = maxTickerAnyOf;
-            }
-
-            if (maxTickerGt !== undefined) {
-                localVarQueryParameter['max_ticker.gt'] = maxTickerGt;
-            }
-
-            if (maxTickerGte !== undefined) {
-                localVarQueryParameter['max_ticker.gte'] = maxTickerGte;
-            }
-
-            if (maxTickerLt !== undefined) {
-                localVarQueryParameter['max_ticker.lt'] = maxTickerLt;
-            }
-
-            if (maxTickerLte !== undefined) {
-                localVarQueryParameter['max_ticker.lte'] = maxTickerLte;
-            }
-
-            if (minTicker !== undefined) {
-                localVarQueryParameter['min_ticker'] = minTicker;
-            }
-
-            if (minTickerAnyOf !== undefined) {
-                localVarQueryParameter['min_ticker.any_of'] = minTickerAnyOf;
-            }
-
-            if (minTickerGt !== undefined) {
-                localVarQueryParameter['min_ticker.gt'] = minTickerGt;
-            }
-
-            if (minTickerGte !== undefined) {
-                localVarQueryParameter['min_ticker.gte'] = minTickerGte;
-            }
-
-            if (minTickerLt !== undefined) {
-                localVarQueryParameter['min_ticker.lt'] = minTickerLt;
-            }
-
-            if (minTickerLte !== undefined) {
-                localVarQueryParameter['min_ticker.lte'] = minTickerLte;
             }
 
             if (limit !== undefined) {
@@ -22970,6 +22486,168 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (includeOtc !== undefined) {
                 localVarQueryParameter['include_otc'] = includeOtc;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * The complete list of 8-K disclosure classifications used in the 8-K disclosures endpoint.
+         * @param {string} [taxonomy] Taxonomy version that defines this classification (e.g., \&#39;1.0\&#39;).
+         * @param {string} [taxonomyAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [taxonomyGt] Filter greater than the value.
+         * @param {string} [taxonomyGte] Filter greater than or equal to the value.
+         * @param {string} [taxonomyLt] Filter less than the value.
+         * @param {string} [taxonomyLte] Filter less than or equal to the value.
+         * @param {string} [primaryCategory] Top-level disclosure category.
+         * @param {string} [primaryCategoryAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [primaryCategoryGt] Filter greater than the value.
+         * @param {string} [primaryCategoryGte] Filter greater than or equal to the value.
+         * @param {string} [primaryCategoryLt] Filter less than the value.
+         * @param {string} [primaryCategoryLte] Filter less than or equal to the value.
+         * @param {string} [secondaryCategory] Mid-level disclosure category.
+         * @param {string} [secondaryCategoryAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [secondaryCategoryGt] Filter greater than the value.
+         * @param {string} [secondaryCategoryGte] Filter greater than or equal to the value.
+         * @param {string} [secondaryCategoryLt] Filter less than the value.
+         * @param {string} [secondaryCategoryLte] Filter less than or equal to the value.
+         * @param {string} [tertiaryCategory] Most specific disclosure category.
+         * @param {string} [tertiaryCategoryAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tertiaryCategoryGt] Filter greater than the value.
+         * @param {string} [tertiaryCategoryGte] Filter greater than or equal to the value.
+         * @param {string} [tertiaryCategoryLt] Filter less than the value.
+         * @param {string} [tertiaryCategoryLte] Filter less than or equal to the value.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;taxonomy\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksTaxonomiesVXDisclosures: async (taxonomy?: string, taxonomyAnyOf?: string, taxonomyGt?: string, taxonomyGte?: string, taxonomyLt?: string, taxonomyLte?: string, primaryCategory?: string, primaryCategoryAnyOf?: string, primaryCategoryGt?: string, primaryCategoryGte?: string, primaryCategoryLt?: string, primaryCategoryLte?: string, secondaryCategory?: string, secondaryCategoryAnyOf?: string, secondaryCategoryGt?: string, secondaryCategoryGte?: string, secondaryCategoryLt?: string, secondaryCategoryLte?: string, tertiaryCategory?: string, tertiaryCategoryAnyOf?: string, tertiaryCategoryGt?: string, tertiaryCategoryGte?: string, tertiaryCategoryLt?: string, tertiaryCategoryLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/stocks/taxonomies/vX/disclosures`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (taxonomy !== undefined) {
+                localVarQueryParameter['taxonomy'] = taxonomy;
+            }
+
+            if (taxonomyAnyOf !== undefined) {
+                localVarQueryParameter['taxonomy.any_of'] = taxonomyAnyOf;
+            }
+
+            if (taxonomyGt !== undefined) {
+                localVarQueryParameter['taxonomy.gt'] = taxonomyGt;
+            }
+
+            if (taxonomyGte !== undefined) {
+                localVarQueryParameter['taxonomy.gte'] = taxonomyGte;
+            }
+
+            if (taxonomyLt !== undefined) {
+                localVarQueryParameter['taxonomy.lt'] = taxonomyLt;
+            }
+
+            if (taxonomyLte !== undefined) {
+                localVarQueryParameter['taxonomy.lte'] = taxonomyLte;
+            }
+
+            if (primaryCategory !== undefined) {
+                localVarQueryParameter['primary_category'] = primaryCategory;
+            }
+
+            if (primaryCategoryAnyOf !== undefined) {
+                localVarQueryParameter['primary_category.any_of'] = primaryCategoryAnyOf;
+            }
+
+            if (primaryCategoryGt !== undefined) {
+                localVarQueryParameter['primary_category.gt'] = primaryCategoryGt;
+            }
+
+            if (primaryCategoryGte !== undefined) {
+                localVarQueryParameter['primary_category.gte'] = primaryCategoryGte;
+            }
+
+            if (primaryCategoryLt !== undefined) {
+                localVarQueryParameter['primary_category.lt'] = primaryCategoryLt;
+            }
+
+            if (primaryCategoryLte !== undefined) {
+                localVarQueryParameter['primary_category.lte'] = primaryCategoryLte;
+            }
+
+            if (secondaryCategory !== undefined) {
+                localVarQueryParameter['secondary_category'] = secondaryCategory;
+            }
+
+            if (secondaryCategoryAnyOf !== undefined) {
+                localVarQueryParameter['secondary_category.any_of'] = secondaryCategoryAnyOf;
+            }
+
+            if (secondaryCategoryGt !== undefined) {
+                localVarQueryParameter['secondary_category.gt'] = secondaryCategoryGt;
+            }
+
+            if (secondaryCategoryGte !== undefined) {
+                localVarQueryParameter['secondary_category.gte'] = secondaryCategoryGte;
+            }
+
+            if (secondaryCategoryLt !== undefined) {
+                localVarQueryParameter['secondary_category.lt'] = secondaryCategoryLt;
+            }
+
+            if (secondaryCategoryLte !== undefined) {
+                localVarQueryParameter['secondary_category.lte'] = secondaryCategoryLte;
+            }
+
+            if (tertiaryCategory !== undefined) {
+                localVarQueryParameter['tertiary_category'] = tertiaryCategory;
+            }
+
+            if (tertiaryCategoryAnyOf !== undefined) {
+                localVarQueryParameter['tertiary_category.any_of'] = tertiaryCategoryAnyOf;
+            }
+
+            if (tertiaryCategoryGt !== undefined) {
+                localVarQueryParameter['tertiary_category.gt'] = tertiaryCategoryGt;
+            }
+
+            if (tertiaryCategoryGte !== undefined) {
+                localVarQueryParameter['tertiary_category.gte'] = tertiaryCategoryGte;
+            }
+
+            if (tertiaryCategoryLt !== undefined) {
+                localVarQueryParameter['tertiary_category.lt'] = tertiaryCategoryLt;
+            }
+
+            if (tertiaryCategoryLte !== undefined) {
+                localVarQueryParameter['tertiary_category.lte'] = tertiaryCategoryLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
 
@@ -25654,7 +25332,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [ratingActionGte] Filter greater than or equal to the value.
          * @param {string} [ratingActionLt] Filter less than the value.
          * @param {string} [ratingActionLte] Filter less than or equal to the value.
-         * @param {string} [benzingaFirmId] The identifer used by Benzinga for the firm record.
+         * @param {string} [benzingaFirmId] The identifier used by Benzinga for the firm record.
          * @param {string} [benzingaFirmIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaFirmIdGt] Filter greater than the value.
          * @param {string} [benzingaFirmIdGte] Filter greater than or equal to the value.
@@ -25757,10 +25435,10 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBenzingaV1ConsensusRatings(ticker: string, date?: string, dateAnyOf?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetBenzingaV1ConsensusRatings200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getBenzingaV1ConsensusRatings(ticker, date, dateAnyOf, dateGt, dateGte, dateLt, dateLte, limit, options);
+        async getBenzingaV1ConsensusRatingsTicker(ticker: string, date?: string, dateAnyOf?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetBenzingaV1ConsensusRatingsTicker200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBenzingaV1ConsensusRatingsTicker(ticker, date, dateAnyOf, dateGt, dateGte, dateLt, dateLte, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getBenzingaV1ConsensusRatings']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getBenzingaV1ConsensusRatingsTicker']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -25832,7 +25510,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * A comprehensive database of financial firms, tracking unique identifiers, names, and basic metadata for various financial institutions and research firms.
-         * @param {string} [benzingaId] The identifer used by Benzinga for this record.
+         * @param {string} [benzingaId] The identifier used by Benzinga for this record.
          * @param {string} [benzingaIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaIdGt] Filter greater than the value.
          * @param {string} [benzingaIdGte] Filter greater than or equal to the value.
@@ -25875,12 +25553,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} [importanceGte] Filter greater than or equal to the value. Value must be an integer.
          * @param {number} [importanceLt] Filter less than the value. Value must be an integer.
          * @param {number} [importanceLte] Filter less than or equal to the value. Value must be an integer.
-         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system.
-         * @param {string} [lastUpdatedAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [lastUpdatedGt] Filter greater than the value.
-         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value.
-         * @param {string} [lastUpdatedLt] Filter less than the value.
-         * @param {string} [lastUpdatedLte] Filter less than or equal to the value.
+         * @param {string} [lastUpdated] The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [lastUpdatedLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {number} [fiscalYear] The fiscal year corresponding to the period for which the guidance is issued. Value must be an integer.
          * @param {string} [fiscalYearAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer.
          * @param {number} [fiscalYearGt] Filter greater than the value. Value must be an integer.
@@ -25940,19 +25618,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [priceTargetActionGte] Filter greater than or equal to the value.
          * @param {string} [priceTargetActionLt] Filter less than the value.
          * @param {string} [priceTargetActionLte] Filter less than or equal to the value.
-         * @param {string} [benzingaId] The identifer used by Benzinga for this record.
+         * @param {string} [benzingaId] The identifier used by Benzinga for this record.
          * @param {string} [benzingaIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaIdGt] Filter greater than the value.
          * @param {string} [benzingaIdGte] Filter greater than or equal to the value.
          * @param {string} [benzingaIdLt] Filter less than the value.
          * @param {string} [benzingaIdLte] Filter less than or equal to the value.
-         * @param {string} [benzingaAnalystId] The identifer used by Benzinga for this analyst.
+         * @param {string} [benzingaAnalystId] The identifier used by Benzinga for this analyst.
          * @param {string} [benzingaAnalystIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaAnalystIdGt] Filter greater than the value.
          * @param {string} [benzingaAnalystIdGte] Filter greater than or equal to the value.
          * @param {string} [benzingaAnalystIdLt] Filter less than the value.
          * @param {string} [benzingaAnalystIdLte] Filter less than or equal to the value.
-         * @param {string} [benzingaFirmId] The identifer used by Benzinga for this firm.
+         * @param {string} [benzingaFirmId] The identifier used by Benzinga for this firm.
          * @param {string} [benzingaFirmIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [benzingaFirmIdGt] Filter greater than the value.
          * @param {string} [benzingaFirmIdGte] Filter greater than or equal to the value.
@@ -26811,27 +26489,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Get aggregates for a contract in a given time range.
-         * @summary Aggregates
-         * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-         * @param {string} [resolution] The size of each aggregate candle, specified as a number followed by a unit: &#x60;sec&#x60;, &#x60;min&#x60;, &#x60;hour&#x60;, &#x60;session&#x60;, &#x60;week&#x60;, &#x60;month&#x60;, &#x60;quarter&#x60;, or &#x60;year&#x60;.   Each unit has a maximum multiplier. For instance, minute candles go up to &#x60;59min&#x60; — after that, use &#x60;1hour&#x60;. Requesting an unsupported size returns a &#x60;400 Bad Request&#x60;.
-         * @param {string} [windowStart] Filter by the start time of each candle. Accepts a &#x60;YYYY-MM-DD&#x60; date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval.  When omitted, the API returns the most recent candles up to &#x60;limit&#x60;.  Use comparison suffixes to query a range: - &#x60;window_start.gte&#x60; — greater than or equal to - &#x60;window_start.gt&#x60; — greater than - &#x60;window_start.lte&#x60; — less than or equal to - &#x60;window_start.lt&#x60; — less than  **Examples** - Most recent minute candles: &#x60;/vX/aggs/ESU5?resolution&#x3D;1min&amp;limit&#x3D;5&#x60; - Single daily candle: &#x60;/vX/aggs/ESU5?resolution&#x3D;1session&amp;window_start&#x3D;2025-08-05&#x60; - Date range: &#x60;/vX/aggs/ESU5?resolution&#x3D;1session&amp;window_start.gte&#x3D;2025-07-01&amp;window_start.lte&#x3D;2025-07-31&#x60; - After a timestamp: &#x60;/vX/aggs/ESU5?resolution&#x3D;1sec&amp;window_start.gt&#x3D;1751409877000000000&amp;limit&#x3D;1000&#x60;
-         * @param {number} [limit] The number of results to return per page (default&#x3D;1000, maximum&#x3D;50000, minimum&#x3D;1).
-         * @param {string} [windowStartGte] Range by window_start.
-         * @param {string} [windowStartGt] Range by window_start.
-         * @param {string} [windowStartLte] Range by window_start.
-         * @param {string} [windowStartLt] Range by window_start.
-         * @param {GetFuturesAggregatesSortEnum} [sort] Sort results by field and direction using dotted notation (e.g., \&#39;ticker.asc\&#39;, \&#39;name.desc\&#39;).
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFuturesAggregates(ticker: string, resolution?: string, windowStart?: string, limit?: number, windowStartGte?: string, windowStartGt?: string, windowStartLte?: string, windowStartLt?: string, sort?: GetFuturesAggregatesSortEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AggregatesV1200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesAggregates(ticker, resolution, windowStart, limit, windowStartGte, windowStartGt, windowStartLte, windowStartLt, sort, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesAggregates']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.  Use Cases: Historical research, trading system integration, portfolio workflows, risk management.
          * @summary futures contracts API
          * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about contracts for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -26967,10 +26624,10 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getFuturesV1Quotes(ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Quotes200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesV1Quotes(ticker, timestamp, timestampGt, timestampGte, timestampLt, timestampLte, sessionEndDate, limit, sort, options);
+        async getFuturesV1QuotesTicker(ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1QuotesTicker200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesV1QuotesTicker(ticker, timestamp, timestampGt, timestampGte, timestampLt, timestampLte, sessionEndDate, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesV1Quotes']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesV1QuotesTicker']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -27044,229 +26701,10 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getFuturesV1Trades(ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Trades200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesV1Trades(ticker, timestamp, timestampGt, timestampGte, timestampLt, timestampLte, sessionEndDate, limit, sort, options);
+        async getFuturesV1TradesTicker(ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1TradesTicker200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesV1TradesTicker(ticker, timestamp, timestampGt, timestampGte, timestampLt, timestampLte, sessionEndDate, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesV1Trades']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.  Use Cases: Historical research, trading system integration, portfolio workflows, risk management.
-         * @summary futures contracts API
-         * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about contracts for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [productCode] The identifier for the contract\&#39;s product.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {string} [ticker] The ticker for the contract.
-         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [tickerGt] Filter greater than the value.
-         * @param {string} [tickerGte] Filter greater than or equal to the value.
-         * @param {string} [tickerLt] Filter less than the value.
-         * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {boolean} [active] Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date &lt;&#x3D; date &gt;&#x3D; last_trade_date) and false otherwise.
-         * @param {GetFuturesVXContractsTypeEnum} [type] The type of contract, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for contracts where type is \&#39;single\&#39;, \&#39;combo\&#39; or empty. This field only exists on contracts as of 2025-03-12 and later. It will be null when date &lt; 2025-03-12.
-         * @param {GetFuturesVXContractsTypeAnyOfEnum} [typeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [firstTradeDate] The first day on which the contract was tradeable. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [firstTradeDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [firstTradeDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [firstTradeDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [firstTradeDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDate] The last day on which the contract was tradeable. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [lastTradeDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;product_code\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFuturesVXContracts(date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, active?: boolean, type?: GetFuturesVXContractsTypeEnum, typeAnyOf?: GetFuturesVXContractsTypeAnyOfEnum, firstTradeDate?: string, firstTradeDateGt?: string, firstTradeDateGte?: string, firstTradeDateLt?: string, firstTradeDateLte?: string, lastTradeDate?: string, lastTradeDateGt?: string, lastTradeDateGte?: string, lastTradeDateLt?: string, lastTradeDateLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Contracts200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesVXContracts(date, dateGt, dateGte, dateLt, dateLte, productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, active, type, typeAnyOf, firstTradeDate, firstTradeDateGt, firstTradeDateGte, firstTradeDateLt, firstTradeDateLte, lastTradeDate, lastTradeDateGt, lastTradeDateGte, lastTradeDateLt, lastTradeDateLte, limit, sort, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesVXContracts']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * US futures exchanges and trading venues including major derivatives exchanges (CME, CBOT, NYMEX, COMEX) and other futures market infrastructure for commodity, financial, and other derivative contract trading.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFuturesVXExchanges(limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Exchanges200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesVXExchanges(limit, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesVXExchanges']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve the current market status for a specific product or products. This endpoint returns real-time indicators, such as open, pause, close, for futures products, along with the corresponding exchange and product codes and an evaluation timestamp. This information enables users to monitor operational conditions and adjust their trading strategies accordingly.  Use Cases: Real-time monitoring, algorithm scheduling, UI updates, operational planning.
-         * @summary Market Status API
-         * @param {string} [productCode] The product code of the futures contracts for which you want statuses.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFuturesVXMarketStatus(productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1MarketStatus200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesVXMarketStatus(productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, limit, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesVXMarketStatus']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.  Use Cases: Product specification, historical product checks, risk management, trading system integration.
-         * @summary Futures Products API
-         * @param {string} [name] The full name of the product.
-         * @param {string} [nameAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [nameGt] Filter greater than the value.
-         * @param {string} [nameGte] Filter greater than or equal to the value.
-         * @param {string} [nameLt] Filter less than the value.
-         * @param {string} [nameLte] Filter less than or equal to the value.
-         * @param {string} [productCode] The identifier for the product.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [tradingVenue] The trading venue (MIC) for the exchange on which this product\&#39;s contracts trade.
-         * @param {string} [tradingVenueAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [tradingVenueGt] Filter greater than the value.
-         * @param {string} [tradingVenueGte] Filter greater than or equal to the value.
-         * @param {string} [tradingVenueLt] Filter less than the value.
-         * @param {string} [tradingVenueLte] Filter less than or equal to the value.
-         * @param {GetFuturesVXProductsSectorEnum} [sector] The sector to which the product belongs.
-         * @param {GetFuturesVXProductsSectorAnyOfEnum} [sectorAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {GetFuturesVXProductsSubSectorEnum} [subSector] The sub-sector to which the product belongs.
-         * @param {GetFuturesVXProductsSubSectorAnyOfEnum} [subSectorAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {GetFuturesVXProductsAssetClassEnum} [assetClass] The asset class to which the product belongs.
-         * @param {GetFuturesVXProductsAssetClassAnyOfEnum} [assetClassAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {GetFuturesVXProductsAssetSubClassEnum} [assetSubClass] The asset sub-class to which the product belongs.
-         * @param {GetFuturesVXProductsAssetSubClassAnyOfEnum} [assetSubClassAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {GetFuturesVXProductsTypeEnum} [type] The type of product, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for both \&#39;single\&#39; and \&#39;combo\&#39; types.
-         * @param {GetFuturesVXProductsTypeAnyOfEnum} [typeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFuturesVXProducts(name?: string, nameAnyOf?: string, nameGt?: string, nameGte?: string, nameLt?: string, nameLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, sector?: GetFuturesVXProductsSectorEnum, sectorAnyOf?: GetFuturesVXProductsSectorAnyOfEnum, subSector?: GetFuturesVXProductsSubSectorEnum, subSectorAnyOf?: GetFuturesVXProductsSubSectorAnyOfEnum, assetClass?: GetFuturesVXProductsAssetClassEnum, assetClassAnyOf?: GetFuturesVXProductsAssetClassAnyOfEnum, assetSubClass?: GetFuturesVXProductsAssetSubClassEnum, assetSubClassAnyOf?: GetFuturesVXProductsAssetSubClassAnyOfEnum, type?: GetFuturesVXProductsTypeEnum, typeAnyOf?: GetFuturesVXProductsTypeAnyOfEnum, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Products200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesVXProducts(name, nameAnyOf, nameGt, nameGte, nameLt, nameLte, productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, date, dateGt, dateGte, dateLt, dateLte, tradingVenue, tradingVenueAnyOf, tradingVenueGt, tradingVenueGte, tradingVenueLt, tradingVenueLte, sector, sectorAnyOf, subSector, subSectorAnyOf, assetClass, assetClassAnyOf, assetSubClass, assetSubClassAnyOf, type, typeAnyOf, limit, sort, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesVXProducts']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
-         * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-         * @param {string} [timestamp] The time when the quote was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFuturesVXQuotes(ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Quotes200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesVXQuotes(ticker, timestamp, timestampGt, timestampGte, timestampLt, timestampLte, sessionEndDate, limit, sort, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesVXQuotes']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * The Schedules API provides a unified way to retrieve trading schedules for futures markets, returning precise session open and close times, intraday breaks, and any adjustments for holidays or special events. You can filter schedules by session_end_date or retrieve the schedule for a single product using its product code. All times are returned in Coordinated Universal Time (UTC), making it straightforward to align trading, execution, and operational workflows across systems.  Use Cases: Schedule planning, market analysis, strategy alignment, risk and operations management.
-         * @summary Futures Schedules API
-         * @param {string} [productCode] The product code of the futures contract.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {string} [sessionEndDate] The session end date for the schedules (also known as the trading date). This field is optional and can be used to filter results by a specific session end date. If left blank, schedules for all dates will be returned. Note that trading sessions end at 5 PM Central Time, so a session ending at 5 PM CT on January 1st would have a session_end_date of 2025-01-01. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [sessionEndDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [sessionEndDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [sessionEndDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [sessionEndDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [tradingVenue] The trading venue (MIC) for the exchange on which this schedule\&#39;s product trades.
-         * @param {string} [tradingVenueAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [tradingVenueGt] Filter greater than the value.
-         * @param {string} [tradingVenueGte] Filter greater than or equal to the value.
-         * @param {string} [tradingVenueLt] Filter less than the value.
-         * @param {string} [tradingVenueLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;product_code\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFuturesVXSchedules(productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, sessionEndDate?: string, sessionEndDateGt?: string, sessionEndDateGte?: string, sessionEndDateLt?: string, sessionEndDateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Schedules200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesVXSchedules(productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, sessionEndDate, sessionEndDateGt, sessionEndDateGte, sessionEndDateLt, sessionEndDateLte, tradingVenue, tradingVenueAnyOf, tradingVenueGt, tradingVenueGte, tradingVenueLt, tradingVenueLte, limit, sort, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesVXSchedules']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve a snapshot of the most recent futures contract data.
-         * @summary futures_snapshot_v1 API
-         * @param {string} [productCode] The code for the contracts\&#39; underlying product.
-         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [productCodeGt] Filter greater than the value.
-         * @param {string} [productCodeGte] Filter greater than or equal to the value.
-         * @param {string} [productCodeLt] Filter less than the value.
-         * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {string} [ticker] The futures contract identifier, including the base symbol and contract expiration (e.g., ESZ24 for the December 2024 S&amp;P 500 E-mini contract).
-         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [tickerGt] Filter greater than the value.
-         * @param {string} [tickerGte] Filter greater than or equal to the value.
-         * @param {string} [tickerLt] Filter less than the value.
-         * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;ticker\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFuturesVXSnapshot(productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Snapshot200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesVXSnapshot(productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, limit, sort, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesVXSnapshot']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve comprehensive, tick-level trade data for a specified futures contract ticker over a defined time range. Each record includes the trade price, size, session start date, and precise timestamps, capturing individual trade events throughout the period. This granular data is essential for constructing aggregated bars and performing detailed analyses of intraday price movements, making it a valuable tool for backtesting, algorithmic strategy development, and market research.  Use Cases: Intraday analysis, algorithmic trading, backtesting, market research.
-         * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-         * @param {string} [timestamp] The time when the trade was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
-         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFuturesVXTrades(ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, sessionEndDate?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Trades200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesVXTrades(ticker, timestamp, timestampGt, timestampGte, timestampLt, timestampLte, sessionEndDate, limit, sort, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesVXTrades']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesV1TradesTicker']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -27806,6 +27244,44 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Contains NBBO (National Best Bid and Offer) quote records for US options contracts, capturing bid/ask prices, sizes, and exchange attribution at nanosecond precision.
+         * @param {string} ticker The options ticker symbol (e.g., O:SPY260123C00687000).
+         * @param {string} [timestamp] The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this quote from the exchange which produced it. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getOptionsV3QuotesTicker(ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetOptionsV3QuotesTicker200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOptionsV3QuotesTicker(ticker, timestamp, timestampGt, timestampGte, timestampLt, timestampLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getOptionsV3QuotesTicker']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Contains individual trade transactions for US options contracts, capturing trade execution details including pricing, timing, and exchange information.
+         * @param {string} ticker The options ticker symbol (e.g., O:SPY260123C00687000).
+         * @param {string} [timestamp] The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getOptionsV3TradesTicker(ticker: string, timestamp?: string, timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetOptionsV3TradesTicker200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOptionsV3TradesTicker(ticker, timestamp, timestampGt, timestampGte, timestampLt, timestampLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getOptionsV3TradesTicker']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Get the previous day\'s open, high, low, and close (OHLC) for the specified cryptocurrency pair. 
          * @summary Previous Close
          * @param {string} cryptoTicker The ticker symbol of the currency pair.
@@ -27943,6 +27419,25 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Contains individual trade transactions for US stocks, capturing trade execution details including pricing, timing, and exchange information.
+         * @param {string} ticker The ticker symbol.
+         * @param {string} [sipTimestamp] The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [sipTimestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [sipTimestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [sipTimestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [sipTimestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;sip_timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStocksDevTradesTicker(ticker: string, sipTimestamp?: string, sipTimestampGt?: string, sipTimestampGte?: string, sipTimestampLt?: string, sipTimestampLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksDevTradesTicker200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksDevTradesTicker(ticker, sipTimestamp, sipTimestampGt, sipTimestampGte, sipTimestampLt, sipTimestampLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksDevTradesTicker']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Get the exponential moving average (EMA) for a ticker symbol over a given time range.
          * @summary Exponential Moving Average (EMA)
          * @param {string} stockTicker Specify a case-sensitive ticker symbol for which to get exponential moving average (EMA) data. For example, AAPL represents Apple Inc.
@@ -27981,6 +27476,43 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [tickerGte] Filter greater than or equal to the value.
          * @param {string} [tickerLt] Filter less than the value.
          * @param {string} [tickerLte] Filter less than or equal to the value.
+         * @param {GetStocksFilings10KVX0SectionsSectionEnum} [section] Standardized section identifier from the filing (e.g. \&#39;business\&#39;, \&#39;risk_factors\&#39;, etc.).
+         * @param {GetStocksFilings10KVX0SectionsSectionAnyOfEnum} [sectionAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [filingDate] Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEnd] Period end date that the filing relates to (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEndGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStocksFilings10KVX0Sections(cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, section?: GetStocksFilings10KVX0SectionsSectionEnum, sectionAnyOf?: GetStocksFilings10KVX0SectionsSectionAnyOfEnum, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFilings10KVXSections200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilings10KVX0Sections(cik, cikAnyOf, cikGt, cikGte, cikLt, cikLte, ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, section, sectionAnyOf, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, periodEnd, periodEndGt, periodEndGte, periodEndLt, periodEndLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFilings10KVX0Sections']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * SEC document text sections providing raw text content from specific sections of SEC filings (10-K, 10-Q, etc.).
+         * @param {string} [cik] SEC Central Index Key (10 digits, zero-padded).
+         * @param {string} [cikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [cikGt] Filter greater than the value.
+         * @param {string} [cikGte] Filter greater than or equal to the value.
+         * @param {string} [cikLt] Filter less than the value.
+         * @param {string} [cikLte] Filter less than or equal to the value.
+         * @param {string} [ticker] Stock ticker symbol for the company.
+         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickerGt] Filter greater than the value.
+         * @param {string} [tickerGte] Filter greater than or equal to the value.
+         * @param {string} [tickerLt] Filter less than the value.
+         * @param {string} [tickerLte] Filter less than or equal to the value.
          * @param {GetStocksFilings10KVXSectionsSectionEnum} [section] Standardized section identifier from the filing (e.g. \&#39;business\&#39;, \&#39;risk_factors\&#39;, etc.).
          * @param {GetStocksFilings10KVXSectionsSectionAnyOfEnum} [sectionAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [filingDate] Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -28002,6 +27534,31 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilings10KVXSections(cik, cikAnyOf, cikGt, cikGte, cikLt, cikLte, ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, section, sectionAnyOf, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, periodEnd, periodEndGt, periodEndGte, periodEndLt, periodEndLte, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFilings10KVXSections']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * SEC 8-K filing disclosure categorization. A single 8-K filing can produce multiple rows when it covers multiple disclosure types — each row represents one tagged disclosure within the filing, classified into primary, secondary, and tertiary categories with a supporting text excerpt. The full classification list is available at /stocks/taxonomies/vX/disclosures.
+         * @param {string} [cik] SEC Central Index Key of the filer (10 digits, zero-padded).
+         * @param {string} [cikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickers] Filter for arrays that contain the value.
+         * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [filingDate] Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).
+         * @param {string} [filingDateAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [filingDateGt] Filter greater than the value.
+         * @param {string} [filingDateGte] Filter greater than or equal to the value.
+         * @param {string} [filingDateLt] Filter less than the value.
+         * @param {string} [filingDateLte] Filter less than or equal to the value.
+         * @param {string} [tertiaryCategory] Most specific disclosure category (e.g., \&#39;quarterly_results\&#39;). Filtering on this column must use an exact match. See the full taxonomy at /stocks/taxonomies/vX/disclosures.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStocksFilings8KVXDisclosures(cik?: string, cikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, filingDate?: string, filingDateAnyOf?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, tertiaryCategory?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFilings8KVXDisclosures200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilings8KVXDisclosures(cik, cikAnyOf, tickers, tickersAllOf, tickersAnyOf, filingDate, filingDateAnyOf, filingDateGt, filingDateGte, filingDateLt, filingDateLte, tertiaryCategory, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFilings8KVXDisclosures']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -28075,25 +27632,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStocksFilingsVXForm3(issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFilingsVXForm3200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilingsVXForm3(issuerCik, issuerCikAnyOf, ownerCik, ownerCikAnyOf, tickers, tickersAllOf, tickersAnyOf, formType, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, maxTicker, maxTickerAnyOf, maxTickerGt, maxTickerGte, maxTickerLt, maxTickerLte, minTicker, minTickerAnyOf, minTickerGt, minTickerGte, minTickerLt, minTickerLte, limit, sort, options);
+        async getStocksFilingsVXForm3(issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFilingsVXForm3200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilingsVXForm3(issuerCik, issuerCikAnyOf, ownerCik, ownerCikAnyOf, tickers, tickersAllOf, tickersAnyOf, formType, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFilingsVXForm3']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28114,25 +27659,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [transactionCode] SEC transaction code indicating the type of transaction (e.g., \&#39;P\&#39; for purchase, \&#39;S\&#39; for sale, \&#39;A\&#39; for grant/award, \&#39;M\&#39; for exercise/conversion).
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStocksFilingsVXForm4(issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, transactionCode?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFilingsVXForm4200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilingsVXForm4(issuerCik, issuerCikAnyOf, ownerCik, ownerCikAnyOf, tickers, tickersAllOf, tickersAnyOf, formType, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, transactionCode, maxTicker, maxTickerAnyOf, maxTickerGt, maxTickerGte, maxTickerLt, maxTickerLte, minTicker, minTickerAnyOf, minTickerGt, minTickerGte, minTickerLt, minTickerLte, limit, sort, options);
+        async getStocksFilingsVXForm4(issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, transactionCode?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFilingsVXForm4200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilingsVXForm4(issuerCik, issuerCikAnyOf, ownerCik, ownerCikAnyOf, tickers, tickersAllOf, tickersAnyOf, formType, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, transactionCode, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFilingsVXForm4']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28162,7 +27695,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28241,25 +27774,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [timeframeGte] Filter greater than or equal to the value.
          * @param {string} [timeframeLt] Filter less than the value.
          * @param {string} [timeframeLte] Filter less than or equal to the value.
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStocksFinancialsV1BalanceSheets(cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFinancialsV1BalanceSheets200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFinancialsV1BalanceSheets(cik, cikAnyOf, cikGt, cikGte, cikLt, cikLte, tickers, tickersAllOf, tickersAnyOf, periodEnd, periodEndGt, periodEndGte, periodEndLt, periodEndLte, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, fiscalYear, fiscalYearGt, fiscalYearGte, fiscalYearLt, fiscalYearLte, fiscalQuarter, fiscalQuarterGt, fiscalQuarterGte, fiscalQuarterLt, fiscalQuarterLte, timeframe, timeframeAnyOf, timeframeGt, timeframeGte, timeframeLt, timeframeLte, maxTicker, maxTickerAnyOf, maxTickerGt, maxTickerGte, maxTickerLt, maxTickerLte, minTicker, minTickerAnyOf, minTickerGt, minTickerGte, minTickerLt, minTickerLte, limit, sort, options);
+        async getStocksFinancialsV1BalanceSheets(cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFinancialsV1BalanceSheets200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFinancialsV1BalanceSheets(cik, cikAnyOf, cikGt, cikGte, cikLt, cikLte, tickers, tickersAllOf, tickersAnyOf, periodEnd, periodEndGt, periodEndGte, periodEndLt, periodEndLte, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, fiscalYear, fiscalYearGt, fiscalYearGte, fiscalYearLt, fiscalYearLte, fiscalQuarter, fiscalQuarterGt, fiscalQuarterGte, fiscalQuarterLt, fiscalQuarterLte, timeframe, timeframeAnyOf, timeframeGt, timeframeGte, timeframeLt, timeframeLte, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFinancialsV1BalanceSheets']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28301,25 +27822,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [timeframeGte] Filter greater than or equal to the value.
          * @param {string} [timeframeLt] Filter less than the value.
          * @param {string} [timeframeLte] Filter less than or equal to the value.
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStocksFinancialsV1CashFlowStatements(cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFinancialsV1CashFlowStatements200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFinancialsV1CashFlowStatements(cik, cikAnyOf, cikGt, cikGte, cikLt, cikLte, periodEnd, periodEndGt, periodEndGte, periodEndLt, periodEndLte, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, tickers, tickersAllOf, tickersAnyOf, fiscalYear, fiscalYearGt, fiscalYearGte, fiscalYearLt, fiscalYearLte, fiscalQuarter, fiscalQuarterGt, fiscalQuarterGte, fiscalQuarterLt, fiscalQuarterLte, timeframe, timeframeAnyOf, timeframeGt, timeframeGte, timeframeLt, timeframeLte, maxTicker, maxTickerAnyOf, maxTickerGt, maxTickerGte, maxTickerLt, maxTickerLte, minTicker, minTickerAnyOf, minTickerGt, minTickerGte, minTickerLt, minTickerLte, limit, sort, options);
+        async getStocksFinancialsV1CashFlowStatements(cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFinancialsV1CashFlowStatements200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFinancialsV1CashFlowStatements(cik, cikAnyOf, cikGt, cikGte, cikLt, cikLte, periodEnd, periodEndGt, periodEndGte, periodEndLt, periodEndLte, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, tickers, tickersAllOf, tickersAnyOf, fiscalYear, fiscalYearGt, fiscalYearGte, fiscalYearLt, fiscalYearLte, fiscalQuarter, fiscalQuarterGt, fiscalQuarterGte, fiscalQuarterLt, fiscalQuarterLte, timeframe, timeframeAnyOf, timeframeGt, timeframeGte, timeframeLt, timeframeLte, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFinancialsV1CashFlowStatements']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28361,25 +27870,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [timeframeGte] Filter greater than or equal to the value.
          * @param {string} [timeframeLt] Filter less than the value.
          * @param {string} [timeframeLte] Filter less than or equal to the value.
-         * @param {string} [maxTicker] Filter equal to the value.
-         * @param {string} [maxTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [maxTickerGt] Filter greater than the value.
-         * @param {string} [maxTickerGte] Filter greater than or equal to the value.
-         * @param {string} [maxTickerLt] Filter less than the value.
-         * @param {string} [maxTickerLte] Filter less than or equal to the value.
-         * @param {string} [minTicker] Filter equal to the value.
-         * @param {string} [minTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {string} [minTickerGt] Filter greater than the value.
-         * @param {string} [minTickerGte] Filter greater than or equal to the value.
-         * @param {string} [minTickerLt] Filter less than the value.
-         * @param {string} [minTickerLte] Filter less than or equal to the value.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStocksFinancialsV1IncomeStatements(cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, maxTicker?: string, maxTickerAnyOf?: string, maxTickerGt?: string, maxTickerGte?: string, maxTickerLt?: string, maxTickerLte?: string, minTicker?: string, minTickerAnyOf?: string, minTickerGt?: string, minTickerGte?: string, minTickerLt?: string, minTickerLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFinancialsV1IncomeStatements200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFinancialsV1IncomeStatements(cik, cikAnyOf, cikGt, cikGte, cikLt, cikLte, tickers, tickersAllOf, tickersAnyOf, periodEnd, periodEndGt, periodEndGte, periodEndLt, periodEndLte, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, fiscalYear, fiscalYearGt, fiscalYearGte, fiscalYearLt, fiscalYearLte, fiscalQuarter, fiscalQuarterGt, fiscalQuarterGte, fiscalQuarterLt, fiscalQuarterLte, timeframe, timeframeAnyOf, timeframeGt, timeframeGte, timeframeLt, timeframeLte, maxTicker, maxTickerAnyOf, maxTickerGt, maxTickerGte, maxTickerLt, maxTickerLte, minTicker, minTickerAnyOf, minTickerGt, minTickerGte, minTickerLt, minTickerLte, limit, sort, options);
+        async getStocksFinancialsV1IncomeStatements(cik?: string, cikAnyOf?: string, cikGt?: string, cikGte?: string, cikLt?: string, cikLte?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, periodEnd?: string, periodEndGt?: string, periodEndGte?: string, periodEndLt?: string, periodEndLte?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, fiscalYear?: number, fiscalYearGt?: number, fiscalYearGte?: number, fiscalYearLt?: number, fiscalYearLte?: number, fiscalQuarter?: number, fiscalQuarterGt?: number, fiscalQuarterGte?: number, fiscalQuarterLt?: number, fiscalQuarterLte?: number, timeframe?: string, timeframeAnyOf?: string, timeframeGt?: string, timeframeGte?: string, timeframeLt?: string, timeframeLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFinancialsV1IncomeStatements200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFinancialsV1IncomeStatements(cik, cikAnyOf, cikGt, cikGte, cikLt, cikLte, tickers, tickersAllOf, tickersAnyOf, periodEnd, periodEndGt, periodEndGte, periodEndLt, periodEndLte, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, fiscalYear, fiscalYearGt, fiscalYearGte, fiscalYearLt, fiscalYearLte, fiscalQuarter, fiscalQuarterGt, fiscalQuarterGte, fiscalQuarterLt, fiscalQuarterLte, timeframe, timeframeAnyOf, timeframeGt, timeframeGte, timeframeLt, timeframeLte, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFinancialsV1IncomeStatements']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28661,6 +28158,43 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksSnapshotTickers(tickers, includeOtc, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksSnapshotTickers']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * The complete list of 8-K disclosure classifications used in the 8-K disclosures endpoint.
+         * @param {string} [taxonomy] Taxonomy version that defines this classification (e.g., \&#39;1.0\&#39;).
+         * @param {string} [taxonomyAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [taxonomyGt] Filter greater than the value.
+         * @param {string} [taxonomyGte] Filter greater than or equal to the value.
+         * @param {string} [taxonomyLt] Filter less than the value.
+         * @param {string} [taxonomyLte] Filter less than or equal to the value.
+         * @param {string} [primaryCategory] Top-level disclosure category.
+         * @param {string} [primaryCategoryAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [primaryCategoryGt] Filter greater than the value.
+         * @param {string} [primaryCategoryGte] Filter greater than or equal to the value.
+         * @param {string} [primaryCategoryLt] Filter less than the value.
+         * @param {string} [primaryCategoryLte] Filter less than or equal to the value.
+         * @param {string} [secondaryCategory] Mid-level disclosure category.
+         * @param {string} [secondaryCategoryAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [secondaryCategoryGt] Filter greater than the value.
+         * @param {string} [secondaryCategoryGte] Filter greater than or equal to the value.
+         * @param {string} [secondaryCategoryLt] Filter less than the value.
+         * @param {string} [secondaryCategoryLte] Filter less than or equal to the value.
+         * @param {string} [tertiaryCategory] Most specific disclosure category.
+         * @param {string} [tertiaryCategoryAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tertiaryCategoryGt] Filter greater than the value.
+         * @param {string} [tertiaryCategoryGte] Filter greater than or equal to the value.
+         * @param {string} [tertiaryCategoryLt] Filter less than the value.
+         * @param {string} [tertiaryCategoryLte] Filter less than or equal to the value.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;taxonomy\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStocksTaxonomiesVXDisclosures(taxonomy?: string, taxonomyAnyOf?: string, taxonomyGt?: string, taxonomyGte?: string, taxonomyLt?: string, taxonomyLte?: string, primaryCategory?: string, primaryCategoryAnyOf?: string, primaryCategoryGt?: string, primaryCategoryGte?: string, primaryCategoryLt?: string, primaryCategoryLte?: string, secondaryCategory?: string, secondaryCategoryAnyOf?: string, secondaryCategoryGt?: string, secondaryCategoryGte?: string, secondaryCategoryLt?: string, secondaryCategoryLte?: string, tertiaryCategory?: string, tertiaryCategoryAnyOf?: string, tertiaryCategoryGt?: string, tertiaryCategoryGte?: string, tertiaryCategoryLt?: string, tertiaryCategoryLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksTaxonomiesVXDisclosures200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksTaxonomiesVXDisclosures(taxonomy, taxonomyAnyOf, taxonomyGt, taxonomyGte, taxonomyLt, taxonomyLte, primaryCategory, primaryCategoryAnyOf, primaryCategoryGt, primaryCategoryGte, primaryCategoryLt, primaryCategoryLte, secondaryCategory, secondaryCategoryAnyOf, secondaryCategoryGt, secondaryCategoryGte, secondaryCategoryLt, secondaryCategoryLte, tertiaryCategory, tertiaryCategoryAnyOf, tertiaryCategoryGt, tertiaryCategoryGte, tertiaryCategoryLt, tertiaryCategoryLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksTaxonomiesVXDisclosures']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -29355,12 +28889,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * A comprehensive financial consensus ratings table that aggregates analyst recommendations and price targets for individual stock tickers, capturing detailed rating breakdowns and statistical insights.
-         * @param {DefaultApiGetBenzingaV1ConsensusRatingsRequest} requestParameters Request parameters.
+         * @param {DefaultApiGetBenzingaV1ConsensusRatingsTickerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBenzingaV1ConsensusRatings(requestParameters: DefaultApiGetBenzingaV1ConsensusRatingsRequest, options?: RawAxiosRequestConfig): Promise<GetBenzingaV1ConsensusRatings200Response> {
-            return localVarFp.getBenzingaV1ConsensusRatings(requestParameters.ticker, requestParameters.date, requestParameters.dateAnyOf, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.limit, options).then((request) => request(axios, basePath));
+        getBenzingaV1ConsensusRatingsTicker(requestParameters: DefaultApiGetBenzingaV1ConsensusRatingsTickerRequest, options?: RawAxiosRequestConfig): Promise<GetBenzingaV1ConsensusRatingsTicker200Response> {
+            return localVarFp.getBenzingaV1ConsensusRatingsTicker(requestParameters.ticker, requestParameters.date, requestParameters.dateAnyOf, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.limit, options).then((request) => request(axios, basePath));
         },
         /**
          * This table contains earnings data from Benzinga, tracking both actual and estimated financial metrics for publicly traded companies. It includes EPS and revenue figures with surprise calculations, along with metadata like fiscal periods, company identifiers, and reporting timestamps.
@@ -29735,16 +29269,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getForexV1Exchanges(requestParameters.limit, options).then((request) => request(axios, basePath));
         },
         /**
-         * Get aggregates for a contract in a given time range.
-         * @summary Aggregates
-         * @param {DefaultApiGetFuturesAggregatesRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesAggregates(requestParameters: DefaultApiGetFuturesAggregatesRequest, options?: RawAxiosRequestConfig): Promise<AggregatesV1200Response> {
-            return localVarFp.getFuturesAggregates(requestParameters.ticker, requestParameters.resolution, requestParameters.windowStart, requestParameters.limit, requestParameters.windowStartGte, requestParameters.windowStartGt, requestParameters.windowStartLte, requestParameters.windowStartLt, requestParameters.sort, options).then((request) => request(axios, basePath));
-        },
-        /**
          * The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.  Use Cases: Historical research, trading system integration, portfolio workflows, risk management.
          * @summary futures contracts API
          * @param {DefaultApiGetFuturesV1ContractsRequest} requestParameters Request parameters.
@@ -29785,12 +29309,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
-         * @param {DefaultApiGetFuturesV1QuotesRequest} requestParameters Request parameters.
+         * @param {DefaultApiGetFuturesV1QuotesTickerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFuturesV1Quotes(requestParameters: DefaultApiGetFuturesV1QuotesRequest, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Quotes200Response> {
-            return localVarFp.getFuturesV1Quotes(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        getFuturesV1QuotesTicker(requestParameters: DefaultApiGetFuturesV1QuotesTickerRequest, options?: RawAxiosRequestConfig): Promise<GetFuturesV1QuotesTicker200Response> {
+            return localVarFp.getFuturesV1QuotesTicker(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * The Schedules API provides a unified way to retrieve trading schedules for futures markets, returning precise session open and close times, intraday breaks, and any adjustments for holidays or special events. You can filter schedules by session_end_date or retrieve the schedule for a single product using its product code. All times are returned in Coordinated Universal Time (UTC), making it straightforward to align trading, execution, and operational workflows across systems.  Use Cases: Schedule planning, market analysis, strategy alignment, risk and operations management.
@@ -29814,89 +29338,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * Retrieve comprehensive, tick-level trade data for a specified futures contract ticker over a defined time range. Each record includes the trade price, size, session start date, and precise timestamps, capturing individual trade events throughout the period. This granular data is essential for constructing aggregated bars and performing detailed analyses of intraday price movements, making it a valuable tool for backtesting, algorithmic strategy development, and market research.  Use Cases: Intraday analysis, algorithmic trading, backtesting, market research.
-         * @param {DefaultApiGetFuturesV1TradesRequest} requestParameters Request parameters.
+         * @param {DefaultApiGetFuturesV1TradesTickerRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFuturesV1Trades(requestParameters: DefaultApiGetFuturesV1TradesRequest, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Trades200Response> {
-            return localVarFp.getFuturesV1Trades(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.  Use Cases: Historical research, trading system integration, portfolio workflows, risk management.
-         * @summary futures contracts API
-         * @param {DefaultApiGetFuturesVXContractsRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXContracts(requestParameters: DefaultApiGetFuturesVXContractsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Contracts200Response> {
-            return localVarFp.getFuturesVXContracts(requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.active, requestParameters.type, requestParameters.typeAnyOf, requestParameters.firstTradeDate, requestParameters.firstTradeDateGt, requestParameters.firstTradeDateGte, requestParameters.firstTradeDateLt, requestParameters.firstTradeDateLte, requestParameters.lastTradeDate, requestParameters.lastTradeDateGt, requestParameters.lastTradeDateGte, requestParameters.lastTradeDateLt, requestParameters.lastTradeDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * US futures exchanges and trading venues including major derivatives exchanges (CME, CBOT, NYMEX, COMEX) and other futures market infrastructure for commodity, financial, and other derivative contract trading.
-         * @param {DefaultApiGetFuturesVXExchangesRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXExchanges(requestParameters: DefaultApiGetFuturesVXExchangesRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Exchanges200Response> {
-            return localVarFp.getFuturesVXExchanges(requestParameters.limit, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve the current market status for a specific product or products. This endpoint returns real-time indicators, such as open, pause, close, for futures products, along with the corresponding exchange and product codes and an evaluation timestamp. This information enables users to monitor operational conditions and adjust their trading strategies accordingly.  Use Cases: Real-time monitoring, algorithm scheduling, UI updates, operational planning.
-         * @summary Market Status API
-         * @param {DefaultApiGetFuturesVXMarketStatusRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXMarketStatus(requestParameters: DefaultApiGetFuturesVXMarketStatusRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1MarketStatus200Response> {
-            return localVarFp.getFuturesVXMarketStatus(requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.limit, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.  Use Cases: Product specification, historical product checks, risk management, trading system integration.
-         * @summary Futures Products API
-         * @param {DefaultApiGetFuturesVXProductsRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXProducts(requestParameters: DefaultApiGetFuturesVXProductsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Products200Response> {
-            return localVarFp.getFuturesVXProducts(requestParameters.name, requestParameters.nameAnyOf, requestParameters.nameGt, requestParameters.nameGte, requestParameters.nameLt, requestParameters.nameLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.sector, requestParameters.sectorAnyOf, requestParameters.subSector, requestParameters.subSectorAnyOf, requestParameters.assetClass, requestParameters.assetClassAnyOf, requestParameters.assetSubClass, requestParameters.assetSubClassAnyOf, requestParameters.type, requestParameters.typeAnyOf, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
-         * @param {DefaultApiGetFuturesVXQuotesRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXQuotes(requestParameters: DefaultApiGetFuturesVXQuotesRequest, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Quotes200Response> {
-            return localVarFp.getFuturesVXQuotes(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * The Schedules API provides a unified way to retrieve trading schedules for futures markets, returning precise session open and close times, intraday breaks, and any adjustments for holidays or special events. You can filter schedules by session_end_date or retrieve the schedule for a single product using its product code. All times are returned in Coordinated Universal Time (UTC), making it straightforward to align trading, execution, and operational workflows across systems.  Use Cases: Schedule planning, market analysis, strategy alignment, risk and operations management.
-         * @summary Futures Schedules API
-         * @param {DefaultApiGetFuturesVXSchedulesRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXSchedules(requestParameters: DefaultApiGetFuturesVXSchedulesRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Schedules200Response> {
-            return localVarFp.getFuturesVXSchedules(requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.sessionEndDate, requestParameters.sessionEndDateGt, requestParameters.sessionEndDateGte, requestParameters.sessionEndDateLt, requestParameters.sessionEndDateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve a snapshot of the most recent futures contract data.
-         * @summary futures_snapshot_v1 API
-         * @param {DefaultApiGetFuturesVXSnapshotRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXSnapshot(requestParameters: DefaultApiGetFuturesVXSnapshotRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Snapshot200Response> {
-            return localVarFp.getFuturesVXSnapshot(requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve comprehensive, tick-level trade data for a specified futures contract ticker over a defined time range. Each record includes the trade price, size, session start date, and precise timestamps, capturing individual trade events throughout the period. This granular data is essential for constructing aggregated bars and performing detailed analyses of intraday price movements, making it a valuable tool for backtesting, algorithmic strategy development, and market research.  Use Cases: Intraday analysis, algorithmic trading, backtesting, market research.
-         * @param {DefaultApiGetFuturesVXTradesRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFuturesVXTrades(requestParameters: DefaultApiGetFuturesVXTradesRequest, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Trades200Response> {
-            return localVarFp.getFuturesVXTrades(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        getFuturesV1TradesTicker(requestParameters: DefaultApiGetFuturesV1TradesTickerRequest, options?: RawAxiosRequestConfig): Promise<GetFuturesV1TradesTicker200Response> {
+            return localVarFp.getFuturesV1TradesTicker(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * Get the daily open, high, low, and close (OHLC) for the entire cryptocurrency markets. 
@@ -30186,6 +29633,24 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getOptionsV1Exchanges(requestParameters.limit, options).then((request) => request(axios, basePath));
         },
         /**
+         * Contains NBBO (National Best Bid and Offer) quote records for US options contracts, capturing bid/ask prices, sizes, and exchange attribution at nanosecond precision.
+         * @param {DefaultApiGetOptionsV3QuotesTickerRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV3QuotesTicker(requestParameters: DefaultApiGetOptionsV3QuotesTickerRequest, options?: RawAxiosRequestConfig): Promise<GetOptionsV3QuotesTicker200Response> {
+            return localVarFp.getOptionsV3QuotesTicker(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Contains individual trade transactions for US options contracts, capturing trade execution details including pricing, timing, and exchange information.
+         * @param {DefaultApiGetOptionsV3TradesTickerRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV3TradesTicker(requestParameters: DefaultApiGetOptionsV3TradesTickerRequest, options?: RawAxiosRequestConfig): Promise<GetOptionsV3TradesTicker200Response> {
+            return localVarFp.getOptionsV3TradesTicker(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Get the previous day\'s open, high, low, and close (OHLC) for the specified cryptocurrency pair. 
          * @summary Previous Close
          * @param {DefaultApiGetPreviousCryptoAggregatesRequest} requestParameters Request parameters.
@@ -30276,6 +29741,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getStocksAggregates(requestParameters.stocksTicker, requestParameters.multiplier, requestParameters.timespan, requestParameters.from, requestParameters.to, requestParameters.adjusted, requestParameters.sort, requestParameters.limit, options).then((request) => request(axios, basePath));
         },
         /**
+         * Contains individual trade transactions for US stocks, capturing trade execution details including pricing, timing, and exchange information.
+         * @param {DefaultApiGetStocksDevTradesTickerRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksDevTradesTicker(requestParameters: DefaultApiGetStocksDevTradesTickerRequest, options?: RawAxiosRequestConfig): Promise<GetStocksDevTradesTicker200Response> {
+            return localVarFp.getStocksDevTradesTicker(requestParameters.ticker, requestParameters.sipTimestamp, requestParameters.sipTimestampGt, requestParameters.sipTimestampGte, requestParameters.sipTimestampLt, requestParameters.sipTimestampLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Get the exponential moving average (EMA) for a ticker symbol over a given time range.
          * @summary Exponential Moving Average (EMA)
          * @param {DefaultApiGetStocksEMARequest} requestParameters Request parameters.
@@ -30287,12 +29761,30 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * SEC document text sections providing raw text content from specific sections of SEC filings (10-K, 10-Q, etc.).
+         * @param {DefaultApiGetStocksFilings10KVX0SectionsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksFilings10KVX0Sections(requestParameters: DefaultApiGetStocksFilings10KVX0SectionsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFilings10KVXSections200Response> {
+            return localVarFp.getStocksFilings10KVX0Sections(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.section, requestParameters.sectionAnyOf, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * SEC document text sections providing raw text content from specific sections of SEC filings (10-K, 10-Q, etc.).
          * @param {DefaultApiGetStocksFilings10KVXSectionsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getStocksFilings10KVXSections(requestParameters: DefaultApiGetStocksFilings10KVXSectionsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFilings10KVXSections200Response> {
             return localVarFp.getStocksFilings10KVXSections(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.section, requestParameters.sectionAnyOf, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * SEC 8-K filing disclosure categorization. A single 8-K filing can produce multiple rows when it covers multiple disclosure types — each row represents one tagged disclosure within the filing, classified into primary, secondary, and tertiary categories with a supporting text excerpt. The full classification list is available at /stocks/taxonomies/vX/disclosures.
+         * @param {DefaultApiGetStocksFilings8KVXDisclosuresRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksFilings8KVXDisclosures(requestParameters: DefaultApiGetStocksFilings8KVXDisclosuresRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFilings8KVXDisclosures200Response> {
+            return localVarFp.getStocksFilings8KVXDisclosures(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.filingDate, requestParameters.filingDateAnyOf, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.tertiaryCategory, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * SEC 8-K filings text providing parsed content from current report filings. 8-K forms report material events such as earnings, acquisitions, executive changes, and other significant corporate events.
@@ -30319,7 +29811,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getStocksFilingsVXForm3(requestParameters: DefaultApiGetStocksFilingsVXForm3Request = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFilingsVXForm3200Response> {
-            return localVarFp.getStocksFilingsVXForm3(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+            return localVarFp.getStocksFilingsVXForm3(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * SEC Form 4 filings reporting changes in beneficial ownership of securities. Filed by corporate insiders (directors, officers, and 10%+ shareholders) within two business days of a transaction.
@@ -30328,7 +29820,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getStocksFilingsVXForm4(requestParameters: DefaultApiGetStocksFilingsVXForm4Request = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFilingsVXForm4200Response> {
-            return localVarFp.getStocksFilingsVXForm4(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.transactionCode, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+            return localVarFp.getStocksFilingsVXForm4(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.transactionCode, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.
@@ -30355,7 +29847,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getStocksFinancialsV1BalanceSheets(requestParameters: DefaultApiGetStocksFinancialsV1BalanceSheetsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFinancialsV1BalanceSheets200Response> {
-            return localVarFp.getStocksFinancialsV1BalanceSheets(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+            return localVarFp.getStocksFinancialsV1BalanceSheets(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * A comprehensive financial dataset containing quarterly, annual, and trailing twelve-month cash flow statement data for public companies. Includes detailed operating, investing, and financing cash flows with proper TTM calculations that sum all cash flow components over four quarters. TTM records are validated to ensure exactly four distinct quarters spanning 250-400 days for accurate trailing twelve-month cash flow analysis.
@@ -30364,7 +29856,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getStocksFinancialsV1CashFlowStatements(requestParameters: DefaultApiGetStocksFinancialsV1CashFlowStatementsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFinancialsV1CashFlowStatements200Response> {
-            return localVarFp.getStocksFinancialsV1CashFlowStatements(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+            return localVarFp.getStocksFinancialsV1CashFlowStatements(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * A comprehensive database of income statement financial data for public companies, including key metrics such as revenue, expenses, and net income for various reporting periods.
@@ -30373,7 +29865,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getStocksFinancialsV1IncomeStatements(requestParameters: DefaultApiGetStocksFinancialsV1IncomeStatementsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFinancialsV1IncomeStatements200Response> {
-            return localVarFp.getStocksFinancialsV1IncomeStatements(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+            return localVarFp.getStocksFinancialsV1IncomeStatements(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * A comprehensive financial ratios dataset providing key valuation, profitability, liquidity, and leverage metrics for public companies. Combines data from income statements, balance sheets, and cash flow statements with daily stock prices to calculate ratios on a daily basis. Uses trailing twelve months (TTM) data for income/cash flow metrics and quarterly data for balance sheet items. Fundamental data updates are applied starting from each filing\'s period end date. Market cap calculations use point-in-time shares outstanding for historical accuracy.
@@ -30463,6 +29955,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getStocksSnapshotTickers(requestParameters: DefaultApiGetStocksSnapshotTickersRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksSnapshotTickers200Response> {
             return localVarFp.getStocksSnapshotTickers(requestParameters.tickers, requestParameters.includeOtc, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * The complete list of 8-K disclosure classifications used in the 8-K disclosures endpoint.
+         * @param {DefaultApiGetStocksTaxonomiesVXDisclosuresRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksTaxonomiesVXDisclosures(requestParameters: DefaultApiGetStocksTaxonomiesVXDisclosuresRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksTaxonomiesVXDisclosures200Response> {
+            return localVarFp.getStocksTaxonomiesVXDisclosures(requestParameters.taxonomy, requestParameters.taxonomyAnyOf, requestParameters.taxonomyGt, requestParameters.taxonomyGte, requestParameters.taxonomyLt, requestParameters.taxonomyLte, requestParameters.primaryCategory, requestParameters.primaryCategoryAnyOf, requestParameters.primaryCategoryGt, requestParameters.primaryCategoryGte, requestParameters.primaryCategoryLt, requestParameters.primaryCategoryLte, requestParameters.secondaryCategory, requestParameters.secondaryCategoryAnyOf, requestParameters.secondaryCategoryGt, requestParameters.secondaryCategoryGte, requestParameters.secondaryCategoryLt, requestParameters.secondaryCategoryLte, requestParameters.tertiaryCategory, requestParameters.tertiaryCategoryAnyOf, requestParameters.tertiaryCategoryGt, requestParameters.tertiaryCategoryGte, requestParameters.tertiaryCategoryLt, requestParameters.tertiaryCategoryLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * The complete list of risk factor classifications used in the risk factors endpoint.
@@ -31144,7 +30645,7 @@ export interface DefaultApiGetBenzingaV1AnalystInsightsRequest {
     readonly ratingActionLte?: string
 
     /**
-     * The identifer used by Benzinga for the firm record.
+     * The identifier used by Benzinga for the firm record.
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1AnalystInsights
      */
@@ -31572,64 +31073,64 @@ export interface DefaultApiGetBenzingaV1BullsBearsSayRequest {
 }
 
 /**
- * Request parameters for getBenzingaV1ConsensusRatings operation in DefaultApi.
+ * Request parameters for getBenzingaV1ConsensusRatingsTicker operation in DefaultApi.
  * @export
- * @interface DefaultApiGetBenzingaV1ConsensusRatingsRequest
+ * @interface DefaultApiGetBenzingaV1ConsensusRatingsTickerRequest
  */
-export interface DefaultApiGetBenzingaV1ConsensusRatingsRequest {
+export interface DefaultApiGetBenzingaV1ConsensusRatingsTickerRequest {
     /**
      * The requested ticker.
      * @type {string}
-     * @memberof DefaultApiGetBenzingaV1ConsensusRatings
+     * @memberof DefaultApiGetBenzingaV1ConsensusRatingsTicker
      */
     readonly ticker: string
 
     /**
      * The date range to aggregate analyst ratings over. For example, date.gte&#x3D;2024-10-01 and date.lt&#x3D;2025-01-01 for ratings published in Q4 2024. By default, all ratings are aggregated regardless of date.
      * @type {string}
-     * @memberof DefaultApiGetBenzingaV1ConsensusRatings
+     * @memberof DefaultApiGetBenzingaV1ConsensusRatingsTicker
      */
     readonly date?: string
 
     /**
      * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
      * @type {string}
-     * @memberof DefaultApiGetBenzingaV1ConsensusRatings
+     * @memberof DefaultApiGetBenzingaV1ConsensusRatingsTicker
      */
     readonly dateAnyOf?: string
 
     /**
      * Filter greater than the value.
      * @type {string}
-     * @memberof DefaultApiGetBenzingaV1ConsensusRatings
+     * @memberof DefaultApiGetBenzingaV1ConsensusRatingsTicker
      */
     readonly dateGt?: string
 
     /**
      * Filter greater than or equal to the value.
      * @type {string}
-     * @memberof DefaultApiGetBenzingaV1ConsensusRatings
+     * @memberof DefaultApiGetBenzingaV1ConsensusRatingsTicker
      */
     readonly dateGte?: string
 
     /**
      * Filter less than the value.
      * @type {string}
-     * @memberof DefaultApiGetBenzingaV1ConsensusRatings
+     * @memberof DefaultApiGetBenzingaV1ConsensusRatingsTicker
      */
     readonly dateLt?: string
 
     /**
      * Filter less than or equal to the value.
      * @type {string}
-     * @memberof DefaultApiGetBenzingaV1ConsensusRatings
+     * @memberof DefaultApiGetBenzingaV1ConsensusRatingsTicker
      */
     readonly dateLte?: string
 
     /**
      * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
-     * @memberof DefaultApiGetBenzingaV1ConsensusRatings
+     * @memberof DefaultApiGetBenzingaV1ConsensusRatingsTicker
      */
     readonly limit?: number
 }
@@ -32040,7 +31541,7 @@ export interface DefaultApiGetBenzingaV1EarningsRequest {
  */
 export interface DefaultApiGetBenzingaV1FirmsRequest {
     /**
-     * The identifer used by Benzinga for this record.
+     * The identifier used by Benzinga for this record.
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Firms
      */
@@ -32271,42 +31772,42 @@ export interface DefaultApiGetBenzingaV1GuidanceRequest {
     readonly importanceLte?: number
 
     /**
-     * The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system.
+     * The timestamp (formatted as an ISO 8601 timestamp) when the record was last updated in the system. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Guidance
      */
     readonly lastUpdated?: string
 
     /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Guidance
      */
     readonly lastUpdatedAnyOf?: string
 
     /**
-     * Filter greater than the value.
+     * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Guidance
      */
     readonly lastUpdatedGt?: string
 
     /**
-     * Filter greater than or equal to the value.
+     * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Guidance
      */
     readonly lastUpdatedGte?: string
 
     /**
-     * Filter less than the value.
+     * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Guidance
      */
     readonly lastUpdatedLt?: string
 
     /**
-     * Filter less than or equal to the value.
+     * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Guidance
      */
@@ -32656,7 +32157,7 @@ export interface DefaultApiGetBenzingaV1RatingsRequest {
     readonly priceTargetActionLte?: string
 
     /**
-     * The identifer used by Benzinga for this record.
+     * The identifier used by Benzinga for this record.
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Ratings
      */
@@ -32698,7 +32199,7 @@ export interface DefaultApiGetBenzingaV1RatingsRequest {
     readonly benzingaIdLte?: string
 
     /**
-     * The identifer used by Benzinga for this analyst.
+     * The identifier used by Benzinga for this analyst.
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Ratings
      */
@@ -32740,7 +32241,7 @@ export interface DefaultApiGetBenzingaV1RatingsRequest {
     readonly benzingaAnalystIdLte?: string
 
     /**
-     * The identifer used by Benzinga for this firm.
+     * The identifier used by Benzinga for this firm.
      * @type {string}
      * @memberof DefaultApiGetBenzingaV1Ratings
      */
@@ -36087,76 +35588,6 @@ export interface DefaultApiGetForexV1ExchangesRequest {
 }
 
 /**
- * Request parameters for getFuturesAggregates operation in DefaultApi.
- * @export
- * @interface DefaultApiGetFuturesAggregatesRequest
- */
-export interface DefaultApiGetFuturesAggregatesRequest {
-    /**
-     * The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesAggregates
-     */
-    readonly ticker: string
-
-    /**
-     * The size of each aggregate candle, specified as a number followed by a unit: &#x60;sec&#x60;, &#x60;min&#x60;, &#x60;hour&#x60;, &#x60;session&#x60;, &#x60;week&#x60;, &#x60;month&#x60;, &#x60;quarter&#x60;, or &#x60;year&#x60;.   Each unit has a maximum multiplier. For instance, minute candles go up to &#x60;59min&#x60; — after that, use &#x60;1hour&#x60;. Requesting an unsupported size returns a &#x60;400 Bad Request&#x60;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesAggregates
-     */
-    readonly resolution?: string
-
-    /**
-     * Filter by the start time of each candle. Accepts a &#x60;YYYY-MM-DD&#x60; date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval.  When omitted, the API returns the most recent candles up to &#x60;limit&#x60;.  Use comparison suffixes to query a range: - &#x60;window_start.gte&#x60; — greater than or equal to - &#x60;window_start.gt&#x60; — greater than - &#x60;window_start.lte&#x60; — less than or equal to - &#x60;window_start.lt&#x60; — less than  **Examples** - Most recent minute candles: &#x60;/vX/aggs/ESU5?resolution&#x3D;1min&amp;limit&#x3D;5&#x60; - Single daily candle: &#x60;/vX/aggs/ESU5?resolution&#x3D;1session&amp;window_start&#x3D;2025-08-05&#x60; - Date range: &#x60;/vX/aggs/ESU5?resolution&#x3D;1session&amp;window_start.gte&#x3D;2025-07-01&amp;window_start.lte&#x3D;2025-07-31&#x60; - After a timestamp: &#x60;/vX/aggs/ESU5?resolution&#x3D;1sec&amp;window_start.gt&#x3D;1751409877000000000&amp;limit&#x3D;1000&#x60;
-     * @type {string}
-     * @memberof DefaultApiGetFuturesAggregates
-     */
-    readonly windowStart?: string
-
-    /**
-     * The number of results to return per page (default&#x3D;1000, maximum&#x3D;50000, minimum&#x3D;1).
-     * @type {number}
-     * @memberof DefaultApiGetFuturesAggregates
-     */
-    readonly limit?: number
-
-    /**
-     * Range by window_start.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesAggregates
-     */
-    readonly windowStartGte?: string
-
-    /**
-     * Range by window_start.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesAggregates
-     */
-    readonly windowStartGt?: string
-
-    /**
-     * Range by window_start.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesAggregates
-     */
-    readonly windowStartLte?: string
-
-    /**
-     * Range by window_start.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesAggregates
-     */
-    readonly windowStartLt?: string
-
-    /**
-     * Sort results by field and direction using dotted notation (e.g., \&#39;ticker.asc\&#39;, \&#39;name.desc\&#39;).
-     * @type {'window_start.asc' | 'window_start.desc'}
-     * @memberof DefaultApiGetFuturesAggregates
-     */
-    readonly sort?: GetFuturesAggregatesSortEnum
-}
-
-/**
  * Request parameters for getFuturesV1Contracts operation in DefaultApi.
  * @export
  * @interface DefaultApiGetFuturesV1ContractsRequest
@@ -36710,71 +36141,71 @@ export interface DefaultApiGetFuturesV1ProductsRequest {
 }
 
 /**
- * Request parameters for getFuturesV1Quotes operation in DefaultApi.
+ * Request parameters for getFuturesV1QuotesTicker operation in DefaultApi.
  * @export
- * @interface DefaultApiGetFuturesV1QuotesRequest
+ * @interface DefaultApiGetFuturesV1QuotesTickerRequest
  */
-export interface DefaultApiGetFuturesV1QuotesRequest {
+export interface DefaultApiGetFuturesV1QuotesTickerRequest {
     /**
      * The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Quotes
+     * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
     readonly ticker: string
 
     /**
      * The time when the quote was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Quotes
+     * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
     readonly timestamp?: string
 
     /**
      * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Quotes
+     * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
     readonly timestampGt?: string
 
     /**
      * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Quotes
+     * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
     readonly timestampGte?: string
 
     /**
      * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Quotes
+     * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
     readonly timestampLt?: string
 
     /**
      * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Quotes
+     * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
     readonly timestampLte?: string
 
     /**
      * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Quotes
+     * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
     readonly sessionEndDate?: string
 
     /**
      * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
      * @type {number}
-     * @memberof DefaultApiGetFuturesV1Quotes
+     * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
     readonly limit?: number
 
     /**
      * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Quotes
+     * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
     readonly sort?: string
 }
@@ -37025,1009 +36456,71 @@ export interface DefaultApiGetFuturesV1SnapshotRequest {
 }
 
 /**
- * Request parameters for getFuturesV1Trades operation in DefaultApi.
+ * Request parameters for getFuturesV1TradesTicker operation in DefaultApi.
  * @export
- * @interface DefaultApiGetFuturesV1TradesRequest
+ * @interface DefaultApiGetFuturesV1TradesTickerRequest
  */
-export interface DefaultApiGetFuturesV1TradesRequest {
+export interface DefaultApiGetFuturesV1TradesTickerRequest {
     /**
      * The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Trades
+     * @memberof DefaultApiGetFuturesV1TradesTicker
      */
     readonly ticker: string
 
     /**
      * The time when the trade was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Trades
+     * @memberof DefaultApiGetFuturesV1TradesTicker
      */
     readonly timestamp?: string
 
     /**
      * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Trades
+     * @memberof DefaultApiGetFuturesV1TradesTicker
      */
     readonly timestampGt?: string
 
     /**
      * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Trades
+     * @memberof DefaultApiGetFuturesV1TradesTicker
      */
     readonly timestampGte?: string
 
     /**
      * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Trades
+     * @memberof DefaultApiGetFuturesV1TradesTicker
      */
     readonly timestampLt?: string
 
     /**
      * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Trades
+     * @memberof DefaultApiGetFuturesV1TradesTicker
      */
     readonly timestampLte?: string
 
     /**
      * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Trades
+     * @memberof DefaultApiGetFuturesV1TradesTicker
      */
     readonly sessionEndDate?: string
 
     /**
      * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
      * @type {number}
-     * @memberof DefaultApiGetFuturesV1Trades
+     * @memberof DefaultApiGetFuturesV1TradesTicker
      */
     readonly limit?: number
 
     /**
      * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
      * @type {string}
-     * @memberof DefaultApiGetFuturesV1Trades
-     */
-    readonly sort?: string
-}
-
-/**
- * Request parameters for getFuturesVXContracts operation in DefaultApi.
- * @export
- * @interface DefaultApiGetFuturesVXContractsRequest
- */
-export interface DefaultApiGetFuturesVXContractsRequest {
-    /**
-     * A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about contracts for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly date?: string
-
-    /**
-     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly dateGt?: string
-
-    /**
-     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly dateGte?: string
-
-    /**
-     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly dateLt?: string
-
-    /**
-     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly dateLte?: string
-
-    /**
-     * The identifier for the contract\&#39;s product.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly productCode?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly productCodeAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly productCodeGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly productCodeGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly productCodeLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly productCodeLte?: string
-
-    /**
-     * The ticker for the contract.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly ticker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly tickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly tickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly tickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly tickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly tickerLte?: string
-
-    /**
-     * Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date &lt;&#x3D; date &gt;&#x3D; last_trade_date) and false otherwise.
-     * @type {boolean}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly active?: boolean
-
-    /**
-     * The type of contract, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for contracts where type is \&#39;single\&#39;, \&#39;combo\&#39; or empty. This field only exists on contracts as of 2025-03-12 and later. It will be null when date &lt; 2025-03-12.
-     * @type {'single' | 'combo'}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly type?: GetFuturesVXContractsTypeEnum
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {'single' | 'combo'}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly typeAnyOf?: GetFuturesVXContractsTypeAnyOfEnum
-
-    /**
-     * The first day on which the contract was tradeable. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly firstTradeDate?: string
-
-    /**
-     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly firstTradeDateGt?: string
-
-    /**
-     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly firstTradeDateGte?: string
-
-    /**
-     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly firstTradeDateLt?: string
-
-    /**
-     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly firstTradeDateLte?: string
-
-    /**
-     * The last day on which the contract was tradeable. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly lastTradeDate?: string
-
-    /**
-     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly lastTradeDateGt?: string
-
-    /**
-     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly lastTradeDateGte?: string
-
-    /**
-     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly lastTradeDateLt?: string
-
-    /**
-     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly lastTradeDateLte?: string
-
-    /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
-     * @type {number}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly limit?: number
-
-    /**
-     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;product_code\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXContracts
-     */
-    readonly sort?: string
-}
-
-/**
- * Request parameters for getFuturesVXExchanges operation in DefaultApi.
- * @export
- * @interface DefaultApiGetFuturesVXExchangesRequest
- */
-export interface DefaultApiGetFuturesVXExchangesRequest {
-    /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
-     * @type {number}
-     * @memberof DefaultApiGetFuturesVXExchanges
-     */
-    readonly limit?: number
-}
-
-/**
- * Request parameters for getFuturesVXMarketStatus operation in DefaultApi.
- * @export
- * @interface DefaultApiGetFuturesVXMarketStatusRequest
- */
-export interface DefaultApiGetFuturesVXMarketStatusRequest {
-    /**
-     * The product code of the futures contracts for which you want statuses.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXMarketStatus
-     */
-    readonly productCode?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXMarketStatus
-     */
-    readonly productCodeAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXMarketStatus
-     */
-    readonly productCodeGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXMarketStatus
-     */
-    readonly productCodeGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXMarketStatus
-     */
-    readonly productCodeLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXMarketStatus
-     */
-    readonly productCodeLte?: string
-
-    /**
-     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
-     * @type {number}
-     * @memberof DefaultApiGetFuturesVXMarketStatus
-     */
-    readonly limit?: number
-}
-
-/**
- * Request parameters for getFuturesVXProducts operation in DefaultApi.
- * @export
- * @interface DefaultApiGetFuturesVXProductsRequest
- */
-export interface DefaultApiGetFuturesVXProductsRequest {
-    /**
-     * The full name of the product.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly name?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly nameAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly nameGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly nameGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly nameLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly nameLte?: string
-
-    /**
-     * The identifier for the product.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly productCode?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly productCodeAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly productCodeGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly productCodeGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly productCodeLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly productCodeLte?: string
-
-    /**
-     * A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly date?: string
-
-    /**
-     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly dateGt?: string
-
-    /**
-     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly dateGte?: string
-
-    /**
-     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly dateLt?: string
-
-    /**
-     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly dateLte?: string
-
-    /**
-     * The trading venue (MIC) for the exchange on which this product\&#39;s contracts trade.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly tradingVenue?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly tradingVenueAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly tradingVenueGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly tradingVenueGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly tradingVenueLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly tradingVenueLte?: string
-
-    /**
-     * The sector to which the product belongs.
-     * @type {'asia' | 'base' | 'biofuels' | 'coal' | 'cross_rates' | 'crude_oil' | 'custom_index' | 'dairy' | 'dj_ubs_ci' | 'electricity' | 'emissions' | 'europe' | 'fertilizer' | 'forestry' | 'grains_and_oilseeds' | 'intl_index' | 'liq_nat_gas_lng' | 'livestock' | 'long_term_gov' | 'long_term_non_gov' | 'majors' | 'minors' | 'nat_gas' | 'nat_gas_liq_petro' | 'precious' | 'refined_products' | 's_and_p_gsci' | 'sel_sector_index' | 'short_term_gov' | 'short_term_non_gov' | 'softs' | 'us' | 'us_index' | 'wet_bulk'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly sector?: GetFuturesVXProductsSectorEnum
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {'asia' | 'base' | 'biofuels' | 'coal' | 'cross_rates' | 'crude_oil' | 'custom_index' | 'dairy' | 'dj_ubs_ci' | 'electricity' | 'emissions' | 'europe' | 'fertilizer' | 'forestry' | 'grains_and_oilseeds' | 'intl_index' | 'liq_nat_gas_lng' | 'livestock' | 'long_term_gov' | 'long_term_non_gov' | 'majors' | 'minors' | 'nat_gas' | 'nat_gas_liq_petro' | 'precious' | 'refined_products' | 's_and_p_gsci' | 'sel_sector_index' | 'short_term_gov' | 'short_term_non_gov' | 'softs' | 'us' | 'us_index' | 'wet_bulk'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly sectorAnyOf?: GetFuturesVXProductsSectorAnyOfEnum
-
-    /**
-     * The sub-sector to which the product belongs.
-     * @type {'asian' | 'canadian' | 'cat' | 'cooling_degree_days' | 'ercot' | 'european' | 'gulf' | 'heating_degree_days' | 'iso_ne' | 'large_cap_index' | 'mid_cap_index' | 'miso' | 'north_american' | 'nyiso' | 'pjm' | 'small_cap_index' | 'west' | 'western_power'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly subSector?: GetFuturesVXProductsSubSectorEnum
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {'asian' | 'canadian' | 'cat' | 'cooling_degree_days' | 'ercot' | 'european' | 'gulf' | 'heating_degree_days' | 'iso_ne' | 'large_cap_index' | 'mid_cap_index' | 'miso' | 'north_american' | 'nyiso' | 'pjm' | 'small_cap_index' | 'west' | 'western_power'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly subSectorAnyOf?: GetFuturesVXProductsSubSectorAnyOfEnum
-
-    /**
-     * The asset class to which the product belongs.
-     * @type {'alt_investment' | 'commodity' | 'financials'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly assetClass?: GetFuturesVXProductsAssetClassEnum
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {'alt_investment' | 'commodity' | 'financials'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly assetClassAnyOf?: GetFuturesVXProductsAssetClassAnyOfEnum
-
-    /**
-     * The asset sub-class to which the product belongs.
-     * @type {'agricultural' | 'commodity_index' | 'energy' | 'equity' | 'foreign_exchange' | 'freight' | 'housing' | 'interest_rate' | 'metals' | 'weather'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly assetSubClass?: GetFuturesVXProductsAssetSubClassEnum
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {'agricultural' | 'commodity_index' | 'energy' | 'equity' | 'foreign_exchange' | 'freight' | 'housing' | 'interest_rate' | 'metals' | 'weather'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly assetSubClassAnyOf?: GetFuturesVXProductsAssetSubClassAnyOfEnum
-
-    /**
-     * The type of product, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for both \&#39;single\&#39; and \&#39;combo\&#39; types.
-     * @type {'single' | 'combo'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly type?: GetFuturesVXProductsTypeEnum
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {'single' | 'combo'}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly typeAnyOf?: GetFuturesVXProductsTypeAnyOfEnum
-
-    /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
-     * @type {number}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly limit?: number
-
-    /**
-     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXProducts
-     */
-    readonly sort?: string
-}
-
-/**
- * Request parameters for getFuturesVXQuotes operation in DefaultApi.
- * @export
- * @interface DefaultApiGetFuturesVXQuotesRequest
- */
-export interface DefaultApiGetFuturesVXQuotesRequest {
-    /**
-     * The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXQuotes
-     */
-    readonly ticker: string
-
-    /**
-     * The time when the quote was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXQuotes
-     */
-    readonly timestamp?: string
-
-    /**
-     * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXQuotes
-     */
-    readonly timestampGt?: string
-
-    /**
-     * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXQuotes
-     */
-    readonly timestampGte?: string
-
-    /**
-     * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXQuotes
-     */
-    readonly timestampLt?: string
-
-    /**
-     * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXQuotes
-     */
-    readonly timestampLte?: string
-
-    /**
-     * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXQuotes
-     */
-    readonly sessionEndDate?: string
-
-    /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
-     * @type {number}
-     * @memberof DefaultApiGetFuturesVXQuotes
-     */
-    readonly limit?: number
-
-    /**
-     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXQuotes
-     */
-    readonly sort?: string
-}
-
-/**
- * Request parameters for getFuturesVXSchedules operation in DefaultApi.
- * @export
- * @interface DefaultApiGetFuturesVXSchedulesRequest
- */
-export interface DefaultApiGetFuturesVXSchedulesRequest {
-    /**
-     * The product code of the futures contract.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly productCode?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly productCodeAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly productCodeGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly productCodeGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly productCodeLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly productCodeLte?: string
-
-    /**
-     * The session end date for the schedules (also known as the trading date). This field is optional and can be used to filter results by a specific session end date. If left blank, schedules for all dates will be returned. Note that trading sessions end at 5 PM Central Time, so a session ending at 5 PM CT on January 1st would have a session_end_date of 2025-01-01. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly sessionEndDate?: string
-
-    /**
-     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly sessionEndDateGt?: string
-
-    /**
-     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly sessionEndDateGte?: string
-
-    /**
-     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly sessionEndDateLt?: string
-
-    /**
-     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly sessionEndDateLte?: string
-
-    /**
-     * The trading venue (MIC) for the exchange on which this schedule\&#39;s product trades.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly tradingVenue?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly tradingVenueAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly tradingVenueGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly tradingVenueGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly tradingVenueLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly tradingVenueLte?: string
-
-    /**
-     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
-     * @type {number}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly limit?: number
-
-    /**
-     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;product_code\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSchedules
-     */
-    readonly sort?: string
-}
-
-/**
- * Request parameters for getFuturesVXSnapshot operation in DefaultApi.
- * @export
- * @interface DefaultApiGetFuturesVXSnapshotRequest
- */
-export interface DefaultApiGetFuturesVXSnapshotRequest {
-    /**
-     * The code for the contracts\&#39; underlying product.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly productCode?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly productCodeAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly productCodeGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly productCodeGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly productCodeLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly productCodeLte?: string
-
-    /**
-     * The futures contract identifier, including the base symbol and contract expiration (e.g., ESZ24 for the December 2024 S&amp;P 500 E-mini contract).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly ticker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly tickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly tickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly tickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly tickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly tickerLte?: string
-
-    /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
-     * @type {number}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly limit?: number
-
-    /**
-     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;ticker\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXSnapshot
-     */
-    readonly sort?: string
-}
-
-/**
- * Request parameters for getFuturesVXTrades operation in DefaultApi.
- * @export
- * @interface DefaultApiGetFuturesVXTradesRequest
- */
-export interface DefaultApiGetFuturesVXTradesRequest {
-    /**
-     * The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXTrades
-     */
-    readonly ticker: string
-
-    /**
-     * The time when the trade was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXTrades
-     */
-    readonly timestamp?: string
-
-    /**
-     * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXTrades
-     */
-    readonly timestampGt?: string
-
-    /**
-     * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXTrades
-     */
-    readonly timestampGte?: string
-
-    /**
-     * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXTrades
-     */
-    readonly timestampLt?: string
-
-    /**
-     * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXTrades
-     */
-    readonly timestampLte?: string
-
-    /**
-     * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXTrades
-     */
-    readonly sessionEndDate?: string
-
-    /**
-     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
-     * @type {number}
-     * @memberof DefaultApiGetFuturesVXTrades
-     */
-    readonly limit?: number
-
-    /**
-     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
-     * @type {string}
-     * @memberof DefaultApiGetFuturesVXTrades
+     * @memberof DefaultApiGetFuturesV1TradesTicker
      */
     readonly sort?: string
 }
@@ -39545,6 +38038,132 @@ export interface DefaultApiGetOptionsV1ExchangesRequest {
 }
 
 /**
+ * Request parameters for getOptionsV3QuotesTicker operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetOptionsV3QuotesTickerRequest
+ */
+export interface DefaultApiGetOptionsV3QuotesTickerRequest {
+    /**
+     * The options ticker symbol (e.g., O:SPY260123C00687000).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3QuotesTicker
+     */
+    readonly ticker: string
+
+    /**
+     * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this quote from the exchange which produced it. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3QuotesTicker
+     */
+    readonly timestamp?: string
+
+    /**
+     * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3QuotesTicker
+     */
+    readonly timestampGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3QuotesTicker
+     */
+    readonly timestampGte?: string
+
+    /**
+     * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3QuotesTicker
+     */
+    readonly timestampLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3QuotesTicker
+     */
+    readonly timestampLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsV3QuotesTicker
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3QuotesTicker
+     */
+    readonly sort?: string
+}
+
+/**
+ * Request parameters for getOptionsV3TradesTicker operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetOptionsV3TradesTickerRequest
+ */
+export interface DefaultApiGetOptionsV3TradesTickerRequest {
+    /**
+     * The options ticker symbol (e.g., O:SPY260123C00687000).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3TradesTicker
+     */
+    readonly ticker: string
+
+    /**
+     * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3TradesTicker
+     */
+    readonly timestamp?: string
+
+    /**
+     * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3TradesTicker
+     */
+    readonly timestampGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3TradesTicker
+     */
+    readonly timestampGte?: string
+
+    /**
+     * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3TradesTicker
+     */
+    readonly timestampLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3TradesTicker
+     */
+    readonly timestampLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsV3TradesTicker
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV3TradesTicker
+     */
+    readonly sort?: string
+}
+
+/**
  * Request parameters for getPreviousCryptoAggregates operation in DefaultApi.
  * @export
  * @interface DefaultApiGetPreviousCryptoAggregatesRequest
@@ -39811,6 +38430,69 @@ export interface DefaultApiGetStocksAggregatesRequest {
 }
 
 /**
+ * Request parameters for getStocksDevTradesTicker operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetStocksDevTradesTickerRequest
+ */
+export interface DefaultApiGetStocksDevTradesTickerRequest {
+    /**
+     * The ticker symbol.
+     * @type {string}
+     * @memberof DefaultApiGetStocksDevTradesTicker
+     */
+    readonly ticker: string
+
+    /**
+     * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetStocksDevTradesTicker
+     */
+    readonly sipTimestamp?: string
+
+    /**
+     * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetStocksDevTradesTicker
+     */
+    readonly sipTimestampGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetStocksDevTradesTicker
+     */
+    readonly sipTimestampGte?: string
+
+    /**
+     * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetStocksDevTradesTicker
+     */
+    readonly sipTimestampLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetStocksDevTradesTicker
+     */
+    readonly sipTimestampLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetStocksDevTradesTicker
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;sip_timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetStocksDevTradesTicker
+     */
+    readonly sort?: string
+}
+
+/**
  * Request parameters for getStocksEMA operation in DefaultApi.
  * @export
  * @interface DefaultApiGetStocksEMARequest
@@ -39906,6 +38588,195 @@ export interface DefaultApiGetStocksEMARequest {
      * @memberof DefaultApiGetStocksEMA
      */
     readonly timestampLt?: string
+}
+
+/**
+ * Request parameters for getStocksFilings10KVX0Sections operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetStocksFilings10KVX0SectionsRequest
+ */
+export interface DefaultApiGetStocksFilings10KVX0SectionsRequest {
+    /**
+     * SEC Central Index Key (10 digits, zero-padded).
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly cik?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly cikAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly cikGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly cikGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly cikLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly cikLte?: string
+
+    /**
+     * Stock ticker symbol for the company.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly ticker?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly tickerAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly tickerGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly tickerGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly tickerLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly tickerLte?: string
+
+    /**
+     * Standardized section identifier from the filing (e.g. \&#39;business\&#39;, \&#39;risk_factors\&#39;, etc.).
+     * @type {'business' | 'risk_factors'}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly section?: GetStocksFilings10KVX0SectionsSectionEnum
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {'business' | 'risk_factors'}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly sectionAnyOf?: GetStocksFilings10KVX0SectionsSectionAnyOfEnum
+
+    /**
+     * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly filingDate?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly filingDateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly filingDateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly filingDateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly filingDateLte?: string
+
+    /**
+     * Period end date that the filing relates to (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly periodEnd?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly periodEndGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly periodEndGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly periodEndLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly periodEndLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings10KVX0Sections
+     */
+    readonly sort?: string
 }
 
 /**
@@ -40093,6 +38964,111 @@ export interface DefaultApiGetStocksFilings10KVXSectionsRequest {
      * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
      * @type {string}
      * @memberof DefaultApiGetStocksFilings10KVXSections
+     */
+    readonly sort?: string
+}
+
+/**
+ * Request parameters for getStocksFilings8KVXDisclosures operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetStocksFilings8KVXDisclosuresRequest
+ */
+export interface DefaultApiGetStocksFilings8KVXDisclosuresRequest {
+    /**
+     * SEC Central Index Key of the filer (10 digits, zero-padded).
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly cik?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly cikAnyOf?: string
+
+    /**
+     * Filter for arrays that contain the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly tickers?: string
+
+    /**
+     * Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly tickersAllOf?: string
+
+    /**
+     * Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly tickersAnyOf?: string
+
+    /**
+     * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly filingDate?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly filingDateAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly filingDateGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly filingDateGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly filingDateLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly filingDateLte?: string
+
+    /**
+     * Most specific disclosure category (e.g., \&#39;quarterly_results\&#39;). Filtering on this column must use an exact match. See the full taxonomy at /stocks/taxonomies/vX/disclosures.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly tertiaryCategory?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilings8KVXDisclosures
      */
     readonly sort?: string
 }
@@ -40447,90 +39423,6 @@ export interface DefaultApiGetStocksFilingsVXForm3Request {
     readonly filingDateLte?: string
 
     /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly maxTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly maxTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly maxTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly maxTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly maxTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly maxTickerLte?: string
-
-    /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly minTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly minTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly minTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly minTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly minTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm3
-     */
-    readonly minTickerLte?: string
-
-    /**
      * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksFilingsVXForm3
@@ -40648,90 +39540,6 @@ export interface DefaultApiGetStocksFilingsVXForm4Request {
      * @memberof DefaultApiGetStocksFilingsVXForm4
      */
     readonly transactionCode?: string
-
-    /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly maxTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly maxTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly maxTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly maxTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly maxTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly maxTickerLte?: string
-
-    /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly minTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly minTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly minTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly minTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly minTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFilingsVXForm4
-     */
-    readonly minTickerLte?: string
 
     /**
      * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
@@ -40916,7 +39724,7 @@ export interface DefaultApiGetStocksFilingsVXIndexRequest {
     readonly filingDateLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksFilingsVXIndex
      */
@@ -41329,90 +40137,6 @@ export interface DefaultApiGetStocksFinancialsV1BalanceSheetsRequest {
     readonly timeframeLte?: string
 
     /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly maxTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly maxTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly maxTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly maxTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly maxTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly maxTickerLte?: string
-
-    /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly minTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly minTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly minTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly minTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly minTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
-     */
-    readonly minTickerLte?: string
-
-    /**
      * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
@@ -41679,90 +40403,6 @@ export interface DefaultApiGetStocksFinancialsV1CashFlowStatementsRequest {
     readonly timeframeLte?: string
 
     /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly maxTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly maxTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly maxTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly maxTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly maxTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly maxTickerLte?: string
-
-    /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly minTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly minTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly minTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly minTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly minTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
-     */
-    readonly minTickerLte?: string
-
-    /**
      * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
@@ -42027,90 +40667,6 @@ export interface DefaultApiGetStocksFinancialsV1IncomeStatementsRequest {
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly timeframeLte?: string
-
-    /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly maxTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly maxTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly maxTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly maxTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly maxTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly maxTickerLte?: string
-
-    /**
-     * Filter equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly minTicker?: string
-
-    /**
-     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly minTickerAnyOf?: string
-
-    /**
-     * Filter greater than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly minTickerGt?: string
-
-    /**
-     * Filter greater than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly minTickerGte?: string
-
-    /**
-     * Filter less than the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly minTickerLt?: string
-
-    /**
-     * Filter less than or equal to the value.
-     * @type {string}
-     * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
-     */
-    readonly minTickerLte?: string
 
     /**
      * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
@@ -43392,6 +41948,195 @@ export interface DefaultApiGetStocksSnapshotTickersRequest {
      * @memberof DefaultApiGetStocksSnapshotTickers
      */
     readonly includeOtc?: boolean
+}
+
+/**
+ * Request parameters for getStocksTaxonomiesVXDisclosures operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetStocksTaxonomiesVXDisclosuresRequest
+ */
+export interface DefaultApiGetStocksTaxonomiesVXDisclosuresRequest {
+    /**
+     * Taxonomy version that defines this classification (e.g., \&#39;1.0\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly taxonomy?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly taxonomyAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly taxonomyGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly taxonomyGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly taxonomyLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly taxonomyLte?: string
+
+    /**
+     * Top-level disclosure category.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly primaryCategory?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly primaryCategoryAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly primaryCategoryGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly primaryCategoryGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly primaryCategoryLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly primaryCategoryLte?: string
+
+    /**
+     * Mid-level disclosure category.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly secondaryCategory?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly secondaryCategoryAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly secondaryCategoryGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly secondaryCategoryGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly secondaryCategoryLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly secondaryCategoryLte?: string
+
+    /**
+     * Most specific disclosure category.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly tertiaryCategory?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly tertiaryCategoryAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly tertiaryCategoryGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly tertiaryCategoryGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly tertiaryCategoryLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly tertiaryCategoryLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;taxonomy\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
+     */
+    readonly sort?: string
 }
 
 /**
@@ -46105,13 +44850,13 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * A comprehensive financial consensus ratings table that aggregates analyst recommendations and price targets for individual stock tickers, capturing detailed rating breakdowns and statistical insights.
-     * @param {DefaultApiGetBenzingaV1ConsensusRatingsRequest} requestParameters Request parameters.
+     * @param {DefaultApiGetBenzingaV1ConsensusRatingsTickerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getBenzingaV1ConsensusRatings(requestParameters: DefaultApiGetBenzingaV1ConsensusRatingsRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getBenzingaV1ConsensusRatings(requestParameters.ticker, requestParameters.date, requestParameters.dateAnyOf, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.limit, options).then((request) => request(this.axios, this.basePath));
+    public getBenzingaV1ConsensusRatingsTicker(requestParameters: DefaultApiGetBenzingaV1ConsensusRatingsTickerRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getBenzingaV1ConsensusRatingsTicker(requestParameters.ticker, requestParameters.date, requestParameters.dateAnyOf, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.limit, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -46565,18 +45310,6 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
-     * Get aggregates for a contract in a given time range.
-     * @summary Aggregates
-     * @param {DefaultApiGetFuturesAggregatesRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getFuturesAggregates(requestParameters: DefaultApiGetFuturesAggregatesRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesAggregates(requestParameters.ticker, requestParameters.resolution, requestParameters.windowStart, requestParameters.limit, requestParameters.windowStartGte, requestParameters.windowStartGt, requestParameters.windowStartLte, requestParameters.windowStartLt, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.  Use Cases: Historical research, trading system integration, portfolio workflows, risk management.
      * @summary futures contracts API
      * @param {DefaultApiGetFuturesV1ContractsRequest} requestParameters Request parameters.
@@ -46625,13 +45358,13 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
-     * @param {DefaultApiGetFuturesV1QuotesRequest} requestParameters Request parameters.
+     * @param {DefaultApiGetFuturesV1QuotesTickerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getFuturesV1Quotes(requestParameters: DefaultApiGetFuturesV1QuotesRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesV1Quotes(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    public getFuturesV1QuotesTicker(requestParameters: DefaultApiGetFuturesV1QuotesTickerRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getFuturesV1QuotesTicker(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -46660,106 +45393,13 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * Retrieve comprehensive, tick-level trade data for a specified futures contract ticker over a defined time range. Each record includes the trade price, size, session start date, and precise timestamps, capturing individual trade events throughout the period. This granular data is essential for constructing aggregated bars and performing detailed analyses of intraday price movements, making it a valuable tool for backtesting, algorithmic strategy development, and market research.  Use Cases: Intraday analysis, algorithmic trading, backtesting, market research.
-     * @param {DefaultApiGetFuturesV1TradesRequest} requestParameters Request parameters.
+     * @param {DefaultApiGetFuturesV1TradesTickerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getFuturesV1Trades(requestParameters: DefaultApiGetFuturesV1TradesRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesV1Trades(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * The Contracts API provides a single source for discovering all listed futures contracts and retrieving complete contract specifications. You can query the full contract index with filters for product code, trade dates, active status, and date, returning key attributes such as ticker, first and last trade dates, days to maturity, exchange code, and order quantity limits in paginated form. The same API also returns the full specification for a single contract, including settlement dates, tick sizes, and other trading and risk related fields. Point-in-time lookups allow you to reconstruct the exact contract definition that applied on any given day.  Use Cases: Historical research, trading system integration, portfolio workflows, risk management.
-     * @summary futures contracts API
-     * @param {DefaultApiGetFuturesVXContractsRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getFuturesVXContracts(requestParameters: DefaultApiGetFuturesVXContractsRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesVXContracts(requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.active, requestParameters.type, requestParameters.typeAnyOf, requestParameters.firstTradeDate, requestParameters.firstTradeDateGt, requestParameters.firstTradeDateGte, requestParameters.firstTradeDateLt, requestParameters.firstTradeDateLte, requestParameters.lastTradeDate, requestParameters.lastTradeDateGt, requestParameters.lastTradeDateGte, requestParameters.lastTradeDateLt, requestParameters.lastTradeDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * US futures exchanges and trading venues including major derivatives exchanges (CME, CBOT, NYMEX, COMEX) and other futures market infrastructure for commodity, financial, and other derivative contract trading.
-     * @param {DefaultApiGetFuturesVXExchangesRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getFuturesVXExchanges(requestParameters: DefaultApiGetFuturesVXExchangesRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesVXExchanges(requestParameters.limit, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve the current market status for a specific product or products. This endpoint returns real-time indicators, such as open, pause, close, for futures products, along with the corresponding exchange and product codes and an evaluation timestamp. This information enables users to monitor operational conditions and adjust their trading strategies accordingly.  Use Cases: Real-time monitoring, algorithm scheduling, UI updates, operational planning.
-     * @summary Market Status API
-     * @param {DefaultApiGetFuturesVXMarketStatusRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getFuturesVXMarketStatus(requestParameters: DefaultApiGetFuturesVXMarketStatusRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesVXMarketStatus(requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.limit, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.  Use Cases: Product specification, historical product checks, risk management, trading system integration.
-     * @summary Futures Products API
-     * @param {DefaultApiGetFuturesVXProductsRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getFuturesVXProducts(requestParameters: DefaultApiGetFuturesVXProductsRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesVXProducts(requestParameters.name, requestParameters.nameAnyOf, requestParameters.nameGt, requestParameters.nameGte, requestParameters.nameLt, requestParameters.nameLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.sector, requestParameters.sectorAnyOf, requestParameters.subSector, requestParameters.subSectorAnyOf, requestParameters.assetClass, requestParameters.assetClassAnyOf, requestParameters.assetSubClass, requestParameters.assetSubClassAnyOf, requestParameters.type, requestParameters.typeAnyOf, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
-     * @param {DefaultApiGetFuturesVXQuotesRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getFuturesVXQuotes(requestParameters: DefaultApiGetFuturesVXQuotesRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesVXQuotes(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * The Schedules API provides a unified way to retrieve trading schedules for futures markets, returning precise session open and close times, intraday breaks, and any adjustments for holidays or special events. You can filter schedules by session_end_date or retrieve the schedule for a single product using its product code. All times are returned in Coordinated Universal Time (UTC), making it straightforward to align trading, execution, and operational workflows across systems.  Use Cases: Schedule planning, market analysis, strategy alignment, risk and operations management.
-     * @summary Futures Schedules API
-     * @param {DefaultApiGetFuturesVXSchedulesRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getFuturesVXSchedules(requestParameters: DefaultApiGetFuturesVXSchedulesRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesVXSchedules(requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.sessionEndDate, requestParameters.sessionEndDateGt, requestParameters.sessionEndDateGte, requestParameters.sessionEndDateLt, requestParameters.sessionEndDateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve a snapshot of the most recent futures contract data.
-     * @summary futures_snapshot_v1 API
-     * @param {DefaultApiGetFuturesVXSnapshotRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getFuturesVXSnapshot(requestParameters: DefaultApiGetFuturesVXSnapshotRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesVXSnapshot(requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve comprehensive, tick-level trade data for a specified futures contract ticker over a defined time range. Each record includes the trade price, size, session start date, and precise timestamps, capturing individual trade events throughout the period. This granular data is essential for constructing aggregated bars and performing detailed analyses of intraday price movements, making it a valuable tool for backtesting, algorithmic strategy development, and market research.  Use Cases: Intraday analysis, algorithmic trading, backtesting, market research.
-     * @param {DefaultApiGetFuturesVXTradesRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getFuturesVXTrades(requestParameters: DefaultApiGetFuturesVXTradesRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesVXTrades(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    public getFuturesV1TradesTicker(requestParameters: DefaultApiGetFuturesV1TradesTickerRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getFuturesV1TradesTicker(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.sessionEndDate, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -47108,6 +45748,28 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Contains NBBO (National Best Bid and Offer) quote records for US options contracts, capturing bid/ask prices, sizes, and exchange attribution at nanosecond precision.
+     * @param {DefaultApiGetOptionsV3QuotesTickerRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getOptionsV3QuotesTicker(requestParameters: DefaultApiGetOptionsV3QuotesTickerRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getOptionsV3QuotesTicker(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Contains individual trade transactions for US options contracts, capturing trade execution details including pricing, timing, and exchange information.
+     * @param {DefaultApiGetOptionsV3TradesTickerRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getOptionsV3TradesTicker(requestParameters: DefaultApiGetOptionsV3TradesTickerRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getOptionsV3TradesTicker(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Get the previous day\'s open, high, low, and close (OHLC) for the specified cryptocurrency pair. 
      * @summary Previous Close
      * @param {DefaultApiGetPreviousCryptoAggregatesRequest} requestParameters Request parameters.
@@ -47216,6 +45878,17 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Contains individual trade transactions for US stocks, capturing trade execution details including pricing, timing, and exchange information.
+     * @param {DefaultApiGetStocksDevTradesTickerRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getStocksDevTradesTicker(requestParameters: DefaultApiGetStocksDevTradesTickerRequest, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getStocksDevTradesTicker(requestParameters.ticker, requestParameters.sipTimestamp, requestParameters.sipTimestampGt, requestParameters.sipTimestampGte, requestParameters.sipTimestampLt, requestParameters.sipTimestampLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Get the exponential moving average (EMA) for a ticker symbol over a given time range.
      * @summary Exponential Moving Average (EMA)
      * @param {DefaultApiGetStocksEMARequest} requestParameters Request parameters.
@@ -47229,6 +45902,17 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * SEC document text sections providing raw text content from specific sections of SEC filings (10-K, 10-Q, etc.).
+     * @param {DefaultApiGetStocksFilings10KVX0SectionsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getStocksFilings10KVX0Sections(requestParameters: DefaultApiGetStocksFilings10KVX0SectionsRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getStocksFilings10KVX0Sections(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.section, requestParameters.sectionAnyOf, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * SEC document text sections providing raw text content from specific sections of SEC filings (10-K, 10-Q, etc.).
      * @param {DefaultApiGetStocksFilings10KVXSectionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -47236,6 +45920,17 @@ export class DefaultApi extends BaseAPI {
      */
     public getStocksFilings10KVXSections(requestParameters: DefaultApiGetStocksFilings10KVXSectionsRequest = {}, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getStocksFilings10KVXSections(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.section, requestParameters.sectionAnyOf, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * SEC 8-K filing disclosure categorization. A single 8-K filing can produce multiple rows when it covers multiple disclosure types — each row represents one tagged disclosure within the filing, classified into primary, secondary, and tertiary categories with a supporting text excerpt. The full classification list is available at /stocks/taxonomies/vX/disclosures.
+     * @param {DefaultApiGetStocksFilings8KVXDisclosuresRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getStocksFilings8KVXDisclosures(requestParameters: DefaultApiGetStocksFilings8KVXDisclosuresRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getStocksFilings8KVXDisclosures(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.filingDate, requestParameters.filingDateAnyOf, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.tertiaryCategory, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -47268,7 +45963,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public getStocksFilingsVXForm3(requestParameters: DefaultApiGetStocksFilingsVXForm3Request = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getStocksFilingsVXForm3(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+        return DefaultApiFp(this.configuration).getStocksFilingsVXForm3(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -47279,7 +45974,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public getStocksFilingsVXForm4(requestParameters: DefaultApiGetStocksFilingsVXForm4Request = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getStocksFilingsVXForm4(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.transactionCode, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+        return DefaultApiFp(this.configuration).getStocksFilingsVXForm4(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.transactionCode, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -47312,7 +46007,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public getStocksFinancialsV1BalanceSheets(requestParameters: DefaultApiGetStocksFinancialsV1BalanceSheetsRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getStocksFinancialsV1BalanceSheets(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+        return DefaultApiFp(this.configuration).getStocksFinancialsV1BalanceSheets(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -47323,7 +46018,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public getStocksFinancialsV1CashFlowStatements(requestParameters: DefaultApiGetStocksFinancialsV1CashFlowStatementsRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getStocksFinancialsV1CashFlowStatements(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+        return DefaultApiFp(this.configuration).getStocksFinancialsV1CashFlowStatements(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -47334,7 +46029,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public getStocksFinancialsV1IncomeStatements(requestParameters: DefaultApiGetStocksFinancialsV1IncomeStatementsRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getStocksFinancialsV1IncomeStatements(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.maxTicker, requestParameters.maxTickerAnyOf, requestParameters.maxTickerGt, requestParameters.maxTickerGte, requestParameters.maxTickerLt, requestParameters.maxTickerLte, requestParameters.minTicker, requestParameters.minTickerAnyOf, requestParameters.minTickerGt, requestParameters.minTickerGte, requestParameters.minTickerLt, requestParameters.minTickerLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+        return DefaultApiFp(this.configuration).getStocksFinancialsV1IncomeStatements(requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.periodEnd, requestParameters.periodEndGt, requestParameters.periodEndGte, requestParameters.periodEndLt, requestParameters.periodEndLte, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.fiscalYear, requestParameters.fiscalYearGt, requestParameters.fiscalYearGte, requestParameters.fiscalYearLt, requestParameters.fiscalYearLte, requestParameters.fiscalQuarter, requestParameters.fiscalQuarterGt, requestParameters.fiscalQuarterGte, requestParameters.fiscalQuarterLt, requestParameters.fiscalQuarterLte, requestParameters.timeframe, requestParameters.timeframeAnyOf, requestParameters.timeframeGt, requestParameters.timeframeGte, requestParameters.timeframeLt, requestParameters.timeframeLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -47442,6 +46137,17 @@ export class DefaultApi extends BaseAPI {
      */
     public getStocksSnapshotTickers(requestParameters: DefaultApiGetStocksSnapshotTickersRequest = {}, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getStocksSnapshotTickers(requestParameters.tickers, requestParameters.includeOtc, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * The complete list of 8-K disclosure classifications used in the 8-K disclosures endpoint.
+     * @param {DefaultApiGetStocksTaxonomiesVXDisclosuresRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getStocksTaxonomiesVXDisclosures(requestParameters: DefaultApiGetStocksTaxonomiesVXDisclosuresRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getStocksTaxonomiesVXDisclosures(requestParameters.taxonomy, requestParameters.taxonomyAnyOf, requestParameters.taxonomyGt, requestParameters.taxonomyGte, requestParameters.taxonomyLt, requestParameters.taxonomyLte, requestParameters.primaryCategory, requestParameters.primaryCategoryAnyOf, requestParameters.primaryCategoryGt, requestParameters.primaryCategoryGte, requestParameters.primaryCategoryLt, requestParameters.primaryCategoryLte, requestParameters.secondaryCategory, requestParameters.secondaryCategoryAnyOf, requestParameters.secondaryCategoryGt, requestParameters.secondaryCategoryGte, requestParameters.secondaryCategoryLt, requestParameters.secondaryCategoryLte, requestParameters.tertiaryCategory, requestParameters.tertiaryCategoryAnyOf, requestParameters.tertiaryCategoryGt, requestParameters.tertiaryCategoryGte, requestParameters.tertiaryCategoryLt, requestParameters.tertiaryCategoryLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -48127,14 +46833,6 @@ export enum GetForexSnapshotDirectionDirectionEnum {
   * @export
   * @enum {string}
   */
-export enum GetFuturesAggregatesSortEnum {
-    WindowStartAsc = 'window_start.asc',
-    WindowStartDesc = 'window_start.desc'
-}
-/**
-  * @export
-  * @enum {string}
-  */
 export enum GetFuturesV1ContractsTypeEnum {
     Single = 'single',
     Combo = 'combo'
@@ -48338,216 +47036,6 @@ export enum GetFuturesV1ProductsTypeEnum {
   * @enum {string}
   */
 export enum GetFuturesV1ProductsTypeAnyOfEnum {
-    Single = 'single',
-    Combo = 'combo'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXContractsTypeEnum {
-    Single = 'single',
-    Combo = 'combo'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXContractsTypeAnyOfEnum {
-    Single = 'single',
-    Combo = 'combo'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsSectorEnum {
-    Asia = 'asia',
-    Base = 'base',
-    Biofuels = 'biofuels',
-    Coal = 'coal',
-    CrossRates = 'cross_rates',
-    CrudeOil = 'crude_oil',
-    CustomIndex = 'custom_index',
-    Dairy = 'dairy',
-    DjUbsCi = 'dj_ubs_ci',
-    Electricity = 'electricity',
-    Emissions = 'emissions',
-    Europe = 'europe',
-    Fertilizer = 'fertilizer',
-    Forestry = 'forestry',
-    GrainsAndOilseeds = 'grains_and_oilseeds',
-    IntlIndex = 'intl_index',
-    LiqNatGasLng = 'liq_nat_gas_lng',
-    Livestock = 'livestock',
-    LongTermGov = 'long_term_gov',
-    LongTermNonGov = 'long_term_non_gov',
-    Majors = 'majors',
-    Minors = 'minors',
-    NatGas = 'nat_gas',
-    NatGasLiqPetro = 'nat_gas_liq_petro',
-    Precious = 'precious',
-    RefinedProducts = 'refined_products',
-    SAndPGsci = 's_and_p_gsci',
-    SelSectorIndex = 'sel_sector_index',
-    ShortTermGov = 'short_term_gov',
-    ShortTermNonGov = 'short_term_non_gov',
-    Softs = 'softs',
-    Us = 'us',
-    UsIndex = 'us_index',
-    WetBulk = 'wet_bulk'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsSectorAnyOfEnum {
-    Asia = 'asia',
-    Base = 'base',
-    Biofuels = 'biofuels',
-    Coal = 'coal',
-    CrossRates = 'cross_rates',
-    CrudeOil = 'crude_oil',
-    CustomIndex = 'custom_index',
-    Dairy = 'dairy',
-    DjUbsCi = 'dj_ubs_ci',
-    Electricity = 'electricity',
-    Emissions = 'emissions',
-    Europe = 'europe',
-    Fertilizer = 'fertilizer',
-    Forestry = 'forestry',
-    GrainsAndOilseeds = 'grains_and_oilseeds',
-    IntlIndex = 'intl_index',
-    LiqNatGasLng = 'liq_nat_gas_lng',
-    Livestock = 'livestock',
-    LongTermGov = 'long_term_gov',
-    LongTermNonGov = 'long_term_non_gov',
-    Majors = 'majors',
-    Minors = 'minors',
-    NatGas = 'nat_gas',
-    NatGasLiqPetro = 'nat_gas_liq_petro',
-    Precious = 'precious',
-    RefinedProducts = 'refined_products',
-    SAndPGsci = 's_and_p_gsci',
-    SelSectorIndex = 'sel_sector_index',
-    ShortTermGov = 'short_term_gov',
-    ShortTermNonGov = 'short_term_non_gov',
-    Softs = 'softs',
-    Us = 'us',
-    UsIndex = 'us_index',
-    WetBulk = 'wet_bulk'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsSubSectorEnum {
-    Asian = 'asian',
-    Canadian = 'canadian',
-    Cat = 'cat',
-    CoolingDegreeDays = 'cooling_degree_days',
-    Ercot = 'ercot',
-    European = 'european',
-    Gulf = 'gulf',
-    HeatingDegreeDays = 'heating_degree_days',
-    IsoNe = 'iso_ne',
-    LargeCapIndex = 'large_cap_index',
-    MidCapIndex = 'mid_cap_index',
-    Miso = 'miso',
-    NorthAmerican = 'north_american',
-    Nyiso = 'nyiso',
-    Pjm = 'pjm',
-    SmallCapIndex = 'small_cap_index',
-    West = 'west',
-    WesternPower = 'western_power'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsSubSectorAnyOfEnum {
-    Asian = 'asian',
-    Canadian = 'canadian',
-    Cat = 'cat',
-    CoolingDegreeDays = 'cooling_degree_days',
-    Ercot = 'ercot',
-    European = 'european',
-    Gulf = 'gulf',
-    HeatingDegreeDays = 'heating_degree_days',
-    IsoNe = 'iso_ne',
-    LargeCapIndex = 'large_cap_index',
-    MidCapIndex = 'mid_cap_index',
-    Miso = 'miso',
-    NorthAmerican = 'north_american',
-    Nyiso = 'nyiso',
-    Pjm = 'pjm',
-    SmallCapIndex = 'small_cap_index',
-    West = 'west',
-    WesternPower = 'western_power'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsAssetClassEnum {
-    AltInvestment = 'alt_investment',
-    Commodity = 'commodity',
-    Financials = 'financials'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsAssetClassAnyOfEnum {
-    AltInvestment = 'alt_investment',
-    Commodity = 'commodity',
-    Financials = 'financials'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsAssetSubClassEnum {
-    Agricultural = 'agricultural',
-    CommodityIndex = 'commodity_index',
-    Energy = 'energy',
-    Equity = 'equity',
-    ForeignExchange = 'foreign_exchange',
-    Freight = 'freight',
-    Housing = 'housing',
-    InterestRate = 'interest_rate',
-    Metals = 'metals',
-    Weather = 'weather'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsAssetSubClassAnyOfEnum {
-    Agricultural = 'agricultural',
-    CommodityIndex = 'commodity_index',
-    Energy = 'energy',
-    Equity = 'equity',
-    ForeignExchange = 'foreign_exchange',
-    Freight = 'freight',
-    Housing = 'housing',
-    InterestRate = 'interest_rate',
-    Metals = 'metals',
-    Weather = 'weather'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsTypeEnum {
-    Single = 'single',
-    Combo = 'combo'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum GetFuturesVXProductsTypeAnyOfEnum {
     Single = 'single',
     Combo = 'combo'
 }
@@ -48991,6 +47479,22 @@ export enum GetStocksEMASeriesTypeEnum {
 export enum GetStocksEMAOrderEnum {
     Asc = 'asc',
     Desc = 'desc'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetStocksFilings10KVX0SectionsSectionEnum {
+    Business = 'business',
+    RiskFactors = 'risk_factors'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetStocksFilings10KVX0SectionsSectionAnyOfEnum {
+    Business = 'business',
+    RiskFactors = 'risk_factors'
 }
 /**
   * @export
