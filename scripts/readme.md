@@ -16,11 +16,11 @@ defaults).
 2. Regenerates the client with `scripts/generate.sh`.
 3. Opens a **brand-new PR** — `bot/openapi-sync-<date>-<run-id>` → `master` —
    only when the regenerated output differs from what's committed. The commit is
-   GPG-signed and a Slack notification is posted to `SLACK_CLIENT_LIBRARY_WEBHOOK`.
-   Every run opens a new PR (never reuses one), so the reviewer differs from the
-   author.
+   authored by the GitHub App's bot identity and a Slack notification is posted
+   to `SLACK_CLIENT_LIBRARY_WEBHOOK`. Every run opens a new PR (never reuses
+   one), so the reviewer differs from the author.
 
-Required repo secrets: `GPG_PRIVATE_KEY`, `SLACK_CLIENT_LIBRARY_WEBHOOK`
+Required repo secrets: `SLACK_CLIENT_LIBRARY_WEBHOOK`
 (`GITHUB_TOKEN` is provided automatically).
 
 ## Manual regeneration
