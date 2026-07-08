@@ -1,0 +1,144 @@
+name: Sync OpenAPI client
+
+# Daily: pull the latest OpenAPI spec, regenerate the TypeScript REST client, and
+# open a brand-new PR only when the regenerated output differs from what's
+# committed. Mirrors the automation in massive-com/client-jvm.
+
+on:
+  schedule:
+    - cron: '0 15 * * *'   # 07:00 America/Vancouver
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-openapi
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      # Mint a short-lived token for the org GitHub App. The default GITHUB_TOKEN
+      # can't open PRs (org policy: "Allow GitHub Actions to create and approve
+      # pull requests" is off). The App token isn't subject to that restriction,
+      # triggers required checks, and authors the PR as the app bot so a human
+      # can still review.
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.MASSIVE_CLIENT_LIBRARY_AUTOMATION_APP_ID }}
+          private-key: ${{ secrets.MASSIVE_CLIENT_LIBRARY_AUTOMATION_APP_PRIVATE_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      # The typescript-axios generator is a Java JAR, so a JDK must be on PATH.
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # Cache the openapi-generator JAR (version pinned in openapitools.json)
+      # so we don't re-download ~30MB every run.
+      - name: Cache openapi-generator
+        uses: actions/cache@v4
+        with:
+          path: ~/.openapi-generator-cli
+          key: openapi-generator-7.21.0
+
+      # Installs @openapitools/openapi-generator-cli locally; scripts/generate.sh
+      # invokes it via `npx --no-install` so the pinned version is used.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Regenerate client
+        run: bash scripts/generate.sh
+
+      - name: Detect changes
+        id: diff
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes — spec + generated output match what's committed."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected:"
+            git diff --cached --stat | tail -25
+          fi
+
+      - name: Import GPG signing key
+        if: steps.diff.outputs.changed == 'true'
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
+      # A unique branch per run (date + run id) so every sync opens a brand-new
+      # PR and never reuses/updates a previous one.
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "justinpolygon"
+          git config user.email "123573436+justinpolygon@users.noreply.github.com"
+          BRANCH="bot/openapi-sync-$(date -u +'%Y-%m-%d')-${GITHUB_RUN_ID}"
+          echo "BRANCH=$BRANCH" >> "$GITHUB_ENV"
+          git checkout -B "$BRANCH"
+          git commit -S -m "Sync client-js with OpenAPI spec"
+          git push origin "$BRANCH"
+
+      - name: Open PR
+        if: steps.diff.outputs.changed == 'true'
+        id: pr
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          url=$(gh pr create \
+            --base master --head "$BRANCH" \
+            --title "[bot] Sync client-js with OpenAPI spec ($(date -u +'%Y-%m-%d'))" \
+            --body "Automated regeneration from \`https://api.massive.com/openapi\` via \`scripts/generate.sh\` (openapi-generator 7.21.0).
+
+          - Regenerated REST client: \`src/rest/\` (typescript-axios) + committed spec \`src/openapi.json\`
+          - Hand-written WebSocket client (\`src/websockets/\`) preserved
+          - Curated \`README.md\` / \`package.json\` preserved
+
+          Please review the diff before merging.")
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          # Best-effort label — don't fail the run if the app lacks label perms.
+          gh label create automated --color ededed --description "Automated PR" --force >/dev/null 2>&1 || true
+          gh pr edit "$url" --add-label automated >/dev/null 2>&1 || true
+
+      - name: Notify Slack
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          SLACK_CLIENT_LIBRARY_WEBHOOK: ${{ secrets.SLACK_CLIENT_LIBRARY_WEBHOOK }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: |
+          if [ -z "$SLACK_CLIENT_LIBRARY_WEBHOOK" ]; then
+            echo "No Slack webhook configured — skipping."
+            exit 0
+          fi
+          payload=$(jq -n --arg url "$PR_URL" --arg date "$(date -u +'%Y-%m-%d')" '{
+            blocks: [
+              { type: "header",  text: { type: "plain_text", text: ("client-js OpenAPI sync – " + $date), emoji: true } },
+              { type: "section", text: { type: "mrkdwn", text: ("A new OpenAPI sync PR is ready for review:\n<" + $url + "|" + $url + ">") } }
+            ]
+          }')
+          resp=$(curl -sS -X POST -H 'Content-type: application/json' --data "$payload" "$SLACK_CLIENT_LIBRARY_WEBHOOK")
+          [ "$resp" = "ok" ] && echo "✅ Slack posted" || echo "❌ Slack post failed: $resp"
