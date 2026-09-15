@@ -22,7 +22,7 @@ Next, create a new client with your [API key](https://massive.com/dashboard/sign
 
 ```javascript
 import { restClient } from '@massive.com/client-js';
-const rest = restClient(process.env.POLY_API_KEY);
+const rest = restClient(process.env.MASSIVE_API_KEY);
 ```
 
 ## Using the client
@@ -128,7 +128,7 @@ import { restClient } from '@massive.com/client-js';
 const globalFetchOptions = {
 	pagination: true,
 };
-const rest = restClient(process.env.POLY_API_KEY, "https://api.massive.com", globalFetchOptions);
+const rest = restClient(process.env.MASSIVE_API_KEY, "https://api.massive.com", globalFetchOptions);
 
 rest.getStocksAggregates({
   stocksTicker: "AAPL",
@@ -153,7 +153,7 @@ Import the [Websocket](https://massive.com/docs/stocks/ws_getting-started) clien
 
 ```javascript
 import { websocketClient } from "@massive.com/client-js";
-const stocksWS = websocketClient(process.env.POLY_API_KEY, 'wss://delayed.massive.com').stocks();
+const stocksWS = websocketClient(process.env.MASSIVE_API_KEY, 'wss://delayed.massive.com').stocks();
 
 stocksWS.onmessage = ({response}) => {
   const [message] = JSON.parse(response);
@@ -173,6 +173,114 @@ stocksWS.onmessage = ({response}) => {
 stocksWS.send({ action: "subscribe", params: "T.MSFT" });
 ```
 See [full examples](./examples/websocket/) for more details on how to use this client effectively.
+
+## Developing the client
+
+Most users only need the published npm package above. This section is for
+contributors who want to build the client from source or regenerate it from the
+OpenAPI spec.
+
+### How the code is organized
+
+- **Generated** — `src/rest/` is generated from the OpenAPI spec by
+  [openapi-generator](https://openapi-generator.tech) (`typescript-axios`).
+  Do not edit it by hand; it is overwritten on every regeneration.
+- **Hand-written** — `src/main.ts` (the `restClient` / `MassiveClient` glue and
+  auto-pagination) and the entire WebSocket client under `src/websockets/`.
+  These are never touched by regeneration.
+- **Committed spec** — `src/openapi.json` is the filtered spec the client is
+  generated from, committed so spec changes are visible in diffs.
+
+### Prerequisites
+
+- Node.js 18+ (CI uses 22)
+- A JDK 17+ on your PATH — the `typescript-axios` generator is a Java tool.
+  No local JDK? Use the Docker recipe below.
+
+### Clone, build, and verify
+
+```bash
+git clone git@github.com:massive-com/client-js.git
+cd client-js
+npm ci
+
+# Pulls the latest spec, regenerates src/rest, and bundles to dist/
+npm run build
+```
+
+If you don't have a JDK locally, build inside a container that has both Node and
+Java (the generator needs Java):
+
+```bash
+docker run --rm -it -v "$(pwd)":/app -w /app node:22-bookworm sh -c \
+  "apt-get update && apt-get install -y openjdk-17-jre-headless && npm ci && npm run build"
+```
+
+Verify the build produced a working client with a runnable REST example. Save
+this as `verify.mjs` in the repo root and run `MASSIVE_API_KEY=your_key node verify.mjs`:
+
+```javascript
+import { restClient } from './dist/main.js';
+
+const rest = restClient(process.env.MASSIVE_API_KEY, 'https://api.massive.com');
+
+const response = await rest.getStocksAggregates({
+  stocksTicker: 'AAPL',
+  multiplier: '1',
+  timespan: 'day',
+  from: '2023-01-09',
+  to: '2023-02-10',
+  adjusted: 'true',
+  sort: 'asc',
+  limit: '120',
+});
+console.log('Aggregates results:', response.results?.length);
+```
+
+And a runnable WebSocket example (`MASSIVE_API_KEY=your_key node ws-verify.mjs`):
+
+```javascript
+import { websocketClient } from './dist/main.js';
+
+const stocksWS = websocketClient(process.env.MASSIVE_API_KEY, 'wss://delayed.massive.com').stocks();
+
+stocksWS.onopen = () => stocksWS.send('{"action":"subscribe","params":"AM.MSFT"}');
+stocksWS.onmessage = ({ data }) => {
+  const messages = JSON.parse(data);
+  for (const message of messages) console.log('WS message:', message);
+};
+stocksWS.onerror = (e) => console.error('WS error:', e);
+```
+
+### Regenerating from the spec
+
+Regeneration is a single command that pulls the latest spec, runs the generator,
+and leaves `src/rest/` deterministic (hand-written code untouched):
+
+```bash
+npm run generate      # runs scripts/generate.sh: pull spec -> generate -> gate
+```
+
+The generator version is pinned in [`openapitools.json`](./openapitools.json)
+(currently **7.21.0**) so diffs reflect spec changes, not generator upgrades.
+Spec filtering and the operation-id → method-name mapping live in
+`scripts/pull_spec.js` and `scripts/operation-mappings.js`.
+
+### Automated daily sync
+
+[`.github/workflows/sync-openapi.yml`](./.github/workflows/sync-openapi.yml)
+runs every day (and on manual dispatch). It:
+
+1. Pulls the latest spec from `https://api.massive.com/openapi` and regenerates
+   the client with `scripts/generate.sh`.
+2. Opens a **brand-new PR** (`bot/openapi-sync-<date>-<run-id>` → `master`,
+   `[bot]`-prefixed title) only when the regenerated output differs from what's
+   committed — no diff, no PR. The commit is GPG-signed as the bot identity and
+   a Slack notification is posted.
+
+Required repo secrets: `GPG_PRIVATE_KEY`, `SLACK_CLIENT_LIBRARY_WEBHOOK`
+(`GITHUB_TOKEN` is provided automatically). Every run opens a new PR and never
+reuses an existing one, so the reviewer always differs from the author.
 
 ## Contributing
 
