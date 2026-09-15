@@ -1,6 +1,6 @@
 {
   "name": "@massive.com/client-js",
-  "version": "10.6.0",
+  "version": "10.8.0",
   "description": "Isomorphic Javascript client for Massive.com Stocks, Options, Indices, Futures, Forex, and Crypto APIs",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -13,10 +13,10 @@
     "test": "mocha",
     "test:watch": "mocha --watch",
     "format": "prettier --write '**/*.ts'",
-    "generate": "sh ./scripts/generate.sh",
+    "generate": "bash ./scripts/generate.sh",
     "pull-spec": "node ./scripts/pull_spec.js",
     "generate-examples": "node ./scripts/generate-examples-with-tokens.js",
-    "build": "rm -rf ./dist && npm run pull-spec && npm run generate && tsup src/main.ts --dts --format esm --minify",
+    "build": "rm -rf ./dist && npm run generate && tsup src/main.ts --dts --format esm --minify",
     "generate-doc": "typedoc src/main.ts",
     "release": "release-it"
   },
@@ -48,7 +48,7 @@
     "axios": "^1.8.4",
     "cross-fetch": "^3.1.4",
     "openapi-generator-cli": "^1.0.0",
-    "query-string": "^7.0.1",
+    "query-string": "^9.5.1",
     "websocket": "^1.0.34"
   },
   "devDependencies": {
@@ -63,10 +63,10 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "lodash": "^4.17.21",
-    "mocha": "^11.7.5",
+    "mocha": "^12.0.1",
     "parse-path": "7.0.1",
     "prettier": "^2.5.1",
-    "release-it": "^19.0.3",
+    "release-it": "^21.0.3",
     "sinon": "^12.0.1",
     "ts-node": "^10.9.1",
     "tsup": "^8.5.0",
