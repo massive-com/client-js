@@ -82,26 +82,25 @@ jobs:
             git diff --cached --stat | tail -25
           fi
 
-      - name: Import GPG signing key
-        if: steps.diff.outputs.changed == 'true'
-        uses: crazy-max/ghaction-import-gpg@v6
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-
       # A unique branch per run (date + run id) so every sync opens a brand-new
       # PR and never reuses/updates a previous one.
-      - name: Commit and push
+      - name: Create sync branch
         if: steps.diff.outputs.changed == 'true'
         run: |
-          git config user.name "justinpolygon"
-          git config user.email "123573436+justinpolygon@users.noreply.github.com"
           BRANCH="bot/openapi-sync-$(date -u +'%Y-%m-%d')-${GITHUB_RUN_ID}"
           echo "BRANCH=$BRANCH" >> "$GITHUB_ENV"
           git checkout -B "$BRANCH"
-          git commit -S -m "Sync client-js with OpenAPI spec"
-          git push origin "$BRANCH"
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        uses: iarekylew00t/verified-bot-commit@v2
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          message: "Sync client-js with OpenAPI spec"
+          ref: ${{ env.BRANCH }}
+          files: |
+            src/
+            scripts/
 
       - name: Open PR
         if: steps.diff.outputs.changed == 'true'
