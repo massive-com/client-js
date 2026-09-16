@@ -84,12 +84,17 @@ jobs:
 
       # A unique branch per run (date + run id) so every sync opens a brand-new
       # PR and never reuses/updates a previous one.
+      #
+      # The branch is pushed here, empty, because the commit step below creates
+      # its commit through the GitHub API and needs the ref to already exist on
+      # the remote.
       - name: Create sync branch
         if: steps.diff.outputs.changed == 'true'
         run: |
           BRANCH="bot/openapi-sync-$(date -u +'%Y-%m-%d')-${GITHUB_RUN_ID}"
           echo "BRANCH=$BRANCH" >> "$GITHUB_ENV"
           git checkout -B "$BRANCH"
+          git push origin "$BRANCH"
 
       - name: Commit and push
         if: steps.diff.outputs.changed == 'true'
