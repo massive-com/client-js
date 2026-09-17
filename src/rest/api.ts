@@ -40,7 +40,7 @@ export interface AggregatesV1200ResponseResultsInner {
      */
     'close': number;
     /**
-     * The total dollar volume of the transactions that occurred within the timeframe.
+     * The sum of price × size across all trades in the window, expressed in the contract\'s quoted price units, which are the same units as the bar\'s open, high, low, and close. Despite the field name, no contract multiplier is applied, so this is not a notional dollar value. See the <a href=\"/docs/rest/futures/products\">Products endpoint</a> for contract multiplier details. Because dollar_volume is a raw sum, you can use it to compute a volume-weighted average price (VWAP) over any span of bars: sum dollar_volume across the bars in the window and divide by the summed volume.
      */
     'dollar_volume': number;
     /**
@@ -56,11 +56,11 @@ export interface AggregatesV1200ResponseResultsInner {
      */
     'open': number;
     /**
-     * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
+     * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format. Sessions are named by this end date, while window_start holds the session\'s start date, which for session candles is the day before.
      */
     'session_end_date': string;
     /**
-     * The price the contract would have cost to settle for this session.
+     * The price the contract settled at for this session. Included for session, week, month, quarter, and year candles; for multi-session candles it is the settlement of the final session in the period. Not returned for intraday candles (sec, min, hour).
      */
     'settlement_price'?: number;
     /**
@@ -543,7 +543,7 @@ export interface DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner {
      */
     'P': number;
     /**
-     * The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.
+     * The ask size. This represents the number of shares sellers are offering at the given ask price.
      */
     'S': number;
     /**
@@ -563,7 +563,7 @@ export interface DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner {
      */
     'p': number;
     /**
-     * The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.
+     * The bid size. This represents the number of shares buyers are bidding for at the given bid price.
      */
     's': number;
     /**
@@ -1466,11 +1466,11 @@ export interface GetBenzingaV1Guidance200ResponseResultsInner {
      */
     'eps_method'?: string;
     /**
-     * The midpoint or central earnings per share (EPS) value the company expects for the given fiscal period.
+     * The analyst consensus EPS estimate at the time the company issued its guidance. This can sit above, below, or in line with the company\'s issued range.
      */
     'estimated_eps_guidance'?: number;
     /**
-     * The midpoint or central revenue figure the company expects for the given fiscal period.
+     * The analyst consensus revenue estimate at the time the company issued its guidance. This can sit above, below, or in line with the company\'s issued range.
      */
     'estimated_revenue_guidance'?: number;
     /**
@@ -3367,6 +3367,119 @@ export interface GetEvents200ResponseResultsEventsInnerOneOfTickerChange {
      * A ticker symbol
      */
     'ticker'?: string;
+}
+export interface GetFedV1FundingConditions200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetFedV1FundingConditions200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetFedV1FundingConditions200ResponseStatusEnum;
+}
+
+export enum GetFedV1FundingConditions200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetFedV1FundingConditions200ResponseResultsInner {
+    /**
+     * Calendar date of the observation (YYYY-MM-DD).
+     */
+    'date'?: string;
+    /**
+     * Federal Funds Effective Rate as a percentage (DFF series from FRED); published daily.
+     */
+    'effective_fed_funds_rate'?: number;
+    /**
+     * Total transaction volume underlying the effective federal funds rate calculation, in billions of U.S. dollars; reported on business days.
+     */
+    'effective_fed_funds_volume'?: number;
+    /**
+     * Lower bound of the federal funds target range as a percentage (DFEDTARL series from FRED); posted every calendar day.
+     */
+    'fed_funds_target_lower'?: number;
+    /**
+     * Upper bound of the federal funds target range as a percentage (DFEDTARU series from FRED); posted every calendar day.
+     */
+    'fed_funds_target_upper'?: number;
+    /**
+     * NY Fed overnight repo operation amount against Treasury collateral, in billions of U.S. dollars (RPONTSYD series from FRED); reported on business days.
+     */
+    'fed_overnight_repo_treasury_amount'?: number;
+    /**
+     * NY Fed overnight reverse repo operation amount against Treasury collateral, in billions of U.S. dollars (RRPONTSYD series from FRED); reported on business days.
+     */
+    'fed_overnight_reverse_repo_treasury_amount'?: number;
+    /**
+     * 90-day AA financial commercial paper interest rate as a percentage, quoted on a discount basis (DCPF3M series from FRED); reported on business days, with occasional source-level gaps.
+     */
+    'financial_commercial_paper_90d_rate'?: number;
+    /**
+     * Interest rate paid on reserve balances as a percentage (IORB series from FRED); posted every calendar day.
+     */
+    'interest_on_reserve_balances'?: number;
+    /**
+     * 90-day AA nonfinancial commercial paper interest rate as a percentage, quoted on a discount basis (DCPN3M series from FRED); reported on business days, with occasional source-level gaps.
+     */
+    'nonfinancial_commercial_paper_90d_rate'?: number;
+    /**
+     * 25th percentile transaction rate of the OBFR distribution as a percentage; posted on business days.
+     */
+    'obfr_25th_percentile'?: number;
+    /**
+     * 75th percentile transaction rate of the OBFR distribution as a percentage; posted on business days.
+     */
+    'obfr_75th_percentile'?: number;
+    /**
+     * Total transaction volume underlying the OBFR calculation, in billions of U.S. dollars; reported on business days.
+     */
+    'obfr_volume'?: number;
+    /**
+     * Overnight Bank Funding Rate (OBFR) as a percentage; published by the Federal Reserve Bank of New York and reported on business days.
+     */
+    'overnight_bank_funding_rate'?: number;
+    /**
+     * Secured Overnight Financing Rate (SOFR) as a percentage; published by the Federal Reserve Bank of New York and reported on business days.
+     */
+    'secured_overnight_financing_rate'?: number;
+    /**
+     * 25th percentile transaction rate of the SOFR distribution as a percentage; posted on business days.
+     */
+    'sofr_25th_percentile'?: number;
+    /**
+     * 75th percentile transaction rate of the SOFR distribution as a percentage; posted on business days.
+     */
+    'sofr_75th_percentile'?: number;
+    /**
+     * Total transaction volume underlying the SOFR calculation, in billions of U.S. dollars; reported on business days.
+     */
+    'sofr_volume'?: number;
+    /**
+     * 25th percentile transaction rate of the TGCR distribution as a percentage; posted on business days.
+     */
+    'tgcr_25th_percentile'?: number;
+    /**
+     * 75th percentile transaction rate of the TGCR distribution as a percentage; posted on business days.
+     */
+    'tgcr_75th_percentile'?: number;
+    /**
+     * Tri-Party General Collateral Rate (TGCR) as a percentage; published by the Federal Reserve Bank of New York as a repo reference rate and reported on business days.
+     */
+    'tri_party_general_collateral_rate'?: number;
+    /**
+     * Total transaction volume underlying the TGCR calculation, in billions of U.S. dollars; reported on business days.
+     */
+    'tri_party_general_collateral_volume'?: number;
 }
 export interface GetFedV1Inflation200Response {
     /**
@@ -5648,7 +5761,7 @@ export interface GetOptionsV3TradesTicker200ResponseResultsInner {
     /**
      * A list of condition codes.
      */
-    'conditions': Array<number>;
+    'conditions'?: Array<number>;
     /**
      * The exchange ID.
      */
@@ -5664,11 +5777,11 @@ export interface GetOptionsV3TradesTicker200ResponseResultsInner {
     /**
      * The sequence number represents the sequence in which trade events happened. These are increasing and unique per ticker symbol, but will not always be sequential. Values reset after each trading session/day.
      */
-    'sequence_number': number;
+    'sequence_number'?: number;
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it.
      */
-    'sip_timestamp': number;
+    'sip_timestamp'?: number;
     /**
      * The size of a trade (also known as volume).
      */
@@ -6231,7 +6344,7 @@ export interface GetSnapshots200ResponseResultsInnerLastQuote {
      */
     'ask_exchange'?: number;
     /**
-     * The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.
+     * The ask size. This represents the number of shares, or contracts for options, sellers are offering at the given ask price.
      */
     'ask_size'?: number;
     /**
@@ -6243,7 +6356,7 @@ export interface GetSnapshots200ResponseResultsInnerLastQuote {
      */
     'bid_exchange'?: number;
     /**
-     * The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.
+     * The bid size. This represents the number of shares, or contracts for options, buyers are bidding for at the given bid price.
      */
     'bid_size'?: number;
     /**
@@ -7277,7 +7390,7 @@ export interface GetStocksFinancialsV1BalanceSheets200ResponseResultsInner {
      */
     'deferred_revenue_current'?: number;
     /**
-     * The date when the financial statement was filed with the SEC.
+     * The date of the most recent SEC filing that included this period\'s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index).
      */
     'filing_date'?: string;
     /**
@@ -7442,7 +7555,7 @@ export interface GetStocksFinancialsV1CashFlowStatements200ResponseResultsInner 
      */
     'effect_of_currency_exchange_rate'?: number;
     /**
-     * The date when the financial statement was filed with the SEC.
+     * The date of the most recent SEC filing that included this period\'s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index).
      */
     'filing_date'?: string;
     /**
@@ -7615,7 +7728,7 @@ export interface GetStocksFinancialsV1IncomeStatements200ResponseResultsInner {
      */
     'extraordinary_items'?: number;
     /**
-     * The date when the financial statement was filed with the SEC.
+     * The date of the most recent SEC filing that included this period\'s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index).
      */
     'filing_date'?: string;
     /**
@@ -7756,7 +7869,7 @@ export interface GetStocksFinancialsV1Ratios200ResponseResultsInner {
      */
     'dividend_yield'?: number;
     /**
-     * Earnings per share, calculated as net income available to common shareholders divided by weighted shares outstanding.
+     * Earnings per share, calculated as trailing twelve months (TTM) net income available to common shareholders divided by point-in-time shares outstanding as of the price date, assuming all shares of other share classes are converted to this share class. This is not weighted average basic or diluted shares outstanding, so this value will not match the reported basic or diluted EPS on the income statements endpoint.
      */
     'earnings_per_share'?: number;
     /**
@@ -8620,7 +8733,7 @@ export interface GetStocksV1Splits200ResponseResultsInner {
      */
     'adjustment_type': string;
     /**
-     * Date when the stock split was applied and shares adjusted
+     * Date when the stock split takes effect. The adjustment is applied overnight. On the prior trading day, the post-market session is the last session that shows pre-split prices. On the execution date, all trading is already adjusted for the split. This includes the pre-market session.
      */
     'execution_date'?: string;
     /**
@@ -10677,7 +10790,7 @@ export interface StocksV2NBBO {
      */
     'P': number;
     /**
-     * The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.
+     * The ask size. This represents the number of shares sellers are offering at the given ask price.
      */
     'S': number;
     /**
@@ -10697,7 +10810,7 @@ export interface StocksV2NBBO {
      */
     'p': number;
     /**
-     * The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.
+     * The bid size. This represents the number of shares buyers are bidding for at the given bid price.
      */
     's': number;
     /**
@@ -10866,8 +10979,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * Get aggregates for a contract in a given time range.
          * @summary Aggregates
          * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-         * @param {string} [resolution] The size of each aggregate candle, specified as a number followed by a unit: &#x60;sec&#x60;, &#x60;min&#x60;, &#x60;hour&#x60;, &#x60;session&#x60;, &#x60;week&#x60;, &#x60;month&#x60;, &#x60;quarter&#x60;, or &#x60;year&#x60;.  Each unit has a maximum multiplier. For instance, minute candles go up to &#x60;59min&#x60; — after that, use &#x60;1hour&#x60;. Requesting an unsupported size returns a &#x60;400 Bad Request&#x60;.
-         * @param {string} [windowStart] Filter by the start time of each candle. Accepts a &#x60;YYYY-MM-DD&#x60; date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval.  When omitted, the API returns the most recent candles up to &#x60;limit&#x60;.  Use comparison suffixes to query a range: - &#x60;window_start.gte&#x60; — greater than or equal to - &#x60;window_start.gt&#x60; — greater than - &#x60;window_start.lte&#x60; — less than or equal to - &#x60;window_start.lt&#x60; — less than  **Examples** - Most recent minute candles: &#x60;/v1/aggs/ESU5?resolution&#x3D;1min&amp;limit&#x3D;5&#x60; - Single daily candle: &#x60;/v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start&#x3D;2025-08-05&#x60; - Date range: &#x60;/v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start.gte&#x3D;2025-07-01&amp;window_start.lte&#x3D;2025-07-31&#x60; - After a timestamp: &#x60;/v1/aggs/ESU5?resolution&#x3D;1sec&amp;window_start.gt&#x3D;1751409877000000000&amp;limit&#x3D;1000&#x60;
+         * @param {string} [resolution] The size of each aggregate candle, specified as a number followed by a unit: sec, min, hour, session, week, month, quarter, or year.  Each unit has a maximum multiplier. For instance, minute candles go up to 59min; after that, use 1hour. Requesting an unsupported size returns a 400 Bad Request.
+         * @param {string} [windowStart] Filter by the start time of each candle. Accepts a YYYY-MM-DD date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval. When omitted, the API returns the most recent candles up to the limit.  Session candles are timestamped at the start of the session, not the trading date they settle on. A futures session opens the evening before it settles, so window_start falls on the day before session_end_date. To pull the session that settles on a given date, set window_start to the day before. For example, window_start&#x3D;2025-08-05 returns the session that settles on 2025-08-06. Week, month, quarter, and year candles follow the same rule: window_start is the first day of the period and session_end_date is the last trading date in it.  Add a comparison suffix to filter a range: window_start.gte (greater than or equal to), window_start.gt (greater than), window_start.lte (less than or equal to), or window_start.lt (less than).  Examples:  Most recent minute candles: /v1/aggs/ESU5?resolution&#x3D;1min&amp;limit&#x3D;5  Session settling 2025-08-06 (pass its start date, 2025-08-05): /v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start&#x3D;2025-08-05  Date range: /v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start.gte&#x3D;2025-07-01&amp;window_start.lte&#x3D;2025-07-31  After a timestamp: /v1/aggs/ESU5?resolution&#x3D;1sec&amp;window_start.gt&#x3D;1751409877000000000&amp;limit&#x3D;1000
          * @param {number} [limit] The number of results to return per page (default&#x3D;1000, maximum&#x3D;50000, minimum&#x3D;1).
          * @param {string} [windowStartGte] Range by window_start.
          * @param {string} [windowStartGt] Range by window_start.
@@ -13916,7 +14029,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * Global cryptocurrency exchanges and digital asset trading platforms, including major centralized exchanges (Coinbase, Binance, Bitfinex, etc.) that facilitate trading of cryptocurrencies and digital tokens worldwide.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -15060,6 +15173,73 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Daily U.S. money-market funding conditions from the Federal Reserve and the Federal Reserve Bank of New York, including the Federal Funds Effective Rate, SOFR, OBFR, tri-party general collateral repo rates, Treasury-collateralized overnight reverse repo and repo operation amounts, and commercial paper rates. One row per calendar day; daily federal-funds series generally populate calendar-day rows, while market-rate, volume, and commercial-paper series are generally published on business days and may be null on weekends or holidays.
+         * @param {string} [date] Calendar date of the observation (YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFedV1FundingConditions: async (date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/fed/v1/funding-conditions`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (date !== undefined) {
+                localVarQueryParameter['date'] = date;
+            }
+
+            if (dateGt !== undefined) {
+                localVarQueryParameter['date.gt'] = dateGt;
+            }
+
+            if (dateGte !== undefined) {
+                localVarQueryParameter['date.gte'] = dateGte;
+            }
+
+            if (dateLt !== undefined) {
+                localVarQueryParameter['date.lt'] = dateLt;
+            }
+
+            if (dateLte !== undefined) {
+                localVarQueryParameter['date.lte'] = dateLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * A table tracking inflation and price indices, including Consumer Price Index (CPI) and Personal Consumption Expenditures (PCE) metrics over time.
          * @param {string} [date] Calendar date of the observation (YYYY‑MM‑DD).
          * @param {string} [dateAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
@@ -16004,7 +16184,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * Global foreign exchange (FX) trading venues and market infrastructure, including electronic trading platforms, banks, and other institutions facilitating currency pair trading worldwide.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -16234,7 +16414,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * US futures exchanges and trading venues including major derivatives exchanges (CME, CBOT, NYMEX, COMEX) and other futures market infrastructure for commodity, financial, and other derivative contract trading.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -16278,7 +16458,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [productCodeGte] Filter greater than or equal to the value.
          * @param {string} [productCodeLt] Filter less than the value.
          * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -16554,7 +16734,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16861,7 +17041,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17565,7 +17745,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * Get a Snapshot of indices data for said tickers
          * @summary Indices Snapshot
          * @param {string} [tickerAnyOf] Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.  Warning: The maximum number of characters allowed in a URL are subject to your technology stack.
-         * @param {string} [ticker] Search a range of tickers lexicographically.
+         * @param {string} [ticker] Specify a single index ticker, for example I:SPX. Index tickers are case-sensitive and start with I:. To request more than one ticker or a range of tickers, expand the filter modifiers.
          * @param {string} [tickerGte] Range by ticker.
          * @param {string} [tickerGt] Range by ticker.
          * @param {string} [tickerLte] Range by ticker.
@@ -18756,7 +18936,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * US options exchanges and trading venues including traditional options exchanges (CBOE, ISE, etc.), Securities Information Processors (SIP), and other options market infrastructure for derivatives trading.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -18799,7 +18979,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18870,7 +19050,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19216,7 +19396,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Get snapshots for assets of all types
          * @summary Universal Snapshot
-         * @param {string} [ticker] Search a range of tickers lexicographically.
+         * @param {string} [ticker] Specify a single ticker symbol. Ticker symbols are case-sensitive and use a prefix for non-stock assets, for example NVDA for stocks, O:SPY280121C00750000 for options, C:EURUSD for forex, X:BTCUSD for crypto, and I:SPX for indices. To request more than one ticker or a range of tickers, expand the filter modifiers.
          * @param {GetSnapshotsTypeEnum} [type] Query by the type of asset.
          * @param {string} [tickerGte] Range by ticker.
          * @param {string} [tickerGt] Range by ticker.
@@ -19372,7 +19552,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [sipTimestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [sipTimestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [sipTimestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;sip_timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19558,7 +19738,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19720,7 +19900,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19983,7 +20163,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20588,7 +20768,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [cikGte] Filter greater than or equal to the value.
          * @param {string} [cikLt] Filter less than the value.
          * @param {string} [cikLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20716,21 +20896,21 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [filingDate] The date when the financial statement was filed with the SEC. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDate] The date of the most recent SEC filing that included this period\&#39;s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be a floating point number.
+         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be an integer.
+         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalYearLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.
+         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be an integer.
          * @param {string} [timeframe] The reporting period type. Possible values include: quarterly, annual.
          * @param {string} [timeframeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [timeframeGt] Filter greater than the value.
@@ -20930,7 +21110,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [filingDate] The date when the financial statement was filed with the SEC. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDate] The date of the most recent SEC filing that included this period\&#39;s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -20938,16 +21118,16 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [tickers] Filter for arrays that contain the value.
          * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be a floating point number.
+         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be an integer.
+         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalYearLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.
+         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be an integer.
          * @param {string} [timeframe] The reporting period type. Possible values include: quarterly, annual, trailing_twelve_months.
          * @param {string} [timeframeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [timeframeGt] Filter greater than the value.
@@ -21150,21 +21330,21 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [filingDate] The date when the financial statement was filed with the SEC. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDate] The date of the most recent SEC filing that included this period\&#39;s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be a floating point number.
+         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be an integer.
+         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalYearLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.
+         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be an integer.
          * @param {string} [timeframe] The reporting period type. Possible values include: quarterly, annual, trailing_twelve_months.
          * @param {string} [timeframeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [timeframeGt] Filter greater than the value.
@@ -21380,7 +21560,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} [marketCapGte] Filter greater than or equal to the value. Value must be a floating point number.
          * @param {number} [marketCapLt] Filter less than the value. Value must be a floating point number.
          * @param {number} [marketCapLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [earningsPerShare] Earnings per share, calculated as net income available to common shareholders divided by weighted shares outstanding. Value must be a floating point number.
+         * @param {number} [earningsPerShare] Earnings per share, calculated as trailing twelve months (TTM) net income available to common shareholders divided by point-in-time shares outstanding as of the price date, assuming all shares of other share classes are converted to this share class. This is not weighted average basic or diluted shares outstanding, so this value will not match the reported basic or diluted EPS on the income statements endpoint. Value must be a floating point number.
          * @param {number} [earningsPerShareGt] Filter greater than the value. Value must be a floating point number.
          * @param {number} [earningsPerShareGte] Filter greater than or equal to the value. Value must be a floating point number.
          * @param {number} [earningsPerShareLt] Filter less than the value. Value must be a floating point number.
@@ -22525,7 +22705,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [tertiaryCategoryGte] Filter greater than or equal to the value.
          * @param {string} [tertiaryCategoryLt] Filter less than the value.
          * @param {string} [tertiaryCategoryLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;taxonomy\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22686,7 +22866,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [tertiaryCategoryGte] Filter greater than or equal to the value.
          * @param {string} [tertiaryCategoryLt] Filter less than the value.
          * @param {string} [tertiaryCategoryLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;taxonomy\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -23029,7 +23209,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * US stock exchanges, trading venues, and reporting facilities including exchanges (NYSE, Nasdaq), Trade Reporting Facilities (TRF), Securities Information Processors (SIP), and OTC Reporting Facilities (ORF) for equity trading.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -23366,7 +23546,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [tickerGte] Filter greater than or equal to the value.
          * @param {string} [tickerLt] Filter less than the value.
          * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {string} [executionDate] Date when the stock split was applied and shares adjusted Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [executionDate] Date when the stock split takes effect. The adjustment is applied overnight. On the prior trading day, the post-market session is the last session that shows pre-split prices. On the execution date, all trading is already adjusted for the split. This includes the pre-market session. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [executionDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [executionDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [executionDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -25201,8 +25381,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * Get aggregates for a contract in a given time range.
          * @summary Aggregates
          * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
-         * @param {string} [resolution] The size of each aggregate candle, specified as a number followed by a unit: &#x60;sec&#x60;, &#x60;min&#x60;, &#x60;hour&#x60;, &#x60;session&#x60;, &#x60;week&#x60;, &#x60;month&#x60;, &#x60;quarter&#x60;, or &#x60;year&#x60;.  Each unit has a maximum multiplier. For instance, minute candles go up to &#x60;59min&#x60; — after that, use &#x60;1hour&#x60;. Requesting an unsupported size returns a &#x60;400 Bad Request&#x60;.
-         * @param {string} [windowStart] Filter by the start time of each candle. Accepts a &#x60;YYYY-MM-DD&#x60; date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval.  When omitted, the API returns the most recent candles up to &#x60;limit&#x60;.  Use comparison suffixes to query a range: - &#x60;window_start.gte&#x60; — greater than or equal to - &#x60;window_start.gt&#x60; — greater than - &#x60;window_start.lte&#x60; — less than or equal to - &#x60;window_start.lt&#x60; — less than  **Examples** - Most recent minute candles: &#x60;/v1/aggs/ESU5?resolution&#x3D;1min&amp;limit&#x3D;5&#x60; - Single daily candle: &#x60;/v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start&#x3D;2025-08-05&#x60; - Date range: &#x60;/v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start.gte&#x3D;2025-07-01&amp;window_start.lte&#x3D;2025-07-31&#x60; - After a timestamp: &#x60;/v1/aggs/ESU5?resolution&#x3D;1sec&amp;window_start.gt&#x3D;1751409877000000000&amp;limit&#x3D;1000&#x60;
+         * @param {string} [resolution] The size of each aggregate candle, specified as a number followed by a unit: sec, min, hour, session, week, month, quarter, or year.  Each unit has a maximum multiplier. For instance, minute candles go up to 59min; after that, use 1hour. Requesting an unsupported size returns a 400 Bad Request.
+         * @param {string} [windowStart] Filter by the start time of each candle. Accepts a YYYY-MM-DD date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval. When omitted, the API returns the most recent candles up to the limit.  Session candles are timestamped at the start of the session, not the trading date they settle on. A futures session opens the evening before it settles, so window_start falls on the day before session_end_date. To pull the session that settles on a given date, set window_start to the day before. For example, window_start&#x3D;2025-08-05 returns the session that settles on 2025-08-06. Week, month, quarter, and year candles follow the same rule: window_start is the first day of the period and session_end_date is the last trading date in it.  Add a comparison suffix to filter a range: window_start.gte (greater than or equal to), window_start.gt (greater than), window_start.lte (less than or equal to), or window_start.lt (less than).  Examples:  Most recent minute candles: /v1/aggs/ESU5?resolution&#x3D;1min&amp;limit&#x3D;5  Session settling 2025-08-06 (pass its start date, 2025-08-05): /v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start&#x3D;2025-08-05  Date range: /v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start.gte&#x3D;2025-07-01&amp;window_start.lte&#x3D;2025-07-31  After a timestamp: /v1/aggs/ESU5?resolution&#x3D;1sec&amp;window_start.gt&#x3D;1751409877000000000&amp;limit&#x3D;1000
          * @param {number} [limit] The number of results to return per page (default&#x3D;1000, maximum&#x3D;50000, minimum&#x3D;1).
          * @param {string} [windowStartGte] Range by window_start.
          * @param {string} [windowStartGt] Range by window_start.
@@ -25952,7 +26132,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * Global cryptocurrency exchanges and digital asset trading platforms, including major centralized exchanges (Coinbase, Binance, Bitfinex, etc.) that facilitate trading of cryptocurrencies and digital tokens worldwide.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -26219,6 +26399,24 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Daily U.S. money-market funding conditions from the Federal Reserve and the Federal Reserve Bank of New York, including the Federal Funds Effective Rate, SOFR, OBFR, tri-party general collateral repo rates, Treasury-collateralized overnight reverse repo and repo operation amounts, and commercial paper rates. One row per calendar day; daily federal-funds series generally populate calendar-day rows, while market-rate, volume, and commercial-paper series are generally published on business days and may be null on weekends or holidays.
+         * @param {string} [date] Calendar date of the observation (YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFedV1FundingConditions(date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFedV1FundingConditions200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFedV1FundingConditions(date, dateGt, dateGte, dateLt, dateLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFedV1FundingConditions']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * A table tracking inflation and price indices, including Consumer Price Index (CPI) and Personal Consumption Expenditures (PCE) metrics over time.
          * @param {string} [date] Calendar date of the observation (YYYY‑MM‑DD).
          * @param {string} [dateAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
@@ -26478,7 +26676,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * Global foreign exchange (FX) trading venues and market infrastructure, including electronic trading platforms, banks, and other institutions facilitating currency pair trading worldwide.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -26534,7 +26732,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * US futures exchanges and trading venues including major derivatives exchanges (CME, CBOT, NYMEX, COMEX) and other futures market infrastructure for commodity, financial, and other derivative contract trading.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -26553,7 +26751,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [productCodeGte] Filter greater than or equal to the value.
          * @param {string} [productCodeLt] Filter less than the value.
          * @param {string} [productCodeLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -26619,7 +26817,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -26696,7 +26894,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -26889,7 +27087,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * Get a Snapshot of indices data for said tickers
          * @summary Indices Snapshot
          * @param {string} [tickerAnyOf] Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.  Warning: The maximum number of characters allowed in a URL are subject to your technology stack.
-         * @param {string} [ticker] Search a range of tickers lexicographically.
+         * @param {string} [ticker] Specify a single index ticker, for example I:SPX. Index tickers are case-sensitive and start with I:. To request more than one ticker or a range of tickers, expand the filter modifiers.
          * @param {string} [tickerGte] Range by ticker.
          * @param {string} [tickerGt] Range by ticker.
          * @param {string} [tickerLte] Range by ticker.
@@ -27233,7 +27431,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * US options exchanges and trading venues including traditional options exchanges (CBOE, ISE, etc.), Securities Information Processors (SIP), and other options market infrastructure for derivatives trading.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -27251,7 +27449,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27270,7 +27468,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27379,7 +27577,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * Get snapshots for assets of all types
          * @summary Universal Snapshot
-         * @param {string} [ticker] Search a range of tickers lexicographically.
+         * @param {string} [ticker] Specify a single ticker symbol. Ticker symbols are case-sensitive and use a prefix for non-stock assets, for example NVDA for stocks, O:SPY280121C00750000 for options, C:EURUSD for forex, X:BTCUSD for crypto, and I:SPX for indices. To request more than one ticker or a range of tickers, expand the filter modifiers.
          * @param {GetSnapshotsTypeEnum} [type] Query by the type of asset.
          * @param {string} [tickerGte] Range by ticker.
          * @param {string} [tickerGt] Range by ticker.
@@ -27426,7 +27624,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [sipTimestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [sipTimestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [sipTimestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;sip_timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27488,7 +27686,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27525,7 +27723,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;period_end\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27586,7 +27784,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27726,7 +27924,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [cikGte] Filter greater than or equal to the value.
          * @param {string} [cikLt] Filter less than the value.
          * @param {string} [cikLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27753,21 +27951,21 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [filingDate] The date when the financial statement was filed with the SEC. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDate] The date of the most recent SEC filing that included this period\&#39;s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be a floating point number.
+         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be an integer.
+         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalYearLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.
+         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be an integer.
          * @param {string} [timeframe] The reporting period type. Possible values include: quarterly, annual.
          * @param {string} [timeframeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [timeframeGt] Filter greater than the value.
@@ -27798,7 +27996,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [filingDate] The date when the financial statement was filed with the SEC. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDate] The date of the most recent SEC filing that included this period\&#39;s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -27806,16 +28004,16 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [tickers] Filter for arrays that contain the value.
          * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
-         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be a floating point number.
+         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be an integer.
+         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalYearLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.
+         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be an integer.
          * @param {string} [timeframe] The reporting period type. Possible values include: quarterly, annual, trailing_twelve_months.
          * @param {string} [timeframeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [timeframeGt] Filter greater than the value.
@@ -27849,21 +28047,21 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [periodEndGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [periodEndLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {string} [filingDate] The date when the financial statement was filed with the SEC. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDate] The date of the most recent SEC filing that included this period\&#39;s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
-         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be a floating point number.
-         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be a floating point number.
+         * @param {number} [fiscalYear] The fiscal year for the reporting period. Value must be an integer.
+         * @param {number} [fiscalYearGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalYearGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalYearLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalYearLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarter] The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.
+         * @param {number} [fiscalQuarterGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLt] Filter less than the value. Value must be an integer.
+         * @param {number} [fiscalQuarterLte] Filter less than or equal to the value. Value must be an integer.
          * @param {string} [timeframe] The reporting period type. Possible values include: quarterly, annual, trailing_twelve_months.
          * @param {string} [timeframeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [timeframeGt] Filter greater than the value.
@@ -27910,7 +28108,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {number} [marketCapGte] Filter greater than or equal to the value. Value must be a floating point number.
          * @param {number} [marketCapLt] Filter less than the value. Value must be a floating point number.
          * @param {number} [marketCapLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [earningsPerShare] Earnings per share, calculated as net income available to common shareholders divided by weighted shares outstanding. Value must be a floating point number.
+         * @param {number} [earningsPerShare] Earnings per share, calculated as trailing twelve months (TTM) net income available to common shareholders divided by point-in-time shares outstanding as of the price date, assuming all shares of other share classes are converted to this share class. This is not weighted average basic or diluted shares outstanding, so this value will not match the reported basic or diluted EPS on the income statements endpoint. Value must be a floating point number.
          * @param {number} [earningsPerShareGt] Filter greater than the value. Value must be a floating point number.
          * @param {number} [earningsPerShareGte] Filter greater than or equal to the value. Value must be a floating point number.
          * @param {number} [earningsPerShareLt] Filter less than the value. Value must be a floating point number.
@@ -28186,7 +28384,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [tertiaryCategoryGte] Filter greater than or equal to the value.
          * @param {string} [tertiaryCategoryLt] Filter less than the value.
          * @param {string} [tertiaryCategoryLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;taxonomy\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28222,7 +28420,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [tertiaryCategoryGte] Filter greater than or equal to the value.
          * @param {string} [tertiaryCategoryLt] Filter less than the value.
          * @param {string} [tertiaryCategoryLte] Filter less than or equal to the value.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;taxonomy\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28287,7 +28485,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * US stock exchanges, trading venues, and reporting facilities including exchanges (NYSE, Nasdaq), Trade Reporting Facilities (TRF), Securities Information Processors (SIP), and OTC Reporting Facilities (ORF) for equity trading.
-         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -28373,7 +28571,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [tickerGte] Filter greater than or equal to the value.
          * @param {string} [tickerLt] Filter less than the value.
          * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {string} [executionDate] Date when the stock split was applied and shares adjusted Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [executionDate] Date when the stock split takes effect. The adjustment is applied overnight. On the prior trading day, the post-market session is the last session that shows pre-split prices. On the execution date, all trading is already adjusted for the split. This includes the pre-market session. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [executionDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [executionDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [executionDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -29132,6 +29330,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getEvents(requestParameters: DefaultApiGetEventsRequest, options?: RawAxiosRequestConfig): Promise<GetEvents200Response> {
             return localVarFp.getEvents(requestParameters.id, requestParameters.types, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Daily U.S. money-market funding conditions from the Federal Reserve and the Federal Reserve Bank of New York, including the Federal Funds Effective Rate, SOFR, OBFR, tri-party general collateral repo rates, Treasury-collateralized overnight reverse repo and repo operation amounts, and commercial paper rates. One row per calendar day; daily federal-funds series generally populate calendar-day rows, while market-rate, volume, and commercial-paper series are generally published on business days and may be null on weekends or holidays.
+         * @param {DefaultApiGetFedV1FundingConditionsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFedV1FundingConditions(requestParameters: DefaultApiGetFedV1FundingConditionsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFedV1FundingConditions200Response> {
+            return localVarFp.getFedV1FundingConditions(requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * A table tracking inflation and price indices, including Consumer Price Index (CPI) and Personal Consumption Expenditures (PCE) metrics over time.
@@ -30183,14 +30390,14 @@ export interface DefaultApiAggregatesV1Request {
     readonly ticker: string
 
     /**
-     * The size of each aggregate candle, specified as a number followed by a unit: &#x60;sec&#x60;, &#x60;min&#x60;, &#x60;hour&#x60;, &#x60;session&#x60;, &#x60;week&#x60;, &#x60;month&#x60;, &#x60;quarter&#x60;, or &#x60;year&#x60;.  Each unit has a maximum multiplier. For instance, minute candles go up to &#x60;59min&#x60; — after that, use &#x60;1hour&#x60;. Requesting an unsupported size returns a &#x60;400 Bad Request&#x60;.
+     * The size of each aggregate candle, specified as a number followed by a unit: sec, min, hour, session, week, month, quarter, or year.  Each unit has a maximum multiplier. For instance, minute candles go up to 59min; after that, use 1hour. Requesting an unsupported size returns a 400 Bad Request.
      * @type {string}
      * @memberof DefaultApiAggregatesV1
      */
     readonly resolution?: string
 
     /**
-     * Filter by the start time of each candle. Accepts a &#x60;YYYY-MM-DD&#x60; date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval.  When omitted, the API returns the most recent candles up to &#x60;limit&#x60;.  Use comparison suffixes to query a range: - &#x60;window_start.gte&#x60; — greater than or equal to - &#x60;window_start.gt&#x60; — greater than - &#x60;window_start.lte&#x60; — less than or equal to - &#x60;window_start.lt&#x60; — less than  **Examples** - Most recent minute candles: &#x60;/v1/aggs/ESU5?resolution&#x3D;1min&amp;limit&#x3D;5&#x60; - Single daily candle: &#x60;/v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start&#x3D;2025-08-05&#x60; - Date range: &#x60;/v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start.gte&#x3D;2025-07-01&amp;window_start.lte&#x3D;2025-07-31&#x60; - After a timestamp: &#x60;/v1/aggs/ESU5?resolution&#x3D;1sec&amp;window_start.gt&#x3D;1751409877000000000&amp;limit&#x3D;1000&#x60;
+     * Filter by the start time of each candle. Accepts a YYYY-MM-DD date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval. When omitted, the API returns the most recent candles up to the limit.  Session candles are timestamped at the start of the session, not the trading date they settle on. A futures session opens the evening before it settles, so window_start falls on the day before session_end_date. To pull the session that settles on a given date, set window_start to the day before. For example, window_start&#x3D;2025-08-05 returns the session that settles on 2025-08-06. Week, month, quarter, and year candles follow the same rule: window_start is the first day of the period and session_end_date is the last trading date in it.  Add a comparison suffix to filter a range: window_start.gte (greater than or equal to), window_start.gt (greater than), window_start.lte (less than or equal to), or window_start.lt (less than).  Examples:  Most recent minute candles: /v1/aggs/ESU5?resolution&#x3D;1min&amp;limit&#x3D;5  Session settling 2025-08-06 (pass its start date, 2025-08-05): /v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start&#x3D;2025-08-05  Date range: /v1/aggs/ESU5?resolution&#x3D;1session&amp;window_start.gte&#x3D;2025-07-01&amp;window_start.lte&#x3D;2025-07-31  After a timestamp: /v1/aggs/ESU5?resolution&#x3D;1sec&amp;window_start.gt&#x3D;1751409877000000000&amp;limit&#x3D;1000
      * @type {string}
      * @memberof DefaultApiAggregatesV1
      */
@@ -33445,7 +33652,7 @@ export interface DefaultApiGetCryptoTradesRequest {
  */
 export interface DefaultApiGetCryptoV1ExchangesRequest {
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetCryptoV1Exchanges
      */
@@ -34741,6 +34948,62 @@ export interface DefaultApiGetEventsRequest {
 }
 
 /**
+ * Request parameters for getFedV1FundingConditions operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetFedV1FundingConditionsRequest
+ */
+export interface DefaultApiGetFedV1FundingConditionsRequest {
+    /**
+     * Calendar date of the observation (YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFedV1FundingConditions
+     */
+    readonly date?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFedV1FundingConditions
+     */
+    readonly dateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFedV1FundingConditions
+     */
+    readonly dateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFedV1FundingConditions
+     */
+    readonly dateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFedV1FundingConditions
+     */
+    readonly dateLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetFedV1FundingConditions
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetFedV1FundingConditions
+     */
+    readonly sort?: string
+}
+
+/**
  * Request parameters for getFedV1Inflation operation in DefaultApi.
  * @export
  * @interface DefaultApiGetFedV1InflationRequest
@@ -35580,7 +35843,7 @@ export interface DefaultApiGetForexSnapshotTickersRequest {
  */
 export interface DefaultApiGetForexV1ExchangesRequest {
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetForexV1Exchanges
      */
@@ -35825,7 +36088,7 @@ export interface DefaultApiGetFuturesV1ContractsRequest {
  */
 export interface DefaultApiGetFuturesV1ExchangesRequest {
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetFuturesV1Exchanges
      */
@@ -35881,7 +36144,7 @@ export interface DefaultApiGetFuturesV1MarketStatusRequest {
     readonly productCodeLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
      * @type {number}
      * @memberof DefaultApiGetFuturesV1MarketStatus
      */
@@ -36196,7 +36459,7 @@ export interface DefaultApiGetFuturesV1QuotesTickerRequest {
     readonly sessionEndDate?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
@@ -36511,7 +36774,7 @@ export interface DefaultApiGetFuturesV1TradesTickerRequest {
     readonly sessionEndDate?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetFuturesV1TradesTicker
      */
@@ -37092,7 +37355,7 @@ export interface DefaultApiGetIndicesSnapshotRequest {
     readonly tickerAnyOf?: string
 
     /**
-     * Search a range of tickers lexicographically.
+     * Specify a single index ticker, for example I:SPX. Index tickers are case-sensitive and start with I:. To request more than one ticker or a range of tickers, expand the filter modifiers.
      * @type {string}
      * @memberof DefaultApiGetIndicesSnapshot
      */
@@ -38030,7 +38293,7 @@ export interface DefaultApiGetOptionsTradesRequest {
  */
 export interface DefaultApiGetOptionsV1ExchangesRequest {
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetOptionsV1Exchanges
      */
@@ -38086,7 +38349,7 @@ export interface DefaultApiGetOptionsV3QuotesTickerRequest {
     readonly timestampLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetOptionsV3QuotesTicker
      */
@@ -38149,7 +38412,7 @@ export interface DefaultApiGetOptionsV3TradesTickerRequest {
     readonly timestampLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetOptionsV3TradesTicker
      */
@@ -38296,7 +38559,7 @@ export interface DefaultApiGetSnapshotSummaryRequest {
  */
 export interface DefaultApiGetSnapshotsRequest {
     /**
-     * Search a range of tickers lexicographically.
+     * Specify a single ticker symbol. Ticker symbols are case-sensitive and use a prefix for non-stock assets, for example NVDA for stocks, O:SPY280121C00750000 for options, C:EURUSD for forex, X:BTCUSD for crypto, and I:SPX for indices. To request more than one ticker or a range of tickers, expand the filter modifiers.
      * @type {string}
      * @memberof DefaultApiGetSnapshots
      */
@@ -38478,7 +38741,7 @@ export interface DefaultApiGetStocksDevTradesTickerRequest {
     readonly sipTimestampLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksDevTradesTicker
      */
@@ -38765,7 +39028,7 @@ export interface DefaultApiGetStocksFilings10KVX0SectionsRequest {
     readonly periodEndLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksFilings10KVX0Sections
      */
@@ -38954,7 +39217,7 @@ export interface DefaultApiGetStocksFilings10KVXSectionsRequest {
     readonly periodEndLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksFilings10KVXSections
      */
@@ -39241,7 +39504,7 @@ export interface DefaultApiGetStocksFilings8KVXTextRequest {
     readonly filingDateLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;99\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;100\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksFilings8KVXText
      */
@@ -39871,7 +40134,7 @@ export interface DefaultApiGetStocksFilingsVXRiskFactorsRequest {
     readonly cikLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;49999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksFilingsVXRiskFactors
      */
@@ -39990,7 +40253,7 @@ export interface DefaultApiGetStocksFinancialsV1BalanceSheetsRequest {
     readonly periodEndLte?: string
 
     /**
-     * The date when the financial statement was filed with the SEC. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * The date of the most recent SEC filing that included this period\&#39;s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
      * @type {string}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
@@ -40025,70 +40288,70 @@ export interface DefaultApiGetStocksFinancialsV1BalanceSheetsRequest {
     readonly filingDateLte?: string
 
     /**
-     * The fiscal year for the reporting period. Value must be a floating point number.
+     * The fiscal year for the reporting period. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
     readonly fiscalYear?: number
 
     /**
-     * Filter greater than the value. Value must be a floating point number.
+     * Filter greater than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
     readonly fiscalYearGt?: number
 
     /**
-     * Filter greater than or equal to the value. Value must be a floating point number.
+     * Filter greater than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
     readonly fiscalYearGte?: number
 
     /**
-     * Filter less than the value. Value must be a floating point number.
+     * Filter less than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
     readonly fiscalYearLt?: number
 
     /**
-     * Filter less than or equal to the value. Value must be a floating point number.
+     * Filter less than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
     readonly fiscalYearLte?: number
 
     /**
-     * The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.
+     * The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
     readonly fiscalQuarter?: number
 
     /**
-     * Filter greater than the value. Value must be a floating point number.
+     * Filter greater than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
     readonly fiscalQuarterGt?: number
 
     /**
-     * Filter greater than or equal to the value. Value must be a floating point number.
+     * Filter greater than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
     readonly fiscalQuarterGte?: number
 
     /**
-     * Filter less than the value. Value must be a floating point number.
+     * Filter less than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
     readonly fiscalQuarterLt?: number
 
     /**
-     * Filter less than or equal to the value. Value must be a floating point number.
+     * Filter less than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1BalanceSheets
      */
@@ -40235,7 +40498,7 @@ export interface DefaultApiGetStocksFinancialsV1CashFlowStatementsRequest {
     readonly periodEndLte?: string
 
     /**
-     * The date when the financial statement was filed with the SEC. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * The date of the most recent SEC filing that included this period\&#39;s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
      * @type {string}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
@@ -40291,70 +40554,70 @@ export interface DefaultApiGetStocksFinancialsV1CashFlowStatementsRequest {
     readonly tickersAnyOf?: string
 
     /**
-     * The fiscal year for the reporting period. Value must be a floating point number.
+     * The fiscal year for the reporting period. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
     readonly fiscalYear?: number
 
     /**
-     * Filter greater than the value. Value must be a floating point number.
+     * Filter greater than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
     readonly fiscalYearGt?: number
 
     /**
-     * Filter greater than or equal to the value. Value must be a floating point number.
+     * Filter greater than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
     readonly fiscalYearGte?: number
 
     /**
-     * Filter less than the value. Value must be a floating point number.
+     * Filter less than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
     readonly fiscalYearLt?: number
 
     /**
-     * Filter less than or equal to the value. Value must be a floating point number.
+     * Filter less than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
     readonly fiscalYearLte?: number
 
     /**
-     * The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.
+     * The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
     readonly fiscalQuarter?: number
 
     /**
-     * Filter greater than the value. Value must be a floating point number.
+     * Filter greater than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
     readonly fiscalQuarterGt?: number
 
     /**
-     * Filter greater than or equal to the value. Value must be a floating point number.
+     * Filter greater than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
     readonly fiscalQuarterGte?: number
 
     /**
-     * Filter less than the value. Value must be a floating point number.
+     * Filter less than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
     readonly fiscalQuarterLt?: number
 
     /**
-     * Filter less than or equal to the value. Value must be a floating point number.
+     * Filter less than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1CashFlowStatements
      */
@@ -40522,7 +40785,7 @@ export interface DefaultApiGetStocksFinancialsV1IncomeStatementsRequest {
     readonly periodEndLte?: string
 
     /**
-     * The date when the financial statement was filed with the SEC. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * The date of the most recent SEC filing that included this period\&#39;s data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
      * @type {string}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
@@ -40557,70 +40820,70 @@ export interface DefaultApiGetStocksFinancialsV1IncomeStatementsRequest {
     readonly filingDateLte?: string
 
     /**
-     * The fiscal year for the reporting period. Value must be a floating point number.
+     * The fiscal year for the reporting period. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly fiscalYear?: number
 
     /**
-     * Filter greater than the value. Value must be a floating point number.
+     * Filter greater than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly fiscalYearGt?: number
 
     /**
-     * Filter greater than or equal to the value. Value must be a floating point number.
+     * Filter greater than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly fiscalYearGte?: number
 
     /**
-     * Filter less than the value. Value must be a floating point number.
+     * Filter less than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly fiscalYearLt?: number
 
     /**
-     * Filter less than or equal to the value. Value must be a floating point number.
+     * Filter less than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly fiscalYearLte?: number
 
     /**
-     * The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.
+     * The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly fiscalQuarter?: number
 
     /**
-     * Filter greater than the value. Value must be a floating point number.
+     * Filter greater than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly fiscalQuarterGt?: number
 
     /**
-     * Filter greater than or equal to the value. Value must be a floating point number.
+     * Filter greater than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly fiscalQuarterGte?: number
 
     /**
-     * Filter less than the value. Value must be a floating point number.
+     * Filter less than the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
     readonly fiscalQuarterLt?: number
 
     /**
-     * Filter less than or equal to the value. Value must be a floating point number.
+     * Filter less than or equal to the value. Value must be an integer.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1IncomeStatements
      */
@@ -40879,7 +41142,7 @@ export interface DefaultApiGetStocksFinancialsV1RatiosRequest {
     readonly marketCapLte?: number
 
     /**
-     * Earnings per share, calculated as net income available to common shareholders divided by weighted shares outstanding. Value must be a floating point number.
+     * Earnings per share, calculated as trailing twelve months (TTM) net income available to common shareholders divided by point-in-time shares outstanding as of the price date, assuming all shares of other share classes are converted to this share class. This is not weighted average basic or diluted shares outstanding, so this value will not match the reported basic or diluted EPS on the income statements endpoint. Value must be a floating point number.
      * @type {number}
      * @memberof DefaultApiGetStocksFinancialsV1Ratios
      */
@@ -42125,7 +42388,7 @@ export interface DefaultApiGetStocksTaxonomiesVXDisclosuresRequest {
     readonly tertiaryCategoryLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksTaxonomiesVXDisclosures
      */
@@ -42307,7 +42570,7 @@ export interface DefaultApiGetStocksTaxonomiesVXRiskFactorsRequest {
     readonly tertiaryCategoryLte?: string
 
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;200\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksTaxonomiesVXRiskFactors
      */
@@ -42545,7 +42808,7 @@ export interface DefaultApiGetStocksV1DividendsRequest {
  */
 export interface DefaultApiGetStocksV1ExchangesRequest {
     /**
-     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;999\&#39;.
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
      * @type {number}
      * @memberof DefaultApiGetStocksV1Exchanges
      */
@@ -42937,7 +43200,7 @@ export interface DefaultApiGetStocksV1SplitsRequest {
     readonly tickerLte?: string
 
     /**
-     * Date when the stock split was applied and shares adjusted Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * Date when the stock split takes effect. The adjustment is applied overnight. On the prior trading day, the post-market session is the last session that shows pre-split prices. On the execution date, all trading is already adjusted for the split. This includes the pre-market session. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
      * @type {string}
      * @memberof DefaultApiGetStocksV1Splits
      */
@@ -45144,6 +45407,17 @@ export class DefaultApi extends BaseAPI {
      */
     public getEvents(requestParameters: DefaultApiGetEventsRequest, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getEvents(requestParameters.id, requestParameters.types, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Daily U.S. money-market funding conditions from the Federal Reserve and the Federal Reserve Bank of New York, including the Federal Funds Effective Rate, SOFR, OBFR, tri-party general collateral repo rates, Treasury-collateralized overnight reverse repo and repo operation amounts, and commercial paper rates. One row per calendar day; daily federal-funds series generally populate calendar-day rows, while market-rate, volume, and commercial-paper series are generally published on business days and may be null on weekends or holidays.
+     * @param {DefaultApiGetFedV1FundingConditionsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getFedV1FundingConditions(requestParameters: DefaultApiGetFedV1FundingConditionsRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getFedV1FundingConditions(requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

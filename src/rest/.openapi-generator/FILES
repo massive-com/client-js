@@ -116,6 +116,8 @@ docs/GetEvents200ResponseResults.md
 docs/GetEvents200ResponseResultsEventsInner.md
 docs/GetEvents200ResponseResultsEventsInnerOneOf.md
 docs/GetEvents200ResponseResultsEventsInnerOneOfTickerChange.md
+docs/GetFedV1FundingConditions200Response.md
+docs/GetFedV1FundingConditions200ResponseResultsInner.md
 docs/GetFedV1Inflation200Response.md
 docs/GetFedV1Inflation200ResponseResultsInner.md
 docs/GetFedV1InflationExpectations200Response.md
