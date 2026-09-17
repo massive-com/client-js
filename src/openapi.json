@@ -292,7 +292,7 @@
         "type": "number"
       },
       "AskSize": {
-        "description": "The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.",
+        "description": "The ask size. This represents the number of shares sellers are offering at the given ask price.",
         "type": "integer"
       },
       "BidExchangeId": {
@@ -305,7 +305,7 @@
         "type": "number"
       },
       "BidSize": {
-        "description": "The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.",
+        "description": "The bid size. This represents the number of shares buyers are bidding for at the given bid price.",
         "type": "integer"
       },
       "Close": {
@@ -4656,7 +4656,7 @@
                 "type": "number"
               },
               "S": {
-                "description": "The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.",
+                "description": "The ask size. This represents the number of shares sellers are offering at the given ask price.",
                 "type": "integer"
               },
               "X": {
@@ -4685,7 +4685,7 @@
                 "type": "number"
               },
               "s": {
-                "description": "The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.",
+                "description": "The bid size. This represents the number of shares buyers are bidding for at the given bid price.",
                 "type": "integer"
               },
               "x": {
@@ -4758,7 +4758,7 @@
                       "type": "number"
                     },
                     "S": {
-                      "description": "The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.",
+                      "description": "The ask size. This represents the number of shares sellers are offering at the given ask price.",
                       "type": "integer"
                     },
                     "X": {
@@ -4787,7 +4787,7 @@
                       "type": "number"
                     },
                     "s": {
-                      "description": "The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.",
+                      "description": "The bid size. This represents the number of shares buyers are bidding for at the given bid price.",
                       "type": "integer"
                     },
                     "x": {
@@ -5599,7 +5599,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -5966,7 +5966,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -6278,7 +6278,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -6467,7 +6467,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -7119,7 +7119,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -7408,7 +7408,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -7889,7 +7889,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -7977,12 +7977,12 @@
                             "type": "string"
                           },
                           "estimated_eps_guidance": {
-                            "description": "The midpoint or central earnings per share (EPS) value the company expects for the given fiscal period.",
+                            "description": "The analyst consensus EPS estimate at the time the company issued its guidance. This can sit above, below, or in line with the company's issued range.",
                             "format": "double",
                             "type": "number"
                           },
                           "estimated_revenue_guidance": {
-                            "description": "The midpoint or central revenue figure the company expects for the given fiscal period.",
+                            "description": "The analyst consensus revenue estimate at the time the company issued its guidance. This can sit above, below, or in line with the company's issued range.",
                             "format": "double",
                             "type": "number"
                           },
@@ -8563,7 +8563,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -8988,7 +8988,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -9422,7 +9422,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -9879,7 +9879,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -10079,7 +10079,7 @@
         "operationId": "get_crypto_v1_exchanges",
         "parameters": [
           {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '1000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -10802,7 +10802,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -11487,7 +11487,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -11829,7 +11829,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -12123,7 +12123,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -13007,7 +13007,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -13308,6 +13308,293 @@
         ]
       }
     },
+    "/fed/v1/funding-conditions": {
+      "get": {
+        "description": "Daily U.S. money-market funding conditions from the Federal Reserve and the Federal Reserve Bank of New York, including the Federal Funds Effective Rate, SOFR, OBFR, tri-party general collateral repo rates, Treasury-collateralized overnight reverse repo and repo operation amounts, and commercial paper rates. One row per calendar day; daily federal-funds series generally populate calendar-day rows, while market-rate, volume, and commercial-paper series are generally published on business days and may be null on weekends or holidays.",
+        "operationId": "get_fed_v1_funding-conditions",
+        "parameters": [
+          {
+            "description": "Calendar date of the observation (YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'asc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "date.asc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "request_id": 1,
+                  "results": [
+                    {
+                      "date": "2025-06-02",
+                      "effective_fed_funds_rate": 4.33,
+                      "effective_fed_funds_volume": 98,
+                      "fed_funds_target_lower": 4.25,
+                      "fed_funds_target_upper": 4.5,
+                      "fed_overnight_repo_treasury_amount": 0,
+                      "fed_overnight_reverse_repo_treasury_amount": 214.5,
+                      "financial_commercial_paper_90d_rate": 4.35,
+                      "interest_on_reserve_balances": 4.4,
+                      "nonfinancial_commercial_paper_90d_rate": 4.34,
+                      "obfr_25th_percentile": 4.3,
+                      "obfr_75th_percentile": 4.33,
+                      "obfr_volume": 305,
+                      "overnight_bank_funding_rate": 4.32,
+                      "secured_overnight_financing_rate": 4.31,
+                      "sofr_25th_percentile": 4.28,
+                      "sofr_75th_percentile": 4.32,
+                      "sofr_volume": 2214,
+                      "tgcr_25th_percentile": 4.27,
+                      "tgcr_75th_percentile": 4.31,
+                      "tri_party_general_collateral_rate": 4.3,
+                      "tri_party_general_collateral_volume": 1876
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "date": {
+                            "description": "Calendar date of the observation (YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "effective_fed_funds_rate": {
+                            "description": "Federal Funds Effective Rate as a percentage (DFF series from FRED); published daily.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "effective_fed_funds_volume": {
+                            "description": "Total transaction volume underlying the effective federal funds rate calculation, in billions of U.S. dollars; reported on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "fed_funds_target_lower": {
+                            "description": "Lower bound of the federal funds target range as a percentage (DFEDTARL series from FRED); posted every calendar day.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "fed_funds_target_upper": {
+                            "description": "Upper bound of the federal funds target range as a percentage (DFEDTARU series from FRED); posted every calendar day.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "fed_overnight_repo_treasury_amount": {
+                            "description": "NY Fed overnight repo operation amount against Treasury collateral, in billions of U.S. dollars (RPONTSYD series from FRED); reported on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "fed_overnight_reverse_repo_treasury_amount": {
+                            "description": "NY Fed overnight reverse repo operation amount against Treasury collateral, in billions of U.S. dollars (RRPONTSYD series from FRED); reported on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "financial_commercial_paper_90d_rate": {
+                            "description": "90-day AA financial commercial paper interest rate as a percentage, quoted on a discount basis (DCPF3M series from FRED); reported on business days, with occasional source-level gaps.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "interest_on_reserve_balances": {
+                            "description": "Interest rate paid on reserve balances as a percentage (IORB series from FRED); posted every calendar day.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "nonfinancial_commercial_paper_90d_rate": {
+                            "description": "90-day AA nonfinancial commercial paper interest rate as a percentage, quoted on a discount basis (DCPN3M series from FRED); reported on business days, with occasional source-level gaps.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "obfr_25th_percentile": {
+                            "description": "25th percentile transaction rate of the OBFR distribution as a percentage; posted on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "obfr_75th_percentile": {
+                            "description": "75th percentile transaction rate of the OBFR distribution as a percentage; posted on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "obfr_volume": {
+                            "description": "Total transaction volume underlying the OBFR calculation, in billions of U.S. dollars; reported on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "overnight_bank_funding_rate": {
+                            "description": "Overnight Bank Funding Rate (OBFR) as a percentage; published by the Federal Reserve Bank of New York and reported on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "secured_overnight_financing_rate": {
+                            "description": "Secured Overnight Financing Rate (SOFR) as a percentage; published by the Federal Reserve Bank of New York and reported on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "sofr_25th_percentile": {
+                            "description": "25th percentile transaction rate of the SOFR distribution as a percentage; posted on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "sofr_75th_percentile": {
+                            "description": "75th percentile transaction rate of the SOFR distribution as a percentage; posted on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "sofr_volume": {
+                            "description": "Total transaction volume underlying the SOFR calculation, in billions of U.S. dollars; reported on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "tgcr_25th_percentile": {
+                            "description": "25th percentile transaction rate of the TGCR distribution as a percentage; posted on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "tgcr_75th_percentile": {
+                            "description": "75th percentile transaction rate of the TGCR distribution as a percentage; posted on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "tri_party_general_collateral_rate": {
+                            "description": "Tri-Party General Collateral Rate (TGCR) as a percentage; published by the Federal Reserve Bank of New York as a repo reference rate and reported on business days.",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "tri_party_general_collateral_volume": {
+                            "description": "Total transaction volume underlying the TGCR calculation, in billions of U.S. dollars; reported on business days.",
+                            "format": "float",
+                            "type": "number"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/fed/v1/inflation": {
       "get": {
         "description": "A table tracking inflation and price indices, including Consumer Price Index (CPI) and Personal Consumption Expenditures (PCE) metrics over time.",
@@ -13367,7 +13654,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -13571,7 +13858,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -13781,7 +14068,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -13973,7 +14260,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -14146,7 +14433,7 @@
         "operationId": "get_forex_v1_exchanges",
         "parameters": [
           {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '1000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -14283,7 +14570,7 @@
             "x-polygon-go-id": "Ticker"
           },
           {
-            "description": "The size of each aggregate candle, specified as a number followed by a unit: `sec`, `min`, `hour`, `session`, `week`, `month`, `quarter`, or `year`.\n\nEach unit has a maximum multiplier. For instance, minute candles go up to `59min` — after that, use `1hour`. Requesting an unsupported size returns a `400 Bad Request`.",
+            "description": "The size of each aggregate candle, specified as a number followed by a unit: sec, min, hour, session, week, month, quarter, or year.\n\nEach unit has a maximum multiplier. For instance, minute candles go up to 59min; after that, use 1hour. Requesting an unsupported size returns a 400 Bad Request.",
             "example": "1min",
             "in": "query",
             "name": "resolution",
@@ -14293,7 +14580,7 @@
             }
           },
           {
-            "description": "Filter by the start time of each candle. Accepts a `YYYY-MM-DD` date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval.\n\nWhen omitted, the API returns the most recent candles up to `limit`.\n\nUse comparison suffixes to query a range:\n- `window_start.gte` — greater than or equal to\n- `window_start.gt` — greater than\n- `window_start.lte` — less than or equal to\n- `window_start.lt` — less than\n\n**Examples**\n- Most recent minute candles: `/v1/aggs/ESU5?resolution=1min&limit=5`\n- Single daily candle: `/v1/aggs/ESU5?resolution=1session&window_start=2025-08-05`\n- Date range: `/v1/aggs/ESU5?resolution=1session&window_start.gte=2025-07-01&window_start.lte=2025-07-31`\n- After a timestamp: `/v1/aggs/ESU5?resolution=1sec&window_start.gt=1751409877000000000&limit=1000`",
+            "description": "Filter by the start time of each candle. Accepts a YYYY-MM-DD date or a nanosecond Unix timestamp. The value is snapped to the start of the matching candle interval. When omitted, the API returns the most recent candles up to the limit.\n\nSession candles are timestamped at the start of the session, not the trading date they settle on. A futures session opens the evening before it settles, so window_start falls on the day before session_end_date. To pull the session that settles on a given date, set window_start to the day before. For example, window_start=2025-08-05 returns the session that settles on 2025-08-06. Week, month, quarter, and year candles follow the same rule: window_start is the first day of the period and session_end_date is the last trading date in it.\n\nAdd a comparison suffix to filter a range: window_start.gte (greater than or equal to), window_start.gt (greater than), window_start.lte (less than or equal to), or window_start.lt (less than).\n\nExamples:\n\nMost recent minute candles: /v1/aggs/ESU5?resolution=1min&limit=5\n\nSession settling 2025-08-06 (pass its start date, 2025-08-05): /v1/aggs/ESU5?resolution=1session&window_start=2025-08-05\n\nDate range: /v1/aggs/ESU5?resolution=1session&window_start.gte=2025-07-01&window_start.lte=2025-07-31\n\nAfter a timestamp: /v1/aggs/ESU5?resolution=1sec&window_start.gt=1751409877000000000&limit=1000",
             "in": "query",
             "name": "window_start",
             "schema": {
@@ -14370,16 +14657,16 @@
                   "results": [
                     {
                       "close": 2874.2,
-                      "dollar_volume": 380560636.01,
+                      "dollar_volume": 380717446,
                       "high": 2877.1,
                       "low": 2837.4,
-                      "open": 2849.8,
+                      "open": 2850.4,
                       "session_end_date": "2025-02-04",
                       "settlement_price": 2875.8,
                       "ticker": "GCJ5",
-                      "transactions": 74223,
-                      "volume": 133072,
-                      "window_start": 1738627200000000000
+                      "transactions": 74262,
+                      "volume": 133127,
+                      "window_start": 1738540800000000000
                     },
                     {
                       "close": 2884.8,
@@ -14392,7 +14679,7 @@
                       "ticker": "GCJ5",
                       "transactions": 83673,
                       "volume": 155170,
-                      "window_start": 1738713600000000000
+                      "window_start": 1738627200000000000
                     }
                   ],
                   "status": "OK"
@@ -14412,7 +14699,7 @@
                             "type": "number"
                           },
                           "dollar_volume": {
-                            "description": "The total dollar volume of the transactions that occurred within the timeframe.",
+                            "description": "The sum of price × size across all trades in the window, expressed in the contract's quoted price units, which are the same units as the bar's open, high, low, and close. Despite the field name, no contract multiplier is applied, so this is not a notional dollar value. See the <a href=\"/docs/rest/futures/products\">Products endpoint</a> for contract multiplier details. Because dollar_volume is a raw sum, you can use it to compute a volume-weighted average price (VWAP) over any span of bars: sum dollar_volume across the bars in the window and divide by the summed volume.",
                             "format": "double",
                             "type": "number"
                           },
@@ -14432,11 +14719,11 @@
                             "type": "number"
                           },
                           "session_end_date": {
-                            "description": "Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.",
+                            "description": "Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format. Sessions are named by this end date, while window_start holds the session's start date, which for session candles is the day before.",
                             "type": "string"
                           },
                           "settlement_price": {
-                            "description": "The price the contract would have cost to settle for this session.",
+                            "description": "The price the contract settled at for this session. Included for session, week, month, quarter, and year candles; for multi-session candles it is the settlement of the final session in the period. Not returned for intraday candles (sec, min, hour).",
                             "format": "double",
                             "type": "number"
                           },
@@ -14769,7 +15056,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 1001,
+              "maximum": 1000,
               "minimum": 1,
               "type": "integer"
             }
@@ -14979,7 +15266,7 @@
         "operationId": "get_futures_v1_exchanges",
         "parameters": [
           {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '1000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -15178,7 +15465,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '99'.",
+            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '100'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -15738,7 +16025,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -15988,7 +16275,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '49999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -16343,7 +16630,7 @@
             "name": "limit",
             "schema": {
               "default": 10,
-              "maximum": 1001,
+              "maximum": 1000,
               "minimum": 1,
               "type": "integer"
             }
@@ -16603,7 +16890,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -16974,7 +17261,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '49999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '50000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -17168,7 +17455,7 @@
         "operationId": "get_options_v1_exchanges",
         "parameters": [
           {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '1000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -17374,7 +17661,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '1000' if not specified. The maximum allowed limit is '49999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '1000' if not specified. The maximum allowed limit is '50000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -17584,7 +17871,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '1000' if not specified. The maximum allowed limit is '49999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '1000' if not specified. The maximum allowed limit is '50000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -17676,11 +17963,8 @@
                         },
                         "required": [
                           "ticker",
-                          "sip_timestamp",
-                          "sequence_number",
                           "price",
                           "size",
-                          "conditions",
                           "exchange"
                         ],
                         "type": "object"
@@ -17790,7 +18074,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '49999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -18184,7 +18468,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '99'.",
+            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '100'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -18546,7 +18830,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '99'.",
+            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '100'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -18809,7 +19093,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 1001,
+              "maximum": 1000,
               "minimum": 1,
               "type": "integer"
             }
@@ -19167,7 +19451,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '99'.",
+            "description": "Limit the maximum number of results returned. Defaults to '10' if not specified. The maximum allowed limit is '100'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -19389,7 +19673,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 1001,
+              "maximum": 1000,
               "minimum": 1,
               "type": "integer"
             }
@@ -19744,7 +20028,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 10001,
+              "maximum": 10000,
               "minimum": 1,
               "type": "integer"
             }
@@ -20149,7 +20433,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 10001,
+              "maximum": 10000,
               "minimum": 1,
               "type": "integer"
             }
@@ -20680,7 +20964,7 @@
             "name": "limit",
             "schema": {
               "default": 1000,
-              "maximum": 10001,
+              "maximum": 10000,
               "minimum": 1,
               "type": "integer"
             }
@@ -20979,7 +21263,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '49999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -21240,7 +21524,7 @@
             }
           },
           {
-            "description": "The date when the financial statement was filed with the SEC. Value must be formatted 'yyyy-mm-dd'.",
+            "description": "The date of the most recent SEC filing that included this period's data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "filing_date",
             "schema": {
@@ -21280,93 +21564,93 @@
             }
           },
           {
-            "description": "The fiscal year for the reporting period. Value must be a floating point number.",
+            "description": "The fiscal year for the reporting period. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than the value. Value must be a floating point number.",
+            "description": "Filter greater than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.gt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be a floating point number.",
+            "description": "Filter greater than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.gte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than the value. Value must be a floating point number.",
+            "description": "Filter less than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.lt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be a floating point number.",
+            "description": "Filter less than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.lte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.",
+            "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than the value. Value must be a floating point number.",
+            "description": "Filter greater than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.gt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be a floating point number.",
+            "description": "Filter greater than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.gte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than the value. Value must be a floating point number.",
+            "description": "Filter less than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.lt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be a floating point number.",
+            "description": "Filter less than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.lte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
@@ -21423,7 +21707,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -21546,19 +21830,19 @@
                             "type": "number"
                           },
                           "filing_date": {
-                            "description": "The date when the financial statement was filed with the SEC.",
+                            "description": "The date of the most recent SEC filing that included this period's data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index).",
                             "format": "date",
                             "type": "string"
                           },
                           "fiscal_quarter": {
                             "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period.",
-                            "format": "double",
-                            "type": "number"
+                            "format": "int32",
+                            "type": "integer"
                           },
                           "fiscal_year": {
                             "description": "The fiscal year for the reporting period.",
-                            "format": "double",
-                            "type": "number"
+                            "format": "int32",
+                            "type": "integer"
                           },
                           "goodwill": {
                             "description": "Intangible asset representing the excess of purchase price over fair value of net assets acquired in business combinations.",
@@ -21845,7 +22129,7 @@
             }
           },
           {
-            "description": "The date when the financial statement was filed with the SEC. Value must be formatted 'yyyy-mm-dd'.",
+            "description": "The date of the most recent SEC filing that included this period's data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "filing_date",
             "schema": {
@@ -21909,93 +22193,93 @@
             }
           },
           {
-            "description": "The fiscal year for the reporting period. Value must be a floating point number.",
+            "description": "The fiscal year for the reporting period. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than the value. Value must be a floating point number.",
+            "description": "Filter greater than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.gt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be a floating point number.",
+            "description": "Filter greater than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.gte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than the value. Value must be a floating point number.",
+            "description": "Filter less than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.lt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be a floating point number.",
+            "description": "Filter less than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.lte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.",
+            "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than the value. Value must be a floating point number.",
+            "description": "Filter greater than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.gt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be a floating point number.",
+            "description": "Filter greater than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.gte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than the value. Value must be a floating point number.",
+            "description": "Filter less than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.lt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be a floating point number.",
+            "description": "Filter less than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.lte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
@@ -22052,7 +22336,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -22154,19 +22438,19 @@
                             "type": "number"
                           },
                           "filing_date": {
-                            "description": "The date when the financial statement was filed with the SEC.",
+                            "description": "The date of the most recent SEC filing that included this period's data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index).",
                             "format": "date",
                             "type": "string"
                           },
                           "fiscal_quarter": {
                             "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period.",
-                            "format": "double",
-                            "type": "number"
+                            "format": "int32",
+                            "type": "integer"
                           },
                           "fiscal_year": {
                             "description": "The fiscal year for the reporting period.",
-                            "format": "double",
-                            "type": "number"
+                            "format": "int32",
+                            "type": "integer"
                           },
                           "income_loss_from_discontinued_operations": {
                             "description": "After-tax income or loss from business operations that have been discontinued.",
@@ -22459,7 +22743,7 @@
             }
           },
           {
-            "description": "The date when the financial statement was filed with the SEC. Value must be formatted 'yyyy-mm-dd'.",
+            "description": "The date of the most recent SEC filing that included this period's data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index). Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "filing_date",
             "schema": {
@@ -22499,93 +22783,93 @@
             }
           },
           {
-            "description": "The fiscal year for the reporting period. Value must be a floating point number.",
+            "description": "The fiscal year for the reporting period. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than the value. Value must be a floating point number.",
+            "description": "Filter greater than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.gt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be a floating point number.",
+            "description": "Filter greater than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.gte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than the value. Value must be a floating point number.",
+            "description": "Filter less than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.lt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be a floating point number.",
+            "description": "Filter less than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_year.lte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be a floating point number.",
+            "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than the value. Value must be a floating point number.",
+            "description": "Filter greater than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.gt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter greater than or equal to the value. Value must be a floating point number.",
+            "description": "Filter greater than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.gte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than the value. Value must be a floating point number.",
+            "description": "Filter less than the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.lt",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
-            "description": "Filter less than or equal to the value. Value must be a floating point number.",
+            "description": "Filter less than or equal to the value. Value must be an integer.",
             "in": "query",
             "name": "fiscal_quarter.lte",
             "schema": {
-              "format": "double",
-              "type": "number"
+              "format": "int64",
+              "type": "integer"
             }
           },
           {
@@ -22642,7 +22926,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -22771,19 +23055,19 @@
                             "type": "number"
                           },
                           "filing_date": {
-                            "description": "The date when the financial statement was filed with the SEC.",
+                            "description": "The date of the most recent SEC filing that included this period's data. This is not necessarily the date this period was originally filed. Because SEC filings restate comparative data for prior periods, multiple records can share the same filing_date. For example, an annual 10-K reports three years of results, and a 10-Q includes prior period comparatives. To find the original filing date for a specific 10-K or 10-Q, use the SEC EDGAR filings index endpoint (/stocks/filings/vX/index).",
                             "format": "date",
                             "type": "string"
                           },
                           "fiscal_quarter": {
                             "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period.",
-                            "format": "double",
-                            "type": "number"
+                            "format": "int32",
+                            "type": "integer"
                           },
                           "fiscal_year": {
                             "description": "The fiscal year for the reporting period.",
-                            "format": "double",
-                            "type": "number"
+                            "format": "int32",
+                            "type": "integer"
                           },
                           "gross_profit": {
                             "description": "Revenue minus cost of revenue, representing profit before operating expenses.",
@@ -23180,7 +23464,7 @@
             }
           },
           {
-            "description": "Earnings per share, calculated as net income available to common shareholders divided by weighted shares outstanding. Value must be a floating point number.",
+            "description": "Earnings per share, calculated as trailing twelve months (TTM) net income available to common shareholders divided by point-in-time shares outstanding as of the price date, assuming all shares of other share classes are converted to this share class. This is not weighted average basic or diluted shares outstanding, so this value will not match the reported basic or diluted EPS on the income statements endpoint. Value must be a floating point number.",
             "in": "query",
             "name": "earnings_per_share",
             "schema": {
@@ -23950,7 +24234,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -24049,7 +24333,7 @@
                             "type": "number"
                           },
                           "earnings_per_share": {
-                            "description": "Earnings per share, calculated as net income available to common shareholders divided by weighted shares outstanding.",
+                            "description": "Earnings per share, calculated as trailing twelve months (TTM) net income available to common shareholders divided by point-in-time shares outstanding as of the price date, assuming all shares of other share classes are converted to this share class. This is not weighted average basic or diluted shares outstanding, so this value will not match the reported basic or diluted EPS on the income statements endpoint.",
                             "format": "double",
                             "type": "number"
                           },
@@ -24392,7 +24676,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '200' if not specified. The maximum allowed limit is '999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '200' if not specified. The maximum allowed limit is '1000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -24730,7 +25014,7 @@
             }
           },
           {
-            "description": "Limit the maximum number of results returned. Defaults to '200' if not specified. The maximum allowed limit is '999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '200' if not specified. The maximum allowed limit is '1000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -25048,7 +25332,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -25228,7 +25512,7 @@
         "operationId": "get_stocks_v1_exchanges",
         "parameters": [
           {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '999'.",
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '1000'.",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -25600,7 +25884,7 @@
             "name": "limit",
             "schema": {
               "default": 10,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -25897,7 +26181,7 @@
             "name": "limit",
             "schema": {
               "default": 10,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -26146,7 +26430,7 @@
             }
           },
           {
-            "description": "Date when the stock split was applied and shares adjusted Value must be formatted 'yyyy-mm-dd'.",
+            "description": "Date when the stock split takes effect. The adjustment is applied overnight. On the prior trading day, the post-market session is the last session that shows pre-split prices. On the execution date, all trading is already adjusted for the split. This includes the pre-market session. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "execution_date",
             "schema": {
@@ -26217,7 +26501,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -26270,7 +26554,7 @@
                             "type": "string"
                           },
                           "execution_date": {
-                            "description": "Date when the stock split was applied and shares adjusted",
+                            "description": "Date when the stock split takes effect. The adjustment is applied overnight. On the prior trading day, the post-market session is the last session that shows pre-split prices. On the execution date, all trading is already adjusted for the split. This includes the pre-market session.",
                             "format": "date",
                             "type": "string"
                           },
@@ -26466,7 +26750,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 5001,
+              "maximum": 5000,
               "minimum": 1,
               "type": "integer"
             }
@@ -26984,7 +27268,7 @@
             "name": "limit",
             "schema": {
               "default": 100,
-              "maximum": 50001,
+              "maximum": 50000,
               "minimum": 1,
               "type": "integer"
             }
@@ -35935,7 +36219,7 @@
             "name": "limit",
             "schema": {
               "default": 10,
-              "maximum": 1001,
+              "maximum": 1000,
               "minimum": 1,
               "type": "integer"
             }
@@ -40169,6 +40453,7 @@
             "in": "query",
             "name": "order",
             "schema": {
+              "default": "desc",
               "enum": [
                 "asc",
                 "desc"
@@ -40425,7 +40710,7 @@
         },
         "x-polygon-paginate": {
           "order": {
-            "example": "desc"
+            "default": "desc"
           },
           "sort": {
             "default": "published_utc",
@@ -44183,7 +44468,7 @@
                                     "type": "number"
                                   },
                                   "S": {
-                                    "description": "The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.",
+                                    "description": "The ask size. This represents the number of shares sellers are offering at the given ask price.",
                                     "type": "integer"
                                   },
                                   "X": {
@@ -44212,7 +44497,7 @@
                                     "type": "number"
                                   },
                                   "s": {
-                                    "description": "The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.",
+                                    "description": "The bid size. This represents the number of shares buyers are bidding for at the given bid price.",
                                     "type": "integer"
                                   },
                                   "x": {
@@ -48589,7 +48874,7 @@
         "operationId": "GetSnapshots",
         "parameters": [
           {
-            "description": "Search a range of tickers lexicographically.",
+            "description": "Specify a single ticker symbol. Ticker symbols are case-sensitive and use a prefix for non-stock assets, for example NVDA for stocks, O:SPY280121C00750000 for options, C:EURUSD for forex, X:BTCUSD for crypto, and I:SPX for indices. To request more than one ticker or a range of tickers, expand the filter modifiers.",
             "in": "query",
             "name": "ticker",
             "schema": {
@@ -48599,7 +48884,7 @@
               "anyOf": {
                 "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
                 "enabled": true,
-                "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX"
+                "example": "NVDA,O:SPY280121C00750000,C:EURUSD,X:BTCUSD,I:SPX"
               },
               "range": true,
               "type": "string"
@@ -48654,7 +48939,7 @@
           },
           {
             "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
-            "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX",
+            "example": "NVDA,O:SPY280121C00750000,C:EURUSD,X:BTCUSD,I:SPX",
             "in": "query",
             "name": "ticker.any_of",
             "schema": {
@@ -49036,7 +49321,7 @@
                                 "type": "integer"
                               },
                               "ask_size": {
-                                "description": "The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.",
+                                "description": "The ask size. This represents the number of shares, or contracts for options, sellers are offering at the given ask price.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -49050,7 +49335,7 @@
                                 "type": "integer"
                               },
                               "bid_size": {
-                                "description": "The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.",
+                                "description": "The bid size. This represents the number of shares, or contracts for options, buyers are bidding for at the given bid price.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -49437,7 +49722,7 @@
             }
           },
           {
-            "description": "Search a range of tickers lexicographically.",
+            "description": "Specify a single index ticker, for example I:SPX. Index tickers are case-sensitive and start with I:. To request more than one ticker or a range of tickers, expand the filter modifiers.",
             "in": "query",
             "name": "ticker",
             "schema": {
