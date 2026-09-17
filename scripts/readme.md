@@ -51,6 +51,24 @@ only ever writes into `src/rest`.
 The generator version is pinned in `openapitools.json` (currently **7.21.0**) so
 diffs reflect spec changes, not generator upgrades.
 
+## Template overrides
+
+`templates/typescript-axios/` holds local copies of generator templates that
+replace the stock ones. `generate.sh` applies them with the `-t` flag, so changes
+made here survive regeneration. Editing `src/rest/**` directly does not survive,
+because the daily sync overwrites that directory.
+
+- `apiInner.mustache`: the generated API surface.
+- `common.mustache`: adds an explicit `Promise<R>` return type to
+  `createRequestFunction`. axios >= 1.19 defaults that generic to a non-exported
+  `unique symbol`, which breaks declaration emit with TS2527 and leaves the
+  build unable to produce types. Tracked upstream as
+  https://github.com/axios/axios/issues/11116.
+
+Both are forks of the stock templates for the generator version pinned in
+`openapitools.json`. When bumping that version, re-copy the upstream template and
+re-apply the local change, otherwise the fork silently reverts upstream fixes.
+
 ## Files
 
 - `generate.sh` — the orchestrator described above.
