@@ -5255,7 +5255,7 @@
   },
   "info": {
     "description": "The future of fintech.",
-    "title": "Polygon API",
+    "title": "Massive API",
     "version": "1.0.0"
   },
   "openapi": "3.0.3",
@@ -11620,7 +11620,7 @@
                             "type": "string"
                           },
                           "weight": {
-                            "description": "The percentage weight of this constituent security within the ETF's total portfolio.",
+                            "description": "The constituent's weight in the ETF's portfolio, as a decimal fraction (0.0789 = 7.89%). Short positions are negative. For most funds the weights sum to about 1; leveraged and inverse funds vary. A few constituents have no weight, so a sum can fall short.",
                             "format": "double",
                             "type": "number"
                           }
@@ -21836,12 +21836,12 @@
                           },
                           "fiscal_quarter": {
                             "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period.",
-                            "format": "int32",
+                            "format": "int64",
                             "type": "integer"
                           },
                           "fiscal_year": {
                             "description": "The fiscal year for the reporting period.",
-                            "format": "int32",
+                            "format": "int64",
                             "type": "integer"
                           },
                           "goodwill": {
@@ -22444,12 +22444,12 @@
                           },
                           "fiscal_quarter": {
                             "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period.",
-                            "format": "int32",
+                            "format": "int64",
                             "type": "integer"
                           },
                           "fiscal_year": {
                             "description": "The fiscal year for the reporting period.",
-                            "format": "int32",
+                            "format": "int64",
                             "type": "integer"
                           },
                           "income_loss_from_discontinued_operations": {
@@ -23061,12 +23061,12 @@
                           },
                           "fiscal_quarter": {
                             "description": "The fiscal quarter number (1, 2, 3, or 4) for the reporting period.",
-                            "format": "int32",
+                            "format": "int64",
                             "type": "integer"
                           },
                           "fiscal_year": {
                             "description": "The fiscal year for the reporting period.",
-                            "format": "int32",
+                            "format": "int64",
                             "type": "integer"
                           },
                           "gross_profit": {
