@@ -1,6 +1,6 @@
 /* tslint:disable */
 /**
- * Polygon API
+ * Massive API
  * The future of fintech.
  *
  * The version of the OpenAPI document: 1.0.0

@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Polygon API
+ * Massive API
  * The future of fintech.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -2832,7 +2832,7 @@ export interface GetEtfGlobalV1Constituents200ResponseResultsInner {
      */
     'us_code'?: string;
     /**
-     * The percentage weight of this constituent security within the ETF\'s total portfolio.
+     * The constituent\'s weight in the ETF\'s portfolio, as a decimal fraction (0.0789 = 7.89%). Short positions are negative. For most funds the weights sum to about 1; leveraged and inverse funds vary. A few constituents have no weight, so a sum can fall short.
      */
     'weight'?: number;
 }
