@@ -5728,7 +5728,7 @@ export interface GetOptionsV3QuotesTicker200ResponseResultsInner {
     /**
      * The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this quote from the exchange which produced it.
      */
-    'sip_timestamp': number;
+    'sip_timestamp'?: number;
     /**
      * The options ticker symbol (e.g., O:SPY260123C00687000).
      */
