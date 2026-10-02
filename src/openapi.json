@@ -17755,7 +17755,6 @@
                         },
                         "required": [
                           "ticker",
-                          "sip_timestamp",
                           "sequence_number",
                           "ask_exchange",
                           "ask_price",
