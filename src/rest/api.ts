@@ -4976,7 +4976,7 @@ export interface GetLastStocksQuote200ResponseResults {
      */
     'P'?: number;
     /**
-     * The total number of shares available for sale at the current ask price.
+     * The ask size. This represents the number of shares sellers are offering at the given ask price.
      */
     'S'?: number;
     /**
@@ -5008,7 +5008,7 @@ export interface GetLastStocksQuote200ResponseResults {
      */
     'q': number;
     /**
-     * The total number of shares that buyers want to purchase at the current bid price.
+     * The bid size. This represents the number of shares buyers are bidding for at the given bid price.
      */
     's'?: number;
     /**
@@ -5536,7 +5536,7 @@ export interface GetOptionsQuotes200ResponseResultsInner {
      */
     'ask_price'?: number;
     /**
-     * The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.
+     * The ask size. This represents the number of contracts sellers are offering at the given ask price.
      */
     'ask_size'?: number;
     /**
@@ -5548,7 +5548,7 @@ export interface GetOptionsQuotes200ResponseResultsInner {
      */
     'bid_price'?: number;
     /**
-     * The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.
+     * The bid size. This represents the number of contracts buyers are bidding for at the given bid price.
      */
     'bid_size'?: number;
     /**
@@ -5592,11 +5592,15 @@ export interface GetOptionsTrades200ResponseResultsInner {
      */
     'exchange': number;
     /**
+     * The trade ID. Options trades do not have a trade ID, so this field is returned as an empty string.
+     */
+    'id'?: string;
+    /**
      * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the trade was actually generated at the exchange.
      */
     'participant_timestamp'?: number;
     /**
-     * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
+     * The price of the trade. This is the price per share of the underlying, so the total dollar value of a trade is the price multiplied by the size and by the contract multiplier, which is typically 100 shares per contract.
      */
     'price': number;
     /**
@@ -7961,7 +7965,7 @@ export interface GetStocksQuotes200ResponseResultsInner {
      */
     'ask_price'?: number;
     /**
-     * The total number of shares available for sale at the current ask price.
+     * The ask size. This represents the number of shares sellers are offering at the given ask price.
      */
     'ask_size'?: number;
     /**
@@ -7973,7 +7977,7 @@ export interface GetStocksQuotes200ResponseResultsInner {
      */
     'bid_price'?: number;
     /**
-     * The total number of shares that buyers want to purchase at the current bid price.
+     * The bid size. This represents the number of shares buyers are bidding for at the given bid price.
      */
     'bid_size'?: number;
     /**
@@ -8408,9 +8412,9 @@ export interface GetStocksTrades200ResponseResultsInner {
      */
     'id': string;
     /**
-     * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the trade was actually generated at the exchange.
+     * The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the trade was actually generated at the exchange. Omitted on OTC trades reported through the FINRA ORF (exchange 62), which carry no participant timestamp.
      */
-    'participant_timestamp': number;
+    'participant_timestamp'?: number;
     /**
      * The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.
      */
