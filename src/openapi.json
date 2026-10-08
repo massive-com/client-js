@@ -16221,6 +16221,698 @@
         ]
       }
     },
+    "/futures/v1/products/new": {
+      "get": {
+        "description": "The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.\n\nUse Cases: Product specification, historical product checks, risk management, trading system integration.",
+        "operationId": "get_futures_v1_products_new",
+        "parameters": [
+          {
+            "description": "The full name of the product.",
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "name.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "name.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "name.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "name.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "name.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The identifier for the product.",
+            "in": "query",
+            "name": "product_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "product_code.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "product_code.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "product_code.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "product_code.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "product_code.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.",
+            "in": "query",
+            "name": "provider_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "provider_id.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "provider_id.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "provider_id.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "provider_id.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "provider_id.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The trading venue (MIC) for the exchange on which this product's contracts trade.",
+            "in": "query",
+            "name": "trading_venue",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "trading_venue.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "trading_venue.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "trading_venue.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "trading_venue.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "trading_venue.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The sector to which the product belongs.",
+            "in": "query",
+            "name": "sector",
+            "schema": {
+              "enum": [
+                "asia",
+                "base",
+                "biofuels",
+                "coal",
+                "cross_rates",
+                "crude_oil",
+                "custom_index",
+                "dairy",
+                "dj_ubs_ci",
+                "electricity",
+                "emissions",
+                "europe",
+                "fertilizer",
+                "forestry",
+                "grains_and_oilseeds",
+                "intl_index",
+                "liq_nat_gas_lng",
+                "livestock",
+                "long_term_gov",
+                "long_term_non_gov",
+                "majors",
+                "minors",
+                "nat_gas",
+                "nat_gas_liq_petro",
+                "precious",
+                "refined_products",
+                "s_and_p_gsci",
+                "sel_sector_index",
+                "short_term_gov",
+                "short_term_non_gov",
+                "softs",
+                "us",
+                "us_index",
+                "wet_bulk"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "sector.any_of",
+            "schema": {
+              "enum": [
+                "asia",
+                "base",
+                "biofuels",
+                "coal",
+                "cross_rates",
+                "crude_oil",
+                "custom_index",
+                "dairy",
+                "dj_ubs_ci",
+                "electricity",
+                "emissions",
+                "europe",
+                "fertilizer",
+                "forestry",
+                "grains_and_oilseeds",
+                "intl_index",
+                "liq_nat_gas_lng",
+                "livestock",
+                "long_term_gov",
+                "long_term_non_gov",
+                "majors",
+                "minors",
+                "nat_gas",
+                "nat_gas_liq_petro",
+                "precious",
+                "refined_products",
+                "s_and_p_gsci",
+                "sel_sector_index",
+                "short_term_gov",
+                "short_term_non_gov",
+                "softs",
+                "us",
+                "us_index",
+                "wet_bulk"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The sub-sector to which the product belongs.",
+            "in": "query",
+            "name": "sub_sector",
+            "schema": {
+              "enum": [
+                "asian",
+                "canadian",
+                "cat",
+                "cooling_degree_days",
+                "ercot",
+                "european",
+                "gulf",
+                "heating_degree_days",
+                "iso_ne",
+                "large_cap_index",
+                "mid_cap_index",
+                "miso",
+                "north_american",
+                "nyiso",
+                "pjm",
+                "small_cap_index",
+                "west",
+                "western_power"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "sub_sector.any_of",
+            "schema": {
+              "enum": [
+                "asian",
+                "canadian",
+                "cat",
+                "cooling_degree_days",
+                "ercot",
+                "european",
+                "gulf",
+                "heating_degree_days",
+                "iso_ne",
+                "large_cap_index",
+                "mid_cap_index",
+                "miso",
+                "north_american",
+                "nyiso",
+                "pjm",
+                "small_cap_index",
+                "west",
+                "western_power"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The asset class to which the product belongs.",
+            "in": "query",
+            "name": "asset_class",
+            "schema": {
+              "enum": [
+                "alt_investment",
+                "commodity",
+                "financials"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "asset_class.any_of",
+            "schema": {
+              "enum": [
+                "alt_investment",
+                "commodity",
+                "financials"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The asset sub-class to which the product belongs.",
+            "in": "query",
+            "name": "asset_sub_class",
+            "schema": {
+              "enum": [
+                "agricultural",
+                "commodity_index",
+                "energy",
+                "equity",
+                "foreign_exchange",
+                "freight",
+                "housing",
+                "interest_rate",
+                "metals",
+                "weather"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "asset_sub_class.any_of",
+            "schema": {
+              "enum": [
+                "agricultural",
+                "commodity_index",
+                "energy",
+                "equity",
+                "foreign_exchange",
+                "freight",
+                "housing",
+                "interest_rate",
+                "metals",
+                "weather"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The type of product, one of 'single' or 'combo'. Leaving this filter blank will query for both 'single' and 'combo' types.",
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "enum": [
+                "single",
+                "combo"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "type.any_of",
+            "schema": {
+              "enum": [
+                "single",
+                "combo"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'asc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "date.asc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/futures/v1/products?cursor=YXA9MTAwJmFzPSZhc19vZj0yMDI1LTA3LTA3JmxpbWl0PTEwMCZzb3J0PW5hbWUuYXNj",
+                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
+                  "results": [
+                    {
+                      "asset_class": "commodity",
+                      "asset_sub_class": "energy",
+                      "clearing_symbol": "EBE",
+                      "clearing_venue": "XCME",
+                      "date": "2025-07-07",
+                      "last_updated": "2025-02-22",
+                      "name": "1% Fuel Oil Barges FOB Rdam (Platts) vs. 1% Fuel Oil Cargoes FOB NWE (Platts) BALMO Futures",
+                      "price_quotation": "U.S. dollars and cents per metric ton",
+                      "product_code": "EBE",
+                      "provider_id": "5JRWE35UYLDP",
+                      "sector": "refined_products",
+                      "settlement_currency_code": "USD",
+                      "settlement_method": "financially_settled",
+                      "settlement_type": "cash",
+                      "sub_sector": "european",
+                      "trade_currency_code": "USD",
+                      "trading_venue": "XNYM",
+                      "type": "single",
+                      "unit_of_measure": "MTONS",
+                      "unit_of_measure_qty": 1000
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "asset_class": {
+                            "description": "The asset class to which the product belongs.",
+                            "type": "string"
+                          },
+                          "asset_sub_class": {
+                            "description": "The asset sub-class to which the product belongs.",
+                            "type": "string"
+                          },
+                          "clearing_symbol": {
+                            "description": "The clearing symbol assigned to this product by the exchange's clearing house.",
+                            "type": "string"
+                          },
+                          "clearing_venue": {
+                            "description": "The trading venue (MIC) for the clearing house that clears this product's contracts.",
+                            "type": "string"
+                          },
+                          "date": {
+                            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "last_updated": {
+                            "description": "The date and time at which this product was last updated.",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The full name of the product.",
+                            "type": "string"
+                          },
+                          "price_quotation": {
+                            "description": "The quoted price for this product.",
+                            "type": "string"
+                          },
+                          "product_code": {
+                            "description": "The identifier for the product.",
+                            "type": "string"
+                          },
+                          "provider_id": {
+                            "description": "A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.",
+                            "type": "string"
+                          },
+                          "sector": {
+                            "description": "The sector to which the product belongs.",
+                            "type": "string"
+                          },
+                          "settlement_currency_code": {
+                            "description": "The currency in which this product settles.",
+                            "type": "string"
+                          },
+                          "settlement_method": {
+                            "description": "The method of settlement for this product (Financially Settled or Deliverable).",
+                            "type": "string"
+                          },
+                          "settlement_type": {
+                            "description": "The type of settlement for this product.",
+                            "type": "string"
+                          },
+                          "strategy_type": {
+                            "description": "The strategy type for combo products (e.g. spread, strip, pack). Null for single products.",
+                            "type": "string"
+                          },
+                          "sub_sector": {
+                            "description": "The sub-sector to which the product belongs.",
+                            "type": "string"
+                          },
+                          "trade_currency_code": {
+                            "description": "The currency in which this product's contracts trade.",
+                            "type": "string"
+                          },
+                          "trading_venue": {
+                            "description": "The trading venue (MIC) for the exchange on which this product's contracts trade.",
+                            "type": "string"
+                          },
+                          "type": {
+                            "description": "The type of product, one of 'single' or 'combo'. Leaving this filter blank will query for both 'single' and 'combo' types.",
+                            "type": "string"
+                          },
+                          "unit_of_measure": {
+                            "description": "The unit of measure for this product.",
+                            "type": "string"
+                          },
+                          "unit_of_measure_qty": {
+                            "description": "The quantity of the unit of measure for this product.",
+                            "format": "float",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "date"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "summary": "Futures Products API",
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/futures/v1/quotes/{ticker}": {
       "get": {
         "description": "Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.\n\nUse Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.",
