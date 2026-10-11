@@ -4233,6 +4233,115 @@ export interface GetFuturesV1Products200ResponseResultsInner {
      */
     'unit_of_measure_qty'?: number;
 }
+export interface GetFuturesV1ProductsNew200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetFuturesV1ProductsNew200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetFuturesV1ProductsNew200ResponseStatusEnum;
+}
+
+export enum GetFuturesV1ProductsNew200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetFuturesV1ProductsNew200ResponseResultsInner {
+    /**
+     * The asset class to which the product belongs.
+     */
+    'asset_class'?: string;
+    /**
+     * The asset sub-class to which the product belongs.
+     */
+    'asset_sub_class'?: string;
+    /**
+     * The clearing symbol assigned to this product by the exchange\'s clearing house.
+     */
+    'clearing_symbol'?: string;
+    /**
+     * The trading venue (MIC) for the clearing house that clears this product\'s contracts.
+     */
+    'clearing_venue'?: string;
+    /**
+     * A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day.
+     */
+    'date': string;
+    /**
+     * The date and time at which this product was last updated.
+     */
+    'last_updated'?: string;
+    /**
+     * The full name of the product.
+     */
+    'name'?: string;
+    /**
+     * The quoted price for this product.
+     */
+    'price_quotation'?: string;
+    /**
+     * The identifier for the product.
+     */
+    'product_code'?: string;
+    /**
+     * A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.
+     */
+    'provider_id'?: string;
+    /**
+     * The sector to which the product belongs.
+     */
+    'sector'?: string;
+    /**
+     * The currency in which this product settles.
+     */
+    'settlement_currency_code'?: string;
+    /**
+     * The method of settlement for this product (Financially Settled or Deliverable).
+     */
+    'settlement_method'?: string;
+    /**
+     * The type of settlement for this product.
+     */
+    'settlement_type'?: string;
+    /**
+     * The strategy type for combo products (e.g. spread, strip, pack). Null for single products.
+     */
+    'strategy_type'?: string;
+    /**
+     * The sub-sector to which the product belongs.
+     */
+    'sub_sector'?: string;
+    /**
+     * The currency in which this product\'s contracts trade.
+     */
+    'trade_currency_code'?: string;
+    /**
+     * The trading venue (MIC) for the exchange on which this product\'s contracts trade.
+     */
+    'trading_venue'?: string;
+    /**
+     * The type of product, one of \'single\' or \'combo\'. Leaving this filter blank will query for both \'single\' and \'combo\' types.
+     */
+    'type'?: string;
+    /**
+     * The unit of measure for this product.
+     */
+    'unit_of_measure'?: string;
+    /**
+     * The quantity of the unit of measure for this product.
+     */
+    'unit_of_measure_qty'?: number;
+}
 export interface GetFuturesV1QuotesTicker200Response {
     /**
      * If present, this value can be used to fetch the next page.
@@ -16730,6 +16839,244 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.  Use Cases: Product specification, historical product checks, risk management, trading system integration.
+         * @summary Futures Products API
+         * @param {string} [name] The full name of the product.
+         * @param {string} [nameAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [nameGt] Filter greater than the value.
+         * @param {string} [nameGte] Filter greater than or equal to the value.
+         * @param {string} [nameLt] Filter less than the value.
+         * @param {string} [nameLte] Filter less than or equal to the value.
+         * @param {string} [productCode] The identifier for the product.
+         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [productCodeGt] Filter greater than the value.
+         * @param {string} [productCodeGte] Filter greater than or equal to the value.
+         * @param {string} [productCodeLt] Filter less than the value.
+         * @param {string} [productCodeLte] Filter less than or equal to the value.
+         * @param {string} [providerId] A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.
+         * @param {string} [providerIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [providerIdGt] Filter greater than the value.
+         * @param {string} [providerIdGte] Filter greater than or equal to the value.
+         * @param {string} [providerIdLt] Filter less than the value.
+         * @param {string} [providerIdLte] Filter less than or equal to the value.
+         * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [tradingVenue] The trading venue (MIC) for the exchange on which this product\&#39;s contracts trade.
+         * @param {string} [tradingVenueAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tradingVenueGt] Filter greater than the value.
+         * @param {string} [tradingVenueGte] Filter greater than or equal to the value.
+         * @param {string} [tradingVenueLt] Filter less than the value.
+         * @param {string} [tradingVenueLte] Filter less than or equal to the value.
+         * @param {GetFuturesV1ProductsNewSectorEnum} [sector] The sector to which the product belongs.
+         * @param {GetFuturesV1ProductsNewSectorAnyOfEnum} [sectorAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {GetFuturesV1ProductsNewSubSectorEnum} [subSector] The sub-sector to which the product belongs.
+         * @param {GetFuturesV1ProductsNewSubSectorAnyOfEnum} [subSectorAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {GetFuturesV1ProductsNewAssetClassEnum} [assetClass] The asset class to which the product belongs.
+         * @param {GetFuturesV1ProductsNewAssetClassAnyOfEnum} [assetClassAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {GetFuturesV1ProductsNewAssetSubClassEnum} [assetSubClass] The asset sub-class to which the product belongs.
+         * @param {GetFuturesV1ProductsNewAssetSubClassAnyOfEnum} [assetSubClassAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {GetFuturesV1ProductsNewTypeEnum} [type] The type of product, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for both \&#39;single\&#39; and \&#39;combo\&#39; types.
+         * @param {GetFuturesV1ProductsNewTypeAnyOfEnum} [typeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFuturesV1ProductsNew: async (name?: string, nameAnyOf?: string, nameGt?: string, nameGte?: string, nameLt?: string, nameLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, providerId?: string, providerIdAnyOf?: string, providerIdGt?: string, providerIdGte?: string, providerIdLt?: string, providerIdLte?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, sector?: GetFuturesV1ProductsNewSectorEnum, sectorAnyOf?: GetFuturesV1ProductsNewSectorAnyOfEnum, subSector?: GetFuturesV1ProductsNewSubSectorEnum, subSectorAnyOf?: GetFuturesV1ProductsNewSubSectorAnyOfEnum, assetClass?: GetFuturesV1ProductsNewAssetClassEnum, assetClassAnyOf?: GetFuturesV1ProductsNewAssetClassAnyOfEnum, assetSubClass?: GetFuturesV1ProductsNewAssetSubClassEnum, assetSubClassAnyOf?: GetFuturesV1ProductsNewAssetSubClassAnyOfEnum, type?: GetFuturesV1ProductsNewTypeEnum, typeAnyOf?: GetFuturesV1ProductsNewTypeAnyOfEnum, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/futures/v1/products/new`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+
+            if (nameAnyOf !== undefined) {
+                localVarQueryParameter['name.any_of'] = nameAnyOf;
+            }
+
+            if (nameGt !== undefined) {
+                localVarQueryParameter['name.gt'] = nameGt;
+            }
+
+            if (nameGte !== undefined) {
+                localVarQueryParameter['name.gte'] = nameGte;
+            }
+
+            if (nameLt !== undefined) {
+                localVarQueryParameter['name.lt'] = nameLt;
+            }
+
+            if (nameLte !== undefined) {
+                localVarQueryParameter['name.lte'] = nameLte;
+            }
+
+            if (productCode !== undefined) {
+                localVarQueryParameter['product_code'] = productCode;
+            }
+
+            if (productCodeAnyOf !== undefined) {
+                localVarQueryParameter['product_code.any_of'] = productCodeAnyOf;
+            }
+
+            if (productCodeGt !== undefined) {
+                localVarQueryParameter['product_code.gt'] = productCodeGt;
+            }
+
+            if (productCodeGte !== undefined) {
+                localVarQueryParameter['product_code.gte'] = productCodeGte;
+            }
+
+            if (productCodeLt !== undefined) {
+                localVarQueryParameter['product_code.lt'] = productCodeLt;
+            }
+
+            if (productCodeLte !== undefined) {
+                localVarQueryParameter['product_code.lte'] = productCodeLte;
+            }
+
+            if (providerId !== undefined) {
+                localVarQueryParameter['provider_id'] = providerId;
+            }
+
+            if (providerIdAnyOf !== undefined) {
+                localVarQueryParameter['provider_id.any_of'] = providerIdAnyOf;
+            }
+
+            if (providerIdGt !== undefined) {
+                localVarQueryParameter['provider_id.gt'] = providerIdGt;
+            }
+
+            if (providerIdGte !== undefined) {
+                localVarQueryParameter['provider_id.gte'] = providerIdGte;
+            }
+
+            if (providerIdLt !== undefined) {
+                localVarQueryParameter['provider_id.lt'] = providerIdLt;
+            }
+
+            if (providerIdLte !== undefined) {
+                localVarQueryParameter['provider_id.lte'] = providerIdLte;
+            }
+
+            if (date !== undefined) {
+                localVarQueryParameter['date'] = date;
+            }
+
+            if (dateGt !== undefined) {
+                localVarQueryParameter['date.gt'] = dateGt;
+            }
+
+            if (dateGte !== undefined) {
+                localVarQueryParameter['date.gte'] = dateGte;
+            }
+
+            if (dateLt !== undefined) {
+                localVarQueryParameter['date.lt'] = dateLt;
+            }
+
+            if (dateLte !== undefined) {
+                localVarQueryParameter['date.lte'] = dateLte;
+            }
+
+            if (tradingVenue !== undefined) {
+                localVarQueryParameter['trading_venue'] = tradingVenue;
+            }
+
+            if (tradingVenueAnyOf !== undefined) {
+                localVarQueryParameter['trading_venue.any_of'] = tradingVenueAnyOf;
+            }
+
+            if (tradingVenueGt !== undefined) {
+                localVarQueryParameter['trading_venue.gt'] = tradingVenueGt;
+            }
+
+            if (tradingVenueGte !== undefined) {
+                localVarQueryParameter['trading_venue.gte'] = tradingVenueGte;
+            }
+
+            if (tradingVenueLt !== undefined) {
+                localVarQueryParameter['trading_venue.lt'] = tradingVenueLt;
+            }
+
+            if (tradingVenueLte !== undefined) {
+                localVarQueryParameter['trading_venue.lte'] = tradingVenueLte;
+            }
+
+            if (sector !== undefined) {
+                localVarQueryParameter['sector'] = sector;
+            }
+
+            if (sectorAnyOf !== undefined) {
+                localVarQueryParameter['sector.any_of'] = sectorAnyOf;
+            }
+
+            if (subSector !== undefined) {
+                localVarQueryParameter['sub_sector'] = subSector;
+            }
+
+            if (subSectorAnyOf !== undefined) {
+                localVarQueryParameter['sub_sector.any_of'] = subSectorAnyOf;
+            }
+
+            if (assetClass !== undefined) {
+                localVarQueryParameter['asset_class'] = assetClass;
+            }
+
+            if (assetClassAnyOf !== undefined) {
+                localVarQueryParameter['asset_class.any_of'] = assetClassAnyOf;
+            }
+
+            if (assetSubClass !== undefined) {
+                localVarQueryParameter['asset_sub_class'] = assetSubClass;
+            }
+
+            if (assetSubClassAnyOf !== undefined) {
+                localVarQueryParameter['asset_sub_class.any_of'] = assetSubClassAnyOf;
+            }
+
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+
+            if (typeAnyOf !== undefined) {
+                localVarQueryParameter['type.any_of'] = typeAnyOf;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
          * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
          * @param {string} [timestamp] The time when the quote was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
@@ -26813,6 +27160,59 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.  Use Cases: Product specification, historical product checks, risk management, trading system integration.
+         * @summary Futures Products API
+         * @param {string} [name] The full name of the product.
+         * @param {string} [nameAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [nameGt] Filter greater than the value.
+         * @param {string} [nameGte] Filter greater than or equal to the value.
+         * @param {string} [nameLt] Filter less than the value.
+         * @param {string} [nameLte] Filter less than or equal to the value.
+         * @param {string} [productCode] The identifier for the product.
+         * @param {string} [productCodeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [productCodeGt] Filter greater than the value.
+         * @param {string} [productCodeGte] Filter greater than or equal to the value.
+         * @param {string} [productCodeLt] Filter less than the value.
+         * @param {string} [productCodeLte] Filter less than or equal to the value.
+         * @param {string} [providerId] A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.
+         * @param {string} [providerIdAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [providerIdGt] Filter greater than the value.
+         * @param {string} [providerIdGte] Filter greater than or equal to the value.
+         * @param {string} [providerIdLt] Filter less than the value.
+         * @param {string} [providerIdLte] Filter less than or equal to the value.
+         * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [tradingVenue] The trading venue (MIC) for the exchange on which this product\&#39;s contracts trade.
+         * @param {string} [tradingVenueAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tradingVenueGt] Filter greater than the value.
+         * @param {string} [tradingVenueGte] Filter greater than or equal to the value.
+         * @param {string} [tradingVenueLt] Filter less than the value.
+         * @param {string} [tradingVenueLte] Filter less than or equal to the value.
+         * @param {GetFuturesV1ProductsNewSectorEnum} [sector] The sector to which the product belongs.
+         * @param {GetFuturesV1ProductsNewSectorAnyOfEnum} [sectorAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {GetFuturesV1ProductsNewSubSectorEnum} [subSector] The sub-sector to which the product belongs.
+         * @param {GetFuturesV1ProductsNewSubSectorAnyOfEnum} [subSectorAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {GetFuturesV1ProductsNewAssetClassEnum} [assetClass] The asset class to which the product belongs.
+         * @param {GetFuturesV1ProductsNewAssetClassAnyOfEnum} [assetClassAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {GetFuturesV1ProductsNewAssetSubClassEnum} [assetSubClass] The asset sub-class to which the product belongs.
+         * @param {GetFuturesV1ProductsNewAssetSubClassAnyOfEnum} [assetSubClassAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {GetFuturesV1ProductsNewTypeEnum} [type] The type of product, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for both \&#39;single\&#39; and \&#39;combo\&#39; types.
+         * @param {GetFuturesV1ProductsNewTypeAnyOfEnum} [typeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFuturesV1ProductsNew(name?: string, nameAnyOf?: string, nameGt?: string, nameGte?: string, nameLt?: string, nameLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, providerId?: string, providerIdAnyOf?: string, providerIdGt?: string, providerIdGte?: string, providerIdLt?: string, providerIdLte?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, sector?: GetFuturesV1ProductsNewSectorEnum, sectorAnyOf?: GetFuturesV1ProductsNewSectorAnyOfEnum, subSector?: GetFuturesV1ProductsNewSubSectorEnum, subSectorAnyOf?: GetFuturesV1ProductsNewSubSectorAnyOfEnum, assetClass?: GetFuturesV1ProductsNewAssetClassEnum, assetClassAnyOf?: GetFuturesV1ProductsNewAssetClassAnyOfEnum, assetSubClass?: GetFuturesV1ProductsNewAssetSubClassEnum, assetSubClassAnyOf?: GetFuturesV1ProductsNewAssetSubClassAnyOfEnum, type?: GetFuturesV1ProductsNewTypeEnum, typeAnyOf?: GetFuturesV1ProductsNewTypeAnyOfEnum, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1ProductsNew200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesV1ProductsNew(name, nameAnyOf, nameGt, nameGte, nameLt, nameLte, productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, providerId, providerIdAnyOf, providerIdGt, providerIdGte, providerIdLt, providerIdLte, date, dateGt, dateGte, dateLt, dateLte, tradingVenue, tradingVenueAnyOf, tradingVenueGt, tradingVenueGte, tradingVenueLt, tradingVenueLte, sector, sectorAnyOf, subSector, subSectorAnyOf, assetClass, assetClassAnyOf, assetSubClass, assetSubClassAnyOf, type, typeAnyOf, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesV1ProductsNew']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
          * @param {string} ticker The futures contract identifier, including the base symbol and contract expiration (e.g., GCJ5 for the April 2025 gold contract).
          * @param {string} [timestamp] The time when the quote was generated at the exchange to nanosecond precision. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
@@ -29517,6 +29917,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getFuturesV1Products(requestParameters: DefaultApiGetFuturesV1ProductsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Products200Response> {
             return localVarFp.getFuturesV1Products(requestParameters.name, requestParameters.nameAnyOf, requestParameters.nameGt, requestParameters.nameGte, requestParameters.nameLt, requestParameters.nameLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.sector, requestParameters.sectorAnyOf, requestParameters.subSector, requestParameters.subSectorAnyOf, requestParameters.assetClass, requestParameters.assetClassAnyOf, requestParameters.assetSubClass, requestParameters.assetSubClassAnyOf, requestParameters.type, requestParameters.typeAnyOf, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.  Use Cases: Product specification, historical product checks, risk management, trading system integration.
+         * @summary Futures Products API
+         * @param {DefaultApiGetFuturesV1ProductsNewRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFuturesV1ProductsNew(requestParameters: DefaultApiGetFuturesV1ProductsNewRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1ProductsNew200Response> {
+            return localVarFp.getFuturesV1ProductsNew(requestParameters.name, requestParameters.nameAnyOf, requestParameters.nameGt, requestParameters.nameGte, requestParameters.nameLt, requestParameters.nameLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.providerId, requestParameters.providerIdAnyOf, requestParameters.providerIdGt, requestParameters.providerIdGte, requestParameters.providerIdLt, requestParameters.providerIdLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.sector, requestParameters.sectorAnyOf, requestParameters.subSector, requestParameters.subSectorAnyOf, requestParameters.assetClass, requestParameters.assetClassAnyOf, requestParameters.assetSubClass, requestParameters.assetSubClassAnyOf, requestParameters.type, requestParameters.typeAnyOf, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
@@ -36403,6 +36813,300 @@ export interface DefaultApiGetFuturesV1ProductsRequest {
      * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
      * @type {string}
      * @memberof DefaultApiGetFuturesV1Products
+     */
+    readonly sort?: string
+}
+
+/**
+ * Request parameters for getFuturesV1ProductsNew operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetFuturesV1ProductsNewRequest
+ */
+export interface DefaultApiGetFuturesV1ProductsNewRequest {
+    /**
+     * The full name of the product.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly name?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly nameAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly nameGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly nameGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly nameLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly nameLte?: string
+
+    /**
+     * The identifier for the product.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly productCode?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly productCodeAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly productCodeGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly productCodeGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly productCodeLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly productCodeLte?: string
+
+    /**
+     * A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly providerId?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly providerIdAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly providerIdGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly providerIdGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly providerIdLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly providerIdLte?: string
+
+    /**
+     * A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly date?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly dateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly dateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly dateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly dateLte?: string
+
+    /**
+     * The trading venue (MIC) for the exchange on which this product\&#39;s contracts trade.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly tradingVenue?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly tradingVenueAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly tradingVenueGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly tradingVenueGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly tradingVenueLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly tradingVenueLte?: string
+
+    /**
+     * The sector to which the product belongs.
+     * @type {'asia' | 'base' | 'biofuels' | 'coal' | 'cross_rates' | 'crude_oil' | 'custom_index' | 'dairy' | 'dj_ubs_ci' | 'electricity' | 'emissions' | 'europe' | 'fertilizer' | 'forestry' | 'grains_and_oilseeds' | 'intl_index' | 'liq_nat_gas_lng' | 'livestock' | 'long_term_gov' | 'long_term_non_gov' | 'majors' | 'minors' | 'nat_gas' | 'nat_gas_liq_petro' | 'precious' | 'refined_products' | 's_and_p_gsci' | 'sel_sector_index' | 'short_term_gov' | 'short_term_non_gov' | 'softs' | 'us' | 'us_index' | 'wet_bulk'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly sector?: GetFuturesV1ProductsNewSectorEnum
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {'asia' | 'base' | 'biofuels' | 'coal' | 'cross_rates' | 'crude_oil' | 'custom_index' | 'dairy' | 'dj_ubs_ci' | 'electricity' | 'emissions' | 'europe' | 'fertilizer' | 'forestry' | 'grains_and_oilseeds' | 'intl_index' | 'liq_nat_gas_lng' | 'livestock' | 'long_term_gov' | 'long_term_non_gov' | 'majors' | 'minors' | 'nat_gas' | 'nat_gas_liq_petro' | 'precious' | 'refined_products' | 's_and_p_gsci' | 'sel_sector_index' | 'short_term_gov' | 'short_term_non_gov' | 'softs' | 'us' | 'us_index' | 'wet_bulk'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly sectorAnyOf?: GetFuturesV1ProductsNewSectorAnyOfEnum
+
+    /**
+     * The sub-sector to which the product belongs.
+     * @type {'asian' | 'canadian' | 'cat' | 'cooling_degree_days' | 'ercot' | 'european' | 'gulf' | 'heating_degree_days' | 'iso_ne' | 'large_cap_index' | 'mid_cap_index' | 'miso' | 'north_american' | 'nyiso' | 'pjm' | 'small_cap_index' | 'west' | 'western_power'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly subSector?: GetFuturesV1ProductsNewSubSectorEnum
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {'asian' | 'canadian' | 'cat' | 'cooling_degree_days' | 'ercot' | 'european' | 'gulf' | 'heating_degree_days' | 'iso_ne' | 'large_cap_index' | 'mid_cap_index' | 'miso' | 'north_american' | 'nyiso' | 'pjm' | 'small_cap_index' | 'west' | 'western_power'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly subSectorAnyOf?: GetFuturesV1ProductsNewSubSectorAnyOfEnum
+
+    /**
+     * The asset class to which the product belongs.
+     * @type {'alt_investment' | 'commodity' | 'financials'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly assetClass?: GetFuturesV1ProductsNewAssetClassEnum
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {'alt_investment' | 'commodity' | 'financials'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly assetClassAnyOf?: GetFuturesV1ProductsNewAssetClassAnyOfEnum
+
+    /**
+     * The asset sub-class to which the product belongs.
+     * @type {'agricultural' | 'commodity_index' | 'energy' | 'equity' | 'foreign_exchange' | 'freight' | 'housing' | 'interest_rate' | 'metals' | 'weather'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly assetSubClass?: GetFuturesV1ProductsNewAssetSubClassEnum
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {'agricultural' | 'commodity_index' | 'energy' | 'equity' | 'foreign_exchange' | 'freight' | 'housing' | 'interest_rate' | 'metals' | 'weather'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly assetSubClassAnyOf?: GetFuturesV1ProductsNewAssetSubClassAnyOfEnum
+
+    /**
+     * The type of product, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for both \&#39;single\&#39; and \&#39;combo\&#39; types.
+     * @type {'single' | 'combo'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly type?: GetFuturesV1ProductsNewTypeEnum
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {'single' | 'combo'}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly typeAnyOf?: GetFuturesV1ProductsNewTypeAnyOfEnum
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1ProductsNew
      */
     readonly sort?: string
 }
@@ -45635,6 +46339,18 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.  Use Cases: Product specification, historical product checks, risk management, trading system integration.
+     * @summary Futures Products API
+     * @param {DefaultApiGetFuturesV1ProductsNewRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getFuturesV1ProductsNew(requestParameters: DefaultApiGetFuturesV1ProductsNewRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getFuturesV1ProductsNew(requestParameters.name, requestParameters.nameAnyOf, requestParameters.nameGt, requestParameters.nameGte, requestParameters.nameLt, requestParameters.nameLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.providerId, requestParameters.providerIdAnyOf, requestParameters.providerIdGt, requestParameters.providerIdGte, requestParameters.providerIdLt, requestParameters.providerIdLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.sector, requestParameters.sectorAnyOf, requestParameters.subSector, requestParameters.subSectorAnyOf, requestParameters.assetClass, requestParameters.assetClassAnyOf, requestParameters.assetSubClass, requestParameters.assetSubClassAnyOf, requestParameters.type, requestParameters.typeAnyOf, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
      * @param {DefaultApiGetFuturesV1QuotesTickerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -47314,6 +48030,200 @@ export enum GetFuturesV1ProductsTypeEnum {
   * @enum {string}
   */
 export enum GetFuturesV1ProductsTypeAnyOfEnum {
+    Single = 'single',
+    Combo = 'combo'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewSectorEnum {
+    Asia = 'asia',
+    Base = 'base',
+    Biofuels = 'biofuels',
+    Coal = 'coal',
+    CrossRates = 'cross_rates',
+    CrudeOil = 'crude_oil',
+    CustomIndex = 'custom_index',
+    Dairy = 'dairy',
+    DjUbsCi = 'dj_ubs_ci',
+    Electricity = 'electricity',
+    Emissions = 'emissions',
+    Europe = 'europe',
+    Fertilizer = 'fertilizer',
+    Forestry = 'forestry',
+    GrainsAndOilseeds = 'grains_and_oilseeds',
+    IntlIndex = 'intl_index',
+    LiqNatGasLng = 'liq_nat_gas_lng',
+    Livestock = 'livestock',
+    LongTermGov = 'long_term_gov',
+    LongTermNonGov = 'long_term_non_gov',
+    Majors = 'majors',
+    Minors = 'minors',
+    NatGas = 'nat_gas',
+    NatGasLiqPetro = 'nat_gas_liq_petro',
+    Precious = 'precious',
+    RefinedProducts = 'refined_products',
+    SAndPGsci = 's_and_p_gsci',
+    SelSectorIndex = 'sel_sector_index',
+    ShortTermGov = 'short_term_gov',
+    ShortTermNonGov = 'short_term_non_gov',
+    Softs = 'softs',
+    Us = 'us',
+    UsIndex = 'us_index',
+    WetBulk = 'wet_bulk'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewSectorAnyOfEnum {
+    Asia = 'asia',
+    Base = 'base',
+    Biofuels = 'biofuels',
+    Coal = 'coal',
+    CrossRates = 'cross_rates',
+    CrudeOil = 'crude_oil',
+    CustomIndex = 'custom_index',
+    Dairy = 'dairy',
+    DjUbsCi = 'dj_ubs_ci',
+    Electricity = 'electricity',
+    Emissions = 'emissions',
+    Europe = 'europe',
+    Fertilizer = 'fertilizer',
+    Forestry = 'forestry',
+    GrainsAndOilseeds = 'grains_and_oilseeds',
+    IntlIndex = 'intl_index',
+    LiqNatGasLng = 'liq_nat_gas_lng',
+    Livestock = 'livestock',
+    LongTermGov = 'long_term_gov',
+    LongTermNonGov = 'long_term_non_gov',
+    Majors = 'majors',
+    Minors = 'minors',
+    NatGas = 'nat_gas',
+    NatGasLiqPetro = 'nat_gas_liq_petro',
+    Precious = 'precious',
+    RefinedProducts = 'refined_products',
+    SAndPGsci = 's_and_p_gsci',
+    SelSectorIndex = 'sel_sector_index',
+    ShortTermGov = 'short_term_gov',
+    ShortTermNonGov = 'short_term_non_gov',
+    Softs = 'softs',
+    Us = 'us',
+    UsIndex = 'us_index',
+    WetBulk = 'wet_bulk'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewSubSectorEnum {
+    Asian = 'asian',
+    Canadian = 'canadian',
+    Cat = 'cat',
+    CoolingDegreeDays = 'cooling_degree_days',
+    Ercot = 'ercot',
+    European = 'european',
+    Gulf = 'gulf',
+    HeatingDegreeDays = 'heating_degree_days',
+    IsoNe = 'iso_ne',
+    LargeCapIndex = 'large_cap_index',
+    MidCapIndex = 'mid_cap_index',
+    Miso = 'miso',
+    NorthAmerican = 'north_american',
+    Nyiso = 'nyiso',
+    Pjm = 'pjm',
+    SmallCapIndex = 'small_cap_index',
+    West = 'west',
+    WesternPower = 'western_power'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewSubSectorAnyOfEnum {
+    Asian = 'asian',
+    Canadian = 'canadian',
+    Cat = 'cat',
+    CoolingDegreeDays = 'cooling_degree_days',
+    Ercot = 'ercot',
+    European = 'european',
+    Gulf = 'gulf',
+    HeatingDegreeDays = 'heating_degree_days',
+    IsoNe = 'iso_ne',
+    LargeCapIndex = 'large_cap_index',
+    MidCapIndex = 'mid_cap_index',
+    Miso = 'miso',
+    NorthAmerican = 'north_american',
+    Nyiso = 'nyiso',
+    Pjm = 'pjm',
+    SmallCapIndex = 'small_cap_index',
+    West = 'west',
+    WesternPower = 'western_power'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewAssetClassEnum {
+    AltInvestment = 'alt_investment',
+    Commodity = 'commodity',
+    Financials = 'financials'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewAssetClassAnyOfEnum {
+    AltInvestment = 'alt_investment',
+    Commodity = 'commodity',
+    Financials = 'financials'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewAssetSubClassEnum {
+    Agricultural = 'agricultural',
+    CommodityIndex = 'commodity_index',
+    Energy = 'energy',
+    Equity = 'equity',
+    ForeignExchange = 'foreign_exchange',
+    Freight = 'freight',
+    Housing = 'housing',
+    InterestRate = 'interest_rate',
+    Metals = 'metals',
+    Weather = 'weather'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewAssetSubClassAnyOfEnum {
+    Agricultural = 'agricultural',
+    CommodityIndex = 'commodity_index',
+    Energy = 'energy',
+    Equity = 'equity',
+    ForeignExchange = 'foreign_exchange',
+    Freight = 'freight',
+    Housing = 'housing',
+    InterestRate = 'interest_rate',
+    Metals = 'metals',
+    Weather = 'weather'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewTypeEnum {
+    Single = 'single',
+    Combo = 'combo'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetFuturesV1ProductsNewTypeAnyOfEnum {
     Single = 'single',
     Combo = 'combo'
 }
