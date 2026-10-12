@@ -145,6 +145,8 @@ docs/GetFuturesV1MarketStatus200Response.md
 docs/GetFuturesV1MarketStatus200ResponseResultsInner.md
 docs/GetFuturesV1Products200Response.md
 docs/GetFuturesV1Products200ResponseResultsInner.md
+docs/GetFuturesV1ProductsNew200Response.md
+docs/GetFuturesV1ProductsNew200ResponseResultsInner.md
 docs/GetFuturesV1QuotesTicker200Response.md
 docs/GetFuturesV1QuotesTicker200ResponseResultsInner.md
 docs/GetFuturesV1Schedules200Response.md
