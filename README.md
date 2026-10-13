@@ -291,6 +291,6 @@ reuses an existing one, so the reviewer always differs from the author.
 
 ## Contributing
 
-If you found a bug or have an idea for a new feature, please first discuss it with us by [submitting a new issue](https://github.com/massive.com/client-js/issues/new/choose). We will respond to issues within at most 3 weeks. We're also open to volunteers if you want to submit a PR for any open issues but please discuss it with us beforehand. PRs that aren't linked to an existing issue or discussed with us ahead of time will generally be declined. If you have more general feedback or want to discuss using this client with other users, feel free to reach out on our [Slack channel](https://massive.com.slack.com/archives/C03FCSBSAFL).
+If you found a bug or have an idea for a new feature, please first discuss it with us by [submitting a new issue](https://github.com/massive-com/client-js/issues/new/choose). We will respond to issues within at most 3 weeks. We're also open to volunteers if you want to submit a PR for any open issues but please discuss it with us beforehand. PRs that aren't linked to an existing issue or discussed with us ahead of time will generally be declined. If you have more general feedback or want to discuss using this client with other users, feel free to reach out on our [Slack channel](https://massive.com.slack.com/archives/C03FCSBSAFL).
 
 If you use an AI coding agent to work on this repo, it should read [AGENTS.md](./AGENTS.md), which covers the project layout, build and test commands, and which files are generated.
