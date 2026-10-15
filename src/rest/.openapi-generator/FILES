@@ -145,6 +145,8 @@ docs/GetFuturesV1MarketStatus200Response.md
 docs/GetFuturesV1MarketStatus200ResponseResultsInner.md
 docs/GetFuturesV1Products200Response.md
 docs/GetFuturesV1Products200ResponseResultsInner.md
+docs/GetFuturesV1ProductsNew200Response.md
+docs/GetFuturesV1ProductsNew200ResponseResultsInner.md
 docs/GetFuturesV1QuotesTicker200Response.md
 docs/GetFuturesV1QuotesTicker200ResponseResultsInner.md
 docs/GetFuturesV1Schedules200Response.md
@@ -303,10 +305,6 @@ docs/ListDividends200ResponseResultsInner.md
 docs/ListExchanges200Response.md
 docs/ListExchanges200ResponseResultsInner.md
 docs/ListExchanges400Response.md
-docs/ListFinancials200Response.md
-docs/ListFinancials200ResponseResultsInner.md
-docs/ListFinancials200ResponseResultsInnerFinancials.md
-docs/ListFinancials200ResponseResultsInnerFinancialsBalanceSheet.md
 docs/ListIPOs200Response.md
 docs/ListIPOs200ResponseResultsInner.md
 docs/ListNews200Response.md
