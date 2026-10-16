@@ -16221,6 +16221,698 @@
         ]
       }
     },
+    "/futures/v1/products/new": {
+      "get": {
+        "description": "The Products API is a unified source for discovering all supported futures products and retrieving full product specifications. It returns the complete product universe with product codes, names, exchange identifiers, sector and asset class classifications, product type, settlement method, and pricing and quotation details. You can filter by name, exchange, sector, asset class, product type, or date to capture the product set or product definition that existed at a specific point in time. It also retrieves the full specification for a single product, supporting accurate system configuration, analytics, trading workflows, and historical reconciliation.\n\nUse Cases: Product specification, historical product checks, risk management, trading system integration.",
+        "operationId": "get_futures_v1_products_new",
+        "parameters": [
+          {
+            "description": "The full name of the product.",
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "name.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "name.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "name.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "name.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "name.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The identifier for the product.",
+            "in": "query",
+            "name": "product_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "product_code.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "product_code.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "product_code.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "product_code.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "product_code.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.",
+            "in": "query",
+            "name": "provider_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "provider_id.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "provider_id.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "provider_id.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "provider_id.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "provider_id.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The trading venue (MIC) for the exchange on which this product's contracts trade.",
+            "in": "query",
+            "name": "trading_venue",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "trading_venue.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "trading_venue.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "trading_venue.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "trading_venue.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "trading_venue.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The sector to which the product belongs.",
+            "in": "query",
+            "name": "sector",
+            "schema": {
+              "enum": [
+                "asia",
+                "base",
+                "biofuels",
+                "coal",
+                "cross_rates",
+                "crude_oil",
+                "custom_index",
+                "dairy",
+                "dj_ubs_ci",
+                "electricity",
+                "emissions",
+                "europe",
+                "fertilizer",
+                "forestry",
+                "grains_and_oilseeds",
+                "intl_index",
+                "liq_nat_gas_lng",
+                "livestock",
+                "long_term_gov",
+                "long_term_non_gov",
+                "majors",
+                "minors",
+                "nat_gas",
+                "nat_gas_liq_petro",
+                "precious",
+                "refined_products",
+                "s_and_p_gsci",
+                "sel_sector_index",
+                "short_term_gov",
+                "short_term_non_gov",
+                "softs",
+                "us",
+                "us_index",
+                "wet_bulk"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "sector.any_of",
+            "schema": {
+              "enum": [
+                "asia",
+                "base",
+                "biofuels",
+                "coal",
+                "cross_rates",
+                "crude_oil",
+                "custom_index",
+                "dairy",
+                "dj_ubs_ci",
+                "electricity",
+                "emissions",
+                "europe",
+                "fertilizer",
+                "forestry",
+                "grains_and_oilseeds",
+                "intl_index",
+                "liq_nat_gas_lng",
+                "livestock",
+                "long_term_gov",
+                "long_term_non_gov",
+                "majors",
+                "minors",
+                "nat_gas",
+                "nat_gas_liq_petro",
+                "precious",
+                "refined_products",
+                "s_and_p_gsci",
+                "sel_sector_index",
+                "short_term_gov",
+                "short_term_non_gov",
+                "softs",
+                "us",
+                "us_index",
+                "wet_bulk"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The sub-sector to which the product belongs.",
+            "in": "query",
+            "name": "sub_sector",
+            "schema": {
+              "enum": [
+                "asian",
+                "canadian",
+                "cat",
+                "cooling_degree_days",
+                "ercot",
+                "european",
+                "gulf",
+                "heating_degree_days",
+                "iso_ne",
+                "large_cap_index",
+                "mid_cap_index",
+                "miso",
+                "north_american",
+                "nyiso",
+                "pjm",
+                "small_cap_index",
+                "west",
+                "western_power"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "sub_sector.any_of",
+            "schema": {
+              "enum": [
+                "asian",
+                "canadian",
+                "cat",
+                "cooling_degree_days",
+                "ercot",
+                "european",
+                "gulf",
+                "heating_degree_days",
+                "iso_ne",
+                "large_cap_index",
+                "mid_cap_index",
+                "miso",
+                "north_american",
+                "nyiso",
+                "pjm",
+                "small_cap_index",
+                "west",
+                "western_power"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The asset class to which the product belongs.",
+            "in": "query",
+            "name": "asset_class",
+            "schema": {
+              "enum": [
+                "alt_investment",
+                "commodity",
+                "financials"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "asset_class.any_of",
+            "schema": {
+              "enum": [
+                "alt_investment",
+                "commodity",
+                "financials"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The asset sub-class to which the product belongs.",
+            "in": "query",
+            "name": "asset_sub_class",
+            "schema": {
+              "enum": [
+                "agricultural",
+                "commodity_index",
+                "energy",
+                "equity",
+                "foreign_exchange",
+                "freight",
+                "housing",
+                "interest_rate",
+                "metals",
+                "weather"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "asset_sub_class.any_of",
+            "schema": {
+              "enum": [
+                "agricultural",
+                "commodity_index",
+                "energy",
+                "equity",
+                "foreign_exchange",
+                "freight",
+                "housing",
+                "interest_rate",
+                "metals",
+                "weather"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The type of product, one of 'single' or 'combo'. Leaving this filter blank will query for both 'single' and 'combo' types.",
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "enum": [
+                "single",
+                "combo"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "type.any_of",
+            "schema": {
+              "enum": [
+                "single",
+                "combo"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'asc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "date.asc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/futures/v1/products?cursor=YXA9MTAwJmFzPSZhc19vZj0yMDI1LTA3LTA3JmxpbWl0PTEwMCZzb3J0PW5hbWUuYXNj",
+                  "request_id": "000a000a0a0a000a0a0aa00a0a0000a0",
+                  "results": [
+                    {
+                      "asset_class": "commodity",
+                      "asset_sub_class": "energy",
+                      "clearing_symbol": "EBE",
+                      "clearing_venue": "XCME",
+                      "date": "2025-07-07",
+                      "last_updated": "2025-02-22",
+                      "name": "1% Fuel Oil Barges FOB Rdam (Platts) vs. 1% Fuel Oil Cargoes FOB NWE (Platts) BALMO Futures",
+                      "price_quotation": "U.S. dollars and cents per metric ton",
+                      "product_code": "EBE",
+                      "provider_id": "5JRWE35UYLDP",
+                      "sector": "refined_products",
+                      "settlement_currency_code": "USD",
+                      "settlement_method": "financially_settled",
+                      "settlement_type": "cash",
+                      "sub_sector": "european",
+                      "trade_currency_code": "USD",
+                      "trading_venue": "XNYM",
+                      "type": "single",
+                      "unit_of_measure": "MTONS",
+                      "unit_of_measure_qty": 1000
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "asset_class": {
+                            "description": "The asset class to which the product belongs.",
+                            "type": "string"
+                          },
+                          "asset_sub_class": {
+                            "description": "The asset sub-class to which the product belongs.",
+                            "type": "string"
+                          },
+                          "clearing_symbol": {
+                            "description": "The clearing symbol assigned to this product by the exchange's clearing house.",
+                            "type": "string"
+                          },
+                          "clearing_venue": {
+                            "description": "The trading venue (MIC) for the clearing house that clears this product's contracts.",
+                            "type": "string"
+                          },
+                          "date": {
+                            "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "last_updated": {
+                            "description": "The date and time at which this product was last updated.",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The full name of the product.",
+                            "type": "string"
+                          },
+                          "price_quotation": {
+                            "description": "The quoted price for this product.",
+                            "type": "string"
+                          },
+                          "product_code": {
+                            "description": "The identifier for the product.",
+                            "type": "string"
+                          },
+                          "provider_id": {
+                            "description": "A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.",
+                            "type": "string"
+                          },
+                          "sector": {
+                            "description": "The sector to which the product belongs.",
+                            "type": "string"
+                          },
+                          "settlement_currency_code": {
+                            "description": "The currency in which this product settles.",
+                            "type": "string"
+                          },
+                          "settlement_method": {
+                            "description": "The method of settlement for this product (Financially Settled or Deliverable).",
+                            "type": "string"
+                          },
+                          "settlement_type": {
+                            "description": "The type of settlement for this product.",
+                            "type": "string"
+                          },
+                          "strategy_type": {
+                            "description": "The strategy type for combo products (e.g. spread, strip, pack). Null for single products.",
+                            "type": "string"
+                          },
+                          "sub_sector": {
+                            "description": "The sub-sector to which the product belongs.",
+                            "type": "string"
+                          },
+                          "trade_currency_code": {
+                            "description": "The currency in which this product's contracts trade.",
+                            "type": "string"
+                          },
+                          "trading_venue": {
+                            "description": "The trading venue (MIC) for the exchange on which this product's contracts trade.",
+                            "type": "string"
+                          },
+                          "type": {
+                            "description": "The type of product, one of 'single' or 'combo'. Leaving this filter blank will query for both 'single' and 'combo' types.",
+                            "type": "string"
+                          },
+                          "unit_of_measure": {
+                            "description": "The unit of measure for this product.",
+                            "type": "string"
+                          },
+                          "unit_of_measure_qty": {
+                            "description": "The quantity of the unit of measure for this product.",
+                            "format": "float",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "date"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "summary": "Futures Products API",
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/futures/v1/quotes/{ticker}": {
       "get": {
         "description": "Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.\n\nUse Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.",
@@ -52043,704 +52735,6 @@
           "replaces": {
             "name": "Trades",
             "path": "get_v2_ticks_stocks_trades__ticker___date"
-          }
-        }
-      }
-    },
-    "/vX/reference/financials": {
-      "get": {
-        "description": "Get historical financial data for a stock ticker.\nThe financials data is extracted from XBRL from company SEC filings using the methodology outlined <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrl.squarespace.com/understanding-sec-xbrl-financi/\">here</a>.",
-        "operationId": "ListFinancials",
-        "parameters": [
-          {
-            "description": "Query by company ticker.",
-            "in": "query",
-            "name": "ticker",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Query by central index key (<a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.sec.gov/edgar/searchedgar/cik.htm\">CIK</a>) Number",
-            "in": "query",
-            "name": "cik",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Query by company name.",
-            "in": "query",
-            "name": "company_name",
-            "schema": {
-              "type": "string"
-            },
-            "x-polygon-filter-field": {
-              "search": true
-            }
-          },
-          {
-            "description": "Query by standard industrial classification (<a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.sec.gov/corpfin/division-of-corporation-finance-standard-industrial-classification-sic-code-list\">SIC</a>)",
-            "in": "query",
-            "name": "sic",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Query by the date when the filing with financials data was filed in YYYY-MM-DD format.\n\nBest used when querying over date ranges to find financials based on filings that happen in a time period.\n\nExamples:\n\nTo get financials based on filings that have happened after January 1, 2009 use the query param filing_date.gte=2009-01-01\n\nTo get financials based on filings that happened in the year 2009 use the query params filing_date.gte=2009-01-01&filing_date.lt=2010-01-01",
-            "in": "query",
-            "name": "filing_date",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            },
-            "x-polygon-filter-field": {
-              "range": true
-            }
-          },
-          {
-            "description": "The period of report for the filing with financials data in YYYY-MM-DD format.",
-            "in": "query",
-            "name": "period_of_report_date",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            },
-            "x-polygon-filter-field": {
-              "range": true
-            }
-          },
-          {
-            "description": "Query by timeframe. Annual financials originate from 10-K filings, and quarterly financials originate from 10-Q filings. Note: Most companies do not file quarterly reports for Q4 and instead include those financials in their annual report, so some companies my not return quarterly financials for Q4",
-            "in": "query",
-            "name": "timeframe",
-            "schema": {
-              "enum": [
-                "annual",
-                "quarterly",
-                "ttm"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether or not to include the `xpath` and `formula` attributes for each financial data point.\nSee the `xpath` and `formula` response attributes for more info. False by default.",
-            "in": "query",
-            "name": "include_sources",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Search by company_name.",
-            "in": "query",
-            "name": "company_name.search",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by filing_date.",
-            "in": "query",
-            "name": "filing_date.gte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by filing_date.",
-            "in": "query",
-            "name": "filing_date.gt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by filing_date.",
-            "in": "query",
-            "name": "filing_date.lte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by filing_date.",
-            "in": "query",
-            "name": "filing_date.lt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by period_of_report_date.",
-            "in": "query",
-            "name": "period_of_report_date.gte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by period_of_report_date.",
-            "in": "query",
-            "name": "period_of_report_date.gt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by period_of_report_date.",
-            "in": "query",
-            "name": "period_of_report_date.lte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by period_of_report_date.",
-            "in": "query",
-            "name": "period_of_report_date.lt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Order results based on the `sort` field.",
-            "in": "query",
-            "name": "order",
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "example": "asc",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Limit the number of results returned, default is 10 and max is 100.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 10,
-              "example": 10,
-              "maximum": 100,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Sort field used for ordering.",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "period_of_report_date",
-              "enum": [
-                "filing_date",
-                "period_of_report_date"
-              ],
-              "example": "filing_date",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "count": 1,
-                  "next_url": "https://api.massive.com/vX/reference/financials?",
-                  "request_id": "55eb92ed43b25568ab0cce159830ea34",
-                  "results": [
-                    {
-                      "cik": "0001650729",
-                      "company_name": "SiteOne Landscape Supply, Inc.",
-                      "end_date": "2022-04-03",
-                      "filing_date": "2022-05-04",
-                      "financials": {
-                        "balance_sheet": {
-                          "assets": {
-                            "label": "Assets",
-                            "order": 100,
-                            "unit": "USD",
-                            "value": 2407400000
-                          },
-                          "current_assets": {
-                            "label": "Current Assets",
-                            "order": 200,
-                            "unit": "USD",
-                            "value": 1385900000
-                          },
-                          "current_liabilities": {
-                            "label": "Current Liabilities",
-                            "order": 700,
-                            "unit": "USD",
-                            "value": 597500000
-                          },
-                          "equity": {
-                            "label": "Equity",
-                            "order": 1400,
-                            "unit": "USD",
-                            "value": 1099200000
-                          },
-                          "equity_attributable_to_noncontrolling_interest": {
-                            "label": "Equity Attributable To Noncontrolling Interest",
-                            "order": 1500,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "equity_attributable_to_parent": {
-                            "label": "Equity Attributable To Parent",
-                            "order": 1600,
-                            "unit": "USD",
-                            "value": 1099200000
-                          },
-                          "liabilities": {
-                            "label": "Liabilities",
-                            "order": 600,
-                            "unit": "USD",
-                            "value": 1308200000
-                          },
-                          "liabilities_and_equity": {
-                            "label": "Liabilities And Equity",
-                            "order": 1900,
-                            "unit": "USD",
-                            "value": 2407400000
-                          },
-                          "noncurrent_assets": {
-                            "label": "Noncurrent Assets",
-                            "order": 300,
-                            "unit": "USD",
-                            "value": 1021500000
-                          },
-                          "noncurrent_liabilities": {
-                            "label": "Noncurrent Liabilities",
-                            "order": 800,
-                            "unit": "USD",
-                            "value": 710700000
-                          }
-                        },
-                        "cash_flow_statement": {
-                          "exchange_gains_losses": {
-                            "label": "Exchange Gains/Losses",
-                            "order": 1000,
-                            "unit": "USD",
-                            "value": 100000
-                          },
-                          "net_cash_flow": {
-                            "label": "Net Cash Flow",
-                            "order": 1100,
-                            "unit": "USD",
-                            "value": -8600000
-                          },
-                          "net_cash_flow_continuing": {
-                            "label": "Net Cash Flow, Continuing",
-                            "order": 1200,
-                            "unit": "USD",
-                            "value": -8700000
-                          },
-                          "net_cash_flow_from_financing_activities": {
-                            "label": "Net Cash Flow From Financing Activities",
-                            "order": 700,
-                            "unit": "USD",
-                            "value": 150600000
-                          },
-                          "net_cash_flow_from_financing_activities_continuing": {
-                            "label": "Net Cash Flow From Financing Activities, Continuing",
-                            "order": 800,
-                            "unit": "USD",
-                            "value": 150600000
-                          },
-                          "net_cash_flow_from_investing_activities": {
-                            "label": "Net Cash Flow From Investing Activities",
-                            "order": 400,
-                            "unit": "USD",
-                            "value": -41000000
-                          },
-                          "net_cash_flow_from_investing_activities_continuing": {
-                            "label": "Net Cash Flow From Investing Activities, Continuing",
-                            "order": 500,
-                            "unit": "USD",
-                            "value": -41000000
-                          },
-                          "net_cash_flow_from_operating_activities": {
-                            "label": "Net Cash Flow From Operating Activities",
-                            "order": 100,
-                            "unit": "USD",
-                            "value": -118300000
-                          },
-                          "net_cash_flow_from_operating_activities_continuing": {
-                            "label": "Net Cash Flow From Operating Activities, Continuing",
-                            "order": 200,
-                            "unit": "USD",
-                            "value": -118300000
-                          }
-                        },
-                        "comprehensive_income": {
-                          "comprehensive_income_loss": {
-                            "label": "Comprehensive Income/Loss",
-                            "order": 100,
-                            "unit": "USD",
-                            "value": 40500000
-                          },
-                          "comprehensive_income_loss_attributable_to_noncontrolling_interest": {
-                            "label": "Comprehensive Income/Loss Attributable To Noncontrolling Interest",
-                            "order": 200,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "comprehensive_income_loss_attributable_to_parent": {
-                            "label": "Comprehensive Income/Loss Attributable To Parent",
-                            "order": 300,
-                            "unit": "USD",
-                            "value": 40500000
-                          },
-                          "other_comprehensive_income_loss": {
-                            "label": "Other Comprehensive Income/Loss",
-                            "order": 400,
-                            "unit": "USD",
-                            "value": 40500000
-                          },
-                          "other_comprehensive_income_loss_attributable_to_parent": {
-                            "label": "Other Comprehensive Income/Loss Attributable To Parent",
-                            "order": 600,
-                            "unit": "USD",
-                            "value": 8200000
-                          }
-                        },
-                        "income_statement": {
-                          "basic_earnings_per_share": {
-                            "label": "Basic Earnings Per Share",
-                            "order": 4200,
-                            "unit": "USD / shares",
-                            "value": 0.72
-                          },
-                          "benefits_costs_expenses": {
-                            "label": "Benefits Costs and Expenses",
-                            "order": 200,
-                            "unit": "USD",
-                            "value": 768400000
-                          },
-                          "cost_of_revenue": {
-                            "label": "Cost Of Revenue",
-                            "order": 300,
-                            "unit": "USD",
-                            "value": 536100000
-                          },
-                          "costs_and_expenses": {
-                            "label": "Costs And Expenses",
-                            "order": 600,
-                            "unit": "USD",
-                            "value": 768400000
-                          },
-                          "diluted_earnings_per_share": {
-                            "label": "Diluted Earnings Per Share",
-                            "order": 4300,
-                            "unit": "USD / shares",
-                            "value": 0.7
-                          },
-                          "gross_profit": {
-                            "label": "Gross Profit",
-                            "order": 800,
-                            "unit": "USD",
-                            "value": 269200000
-                          },
-                          "income_loss_from_continuing_operations_after_tax": {
-                            "label": "Income/Loss From Continuing Operations After Tax",
-                            "order": 1400,
-                            "unit": "USD",
-                            "value": 32300000
-                          },
-                          "income_loss_from_continuing_operations_before_tax": {
-                            "label": "Income/Loss From Continuing Operations Before Tax",
-                            "order": 1500,
-                            "unit": "USD",
-                            "value": 36900000
-                          },
-                          "income_tax_expense_benefit": {
-                            "label": "Income Tax Expense/Benefit",
-                            "order": 2200,
-                            "unit": "USD",
-                            "value": 4600000
-                          },
-                          "interest_expense_operating": {
-                            "label": "Interest Expense, Operating",
-                            "order": 2700,
-                            "unit": "USD",
-                            "value": 4300000
-                          },
-                          "net_income_loss": {
-                            "label": "Net Income/Loss",
-                            "order": 3200,
-                            "unit": "USD",
-                            "value": 32300000
-                          },
-                          "net_income_loss_attributable_to_noncontrolling_interest": {
-                            "label": "Net Income/Loss Attributable To Noncontrolling Interest",
-                            "order": 3300,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "net_income_loss_attributable_to_parent": {
-                            "label": "Net Income/Loss Attributable To Parent",
-                            "order": 3500,
-                            "unit": "USD",
-                            "value": 32300000
-                          },
-                          "net_income_loss_available_to_common_stockholders_basic": {
-                            "label": "Net Income/Loss Available To Common Stockholders, Basic",
-                            "order": 3700,
-                            "unit": "USD",
-                            "value": 32300000
-                          },
-                          "operating_expenses": {
-                            "label": "Operating Expenses",
-                            "order": 1000,
-                            "unit": "USD",
-                            "value": 228000000
-                          },
-                          "operating_income_loss": {
-                            "label": "Operating Income/Loss",
-                            "order": 1100,
-                            "unit": "USD",
-                            "value": 41200000
-                          },
-                          "participating_securities_distributed_and_undistributed_earnings_loss_basic": {
-                            "label": "Participating Securities, Distributed And Undistributed Earnings/Loss, Basic",
-                            "order": 3800,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "preferred_stock_dividends_and_other_adjustments": {
-                            "label": "Preferred Stock Dividends And Other Adjustments",
-                            "order": 3900,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "revenues": {
-                            "label": "Revenues",
-                            "order": 100,
-                            "unit": "USD",
-                            "value": 805300000
-                          }
-                        }
-                      },
-                      "fiscal_period": "Q1",
-                      "fiscal_year": "2022",
-                      "source_filing_file_url": "https://api.massive.com/v1/reference/sec/filings/0001650729-22-000010/files/site-20220403_htm.xml",
-                      "source_filing_url": "https://api.massive.com/v1/reference/sec/filings/0001650729-22-000010",
-                      "start_date": "2022-01-03"
-                    }
-                  ],
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "count": {
-                      "description": "The total number of results for this request.",
-                      "type": "integer"
-                    },
-                    "next_url": {
-                      "description": "If present, this value can be used to fetch the next page of data.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A request id assigned by the server.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "description": "An array of results containing the requested data.",
-                      "items": {
-                        "properties": {
-                          "acceptance_datetime": {
-                            "description": "The datetime (EST timezone) the filing was accepted by EDGAR in YYYYMMDDHHMMSS format.",
-                            "type": "string"
-                          },
-                          "cik": {
-                            "description": "The CIK number for the company.",
-                            "type": "string"
-                          },
-                          "company_name": {
-                            "description": "The company name.",
-                            "type": "string"
-                          },
-                          "end_date": {
-                            "description": "The end date of the period that these financials cover in YYYYMMDD format.",
-                            "type": "string"
-                          },
-                          "filing_date": {
-                            "description": "The date that the SEC filing which these financials were derived from was made available. Note that this is not necessarily the date when this information became public, as some companies may publish a press release before filing with the SEC.",
-                            "type": "string"
-                          },
-                          "financials": {
-                            "description": "Structured financial statements with detailed data points and metadata.",
-                            "properties": {
-                              "balance_sheet": {
-                                "description": "Balance sheet.\nThe keys in this object can be any of the fields listed in the Balance Sheet section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.",
-                                "properties": {
-                                  "*": {
-                                    "description": "An individual financial data point.",
-                                    "properties": {
-                                      "derived_from": {
-                                        "description": "The list of report IDs (or errata) which were used to derive this data point.\nThis value is only returned for data points taken directly from XBRL when the `include_sources` query parameter is `true` and if source is SourceInterReportDerived.",
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "formula": {
-                                        "description": "The name of the formula used to derive this data point from other financial data points.\nInformation about the formulas can be found <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrlsite.azurewebsites.net/2020/reporting-scheme/us-gaap/fac/documentation/ImputeRulesList.html\">here</a>.\nThis value is only returned for data points that are not explicitly expressed within the XBRL source file when the `include_sources` query parameter is `true` and if source is SourceIntraReportImpute.",
-                                        "type": "string"
-                                      },
-                                      "label": {
-                                        "description": "A human readable label for the financial data point.",
-                                        "type": "string"
-                                      },
-                                      "order": {
-                                        "description": "An indicator of what order within the statement that you would find this data point.",
-                                        "type": "integer"
-                                      },
-                                      "source": {
-                                        "description": "The source where this data point came from. This will be one of: SourceDirectReport, SourceIntraReportImpute or SourceInterReportDerived.",
-                                        "type": "string"
-                                      },
-                                      "unit": {
-                                        "description": "The unit of the financial data point.",
-                                        "type": "string"
-                                      },
-                                      "value": {
-                                        "description": "The value of the financial data point.",
-                                        "type": "number"
-                                      },
-                                      "xpath": {
-                                        "description": "The <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/XPath\">XPath 1.0</a> query that identifies the fact from within the XBRL source file.\nThis value is only returned for data points taken directly from XBRL when the `include_sources` query parameter is `true` and if source is SourceDirectReport.",
-                                        "type": "string"
-                                      }
-                                    },
-                                    "required": [
-                                      "label",
-                                      "order",
-                                      "value",
-                                      "unit"
-                                    ],
-                                    "type": "object"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "cash_flow_statement": {
-                                "description": "Cash flow statement.\nThe keys in this object can be any of the fields listed in the Cash Flow Statement section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.\nSee the attributes of the objects within `balance_sheet` for more details.",
-                                "type": "object"
-                              },
-                              "comprehensive_income": {
-                                "description": "Comprehensive income.\nThe keys in this object can be any of the fields listed in the Comprehensive Income section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.\nSee the attributes of the objects within `balance_sheet` for more details.",
-                                "type": "object"
-                              },
-                              "income_statement": {
-                                "description": "Income statement.\nThe keys in this object can be any of the fields listed in the Income Statement section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.\nSee the attributes of the objects within `balance_sheet` for more details.",
-                                "type": "object"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "fiscal_period": {
-                            "description": "Fiscal period of the report according to the company (Q1, Q2, Q3, Q4, or FY).",
-                            "type": "string"
-                          },
-                          "fiscal_year": {
-                            "description": "Fiscal year of the report according to the company.",
-                            "type": "string"
-                          },
-                          "sic": {
-                            "description": "The Standard Industrial Classification (SIC) code for the company.",
-                            "type": "string"
-                          },
-                          "source_filing_file_url": {
-                            "description": "The URL of the specific XBRL instance document within the SEC filing that these financials were derived from.",
-                            "type": "string"
-                          },
-                          "source_filing_url": {
-                            "description": "The URL of the SEC filing that these financials were derived from.",
-                            "type": "string"
-                          },
-                          "start_date": {
-                            "description": "The start date of the period that these financials cover in YYYYMMDD format.",
-                            "type": "string"
-                          },
-                          "tickers": {
-                            "description": "The list of ticker symbols for the company.",
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array"
-                          },
-                          "timeframe": {
-                            "description": "The timeframe of the report (quarterly, annual or ttm).",
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "cik",
-                          "company_name",
-                          "financials",
-                          "timeframe",
-                          "fiscal_period"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "FinancialReport"
-                        }
-                      },
-                      "type": "array"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id",
-                    "count",
-                    "results"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "FIXME"
-          }
-        },
-        "summary": "Stock Financials vX",
-        "tags": [
-          "default"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
-        },
-        "x-polygon-experimental": {},
-        "x-polygon-paginate": {
-          "limit": {
-            "default": 10,
-            "max": 100
-          },
-          "sort": {
-            "default": "period_of_report_date",
-            "enum": [
-              "filing_date",
-              "period_of_report_date"
-            ]
           }
         }
       }
