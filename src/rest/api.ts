@@ -253,7 +253,7 @@ export interface CryptoLastTrade {
 }
 export interface CryptoLastTradeLast {
     /**
-     * A list of condition codes. 
+     * A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.
      */
     'conditions': Array<number>;
     /**
@@ -351,7 +351,7 @@ export interface CryptoSnapshotTickers {
 }
 export interface CryptoTick {
     /**
-     * A list of condition codes. 
+     * A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.
      */
     'c': Array<number>;
     /**
@@ -433,7 +433,7 @@ export interface DeprecatedGetHistoricCryptoTrades200Response {
 }
 export interface DeprecatedGetHistoricCryptoTrades200ResponseAllOfTicksInner {
     /**
-     * A list of condition codes. 
+     * A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.
      */
     'c': Array<number>;
     /**
@@ -551,7 +551,7 @@ export interface DeprecatedGetHistoricStocksQuotes200ResponseAllOfResultsInner {
      */
     'X': number;
     /**
-     * A list of condition codes. 
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'c': Array<number>;
     /**
@@ -616,7 +616,7 @@ export interface DeprecatedGetHistoricStocksTrades200ResponseAllOfResultsInner {
      */
     'y': number;
     /**
-     * A list of condition codes. 
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'c': Array<number>;
     /**
@@ -1320,7 +1320,7 @@ export interface GetBenzingaV1Earnings200ResponseResultsInner {
      */
     'eps_surprise'?: number;
     /**
-     * The percentage difference between the actual and estimated EPS.
+     * The EPS surprise relative to the estimate, as a decimal fraction (0.75 = 75%), calculated as eps_surprise divided by the absolute value of estimated_eps. Positive is a beat and negative a miss, even when the estimate is negative. When the estimate is 0 the value is 1 or -1, and estimates near 0 give very large values.
      */
     'eps_surprise_percent'?: number;
     /**
@@ -1368,7 +1368,7 @@ export interface GetBenzingaV1Earnings200ResponseResultsInner {
      */
     'revenue_surprise'?: number;
     /**
-     * The percentage difference between the actual and estimated revenue.
+     * The revenue surprise relative to the estimate, as a decimal fraction (0.126 = 12.6%), calculated as revenue_surprise divided by the absolute value of estimated_revenue. Positive is a beat and negative a miss.
      */
     'revenue_surprise_percent'?: number;
     /**
@@ -2347,7 +2347,7 @@ export interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerDay {
  */
 export interface GetCryptoSnapshotTickers200ResponseAllOfTickersInnerLastTrade {
     /**
-     * The trade conditions.
+     * A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.
      */
     'c': Array<number>;
     /**
@@ -2457,7 +2457,7 @@ export interface GetCryptoTrades200Response {
 }
 export interface GetCryptoTrades200ResponseResultsInner {
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.
      */
     'conditions'?: Array<number>;
     /**
@@ -3771,7 +3771,7 @@ export interface GetForexSnapshotTicker200ResponseAllOfTicker {
     'fmv'?: number;
     'lastQuote': GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote;
     'min': GetForexSnapshotTickers200ResponseAllOfTickersInnerMin;
-    'prevDay': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
+    'prevDay': GetForexSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
     /**
      * The exchange symbol that this item is traded under.
      */
@@ -3807,7 +3807,7 @@ export interface GetForexSnapshotTickers200ResponseAllOfTickersInner {
     'fmv'?: number;
     'lastQuote': GetForexSnapshotTickers200ResponseAllOfTickersInnerLastQuote;
     'min': GetForexSnapshotTickers200ResponseAllOfTickersInnerMin;
-    'prevDay': GetCryptoSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
+    'prevDay': GetForexSnapshotTickers200ResponseAllOfTickersInnerPrevDay;
     /**
      * The exchange symbol that this item is traded under.
      */
@@ -3826,7 +3826,7 @@ export interface GetForexSnapshotTickers200ResponseAllOfTickersInner {
     'updated': number;
 }
 /**
- * The most recent daily bar for this ticker.
+ * The most recent daily bar for this ticker. Forex daily bars follow the UTC day (00:00 to 23:59 UTC).
  */
 export interface GetForexSnapshotTickers200ResponseAllOfTickersInnerDay {
     /**
@@ -3903,6 +3903,35 @@ export interface GetForexSnapshotTickers200ResponseAllOfTickersInnerMin {
      * The trading volume of the symbol in the given time period.
      */
     'v'?: number;
+}
+/**
+ * The previous day\'s bar for this ticker, covering the previous UTC day (00:00 to 23:59 UTC).
+ */
+export interface GetForexSnapshotTickers200ResponseAllOfTickersInnerPrevDay {
+    /**
+     * The close price for the symbol in the given time period.
+     */
+    'c': number;
+    /**
+     * The highest price for the symbol in the given time period.
+     */
+    'h': number;
+    /**
+     * The lowest price for the symbol in the given time period.
+     */
+    'l': number;
+    /**
+     * The open price for the symbol in the given time period.
+     */
+    'o': number;
+    /**
+     * The trading volume of the symbol in the given time period.
+     */
+    'v': number;
+    /**
+     * The volume weighted average price.
+     */
+    'vw': number;
 }
 export interface GetForexV1Exchanges200Response {
     /**
@@ -4005,6 +4034,14 @@ export interface GetFuturesV1Contracts200ResponseResultsInner {
      * The identifier for the contract\'s product.
      */
     'product_code'?: string;
+    /**
+     * A unique identifier for the contract assigned by the data provider. Note that this value is null for historical data (pre-2025-03-12).
+     */
+    'provider_id'?: string;
+    /**
+     * A unique identifier for the product to which a contract, or contracts, belongs. Note that this value is null for historical data (pre-2025-03-12).
+     */
+    'provider_product_id'?: string;
     /**
      * The date on which this contract settles.
      */
@@ -4173,6 +4210,14 @@ export interface GetFuturesV1Products200ResponseResultsInner {
      */
     'asset_sub_class'?: string;
     /**
+     * The clearing symbol assigned to this product by the exchange\'s clearing house.
+     */
+    'clearing_symbol'?: string;
+    /**
+     * The trading venue (MIC) for the clearing house that clears this product\'s contracts.
+     */
+    'clearing_venue'?: string;
+    /**
      * A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day.
      */
     'date': string;
@@ -4193,6 +4238,10 @@ export interface GetFuturesV1Products200ResponseResultsInner {
      */
     'product_code'?: string;
     /**
+     * A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.
+     */
+    'provider_id'?: string;
+    /**
      * The sector to which the product belongs.
      */
     'sector'?: string;
@@ -4208,6 +4257,10 @@ export interface GetFuturesV1Products200ResponseResultsInner {
      * The type of settlement for this product.
      */
     'settlement_type'?: string;
+    /**
+     * The strategy type for combo products (e.g. spread, strip, pack). Null for single products.
+     */
+    'strategy_type'?: string;
     /**
      * The sub-sector to which the product belongs.
      */
@@ -4702,6 +4755,54 @@ export interface GetGroupedStocksAggregates200ResponseAllOfResultsInner {
      */
     'vw'?: number;
 }
+export interface GetIndicesAggregates200Response {
+    /**
+     * The exchange symbol that this item is traded under.
+     */
+    'ticker': string;
+    /**
+     * The number of aggregates (minute or day) used to generate the response.
+     */
+    'queryCount': number;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The total number of results for this request.
+     */
+    'resultsCount': number;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': string;
+    /**
+     * An array of results containing the requested data.
+     */
+    'results'?: Array<GetIndicesAggregates200ResponseAllOfResultsInner>;
+}
+export interface GetIndicesAggregates200ResponseAllOfResultsInner {
+    /**
+     * The close value for the symbol in the given time period.
+     */
+    'c': number;
+    /**
+     * The highest value for the symbol in the given time period.
+     */
+    'h': number;
+    /**
+     * The lowest value for the symbol in the given time period.
+     */
+    'l': number;
+    /**
+     * The open value for the symbol in the given time period.
+     */
+    'o': number;
+    /**
+     * The Unix millisecond timestamp for the start of the aggregate window.
+     */
+    't': number;
+}
 export interface GetIndicesOpenClose200Response {
     /**
      * The close value of the ticker symbol in after hours trading.
@@ -4859,7 +4960,7 @@ export interface GetLastCryptoTrade200Response {
  */
 export interface GetLastCryptoTrade200ResponseLast {
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.
      */
     'conditions'?: Array<number>;
     /**
@@ -4911,7 +5012,7 @@ export interface GetLastOptionsTrade200ResponseResults {
      */
     'T': string;
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Options Condition Codes](https://massive.com/docs/rest/options/market-operations/condition-codes) for what each code means.
      */
     'c'?: Array<number>;
     /**
@@ -4988,7 +5089,7 @@ export interface GetLastStocksQuote200ResponseResults {
      */
     'X'?: number;
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'c'?: Array<number>;
     /**
@@ -4996,7 +5097,7 @@ export interface GetLastStocksQuote200ResponseResults {
      */
     'f'?: number;
     /**
-     * A list of indicator codes.
+     * A list of indicator codes. See the [Conditions and Indicators](https://massive.com/glossary/conditions-indicators) glossary for what each code means.
      */
     'i'?: Array<number>;
     /**
@@ -5045,7 +5146,7 @@ export interface GetLastStocksTrade200ResponseResults {
      */
     'T': string;
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'c'?: Array<number>;
     /**
@@ -5580,7 +5681,7 @@ export interface GetOptionsTrades200Response {
 }
 export interface GetOptionsTrades200ResponseResultsInner {
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Options Condition Codes](https://massive.com/docs/rest/options/market-operations/condition-codes) for what each code means.
      */
     'conditions'?: Array<number>;
     /**
@@ -5763,7 +5864,7 @@ export enum GetOptionsV3TradesTicker200ResponseStatusEnum {
 
 export interface GetOptionsV3TradesTicker200ResponseResultsInner {
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Options Condition Codes](https://massive.com/docs/rest/options/market-operations/condition-codes) for what each code means.
      */
     'conditions'?: Array<number>;
     /**
@@ -5920,6 +6021,10 @@ export interface GetPreviousIndicesAggregates200Response {
     'results'?: Array<GetPreviousIndicesAggregates200ResponseAllOfResultsInner>;
 }
 export interface GetPreviousIndicesAggregates200ResponseAllOfResultsInner {
+    /**
+     * The exchange symbol that this item is traded under.
+     */
+    'T': string;
     /**
      * The close value for the symbol in the given time period.
      */
@@ -6565,7 +6670,7 @@ export enum GetStocksDevTradesTicker200ResponseStatusEnum {
 
 export interface GetStocksDevTradesTicker200ResponseResultsInner {
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'conditions'?: Array<number>;
     /**
@@ -7220,6 +7325,203 @@ export interface GetStocksFilingsVXForm4200ResponseResultsInner {
     'underlying_security_shares'?: number;
     /**
      * Title of the underlying security for derivative transactions.
+     */
+    'underlying_security_title'?: string;
+}
+export interface GetStocksFilingsVXForm5200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetStocksFilingsVXForm5200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetStocksFilingsVXForm5200ResponseStatusEnum;
+}
+
+export enum GetStocksFilingsVXForm5200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetStocksFilingsVXForm5200ResponseResultsInner {
+    /**
+     * Unique SEC accession number for the filing (e.g., \'0001209191-25-012345\').
+     */
+    'accession_number'?: string;
+    /**
+     * Whether the filing indicates a transaction made pursuant to a Rule 10b5-1 trading plan. Filing-level; null on filings before the checkbox was introduced (2023).
+     */
+    'aff_10b5_one'?: boolean;
+    /**
+     * Date of the original filing submission for amendment filings (5/A). Null for standard filings (formatted as YYYY-MM-DD).
+     */
+    'date_of_original_submission'?: string;
+    /**
+     * Deemed execution date if different from transaction date (formatted as YYYY-MM-DD).
+     */
+    'deemed_execution_date'?: string;
+    /**
+     * Whether ownership is direct (\'D\') or indirect (\'I\').
+     */
+    'direct_or_indirect'?: string;
+    /**
+     * Whether an equity swap was involved in the transaction.
+     */
+    'equity_swap_involved'?: boolean;
+    /**
+     * Date exercisable for derivative securities (formatted as YYYY-MM-DD).
+     */
+    'exercise_date'?: string;
+    /**
+     * Exercise or conversion price of derivative securities in USD.
+     */
+    'exercise_price'?: number;
+    /**
+     * Expiration date for derivative securities (formatted as YYYY-MM-DD).
+     */
+    'expiration_date'?: string;
+    /**
+     * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).
+     */
+    'filing_date'?: string;
+    /**
+     * Direct URL to the filing on the SEC EDGAR website.
+     */
+    'filing_url'?: string;
+    /**
+     * List of footnotes from the filing that are relevant to this row, each with an id and description.
+     */
+    'footnotes'?: Array<GetStocksFilingsVXForm3200ResponseResultsInnerFootnotesInner>;
+    /**
+     * Whether the filing reports holdings that should have been reported on a Form 3. Filing-level, repeated on every row of the filing. Null if not stated.
+     */
+    'form3_holdings_reported'?: boolean;
+    /**
+     * Whether the filing reports transactions that should have been reported on a Form 4. Filing-level, repeated on every row of the filing. Null if not stated.
+     */
+    'form4_transactions_reported'?: boolean;
+    /**
+     * SEC form type (\'5\' for standard filing, \'5/A\' for amendments).
+     */
+    'form_type'?: string;
+    /**
+     * Whether the reporting owner is a director of the issuer.
+     */
+    'is_director'?: boolean;
+    /**
+     * Whether the reporting owner is an officer of the issuer.
+     */
+    'is_officer'?: boolean;
+    /**
+     * Whether the reporting owner has another relationship with the issuer.
+     */
+    'is_other'?: boolean;
+    /**
+     * Whether the reporting owner holds 10% or more of a class of equity securities.
+     */
+    'is_ten_percent_owner'?: boolean;
+    /**
+     * SEC Central Index Key of the issuer company (10 digits, zero-padded).
+     */
+    'issuer_cik'?: string;
+    /**
+     * Name of the issuer company as reported in the filing.
+     */
+    'issuer_name'?: string;
+    /**
+     * Nature of indirect ownership (e.g., \'By Trust\', \'By Spouse\').
+     */
+    'nature_of_ownership'?: string;
+    /**
+     * Whether the reporting owner is no longer subject to Section 16 of the Securities Exchange Act.
+     */
+    'not_subject_to_section_16'?: boolean;
+    /**
+     * Title of the officer, if the reporting owner is an officer.
+     */
+    'officer_title'?: string;
+    /**
+     * SEC Central Index Key of the reporting owner (10 digits, zero-padded).
+     */
+    'owner_cik'?: string;
+    /**
+     * Name of the reporting owner (individual or entity).
+     */
+    'owner_name'?: string;
+    /**
+     * End of the fiscal year the filing covers (formatted as YYYY-MM-DD).
+     */
+    'period_of_report'?: string;
+    /**
+     * Type of record in the filing (\'transaction\' or \'holding\').
+     */
+    'record_type'?: string;
+    /**
+     * Additional remarks included in the filing.
+     */
+    'remarks'?: string;
+    /**
+     * Title or description of the security (e.g., \'Common Stock\', \'Stock Option\').
+     */
+    'security_title'?: string;
+    /**
+     * Type of security (\'non_derivative\' or \'derivative\').
+     */
+    'security_type'?: string;
+    /**
+     * Total shares beneficially owned after the transaction, or currently held for holdings.
+     */
+    'shares_owned_following_transaction'?: number;
+    /**
+     * A list of ticker symbols for the issuer company. Multiple symbols may indicate different share classes.
+     */
+    'tickers'?: Array<string>;
+    /**
+     * Whether shares were acquired (\'A\') or disposed of (\'D\').
+     */
+    'transaction_acquired_disposed'?: string;
+    /**
+     * SEC transaction code indicating the type of transaction (e.g., \'G\' for gift, \'J\' for other acquisition or disposition, \'A\' for grant/award, \'S\' for sale). Null for holdings.
+     */
+    'transaction_code'?: string;
+    /**
+     * Date of the transaction, formatted as YYYY-MM-DD. Null for holdings.
+     */
+    'transaction_date'?: string;
+    /**
+     * Form the transaction belongs to: \'5\' for a Form 5 transaction, or \'4\' for a Form 4 transaction reported late on this Form 5. Null for holdings.
+     */
+    'transaction_form_type'?: string;
+    /**
+     * Price per share of the transaction in USD.
+     */
+    'transaction_price_per_share'?: number;
+    /**
+     * Number of shares involved in the transaction.
+     */
+    'transaction_shares'?: number;
+    /**
+     * Timeliness of the transaction: \'E\' (early), \'L\' (late), or \'O\' (on time, or not stated). Always \'O\' for holdings.
+     */
+    'transaction_timeliness'?: string;
+    /**
+     * Total value of the transaction in USD (transaction_shares x transaction_price_per_share). Null when shares or price is not reported, and for holdings.
+     */
+    'transaction_value'?: number;
+    /**
+     * Number of underlying shares for derivative securities.
+     */
+    'underlying_security_shares'?: number;
+    /**
+     * Title of the underlying security for derivative securities.
      */
     'underlying_security_title'?: string;
 }
@@ -7981,11 +8283,11 @@ export interface GetStocksQuotes200ResponseResultsInner {
      */
     'bid_size'?: number;
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'conditions'?: Array<number>;
     /**
-     * A list of indicator codes.
+     * A list of indicator codes. See the [Conditions and Indicators](https://massive.com/glossary/conditions-indicators) glossary for what each code means.
      */
     'indicators'?: Array<number>;
     /**
@@ -8168,7 +8470,7 @@ export interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastQuote {
  */
 export interface GetStocksSnapshotTickers200ResponseAllOfTickersInnerLastTrade {
     /**
-     * The trade conditions.
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'c': Array<number>;
     /**
@@ -8392,7 +8694,7 @@ export interface GetStocksTrades200Response {
 }
 export interface GetStocksTrades200ResponseResultsInner {
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'conditions'?: Array<number>;
     /**
@@ -8852,7 +9154,7 @@ export interface GetTicker200ResponseResults {
      */
     'homepage_url'?: string;
     /**
-     * The date that the symbol was first publicly listed in the format YYYY-MM-DD.
+     * The date the security currently trading under this ticker was first publicly listed, in the format YYYY-MM-DD. If a corporate action replaces the security behind the ticker, such as American Depositary Shares being exchanged for ordinary shares under the same symbol, this is the new security\'s listing date. A move to a different exchange does not change it. Use the date parameter to get the value as of an earlier date.
      */
     'list_date'?: string;
     /**
@@ -9171,7 +9473,7 @@ export interface IndicesGroupedResults {
     /**
      * An array of results containing the requested data.
      */
-    'results'?: Array<GetPreviousIndicesAggregates200ResponseAllOfResultsInner>;
+    'results'?: Array<GetIndicesAggregates200ResponseAllOfResultsInner>;
 }
 export interface IndicesOpenClose {
     /**
@@ -9210,6 +9512,12 @@ export interface IndicesOpenClose {
      * The exchange symbol that this item is traded under.
      */
     'symbol': string;
+}
+export interface IndicesPreviousCloseResults {
+    /**
+     * An array of results containing the requested data.
+     */
+    'results'?: Array<GetPreviousIndicesAggregates200ResponseAllOfResultsInner>;
 }
 export interface IndicesTickerResults {
     /**
@@ -9576,107 +9884,6 @@ export interface ListExchanges400Response {
      * The status of this request\'s response.
      */
     'status': string;
-}
-export interface ListFinancials200Response {
-    /**
-     * The total number of results for this request.
-     */
-    'count': number;
-    /**
-     * If present, this value can be used to fetch the next page of data.
-     */
-    'next_url'?: string;
-    /**
-     * A request id assigned by the server.
-     */
-    'request_id': string;
-    /**
-     * An array of results containing the requested data.
-     */
-    'results': Array<ListFinancials200ResponseResultsInner>;
-    /**
-     * The status of this request\'s response.
-     */
-    'status': string;
-}
-export interface ListFinancials200ResponseResultsInner {
-    /**
-     * The datetime (EST timezone) the filing was accepted by EDGAR in YYYYMMDDHHMMSS format.
-     */
-    'acceptance_datetime'?: string;
-    /**
-     * The CIK number for the company.
-     */
-    'cik': string;
-    /**
-     * The company name.
-     */
-    'company_name': string;
-    /**
-     * The end date of the period that these financials cover in YYYYMMDD format.
-     */
-    'end_date'?: string;
-    /**
-     * The date that the SEC filing which these financials were derived from was made available. Note that this is not necessarily the date when this information became public, as some companies may publish a press release before filing with the SEC.
-     */
-    'filing_date'?: string;
-    'financials': ListFinancials200ResponseResultsInnerFinancials;
-    /**
-     * Fiscal period of the report according to the company (Q1, Q2, Q3, Q4, or FY).
-     */
-    'fiscal_period': string;
-    /**
-     * Fiscal year of the report according to the company.
-     */
-    'fiscal_year'?: string;
-    /**
-     * The Standard Industrial Classification (SIC) code for the company.
-     */
-    'sic'?: string;
-    /**
-     * The URL of the specific XBRL instance document within the SEC filing that these financials were derived from.
-     */
-    'source_filing_file_url'?: string;
-    /**
-     * The URL of the SEC filing that these financials were derived from.
-     */
-    'source_filing_url'?: string;
-    /**
-     * The start date of the period that these financials cover in YYYYMMDD format.
-     */
-    'start_date'?: string;
-    /**
-     * The list of ticker symbols for the company.
-     */
-    'tickers'?: Array<string>;
-    /**
-     * The timeframe of the report (quarterly, annual or ttm).
-     */
-    'timeframe': string;
-}
-/**
- * Structured financial statements with detailed data points and metadata.
- */
-export interface ListFinancials200ResponseResultsInnerFinancials {
-    'balance_sheet'?: ListFinancials200ResponseResultsInnerFinancialsBalanceSheet;
-    /**
-     * Cash flow statement. The keys in this object can be any of the fields listed in the Cash Flow Statement section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>. See the attributes of the objects within `balance_sheet` for more details.
-     */
-    'cash_flow_statement'?: object;
-    /**
-     * Comprehensive income. The keys in this object can be any of the fields listed in the Comprehensive Income section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>. See the attributes of the objects within `balance_sheet` for more details.
-     */
-    'comprehensive_income'?: object;
-    /**
-     * Income statement. The keys in this object can be any of the fields listed in the Income Statement section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>. See the attributes of the objects within `balance_sheet` for more details.
-     */
-    'income_statement'?: object;
-}
-/**
- * Balance sheet. The keys in this object can be any of the fields listed in the Balance Sheet section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.
- */
-export interface ListFinancials200ResponseResultsInnerFinancialsBalanceSheet {
-    '*'?: ListFinancials200ResponseResultsInnerFinancialsBalanceSheet;
 }
 export interface ListIPOs200Response {
     /**
@@ -10357,6 +10564,12 @@ export interface PaginationHooksBase {
      */
     'next_url'?: string;
 }
+export interface PreviousCloseResults {
+    /**
+     * An array of results containing the requested data.
+     */
+    'results'?: Array<GetPreviousForexAggregates200ResponseAllOfResultsInner>;
+}
 export interface RatingSection {
     /**
      * Analyst Rating at current month
@@ -10802,7 +11015,7 @@ export interface StocksV2NBBO {
      */
     'X': number;
     /**
-     * A list of condition codes. 
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'c': Array<number>;
     /**
@@ -10851,7 +11064,7 @@ export interface StocksV2Trade {
      */
     'y': number;
     /**
-     * A list of condition codes. 
+     * A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.
      */
     'c': Array<number>;
     /**
@@ -11964,13 +12177,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [dateStatusGte] Filter greater than or equal to the value.
          * @param {string} [dateStatusLt] Filter less than the value.
          * @param {string} [dateStatusLte] Filter less than or equal to the value.
-         * @param {number} [epsSurprisePercent] The percentage difference between the actual and estimated EPS. Value must be a floating point number.
+         * @param {number} [epsSurprisePercent] The EPS surprise relative to the estimate, as a decimal fraction (0.75 &#x3D; 75%), calculated as eps_surprise divided by the absolute value of estimated_eps. Positive is a beat and negative a miss, even when the estimate is negative. When the estimate is 0 the value is 1 or -1, and estimates near 0 give very large values. Value must be a floating point number.
          * @param {string} [epsSurprisePercentAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be a floating point number.
          * @param {number} [epsSurprisePercentGt] Filter greater than the value. Value must be a floating point number.
          * @param {number} [epsSurprisePercentGte] Filter greater than or equal to the value. Value must be a floating point number.
          * @param {number} [epsSurprisePercentLt] Filter less than the value. Value must be a floating point number.
          * @param {number} [epsSurprisePercentLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [revenueSurprisePercent] The percentage difference between the actual and estimated revenue. Value must be a floating point number.
+         * @param {number} [revenueSurprisePercent] The revenue surprise relative to the estimate, as a decimal fraction (0.126 &#x3D; 12.6%), calculated as revenue_surprise divided by the absolute value of estimated_revenue. Positive is a beat and negative a miss. Value must be a floating point number.
          * @param {string} [revenueSurprisePercentAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be a floating point number.
          * @param {number} [revenueSurprisePercentGt] Filter greater than the value. Value must be a floating point number.
          * @param {number} [revenueSurprisePercentGte] Filter greater than or equal to the value. Value must be a floating point number.
@@ -16237,6 +16450,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [productCodeGte] Filter greater than or equal to the value.
          * @param {string} [productCodeLt] Filter less than the value.
          * @param {string} [productCodeLte] Filter less than or equal to the value.
+         * @param {string} [providerId] A unique identifier for the contract assigned by the data provider. Note that this value is null for historical data (pre-2025-03-12).
+         * @param {string} [providerProductId] A unique identifier for the product to which a contract, or contracts, belongs. Note that this value is null for historical data (pre-2025-03-12).
          * @param {string} [ticker] The ticker for the contract.
          * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [tickerGt] Filter greater than the value.
@@ -16261,7 +16476,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFuturesV1Contracts: async (date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, active?: boolean, type?: GetFuturesV1ContractsTypeEnum, typeAnyOf?: GetFuturesV1ContractsTypeAnyOfEnum, firstTradeDate?: string, firstTradeDateGt?: string, firstTradeDateGte?: string, firstTradeDateLt?: string, firstTradeDateLte?: string, lastTradeDate?: string, lastTradeDateGt?: string, lastTradeDateGte?: string, lastTradeDateLt?: string, lastTradeDateLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getFuturesV1Contracts: async (date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, providerId?: string, providerProductId?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, active?: boolean, type?: GetFuturesV1ContractsTypeEnum, typeAnyOf?: GetFuturesV1ContractsTypeAnyOfEnum, firstTradeDate?: string, firstTradeDateGt?: string, firstTradeDateGte?: string, firstTradeDateLt?: string, firstTradeDateLte?: string, lastTradeDate?: string, lastTradeDateGt?: string, lastTradeDateGte?: string, lastTradeDateLt?: string, lastTradeDateLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/futures/v1/contracts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -16319,6 +16534,14 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (productCodeLte !== undefined) {
                 localVarQueryParameter['product_code.lte'] = productCodeLte;
+            }
+
+            if (providerId !== undefined) {
+                localVarQueryParameter['provider_id'] = providerId;
+            }
+
+            if (providerProductId !== undefined) {
+                localVarQueryParameter['provider_product_id'] = providerProductId;
             }
 
             if (ticker !== undefined) {
@@ -16536,6 +16759,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [productCodeGte] Filter greater than or equal to the value.
          * @param {string} [productCodeLt] Filter less than the value.
          * @param {string} [productCodeLte] Filter less than or equal to the value.
+         * @param {string} [providerId] A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.
          * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -16562,7 +16786,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFuturesV1Products: async (name?: string, nameAnyOf?: string, nameGt?: string, nameGte?: string, nameLt?: string, nameLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, sector?: GetFuturesV1ProductsSectorEnum, sectorAnyOf?: GetFuturesV1ProductsSectorAnyOfEnum, subSector?: GetFuturesV1ProductsSubSectorEnum, subSectorAnyOf?: GetFuturesV1ProductsSubSectorAnyOfEnum, assetClass?: GetFuturesV1ProductsAssetClassEnum, assetClassAnyOf?: GetFuturesV1ProductsAssetClassAnyOfEnum, assetSubClass?: GetFuturesV1ProductsAssetSubClassEnum, assetSubClassAnyOf?: GetFuturesV1ProductsAssetSubClassAnyOfEnum, type?: GetFuturesV1ProductsTypeEnum, typeAnyOf?: GetFuturesV1ProductsTypeAnyOfEnum, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getFuturesV1Products: async (name?: string, nameAnyOf?: string, nameGt?: string, nameGte?: string, nameLt?: string, nameLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, providerId?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, sector?: GetFuturesV1ProductsSectorEnum, sectorAnyOf?: GetFuturesV1ProductsSectorAnyOfEnum, subSector?: GetFuturesV1ProductsSubSectorEnum, subSectorAnyOf?: GetFuturesV1ProductsSubSectorAnyOfEnum, assetClass?: GetFuturesV1ProductsAssetClassEnum, assetClassAnyOf?: GetFuturesV1ProductsAssetClassAnyOfEnum, assetSubClass?: GetFuturesV1ProductsAssetSubClassEnum, assetSubClassAnyOf?: GetFuturesV1ProductsAssetSubClassAnyOfEnum, type?: GetFuturesV1ProductsTypeEnum, typeAnyOf?: GetFuturesV1ProductsTypeAnyOfEnum, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/futures/v1/products`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -16624,6 +16848,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (productCodeLte !== undefined) {
                 localVarQueryParameter['product_code.lte'] = productCodeLte;
+            }
+
+            if (providerId !== undefined) {
+                localVarQueryParameter['provider_id'] = providerId;
             }
 
             if (date !== undefined) {
@@ -20596,6 +20824,118 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * SEC Form 5 filings: annual statements of changes in beneficial ownership of securities. Filed by corporate insiders (directors, officers, and 10%+ shareholders) within 45 days of the issuer\'s fiscal year end to report transactions that were exempt from or deferred from Form 4, and any Form 4 transactions that were not reported on time. A filing with several reporting owners has one row per owner for each transaction or holding.
+         * @param {string} [issuerCik] SEC Central Index Key of the issuer company (10 digits, zero-padded).
+         * @param {string} [issuerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [ownerCik] SEC Central Index Key of the reporting owner (10 digits, zero-padded).
+         * @param {string} [ownerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickers] Filter for arrays that contain the value.
+         * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [formType] SEC form type (\&#39;5\&#39; for standard filing, \&#39;5/A\&#39; for amendments).
+         * @param {string} [filingDate] Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionCode] SEC transaction code indicating the type of transaction (e.g., \&#39;G\&#39; for gift, \&#39;J\&#39; for other acquisition or disposition, \&#39;A\&#39; for grant/award, \&#39;S\&#39; for sale). Null for holdings.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksFilingsVXForm5: async (issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, transactionCode?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/stocks/filings/vX/form-5`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (issuerCik !== undefined) {
+                localVarQueryParameter['issuer_cik'] = issuerCik;
+            }
+
+            if (issuerCikAnyOf !== undefined) {
+                localVarQueryParameter['issuer_cik.any_of'] = issuerCikAnyOf;
+            }
+
+            if (ownerCik !== undefined) {
+                localVarQueryParameter['owner_cik'] = ownerCik;
+            }
+
+            if (ownerCikAnyOf !== undefined) {
+                localVarQueryParameter['owner_cik.any_of'] = ownerCikAnyOf;
+            }
+
+            if (tickers !== undefined) {
+                localVarQueryParameter['tickers'] = tickers;
+            }
+
+            if (tickersAllOf !== undefined) {
+                localVarQueryParameter['tickers.all_of'] = tickersAllOf;
+            }
+
+            if (tickersAnyOf !== undefined) {
+                localVarQueryParameter['tickers.any_of'] = tickersAnyOf;
+            }
+
+            if (formType !== undefined) {
+                localVarQueryParameter['form_type'] = formType;
+            }
+
+            if (filingDate !== undefined) {
+                localVarQueryParameter['filing_date'] = filingDate;
+            }
+
+            if (filingDateGt !== undefined) {
+                localVarQueryParameter['filing_date.gt'] = filingDateGt;
+            }
+
+            if (filingDateGte !== undefined) {
+                localVarQueryParameter['filing_date.gte'] = filingDateGte;
+            }
+
+            if (filingDateLt !== undefined) {
+                localVarQueryParameter['filing_date.lt'] = filingDateLt;
+            }
+
+            if (filingDateLte !== undefined) {
+                localVarQueryParameter['filing_date.lte'] = filingDateLte;
+            }
+
+            if (transactionCode !== undefined) {
+                localVarQueryParameter['transaction_code'] = transactionCode;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.
          * @param {string} [cik] SEC Central Index Key (CIK) identifying the filing entity.
          * @param {string} [cikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
@@ -23750,7 +24090,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * Get a single ticker supported by Massive. This response will have detailed information about the ticker and the company behind it.
          * @summary Ticker Details v3
          * @param {string} ticker Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.
-         * @param {string} [date] Specify a point in time to get information about the ticker available on that date. When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.  For example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29. That means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29. If you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.  Defaults to the most recent available date.
+         * @param {string} [date] Specify a point in time to get information about the ticker available on that date. Fields that describe the security, including name, type, primary_exchange and list_date, reflect the security trading under this ticker on that date. For example, ASND returns type ADRC and list_date 2015-01-28 for 2026-04-17, and type CS and list_date 2026-04-20 from 2026-04-20, when its American Depositary Shares were exchanged for ordinary shares. Some fields may be empty for older dates.  When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.  For example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29. That means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29. If you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.  Defaults to the most recent available date.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -24580,159 +24920,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (locale !== undefined) {
                 localVarQueryParameter['locale'] = locale;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get historical financial data for a stock ticker. The financials data is extracted from XBRL from company SEC filings using the methodology outlined <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrl.squarespace.com/understanding-sec-xbrl-financi/\">here</a>.
-         * @summary Stock Financials vX
-         * @param {string} [ticker] Query by company ticker.
-         * @param {string} [cik] Query by central index key (&lt;a rel&#x3D;\&quot;noopener noreferrer nofollow\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://www.sec.gov/edgar/searchedgar/cik.htm\&quot;&gt;CIK&lt;/a&gt;) Number
-         * @param {string} [companyName] Query by company name.
-         * @param {string} [sic] Query by standard industrial classification (&lt;a rel&#x3D;\&quot;noopener noreferrer nofollow\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://www.sec.gov/corpfin/division-of-corporation-finance-standard-industrial-classification-sic-code-list\&quot;&gt;SIC&lt;/a&gt;)
-         * @param {string} [filingDate] Query by the date when the filing with financials data was filed in YYYY-MM-DD format.  Best used when querying over date ranges to find financials based on filings that happen in a time period.  Examples:  To get financials based on filings that have happened after January 1, 2009 use the query param filing_date.gte&#x3D;2009-01-01  To get financials based on filings that happened in the year 2009 use the query params filing_date.gte&#x3D;2009-01-01&amp;filing_date.lt&#x3D;2010-01-01
-         * @param {string} [periodOfReportDate] The period of report for the filing with financials data in YYYY-MM-DD format.
-         * @param {ListFinancialsTimeframeEnum} [timeframe] Query by timeframe. Annual financials originate from 10-K filings, and quarterly financials originate from 10-Q filings. Note: Most companies do not file quarterly reports for Q4 and instead include those financials in their annual report, so some companies my not return quarterly financials for Q4
-         * @param {boolean} [includeSources] Whether or not to include the &#x60;xpath&#x60; and &#x60;formula&#x60; attributes for each financial data point. See the &#x60;xpath&#x60; and &#x60;formula&#x60; response attributes for more info. False by default.
-         * @param {string} [companyNameSearch] Search by company_name.
-         * @param {string} [filingDateGte] Search by filing_date.
-         * @param {string} [filingDateGt] Search by filing_date.
-         * @param {string} [filingDateLte] Search by filing_date.
-         * @param {string} [filingDateLt] Search by filing_date.
-         * @param {string} [periodOfReportDateGte] Search by period_of_report_date.
-         * @param {string} [periodOfReportDateGt] Search by period_of_report_date.
-         * @param {string} [periodOfReportDateLte] Search by period_of_report_date.
-         * @param {string} [periodOfReportDateLt] Search by period_of_report_date.
-         * @param {ListFinancialsOrderEnum} [order] Order results based on the &#x60;sort&#x60; field.
-         * @param {number} [limit] Limit the number of results returned, default is 10 and max is 100.
-         * @param {ListFinancialsSortEnum} [sort] Sort field used for ordering.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        listFinancials: async (ticker?: string, cik?: string, companyName?: string, sic?: string, filingDate?: string, periodOfReportDate?: string, timeframe?: ListFinancialsTimeframeEnum, includeSources?: boolean, companyNameSearch?: string, filingDateGte?: string, filingDateGt?: string, filingDateLte?: string, filingDateLt?: string, periodOfReportDateGte?: string, periodOfReportDateGt?: string, periodOfReportDateLte?: string, periodOfReportDateLt?: string, order?: ListFinancialsOrderEnum, limit?: number, sort?: ListFinancialsSortEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/vX/reference/financials`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (ticker !== undefined) {
-                localVarQueryParameter['ticker'] = ticker;
-            }
-
-            if (cik !== undefined) {
-                localVarQueryParameter['cik'] = cik;
-            }
-
-            if (companyName !== undefined) {
-                localVarQueryParameter['company_name'] = companyName;
-            }
-
-            if (sic !== undefined) {
-                localVarQueryParameter['sic'] = sic;
-            }
-
-            if (filingDate !== undefined) {
-                localVarQueryParameter['filing_date'] = (filingDate as any instanceof Date) ?
-                    (filingDate as any).toISOString().substring(0,10) :
-                    filingDate;
-            }
-
-            if (periodOfReportDate !== undefined) {
-                localVarQueryParameter['period_of_report_date'] = (periodOfReportDate as any instanceof Date) ?
-                    (periodOfReportDate as any).toISOString().substring(0,10) :
-                    periodOfReportDate;
-            }
-
-            if (timeframe !== undefined) {
-                localVarQueryParameter['timeframe'] = timeframe;
-            }
-
-            if (includeSources !== undefined) {
-                localVarQueryParameter['include_sources'] = includeSources;
-            }
-
-            if (companyNameSearch !== undefined) {
-                localVarQueryParameter['company_name.search'] = companyNameSearch;
-            }
-
-            if (filingDateGte !== undefined) {
-                localVarQueryParameter['filing_date.gte'] = (filingDateGte as any instanceof Date) ?
-                    (filingDateGte as any).toISOString().substring(0,10) :
-                    filingDateGte;
-            }
-
-            if (filingDateGt !== undefined) {
-                localVarQueryParameter['filing_date.gt'] = (filingDateGt as any instanceof Date) ?
-                    (filingDateGt as any).toISOString().substring(0,10) :
-                    filingDateGt;
-            }
-
-            if (filingDateLte !== undefined) {
-                localVarQueryParameter['filing_date.lte'] = (filingDateLte as any instanceof Date) ?
-                    (filingDateLte as any).toISOString().substring(0,10) :
-                    filingDateLte;
-            }
-
-            if (filingDateLt !== undefined) {
-                localVarQueryParameter['filing_date.lt'] = (filingDateLt as any instanceof Date) ?
-                    (filingDateLt as any).toISOString().substring(0,10) :
-                    filingDateLt;
-            }
-
-            if (periodOfReportDateGte !== undefined) {
-                localVarQueryParameter['period_of_report_date.gte'] = (periodOfReportDateGte as any instanceof Date) ?
-                    (periodOfReportDateGte as any).toISOString().substring(0,10) :
-                    periodOfReportDateGte;
-            }
-
-            if (periodOfReportDateGt !== undefined) {
-                localVarQueryParameter['period_of_report_date.gt'] = (periodOfReportDateGt as any instanceof Date) ?
-                    (periodOfReportDateGt as any).toISOString().substring(0,10) :
-                    periodOfReportDateGt;
-            }
-
-            if (periodOfReportDateLte !== undefined) {
-                localVarQueryParameter['period_of_report_date.lte'] = (periodOfReportDateLte as any instanceof Date) ?
-                    (periodOfReportDateLte as any).toISOString().substring(0,10) :
-                    periodOfReportDateLte;
-            }
-
-            if (periodOfReportDateLt !== undefined) {
-                localVarQueryParameter['period_of_report_date.lt'] = (periodOfReportDateLt as any instanceof Date) ?
-                    (periodOfReportDateLt as any).toISOString().substring(0,10) :
-                    periodOfReportDateLt;
-            }
-
-            if (order !== undefined) {
-                localVarQueryParameter['order'] = order;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
             }
 
 
@@ -25657,13 +25844,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [dateStatusGte] Filter greater than or equal to the value.
          * @param {string} [dateStatusLt] Filter less than the value.
          * @param {string} [dateStatusLte] Filter less than or equal to the value.
-         * @param {number} [epsSurprisePercent] The percentage difference between the actual and estimated EPS. Value must be a floating point number.
+         * @param {number} [epsSurprisePercent] The EPS surprise relative to the estimate, as a decimal fraction (0.75 &#x3D; 75%), calculated as eps_surprise divided by the absolute value of estimated_eps. Positive is a beat and negative a miss, even when the estimate is negative. When the estimate is 0 the value is 1 or -1, and estimates near 0 give very large values. Value must be a floating point number.
          * @param {string} [epsSurprisePercentAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be a floating point number.
          * @param {number} [epsSurprisePercentGt] Filter greater than the value. Value must be a floating point number.
          * @param {number} [epsSurprisePercentGte] Filter greater than or equal to the value. Value must be a floating point number.
          * @param {number} [epsSurprisePercentLt] Filter less than the value. Value must be a floating point number.
          * @param {number} [epsSurprisePercentLte] Filter less than or equal to the value. Value must be a floating point number.
-         * @param {number} [revenueSurprisePercent] The percentage difference between the actual and estimated revenue. Value must be a floating point number.
+         * @param {number} [revenueSurprisePercent] The revenue surprise relative to the estimate, as a decimal fraction (0.126 &#x3D; 12.6%), calculated as revenue_surprise divided by the absolute value of estimated_revenue. Positive is a beat and negative a miss. Value must be a floating point number.
          * @param {string} [revenueSurprisePercentAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list. Value must be a floating point number.
          * @param {number} [revenueSurprisePercentGt] Filter greater than the value. Value must be a floating point number.
          * @param {number} [revenueSurprisePercentGte] Filter greater than or equal to the value. Value must be a floating point number.
@@ -26704,6 +26891,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [productCodeGte] Filter greater than or equal to the value.
          * @param {string} [productCodeLt] Filter less than the value.
          * @param {string} [productCodeLte] Filter less than or equal to the value.
+         * @param {string} [providerId] A unique identifier for the contract assigned by the data provider. Note that this value is null for historical data (pre-2025-03-12).
+         * @param {string} [providerProductId] A unique identifier for the product to which a contract, or contracts, belongs. Note that this value is null for historical data (pre-2025-03-12).
          * @param {string} [ticker] The ticker for the contract.
          * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [tickerGt] Filter greater than the value.
@@ -26728,8 +26917,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getFuturesV1Contracts(date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, active?: boolean, type?: GetFuturesV1ContractsTypeEnum, typeAnyOf?: GetFuturesV1ContractsTypeAnyOfEnum, firstTradeDate?: string, firstTradeDateGt?: string, firstTradeDateGte?: string, firstTradeDateLt?: string, firstTradeDateLte?: string, lastTradeDate?: string, lastTradeDateGt?: string, lastTradeDateGte?: string, lastTradeDateLt?: string, lastTradeDateLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Contracts200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesV1Contracts(date, dateGt, dateGte, dateLt, dateLte, productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, active, type, typeAnyOf, firstTradeDate, firstTradeDateGt, firstTradeDateGte, firstTradeDateLt, firstTradeDateLte, lastTradeDate, lastTradeDateGt, lastTradeDateGte, lastTradeDateLt, lastTradeDateLte, limit, sort, options);
+        async getFuturesV1Contracts(date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, providerId?: string, providerProductId?: string, ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, active?: boolean, type?: GetFuturesV1ContractsTypeEnum, typeAnyOf?: GetFuturesV1ContractsTypeAnyOfEnum, firstTradeDate?: string, firstTradeDateGt?: string, firstTradeDateGte?: string, firstTradeDateLt?: string, firstTradeDateLte?: string, lastTradeDate?: string, lastTradeDateGt?: string, lastTradeDateGte?: string, lastTradeDateLt?: string, lastTradeDateLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Contracts200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesV1Contracts(date, dateGt, dateGte, dateLt, dateLte, productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, providerId, providerProductId, ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, active, type, typeAnyOf, firstTradeDate, firstTradeDateGt, firstTradeDateGte, firstTradeDateLt, firstTradeDateLte, lastTradeDate, lastTradeDateGt, lastTradeDateGte, lastTradeDateLt, lastTradeDateLte, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesV1Contracts']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -26780,6 +26969,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [productCodeGte] Filter greater than or equal to the value.
          * @param {string} [productCodeLt] Filter less than the value.
          * @param {string} [productCodeLte] Filter less than or equal to the value.
+         * @param {string} [providerId] A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.
          * @param {string} [date] A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -26806,8 +26996,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getFuturesV1Products(name?: string, nameAnyOf?: string, nameGt?: string, nameGte?: string, nameLt?: string, nameLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, sector?: GetFuturesV1ProductsSectorEnum, sectorAnyOf?: GetFuturesV1ProductsSectorAnyOfEnum, subSector?: GetFuturesV1ProductsSubSectorEnum, subSectorAnyOf?: GetFuturesV1ProductsSubSectorAnyOfEnum, assetClass?: GetFuturesV1ProductsAssetClassEnum, assetClassAnyOf?: GetFuturesV1ProductsAssetClassAnyOfEnum, assetSubClass?: GetFuturesV1ProductsAssetSubClassEnum, assetSubClassAnyOf?: GetFuturesV1ProductsAssetSubClassAnyOfEnum, type?: GetFuturesV1ProductsTypeEnum, typeAnyOf?: GetFuturesV1ProductsTypeAnyOfEnum, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Products200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesV1Products(name, nameAnyOf, nameGt, nameGte, nameLt, nameLte, productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, date, dateGt, dateGte, dateLt, dateLte, tradingVenue, tradingVenueAnyOf, tradingVenueGt, tradingVenueGte, tradingVenueLt, tradingVenueLte, sector, sectorAnyOf, subSector, subSectorAnyOf, assetClass, assetClassAnyOf, assetSubClass, assetSubClassAnyOf, type, typeAnyOf, limit, sort, options);
+        async getFuturesV1Products(name?: string, nameAnyOf?: string, nameGt?: string, nameGte?: string, nameLt?: string, nameLte?: string, productCode?: string, productCodeAnyOf?: string, productCodeGt?: string, productCodeGte?: string, productCodeLt?: string, productCodeLte?: string, providerId?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, tradingVenue?: string, tradingVenueAnyOf?: string, tradingVenueGt?: string, tradingVenueGte?: string, tradingVenueLt?: string, tradingVenueLte?: string, sector?: GetFuturesV1ProductsSectorEnum, sectorAnyOf?: GetFuturesV1ProductsSectorAnyOfEnum, subSector?: GetFuturesV1ProductsSubSectorEnum, subSectorAnyOf?: GetFuturesV1ProductsSubSectorAnyOfEnum, assetClass?: GetFuturesV1ProductsAssetClassEnum, assetClassAnyOf?: GetFuturesV1ProductsAssetClassAnyOfEnum, assetSubClass?: GetFuturesV1ProductsAssetSubClassEnum, assetSubClassAnyOf?: GetFuturesV1ProductsAssetSubClassAnyOfEnum, type?: GetFuturesV1ProductsTypeEnum, typeAnyOf?: GetFuturesV1ProductsTypeAnyOfEnum, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetFuturesV1Products200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFuturesV1Products(name, nameAnyOf, nameGt, nameGte, nameLt, nameLte, productCode, productCodeAnyOf, productCodeGt, productCodeGte, productCodeLt, productCodeLte, providerId, date, dateGt, dateGte, dateLt, dateLte, tradingVenue, tradingVenueAnyOf, tradingVenueGt, tradingVenueGte, tradingVenueLt, tradingVenueLte, sector, sectorAnyOf, subSector, subSectorAnyOf, assetClass, assetClassAnyOf, assetSubClass, assetSubClassAnyOf, type, typeAnyOf, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getFuturesV1Products']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -26965,7 +27155,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getIndicesAggregates(indicesTicker: string, multiplier: number, timespan: GetIndicesAggregatesTimespanEnum, from: string, to: string, sort?: GetIndicesAggregatesSortEnum, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetPreviousIndicesAggregates200Response>> {
+        async getIndicesAggregates(indicesTicker: string, multiplier: number, timespan: GetIndicesAggregatesTimespanEnum, from: string, to: string, sort?: GetIndicesAggregatesSortEnum, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetIndicesAggregates200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getIndicesAggregates(indicesTicker, multiplier, timespan, from, to, sort, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getIndicesAggregates']?.[localVarOperationServerIndex]?.url;
@@ -27532,7 +27722,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPreviousOptionsAggregates(optionsTicker: string, adjusted?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetCryptoAggregates200Response>> {
+        async getPreviousOptionsAggregates(optionsTicker: string, adjusted?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetPreviousForexAggregates200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPreviousOptionsAggregates(optionsTicker, adjusted, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getPreviousOptionsAggregates']?.[localVarOperationServerIndex]?.url;
@@ -27546,7 +27736,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPreviousStocksAggregates(stocksTicker: string, adjusted?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetCryptoAggregates200Response>> {
+        async getPreviousStocksAggregates(stocksTicker: string, adjusted?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetPreviousForexAggregates200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPreviousStocksAggregates(stocksTicker, adjusted, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getPreviousStocksAggregates']?.[localVarOperationServerIndex]?.url;
@@ -27870,6 +28060,33 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilingsVXForm4(issuerCik, issuerCikAnyOf, ownerCik, ownerCikAnyOf, tickers, tickersAllOf, tickersAnyOf, formType, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, transactionCode, limit, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFilingsVXForm4']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * SEC Form 5 filings: annual statements of changes in beneficial ownership of securities. Filed by corporate insiders (directors, officers, and 10%+ shareholders) within 45 days of the issuer\'s fiscal year end to report transactions that were exempt from or deferred from Form 4, and any Form 4 transactions that were not reported on time. A filing with several reporting owners has one row per owner for each transaction or holding.
+         * @param {string} [issuerCik] SEC Central Index Key of the issuer company (10 digits, zero-padded).
+         * @param {string} [issuerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [ownerCik] SEC Central Index Key of the reporting owner (10 digits, zero-padded).
+         * @param {string} [ownerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickers] Filter for arrays that contain the value.
+         * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [formType] SEC form type (\&#39;5\&#39; for standard filing, \&#39;5/A\&#39; for amendments).
+         * @param {string} [filingDate] Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [filingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionCode] SEC transaction code indicating the type of transaction (e.g., \&#39;G\&#39; for gift, \&#39;J\&#39; for other acquisition or disposition, \&#39;A\&#39; for grant/award, \&#39;S\&#39; for sale). Null for holdings.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStocksFilingsVXForm5(issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, formType?: string, filingDate?: string, filingDateGt?: string, filingDateGte?: string, filingDateLt?: string, filingDateLte?: string, transactionCode?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksFilingsVXForm5200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksFilingsVXForm5(issuerCik, issuerCikAnyOf, ownerCik, ownerCikAnyOf, tickers, tickersAllOf, tickersAnyOf, formType, filingDate, filingDateGt, filingDateGte, filingDateLt, filingDateLte, transactionCode, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksFilingsVXForm5']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -28621,7 +28838,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * Get a single ticker supported by Massive. This response will have detailed information about the ticker and the company behind it.
          * @summary Ticker Details v3
          * @param {string} ticker Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.
-         * @param {string} [date] Specify a point in time to get information about the ticker available on that date. When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.  For example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29. That means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29. If you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.  Defaults to the most recent available date.
+         * @param {string} [date] Specify a point in time to get information about the ticker available on that date. Fields that describe the security, including name, type, primary_exchange and list_date, reflect the security trading under this ticker on that date. For example, ASND returns type ADRC and list_date 2015-01-28 for 2026-04-17, and type CS and list_date 2026-04-20 from 2026-04-20, when its American Depositary Shares were exchanged for ordinary shares. Some fields may be empty for older dates.  When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.  For example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29. That means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29. If you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.  Defaults to the most recent available date.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -28807,38 +29024,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listExchanges(assetClass, locale, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listExchanges']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Get historical financial data for a stock ticker. The financials data is extracted from XBRL from company SEC filings using the methodology outlined <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrl.squarespace.com/understanding-sec-xbrl-financi/\">here</a>.
-         * @summary Stock Financials vX
-         * @param {string} [ticker] Query by company ticker.
-         * @param {string} [cik] Query by central index key (&lt;a rel&#x3D;\&quot;noopener noreferrer nofollow\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://www.sec.gov/edgar/searchedgar/cik.htm\&quot;&gt;CIK&lt;/a&gt;) Number
-         * @param {string} [companyName] Query by company name.
-         * @param {string} [sic] Query by standard industrial classification (&lt;a rel&#x3D;\&quot;noopener noreferrer nofollow\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://www.sec.gov/corpfin/division-of-corporation-finance-standard-industrial-classification-sic-code-list\&quot;&gt;SIC&lt;/a&gt;)
-         * @param {string} [filingDate] Query by the date when the filing with financials data was filed in YYYY-MM-DD format.  Best used when querying over date ranges to find financials based on filings that happen in a time period.  Examples:  To get financials based on filings that have happened after January 1, 2009 use the query param filing_date.gte&#x3D;2009-01-01  To get financials based on filings that happened in the year 2009 use the query params filing_date.gte&#x3D;2009-01-01&amp;filing_date.lt&#x3D;2010-01-01
-         * @param {string} [periodOfReportDate] The period of report for the filing with financials data in YYYY-MM-DD format.
-         * @param {ListFinancialsTimeframeEnum} [timeframe] Query by timeframe. Annual financials originate from 10-K filings, and quarterly financials originate from 10-Q filings. Note: Most companies do not file quarterly reports for Q4 and instead include those financials in their annual report, so some companies my not return quarterly financials for Q4
-         * @param {boolean} [includeSources] Whether or not to include the &#x60;xpath&#x60; and &#x60;formula&#x60; attributes for each financial data point. See the &#x60;xpath&#x60; and &#x60;formula&#x60; response attributes for more info. False by default.
-         * @param {string} [companyNameSearch] Search by company_name.
-         * @param {string} [filingDateGte] Search by filing_date.
-         * @param {string} [filingDateGt] Search by filing_date.
-         * @param {string} [filingDateLte] Search by filing_date.
-         * @param {string} [filingDateLt] Search by filing_date.
-         * @param {string} [periodOfReportDateGte] Search by period_of_report_date.
-         * @param {string} [periodOfReportDateGt] Search by period_of_report_date.
-         * @param {string} [periodOfReportDateLte] Search by period_of_report_date.
-         * @param {string} [periodOfReportDateLt] Search by period_of_report_date.
-         * @param {ListFinancialsOrderEnum} [order] Order results based on the &#x60;sort&#x60; field.
-         * @param {number} [limit] Limit the number of results returned, default is 10 and max is 100.
-         * @param {ListFinancialsSortEnum} [sort] Sort field used for ordering.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async listFinancials(ticker?: string, cik?: string, companyName?: string, sic?: string, filingDate?: string, periodOfReportDate?: string, timeframe?: ListFinancialsTimeframeEnum, includeSources?: boolean, companyNameSearch?: string, filingDateGte?: string, filingDateGt?: string, filingDateLte?: string, filingDateLt?: string, periodOfReportDateGte?: string, periodOfReportDateGt?: string, periodOfReportDateLte?: string, periodOfReportDateLt?: string, order?: ListFinancialsOrderEnum, limit?: number, sort?: ListFinancialsSortEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<ListFinancials200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listFinancials(ticker, cik, companyName, sic, filingDate, periodOfReportDate, timeframe, includeSources, companyNameSearch, filingDateGte, filingDateGt, filingDateLte, filingDateLt, periodOfReportDateGte, periodOfReportDateGt, periodOfReportDateLte, periodOfReportDateLt, order, limit, sort, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.listFinancials']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -29487,7 +29672,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getFuturesV1Contracts(requestParameters: DefaultApiGetFuturesV1ContractsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Contracts200Response> {
-            return localVarFp.getFuturesV1Contracts(requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.active, requestParameters.type, requestParameters.typeAnyOf, requestParameters.firstTradeDate, requestParameters.firstTradeDateGt, requestParameters.firstTradeDateGte, requestParameters.firstTradeDateLt, requestParameters.firstTradeDateLte, requestParameters.lastTradeDate, requestParameters.lastTradeDateGt, requestParameters.lastTradeDateGte, requestParameters.lastTradeDateLt, requestParameters.lastTradeDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+            return localVarFp.getFuturesV1Contracts(requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.providerId, requestParameters.providerProductId, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.active, requestParameters.type, requestParameters.typeAnyOf, requestParameters.firstTradeDate, requestParameters.firstTradeDateGt, requestParameters.firstTradeDateGte, requestParameters.firstTradeDateLt, requestParameters.firstTradeDateLte, requestParameters.lastTradeDate, requestParameters.lastTradeDateGt, requestParameters.lastTradeDateGte, requestParameters.lastTradeDateLt, requestParameters.lastTradeDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * US futures exchanges and trading venues including major derivatives exchanges (CME, CBOT, NYMEX, COMEX) and other futures market infrastructure for commodity, financial, and other derivative contract trading.
@@ -29516,7 +29701,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getFuturesV1Products(requestParameters: DefaultApiGetFuturesV1ProductsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetFuturesV1Products200Response> {
-            return localVarFp.getFuturesV1Products(requestParameters.name, requestParameters.nameAnyOf, requestParameters.nameGt, requestParameters.nameGte, requestParameters.nameLt, requestParameters.nameLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.sector, requestParameters.sectorAnyOf, requestParameters.subSector, requestParameters.subSectorAnyOf, requestParameters.assetClass, requestParameters.assetClassAnyOf, requestParameters.assetSubClass, requestParameters.assetSubClassAnyOf, requestParameters.type, requestParameters.typeAnyOf, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+            return localVarFp.getFuturesV1Products(requestParameters.name, requestParameters.nameAnyOf, requestParameters.nameGt, requestParameters.nameGte, requestParameters.nameLt, requestParameters.nameLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.providerId, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.sector, requestParameters.sectorAnyOf, requestParameters.subSector, requestParameters.subSectorAnyOf, requestParameters.assetClass, requestParameters.assetClassAnyOf, requestParameters.assetSubClass, requestParameters.assetSubClassAnyOf, requestParameters.type, requestParameters.typeAnyOf, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieve quote data for a specified futures contract ticker. Each record includes the best bid and offer prices, sizes, and timestamps, reflecting the prevailing quote environment at each moment. This endpoint supports detailed analysis of price dynamics and liquidity conditions to inform trading decisions and market research.  Use Cases: Liquidity analysis, price discovery, trading strategy refinement, market research.
@@ -29593,7 +29778,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getIndicesAggregates(requestParameters: DefaultApiGetIndicesAggregatesRequest, options?: RawAxiosRequestConfig): Promise<GetPreviousIndicesAggregates200Response> {
+        getIndicesAggregates(requestParameters: DefaultApiGetIndicesAggregatesRequest, options?: RawAxiosRequestConfig): Promise<GetIndicesAggregates200Response> {
             return localVarFp.getIndicesAggregates(requestParameters.indicesTicker, requestParameters.multiplier, requestParameters.timespan, requestParameters.from, requestParameters.to, requestParameters.sort, requestParameters.limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -29898,7 +30083,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPreviousOptionsAggregates(requestParameters: DefaultApiGetPreviousOptionsAggregatesRequest, options?: RawAxiosRequestConfig): Promise<GetCryptoAggregates200Response> {
+        getPreviousOptionsAggregates(requestParameters: DefaultApiGetPreviousOptionsAggregatesRequest, options?: RawAxiosRequestConfig): Promise<GetPreviousForexAggregates200Response> {
             return localVarFp.getPreviousOptionsAggregates(requestParameters.optionsTicker, requestParameters.adjusted, options).then((request) => request(axios, basePath));
         },
         /**
@@ -29908,7 +30093,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPreviousStocksAggregates(requestParameters: DefaultApiGetPreviousStocksAggregatesRequest, options?: RawAxiosRequestConfig): Promise<GetCryptoAggregates200Response> {
+        getPreviousStocksAggregates(requestParameters: DefaultApiGetPreviousStocksAggregatesRequest, options?: RawAxiosRequestConfig): Promise<GetPreviousForexAggregates200Response> {
             return localVarFp.getPreviousStocksAggregates(requestParameters.stocksTicker, requestParameters.adjusted, options).then((request) => request(axios, basePath));
         },
         /**
@@ -30032,6 +30217,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getStocksFilingsVXForm4(requestParameters: DefaultApiGetStocksFilingsVXForm4Request = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFilingsVXForm4200Response> {
             return localVarFp.getStocksFilingsVXForm4(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.transactionCode, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * SEC Form 5 filings: annual statements of changes in beneficial ownership of securities. Filed by corporate insiders (directors, officers, and 10%+ shareholders) within 45 days of the issuer\'s fiscal year end to report transactions that were exempt from or deferred from Form 4, and any Form 4 transactions that were not reported on time. A filing with several reporting owners has one row per owner for each transaction or holding.
+         * @param {DefaultApiGetStocksFilingsVXForm5Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksFilingsVXForm5(requestParameters: DefaultApiGetStocksFilingsVXForm5Request = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFilingsVXForm5200Response> {
+            return localVarFp.getStocksFilingsVXForm5(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.transactionCode, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.
@@ -30306,16 +30500,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         listExchanges(requestParameters: DefaultApiListExchangesRequest = {}, options?: RawAxiosRequestConfig): Promise<ListExchanges200Response> {
             return localVarFp.listExchanges(requestParameters.assetClass, requestParameters.locale, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Get historical financial data for a stock ticker. The financials data is extracted from XBRL from company SEC filings using the methodology outlined <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrl.squarespace.com/understanding-sec-xbrl-financi/\">here</a>.
-         * @summary Stock Financials vX
-         * @param {DefaultApiListFinancialsRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        listFinancials(requestParameters: DefaultApiListFinancialsRequest = {}, options?: RawAxiosRequestConfig): Promise<ListFinancials200Response> {
-            return localVarFp.listFinancials(requestParameters.ticker, requestParameters.cik, requestParameters.companyName, requestParameters.sic, requestParameters.filingDate, requestParameters.periodOfReportDate, requestParameters.timeframe, requestParameters.includeSources, requestParameters.companyNameSearch, requestParameters.filingDateGte, requestParameters.filingDateGt, requestParameters.filingDateLte, requestParameters.filingDateLt, requestParameters.periodOfReportDateGte, requestParameters.periodOfReportDateGt, requestParameters.periodOfReportDateLte, requestParameters.periodOfReportDateLt, requestParameters.order, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * The IPOs API provides access to detailed information about Initial Public Offerings (IPOs), including both upcoming and historical events. With this API, you can query for a comprehensive list of IPOs, along with key details such as the issuer name, ticker symbol, ISIN, IPO date, number of shares offered, expected price range, and final offering price. You can filter the results by status to focus on new, rumors, pending, historical, and more.
@@ -31563,7 +31747,7 @@ export interface DefaultApiGetBenzingaV1EarningsRequest {
     readonly dateStatusLte?: string
 
     /**
-     * The percentage difference between the actual and estimated EPS. Value must be a floating point number.
+     * The EPS surprise relative to the estimate, as a decimal fraction (0.75 &#x3D; 75%), calculated as eps_surprise divided by the absolute value of estimated_eps. Positive is a beat and negative a miss, even when the estimate is negative. When the estimate is 0 the value is 1 or -1, and estimates near 0 give very large values. Value must be a floating point number.
      * @type {number}
      * @memberof DefaultApiGetBenzingaV1Earnings
      */
@@ -31605,7 +31789,7 @@ export interface DefaultApiGetBenzingaV1EarningsRequest {
     readonly epsSurprisePercentLte?: number
 
     /**
-     * The percentage difference between the actual and estimated revenue. Value must be a floating point number.
+     * The revenue surprise relative to the estimate, as a decimal fraction (0.126 &#x3D; 12.6%), calculated as revenue_surprise divided by the absolute value of estimated_revenue. Positive is a beat and negative a miss. Value must be a floating point number.
      * @type {number}
      * @memberof DefaultApiGetBenzingaV1Earnings
      */
@@ -35938,6 +36122,20 @@ export interface DefaultApiGetFuturesV1ContractsRequest {
     readonly productCodeLte?: string
 
     /**
+     * A unique identifier for the contract assigned by the data provider. Note that this value is null for historical data (pre-2025-03-12).
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1Contracts
+     */
+    readonly providerId?: string
+
+    /**
+     * A unique identifier for the product to which a contract, or contracts, belongs. Note that this value is null for historical data (pre-2025-03-12).
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1Contracts
+     */
+    readonly providerProductId?: string
+
+    /**
      * The ticker for the contract.
      * @type {string}
      * @memberof DefaultApiGetFuturesV1Contracts
@@ -36244,6 +36442,13 @@ export interface DefaultApiGetFuturesV1ProductsRequest {
      * @memberof DefaultApiGetFuturesV1Products
      */
     readonly productCodeLte?: string
+
+    /**
+     * A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.
+     * @type {string}
+     * @memberof DefaultApiGetFuturesV1Products
+     */
+    readonly providerId?: string
 
     /**
      * A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -39824,6 +40029,125 @@ export interface DefaultApiGetStocksFilingsVXForm4Request {
 }
 
 /**
+ * Request parameters for getStocksFilingsVXForm5 operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetStocksFilingsVXForm5Request
+ */
+export interface DefaultApiGetStocksFilingsVXForm5Request {
+    /**
+     * SEC Central Index Key of the issuer company (10 digits, zero-padded).
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly issuerCik?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly issuerCikAnyOf?: string
+
+    /**
+     * SEC Central Index Key of the reporting owner (10 digits, zero-padded).
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly ownerCik?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly ownerCikAnyOf?: string
+
+    /**
+     * Filter for arrays that contain the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly tickers?: string
+
+    /**
+     * Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly tickersAllOf?: string
+
+    /**
+     * Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly tickersAnyOf?: string
+
+    /**
+     * SEC form type (\&#39;5\&#39; for standard filing, \&#39;5/A\&#39; for amendments).
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly formType?: string
+
+    /**
+     * Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly filingDate?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly filingDateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly filingDateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly filingDateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly filingDateLte?: string
+
+    /**
+     * SEC transaction code indicating the type of transaction (e.g., \&#39;G\&#39; for gift, \&#39;J\&#39; for other acquisition or disposition, \&#39;A\&#39; for grant/award, \&#39;S\&#39; for sale). Null for holdings.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly transactionCode?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetStocksFilingsVXForm5
+     */
+    readonly sort?: string
+}
+
+/**
  * Request parameters for getStocksFilingsVXIndex operation in DefaultApi.
  * @export
  * @interface DefaultApiGetStocksFilingsVXIndexRequest
@@ -43379,7 +43703,7 @@ export interface DefaultApiGetTickerRequest {
     readonly ticker: string
 
     /**
-     * Specify a point in time to get information about the ticker available on that date. When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.  For example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29. That means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29. If you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.  Defaults to the most recent available date.
+     * Specify a point in time to get information about the ticker available on that date. Fields that describe the security, including name, type, primary_exchange and list_date, reflect the security trading under this ticker on that date. For example, ASND returns type ADRC and list_date 2015-01-28 for 2026-04-17, and type CS and list_date 2026-04-20 from 2026-04-20, when its American Depositary Shares were exchanged for ordinary shares. Some fields may be empty for older dates.  When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.  For example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29. That means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29. If you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.  Defaults to the most recent available date.
      * @type {string}
      * @memberof DefaultApiGetTicker
      */
@@ -44259,153 +44583,6 @@ export interface DefaultApiListExchangesRequest {
      * @memberof DefaultApiListExchanges
      */
     readonly locale?: ListExchangesLocaleEnum
-}
-
-/**
- * Request parameters for listFinancials operation in DefaultApi.
- * @export
- * @interface DefaultApiListFinancialsRequest
- */
-export interface DefaultApiListFinancialsRequest {
-    /**
-     * Query by company ticker.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly ticker?: string
-
-    /**
-     * Query by central index key (&lt;a rel&#x3D;\&quot;noopener noreferrer nofollow\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://www.sec.gov/edgar/searchedgar/cik.htm\&quot;&gt;CIK&lt;/a&gt;) Number
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly cik?: string
-
-    /**
-     * Query by company name.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly companyName?: string
-
-    /**
-     * Query by standard industrial classification (&lt;a rel&#x3D;\&quot;noopener noreferrer nofollow\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://www.sec.gov/corpfin/division-of-corporation-finance-standard-industrial-classification-sic-code-list\&quot;&gt;SIC&lt;/a&gt;)
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly sic?: string
-
-    /**
-     * Query by the date when the filing with financials data was filed in YYYY-MM-DD format.  Best used when querying over date ranges to find financials based on filings that happen in a time period.  Examples:  To get financials based on filings that have happened after January 1, 2009 use the query param filing_date.gte&#x3D;2009-01-01  To get financials based on filings that happened in the year 2009 use the query params filing_date.gte&#x3D;2009-01-01&amp;filing_date.lt&#x3D;2010-01-01
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly filingDate?: string
-
-    /**
-     * The period of report for the filing with financials data in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly periodOfReportDate?: string
-
-    /**
-     * Query by timeframe. Annual financials originate from 10-K filings, and quarterly financials originate from 10-Q filings. Note: Most companies do not file quarterly reports for Q4 and instead include those financials in their annual report, so some companies my not return quarterly financials for Q4
-     * @type {'annual' | 'quarterly' | 'ttm'}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly timeframe?: ListFinancialsTimeframeEnum
-
-    /**
-     * Whether or not to include the &#x60;xpath&#x60; and &#x60;formula&#x60; attributes for each financial data point. See the &#x60;xpath&#x60; and &#x60;formula&#x60; response attributes for more info. False by default.
-     * @type {boolean}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly includeSources?: boolean
-
-    /**
-     * Search by company_name.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly companyNameSearch?: string
-
-    /**
-     * Search by filing_date.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly filingDateGte?: string
-
-    /**
-     * Search by filing_date.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly filingDateGt?: string
-
-    /**
-     * Search by filing_date.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly filingDateLte?: string
-
-    /**
-     * Search by filing_date.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly filingDateLt?: string
-
-    /**
-     * Search by period_of_report_date.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly periodOfReportDateGte?: string
-
-    /**
-     * Search by period_of_report_date.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly periodOfReportDateGt?: string
-
-    /**
-     * Search by period_of_report_date.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly periodOfReportDateLte?: string
-
-    /**
-     * Search by period_of_report_date.
-     * @type {string}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly periodOfReportDateLt?: string
-
-    /**
-     * Order results based on the &#x60;sort&#x60; field.
-     * @type {'asc' | 'desc'}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly order?: ListFinancialsOrderEnum
-
-    /**
-     * Limit the number of results returned, default is 10 and max is 100.
-     * @type {number}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly limit?: number
-
-    /**
-     * Sort field used for ordering.
-     * @type {'filing_date' | 'period_of_report_date'}
-     * @memberof DefaultApiListFinancials
-     */
-    readonly sort?: ListFinancialsSortEnum
 }
 
 /**
@@ -45596,7 +45773,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public getFuturesV1Contracts(requestParameters: DefaultApiGetFuturesV1ContractsRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesV1Contracts(requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.active, requestParameters.type, requestParameters.typeAnyOf, requestParameters.firstTradeDate, requestParameters.firstTradeDateGt, requestParameters.firstTradeDateGte, requestParameters.firstTradeDateLt, requestParameters.firstTradeDateLte, requestParameters.lastTradeDate, requestParameters.lastTradeDateGt, requestParameters.lastTradeDateGte, requestParameters.lastTradeDateLt, requestParameters.lastTradeDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+        return DefaultApiFp(this.configuration).getFuturesV1Contracts(requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.providerId, requestParameters.providerProductId, requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.active, requestParameters.type, requestParameters.typeAnyOf, requestParameters.firstTradeDate, requestParameters.firstTradeDateGt, requestParameters.firstTradeDateGte, requestParameters.firstTradeDateLt, requestParameters.firstTradeDateLte, requestParameters.lastTradeDate, requestParameters.lastTradeDateGt, requestParameters.lastTradeDateGte, requestParameters.lastTradeDateLt, requestParameters.lastTradeDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -45631,7 +45808,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public getFuturesV1Products(requestParameters: DefaultApiGetFuturesV1ProductsRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getFuturesV1Products(requestParameters.name, requestParameters.nameAnyOf, requestParameters.nameGt, requestParameters.nameGte, requestParameters.nameLt, requestParameters.nameLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.sector, requestParameters.sectorAnyOf, requestParameters.subSector, requestParameters.subSectorAnyOf, requestParameters.assetClass, requestParameters.assetClassAnyOf, requestParameters.assetSubClass, requestParameters.assetSubClassAnyOf, requestParameters.type, requestParameters.typeAnyOf, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+        return DefaultApiFp(this.configuration).getFuturesV1Products(requestParameters.name, requestParameters.nameAnyOf, requestParameters.nameGt, requestParameters.nameGte, requestParameters.nameLt, requestParameters.nameLte, requestParameters.productCode, requestParameters.productCodeAnyOf, requestParameters.productCodeGt, requestParameters.productCodeGte, requestParameters.productCodeLt, requestParameters.productCodeLte, requestParameters.providerId, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.tradingVenue, requestParameters.tradingVenueAnyOf, requestParameters.tradingVenueGt, requestParameters.tradingVenueGte, requestParameters.tradingVenueLt, requestParameters.tradingVenueLte, requestParameters.sector, requestParameters.sectorAnyOf, requestParameters.subSector, requestParameters.subSectorAnyOf, requestParameters.assetClass, requestParameters.assetClassAnyOf, requestParameters.assetSubClass, requestParameters.assetSubClassAnyOf, requestParameters.type, requestParameters.typeAnyOf, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -46256,6 +46433,17 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * SEC Form 5 filings: annual statements of changes in beneficial ownership of securities. Filed by corporate insiders (directors, officers, and 10%+ shareholders) within 45 days of the issuer\'s fiscal year end to report transactions that were exempt from or deferred from Form 4, and any Form 4 transactions that were not reported on time. A filing with several reporting owners has one row per owner for each transaction or holding.
+     * @param {DefaultApiGetStocksFilingsVXForm5Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getStocksFilingsVXForm5(requestParameters: DefaultApiGetStocksFilingsVXForm5Request = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getStocksFilingsVXForm5(requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.formType, requestParameters.filingDate, requestParameters.filingDateGt, requestParameters.filingDateGte, requestParameters.filingDateLt, requestParameters.filingDateLte, requestParameters.transactionCode, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * SEC EDGAR master index providing metadata for all SEC filings including form types, filing dates, and direct links to source documents.
      * @param {DefaultApiGetStocksFilingsVXIndexRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -46585,18 +46773,6 @@ export class DefaultApi extends BaseAPI {
      */
     public listExchanges(requestParameters: DefaultApiListExchangesRequest = {}, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listExchanges(requestParameters.assetClass, requestParameters.locale, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Get historical financial data for a stock ticker. The financials data is extracted from XBRL from company SEC filings using the methodology outlined <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrl.squarespace.com/understanding-sec-xbrl-financi/\">here</a>.
-     * @summary Stock Financials vX
-     * @param {DefaultApiListFinancialsRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public listFinancials(requestParameters: DefaultApiListFinancialsRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).listFinancials(requestParameters.ticker, requestParameters.cik, requestParameters.companyName, requestParameters.sic, requestParameters.filingDate, requestParameters.periodOfReportDate, requestParameters.timeframe, requestParameters.includeSources, requestParameters.companyNameSearch, requestParameters.filingDateGte, requestParameters.filingDateGt, requestParameters.filingDateLte, requestParameters.filingDateLt, requestParameters.periodOfReportDateGte, requestParameters.periodOfReportDateGt, requestParameters.periodOfReportDateLte, requestParameters.periodOfReportDateLt, requestParameters.order, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -48096,31 +48272,6 @@ export enum ListExchangesAssetClassEnum {
 export enum ListExchangesLocaleEnum {
     Us = 'us',
     Global = 'global'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum ListFinancialsTimeframeEnum {
-    Annual = 'annual',
-    Quarterly = 'quarterly',
-    Ttm = 'ttm'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum ListFinancialsOrderEnum {
-    Asc = 'asc',
-    Desc = 'desc'
-}
-/**
-  * @export
-  * @enum {string}
-  */
-export enum ListFinancialsSortEnum {
-    FilingDate = 'filing_date',
-    PeriodOfReportDate = 'period_of_report_date'
 }
 /**
   * @export

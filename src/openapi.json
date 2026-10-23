@@ -454,9 +454,17 @@
         "type": "object"
       },
       "Conditions": {
-        "description": "A list of condition codes.\n",
+        "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
         "items": {
-          "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+          "description": "The condition code.",
+          "type": "integer"
+        },
+        "type": "array"
+      },
+      "ConditionsCrypto": {
+        "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
+        "items": {
+          "description": "The condition code.",
           "type": "integer"
         },
         "type": "array"
@@ -588,9 +596,9 @@
             "items": {
               "properties": {
                 "c": {
-                  "description": "A list of condition codes.\n",
+                  "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                   "items": {
-                    "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                    "description": "The condition code.",
                     "type": "integer"
                   },
                   "type": "array"
@@ -645,9 +653,9 @@
           "last": {
             "properties": {
               "conditions": {
-                "description": "A list of condition codes.\n",
+                "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                 "items": {
-                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                  "description": "The condition code.",
                   "type": "integer"
                 },
                 "type": "array"
@@ -702,9 +710,9 @@
             "items": {
               "properties": {
                 "c": {
-                  "description": "A list of condition codes.\n",
+                  "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                   "items": {
-                    "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                    "description": "The condition code.",
                     "type": "integer"
                   },
                   "type": "array"
@@ -763,9 +771,9 @@
             "items": {
               "properties": {
                 "c": {
-                  "description": "A list of condition codes.\n",
+                  "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                   "items": {
-                    "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                    "description": "The condition code.",
                     "type": "integer"
                   },
                   "type": "array"
@@ -932,8 +940,9 @@
                 "description": "The most recent trade for this ticker.",
                 "properties": {
                   "c": {
-                    "description": "The trade conditions.",
+                    "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                     "items": {
+                      "description": "The condition code.",
                       "type": "integer"
                     },
                     "type": "array"
@@ -1245,8 +1254,9 @@
                   "description": "The most recent trade for this ticker.",
                   "properties": {
                     "c": {
-                      "description": "The trade conditions.",
+                      "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                       "items": {
+                        "description": "The condition code.",
                         "type": "integer"
                       },
                       "type": "array"
@@ -1420,9 +1430,9 @@
       "CryptoTick": {
         "properties": {
           "c": {
-            "description": "A list of condition codes.\n",
+            "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
             "items": {
-              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+              "description": "The condition code.",
               "type": "integer"
             },
             "type": "array"
@@ -2375,7 +2385,7 @@
             "description": "Contains the requested snapshot data for the specified ticker.",
             "properties": {
               "day": {
-                "description": "The most recent daily bar for this ticker.",
+                "description": "The most recent daily bar for this ticker. Forex daily bars follow the UTC day (00:00 to 23:59 UTC).",
                 "properties": {
                   "c": {
                     "description": "The close price for the symbol in the given time period.",
@@ -2487,7 +2497,7 @@
                 "type": "object"
               },
               "prevDay": {
-                "description": "The previous day's bar for this ticker.",
+                "description": "The previous day's bar for this ticker, covering the previous UTC day (00:00 to 23:59 UTC).",
                 "properties": {
                   "c": {
                     "description": "The close price for the symbol in the given time period.",
@@ -2571,7 +2581,7 @@
             "items": {
               "properties": {
                 "day": {
-                  "description": "The most recent daily bar for this ticker.",
+                  "description": "The most recent daily bar for this ticker. Forex daily bars follow the UTC day (00:00 to 23:59 UTC).",
                   "properties": {
                     "c": {
                       "description": "The close price for the symbol in the given time period.",
@@ -2683,7 +2693,7 @@
                   "type": "object"
                 },
                 "prevDay": {
-                  "description": "The previous day's bar for this ticker.",
+                  "description": "The previous day's bar for this ticker, covering the previous UTC day (00:00 to 23:59 UTC).",
                   "properties": {
                     "c": {
                       "description": "The close price for the symbol in the given time period.",
@@ -2946,7 +2956,8 @@
           },
           "preMarket": {
             "description": "The open value of the ticker symbol in pre-market trading.",
-            "type": "integer"
+            "format": "double",
+            "type": "number"
           },
           "status": {
             "description": "The status of this request's response.",
@@ -2966,6 +2977,56 @@
           "low",
           "close"
         ],
+        "type": "object"
+      },
+      "IndicesPreviousCloseResults": {
+        "properties": {
+          "results": {
+            "description": "An array of results containing the requested data.",
+            "items": {
+              "properties": {
+                "T": {
+                  "description": "The exchange symbol that this item is traded under.",
+                  "type": "string"
+                },
+                "c": {
+                  "description": "The close value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "h": {
+                  "description": "The highest value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "l": {
+                  "description": "The lowest value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "o": {
+                  "description": "The open value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "t": {
+                  "description": "The Unix millisecond timestamp for the start of the aggregate window.",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "T",
+                "o",
+                "h",
+                "l",
+                "c",
+                "t"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
         "type": "object"
       },
       "IndicesTickerResults": {
@@ -3266,6 +3327,71 @@
           "next_url": {
             "description": "If present, this value can be used to fetch the next page of data.",
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PreviousCloseResults": {
+        "properties": {
+          "results": {
+            "description": "An array of results containing the requested data.",
+            "items": {
+              "properties": {
+                "T": {
+                  "description": "The exchange symbol that this item is traded under.",
+                  "type": "string"
+                },
+                "c": {
+                  "description": "The close price for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "h": {
+                  "description": "The highest price for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "l": {
+                  "description": "The lowest price for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "n": {
+                  "description": "The number of transactions in the aggregate window.",
+                  "type": "integer"
+                },
+                "o": {
+                  "description": "The open price for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "t": {
+                  "description": "The Unix millisecond timestamp for the start of the aggregate window.",
+                  "type": "integer"
+                },
+                "v": {
+                  "description": "The trading volume of the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "vw": {
+                  "description": "The volume weighted average price.",
+                  "format": "double",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "T",
+                "o",
+                "h",
+                "l",
+                "c",
+                "v",
+                "t"
+              ],
+              "type": "object"
+            },
+            "type": "array"
           }
         },
         "type": "object"
@@ -3690,7 +3816,8 @@
           },
           "preMarket": {
             "description": "The open price of the ticker symbol in pre-market trading.",
-            "type": "integer"
+            "format": "double",
+            "type": "number"
           },
           "status": {
             "description": "The status of this request's response.",
@@ -4038,8 +4165,9 @@
                 "description": "The most recent trade for this ticker.  This is only returned if your current plan includes trades.",
                 "properties": {
                   "c": {
-                    "description": "The trade conditions.",
+                    "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                     "items": {
+                      "description": "The condition code.",
                       "type": "integer"
                     },
                     "type": "array"
@@ -4327,8 +4455,9 @@
                   "description": "The most recent trade for this ticker.  This is only returned if your current plan includes trades.",
                   "properties": {
                     "c": {
-                      "description": "The trade conditions.",
+                      "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                       "items": {
+                        "description": "The condition code.",
                         "type": "integer"
                       },
                       "type": "array"
@@ -4664,9 +4793,9 @@
                 "type": "integer"
               },
               "c": {
-                "description": "A list of condition codes.\n",
+                "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                 "items": {
-                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                  "description": "The condition code.",
                   "type": "integer"
                 },
                 "type": "array"
@@ -4766,9 +4895,9 @@
                       "type": "integer"
                     },
                     "c": {
-                      "description": "A list of condition codes.\n",
+                      "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                       "items": {
-                        "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                        "description": "The condition code.",
                         "type": "integer"
                       },
                       "type": "array"
@@ -4857,9 +4986,9 @@
           {
             "properties": {
               "c": {
-                "description": "A list of condition codes.\n",
+                "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                 "items": {
-                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                  "description": "The condition code.",
                   "type": "integer"
                 },
                 "type": "array"
@@ -4950,9 +5079,9 @@
                 {
                   "properties": {
                     "c": {
-                      "description": "A list of condition codes.\n",
+                      "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                       "items": {
-                        "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                        "description": "The condition code.",
                         "type": "integer"
                       },
                       "type": "array"
@@ -6907,7 +7036,7 @@
             }
           },
           {
-            "description": "The percentage difference between the actual and estimated EPS. Value must be a floating point number.",
+            "description": "The EPS surprise relative to the estimate, as a decimal fraction (0.75 = 75%), calculated as eps_surprise divided by the absolute value of estimated_eps. Positive is a beat and negative a miss, even when the estimate is negative. When the estimate is 0 the value is 1 or -1, and estimates near 0 give very large values. Value must be a floating point number.",
             "in": "query",
             "name": "eps_surprise_percent",
             "schema": {
@@ -6960,7 +7089,7 @@
             }
           },
           {
-            "description": "The percentage difference between the actual and estimated revenue. Value must be a floating point number.",
+            "description": "The revenue surprise relative to the estimate, as a decimal fraction (0.126 = 12.6%), calculated as revenue_surprise divided by the absolute value of estimated_revenue. Positive is a beat and negative a miss. Value must be a floating point number.",
             "in": "query",
             "name": "revenue_surprise_percent",
             "schema": {
@@ -7218,7 +7347,7 @@
                             "type": "number"
                           },
                           "eps_surprise_percent": {
-                            "description": "The percentage difference between the actual and estimated EPS.",
+                            "description": "The EPS surprise relative to the estimate, as a decimal fraction (0.75 = 75%), calculated as eps_surprise divided by the absolute value of estimated_eps. Positive is a beat and negative a miss, even when the estimate is negative. When the estimate is 0 the value is 1 or -1, and estimates near 0 give very large values.",
                             "format": "double",
                             "type": "number"
                           },
@@ -7275,7 +7404,7 @@
                             "type": "number"
                           },
                           "revenue_surprise_percent": {
-                            "description": "The percentage difference between the actual and estimated revenue.",
+                            "description": "The revenue surprise relative to the estimate, as a decimal fraction (0.126 = 12.6%), calculated as revenue_surprise divided by the absolute value of estimated_revenue. Positive is a beat and negative a miss.",
                             "format": "double",
                             "type": "number"
                           },
@@ -14891,6 +15020,22 @@
             }
           },
           {
+            "description": "A unique identifier for the contract assigned by the data provider. Note that this value is null for historical data (pre-2025-03-12).",
+            "in": "query",
+            "name": "provider_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A unique identifier for the product to which a contract, or contracts, belongs. Note that this value is null for historical data (pre-2025-03-12).",
+            "in": "query",
+            "name": "provider_product_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The ticker for the contract.",
             "in": "query",
             "name": "ticker",
@@ -15081,21 +15226,23 @@
                   "results": [
                     {
                       "active": true,
-                      "date": "2025-02-26",
-                      "days_to_maturity": 138,
-                      "first_trade_date": "2025-01-15",
-                      "group_code": "CN",
-                      "last_trade_date": "2025-07-14",
-                      "max_order_quantity": 1999,
+                      "date": "2026-10-07",
+                      "days_to_maturity": 72,
+                      "first_trade_date": "2021-09-17",
+                      "group_code": "ES",
+                      "last_trade_date": "2026-12-18",
+                      "max_order_quantity": 3000,
                       "min_order_quantity": 1,
-                      "name": "00CN5 Future",
-                      "product_code": "00C",
-                      "settlement_date": "2025-07-14",
+                      "name": "ESZ6 Future",
+                      "product_code": "ES",
+                      "provider_id": "H3ZLPMESGCUM",
+                      "provider_product_id": "VGQ4V6NVXLBW",
+                      "settlement_date": "2026-12-18",
                       "settlement_tick_size": 0.0025,
-                      "spread_tick_size": 0.0025,
-                      "ticker": "00CN5",
-                      "trade_tick_size": 0.0025,
-                      "trading_venue": "XCBT",
+                      "spread_tick_size": 0.01,
+                      "ticker": "ESZ6",
+                      "trade_tick_size": 0.25,
+                      "trading_venue": "XCME",
                       "type": "single"
                     }
                   ],
@@ -15159,6 +15306,14 @@
                           },
                           "product_code": {
                             "description": "The identifier for the contract's product.",
+                            "type": "string"
+                          },
+                          "provider_id": {
+                            "description": "A unique identifier for the contract assigned by the data provider. Note that this value is null for historical data (pre-2025-03-12).",
+                            "type": "string"
+                          },
+                          "provider_product_id": {
+                            "description": "A unique identifier for the product to which a contract, or contracts, belongs. Note that this value is null for historical data (pre-2025-03-12).",
                             "type": "string"
                           },
                           "settlement_date": {
@@ -15698,6 +15853,14 @@
             }
           },
           {
+            "description": "A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.",
+            "in": "query",
+            "name": "provider_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day. Value must be formatted 'yyyy-mm-dd'.",
             "in": "query",
             "name": "date",
@@ -16051,11 +16214,14 @@
                     {
                       "asset_class": "commodity",
                       "asset_sub_class": "energy",
+                      "clearing_symbol": "EBE",
+                      "clearing_venue": "XCME",
                       "date": "2025-07-07",
                       "last_updated": "2025-02-22",
                       "name": "1% Fuel Oil Barges FOB Rdam (Platts) vs. 1% Fuel Oil Cargoes FOB NWE (Platts) BALMO Futures",
                       "price_quotation": "U.S. dollars and cents per metric ton",
                       "product_code": "EBE",
+                      "provider_id": "5JRWE35UYLDP",
                       "sector": "refined_products",
                       "settlement_currency_code": "USD",
                       "settlement_method": "financially_settled",
@@ -16092,6 +16258,14 @@
                             "description": "The asset sub-class to which the product belongs.",
                             "type": "string"
                           },
+                          "clearing_symbol": {
+                            "description": "The clearing symbol assigned to this product by the exchange's clearing house.",
+                            "type": "string"
+                          },
+                          "clearing_venue": {
+                            "description": "The trading venue (MIC) for the clearing house that clears this product's contracts.",
+                            "type": "string"
+                          },
                           "date": {
                             "description": "A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day.",
                             "format": "date",
@@ -16114,6 +16288,10 @@
                             "description": "The identifier for the product.",
                             "type": "string"
                           },
+                          "provider_id": {
+                            "description": "A unique identifier for the product assigned by the data provider. Can be used to distinguish products that share a product code.",
+                            "type": "string"
+                          },
                           "sector": {
                             "description": "The sector to which the product belongs.",
                             "type": "string"
@@ -16128,6 +16306,10 @@
                           },
                           "settlement_type": {
                             "description": "The type of settlement for this product.",
+                            "type": "string"
+                          },
+                          "strategy_type": {
+                            "description": "The strategy type for combo products (e.g. spread, strip, pack). Null for single products.",
                             "type": "string"
                           },
                           "sub_sector": {
@@ -17918,7 +18100,7 @@
                       "items": {
                         "properties": {
                           "conditions": {
-                            "description": "A list of condition codes.",
+                            "description": "A list of condition codes. See [Options Condition Codes](https://massive.com/docs/rest/options/market-operations/condition-codes) for what each code means.",
                             "items": {
                               "format": "int32",
                               "type": "integer"
@@ -18121,7 +18303,7 @@
                       "items": {
                         "properties": {
                           "conditions": {
-                            "description": "A list of condition codes.",
+                            "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                             "items": {
                               "format": "int32",
                               "type": "integer"
@@ -20704,6 +20886,482 @@
                           },
                           "underlying_security_title": {
                             "description": "Title of the underlying security for derivative transactions.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
+    "/stocks/filings/vX/form-5": {
+      "get": {
+        "description": "SEC Form 5 filings: annual statements of changes in beneficial ownership of securities. Filed by corporate insiders (directors, officers, and 10%+ shareholders) within 45 days of the issuer's fiscal year end to report transactions that were exempt from or deferred from Form 4, and any Form 4 transactions that were not reported on time. A filing with several reporting owners has one row per owner for each transaction or holding.",
+        "operationId": "get_stocks_filings_vX_form-5",
+        "parameters": [
+          {
+            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+            "in": "query",
+            "name": "issuer_cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "issuer_cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC Central Index Key of the reporting owner (10 digits, zero-padded).",
+            "in": "query",
+            "name": "owner_cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "owner_cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain the value.",
+            "in": "query",
+            "name": "tickers",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.all_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC form type ('5' for standard filing, '5/A' for amendments).",
+            "in": "query",
+            "name": "form_type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "filing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC transaction code indicating the type of transaction (e.g., 'G' for gift, 'J' for other acquisition or disposition, 'A' for grant/award, 'S' for sale). Null for holdings.",
+            "in": "query",
+            "name": "transaction_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '10000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 10000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'filing_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "filing_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/stocks/filings/vX/form-5?cursor=eyJsaW1pd...",
+                  "request_id": "047c7035a86042b1925118e5f68d81b0",
+                  "results": [
+                    {
+                      "accession_number": "0001045810-25-000070",
+                      "aff_10b5_one": false,
+                      "date_of_original_submission": "2025-03-12",
+                      "deemed_execution_date": null,
+                      "direct_or_indirect": "I",
+                      "equity_swap_involved": false,
+                      "exercise_date": null,
+                      "exercise_price": null,
+                      "expiration_date": null,
+                      "filing_date": "2025-03-21",
+                      "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/0001045810-25-000070.txt",
+                      "footnotes": [
+                        {
+                          "description": "Adjusted to reflect a ten-for-one forward split of the Issuer's common stock effective after market close on June 7, 2024.",
+                          "id": "F1"
+                        }
+                      ],
+                      "form3_holdings_reported": false,
+                      "form4_transactions_reported": true,
+                      "form_type": "5/A",
+                      "is_director": true,
+                      "is_officer": false,
+                      "is_other": false,
+                      "is_ten_percent_owner": false,
+                      "issuer_cik": "0001045810",
+                      "issuer_name": "NVIDIA CORP",
+                      "nature_of_ownership": "The Welch-Drell 2009 Revocable Trust",
+                      "not_subject_to_section_16": false,
+                      "officer_title": null,
+                      "owner_cik": "0001636665",
+                      "owner_name": "Drell Persis",
+                      "period_of_report": "2025-01-26",
+                      "record_type": "transaction",
+                      "remarks": "This amendment is being filed solely to add footnote 4 to reflect that the sales price of the June 14, 2024 transaction represents the weighted average sales price per share. This amended report does not report any new transactions or otherwise modify the transaction details that were previously reported.",
+                      "security_title": "Common Stock",
+                      "security_type": "non_derivative",
+                      "shares_owned_following_transaction": 212740,
+                      "tickers": [
+                        "NVDA"
+                      ],
+                      "transaction_acquired_disposed": "D",
+                      "transaction_code": "S",
+                      "transaction_date": "2023-12-13",
+                      "transaction_form_type": "4",
+                      "transaction_price_per_share": 48.2582,
+                      "transaction_shares": 65000,
+                      "transaction_timeliness": "L",
+                      "transaction_value": 3136783,
+                      "underlying_security_shares": null,
+                      "underlying_security_title": null
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "accession_number": {
+                            "description": "Unique SEC accession number for the filing (e.g., '0001209191-25-012345').",
+                            "type": "string"
+                          },
+                          "aff_10b5_one": {
+                            "description": "Whether the filing indicates a transaction made pursuant to a Rule 10b5-1 trading plan. Filing-level; null on filings before the checkbox was introduced (2023).",
+                            "type": "boolean"
+                          },
+                          "date_of_original_submission": {
+                            "description": "Date of the original filing submission for amendment filings (5/A). Null for standard filings (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "deemed_execution_date": {
+                            "description": "Deemed execution date if different from transaction date (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "direct_or_indirect": {
+                            "description": "Whether ownership is direct ('D') or indirect ('I').",
+                            "type": "string"
+                          },
+                          "equity_swap_involved": {
+                            "description": "Whether an equity swap was involved in the transaction.",
+                            "type": "boolean"
+                          },
+                          "exercise_date": {
+                            "description": "Date exercisable for derivative securities (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "exercise_price": {
+                            "description": "Exercise or conversion price of derivative securities in USD.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "expiration_date": {
+                            "description": "Expiration date for derivative securities (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "filing_date": {
+                            "description": "Date when the filing was submitted to the SEC (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "filing_url": {
+                            "description": "Direct URL to the filing on the SEC EDGAR website.",
+                            "type": "string"
+                          },
+                          "footnotes": {
+                            "description": "List of footnotes from the filing that are relevant to this row, each with an id and description.",
+                            "items": {
+                              "properties": {
+                                "description": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "form3_holdings_reported": {
+                            "description": "Whether the filing reports holdings that should have been reported on a Form 3. Filing-level, repeated on every row of the filing. Null if not stated.",
+                            "type": "boolean"
+                          },
+                          "form4_transactions_reported": {
+                            "description": "Whether the filing reports transactions that should have been reported on a Form 4. Filing-level, repeated on every row of the filing. Null if not stated.",
+                            "type": "boolean"
+                          },
+                          "form_type": {
+                            "description": "SEC form type ('5' for standard filing, '5/A' for amendments).",
+                            "type": "string"
+                          },
+                          "is_director": {
+                            "description": "Whether the reporting owner is a director of the issuer.",
+                            "type": "boolean"
+                          },
+                          "is_officer": {
+                            "description": "Whether the reporting owner is an officer of the issuer.",
+                            "type": "boolean"
+                          },
+                          "is_other": {
+                            "description": "Whether the reporting owner has another relationship with the issuer.",
+                            "type": "boolean"
+                          },
+                          "is_ten_percent_owner": {
+                            "description": "Whether the reporting owner holds 10% or more of a class of equity securities.",
+                            "type": "boolean"
+                          },
+                          "issuer_cik": {
+                            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "issuer_name": {
+                            "description": "Name of the issuer company as reported in the filing.",
+                            "type": "string"
+                          },
+                          "nature_of_ownership": {
+                            "description": "Nature of indirect ownership (e.g., 'By Trust', 'By Spouse').",
+                            "type": "string"
+                          },
+                          "not_subject_to_section_16": {
+                            "description": "Whether the reporting owner is no longer subject to Section 16 of the Securities Exchange Act.",
+                            "type": "boolean"
+                          },
+                          "officer_title": {
+                            "description": "Title of the officer, if the reporting owner is an officer.",
+                            "type": "string"
+                          },
+                          "owner_cik": {
+                            "description": "SEC Central Index Key of the reporting owner (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "owner_name": {
+                            "description": "Name of the reporting owner (individual or entity).",
+                            "type": "string"
+                          },
+                          "period_of_report": {
+                            "description": "End of the fiscal year the filing covers (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "record_type": {
+                            "description": "Type of record in the filing ('transaction' or 'holding').",
+                            "type": "string"
+                          },
+                          "remarks": {
+                            "description": "Additional remarks included in the filing.",
+                            "type": "string"
+                          },
+                          "security_title": {
+                            "description": "Title or description of the security (e.g., 'Common Stock', 'Stock Option').",
+                            "type": "string"
+                          },
+                          "security_type": {
+                            "description": "Type of security ('non_derivative' or 'derivative').",
+                            "type": "string"
+                          },
+                          "shares_owned_following_transaction": {
+                            "description": "Total shares beneficially owned after the transaction, or currently held for holdings.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "tickers": {
+                            "description": "A list of ticker symbols for the issuer company. Multiple symbols may indicate different share classes.",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "transaction_acquired_disposed": {
+                            "description": "Whether shares were acquired ('A') or disposed of ('D').",
+                            "type": "string"
+                          },
+                          "transaction_code": {
+                            "description": "SEC transaction code indicating the type of transaction (e.g., 'G' for gift, 'J' for other acquisition or disposition, 'A' for grant/award, 'S' for sale). Null for holdings.",
+                            "type": "string"
+                          },
+                          "transaction_date": {
+                            "description": "Date of the transaction, formatted as YYYY-MM-DD. Null for holdings.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "transaction_form_type": {
+                            "description": "Form the transaction belongs to: '5' for a Form 5 transaction, or '4' for a Form 4 transaction reported late on this Form 5. Null for holdings.",
+                            "type": "string"
+                          },
+                          "transaction_price_per_share": {
+                            "description": "Price per share of the transaction in USD.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "transaction_shares": {
+                            "description": "Number of shares involved in the transaction.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "transaction_timeliness": {
+                            "description": "Timeliness of the transaction: 'E' (early), 'L' (late), or 'O' (on time, or not stated). Always 'O' for holdings.",
+                            "type": "string"
+                          },
+                          "transaction_value": {
+                            "description": "Total value of the transaction in USD (transaction_shares x transaction_price_per_share). Null when shares or price is not reported, and for holdings.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_security_shares": {
+                            "description": "Number of underlying shares for derivative securities.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_security_title": {
+                            "description": "Title of the underlying security for derivative securities.",
                             "type": "string"
                           }
                         },
@@ -27731,9 +28389,9 @@
                           "items": {
                             "properties": {
                               "c": {
-                                "description": "A list of condition codes.\n",
+                                "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                                 "items": {
-                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                                  "description": "The condition code.",
                                   "type": "integer"
                                 },
                                 "type": "array"
@@ -34844,9 +35502,9 @@
                       "description": "Contains the requested trade data for the specified cryptocurrency pair.",
                       "properties": {
                         "conditions": {
-                          "description": "A list of condition codes.",
+                          "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code.",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -35424,9 +36082,9 @@
                       "items": {
                         "properties": {
                           "c": {
-                            "description": "A list of condition codes.\n",
+                            "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                              "description": "The condition code.",
                               "type": "integer"
                             },
                             "type": "array"
@@ -35485,9 +36143,9 @@
                       "items": {
                         "properties": {
                           "c": {
-                            "description": "A list of condition codes.\n",
+                            "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                              "description": "The condition code.",
                               "type": "integer"
                             },
                             "type": "array"
@@ -35646,7 +36304,8 @@
                     },
                     "preMarket": {
                       "description": "The open value of the ticker symbol in pre-market trading.",
-                      "type": "integer"
+                      "format": "double",
+                      "type": "number"
                     },
                     "status": {
                       "description": "The status of this request's response.",
@@ -35787,7 +36446,8 @@
                     },
                     "preMarket": {
                       "description": "The open price of the ticker symbol in pre-market trading.",
-                      "type": "integer"
+                      "format": "double",
+                      "type": "number"
                     },
                     "status": {
                       "description": "The status of this request's response.",
@@ -35933,7 +36593,8 @@
                     },
                     "preMarket": {
                       "description": "The open price of the ticker symbol in pre-market trading.",
-                      "type": "integer"
+                      "format": "double",
+                      "type": "number"
                     },
                     "status": {
                       "description": "The status of this request's response.",
@@ -38539,6 +39200,10 @@
                           "description": "An array of results containing the requested data.",
                           "items": {
                             "properties": {
+                              "T": {
+                                "description": "The exchange symbol that this item is traded under.",
+                                "type": "string"
+                              },
                               "c": {
                                 "description": "The close value for the symbol in the given time period.",
                                 "format": "double",
@@ -38565,6 +39230,7 @@
                               }
                             },
                             "required": [
+                              "T",
                               "o",
                               "h",
                               "l",
@@ -38942,6 +39608,10 @@
                           "description": "An array of results containing the requested data.",
                           "items": {
                             "properties": {
+                              "T": {
+                                "description": "The exchange symbol that this item is traded under.",
+                                "type": "string"
+                              },
                               "c": {
                                 "description": "The close price for the symbol in the given time period.",
                                 "format": "double",
@@ -38982,6 +39652,7 @@
                               }
                             },
                             "required": [
+                              "T",
                               "o",
                               "h",
                               "l",
@@ -39394,6 +40065,10 @@
                           "description": "An array of results containing the requested data.",
                           "items": {
                             "properties": {
+                              "T": {
+                                "description": "The exchange symbol that this item is traded under.",
+                                "type": "string"
+                              },
                               "c": {
                                 "description": "The close price for the symbol in the given time period.",
                                 "format": "double",
@@ -39434,6 +40109,7 @@
                               }
                             },
                             "required": [
+                              "T",
                               "o",
                               "h",
                               "l",
@@ -39822,9 +40498,9 @@
                           "type": "integer"
                         },
                         "c": {
-                          "description": "A list of condition codes.",
+                          "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code.",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -39838,9 +40514,9 @@
                           "type": "integer"
                         },
                         "i": {
-                          "description": "A list of indicator codes.",
+                          "description": "A list of indicator codes. See the [Conditions and Indicators](https://massive.com/glossary/conditions-indicators) glossary for what each code means.",
                           "items": {
-                            "description": "The indicator codes. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/conditions-indicators).",
+                            "description": "The indicator code.",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -39995,9 +40671,9 @@
                           "type": "string"
                         },
                         "c": {
-                          "description": "A list of condition codes.",
+                          "description": "A list of condition codes. See [Options Condition Codes](https://massive.com/docs/rest/options/market-operations/condition-codes) for what each code means.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code.",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -40176,9 +40852,9 @@
                           "type": "string"
                         },
                         "c": {
-                          "description": "A list of condition codes.",
+                          "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code.",
                             "format": "int32",
                             "type": "integer"
                           },
@@ -40866,8 +41542,9 @@
                                 "description": "The most recent trade for this ticker.",
                                 "properties": {
                                   "c": {
-                                    "description": "The trade conditions.",
+                                    "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                                     "items": {
+                                      "description": "The condition code.",
                                       "type": "integer"
                                     },
                                     "type": "array"
@@ -41228,8 +41905,9 @@
                               "description": "The most recent trade for this ticker.",
                               "properties": {
                                 "c": {
-                                  "description": "The trade conditions.",
+                                  "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                                   "items": {
+                                    "description": "The condition code.",
                                     "type": "integer"
                                   },
                                   "type": "array"
@@ -41766,8 +42444,9 @@
                                 "description": "The most recent trade for this ticker.",
                                 "properties": {
                                   "c": {
-                                    "description": "The trade conditions.",
+                                    "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                                     "items": {
+                                      "description": "The condition code.",
                                       "type": "integer"
                                     },
                                     "type": "array"
@@ -42061,7 +42740,7 @@
                           "items": {
                             "properties": {
                               "day": {
-                                "description": "The most recent daily bar for this ticker.",
+                                "description": "The most recent daily bar for this ticker. Forex daily bars follow the UTC day (00:00 to 23:59 UTC).",
                                 "properties": {
                                   "c": {
                                     "description": "The close price for the symbol in the given time period.",
@@ -42173,7 +42852,7 @@
                                 "type": "object"
                               },
                               "prevDay": {
-                                "description": "The previous day's bar for this ticker.",
+                                "description": "The previous day's bar for this ticker, covering the previous UTC day (00:00 to 23:59 UTC).",
                                 "properties": {
                                   "c": {
                                     "description": "The close price for the symbol in the given time period.",
@@ -42385,7 +43064,7 @@
                           "description": "Contains the requested snapshot data for the specified ticker.",
                           "properties": {
                             "day": {
-                              "description": "The most recent daily bar for this ticker.",
+                              "description": "The most recent daily bar for this ticker. Forex daily bars follow the UTC day (00:00 to 23:59 UTC).",
                               "properties": {
                                 "c": {
                                   "description": "The close price for the symbol in the given time period.",
@@ -42497,7 +43176,7 @@
                               "type": "object"
                             },
                             "prevDay": {
-                              "description": "The previous day's bar for this ticker.",
+                              "description": "The previous day's bar for this ticker, covering the previous UTC day (00:00 to 23:59 UTC).",
                               "properties": {
                                 "c": {
                                   "description": "The close price for the symbol in the given time period.",
@@ -42700,7 +43379,7 @@
                           "items": {
                             "properties": {
                               "day": {
-                                "description": "The most recent daily bar for this ticker.",
+                                "description": "The most recent daily bar for this ticker. Forex daily bars follow the UTC day (00:00 to 23:59 UTC).",
                                 "properties": {
                                   "c": {
                                     "description": "The close price for the symbol in the given time period.",
@@ -42812,7 +43491,7 @@
                                 "type": "object"
                               },
                               "prevDay": {
-                                "description": "The previous day's bar for this ticker.",
+                                "description": "The previous day's bar for this ticker, covering the previous UTC day (00:00 to 23:59 UTC).",
                                 "properties": {
                                   "c": {
                                     "description": "The close price for the symbol in the given time period.",
@@ -43143,8 +43822,9 @@
                                 "description": "The most recent trade for this ticker.  This is only returned if your current plan includes trades.",
                                 "properties": {
                                   "c": {
-                                    "description": "The trade conditions.",
+                                    "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                                     "items": {
+                                      "description": "The condition code.",
                                       "type": "integer"
                                     },
                                     "type": "array"
@@ -43578,8 +44258,9 @@
                               "description": "The most recent trade for this ticker.  This is only returned if your current plan includes trades.",
                               "properties": {
                                 "c": {
-                                  "description": "The trade conditions.",
+                                  "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                                   "items": {
+                                    "description": "The condition code.",
                                     "type": "integer"
                                   },
                                   "type": "array"
@@ -44012,8 +44693,9 @@
                                 "description": "The most recent trade for this ticker.  This is only returned if your current plan includes trades.",
                                 "properties": {
                                   "c": {
-                                    "description": "The trade conditions.",
+                                    "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                                     "items": {
+                                      "description": "The condition code.",
                                       "type": "integer"
                                     },
                                     "type": "array"
@@ -44475,9 +45157,9 @@
                                     "type": "integer"
                                   },
                                   "c": {
-                                    "description": "A list of condition codes.\n",
+                                    "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                                     "items": {
-                                      "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                                      "description": "The condition code.",
                                       "type": "integer"
                                     },
                                     "type": "array"
@@ -44778,9 +45460,9 @@
                               {
                                 "properties": {
                                   "c": {
-                                    "description": "A list of condition codes.\n",
+                                    "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                                     "items": {
-                                      "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.\n",
+                                      "description": "The condition code.",
                                       "type": "integer"
                                     },
                                     "type": "array"
@@ -45527,9 +46209,9 @@
                             "type": "number"
                           },
                           "conditions": {
-                            "description": "A list of condition codes.",
+                            "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                              "description": "The condition code.",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -45539,9 +46221,9 @@
                             }
                           },
                           "indicators": {
-                            "description": "A list of indicator codes.",
+                            "description": "A list of indicator codes. See the [Conditions and Indicators](https://massive.com/glossary/conditions-indicators) glossary for what each code means.",
                             "items": {
-                              "description": "The indicator codes. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/conditions-indicators).",
+                              "description": "The indicator code.",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -48600,7 +49282,7 @@
             }
           },
           {
-            "description": "Specify a point in time to get information about the ticker available on that date.\nWhen retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.\n\nFor example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29.\nThat means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29.\nIf you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.\n\nDefaults to the most recent available date.",
+            "description": "Specify a point in time to get information about the ticker available on that date.\nFields that describe the security, including name, type, primary_exchange and list_date, reflect the security trading under this ticker on that date.\nFor example, ASND returns type ADRC and list_date 2015-01-28 for 2026-04-17, and type CS and list_date 2026-04-20 from 2026-04-20, when its American Depositary Shares were exchanged for ordinary shares.\nSome fields may be empty for older dates.\n\nWhen retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.\n\nFor example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29.\nThat means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29.\nIf you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.\n\nDefaults to the most recent available date.",
             "in": "query",
             "name": "date",
             "schema": {
@@ -48735,7 +49417,7 @@
                           "type": "string"
                         },
                         "list_date": {
-                          "description": "The date that the symbol was first publicly listed in the format YYYY-MM-DD.",
+                          "description": "The date the security currently trading under this ticker was first publicly listed, in the format YYYY-MM-DD.\nIf a corporate action replaces the security behind the ticker, such as American Depositary Shares being exchanged for ordinary shares under the same symbol, this is the new security's listing date.\nA move to a different exchange does not change it.\nUse the date parameter to get the value as of an earlier date.",
                           "type": "string"
                         },
                         "locale": {
@@ -51360,9 +52042,9 @@
                       "items": {
                         "properties": {
                           "conditions": {
-                            "description": "A list of condition codes.",
+                            "description": "A list of condition codes. See [Crypto Condition Codes](https://massive.com/docs/rest/crypto/market-operations/condition-codes) for what each code means.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                              "description": "The condition code.",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -51620,9 +52302,9 @@
                       "items": {
                         "properties": {
                           "conditions": {
-                            "description": "A list of condition codes.",
+                            "description": "A list of condition codes. See [Options Condition Codes](https://massive.com/docs/rest/options/market-operations/condition-codes) for what each code means.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                              "description": "The condition code.",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -51894,9 +52576,9 @@
                       "items": {
                         "properties": {
                           "conditions": {
-                            "description": "A list of condition codes.",
+                            "description": "A list of condition codes. See [Stocks Condition Codes](https://massive.com/docs/rest/stocks/market-operations/condition-codes) for what each code means.",
                             "items": {
-                              "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                              "description": "The condition code.",
                               "format": "int32",
                               "type": "integer"
                             },
@@ -52043,704 +52725,6 @@
           "replaces": {
             "name": "Trades",
             "path": "get_v2_ticks_stocks_trades__ticker___date"
-          }
-        }
-      }
-    },
-    "/vX/reference/financials": {
-      "get": {
-        "description": "Get historical financial data for a stock ticker.\nThe financials data is extracted from XBRL from company SEC filings using the methodology outlined <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrl.squarespace.com/understanding-sec-xbrl-financi/\">here</a>.",
-        "operationId": "ListFinancials",
-        "parameters": [
-          {
-            "description": "Query by company ticker.",
-            "in": "query",
-            "name": "ticker",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Query by central index key (<a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.sec.gov/edgar/searchedgar/cik.htm\">CIK</a>) Number",
-            "in": "query",
-            "name": "cik",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Query by company name.",
-            "in": "query",
-            "name": "company_name",
-            "schema": {
-              "type": "string"
-            },
-            "x-polygon-filter-field": {
-              "search": true
-            }
-          },
-          {
-            "description": "Query by standard industrial classification (<a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.sec.gov/corpfin/division-of-corporation-finance-standard-industrial-classification-sic-code-list\">SIC</a>)",
-            "in": "query",
-            "name": "sic",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Query by the date when the filing with financials data was filed in YYYY-MM-DD format.\n\nBest used when querying over date ranges to find financials based on filings that happen in a time period.\n\nExamples:\n\nTo get financials based on filings that have happened after January 1, 2009 use the query param filing_date.gte=2009-01-01\n\nTo get financials based on filings that happened in the year 2009 use the query params filing_date.gte=2009-01-01&filing_date.lt=2010-01-01",
-            "in": "query",
-            "name": "filing_date",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            },
-            "x-polygon-filter-field": {
-              "range": true
-            }
-          },
-          {
-            "description": "The period of report for the filing with financials data in YYYY-MM-DD format.",
-            "in": "query",
-            "name": "period_of_report_date",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            },
-            "x-polygon-filter-field": {
-              "range": true
-            }
-          },
-          {
-            "description": "Query by timeframe. Annual financials originate from 10-K filings, and quarterly financials originate from 10-Q filings. Note: Most companies do not file quarterly reports for Q4 and instead include those financials in their annual report, so some companies my not return quarterly financials for Q4",
-            "in": "query",
-            "name": "timeframe",
-            "schema": {
-              "enum": [
-                "annual",
-                "quarterly",
-                "ttm"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether or not to include the `xpath` and `formula` attributes for each financial data point.\nSee the `xpath` and `formula` response attributes for more info. False by default.",
-            "in": "query",
-            "name": "include_sources",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Search by company_name.",
-            "in": "query",
-            "name": "company_name.search",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by filing_date.",
-            "in": "query",
-            "name": "filing_date.gte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by filing_date.",
-            "in": "query",
-            "name": "filing_date.gt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by filing_date.",
-            "in": "query",
-            "name": "filing_date.lte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by filing_date.",
-            "in": "query",
-            "name": "filing_date.lt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by period_of_report_date.",
-            "in": "query",
-            "name": "period_of_report_date.gte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by period_of_report_date.",
-            "in": "query",
-            "name": "period_of_report_date.gt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by period_of_report_date.",
-            "in": "query",
-            "name": "period_of_report_date.lte",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Search by period_of_report_date.",
-            "in": "query",
-            "name": "period_of_report_date.lt",
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Order results based on the `sort` field.",
-            "in": "query",
-            "name": "order",
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "example": "asc",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Limit the number of results returned, default is 10 and max is 100.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 10,
-              "example": 10,
-              "maximum": 100,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Sort field used for ordering.",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "period_of_report_date",
-              "enum": [
-                "filing_date",
-                "period_of_report_date"
-              ],
-              "example": "filing_date",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "count": 1,
-                  "next_url": "https://api.massive.com/vX/reference/financials?",
-                  "request_id": "55eb92ed43b25568ab0cce159830ea34",
-                  "results": [
-                    {
-                      "cik": "0001650729",
-                      "company_name": "SiteOne Landscape Supply, Inc.",
-                      "end_date": "2022-04-03",
-                      "filing_date": "2022-05-04",
-                      "financials": {
-                        "balance_sheet": {
-                          "assets": {
-                            "label": "Assets",
-                            "order": 100,
-                            "unit": "USD",
-                            "value": 2407400000
-                          },
-                          "current_assets": {
-                            "label": "Current Assets",
-                            "order": 200,
-                            "unit": "USD",
-                            "value": 1385900000
-                          },
-                          "current_liabilities": {
-                            "label": "Current Liabilities",
-                            "order": 700,
-                            "unit": "USD",
-                            "value": 597500000
-                          },
-                          "equity": {
-                            "label": "Equity",
-                            "order": 1400,
-                            "unit": "USD",
-                            "value": 1099200000
-                          },
-                          "equity_attributable_to_noncontrolling_interest": {
-                            "label": "Equity Attributable To Noncontrolling Interest",
-                            "order": 1500,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "equity_attributable_to_parent": {
-                            "label": "Equity Attributable To Parent",
-                            "order": 1600,
-                            "unit": "USD",
-                            "value": 1099200000
-                          },
-                          "liabilities": {
-                            "label": "Liabilities",
-                            "order": 600,
-                            "unit": "USD",
-                            "value": 1308200000
-                          },
-                          "liabilities_and_equity": {
-                            "label": "Liabilities And Equity",
-                            "order": 1900,
-                            "unit": "USD",
-                            "value": 2407400000
-                          },
-                          "noncurrent_assets": {
-                            "label": "Noncurrent Assets",
-                            "order": 300,
-                            "unit": "USD",
-                            "value": 1021500000
-                          },
-                          "noncurrent_liabilities": {
-                            "label": "Noncurrent Liabilities",
-                            "order": 800,
-                            "unit": "USD",
-                            "value": 710700000
-                          }
-                        },
-                        "cash_flow_statement": {
-                          "exchange_gains_losses": {
-                            "label": "Exchange Gains/Losses",
-                            "order": 1000,
-                            "unit": "USD",
-                            "value": 100000
-                          },
-                          "net_cash_flow": {
-                            "label": "Net Cash Flow",
-                            "order": 1100,
-                            "unit": "USD",
-                            "value": -8600000
-                          },
-                          "net_cash_flow_continuing": {
-                            "label": "Net Cash Flow, Continuing",
-                            "order": 1200,
-                            "unit": "USD",
-                            "value": -8700000
-                          },
-                          "net_cash_flow_from_financing_activities": {
-                            "label": "Net Cash Flow From Financing Activities",
-                            "order": 700,
-                            "unit": "USD",
-                            "value": 150600000
-                          },
-                          "net_cash_flow_from_financing_activities_continuing": {
-                            "label": "Net Cash Flow From Financing Activities, Continuing",
-                            "order": 800,
-                            "unit": "USD",
-                            "value": 150600000
-                          },
-                          "net_cash_flow_from_investing_activities": {
-                            "label": "Net Cash Flow From Investing Activities",
-                            "order": 400,
-                            "unit": "USD",
-                            "value": -41000000
-                          },
-                          "net_cash_flow_from_investing_activities_continuing": {
-                            "label": "Net Cash Flow From Investing Activities, Continuing",
-                            "order": 500,
-                            "unit": "USD",
-                            "value": -41000000
-                          },
-                          "net_cash_flow_from_operating_activities": {
-                            "label": "Net Cash Flow From Operating Activities",
-                            "order": 100,
-                            "unit": "USD",
-                            "value": -118300000
-                          },
-                          "net_cash_flow_from_operating_activities_continuing": {
-                            "label": "Net Cash Flow From Operating Activities, Continuing",
-                            "order": 200,
-                            "unit": "USD",
-                            "value": -118300000
-                          }
-                        },
-                        "comprehensive_income": {
-                          "comprehensive_income_loss": {
-                            "label": "Comprehensive Income/Loss",
-                            "order": 100,
-                            "unit": "USD",
-                            "value": 40500000
-                          },
-                          "comprehensive_income_loss_attributable_to_noncontrolling_interest": {
-                            "label": "Comprehensive Income/Loss Attributable To Noncontrolling Interest",
-                            "order": 200,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "comprehensive_income_loss_attributable_to_parent": {
-                            "label": "Comprehensive Income/Loss Attributable To Parent",
-                            "order": 300,
-                            "unit": "USD",
-                            "value": 40500000
-                          },
-                          "other_comprehensive_income_loss": {
-                            "label": "Other Comprehensive Income/Loss",
-                            "order": 400,
-                            "unit": "USD",
-                            "value": 40500000
-                          },
-                          "other_comprehensive_income_loss_attributable_to_parent": {
-                            "label": "Other Comprehensive Income/Loss Attributable To Parent",
-                            "order": 600,
-                            "unit": "USD",
-                            "value": 8200000
-                          }
-                        },
-                        "income_statement": {
-                          "basic_earnings_per_share": {
-                            "label": "Basic Earnings Per Share",
-                            "order": 4200,
-                            "unit": "USD / shares",
-                            "value": 0.72
-                          },
-                          "benefits_costs_expenses": {
-                            "label": "Benefits Costs and Expenses",
-                            "order": 200,
-                            "unit": "USD",
-                            "value": 768400000
-                          },
-                          "cost_of_revenue": {
-                            "label": "Cost Of Revenue",
-                            "order": 300,
-                            "unit": "USD",
-                            "value": 536100000
-                          },
-                          "costs_and_expenses": {
-                            "label": "Costs And Expenses",
-                            "order": 600,
-                            "unit": "USD",
-                            "value": 768400000
-                          },
-                          "diluted_earnings_per_share": {
-                            "label": "Diluted Earnings Per Share",
-                            "order": 4300,
-                            "unit": "USD / shares",
-                            "value": 0.7
-                          },
-                          "gross_profit": {
-                            "label": "Gross Profit",
-                            "order": 800,
-                            "unit": "USD",
-                            "value": 269200000
-                          },
-                          "income_loss_from_continuing_operations_after_tax": {
-                            "label": "Income/Loss From Continuing Operations After Tax",
-                            "order": 1400,
-                            "unit": "USD",
-                            "value": 32300000
-                          },
-                          "income_loss_from_continuing_operations_before_tax": {
-                            "label": "Income/Loss From Continuing Operations Before Tax",
-                            "order": 1500,
-                            "unit": "USD",
-                            "value": 36900000
-                          },
-                          "income_tax_expense_benefit": {
-                            "label": "Income Tax Expense/Benefit",
-                            "order": 2200,
-                            "unit": "USD",
-                            "value": 4600000
-                          },
-                          "interest_expense_operating": {
-                            "label": "Interest Expense, Operating",
-                            "order": 2700,
-                            "unit": "USD",
-                            "value": 4300000
-                          },
-                          "net_income_loss": {
-                            "label": "Net Income/Loss",
-                            "order": 3200,
-                            "unit": "USD",
-                            "value": 32300000
-                          },
-                          "net_income_loss_attributable_to_noncontrolling_interest": {
-                            "label": "Net Income/Loss Attributable To Noncontrolling Interest",
-                            "order": 3300,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "net_income_loss_attributable_to_parent": {
-                            "label": "Net Income/Loss Attributable To Parent",
-                            "order": 3500,
-                            "unit": "USD",
-                            "value": 32300000
-                          },
-                          "net_income_loss_available_to_common_stockholders_basic": {
-                            "label": "Net Income/Loss Available To Common Stockholders, Basic",
-                            "order": 3700,
-                            "unit": "USD",
-                            "value": 32300000
-                          },
-                          "operating_expenses": {
-                            "label": "Operating Expenses",
-                            "order": 1000,
-                            "unit": "USD",
-                            "value": 228000000
-                          },
-                          "operating_income_loss": {
-                            "label": "Operating Income/Loss",
-                            "order": 1100,
-                            "unit": "USD",
-                            "value": 41200000
-                          },
-                          "participating_securities_distributed_and_undistributed_earnings_loss_basic": {
-                            "label": "Participating Securities, Distributed And Undistributed Earnings/Loss, Basic",
-                            "order": 3800,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "preferred_stock_dividends_and_other_adjustments": {
-                            "label": "Preferred Stock Dividends And Other Adjustments",
-                            "order": 3900,
-                            "unit": "USD",
-                            "value": 0
-                          },
-                          "revenues": {
-                            "label": "Revenues",
-                            "order": 100,
-                            "unit": "USD",
-                            "value": 805300000
-                          }
-                        }
-                      },
-                      "fiscal_period": "Q1",
-                      "fiscal_year": "2022",
-                      "source_filing_file_url": "https://api.massive.com/v1/reference/sec/filings/0001650729-22-000010/files/site-20220403_htm.xml",
-                      "source_filing_url": "https://api.massive.com/v1/reference/sec/filings/0001650729-22-000010",
-                      "start_date": "2022-01-03"
-                    }
-                  ],
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "count": {
-                      "description": "The total number of results for this request.",
-                      "type": "integer"
-                    },
-                    "next_url": {
-                      "description": "If present, this value can be used to fetch the next page of data.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A request id assigned by the server.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "description": "An array of results containing the requested data.",
-                      "items": {
-                        "properties": {
-                          "acceptance_datetime": {
-                            "description": "The datetime (EST timezone) the filing was accepted by EDGAR in YYYYMMDDHHMMSS format.",
-                            "type": "string"
-                          },
-                          "cik": {
-                            "description": "The CIK number for the company.",
-                            "type": "string"
-                          },
-                          "company_name": {
-                            "description": "The company name.",
-                            "type": "string"
-                          },
-                          "end_date": {
-                            "description": "The end date of the period that these financials cover in YYYYMMDD format.",
-                            "type": "string"
-                          },
-                          "filing_date": {
-                            "description": "The date that the SEC filing which these financials were derived from was made available. Note that this is not necessarily the date when this information became public, as some companies may publish a press release before filing with the SEC.",
-                            "type": "string"
-                          },
-                          "financials": {
-                            "description": "Structured financial statements with detailed data points and metadata.",
-                            "properties": {
-                              "balance_sheet": {
-                                "description": "Balance sheet.\nThe keys in this object can be any of the fields listed in the Balance Sheet section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.",
-                                "properties": {
-                                  "*": {
-                                    "description": "An individual financial data point.",
-                                    "properties": {
-                                      "derived_from": {
-                                        "description": "The list of report IDs (or errata) which were used to derive this data point.\nThis value is only returned for data points taken directly from XBRL when the `include_sources` query parameter is `true` and if source is SourceInterReportDerived.",
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "formula": {
-                                        "description": "The name of the formula used to derive this data point from other financial data points.\nInformation about the formulas can be found <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrlsite.azurewebsites.net/2020/reporting-scheme/us-gaap/fac/documentation/ImputeRulesList.html\">here</a>.\nThis value is only returned for data points that are not explicitly expressed within the XBRL source file when the `include_sources` query parameter is `true` and if source is SourceIntraReportImpute.",
-                                        "type": "string"
-                                      },
-                                      "label": {
-                                        "description": "A human readable label for the financial data point.",
-                                        "type": "string"
-                                      },
-                                      "order": {
-                                        "description": "An indicator of what order within the statement that you would find this data point.",
-                                        "type": "integer"
-                                      },
-                                      "source": {
-                                        "description": "The source where this data point came from. This will be one of: SourceDirectReport, SourceIntraReportImpute or SourceInterReportDerived.",
-                                        "type": "string"
-                                      },
-                                      "unit": {
-                                        "description": "The unit of the financial data point.",
-                                        "type": "string"
-                                      },
-                                      "value": {
-                                        "description": "The value of the financial data point.",
-                                        "type": "number"
-                                      },
-                                      "xpath": {
-                                        "description": "The <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/XPath\">XPath 1.0</a> query that identifies the fact from within the XBRL source file.\nThis value is only returned for data points taken directly from XBRL when the `include_sources` query parameter is `true` and if source is SourceDirectReport.",
-                                        "type": "string"
-                                      }
-                                    },
-                                    "required": [
-                                      "label",
-                                      "order",
-                                      "value",
-                                      "unit"
-                                    ],
-                                    "type": "object"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "cash_flow_statement": {
-                                "description": "Cash flow statement.\nThe keys in this object can be any of the fields listed in the Cash Flow Statement section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.\nSee the attributes of the objects within `balance_sheet` for more details.",
-                                "type": "object"
-                              },
-                              "comprehensive_income": {
-                                "description": "Comprehensive income.\nThe keys in this object can be any of the fields listed in the Comprehensive Income section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.\nSee the attributes of the objects within `balance_sheet` for more details.",
-                                "type": "object"
-                              },
-                              "income_statement": {
-                                "description": "Income statement.\nThe keys in this object can be any of the fields listed in the Income Statement section of the <a target=\"_blank\" href=\"https://massive.com/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.\nSee the attributes of the objects within `balance_sheet` for more details.",
-                                "type": "object"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "fiscal_period": {
-                            "description": "Fiscal period of the report according to the company (Q1, Q2, Q3, Q4, or FY).",
-                            "type": "string"
-                          },
-                          "fiscal_year": {
-                            "description": "Fiscal year of the report according to the company.",
-                            "type": "string"
-                          },
-                          "sic": {
-                            "description": "The Standard Industrial Classification (SIC) code for the company.",
-                            "type": "string"
-                          },
-                          "source_filing_file_url": {
-                            "description": "The URL of the specific XBRL instance document within the SEC filing that these financials were derived from.",
-                            "type": "string"
-                          },
-                          "source_filing_url": {
-                            "description": "The URL of the SEC filing that these financials were derived from.",
-                            "type": "string"
-                          },
-                          "start_date": {
-                            "description": "The start date of the period that these financials cover in YYYYMMDD format.",
-                            "type": "string"
-                          },
-                          "tickers": {
-                            "description": "The list of ticker symbols for the company.",
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array"
-                          },
-                          "timeframe": {
-                            "description": "The timeframe of the report (quarterly, annual or ttm).",
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "cik",
-                          "company_name",
-                          "financials",
-                          "timeframe",
-                          "fiscal_period"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "FinancialReport"
-                        }
-                      },
-                      "type": "array"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id",
-                    "count",
-                    "results"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "FIXME"
-          }
-        },
-        "summary": "Stock Financials vX",
-        "tags": [
-          "default"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
-        },
-        "x-polygon-experimental": {},
-        "x-polygon-paginate": {
-          "limit": {
-            "default": 10,
-            "max": 100
-          },
-          "sort": {
-            "default": "period_of_report_date",
-            "enum": [
-              "filing_date",
-              "period_of_report_date"
-            ]
           }
         }
       }
