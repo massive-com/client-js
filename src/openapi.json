@@ -25135,6 +25135,634 @@
         ]
       }
     },
+    "/stocks/insiders/vX/activity": {
+      "get": {
+        "description": "Daily insider trading activity per issuer: open-market purchases and sales by directors, officers, and 10%+ shareholders, summed per issuer and transaction date from SEC Forms 4 and 5. Sum rows over a date range to build a rolling window of net insider buying or selling. Only purchases and sales of non-derivative securities count; grants, exercises, tax withholding, and gifts do not. Each transaction is counted once even when several reporting owners filed it jointly. Transactions replaced by a later amendment are excluded, and only transactions that could have been executed in the market are counted: the filed price is within 10% of the issuer's common-stock range on the transaction date, the size is at most 25% of the issuer's shares outstanding, and purchases are at most 10 times (sales 100 times) that day's consolidated volume. That excludes filer errors and bogus filings (an aggregate price entered as per-share, impossible share counts) and limits coverage to issuers with a listed common stock and a market price that day. A transaction reported by several affiliated entities, in one filing or several, is counted once. The underlying filings are available from the Form 4 and Form 5 endpoints.",
+        "operationId": "get_stocks_insiders_vX_activity",
+        "parameters": [
+          {
+            "description": "Filter for arrays that contain the value.",
+            "in": "query",
+            "name": "tickers",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.all_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+            "in": "query",
+            "name": "issuer_cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "issuer_cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date of the transactions (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "transaction_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "transaction_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "transaction_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "transaction_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "transaction_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '10000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 10000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'transaction_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "transaction_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "next_url": "https://api.massive.com/stocks/insiders/vX/activity?cursor=eyJsaW1pd...",
+                  "request_id": "047c7035a86042b1925118e5f68d81b0",
+                  "results": [
+                    {
+                      "issuer_cik": "0001045810",
+                      "issuer_name": "NVIDIA CORP",
+                      "last_filing_date": "2026-09-18",
+                      "net_shares": -34918,
+                      "net_value": -7648632.45,
+                      "planned_purchase_value": 0,
+                      "planned_sale_value": 7648632.45,
+                      "purchase_count": 0,
+                      "purchase_shares": 0,
+                      "purchase_value": 0,
+                      "purchaser_count": 0,
+                      "sale_count": 3,
+                      "sale_shares": 34918,
+                      "sale_value": 7648632.45,
+                      "seller_count": 1,
+                      "tickers": [
+                        "NVDA"
+                      ],
+                      "transaction_date": "2026-09-17"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "issuer_cik": {
+                            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "issuer_name": {
+                            "description": "Name of the issuer company as reported in the filings.",
+                            "type": "string"
+                          },
+                          "last_filing_date": {
+                            "description": "Filing date of the latest filing that reported one of these transactions (formatted as YYYY-MM-DD). Transactions are usually filed within two business days.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "net_shares": {
+                            "description": "Shares purchased minus shares sold.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "net_value": {
+                            "description": "Value purchased minus value sold in USD.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "planned_purchase_value": {
+                            "description": "Value of shares purchased under a Rule 10b5-1 trading plan in USD. Zero on filings before the plan checkbox was introduced in 2023.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "planned_sale_value": {
+                            "description": "Value of shares sold under a Rule 10b5-1 trading plan in USD. Zero on filings before the plan checkbox was introduced in 2023.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "purchase_count": {
+                            "description": "Number of open-market purchase transactions.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "purchase_shares": {
+                            "description": "Shares purchased.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "purchase_value": {
+                            "description": "Value of shares purchased in USD.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "purchaser_count": {
+                            "description": "Number of distinct insiders who purchased.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "sale_count": {
+                            "description": "Number of open-market sale transactions.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "sale_shares": {
+                            "description": "Shares sold.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "sale_value": {
+                            "description": "Value of shares sold in USD.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "seller_count": {
+                            "description": "Number of distinct insiders who sold.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "tickers": {
+                            "description": "Ticker symbols of the issuer as of the transaction date. Multiple symbols may indicate different share classes; the totals cover the issuer, not each ticker.",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "transaction_date": {
+                            "description": "Date of the transactions (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "purchase_count",
+                          "purchaser_count",
+                          "purchase_shares",
+                          "purchase_value",
+                          "planned_purchase_value",
+                          "sale_count",
+                          "seller_count",
+                          "sale_shares",
+                          "sale_value",
+                          "planned_sale_value",
+                          "net_shares",
+                          "net_value"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
+    "/stocks/insiders/vX/holdings": {
+      "get": {
+        "description": "Insiders of each issuer: one row per reporting owner per issuer, from every SEC Form 3, 4, and 5 filing, with the shares they hold. Use it to see who the insiders of a company are and how much each owns, or to find the CIK of a director, officer, or 10%+ shareholder and then query the Form 4 endpoint by owner_cik for their filings across issuers. Name, roles, and title reflect the owner's most recent filing for that issuer. Share totals sum the latest reported balance of each of the owner's non-derivative positions (direct holdings and each trust, LLC, or family vehicle); see position_count and oldest_position_date for how fresh the sum is.",
+        "operationId": "get_stocks_insiders_vX_holdings",
+        "parameters": [
+          {
+            "description": "Filter for arrays that contain the value.",
+            "in": "query",
+            "name": "tickers",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.all_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "tickers.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+            "in": "query",
+            "name": "issuer_cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "issuer_cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "SEC Central Index Key of the reporting owner (10 digits, zero-padded). Stable across issuers and years; use it to follow a person through the Form 3, 4, and 5 endpoints.",
+            "in": "query",
+            "name": "owner_cik",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "owner_cik.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Date of the owner's most recent Form 3, 4, or 5 filing for this issuer (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_filing_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_filing_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_filing_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_filing_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "last_filing_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '10000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 10000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'last_filing_date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "last_filing_date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "count": 1,
+                  "next_url": "https://api.massive.com/stocks/insiders/vX/holdings?cursor=eyJsaW1pd...",
+                  "request_id": "047c7035a86042b1925118e5f68d81b0",
+                  "results": [
+                    {
+                      "filing_count": 94,
+                      "first_filing_date": "2013-10-09",
+                      "issuer_cik": "0001045810",
+                      "issuer_name": "NVIDIA CORP",
+                      "last_filing_date": "2026-09-18",
+                      "officer_title": "EVP & Chief Financial Officer",
+                      "oldest_position_date": "2021-09-15",
+                      "owner_cik": "0001588670",
+                      "owner_name": "Kress Colette",
+                      "ownership_pct": 0.0198,
+                      "position_count": 11,
+                      "roles": [
+                        "officer"
+                      ],
+                      "shares_owned": 4776533,
+                      "shares_owned_direct": 765103,
+                      "shares_owned_indirect": 4011430,
+                      "tickers": [
+                        "NVDA"
+                      ]
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "filing_count": {
+                            "description": "Number of Form 3, 4, and 5 filings by the owner for this issuer.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "first_filing_date": {
+                            "description": "Date of the owner's first Form 3, 4, or 5 filing for this issuer (formatted as YYYY-MM-DD). Filings begin in 2003.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "issuer_cik": {
+                            "description": "SEC Central Index Key of the issuer company (10 digits, zero-padded).",
+                            "type": "string"
+                          },
+                          "issuer_name": {
+                            "description": "Name of the issuer company as reported in the most recent filing.",
+                            "type": "string"
+                          },
+                          "last_filing_date": {
+                            "description": "Date of the owner's most recent Form 3, 4, or 5 filing for this issuer (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "officer_title": {
+                            "description": "Title of the officer in the most recent filing, if the reporting owner is an officer.",
+                            "type": "string"
+                          },
+                          "oldest_position_date": {
+                            "description": "Earliest as_of_date among the summed positions (formatted as YYYY-MM-DD). A date far behind last_filing_date means at least one position has not been restated recently and may be stale.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "owner_cik": {
+                            "description": "SEC Central Index Key of the reporting owner (10 digits, zero-padded). Stable across issuers and years; use it to follow a person through the Form 3, 4, and 5 endpoints.",
+                            "type": "string"
+                          },
+                          "owner_name": {
+                            "description": "Name of the reporting owner (individual or entity) as reported in the most recent filing.",
+                            "type": "string"
+                          },
+                          "ownership_pct": {
+                            "description": "shares_owned as a percentage of the issuer's shares outstanding (largest share class) as of last_filing_date. Absent when shares outstanding is not available for the issuer.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "position_count": {
+                            "description": "Number of positions summed into shares_owned: one for direct holdings plus one per indirect vehicle.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "roles": {
+                            "description": "Relationships of the reporting owner to the issuer in the most recent filing. Possible values: director, officer, ten_percent_owner, other.",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "shares_owned": {
+                            "description": "Shares of the issuer's non-derivative securities the owner holds: the sum of the latest reported balance of each position (direct, and each indirect vehicle) across their Form 3, 4, and 5 filings. As filed, not adjusted for splits. Unexercised options and other derivative securities are not included. Absent when the owner has never reported a share balance.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "shares_owned_direct": {
+                            "description": "Shares held directly, in the owner's own name.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "shares_owned_indirect": {
+                            "description": "Shares held indirectly through trusts, LLCs, family members, and other vehicles.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "tickers": {
+                            "description": "Ticker symbols of the issuer as of the owner's most recent filing. Multiple symbols may indicate different share classes.",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "filing_count"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ]
+      }
+    },
     "/stocks/taxonomies/vX/disclosures": {
       "get": {
         "description": "The complete list of 8-K disclosure classifications used in the 8-K disclosures endpoint.",

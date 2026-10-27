@@ -8239,6 +8239,188 @@ export interface GetStocksFinancialsV1Ratios200ResponseResultsInner {
      */
     'ticker': string;
 }
+export interface GetStocksInsidersVXActivity200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetStocksInsidersVXActivity200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetStocksInsidersVXActivity200ResponseStatusEnum;
+}
+
+export enum GetStocksInsidersVXActivity200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetStocksInsidersVXActivity200ResponseResultsInner {
+    /**
+     * SEC Central Index Key of the issuer company (10 digits, zero-padded).
+     */
+    'issuer_cik'?: string;
+    /**
+     * Name of the issuer company as reported in the filings.
+     */
+    'issuer_name'?: string;
+    /**
+     * Filing date of the latest filing that reported one of these transactions (formatted as YYYY-MM-DD). Transactions are usually filed within two business days.
+     */
+    'last_filing_date'?: string;
+    /**
+     * Shares purchased minus shares sold.
+     */
+    'net_shares': number;
+    /**
+     * Value purchased minus value sold in USD.
+     */
+    'net_value': number;
+    /**
+     * Value of shares purchased under a Rule 10b5-1 trading plan in USD. Zero on filings before the plan checkbox was introduced in 2023.
+     */
+    'planned_purchase_value': number;
+    /**
+     * Value of shares sold under a Rule 10b5-1 trading plan in USD. Zero on filings before the plan checkbox was introduced in 2023.
+     */
+    'planned_sale_value': number;
+    /**
+     * Number of open-market purchase transactions.
+     */
+    'purchase_count': number;
+    /**
+     * Shares purchased.
+     */
+    'purchase_shares': number;
+    /**
+     * Value of shares purchased in USD.
+     */
+    'purchase_value': number;
+    /**
+     * Number of distinct insiders who purchased.
+     */
+    'purchaser_count': number;
+    /**
+     * Number of open-market sale transactions.
+     */
+    'sale_count': number;
+    /**
+     * Shares sold.
+     */
+    'sale_shares': number;
+    /**
+     * Value of shares sold in USD.
+     */
+    'sale_value': number;
+    /**
+     * Number of distinct insiders who sold.
+     */
+    'seller_count': number;
+    /**
+     * Ticker symbols of the issuer as of the transaction date. Multiple symbols may indicate different share classes; the totals cover the issuer, not each ticker.
+     */
+    'tickers'?: Array<string>;
+    /**
+     * Date of the transactions (formatted as YYYY-MM-DD).
+     */
+    'transaction_date'?: string;
+}
+export interface GetStocksInsidersVXHoldings200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetStocksInsidersVXHoldings200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetStocksInsidersVXHoldings200ResponseStatusEnum;
+}
+
+export enum GetStocksInsidersVXHoldings200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetStocksInsidersVXHoldings200ResponseResultsInner {
+    /**
+     * Number of Form 3, 4, and 5 filings by the owner for this issuer.
+     */
+    'filing_count': number;
+    /**
+     * Date of the owner\'s first Form 3, 4, or 5 filing for this issuer (formatted as YYYY-MM-DD). Filings begin in 2003.
+     */
+    'first_filing_date'?: string;
+    /**
+     * SEC Central Index Key of the issuer company (10 digits, zero-padded).
+     */
+    'issuer_cik'?: string;
+    /**
+     * Name of the issuer company as reported in the most recent filing.
+     */
+    'issuer_name'?: string;
+    /**
+     * Date of the owner\'s most recent Form 3, 4, or 5 filing for this issuer (formatted as YYYY-MM-DD).
+     */
+    'last_filing_date'?: string;
+    /**
+     * Title of the officer in the most recent filing, if the reporting owner is an officer.
+     */
+    'officer_title'?: string;
+    /**
+     * Earliest as_of_date among the summed positions (formatted as YYYY-MM-DD). A date far behind last_filing_date means at least one position has not been restated recently and may be stale.
+     */
+    'oldest_position_date'?: string;
+    /**
+     * SEC Central Index Key of the reporting owner (10 digits, zero-padded). Stable across issuers and years; use it to follow a person through the Form 3, 4, and 5 endpoints.
+     */
+    'owner_cik'?: string;
+    /**
+     * Name of the reporting owner (individual or entity) as reported in the most recent filing.
+     */
+    'owner_name'?: string;
+    /**
+     * shares_owned as a percentage of the issuer\'s shares outstanding (largest share class) as of last_filing_date. Absent when shares outstanding is not available for the issuer.
+     */
+    'ownership_pct'?: number;
+    /**
+     * Number of positions summed into shares_owned: one for direct holdings plus one per indirect vehicle.
+     */
+    'position_count'?: number;
+    /**
+     * Relationships of the reporting owner to the issuer in the most recent filing. Possible values: director, officer, ten_percent_owner, other.
+     */
+    'roles'?: Array<string>;
+    /**
+     * Shares of the issuer\'s non-derivative securities the owner holds: the sum of the latest reported balance of each position (direct, and each indirect vehicle) across their Form 3, 4, and 5 filings. As filed, not adjusted for splits. Unexercised options and other derivative securities are not included. Absent when the owner has never reported a share balance.
+     */
+    'shares_owned'?: number;
+    /**
+     * Shares held directly, in the owner\'s own name.
+     */
+    'shares_owned_direct'?: number;
+    /**
+     * Shares held indirectly through trusts, LLCs, family members, and other vehicles.
+     */
+    'shares_owned_indirect'?: number;
+    /**
+     * Ticker symbols of the issuer as of the owner\'s most recent filing. Multiple symbols may indicate different share classes.
+     */
+    'tickers'?: Array<string>;
+}
 export interface GetStocksQuotes200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
@@ -22478,6 +22660,200 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Daily insider trading activity per issuer: open-market purchases and sales by directors, officers, and 10%+ shareholders, summed per issuer and transaction date from SEC Forms 4 and 5. Sum rows over a date range to build a rolling window of net insider buying or selling. Only purchases and sales of non-derivative securities count; grants, exercises, tax withholding, and gifts do not. Each transaction is counted once even when several reporting owners filed it jointly. Transactions replaced by a later amendment are excluded, and only transactions that could have been executed in the market are counted: the filed price is within 10% of the issuer\'s common-stock range on the transaction date, the size is at most 25% of the issuer\'s shares outstanding, and purchases are at most 10 times (sales 100 times) that day\'s consolidated volume. That excludes filer errors and bogus filings (an aggregate price entered as per-share, impossible share counts) and limits coverage to issuers with a listed common stock and a market price that day. A transaction reported by several affiliated entities, in one filing or several, is counted once. The underlying filings are available from the Form 4 and Form 5 endpoints.
+         * @param {string} [tickers] Filter for arrays that contain the value.
+         * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [issuerCik] SEC Central Index Key of the issuer company (10 digits, zero-padded).
+         * @param {string} [issuerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [transactionDate] Date of the transactions (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;transaction_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksInsidersVXActivity: async (tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, issuerCik?: string, issuerCikAnyOf?: string, transactionDate?: string, transactionDateGt?: string, transactionDateGte?: string, transactionDateLt?: string, transactionDateLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/stocks/insiders/vX/activity`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (tickers !== undefined) {
+                localVarQueryParameter['tickers'] = tickers;
+            }
+
+            if (tickersAllOf !== undefined) {
+                localVarQueryParameter['tickers.all_of'] = tickersAllOf;
+            }
+
+            if (tickersAnyOf !== undefined) {
+                localVarQueryParameter['tickers.any_of'] = tickersAnyOf;
+            }
+
+            if (issuerCik !== undefined) {
+                localVarQueryParameter['issuer_cik'] = issuerCik;
+            }
+
+            if (issuerCikAnyOf !== undefined) {
+                localVarQueryParameter['issuer_cik.any_of'] = issuerCikAnyOf;
+            }
+
+            if (transactionDate !== undefined) {
+                localVarQueryParameter['transaction_date'] = transactionDate;
+            }
+
+            if (transactionDateGt !== undefined) {
+                localVarQueryParameter['transaction_date.gt'] = transactionDateGt;
+            }
+
+            if (transactionDateGte !== undefined) {
+                localVarQueryParameter['transaction_date.gte'] = transactionDateGte;
+            }
+
+            if (transactionDateLt !== undefined) {
+                localVarQueryParameter['transaction_date.lt'] = transactionDateLt;
+            }
+
+            if (transactionDateLte !== undefined) {
+                localVarQueryParameter['transaction_date.lte'] = transactionDateLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Insiders of each issuer: one row per reporting owner per issuer, from every SEC Form 3, 4, and 5 filing, with the shares they hold. Use it to see who the insiders of a company are and how much each owns, or to find the CIK of a director, officer, or 10%+ shareholder and then query the Form 4 endpoint by owner_cik for their filings across issuers. Name, roles, and title reflect the owner\'s most recent filing for that issuer. Share totals sum the latest reported balance of each of the owner\'s non-derivative positions (direct holdings and each trust, LLC, or family vehicle); see position_count and oldest_position_date for how fresh the sum is.
+         * @param {string} [tickers] Filter for arrays that contain the value.
+         * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [issuerCik] SEC Central Index Key of the issuer company (10 digits, zero-padded).
+         * @param {string} [issuerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [ownerCik] SEC Central Index Key of the reporting owner (10 digits, zero-padded). Stable across issuers and years; use it to follow a person through the Form 3, 4, and 5 endpoints.
+         * @param {string} [ownerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [lastFilingDate] Date of the owner\&#39;s most recent Form 3, 4, or 5 filing for this issuer (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastFilingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastFilingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastFilingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastFilingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;last_filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksInsidersVXHoldings: async (tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, lastFilingDate?: string, lastFilingDateGt?: string, lastFilingDateGte?: string, lastFilingDateLt?: string, lastFilingDateLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/stocks/insiders/vX/holdings`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (tickers !== undefined) {
+                localVarQueryParameter['tickers'] = tickers;
+            }
+
+            if (tickersAllOf !== undefined) {
+                localVarQueryParameter['tickers.all_of'] = tickersAllOf;
+            }
+
+            if (tickersAnyOf !== undefined) {
+                localVarQueryParameter['tickers.any_of'] = tickersAnyOf;
+            }
+
+            if (issuerCik !== undefined) {
+                localVarQueryParameter['issuer_cik'] = issuerCik;
+            }
+
+            if (issuerCikAnyOf !== undefined) {
+                localVarQueryParameter['issuer_cik.any_of'] = issuerCikAnyOf;
+            }
+
+            if (ownerCik !== undefined) {
+                localVarQueryParameter['owner_cik'] = ownerCik;
+            }
+
+            if (ownerCikAnyOf !== undefined) {
+                localVarQueryParameter['owner_cik.any_of'] = ownerCikAnyOf;
+            }
+
+            if (lastFilingDate !== undefined) {
+                localVarQueryParameter['last_filing_date'] = lastFilingDate;
+            }
+
+            if (lastFilingDateGt !== undefined) {
+                localVarQueryParameter['last_filing_date.gt'] = lastFilingDateGt;
+            }
+
+            if (lastFilingDateGte !== undefined) {
+                localVarQueryParameter['last_filing_date.gte'] = lastFilingDateGte;
+            }
+
+            if (lastFilingDateLt !== undefined) {
+                localVarQueryParameter['last_filing_date.lt'] = lastFilingDateLt;
+            }
+
+            if (lastFilingDateLte !== undefined) {
+                localVarQueryParameter['last_filing_date.lte'] = lastFilingDateLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Get moving average convergence/divergence (MACD) data for a ticker symbol over a given time range.
          * @summary Moving Average Convergence/Divergence (MACD)
          * @param {string} stockTicker Specify a case-sensitive ticker symbol for which to get moving average convergence/divergence (MACD) data. For example, AAPL represents Apple Inc.
@@ -28426,6 +28802,54 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Daily insider trading activity per issuer: open-market purchases and sales by directors, officers, and 10%+ shareholders, summed per issuer and transaction date from SEC Forms 4 and 5. Sum rows over a date range to build a rolling window of net insider buying or selling. Only purchases and sales of non-derivative securities count; grants, exercises, tax withholding, and gifts do not. Each transaction is counted once even when several reporting owners filed it jointly. Transactions replaced by a later amendment are excluded, and only transactions that could have been executed in the market are counted: the filed price is within 10% of the issuer\'s common-stock range on the transaction date, the size is at most 25% of the issuer\'s shares outstanding, and purchases are at most 10 times (sales 100 times) that day\'s consolidated volume. That excludes filer errors and bogus filings (an aggregate price entered as per-share, impossible share counts) and limits coverage to issuers with a listed common stock and a market price that day. A transaction reported by several affiliated entities, in one filing or several, is counted once. The underlying filings are available from the Form 4 and Form 5 endpoints.
+         * @param {string} [tickers] Filter for arrays that contain the value.
+         * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [issuerCik] SEC Central Index Key of the issuer company (10 digits, zero-padded).
+         * @param {string} [issuerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [transactionDate] Date of the transactions (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [transactionDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;transaction_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStocksInsidersVXActivity(tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, issuerCik?: string, issuerCikAnyOf?: string, transactionDate?: string, transactionDateGt?: string, transactionDateGte?: string, transactionDateLt?: string, transactionDateLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksInsidersVXActivity200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksInsidersVXActivity(tickers, tickersAllOf, tickersAnyOf, issuerCik, issuerCikAnyOf, transactionDate, transactionDateGt, transactionDateGte, transactionDateLt, transactionDateLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksInsidersVXActivity']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Insiders of each issuer: one row per reporting owner per issuer, from every SEC Form 3, 4, and 5 filing, with the shares they hold. Use it to see who the insiders of a company are and how much each owns, or to find the CIK of a director, officer, or 10%+ shareholder and then query the Form 4 endpoint by owner_cik for their filings across issuers. Name, roles, and title reflect the owner\'s most recent filing for that issuer. Share totals sum the latest reported balance of each of the owner\'s non-derivative positions (direct holdings and each trust, LLC, or family vehicle); see position_count and oldest_position_date for how fresh the sum is.
+         * @param {string} [tickers] Filter for arrays that contain the value.
+         * @param {string} [tickersAllOf] Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickersAnyOf] Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [issuerCik] SEC Central Index Key of the issuer company (10 digits, zero-padded).
+         * @param {string} [issuerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [ownerCik] SEC Central Index Key of the reporting owner (10 digits, zero-padded). Stable across issuers and years; use it to follow a person through the Form 3, 4, and 5 endpoints.
+         * @param {string} [ownerCikAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [lastFilingDate] Date of the owner\&#39;s most recent Form 3, 4, or 5 filing for this issuer (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastFilingDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastFilingDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastFilingDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [lastFilingDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;last_filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStocksInsidersVXHoldings(tickers?: string, tickersAllOf?: string, tickersAnyOf?: string, issuerCik?: string, issuerCikAnyOf?: string, ownerCik?: string, ownerCikAnyOf?: string, lastFilingDate?: string, lastFilingDateGt?: string, lastFilingDateGte?: string, lastFilingDateLt?: string, lastFilingDateLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetStocksInsidersVXHoldings200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStocksInsidersVXHoldings(tickers, tickersAllOf, tickersAnyOf, issuerCik, issuerCikAnyOf, ownerCik, ownerCikAnyOf, lastFilingDate, lastFilingDateGt, lastFilingDateGte, lastFilingDateLt, lastFilingDateLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getStocksInsidersVXHoldings']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Get moving average convergence/divergence (MACD) data for a ticker symbol over a given time range.
          * @summary Moving Average Convergence/Divergence (MACD)
          * @param {string} stockTicker Specify a case-sensitive ticker symbol for which to get moving average convergence/divergence (MACD) data. For example, AAPL represents Apple Inc.
@@ -30280,6 +30704,24 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getStocksFinancialsV1Ratios(requestParameters: DefaultApiGetStocksFinancialsV1RatiosRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksFinancialsV1Ratios200Response> {
             return localVarFp.getStocksFinancialsV1Ratios(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.price, requestParameters.priceGt, requestParameters.priceGte, requestParameters.priceLt, requestParameters.priceLte, requestParameters.averageVolume, requestParameters.averageVolumeGt, requestParameters.averageVolumeGte, requestParameters.averageVolumeLt, requestParameters.averageVolumeLte, requestParameters.marketCap, requestParameters.marketCapGt, requestParameters.marketCapGte, requestParameters.marketCapLt, requestParameters.marketCapLte, requestParameters.earningsPerShare, requestParameters.earningsPerShareGt, requestParameters.earningsPerShareGte, requestParameters.earningsPerShareLt, requestParameters.earningsPerShareLte, requestParameters.priceToEarnings, requestParameters.priceToEarningsGt, requestParameters.priceToEarningsGte, requestParameters.priceToEarningsLt, requestParameters.priceToEarningsLte, requestParameters.priceToBook, requestParameters.priceToBookGt, requestParameters.priceToBookGte, requestParameters.priceToBookLt, requestParameters.priceToBookLte, requestParameters.priceToSales, requestParameters.priceToSalesGt, requestParameters.priceToSalesGte, requestParameters.priceToSalesLt, requestParameters.priceToSalesLte, requestParameters.priceToCashFlow, requestParameters.priceToCashFlowGt, requestParameters.priceToCashFlowGte, requestParameters.priceToCashFlowLt, requestParameters.priceToCashFlowLte, requestParameters.priceToFreeCashFlow, requestParameters.priceToFreeCashFlowGt, requestParameters.priceToFreeCashFlowGte, requestParameters.priceToFreeCashFlowLt, requestParameters.priceToFreeCashFlowLte, requestParameters.dividendYield, requestParameters.dividendYieldGt, requestParameters.dividendYieldGte, requestParameters.dividendYieldLt, requestParameters.dividendYieldLte, requestParameters.returnOnAssets, requestParameters.returnOnAssetsGt, requestParameters.returnOnAssetsGte, requestParameters.returnOnAssetsLt, requestParameters.returnOnAssetsLte, requestParameters.returnOnEquity, requestParameters.returnOnEquityGt, requestParameters.returnOnEquityGte, requestParameters.returnOnEquityLt, requestParameters.returnOnEquityLte, requestParameters.debtToEquity, requestParameters.debtToEquityGt, requestParameters.debtToEquityGte, requestParameters.debtToEquityLt, requestParameters.debtToEquityLte, requestParameters.current, requestParameters.currentGt, requestParameters.currentGte, requestParameters.currentLt, requestParameters.currentLte, requestParameters.quick, requestParameters.quickGt, requestParameters.quickGte, requestParameters.quickLt, requestParameters.quickLte, requestParameters.cash, requestParameters.cashGt, requestParameters.cashGte, requestParameters.cashLt, requestParameters.cashLte, requestParameters.evToSales, requestParameters.evToSalesGt, requestParameters.evToSalesGte, requestParameters.evToSalesLt, requestParameters.evToSalesLte, requestParameters.evToEbitda, requestParameters.evToEbitdaGt, requestParameters.evToEbitdaGte, requestParameters.evToEbitdaLt, requestParameters.evToEbitdaLte, requestParameters.enterpriseValue, requestParameters.enterpriseValueGt, requestParameters.enterpriseValueGte, requestParameters.enterpriseValueLt, requestParameters.enterpriseValueLte, requestParameters.freeCashFlow, requestParameters.freeCashFlowGt, requestParameters.freeCashFlowGte, requestParameters.freeCashFlowLt, requestParameters.freeCashFlowLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Daily insider trading activity per issuer: open-market purchases and sales by directors, officers, and 10%+ shareholders, summed per issuer and transaction date from SEC Forms 4 and 5. Sum rows over a date range to build a rolling window of net insider buying or selling. Only purchases and sales of non-derivative securities count; grants, exercises, tax withholding, and gifts do not. Each transaction is counted once even when several reporting owners filed it jointly. Transactions replaced by a later amendment are excluded, and only transactions that could have been executed in the market are counted: the filed price is within 10% of the issuer\'s common-stock range on the transaction date, the size is at most 25% of the issuer\'s shares outstanding, and purchases are at most 10 times (sales 100 times) that day\'s consolidated volume. That excludes filer errors and bogus filings (an aggregate price entered as per-share, impossible share counts) and limits coverage to issuers with a listed common stock and a market price that day. A transaction reported by several affiliated entities, in one filing or several, is counted once. The underlying filings are available from the Form 4 and Form 5 endpoints.
+         * @param {DefaultApiGetStocksInsidersVXActivityRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksInsidersVXActivity(requestParameters: DefaultApiGetStocksInsidersVXActivityRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksInsidersVXActivity200Response> {
+            return localVarFp.getStocksInsidersVXActivity(requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.transactionDate, requestParameters.transactionDateGt, requestParameters.transactionDateGte, requestParameters.transactionDateLt, requestParameters.transactionDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Insiders of each issuer: one row per reporting owner per issuer, from every SEC Form 3, 4, and 5 filing, with the shares they hold. Use it to see who the insiders of a company are and how much each owns, or to find the CIK of a director, officer, or 10%+ shareholder and then query the Form 4 endpoint by owner_cik for their filings across issuers. Name, roles, and title reflect the owner\'s most recent filing for that issuer. Share totals sum the latest reported balance of each of the owner\'s non-derivative positions (direct holdings and each trust, LLC, or family vehicle); see position_count and oldest_position_date for how fresh the sum is.
+         * @param {DefaultApiGetStocksInsidersVXHoldingsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStocksInsidersVXHoldings(requestParameters: DefaultApiGetStocksInsidersVXHoldingsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetStocksInsidersVXHoldings200Response> {
+            return localVarFp.getStocksInsidersVXHoldings(requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.lastFilingDate, requestParameters.lastFilingDateGt, requestParameters.lastFilingDateGte, requestParameters.lastFilingDateLt, requestParameters.lastFilingDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * Get moving average convergence/divergence (MACD) data for a ticker symbol over a given time range.
@@ -42080,6 +42522,202 @@ export interface DefaultApiGetStocksFinancialsV1RatiosRequest {
 }
 
 /**
+ * Request parameters for getStocksInsidersVXActivity operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetStocksInsidersVXActivityRequest
+ */
+export interface DefaultApiGetStocksInsidersVXActivityRequest {
+    /**
+     * Filter for arrays that contain the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly tickers?: string
+
+    /**
+     * Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly tickersAllOf?: string
+
+    /**
+     * Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly tickersAnyOf?: string
+
+    /**
+     * SEC Central Index Key of the issuer company (10 digits, zero-padded).
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly issuerCik?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly issuerCikAnyOf?: string
+
+    /**
+     * Date of the transactions (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly transactionDate?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly transactionDateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly transactionDateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly transactionDateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly transactionDateLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;transaction_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXActivity
+     */
+    readonly sort?: string
+}
+
+/**
+ * Request parameters for getStocksInsidersVXHoldings operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetStocksInsidersVXHoldingsRequest
+ */
+export interface DefaultApiGetStocksInsidersVXHoldingsRequest {
+    /**
+     * Filter for arrays that contain the value.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly tickers?: string
+
+    /**
+     * Filter for arrays that contain all of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly tickersAllOf?: string
+
+    /**
+     * Filter for arrays that contain any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly tickersAnyOf?: string
+
+    /**
+     * SEC Central Index Key of the issuer company (10 digits, zero-padded).
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly issuerCik?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly issuerCikAnyOf?: string
+
+    /**
+     * SEC Central Index Key of the reporting owner (10 digits, zero-padded). Stable across issuers and years; use it to follow a person through the Form 3, 4, and 5 endpoints.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly ownerCik?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly ownerCikAnyOf?: string
+
+    /**
+     * Date of the owner\&#39;s most recent Form 3, 4, or 5 filing for this issuer (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly lastFilingDate?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly lastFilingDateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly lastFilingDateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly lastFilingDateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly lastFilingDateLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;10000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;last_filing_date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetStocksInsidersVXHoldings
+     */
+    readonly sort?: string
+}
+
+/**
  * Request parameters for getStocksMACD operation in DefaultApi.
  * @export
  * @interface DefaultApiGetStocksMACDRequest
@@ -46507,6 +47145,28 @@ export class DefaultApi extends BaseAPI {
      */
     public getStocksFinancialsV1Ratios(requestParameters: DefaultApiGetStocksFinancialsV1RatiosRequest = {}, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getStocksFinancialsV1Ratios(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.cik, requestParameters.cikAnyOf, requestParameters.cikGt, requestParameters.cikGte, requestParameters.cikLt, requestParameters.cikLte, requestParameters.price, requestParameters.priceGt, requestParameters.priceGte, requestParameters.priceLt, requestParameters.priceLte, requestParameters.averageVolume, requestParameters.averageVolumeGt, requestParameters.averageVolumeGte, requestParameters.averageVolumeLt, requestParameters.averageVolumeLte, requestParameters.marketCap, requestParameters.marketCapGt, requestParameters.marketCapGte, requestParameters.marketCapLt, requestParameters.marketCapLte, requestParameters.earningsPerShare, requestParameters.earningsPerShareGt, requestParameters.earningsPerShareGte, requestParameters.earningsPerShareLt, requestParameters.earningsPerShareLte, requestParameters.priceToEarnings, requestParameters.priceToEarningsGt, requestParameters.priceToEarningsGte, requestParameters.priceToEarningsLt, requestParameters.priceToEarningsLte, requestParameters.priceToBook, requestParameters.priceToBookGt, requestParameters.priceToBookGte, requestParameters.priceToBookLt, requestParameters.priceToBookLte, requestParameters.priceToSales, requestParameters.priceToSalesGt, requestParameters.priceToSalesGte, requestParameters.priceToSalesLt, requestParameters.priceToSalesLte, requestParameters.priceToCashFlow, requestParameters.priceToCashFlowGt, requestParameters.priceToCashFlowGte, requestParameters.priceToCashFlowLt, requestParameters.priceToCashFlowLte, requestParameters.priceToFreeCashFlow, requestParameters.priceToFreeCashFlowGt, requestParameters.priceToFreeCashFlowGte, requestParameters.priceToFreeCashFlowLt, requestParameters.priceToFreeCashFlowLte, requestParameters.dividendYield, requestParameters.dividendYieldGt, requestParameters.dividendYieldGte, requestParameters.dividendYieldLt, requestParameters.dividendYieldLte, requestParameters.returnOnAssets, requestParameters.returnOnAssetsGt, requestParameters.returnOnAssetsGte, requestParameters.returnOnAssetsLt, requestParameters.returnOnAssetsLte, requestParameters.returnOnEquity, requestParameters.returnOnEquityGt, requestParameters.returnOnEquityGte, requestParameters.returnOnEquityLt, requestParameters.returnOnEquityLte, requestParameters.debtToEquity, requestParameters.debtToEquityGt, requestParameters.debtToEquityGte, requestParameters.debtToEquityLt, requestParameters.debtToEquityLte, requestParameters.current, requestParameters.currentGt, requestParameters.currentGte, requestParameters.currentLt, requestParameters.currentLte, requestParameters.quick, requestParameters.quickGt, requestParameters.quickGte, requestParameters.quickLt, requestParameters.quickLte, requestParameters.cash, requestParameters.cashGt, requestParameters.cashGte, requestParameters.cashLt, requestParameters.cashLte, requestParameters.evToSales, requestParameters.evToSalesGt, requestParameters.evToSalesGte, requestParameters.evToSalesLt, requestParameters.evToSalesLte, requestParameters.evToEbitda, requestParameters.evToEbitdaGt, requestParameters.evToEbitdaGte, requestParameters.evToEbitdaLt, requestParameters.evToEbitdaLte, requestParameters.enterpriseValue, requestParameters.enterpriseValueGt, requestParameters.enterpriseValueGte, requestParameters.enterpriseValueLt, requestParameters.enterpriseValueLte, requestParameters.freeCashFlow, requestParameters.freeCashFlowGt, requestParameters.freeCashFlowGte, requestParameters.freeCashFlowLt, requestParameters.freeCashFlowLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Daily insider trading activity per issuer: open-market purchases and sales by directors, officers, and 10%+ shareholders, summed per issuer and transaction date from SEC Forms 4 and 5. Sum rows over a date range to build a rolling window of net insider buying or selling. Only purchases and sales of non-derivative securities count; grants, exercises, tax withholding, and gifts do not. Each transaction is counted once even when several reporting owners filed it jointly. Transactions replaced by a later amendment are excluded, and only transactions that could have been executed in the market are counted: the filed price is within 10% of the issuer\'s common-stock range on the transaction date, the size is at most 25% of the issuer\'s shares outstanding, and purchases are at most 10 times (sales 100 times) that day\'s consolidated volume. That excludes filer errors and bogus filings (an aggregate price entered as per-share, impossible share counts) and limits coverage to issuers with a listed common stock and a market price that day. A transaction reported by several affiliated entities, in one filing or several, is counted once. The underlying filings are available from the Form 4 and Form 5 endpoints.
+     * @param {DefaultApiGetStocksInsidersVXActivityRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getStocksInsidersVXActivity(requestParameters: DefaultApiGetStocksInsidersVXActivityRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getStocksInsidersVXActivity(requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.transactionDate, requestParameters.transactionDateGt, requestParameters.transactionDateGte, requestParameters.transactionDateLt, requestParameters.transactionDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Insiders of each issuer: one row per reporting owner per issuer, from every SEC Form 3, 4, and 5 filing, with the shares they hold. Use it to see who the insiders of a company are and how much each owns, or to find the CIK of a director, officer, or 10%+ shareholder and then query the Form 4 endpoint by owner_cik for their filings across issuers. Name, roles, and title reflect the owner\'s most recent filing for that issuer. Share totals sum the latest reported balance of each of the owner\'s non-derivative positions (direct holdings and each trust, LLC, or family vehicle); see position_count and oldest_position_date for how fresh the sum is.
+     * @param {DefaultApiGetStocksInsidersVXHoldingsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getStocksInsidersVXHoldings(requestParameters: DefaultApiGetStocksInsidersVXHoldingsRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getStocksInsidersVXHoldings(requestParameters.tickers, requestParameters.tickersAllOf, requestParameters.tickersAnyOf, requestParameters.issuerCik, requestParameters.issuerCikAnyOf, requestParameters.ownerCik, requestParameters.ownerCikAnyOf, requestParameters.lastFilingDate, requestParameters.lastFilingDateGt, requestParameters.lastFilingDateGte, requestParameters.lastFilingDateLt, requestParameters.lastFilingDateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
