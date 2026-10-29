@@ -3995,7 +3995,7 @@ export enum GetFuturesV1Contracts200ResponseStatusEnum {
 
 export interface GetFuturesV1Contracts200ResponseResultsInner {
     /**
-     * Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date <= date >= last_trade_date) and false otherwise.
+     * Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date <= date <= last_trade_date) and false otherwise.
      */
     'active': boolean;
     /**
@@ -4214,7 +4214,7 @@ export interface GetFuturesV1Products200ResponseResultsInner {
      */
     'clearing_symbol'?: string;
     /**
-     * The trading venue (MIC) for the clearing house that clears this product\'s contracts.
+     * The exchange identifier for the clearing house that clears this product\'s contracts.
      */
     'clearing_venue'?: string;
     /**
@@ -4258,7 +4258,7 @@ export interface GetFuturesV1Products200ResponseResultsInner {
      */
     'settlement_type'?: string;
     /**
-     * The strategy type for combo products (e.g. spread, strip, pack). Null for single products.
+     * The strategy type for combo products (e.g. calendar, butterfly, strip). Null for single products.
      */
     'strategy_type'?: string;
     /**
@@ -5522,7 +5522,7 @@ export enum GetOptionsChain200ResponseResultsInnerLastQuoteTimeframeEnum {
  */
 export interface GetOptionsChain200ResponseResultsInnerLastTrade {
     /**
-     * A list of condition codes.
+     * A list of condition codes. See [Options Condition Codes](https://massive.com/docs/rest/options/market-operations/condition-codes) for what each code means.
      */
     'conditions'?: Array<number>;
     /**
@@ -6073,182 +6073,6 @@ export interface GetRelatedCompanies200ResponseResultsInner {
      */
     'ticker': string;
 }
-export interface GetSnapshotSummary200Response {
-    /**
-     * A request id assigned by the server.
-     */
-    'request_id': string;
-    /**
-     * An array of results containing the requested data.
-     */
-    'results'?: Array<GetSnapshotSummary200ResponseResultsInner>;
-    /**
-     * The status of this request\'s response.
-     */
-    'status': string;
-}
-export interface GetSnapshotSummary200ResponseResultsInner {
-    'branding'?: GetSnapshotSummary200ResponseResultsInnerBranding;
-    /**
-     * The error while looking for this ticker.
-     */
-    'error'?: string;
-    /**
-     * The nanosecond timestamp of when this information was updated.
-     */
-    'last_updated'?: number;
-    /**
-     * The market status for the market that trades this ticker.
-     */
-    'market_status'?: string;
-    /**
-     * The error message while looking for this ticker.
-     */
-    'message'?: string;
-    /**
-     * Name of ticker, forex, or crypto asset.
-     */
-    'name'?: string;
-    'options'?: GetSnapshotSummary200ResponseResultsInnerOptions;
-    /**
-     * The most up to date ticker price.
-     */
-    'price'?: number;
-    'session'?: GetSnapshotSummary200ResponseResultsInnerSession;
-    /**
-     * Ticker of asset queried.
-     */
-    'ticker': string;
-    /**
-     * The market for this ticker of stock, crypto, fx, option.
-     */
-    'type'?: GetSnapshotSummary200ResponseResultsInnerTypeEnum;
-}
-
-export enum GetSnapshotSummary200ResponseResultsInnerTypeEnum {
-    Stocks = 'stocks',
-    Crypto = 'crypto',
-    Options = 'options',
-    Fx = 'fx'
-}
-
-export interface GetSnapshotSummary200ResponseResultsInnerBranding {
-    /**
-     * A link to this ticker\'s company\'s icon. Icon\'s are generally smaller, square images that represent the company at a glance. Note that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.
-     */
-    'icon_url'?: string;
-    /**
-     * A link to this ticker\'s company\'s logo. Note that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.
-     */
-    'logo_url'?: string;
-}
-export interface GetSnapshotSummary200ResponseResultsInnerOptions {
-    /**
-     * The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".
-     */
-    'contract_type': GetSnapshotSummary200ResponseResultsInnerOptionsContractTypeEnum;
-    /**
-     * The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.
-     */
-    'exercise_style': GetSnapshotSummary200ResponseResultsInnerOptionsExerciseStyleEnum;
-    /**
-     * The contract\'s expiration date in YYYY-MM-DD format.
-     */
-    'expiration_date': string;
-    /**
-     * The number of shares per contract for this contract.
-     */
-    'shares_per_contract': number;
-    /**
-     * The strike price of the option contract.
-     */
-    'strike_price': number;
-    /**
-     * The ticker for the option contract.
-     */
-    'underlying_ticker': string;
-}
-
-export enum GetSnapshotSummary200ResponseResultsInnerOptionsContractTypeEnum {
-    Put = 'put',
-    Call = 'call',
-    Other = 'other'
-}
-export enum GetSnapshotSummary200ResponseResultsInnerOptionsExerciseStyleEnum {
-    American = 'american',
-    European = 'european',
-    Bermudan = 'bermudan'
-}
-
-/**
- * Comprehensive trading session metrics, detailing price changes, trading volume, and key price points (open, close, high, low) for the asset within the current trading day. Includes specific changes during early, regular, and late trading periods to enable detailed performance analysis and trend tracking.
- */
-export interface GetSnapshotSummary200ResponseResultsInnerSession {
-    /**
-     * The value of the price change for the asset from the previous trading day.
-     */
-    'change': number;
-    /**
-     * The percent of the price change for the asset from the previous trading day.
-     */
-    'change_percent': number;
-    /**
-     * The closing price of the asset for the day.
-     */
-    'close': number;
-    /**
-     * The trading volume for the asset for the day with decimal precision. This field provides support for fractional shares, representing volume as a decimal string. This field is only returned for stocks snapshots.
-     */
-    'decimal_volume'?: string;
-    /**
-     * Today\'s early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.
-     */
-    'early_trading_change'?: number;
-    /**
-     * Today\'s early trading change as a percentage.
-     */
-    'early_trading_change_percent'?: number;
-    /**
-     * The highest price of the asset for the day.
-     */
-    'high': number;
-    /**
-     * Today\'s late trading change amount, difference between price and today\'s close if in late trading hours, otherwise difference between last price during late trading and today\'s close.
-     */
-    'late_trading_change'?: number;
-    /**
-     * Today\'s late trading change as a percentage.
-     */
-    'late_trading_change_percent'?: number;
-    /**
-     * The lowest price of the asset for the day.
-     */
-    'low': number;
-    /**
-     * The open price of the asset for the day.
-     */
-    'open': number;
-    /**
-     * The closing price of the asset for the previous trading day.
-     */
-    'previous_close': number;
-    /**
-     * The price of the most recent trade or bid price for this asset.
-     */
-    'price'?: number;
-    /**
-     * Today\'s change in regular trading hours, difference between current price and previous trading day\'s close, otherwise difference between today\'s close and previous day\'s close.
-     */
-    'regular_trading_change'?: number;
-    /**
-     * Today\'s regular trading change as a percentage.
-     */
-    'regular_trading_change_percent'?: number;
-    /**
-     * The trading volume for the asset for the day.
-     */
-    'volume'?: number;
-}
 export interface GetSnapshots200Response {
     /**
      * If present, this value can be used to fetch the next page of data.
@@ -6313,7 +6137,7 @@ export interface GetSnapshots200ResponseResultsInner {
      * The quantity of this contract held at the end of the last trading day.
      */
     'open_interest'?: number;
-    'session'?: GetSnapshotSummary200ResponseResultsInnerSession;
+    'session'?: GetSnapshots200ResponseResultsInnerSession;
     /**
      * The ticker symbol for the asset.
      */
@@ -6492,7 +6316,7 @@ export enum GetSnapshots200ResponseResultsInnerLastQuoteTimeframeEnum {
  */
 export interface GetSnapshots200ResponseResultsInnerLastTrade {
     /**
-     * A list of condition codes.
+     * A list of condition codes. The codes depend on the asset type; see the condition codes for [stocks](https://massive.com/docs/rest/stocks/market-operations/condition-codes), [options](https://massive.com/docs/rest/options/market-operations/condition-codes), or [crypto](https://massive.com/docs/rest/crypto/market-operations/condition-codes).
      */
     'conditions'?: Array<number>;
     /**
@@ -6538,6 +6362,75 @@ export enum GetSnapshots200ResponseResultsInnerLastTradeTimeframeEnum {
     RealTime = 'REAL-TIME'
 }
 
+/**
+ * Comprehensive trading session metrics, detailing price changes, trading volume, and key price points (open, close, high, low) for the asset within the current trading day. Includes specific changes during early, regular, and late trading periods to enable detailed performance analysis and trend tracking.  Values describe the current trading session only; nothing carries over from the previous session apart from `previous_close`. For stocks snapshots, an asset that has not traded yet this session reports `volume: 0` with the price and change fields omitted rather than reported as 0.  During early trading on stocks snapshots, `volume` and `price` track the session as it happens, but `open`, `high`, `low`, `close` and `vwap` are omitted until the regular session opens, as those report official session prices. They appear from the open and remain through late trading.
+ */
+export interface GetSnapshots200ResponseResultsInnerSession {
+    /**
+     * The value of the price change for the asset from the previous trading day.
+     */
+    'change'?: number;
+    /**
+     * The percent of the price change for the asset from the previous trading day.
+     */
+    'change_percent'?: number;
+    /**
+     * The closing price of the asset for the day.
+     */
+    'close'?: number;
+    /**
+     * The trading volume for the asset for the day with decimal precision. This field provides support for fractional shares, representing volume as a decimal string. This field is only returned for stocks snapshots.
+     */
+    'decimal_volume'?: string;
+    /**
+     * Today\'s early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.
+     */
+    'early_trading_change'?: number;
+    /**
+     * Today\'s early trading change as a percentage.
+     */
+    'early_trading_change_percent'?: number;
+    /**
+     * The highest price of the asset for the day.
+     */
+    'high'?: number;
+    /**
+     * Today\'s late trading change amount, difference between price and today\'s close if in late trading hours, otherwise difference between last price during late trading and today\'s close.
+     */
+    'late_trading_change'?: number;
+    /**
+     * Today\'s late trading change as a percentage.
+     */
+    'late_trading_change_percent'?: number;
+    /**
+     * The lowest price of the asset for the day.
+     */
+    'low'?: number;
+    /**
+     * The open price of the asset for the day.
+     */
+    'open'?: number;
+    /**
+     * The closing price of the asset for the previous trading day. This is the correct field for the prior session\'s reference price, and it is retained across the daily session rollover. It is absent only for an asset with no completed prior session, such as a newly listed ticker or option contract.
+     */
+    'previous_close'?: number;
+    /**
+     * The price of the most recent trade or bid price for this asset.
+     */
+    'price'?: number;
+    /**
+     * Today\'s change in regular trading hours, difference between current price and previous trading day\'s close, otherwise difference between today\'s close and previous day\'s close.
+     */
+    'regular_trading_change'?: number;
+    /**
+     * Today\'s regular trading change as a percentage.
+     */
+    'regular_trading_change_percent'?: number;
+    /**
+     * The trading volume for the asset for the day. A value of 0 means no trades have occurred yet in the current session.
+     */
+    'volume'?: number;
+}
 /**
  * Information on the underlying stock for this options contract.  The market data returned depends on your current stocks plan.
  */
@@ -16640,7 +16533,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [tickerGte] Filter greater than or equal to the value.
          * @param {string} [tickerLt] Filter less than the value.
          * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {boolean} [active] Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date &lt;&#x3D; date &gt;&#x3D; last_trade_date) and false otherwise.
+         * @param {boolean} [active] Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date &lt;&#x3D; date &lt;&#x3D; last_trade_date) and false otherwise.
          * @param {GetFuturesV1ContractsTypeEnum} [type] The type of contract, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for contracts where type is \&#39;single\&#39;, \&#39;combo\&#39; or empty. This field only exists on contracts as of 2025-03-12 and later. It will be null when date &lt; 2025-03-12.
          * @param {GetFuturesV1ContractsTypeAnyOfEnum} [typeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [firstTradeDate] The first day on which the contract was tradeable. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -19757,44 +19650,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             // authentication apiKey required
             await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Get everything needed to visualize the tick-by-tick movement of a list of tickers.
-         * @summary Summaries
-         * @param {string} [tickerAnyOf] Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See &lt;a rel&#x3D;\&quot;nofollow\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://massive.com/docs/rest/stocks/tickers/all-tickers\&quot;&gt;the tickers endpoint&lt;/a&gt; for more details on supported tickers. If no tickers are passed then no results will be returned.  Warning: The maximum number of characters allowed in a URL are subject to your technology stack.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSnapshotSummary: async (tickerAnyOf?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/v1/summaries`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
-
-            if (tickerAnyOf !== undefined) {
-                localVarQueryParameter['ticker.any_of'] = tickerAnyOf;
-            }
 
 
     
@@ -27275,7 +27130,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [tickerGte] Filter greater than or equal to the value.
          * @param {string} [tickerLt] Filter less than the value.
          * @param {string} [tickerLte] Filter less than or equal to the value.
-         * @param {boolean} [active] Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date &lt;&#x3D; date &gt;&#x3D; last_trade_date) and false otherwise.
+         * @param {boolean} [active] Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date &lt;&#x3D; date &lt;&#x3D; last_trade_date) and false otherwise.
          * @param {GetFuturesV1ContractsTypeEnum} [type] The type of contract, one of \&#39;single\&#39; or \&#39;combo\&#39;. Leaving this filter blank will query for contracts where type is \&#39;single\&#39;, \&#39;combo\&#39; or empty. This field only exists on contracts as of 2025-03-12 and later. It will be null when date &lt; 2025-03-12.
          * @param {GetFuturesV1ContractsTypeAnyOfEnum} [typeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
          * @param {string} [firstTradeDate] The first day on which the contract was tradeable. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
@@ -28129,19 +27984,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRelatedCompanies(ticker, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getRelatedCompanies']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Get everything needed to visualize the tick-by-tick movement of a list of tickers.
-         * @summary Summaries
-         * @param {string} [tickerAnyOf] Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See &lt;a rel&#x3D;\&quot;nofollow\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://massive.com/docs/rest/stocks/tickers/all-tickers\&quot;&gt;the tickers endpoint&lt;/a&gt; for more details on supported tickers. If no tickers are passed then no results will be returned.  Warning: The maximum number of characters allowed in a URL are subject to your technology stack.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getSnapshotSummary(tickerAnyOf?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetSnapshotSummary200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getSnapshotSummary(tickerAnyOf, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getSnapshotSummary']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -30529,16 +30371,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getRelatedCompanies(requestParameters: DefaultApiGetRelatedCompaniesRequest, options?: RawAxiosRequestConfig): Promise<GetRelatedCompanies200Response> {
             return localVarFp.getRelatedCompanies(requestParameters.ticker, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Get everything needed to visualize the tick-by-tick movement of a list of tickers.
-         * @summary Summaries
-         * @param {DefaultApiGetSnapshotSummaryRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSnapshotSummary(requestParameters: DefaultApiGetSnapshotSummaryRequest = {}, options?: RawAxiosRequestConfig): Promise<GetSnapshotSummary200Response> {
-            return localVarFp.getSnapshotSummary(requestParameters.tickerAnyOf, options).then((request) => request(axios, basePath));
         },
         /**
          * Get snapshots for assets of all types
@@ -36620,7 +36452,7 @@ export interface DefaultApiGetFuturesV1ContractsRequest {
     readonly tickerLte?: string
 
     /**
-     * Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date &lt;&#x3D; date &gt;&#x3D; last_trade_date) and false otherwise.
+     * Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date &lt;&#x3D; date &lt;&#x3D; last_trade_date) and false otherwise.
      * @type {boolean}
      * @memberof DefaultApiGetFuturesV1Contracts
      */
@@ -39187,20 +39019,6 @@ export interface DefaultApiGetRelatedCompaniesRequest {
      * @memberof DefaultApiGetRelatedCompanies
      */
     readonly ticker: string
-}
-
-/**
- * Request parameters for getSnapshotSummary operation in DefaultApi.
- * @export
- * @interface DefaultApiGetSnapshotSummaryRequest
- */
-export interface DefaultApiGetSnapshotSummaryRequest {
-    /**
-     * Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See &lt;a rel&#x3D;\&quot;nofollow\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://massive.com/docs/rest/stocks/tickers/all-tickers\&quot;&gt;the tickers endpoint&lt;/a&gt; for more details on supported tickers. If no tickers are passed then no results will be returned.  Warning: The maximum number of characters allowed in a URL are subject to your technology stack.
-     * @type {string}
-     * @memberof DefaultApiGetSnapshotSummary
-     */
-    readonly tickerAnyOf?: string
 }
 
 /**
@@ -46932,18 +46750,6 @@ export class DefaultApi extends BaseAPI {
      */
     public getRelatedCompanies(requestParameters: DefaultApiGetRelatedCompaniesRequest, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getRelatedCompanies(requestParameters.ticker, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Get everything needed to visualize the tick-by-tick movement of a list of tickers.
-     * @summary Summaries
-     * @param {DefaultApiGetSnapshotSummaryRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getSnapshotSummary(requestParameters: DefaultApiGetSnapshotSummaryRequest = {}, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getSnapshotSummary(requestParameters.tickerAnyOf, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
