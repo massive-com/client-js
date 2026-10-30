@@ -15084,7 +15084,7 @@
             }
           },
           {
-            "description": "Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date <= date >= last_trade_date) and false otherwise.",
+            "description": "Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date <= date <= last_trade_date) and false otherwise.",
             "in": "query",
             "name": "active",
             "schema": {
@@ -15238,7 +15238,7 @@
                       "provider_id": "H3ZLPMESGCUM",
                       "provider_product_id": "VGQ4V6NVXLBW",
                       "settlement_date": "2026-12-18",
-                      "settlement_tick_size": 0.0025,
+                      "settlement_tick_size": 0.25,
                       "spread_tick_size": 0.01,
                       "ticker": "ESZ6",
                       "trade_tick_size": 0.25,
@@ -15263,7 +15263,7 @@
                       "items": {
                         "properties": {
                           "active": {
-                            "description": "Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date <= date >= last_trade_date) and false otherwise.",
+                            "description": "Whether or not a given contract was tradeable at the given point in time. Active is true when (first_trade_date <= date <= last_trade_date) and false otherwise.",
                             "type": "boolean"
                           },
                           "date": {
@@ -16214,8 +16214,8 @@
                     {
                       "asset_class": "commodity",
                       "asset_sub_class": "energy",
-                      "clearing_symbol": "EBE",
-                      "clearing_venue": "XCME",
+                      "clearing_symbol": "EBF",
+                      "clearing_venue": "NYMEX",
                       "date": "2025-07-07",
                       "last_updated": "2025-02-22",
                       "name": "1% Fuel Oil Barges FOB Rdam (Platts) vs. 1% Fuel Oil Cargoes FOB NWE (Platts) BALMO Futures",
@@ -16263,7 +16263,7 @@
                             "type": "string"
                           },
                           "clearing_venue": {
-                            "description": "The trading venue (MIC) for the clearing house that clears this product's contracts.",
+                            "description": "The exchange identifier for the clearing house that clears this product's contracts.",
                             "type": "string"
                           },
                           "date": {
@@ -16309,7 +16309,7 @@
                             "type": "string"
                           },
                           "strategy_type": {
-                            "description": "The strategy type for combo products (e.g. spread, strip, pack). Null for single products.",
+                            "description": "The strategy type for combo products (e.g. calendar, butterfly, strip). Null for single products.",
                             "type": "string"
                           },
                           "sub_sector": {
@@ -37830,396 +37830,6 @@
         }
       }
     },
-    "/v1/summaries": {
-      "get": {
-        "description": "Get everything needed to visualize the tick-by-tick movement of a list of tickers.",
-        "operationId": "GetSnapshotSummary",
-        "parameters": [
-          {
-            "description": "Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/docs/rest/stocks/tickers/all-tickers\">the tickers endpoint</a> for more details on supported tickers. If no tickers are passed then no results will be returned.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.",
-            "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD",
-            "in": "query",
-            "name": "ticker.any_of",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "request_id": "abc123",
-                  "results": [
-                    {
-                      "branding": {
-                        "icon_url": "https://api.massive.com/icon.png",
-                        "logo_url": "https://api.massive.com/logo.svg"
-                      },
-                      "last_updated": 1679597116344223500,
-                      "market_status": "closed",
-                      "name": "Norwegian Cruise Lines",
-                      "price": 22.3,
-                      "session": {
-                        "change": -1.05,
-                        "change_percent": -4.67,
-                        "close": 21.4,
-                        "decimal_volume": "37.0",
-                        "early_trading_change": -0.39,
-                        "early_trading_change_percent": -0.07,
-                        "high": 22.49,
-                        "late_trading_change": 1.2,
-                        "late_trading_change_percent": 3.92,
-                        "low": 21.35,
-                        "open": 22.49,
-                        "previous_close": 22.45,
-                        "volume": 37
-                      },
-                      "ticker": "NCLH",
-                      "type": "stocks"
-                    },
-                    {
-                      "last_updated": 1679597116344223500,
-                      "market_status": "closed",
-                      "name": "NCLH $5 Call",
-                      "options": {
-                        "contract_type": "call",
-                        "exercise_style": "american",
-                        "expiration_date": "2022-10-14",
-                        "shares_per_contract": 100,
-                        "strike_price": 5,
-                        "underlying_ticker": "NCLH"
-                      },
-                      "price": 6.6,
-                      "session": {
-                        "change": -0.05,
-                        "change_percent": -1.07,
-                        "close": 6.65,
-                        "early_trading_change": -0.01,
-                        "early_trading_change_percent": -0.03,
-                        "high": 7.01,
-                        "late_trading_change": -0.4,
-                        "late_trading_change_percent": -0.02,
-                        "low": 5.42,
-                        "open": 6.7,
-                        "previous_close": 6.71,
-                        "volume": 67
-                      },
-                      "ticker": "O:NCLH221014C00005000",
-                      "type": "options"
-                    },
-                    {
-                      "last_updated": 1679597116344223500,
-                      "market_status": "open",
-                      "name": "Euro - United States Dollar",
-                      "price": 0.97989,
-                      "session": {
-                        "change": -0.0001,
-                        "change_percent": -0.67,
-                        "close": 0.97989,
-                        "high": 0.98999,
-                        "low": 0.96689,
-                        "open": 0.97889,
-                        "previous_close": 0.98001
-                      },
-                      "ticker": "C:EURUSD",
-                      "type": "fx"
-                    },
-                    {
-                      "branding": {
-                        "icon_url": "https://api.massive.com/icon.png",
-                        "logo_url": "https://api.massive.com/logo.svg"
-                      },
-                      "last_updated": 1679597116344223500,
-                      "market_status": "open",
-                      "name": "Bitcoin - United States Dollar",
-                      "price": 32154.68,
-                      "session": {
-                        "change": -201.23,
-                        "change_percent": -0.77,
-                        "close": 32154.68,
-                        "high": 33124.28,
-                        "low": 28182.88,
-                        "open": 31129.32,
-                        "previous_close": 33362.18
-                      },
-                      "ticker": "X:BTCUSD",
-                      "type": "crypto"
-                    },
-                    {
-                      "error": "NOT_FOUND",
-                      "message": "Ticker not found.",
-                      "ticker": "APx"
-                    }
-                  ],
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "request_id": {
-                      "description": "A request id assigned by the server.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "description": "An array of results containing the requested data.",
-                      "items": {
-                        "properties": {
-                          "branding": {
-                            "properties": {
-                              "icon_url": {
-                                "description": "A link to this ticker's company's icon. Icon's are generally smaller, square images that represent the company at a glance.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.",
-                                "type": "string"
-                              },
-                              "logo_url": {
-                                "description": "A link to this ticker's company's logo.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object",
-                            "x-polygon-go-type": {
-                              "name": "Branding"
-                            }
-                          },
-                          "error": {
-                            "description": "The error while looking for this ticker.",
-                            "type": "string"
-                          },
-                          "last_updated": {
-                            "description": "The nanosecond timestamp of when this information was updated.",
-                            "format": "int64",
-                            "type": "integer",
-                            "x-polygon-go-type": {
-                              "name": "INanoseconds",
-                              "path": "github.com/polygon-io/ptime"
-                            }
-                          },
-                          "market_status": {
-                            "description": "The market status for the market that trades this ticker.",
-                            "type": "string"
-                          },
-                          "message": {
-                            "description": "The error message while looking for this ticker.",
-                            "type": "string"
-                          },
-                          "name": {
-                            "description": "Name of ticker, forex, or crypto asset.",
-                            "type": "string"
-                          },
-                          "options": {
-                            "properties": {
-                              "contract_type": {
-                                "description": "The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".",
-                                "enum": [
-                                  "put",
-                                  "call",
-                                  "other"
-                                ],
-                                "type": "string"
-                              },
-                              "exercise_style": {
-                                "description": "The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.",
-                                "enum": [
-                                  "american",
-                                  "european",
-                                  "bermudan"
-                                ],
-                                "type": "string"
-                              },
-                              "expiration_date": {
-                                "description": "The contract's expiration date in YYYY-MM-DD format.",
-                                "format": "date",
-                                "type": "string",
-                                "x-polygon-go-type": {
-                                  "name": "IDaysPolygonDateString",
-                                  "path": "github.com/polygon-io/ptime"
-                                }
-                              },
-                              "shares_per_contract": {
-                                "description": "The number of shares per contract for this contract.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "strike_price": {
-                                "description": "The strike price of the option contract.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "underlying_ticker": {
-                                "description": "The ticker for the option contract.",
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "contract_type",
-                              "expiration_date",
-                              "exercise_style",
-                              "shares_per_contract",
-                              "strike_price",
-                              "underlying_ticker"
-                            ],
-                            "type": "object",
-                            "x-polygon-go-type": {
-                              "name": "Options"
-                            }
-                          },
-                          "price": {
-                            "description": "The most up to date ticker price.",
-                            "format": "double",
-                            "type": "number"
-                          },
-                          "session": {
-                            "description": "Comprehensive trading session metrics, detailing price changes, trading volume, and key price points (open, close, high, low) for the asset within the current trading day. Includes specific changes during early, regular, and late trading periods to enable detailed performance analysis and trend tracking.",
-                            "properties": {
-                              "change": {
-                                "description": "The value of the price change for the asset from the previous trading day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "change_percent": {
-                                "description": "The percent of the price change for the asset from the previous trading day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "close": {
-                                "description": "The closing price of the asset for the day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "decimal_volume": {
-                                "description": "The trading volume for the asset for the day with decimal precision. This field provides support for fractional shares, representing volume as a decimal string. This field is only returned for stocks snapshots.",
-                                "type": "string"
-                              },
-                              "early_trading_change": {
-                                "description": "Today's early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "early_trading_change_percent": {
-                                "description": "Today's early trading change as a percentage.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "high": {
-                                "description": "The highest price of the asset for the day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "late_trading_change": {
-                                "description": "Today's late trading change amount, difference between price and today's close if in late trading hours, otherwise difference between last price during late trading and today's close.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "late_trading_change_percent": {
-                                "description": "Today's late trading change as a percentage.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "low": {
-                                "description": "The lowest price of the asset for the day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "open": {
-                                "description": "The open price of the asset for the day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "previous_close": {
-                                "description": "The closing price of the asset for the previous trading day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "price": {
-                                "description": "The price of the most recent trade or bid price for this asset.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "regular_trading_change": {
-                                "description": "Today's change in regular trading hours, difference between current price and previous trading day's close, otherwise difference between today's close and previous day's close.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "regular_trading_change_percent": {
-                                "description": "Today's regular trading change as a percentage.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "volume": {
-                                "description": "The trading volume for the asset for the day.",
-                                "format": "double",
-                                "type": "number"
-                              }
-                            },
-                            "required": [
-                              "change",
-                              "change_percent",
-                              "close",
-                              "high",
-                              "low",
-                              "open",
-                              "previous_close"
-                            ],
-                            "type": "object",
-                            "x-polygon-go-type": {
-                              "name": "Session"
-                            }
-                          },
-                          "ticker": {
-                            "description": "Ticker of asset queried.",
-                            "type": "string"
-                          },
-                          "type": {
-                            "description": "The market for this ticker of stock, crypto, fx, option.",
-                            "enum": [
-                              "stocks",
-                              "crypto",
-                              "options",
-                              "fx"
-                            ],
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "ticker"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "SummaryResult"
-                        }
-                      },
-                      "type": "array"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Snapshot Summary for ticker list"
-          }
-        },
-        "summary": "Summaries",
-        "x-polygon-entitlement-data-type": {
-          "description": "Aggregate data",
-          "name": "aggregates"
-        },
-        "x-polygon-entitlement-market-type": {
-          "description": "Stocks data",
-          "name": "stocks"
-        },
-        "tags": [
-          "default"
-        ]
-      }
-    },
     "/v2/aggs/grouped/locale/global/market/crypto/{date}": {
       "get": {
         "description": "Get the daily open, high, low, and close (OHLC) for the entire cryptocurrency markets.\n",
@@ -50686,9 +50296,9 @@
                             "description": "The most recent quote for this contract. This is only returned if your current plan includes trades.",
                             "properties": {
                               "conditions": {
-                                "description": "A list of condition codes.",
+                                "description": "A list of condition codes. The codes depend on the asset type; see the condition codes for [stocks](https://massive.com/docs/rest/stocks/market-operations/condition-codes), [options](https://massive.com/docs/rest/options/market-operations/condition-codes), or [crypto](https://massive.com/docs/rest/crypto/market-operations/condition-codes).",
                                 "items": {
-                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/stocks/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                                  "description": "The condition code.",
                                   "format": "int32",
                                   "type": "integer"
                                 },
@@ -50780,7 +50390,7 @@
                             "type": "number"
                           },
                           "session": {
-                            "description": "Comprehensive trading session metrics, detailing price changes, trading volume, and key price points (open, close, high, low) for the asset within the current trading day. Includes specific changes during early, regular, and late trading periods to enable detailed performance analysis and trend tracking.",
+                            "description": "Comprehensive trading session metrics, detailing price changes, trading volume, and key price points (open, close, high, low) for the asset within the current trading day. Includes specific changes during early, regular, and late trading periods to enable detailed performance analysis and trend tracking.\n\nValues describe the current trading session only; nothing carries over from the previous session apart from `previous_close`. For stocks snapshots, an asset that has not traded yet this session reports `volume: 0` with the price and change fields omitted rather than reported as 0.\n\nDuring early trading on stocks snapshots, `volume` and `price` track the session as it happens, but `open`, `high`, `low`, `close` and `vwap` are omitted until the regular session opens, as those report official session prices. They appear from the open and remain through late trading.",
                             "properties": {
                               "change": {
                                 "description": "The value of the price change for the asset from the previous trading day.",
@@ -50837,7 +50447,7 @@
                                 "type": "number"
                               },
                               "previous_close": {
-                                "description": "The closing price of the asset for the previous trading day.",
+                                "description": "The closing price of the asset for the previous trading day. This is the correct field for the prior session's reference price, and it is retained across the daily session rollover. It is absent only for an asset with no completed prior session, such as a newly listed ticker or option contract.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -50857,20 +50467,11 @@
                                 "type": "number"
                               },
                               "volume": {
-                                "description": "The trading volume for the asset for the day.",
+                                "description": "The trading volume for the asset for the day. A value of 0 means no trades have occurred yet in the current session.",
                                 "format": "double",
                                 "type": "number"
                               }
                             },
-                            "required": [
-                              "change",
-                              "change_percent",
-                              "close",
-                              "high",
-                              "low",
-                              "open",
-                              "previous_close"
-                            ],
                             "type": "object",
                             "x-polygon-go-type": {
                               "name": "Session"
@@ -51822,9 +51423,9 @@
                             "description": "The most recent trade for this contract. This is only returned if your current plan includes trades.",
                             "properties": {
                               "conditions": {
-                                "description": "A list of condition codes.",
+                                "description": "A list of condition codes. See [Options Condition Codes](https://massive.com/docs/rest/options/market-operations/condition-codes) for what each code means.",
                                 "items": {
-                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/options/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                                  "description": "The condition code.",
                                   "format": "int32",
                                   "type": "integer"
                                 },
@@ -52363,9 +51964,9 @@
                           "description": "The most recent trade for this contract. This is only returned if your current plan includes trades.",
                           "properties": {
                             "conditions": {
-                              "description": "A list of condition codes.",
+                              "description": "A list of condition codes. See [Options Condition Codes](https://massive.com/docs/rest/options/market-operations/condition-codes) for what each code means.",
                               "items": {
-                                "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://massive.com/docs/rest/options/market-operations/condition-codes)\nfor a mapping to exchange conditions.",
+                                "description": "The condition code.",
                                 "format": "int32",
                                 "type": "integer"
                               },
