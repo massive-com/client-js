@@ -5896,6 +5896,132 @@ export interface GetOptionsV3TradesTicker200ResponseResultsInner {
      */
     'ticker': string;
 }
+export interface GetOptionsVXOpenInterest200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetOptionsVXOpenInterest200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetOptionsVXOpenInterest200ResponseStatusEnum;
+}
+
+export enum GetOptionsVXOpenInterest200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetOptionsVXOpenInterest200ResponseResultsInner {
+    /**
+     * The contract type. Possible values: call, put.
+     */
+    'contract_type'?: string;
+    /**
+     * The trading date the open interest applies to (formatted as YYYY-MM-DD).
+     */
+    'date': string;
+    /**
+     * The date the contract expires (formatted as YYYY-MM-DD).
+     */
+    'expiration_date'?: string;
+    /**
+     * The number of outstanding contracts that have not been closed or exercised, as of the last open interest update of the day.
+     */
+    'open_interest'?: number;
+    /**
+     * The change in open interest from the previous trading day (open_interest - previous_open_interest). Null when previous_open_interest is null.
+     */
+    'open_interest_change'?: number;
+    /**
+     * The contract\'s open interest on the previous trading day. Null if the contract had no open interest reported that day, such as a new listing.
+     */
+    'previous_open_interest'?: number;
+    /**
+     * The OCC root symbol of the contract (e.g., SPXW). Differs from the underlying for weekly roots and for contracts adjusted after a corporate action (e.g., AMCR1).
+     */
+    'root'?: string;
+    /**
+     * The strike price of the contract.
+     */
+    'strike_price'?: number;
+    /**
+     * The options ticker symbol (e.g., O:SPY260123C00687000).
+     */
+    'ticker': string;
+    /**
+     * The ticker of the contract\'s underlying (e.g., SPX). Weekly and adjusted roots are folded in, so SPXW contracts report SPX and AMCR1 contracts report AMCR; see root to tell them apart.
+     */
+    'underlying_ticker'?: string;
+}
+export interface GetOptionsVXOpenInterestUnderlying200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetOptionsVXOpenInterestUnderlying200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetOptionsVXOpenInterestUnderlying200ResponseStatusEnum;
+}
+
+export enum GetOptionsVXOpenInterestUnderlying200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetOptionsVXOpenInterestUnderlying200ResponseResultsInner {
+    /**
+     * The trading date the open interest applies to (formatted as YYYY-MM-DD).
+     */
+    'date': string;
+    /**
+     * Total open interest across every contract on the underlying.
+     */
+    'open_interest'?: number;
+    /**
+     * Total open interest across the underlying\'s call contracts.
+     */
+    'open_interest_calls': number;
+    /**
+     * The change in total open interest from the previous trading day (open_interest - previous_open_interest). Null when previous_open_interest is null.
+     */
+    'open_interest_change'?: number;
+    /**
+     * The change in call open interest from the previous trading day, including call contracts that have since expired. Null when previous_open_interest is null.
+     */
+    'open_interest_change_calls'?: number;
+    /**
+     * The change in put open interest from the previous trading day, including put contracts that have since expired. Null when previous_open_interest is null.
+     */
+    'open_interest_change_puts'?: number;
+    /**
+     * Total open interest across the underlying\'s put contracts.
+     */
+    'open_interest_puts': number;
+    /**
+     * Total open interest on the underlying on the previous trading day, including contracts that have since expired. Null if the underlying had no open interest reported that day.
+     */
+    'previous_open_interest'?: number;
+    /**
+     * The ticker of the underlying (e.g., SPX). Totals cover every root on the underlying, so weekly roots (SPXW) and roots adjusted after a corporate action (AMCR1) are included.
+     */
+    'underlying_ticker'?: string;
+}
 export interface GetPreviousCryptoAggregates200Response {
     /**
      * The exchange symbol that this item is traded under.
@@ -19421,6 +19547,370 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Daily open interest for every US options contract as reported by OPRA, one row per contract per trading day, with the contract\'s underlying, type, expiration and strike.
+         * @param {string} [ticker] The options ticker symbol (e.g., O:SPY260123C00687000).
+         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickerGt] Filter greater than the value.
+         * @param {string} [tickerGte] Filter greater than or equal to the value.
+         * @param {string} [tickerLt] Filter less than the value.
+         * @param {string} [tickerLte] Filter less than or equal to the value.
+         * @param {string} [root] The OCC root symbol of the contract (e.g., SPXW). Differs from the underlying for weekly roots and for contracts adjusted after a corporate action (e.g., AMCR1).
+         * @param {string} [rootAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [rootGt] Filter greater than the value.
+         * @param {string} [rootGte] Filter greater than or equal to the value.
+         * @param {string} [rootLt] Filter less than the value.
+         * @param {string} [rootLte] Filter less than or equal to the value.
+         * @param {string} [underlyingTicker] The ticker of the contract\&#39;s underlying (e.g., SPX). Weekly and adjusted roots are folded in, so SPXW contracts report SPX and AMCR1 contracts report AMCR; see root to tell them apart.
+         * @param {string} [underlyingTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [underlyingTickerGt] Filter greater than the value.
+         * @param {string} [underlyingTickerGte] Filter greater than or equal to the value.
+         * @param {string} [underlyingTickerLt] Filter less than the value.
+         * @param {string} [underlyingTickerLte] Filter less than or equal to the value.
+         * @param {GetOptionsVXOpenInterestContractTypeEnum} [contractType] The contract type. Possible values: call, put.
+         * @param {GetOptionsVXOpenInterestContractTypeAnyOfEnum} [contractTypeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [expirationDate] The date the contract expires (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [expirationDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [expirationDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [expirationDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [expirationDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [strikePrice] The strike price of the contract. Value must be a floating point number.
+         * @param {number} [strikePriceGt] Filter greater than the value. Value must be a floating point number.
+         * @param {number} [strikePriceGte] Filter greater than or equal to the value. Value must be a floating point number.
+         * @param {number} [strikePriceLt] Filter less than the value. Value must be a floating point number.
+         * @param {number} [strikePriceLte] Filter less than or equal to the value. Value must be a floating point number.
+         * @param {string} [date] The trading date the open interest applies to (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [openInterest] The number of outstanding contracts that have not been closed or exercised, as of the last open interest update of the day. Value must be an integer.
+         * @param {number} [openInterestGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [openInterestGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [openInterestLt] Filter less than the value. Value must be an integer.
+         * @param {number} [openInterestLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsVXOpenInterest: async (ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, root?: string, rootAnyOf?: string, rootGt?: string, rootGte?: string, rootLt?: string, rootLte?: string, underlyingTicker?: string, underlyingTickerAnyOf?: string, underlyingTickerGt?: string, underlyingTickerGte?: string, underlyingTickerLt?: string, underlyingTickerLte?: string, contractType?: GetOptionsVXOpenInterestContractTypeEnum, contractTypeAnyOf?: GetOptionsVXOpenInterestContractTypeAnyOfEnum, expirationDate?: string, expirationDateGt?: string, expirationDateGte?: string, expirationDateLt?: string, expirationDateLte?: string, strikePrice?: number, strikePriceGt?: number, strikePriceGte?: number, strikePriceLt?: number, strikePriceLte?: number, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, openInterest?: number, openInterestGt?: number, openInterestGte?: number, openInterestLt?: number, openInterestLte?: number, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/options/vX/open-interest`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (ticker !== undefined) {
+                localVarQueryParameter['ticker'] = ticker;
+            }
+
+            if (tickerAnyOf !== undefined) {
+                localVarQueryParameter['ticker.any_of'] = tickerAnyOf;
+            }
+
+            if (tickerGt !== undefined) {
+                localVarQueryParameter['ticker.gt'] = tickerGt;
+            }
+
+            if (tickerGte !== undefined) {
+                localVarQueryParameter['ticker.gte'] = tickerGte;
+            }
+
+            if (tickerLt !== undefined) {
+                localVarQueryParameter['ticker.lt'] = tickerLt;
+            }
+
+            if (tickerLte !== undefined) {
+                localVarQueryParameter['ticker.lte'] = tickerLte;
+            }
+
+            if (root !== undefined) {
+                localVarQueryParameter['root'] = root;
+            }
+
+            if (rootAnyOf !== undefined) {
+                localVarQueryParameter['root.any_of'] = rootAnyOf;
+            }
+
+            if (rootGt !== undefined) {
+                localVarQueryParameter['root.gt'] = rootGt;
+            }
+
+            if (rootGte !== undefined) {
+                localVarQueryParameter['root.gte'] = rootGte;
+            }
+
+            if (rootLt !== undefined) {
+                localVarQueryParameter['root.lt'] = rootLt;
+            }
+
+            if (rootLte !== undefined) {
+                localVarQueryParameter['root.lte'] = rootLte;
+            }
+
+            if (underlyingTicker !== undefined) {
+                localVarQueryParameter['underlying_ticker'] = underlyingTicker;
+            }
+
+            if (underlyingTickerAnyOf !== undefined) {
+                localVarQueryParameter['underlying_ticker.any_of'] = underlyingTickerAnyOf;
+            }
+
+            if (underlyingTickerGt !== undefined) {
+                localVarQueryParameter['underlying_ticker.gt'] = underlyingTickerGt;
+            }
+
+            if (underlyingTickerGte !== undefined) {
+                localVarQueryParameter['underlying_ticker.gte'] = underlyingTickerGte;
+            }
+
+            if (underlyingTickerLt !== undefined) {
+                localVarQueryParameter['underlying_ticker.lt'] = underlyingTickerLt;
+            }
+
+            if (underlyingTickerLte !== undefined) {
+                localVarQueryParameter['underlying_ticker.lte'] = underlyingTickerLte;
+            }
+
+            if (contractType !== undefined) {
+                localVarQueryParameter['contract_type'] = contractType;
+            }
+
+            if (contractTypeAnyOf !== undefined) {
+                localVarQueryParameter['contract_type.any_of'] = contractTypeAnyOf;
+            }
+
+            if (expirationDate !== undefined) {
+                localVarQueryParameter['expiration_date'] = expirationDate;
+            }
+
+            if (expirationDateGt !== undefined) {
+                localVarQueryParameter['expiration_date.gt'] = expirationDateGt;
+            }
+
+            if (expirationDateGte !== undefined) {
+                localVarQueryParameter['expiration_date.gte'] = expirationDateGte;
+            }
+
+            if (expirationDateLt !== undefined) {
+                localVarQueryParameter['expiration_date.lt'] = expirationDateLt;
+            }
+
+            if (expirationDateLte !== undefined) {
+                localVarQueryParameter['expiration_date.lte'] = expirationDateLte;
+            }
+
+            if (strikePrice !== undefined) {
+                localVarQueryParameter['strike_price'] = strikePrice;
+            }
+
+            if (strikePriceGt !== undefined) {
+                localVarQueryParameter['strike_price.gt'] = strikePriceGt;
+            }
+
+            if (strikePriceGte !== undefined) {
+                localVarQueryParameter['strike_price.gte'] = strikePriceGte;
+            }
+
+            if (strikePriceLt !== undefined) {
+                localVarQueryParameter['strike_price.lt'] = strikePriceLt;
+            }
+
+            if (strikePriceLte !== undefined) {
+                localVarQueryParameter['strike_price.lte'] = strikePriceLte;
+            }
+
+            if (date !== undefined) {
+                localVarQueryParameter['date'] = date;
+            }
+
+            if (dateGt !== undefined) {
+                localVarQueryParameter['date.gt'] = dateGt;
+            }
+
+            if (dateGte !== undefined) {
+                localVarQueryParameter['date.gte'] = dateGte;
+            }
+
+            if (dateLt !== undefined) {
+                localVarQueryParameter['date.lt'] = dateLt;
+            }
+
+            if (dateLte !== undefined) {
+                localVarQueryParameter['date.lte'] = dateLte;
+            }
+
+            if (openInterest !== undefined) {
+                localVarQueryParameter['open_interest'] = openInterest;
+            }
+
+            if (openInterestGt !== undefined) {
+                localVarQueryParameter['open_interest.gt'] = openInterestGt;
+            }
+
+            if (openInterestGte !== undefined) {
+                localVarQueryParameter['open_interest.gte'] = openInterestGte;
+            }
+
+            if (openInterestLt !== undefined) {
+                localVarQueryParameter['open_interest.lt'] = openInterestLt;
+            }
+
+            if (openInterestLte !== undefined) {
+                localVarQueryParameter['open_interest.lte'] = openInterestLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Daily open interest for US options rolled up across each underlying\'s whole chain, as reported by OPRA, with the call and put split.
+         * @param {string} [underlyingTicker] The ticker of the underlying (e.g., SPX). Totals cover every root on the underlying, so weekly roots (SPXW) and roots adjusted after a corporate action (AMCR1) are included.
+         * @param {string} [underlyingTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [underlyingTickerGt] Filter greater than the value.
+         * @param {string} [underlyingTickerGte] Filter greater than or equal to the value.
+         * @param {string} [underlyingTickerLt] Filter less than the value.
+         * @param {string} [underlyingTickerLte] Filter less than or equal to the value.
+         * @param {string} [date] The trading date the open interest applies to (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [openInterest] Total open interest across every contract on the underlying. Value must be an integer.
+         * @param {number} [openInterestGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [openInterestGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [openInterestLt] Filter less than the value. Value must be an integer.
+         * @param {number} [openInterestLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsVXOpenInterestUnderlying: async (underlyingTicker?: string, underlyingTickerAnyOf?: string, underlyingTickerGt?: string, underlyingTickerGte?: string, underlyingTickerLt?: string, underlyingTickerLte?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, openInterest?: number, openInterestGt?: number, openInterestGte?: number, openInterestLt?: number, openInterestLte?: number, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/options/vX/open-interest/underlying`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (underlyingTicker !== undefined) {
+                localVarQueryParameter['underlying_ticker'] = underlyingTicker;
+            }
+
+            if (underlyingTickerAnyOf !== undefined) {
+                localVarQueryParameter['underlying_ticker.any_of'] = underlyingTickerAnyOf;
+            }
+
+            if (underlyingTickerGt !== undefined) {
+                localVarQueryParameter['underlying_ticker.gt'] = underlyingTickerGt;
+            }
+
+            if (underlyingTickerGte !== undefined) {
+                localVarQueryParameter['underlying_ticker.gte'] = underlyingTickerGte;
+            }
+
+            if (underlyingTickerLt !== undefined) {
+                localVarQueryParameter['underlying_ticker.lt'] = underlyingTickerLt;
+            }
+
+            if (underlyingTickerLte !== undefined) {
+                localVarQueryParameter['underlying_ticker.lte'] = underlyingTickerLte;
+            }
+
+            if (date !== undefined) {
+                localVarQueryParameter['date'] = date;
+            }
+
+            if (dateGt !== undefined) {
+                localVarQueryParameter['date.gt'] = dateGt;
+            }
+
+            if (dateGte !== undefined) {
+                localVarQueryParameter['date.gte'] = dateGte;
+            }
+
+            if (dateLt !== undefined) {
+                localVarQueryParameter['date.lt'] = dateLt;
+            }
+
+            if (dateLte !== undefined) {
+                localVarQueryParameter['date.lte'] = dateLte;
+            }
+
+            if (openInterest !== undefined) {
+                localVarQueryParameter['open_interest'] = openInterest;
+            }
+
+            if (openInterestGt !== undefined) {
+                localVarQueryParameter['open_interest.gt'] = openInterestGt;
+            }
+
+            if (openInterestGte !== undefined) {
+                localVarQueryParameter['open_interest.gte'] = openInterestGte;
+            }
+
+            if (openInterestLt !== undefined) {
+                localVarQueryParameter['open_interest.lt'] = openInterestLt;
+            }
+
+            if (openInterestLte !== undefined) {
+                localVarQueryParameter['open_interest.lte'] = openInterestLte;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Get the previous day\'s open, high, low, and close (OHLC) for the specified cryptocurrency pair. 
          * @summary Previous Close
          * @param {string} cryptoTicker The ticker symbol of the currency pair.
@@ -27905,6 +28395,88 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Daily open interest for every US options contract as reported by OPRA, one row per contract per trading day, with the contract\'s underlying, type, expiration and strike.
+         * @param {string} [ticker] The options ticker symbol (e.g., O:SPY260123C00687000).
+         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [tickerGt] Filter greater than the value.
+         * @param {string} [tickerGte] Filter greater than or equal to the value.
+         * @param {string} [tickerLt] Filter less than the value.
+         * @param {string} [tickerLte] Filter less than or equal to the value.
+         * @param {string} [root] The OCC root symbol of the contract (e.g., SPXW). Differs from the underlying for weekly roots and for contracts adjusted after a corporate action (e.g., AMCR1).
+         * @param {string} [rootAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [rootGt] Filter greater than the value.
+         * @param {string} [rootGte] Filter greater than or equal to the value.
+         * @param {string} [rootLt] Filter less than the value.
+         * @param {string} [rootLte] Filter less than or equal to the value.
+         * @param {string} [underlyingTicker] The ticker of the contract\&#39;s underlying (e.g., SPX). Weekly and adjusted roots are folded in, so SPXW contracts report SPX and AMCR1 contracts report AMCR; see root to tell them apart.
+         * @param {string} [underlyingTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [underlyingTickerGt] Filter greater than the value.
+         * @param {string} [underlyingTickerGte] Filter greater than or equal to the value.
+         * @param {string} [underlyingTickerLt] Filter less than the value.
+         * @param {string} [underlyingTickerLte] Filter less than or equal to the value.
+         * @param {GetOptionsVXOpenInterestContractTypeEnum} [contractType] The contract type. Possible values: call, put.
+         * @param {GetOptionsVXOpenInterestContractTypeAnyOfEnum} [contractTypeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [expirationDate] The date the contract expires (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [expirationDateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [expirationDateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [expirationDateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [expirationDateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [strikePrice] The strike price of the contract. Value must be a floating point number.
+         * @param {number} [strikePriceGt] Filter greater than the value. Value must be a floating point number.
+         * @param {number} [strikePriceGte] Filter greater than or equal to the value. Value must be a floating point number.
+         * @param {number} [strikePriceLt] Filter less than the value. Value must be a floating point number.
+         * @param {number} [strikePriceLte] Filter less than or equal to the value. Value must be a floating point number.
+         * @param {string} [date] The trading date the open interest applies to (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [openInterest] The number of outstanding contracts that have not been closed or exercised, as of the last open interest update of the day. Value must be an integer.
+         * @param {number} [openInterestGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [openInterestGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [openInterestLt] Filter less than the value. Value must be an integer.
+         * @param {number} [openInterestLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getOptionsVXOpenInterest(ticker?: string, tickerAnyOf?: string, tickerGt?: string, tickerGte?: string, tickerLt?: string, tickerLte?: string, root?: string, rootAnyOf?: string, rootGt?: string, rootGte?: string, rootLt?: string, rootLte?: string, underlyingTicker?: string, underlyingTickerAnyOf?: string, underlyingTickerGt?: string, underlyingTickerGte?: string, underlyingTickerLt?: string, underlyingTickerLte?: string, contractType?: GetOptionsVXOpenInterestContractTypeEnum, contractTypeAnyOf?: GetOptionsVXOpenInterestContractTypeAnyOfEnum, expirationDate?: string, expirationDateGt?: string, expirationDateGte?: string, expirationDateLt?: string, expirationDateLte?: string, strikePrice?: number, strikePriceGt?: number, strikePriceGte?: number, strikePriceLt?: number, strikePriceLte?: number, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, openInterest?: number, openInterestGt?: number, openInterestGte?: number, openInterestLt?: number, openInterestLte?: number, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetOptionsVXOpenInterest200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOptionsVXOpenInterest(ticker, tickerAnyOf, tickerGt, tickerGte, tickerLt, tickerLte, root, rootAnyOf, rootGt, rootGte, rootLt, rootLte, underlyingTicker, underlyingTickerAnyOf, underlyingTickerGt, underlyingTickerGte, underlyingTickerLt, underlyingTickerLte, contractType, contractTypeAnyOf, expirationDate, expirationDateGt, expirationDateGte, expirationDateLt, expirationDateLte, strikePrice, strikePriceGt, strikePriceGte, strikePriceLt, strikePriceLte, date, dateGt, dateGte, dateLt, dateLte, openInterest, openInterestGt, openInterestGte, openInterestLt, openInterestLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getOptionsVXOpenInterest']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Daily open interest for US options rolled up across each underlying\'s whole chain, as reported by OPRA, with the call and put split.
+         * @param {string} [underlyingTicker] The ticker of the underlying (e.g., SPX). Totals cover every root on the underlying, so weekly roots (SPXW) and roots adjusted after a corporate action (AMCR1) are included.
+         * @param {string} [underlyingTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [underlyingTickerGt] Filter greater than the value.
+         * @param {string} [underlyingTickerGte] Filter greater than or equal to the value.
+         * @param {string} [underlyingTickerLt] Filter less than the value.
+         * @param {string} [underlyingTickerLte] Filter less than or equal to the value.
+         * @param {string} [date] The trading date the open interest applies to (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [openInterest] Total open interest across every contract on the underlying. Value must be an integer.
+         * @param {number} [openInterestGt] Filter greater than the value. Value must be an integer.
+         * @param {number} [openInterestGte] Filter greater than or equal to the value. Value must be an integer.
+         * @param {number} [openInterestLt] Filter less than the value. Value must be an integer.
+         * @param {number} [openInterestLte] Filter less than or equal to the value. Value must be an integer.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getOptionsVXOpenInterestUnderlying(underlyingTicker?: string, underlyingTickerAnyOf?: string, underlyingTickerGt?: string, underlyingTickerGte?: string, underlyingTickerLt?: string, underlyingTickerLte?: string, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, openInterest?: number, openInterestGt?: number, openInterestGte?: number, openInterestLt?: number, openInterestLte?: number, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetOptionsVXOpenInterestUnderlying200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOptionsVXOpenInterestUnderlying(underlyingTicker, underlyingTickerAnyOf, underlyingTickerGt, underlyingTickerGte, underlyingTickerLt, underlyingTickerLte, date, dateGt, dateGte, dateLt, dateLte, openInterest, openInterestGt, openInterestGte, openInterestLt, openInterestLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getOptionsVXOpenInterestUnderlying']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Get the previous day\'s open, high, low, and close (OHLC) for the specified cryptocurrency pair. 
          * @summary Previous Close
          * @param {string} cryptoTicker The ticker symbol of the currency pair.
@@ -30311,6 +30883,24 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getOptionsV3TradesTicker(requestParameters: DefaultApiGetOptionsV3TradesTickerRequest, options?: RawAxiosRequestConfig): Promise<GetOptionsV3TradesTicker200Response> {
             return localVarFp.getOptionsV3TradesTicker(requestParameters.ticker, requestParameters.timestamp, requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Daily open interest for every US options contract as reported by OPRA, one row per contract per trading day, with the contract\'s underlying, type, expiration and strike.
+         * @param {DefaultApiGetOptionsVXOpenInterestRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsVXOpenInterest(requestParameters: DefaultApiGetOptionsVXOpenInterestRequest = {}, options?: RawAxiosRequestConfig): Promise<GetOptionsVXOpenInterest200Response> {
+            return localVarFp.getOptionsVXOpenInterest(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.root, requestParameters.rootAnyOf, requestParameters.rootGt, requestParameters.rootGte, requestParameters.rootLt, requestParameters.rootLte, requestParameters.underlyingTicker, requestParameters.underlyingTickerAnyOf, requestParameters.underlyingTickerGt, requestParameters.underlyingTickerGte, requestParameters.underlyingTickerLt, requestParameters.underlyingTickerLte, requestParameters.contractType, requestParameters.contractTypeAnyOf, requestParameters.expirationDate, requestParameters.expirationDateGt, requestParameters.expirationDateGte, requestParameters.expirationDateLt, requestParameters.expirationDateLte, requestParameters.strikePrice, requestParameters.strikePriceGt, requestParameters.strikePriceGte, requestParameters.strikePriceLt, requestParameters.strikePriceLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.openInterest, requestParameters.openInterestGt, requestParameters.openInterestGte, requestParameters.openInterestLt, requestParameters.openInterestLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Daily open interest for US options rolled up across each underlying\'s whole chain, as reported by OPRA, with the call and put split.
+         * @param {DefaultApiGetOptionsVXOpenInterestUnderlyingRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsVXOpenInterestUnderlying(requestParameters: DefaultApiGetOptionsVXOpenInterestUnderlyingRequest = {}, options?: RawAxiosRequestConfig): Promise<GetOptionsVXOpenInterestUnderlying200Response> {
+            return localVarFp.getOptionsVXOpenInterestUnderlying(requestParameters.underlyingTicker, requestParameters.underlyingTickerAnyOf, requestParameters.underlyingTickerGt, requestParameters.underlyingTickerGte, requestParameters.underlyingTickerLt, requestParameters.underlyingTickerLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.openInterest, requestParameters.openInterestGt, requestParameters.openInterestGte, requestParameters.openInterestLt, requestParameters.openInterestLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * Get the previous day\'s open, high, low, and close (OHLC) for the specified cryptocurrency pair. 
@@ -38910,6 +39500,440 @@ export interface DefaultApiGetOptionsV3TradesTickerRequest {
 }
 
 /**
+ * Request parameters for getOptionsVXOpenInterest operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetOptionsVXOpenInterestRequest
+ */
+export interface DefaultApiGetOptionsVXOpenInterestRequest {
+    /**
+     * The options ticker symbol (e.g., O:SPY260123C00687000).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly ticker?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly tickerAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly tickerGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly tickerGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly tickerLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly tickerLte?: string
+
+    /**
+     * The OCC root symbol of the contract (e.g., SPXW). Differs from the underlying for weekly roots and for contracts adjusted after a corporate action (e.g., AMCR1).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly root?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly rootAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly rootGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly rootGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly rootLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly rootLte?: string
+
+    /**
+     * The ticker of the contract\&#39;s underlying (e.g., SPX). Weekly and adjusted roots are folded in, so SPXW contracts report SPX and AMCR1 contracts report AMCR; see root to tell them apart.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly underlyingTicker?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly underlyingTickerAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly underlyingTickerGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly underlyingTickerGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly underlyingTickerLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly underlyingTickerLte?: string
+
+    /**
+     * The contract type. Possible values: call, put.
+     * @type {'call' | 'put'}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly contractType?: GetOptionsVXOpenInterestContractTypeEnum
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {'call' | 'put'}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly contractTypeAnyOf?: GetOptionsVXOpenInterestContractTypeAnyOfEnum
+
+    /**
+     * The date the contract expires (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly expirationDate?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly expirationDateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly expirationDateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly expirationDateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly expirationDateLte?: string
+
+    /**
+     * The strike price of the contract. Value must be a floating point number.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly strikePrice?: number
+
+    /**
+     * Filter greater than the value. Value must be a floating point number.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly strikePriceGt?: number
+
+    /**
+     * Filter greater than or equal to the value. Value must be a floating point number.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly strikePriceGte?: number
+
+    /**
+     * Filter less than the value. Value must be a floating point number.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly strikePriceLt?: number
+
+    /**
+     * Filter less than or equal to the value. Value must be a floating point number.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly strikePriceLte?: number
+
+    /**
+     * The trading date the open interest applies to (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly date?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly dateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly dateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly dateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly dateLte?: string
+
+    /**
+     * The number of outstanding contracts that have not been closed or exercised, as of the last open interest update of the day. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly openInterest?: number
+
+    /**
+     * Filter greater than the value. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly openInterestGt?: number
+
+    /**
+     * Filter greater than or equal to the value. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly openInterestGte?: number
+
+    /**
+     * Filter less than the value. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly openInterestLt?: number
+
+    /**
+     * Filter less than or equal to the value. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly openInterestLte?: number
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterest
+     */
+    readonly sort?: string
+}
+
+/**
+ * Request parameters for getOptionsVXOpenInterestUnderlying operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetOptionsVXOpenInterestUnderlyingRequest
+ */
+export interface DefaultApiGetOptionsVXOpenInterestUnderlyingRequest {
+    /**
+     * The ticker of the underlying (e.g., SPX). Totals cover every root on the underlying, so weekly roots (SPXW) and roots adjusted after a corporate action (AMCR1) are included.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly underlyingTicker?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly underlyingTickerAnyOf?: string
+
+    /**
+     * Filter greater than the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly underlyingTickerGt?: string
+
+    /**
+     * Filter greater than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly underlyingTickerGte?: string
+
+    /**
+     * Filter less than the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly underlyingTickerLt?: string
+
+    /**
+     * Filter less than or equal to the value.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly underlyingTickerLte?: string
+
+    /**
+     * The trading date the open interest applies to (formatted as YYYY-MM-DD). Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly date?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly dateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly dateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly dateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly dateLte?: string
+
+    /**
+     * Total open interest across every contract on the underlying. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly openInterest?: number
+
+    /**
+     * Filter greater than the value. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly openInterestGt?: number
+
+    /**
+     * Filter greater than or equal to the value. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly openInterestGte?: number
+
+    /**
+     * Filter less than the value. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly openInterestLt?: number
+
+    /**
+     * Filter less than or equal to the value. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly openInterestLte?: number
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsVXOpenInterestUnderlying
+     */
+    readonly sort?: string
+}
+
+/**
  * Request parameters for getPreviousCryptoAggregates operation in DefaultApi.
  * @export
  * @interface DefaultApiGetPreviousCryptoAggregatesRequest
@@ -46681,6 +47705,28 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Daily open interest for every US options contract as reported by OPRA, one row per contract per trading day, with the contract\'s underlying, type, expiration and strike.
+     * @param {DefaultApiGetOptionsVXOpenInterestRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getOptionsVXOpenInterest(requestParameters: DefaultApiGetOptionsVXOpenInterestRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getOptionsVXOpenInterest(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.tickerGt, requestParameters.tickerGte, requestParameters.tickerLt, requestParameters.tickerLte, requestParameters.root, requestParameters.rootAnyOf, requestParameters.rootGt, requestParameters.rootGte, requestParameters.rootLt, requestParameters.rootLte, requestParameters.underlyingTicker, requestParameters.underlyingTickerAnyOf, requestParameters.underlyingTickerGt, requestParameters.underlyingTickerGte, requestParameters.underlyingTickerLt, requestParameters.underlyingTickerLte, requestParameters.contractType, requestParameters.contractTypeAnyOf, requestParameters.expirationDate, requestParameters.expirationDateGt, requestParameters.expirationDateGte, requestParameters.expirationDateLt, requestParameters.expirationDateLte, requestParameters.strikePrice, requestParameters.strikePriceGt, requestParameters.strikePriceGte, requestParameters.strikePriceLt, requestParameters.strikePriceLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.openInterest, requestParameters.openInterestGt, requestParameters.openInterestGte, requestParameters.openInterestLt, requestParameters.openInterestLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Daily open interest for US options rolled up across each underlying\'s whole chain, as reported by OPRA, with the call and put split.
+     * @param {DefaultApiGetOptionsVXOpenInterestUnderlyingRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getOptionsVXOpenInterestUnderlying(requestParameters: DefaultApiGetOptionsVXOpenInterestUnderlyingRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getOptionsVXOpenInterestUnderlying(requestParameters.underlyingTicker, requestParameters.underlyingTickerAnyOf, requestParameters.underlyingTickerGt, requestParameters.underlyingTickerGte, requestParameters.underlyingTickerLt, requestParameters.underlyingTickerLte, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.openInterest, requestParameters.openInterestGt, requestParameters.openInterestGte, requestParameters.openInterestLt, requestParameters.openInterestLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Get the previous day\'s open, high, low, and close (OHLC) for the specified cryptocurrency pair. 
      * @summary Previous Close
      * @param {DefaultApiGetPreviousCryptoAggregatesRequest} requestParameters Request parameters.
@@ -48320,6 +49366,22 @@ export enum GetOptionsTradesOrderEnum {
   */
 export enum GetOptionsTradesSortEnum {
     Timestamp = 'timestamp'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetOptionsVXOpenInterestContractTypeEnum {
+    Call = 'call',
+    Put = 'put'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetOptionsVXOpenInterestContractTypeAnyOfEnum {
+    Call = 'call',
+    Put = 'put'
 }
 /**
   * @export
