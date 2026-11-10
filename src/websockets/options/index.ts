@@ -53,6 +53,17 @@ export interface IFMVOptionsEvent {
   t: number; // Quote Timestamp ( Nanoseconds )
 }
 
+// Options Admin ( FLEX ):
+export interface IAdminOptionsEvent {
+  ev: string; // Event Type ( AD )
+  i: string; // Unique ID ( "<sip_ts>-<seq>" )
+  x: number; // Exchange ID
+  m: string; // Raw OPRA Admin Message ( format varies by exchange, do not trim )
+  t: number; // SIP Timestamp ( Unix Nanoseconds, precision lost in JSON.parse, exact value is the prefix of i )
+  q: number; // Sequence Number ( The sequence in which events ocurred )
+  rt?: boolean; // Retransmission ( only present when true )
+}
+
 export const getOptionsWebsocket = (
   apiKey: string,
   apiBase = "wss://socket.massive.com"
