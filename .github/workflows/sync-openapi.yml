@@ -1,12 +1,12 @@
 name: Sync OpenAPI client
 
-# Daily: pull the latest OpenAPI spec, regenerate the TypeScript REST client, and
+# Weekdays: pull the latest OpenAPI spec, regenerate the TypeScript REST client, and
 # open a brand-new PR only when the regenerated output differs from what's
 # committed. Mirrors the automation in massive-com/client-jvm.
 
 on:
   schedule:
-    - cron: '0 15 * * *'   # 07:00 America/Vancouver
+    - cron: '0 15 * * 1-5'   # 07:00 America/Vancouver, Mon–Fri
   workflow_dispatch:
 
 permissions:
