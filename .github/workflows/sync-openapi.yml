@@ -63,8 +63,19 @@ jobs:
 
       # Installs @openapitools/openapi-generator-cli locally; scripts/generate.sh
       # invokes it via `npx --no-install` so the pinned version is used.
+      #
+      # Dependabot bumps (release-it in #339 and #347) have merged lock files
+      # that `npm ci` rejects. Rather than fail, regenerate the lock file and
+      # retry; the repaired package-lock.json is committed in this run's PR.
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if npm ci; then
+            exit 0
+          fi
+          echo "::warning::package-lock.json is out of sync with package.json; regenerating it."
+          npm install --package-lock-only --no-audit --no-fund
+          npm ci
+          echo "LOCKFILE_REPAIRED=true" >> "$GITHUB_ENV"
 
       - name: Regenerate client
         run: bash scripts/generate.sh
@@ -109,6 +120,7 @@ jobs:
           files: |
             src/**
             scripts/**
+            package-lock.json
 
       - name: Open PR
         if: steps.diff.outputs.changed == 'true'
@@ -116,6 +128,11 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
+          LOCK_NOTE=""
+          if [ "$LOCKFILE_REPAIRED" = "true" ]; then
+            LOCK_NOTE="
+          - Repaired \`package-lock.json\`: it was out of sync with \`package.json\` (\`npm ci\` failed), most likely after a Dependabot bump. Regenerated with \`npm install --package-lock-only\`."
+          fi
           url=$(gh pr create \
             --base master --head "$BRANCH" \
             --title "[bot] Sync client-js with OpenAPI spec ($(date -u +'%Y-%m-%d'))" \
@@ -123,7 +140,7 @@ jobs:
 
           - Regenerated REST client: \`src/rest/\` (typescript-axios) + committed spec \`src/openapi.json\`
           - Hand-written WebSocket client (\`src/websockets/\`) preserved
-          - Curated \`README.md\` / \`package.json\` preserved
+          - Curated \`README.md\` / \`package.json\` preserved${LOCK_NOTE}
 
           Please review the diff before merging.")
           echo "url=$url" >> "$GITHUB_OUTPUT"
