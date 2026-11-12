@@ -6305,7 +6305,7 @@ export interface GetSnapshots200ResponseResultsInner {
      */
     'last_updated'?: number;
     /**
-     * The market status for the market that trades this ticker. Possible values for stocks, options, crypto, and forex snapshots are open, closed, early_trading, or late_trading. Possible values for indices snapshots are regular_trading, closed, early_trading, and late_trading.
+     * The market status for the market that trades this ticker.  Possible values for Stocks are overnight_trading, open, closed, early_trading, and late_trading. Note that the overnight_trading session is new as of 2026-12-07 for SIP 23/5 extended hours.  Possible values for options, crypto, and forex snapshots are open, closed, early_trading, or late_trading.  Possible values for indices snapshots are regular_trading, closed, early_trading, and late_trading.
      */
     'market_status'?: string;
     /**
