@@ -196,6 +196,8 @@ docs/GetOptionsQuotes200Response.md
 docs/GetOptionsQuotes200ResponseResultsInner.md
 docs/GetOptionsTrades200Response.md
 docs/GetOptionsTrades200ResponseResultsInner.md
+docs/GetOptionsV1AdminMessages200Response.md
+docs/GetOptionsV1AdminMessages200ResponseResultsInner.md
 docs/GetOptionsV1Exchanges200Response.md
 docs/GetOptionsV1Exchanges200ResponseResultsInner.md
 docs/GetOptionsV1OpenInterest200Response.md

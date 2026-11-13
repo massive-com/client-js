@@ -5717,6 +5717,55 @@ export interface GetOptionsTrades200ResponseResultsInner {
      */
     'size': number;
 }
+export interface GetOptionsV1AdminMessages200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetOptionsV1AdminMessages200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetOptionsV1AdminMessages200ResponseStatusEnum;
+}
+
+export enum GetOptionsV1AdminMessages200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetOptionsV1AdminMessages200ResponseResultsInner {
+    /**
+     * The exchange ID. See Exchanges mapping for details.
+     */
+    'exchange': number;
+    /**
+     * The unique identifier for this admin message, composed of the SIP timestamp and the sequence number.
+     */
+    'id': string;
+    /**
+     * The administrative message text as distributed by OPRA.
+     */
+    'message': string;
+    /**
+     * True if this record was retransmitted. Omitted when false.
+     */
+    'retransmission'?: boolean;
+    /**
+     * The sequence number represents the sequence in which admin events happened. These are increasing and unique, but will not always be sequential.
+     */
+    'sequence_number': number;
+    /**
+     * The SIP timestamp in Unix nanoseconds.
+     */
+    'timestamp': number;
+}
 export interface GetOptionsV1Exchanges200Response {
     /**
      * If present, this value can be used to fetch the next page.
@@ -10469,7 +10518,7 @@ export interface ListOptionsContracts200ResponseResultsInner {
      */
     'underlying_ticker'?: string;
     /**
-     * What the contract is based on. For now only set on KPI binary options, as kpi.
+     * What the contract is based on: kpi on Cboe KPI binary options, equity on NYSE American equity binary options (roots that start with B1). Missing on other contracts for now.
      */
     'underlying_type'?: ListOptionsContracts200ResponseResultsInnerUnderlyingTypeEnum;
 }
@@ -10488,7 +10537,8 @@ export enum ListOptionsContracts200ResponseResultsInnerTypeEnum {
     Binary = 'binary'
 }
 export enum ListOptionsContracts200ResponseResultsInnerUnderlyingTypeEnum {
-    Kpi = 'kpi'
+    Kpi = 'kpi',
+    Equity = 'equity'
 }
 
 export interface ListOptionsContracts200ResponseResultsInnerAdditionalUnderlyingsInner {
@@ -19450,6 +19500,73 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (order !== undefined) {
                 localVarQueryParameter['order'] = order;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * OPRA administrative messages: the free-text channel of the OPRA feed, carrying FLEX option prints and quotes, operational notices, and other messages that don\'t fit a fixed format. One record per OPRA Category C message, written once and never modified.
+         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [exchange] The exchange ID. See Exchanges mapping for details. Value must be an integer.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV1AdminMessages: async (timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, exchange?: number, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/options/v1/admin-messages`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (timestampGt !== undefined) {
+                localVarQueryParameter['timestamp.gt'] = timestampGt;
+            }
+
+            if (timestampGte !== undefined) {
+                localVarQueryParameter['timestamp.gte'] = timestampGte;
+            }
+
+            if (timestampLt !== undefined) {
+                localVarQueryParameter['timestamp.lt'] = timestampLt;
+            }
+
+            if (timestampLte !== undefined) {
+                localVarQueryParameter['timestamp.lte'] = timestampLte;
+            }
+
+            if (exchange !== undefined) {
+                localVarQueryParameter['exchange'] = exchange;
             }
 
             if (limit !== undefined) {
@@ -28466,6 +28583,24 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * OPRA administrative messages: the free-text channel of the OPRA feed, carrying FLEX option prints and quotes, operational notices, and other messages that don\'t fit a fixed format. One record per OPRA Category C message, written once and never modified.
+         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [exchange] The exchange ID. See Exchanges mapping for details. Value must be an integer.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getOptionsV1AdminMessages(timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, exchange?: number, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetOptionsV1AdminMessages200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOptionsV1AdminMessages(timestampGt, timestampGte, timestampLt, timestampLte, exchange, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getOptionsV1AdminMessages']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * US options exchanges and trading venues including traditional options exchanges (CBOE, ISE, etc.), Securities Information Processors (SIP), and other options market infrastructure for derivatives trading.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
@@ -30985,6 +31120,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getOptionsTrades(requestParameters: DefaultApiGetOptionsTradesRequest, options?: RawAxiosRequestConfig): Promise<GetOptionsTrades200Response> {
             return localVarFp.getOptionsTrades(requestParameters.optionsTicker, requestParameters.timestamp, requestParameters.timestampGte, requestParameters.timestampGt, requestParameters.timestampLte, requestParameters.timestampLt, requestParameters.order, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * OPRA administrative messages: the free-text channel of the OPRA feed, carrying FLEX option prints and quotes, operational notices, and other messages that don\'t fit a fixed format. One record per OPRA Category C message, written once and never modified.
+         * @param {DefaultApiGetOptionsV1AdminMessagesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV1AdminMessages(requestParameters: DefaultApiGetOptionsV1AdminMessagesRequest = {}, options?: RawAxiosRequestConfig): Promise<GetOptionsV1AdminMessages200Response> {
+            return localVarFp.getOptionsV1AdminMessages(requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.exchange, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * US options exchanges and trading venues including traditional options exchanges (CBOE, ISE, etc.), Securities Information Processors (SIP), and other options market infrastructure for derivatives trading.
@@ -39498,6 +39642,62 @@ export interface DefaultApiGetOptionsTradesRequest {
 }
 
 /**
+ * Request parameters for getOptionsV1AdminMessages operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetOptionsV1AdminMessagesRequest
+ */
+export interface DefaultApiGetOptionsV1AdminMessagesRequest {
+    /**
+     * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly timestampGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly timestampGte?: string
+
+    /**
+     * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly timestampLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly timestampLte?: string
+
+    /**
+     * The exchange ID. See Exchanges mapping for details. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly exchange?: number
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly sort?: string
+}
+
+/**
  * Request parameters for getOptionsV1Exchanges operation in DefaultApi.
  * @export
  * @interface DefaultApiGetOptionsV1ExchangesRequest
@@ -47793,6 +47993,17 @@ export class DefaultApi extends BaseAPI {
      */
     public getOptionsTrades(requestParameters: DefaultApiGetOptionsTradesRequest, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getOptionsTrades(requestParameters.optionsTicker, requestParameters.timestamp, requestParameters.timestampGte, requestParameters.timestampGt, requestParameters.timestampLte, requestParameters.timestampLt, requestParameters.order, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * OPRA administrative messages: the free-text channel of the OPRA feed, carrying FLEX option prints and quotes, operational notices, and other messages that don\'t fit a fixed format. One record per OPRA Category C message, written once and never modified.
+     * @param {DefaultApiGetOptionsV1AdminMessagesRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getOptionsV1AdminMessages(requestParameters: DefaultApiGetOptionsV1AdminMessagesRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getOptionsV1AdminMessages(requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.exchange, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -17817,6 +17817,215 @@
         "x-massive-field-selection": true
       }
     },
+    "/options/v1/admin-messages": {
+      "get": {
+        "description": "OPRA administrative messages: the free-text channel of the OPRA feed, carrying FLEX option prints and quotes, operational notices, and other messages that don't fit a fixed format. One record per OPRA Category C message, written once and never modified.",
+        "operationId": "get_options_v1_admin-messages",
+        "parameters": [
+          {
+            "description": "Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The exchange ID. See Exchanges mapping for details. Value must be an integer.",
+            "in": "query",
+            "name": "exchange",
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '1000' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 1000,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'timestamp' if not specified. The sort order defaults to 'asc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "timestamp.asc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/options/v1/admin-messages?cursor=YXA9dGltZXN0YW1wPTE3OTM5MTE0NDI5MzA1NjgwNzkmbGltaXQ9MiZzb3J0PXRpbWVzdGFtcC5hc2M",
+                  "request_id": "9b1c3f7a2e5d4b8c6f0a1d2e3b4c5d6e",
+                  "results": [
+                    {
+                      "exchange": 302,
+                      "id": "1793911442930568079-4043826282",
+                      "message": "FLEX AAPL 20270115 C 00200000 PRINT 150 @ 12.35",
+                      "sequence_number": 4043826282,
+                      "timestamp": 1793911442930568200
+                    },
+                    {
+                      "exchange": 300,
+                      "id": "1793911460115302244-4043826283",
+                      "message": "OPRA SYSTEM NORMAL",
+                      "retransmission": true,
+                      "sequence_number": 4043826283,
+                      "timestamp": 1793911460115302100
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "exchange": {
+                            "description": "The exchange ID. See Exchanges mapping for details.",
+                            "format": "int32",
+                            "type": "integer"
+                          },
+                          "id": {
+                            "description": "The unique identifier for this admin message, composed of the SIP timestamp and the sequence number.",
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "The administrative message text as distributed by OPRA.",
+                            "type": "string"
+                          },
+                          "retransmission": {
+                            "description": "True if this record was retransmitted. Omitted when false.",
+                            "type": "boolean"
+                          },
+                          "sequence_number": {
+                            "description": "The sequence number represents the sequence in which admin events happened. These are increasing and unique, but will not always be sequential.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "timestamp": {
+                            "description": "The SIP timestamp in Unix nanoseconds.",
+                            "format": "int64",
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "timestamp",
+                          "exchange",
+                          "message",
+                          "sequence_number"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              },
+              "application/vnd.apache.arrow.file": {
+                "schema": {
+                  "description": "An Apache Arrow IPC file. Its record batch columns match the fields of the entries in the JSON response's `results` array."
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ],
+        "x-massive-field-selection": true
+      }
+    },
     "/options/v1/exchanges": {
       "get": {
         "description": "US options exchanges and trading venues including traditional options exchanges (CBOE, ISE, etc.), Securities Information Processors (SIP), and other options market infrastructure for derivatives trading.",
@@ -49830,9 +50039,10 @@
                             "type": "string"
                           },
                           "underlying_type": {
-                            "description": "What the contract is based on. For now only set on KPI binary options, as kpi.",
+                            "description": "What the contract is based on: kpi on Cboe KPI binary options, equity on NYSE American equity binary options (roots that start with B1). Missing on other contracts for now.",
                             "enum": [
-                              "kpi"
+                              "kpi",
+                              "equity"
                             ],
                             "type": "string"
                           }
@@ -50060,9 +50270,10 @@
                           "type": "string"
                         },
                         "underlying_type": {
-                          "description": "What the contract is based on. For now only set on KPI binary options, as kpi.",
+                          "description": "What the contract is based on: kpi on Cboe KPI binary options, equity on NYSE American equity binary options (roots that start with B1). Missing on other contracts for now.",
                           "enum": [
-                            "kpi"
+                            "kpi",
+                            "equity"
                           ],
                           "type": "string"
                         }
