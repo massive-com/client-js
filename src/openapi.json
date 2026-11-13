@@ -51817,7 +51817,7 @@
                             "type": "integer"
                           },
                           "market_status": {
-                            "description": "The market status for the market that trades this ticker. Possible values for stocks, options, crypto, and forex snapshots are open, closed, early_trading, or late_trading.\nPossible values for indices snapshots are regular_trading, closed, early_trading, and late_trading.",
+                            "description": "The market status for the market that trades this ticker.\n\nPossible values for Stocks are overnight_trading, open, closed, early_trading, and late_trading. Note that the overnight_trading session is new as of 2026-12-07 for SIP 23/5 extended hours.\n\nPossible values for options, crypto, and forex snapshots are open, closed, early_trading, or late_trading.\n\nPossible values for indices snapshots are regular_trading, closed, early_trading, and late_trading.",
                             "type": "string"
                           },
                           "message": {
