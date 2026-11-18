@@ -5717,6 +5717,180 @@ export interface GetOptionsTrades200ResponseResultsInner {
      */
     'size': number;
 }
+export interface GetOptionsV1AdminMessages200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetOptionsV1AdminMessages200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetOptionsV1AdminMessages200ResponseStatusEnum;
+}
+
+export enum GetOptionsV1AdminMessages200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetOptionsV1AdminMessages200ResponseResultsInner {
+    /**
+     * The exchange ID. See Exchanges mapping for details.
+     */
+    'exchange': number;
+    /**
+     * The unique identifier for this admin message, composed of the SIP timestamp and the sequence number.
+     */
+    'id': string;
+    /**
+     * The administrative message text as distributed by OPRA.
+     */
+    'message': string;
+    /**
+     * True if this record was retransmitted. Omitted when false.
+     */
+    'retransmission'?: boolean;
+    /**
+     * The sequence number represents the sequence in which admin events happened. These are increasing and unique, but will not always be sequential.
+     */
+    'sequence_number': number;
+    /**
+     * The SIP timestamp in Unix nanoseconds.
+     */
+    'timestamp': number;
+}
+export interface GetOptionsV1Analytics200Response {
+    /**
+     * If present, this value can be used to fetch the next page.
+     */
+    'next_url'?: string;
+    /**
+     * A request id assigned by the server.
+     */
+    'request_id': string;
+    /**
+     * The results for this request.
+     */
+    'results': Array<GetOptionsV1Analytics200ResponseResultsInner>;
+    /**
+     * The status of this request\'s response.
+     */
+    'status': GetOptionsV1Analytics200ResponseStatusEnum;
+}
+
+export enum GetOptionsV1Analytics200ResponseStatusEnum {
+    Ok = 'OK'
+}
+
+export interface GetOptionsV1Analytics200ResponseResultsInner {
+    /**
+     * NBBO ask 15 minutes before the close
+     */
+    'ask'?: number;
+    /**
+     * NBBO bid 15 minutes before the close
+     */
+    'bid'?: number;
+    /**
+     * call or put
+     */
+    'contract_type': string;
+    /**
+     * The trading date the values reflect
+     */
+    'date': string;
+    /**
+     * Change in option price per $1 move in the underlying
+     */
+    'delta'?: number;
+    /**
+     * The most recent regular dividend by ex-date times its yearly frequency, divided by underlying_price, as a decimal. 0 if none
+     */
+    'dividend_yield': number;
+    /**
+     * american or european
+     */
+    'exercise_style': string;
+    /**
+     * Contract expiration date
+     */
+    'expiration_date': string;
+    /**
+     * Change in delta per $1 move in the underlying
+     */
+    'gamma'?: number;
+    /**
+     * Annualized implied volatility solved against option_price, as a decimal (0.48 means 48%). Null when the solver cannot produce a value
+     */
+    'implied_volatility'?: number;
+    /**
+     * Pricing model: binomial
+     */
+    'model': string;
+    /**
+     * Open interest as published the morning of date, for the prior trading day\'s close
+     */
+    'open_interest'?: number;
+    /**
+     * The option price the solver used: the NBBO midpoint 15 minutes before the close
+     */
+    'option_price'?: number;
+    /**
+     * Nanosecond timestamp of the NBBO used
+     */
+    'quote_timestamp'?: number;
+    /**
+     * Change in option price per 1 percentage point move in the risk-free rate
+     */
+    'rho'?: number;
+    /**
+     * Annualized Treasury yield at the option\'s maturity, interpolated on the curve published before date, as a decimal
+     */
+    'risk_free_rate'?: number;
+    /**
+     * Option root symbol
+     */
+    'root'?: string;
+    /**
+     * Contract strike price
+     */
+    'strike_price': number;
+    /**
+     * Change in option price per calendar day
+     */
+    'theta'?: number;
+    /**
+     * Options contract ticker in Massive format (e.g. O:AMD261121C00220000)
+     */
+    'ticker': string;
+    /**
+     * Underlying price used by the solver: the last SIP trade, or the last published index value, at or before 15 minutes before the close
+     */
+    'underlying_price'?: number;
+    /**
+     * Underlying symbol
+     */
+    'underlying_ticker'?: string;
+    /**
+     * Nanosecond timestamp of the underlying price used
+     */
+    'underlying_timestamp'?: number;
+    /**
+     * Change in option price per 1 point move in implied volatility
+     */
+    'vega'?: number;
+    /**
+     * Contracts traded on date
+     */
+    'volume': number;
+}
 export interface GetOptionsV1Exchanges200Response {
     /**
      * If present, this value can be used to fetch the next page.
@@ -6055,25 +6229,9 @@ export interface GetOptionsVXOpenInterestUnderlying200ResponseResultsInner {
      */
     'open_interest_calls': number;
     /**
-     * The change in total open interest from the previous trading day (open_interest - previous_open_interest). Null when previous_open_interest is null.
-     */
-    'open_interest_change'?: number;
-    /**
-     * The change in call open interest from the previous trading day, including call contracts that have since expired. Null when previous_open_interest is null.
-     */
-    'open_interest_change_calls'?: number;
-    /**
-     * The change in put open interest from the previous trading day, including put contracts that have since expired. Null when previous_open_interest is null.
-     */
-    'open_interest_change_puts'?: number;
-    /**
      * Total open interest across the underlying\'s put contracts.
      */
     'open_interest_puts': number;
-    /**
-     * Total open interest on the underlying on the previous trading day, including contracts that have since expired. Null if the underlying had no open interest reported that day.
-     */
-    'previous_open_interest'?: number;
     /**
      * The ticker of the underlying (e.g., SPX). Totals cover every root on the underlying, so weekly roots (SPXW) and roots adjusted after a corporate action (AMCR1) are included.
      */
@@ -10469,7 +10627,7 @@ export interface ListOptionsContracts200ResponseResultsInner {
      */
     'underlying_ticker'?: string;
     /**
-     * What the contract is based on. For now only set on KPI binary options, as kpi.
+     * What the contract is based on: kpi on Cboe KPI binary options, equity on NYSE American equity binary options (roots that start with B1). Missing on other contracts for now.
      */
     'underlying_type'?: ListOptionsContracts200ResponseResultsInnerUnderlyingTypeEnum;
 }
@@ -10488,7 +10646,8 @@ export enum ListOptionsContracts200ResponseResultsInnerTypeEnum {
     Binary = 'binary'
 }
 export enum ListOptionsContracts200ResponseResultsInnerUnderlyingTypeEnum {
-    Kpi = 'kpi'
+    Kpi = 'kpi',
+    Equity = 'equity'
 }
 
 export interface ListOptionsContracts200ResponseResultsInnerAdditionalUnderlyingsInner {
@@ -19450,6 +19609,175 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (order !== undefined) {
                 localVarQueryParameter['order'] = order;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * OPRA administrative messages: the free-text channel of the OPRA feed, carrying FLEX option prints and quotes, operational notices, and other messages that don\'t fit a fixed format. One record per OPRA Category C message, written once and never modified.
+         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [exchange] The exchange ID. See Exchanges mapping for details. Value must be an integer.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV1AdminMessages: async (timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, exchange?: number, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/options/v1/admin-messages`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (timestampGt !== undefined) {
+                localVarQueryParameter['timestamp.gt'] = timestampGt;
+            }
+
+            if (timestampGte !== undefined) {
+                localVarQueryParameter['timestamp.gte'] = timestampGte;
+            }
+
+            if (timestampLt !== undefined) {
+                localVarQueryParameter['timestamp.lt'] = timestampLt;
+            }
+
+            if (timestampLte !== undefined) {
+                localVarQueryParameter['timestamp.lte'] = timestampLte;
+            }
+
+            if (exchange !== undefined) {
+                localVarQueryParameter['exchange'] = exchange;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Daily end-of-day greeks and implied volatility for every listed US options contract, with every input used to compute them.
+         * @param {string} [ticker] Options contract ticker in Massive format (e.g. O:AMD261121C00220000)
+         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [underlyingTicker] Underlying symbol
+         * @param {string} [underlyingTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [expirationDate] Contract expiration date Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {GetOptionsV1AnalyticsContractTypeEnum} [contractType] call or put
+         * @param {GetOptionsV1AnalyticsContractTypeAnyOfEnum} [contractTypeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [date] The trading date the values reflect Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV1Analytics: async (ticker?: string, tickerAnyOf?: string, underlyingTicker?: string, underlyingTickerAnyOf?: string, expirationDate?: string, contractType?: GetOptionsV1AnalyticsContractTypeEnum, contractTypeAnyOf?: GetOptionsV1AnalyticsContractTypeAnyOfEnum, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, limit?: number, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/options/v1/analytics`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarQueryParameter, "apiKey", configuration)
+
+            if (ticker !== undefined) {
+                localVarQueryParameter['ticker'] = ticker;
+            }
+
+            if (tickerAnyOf !== undefined) {
+                localVarQueryParameter['ticker.any_of'] = tickerAnyOf;
+            }
+
+            if (underlyingTicker !== undefined) {
+                localVarQueryParameter['underlying_ticker'] = underlyingTicker;
+            }
+
+            if (underlyingTickerAnyOf !== undefined) {
+                localVarQueryParameter['underlying_ticker.any_of'] = underlyingTickerAnyOf;
+            }
+
+            if (expirationDate !== undefined) {
+                localVarQueryParameter['expiration_date'] = expirationDate;
+            }
+
+            if (contractType !== undefined) {
+                localVarQueryParameter['contract_type'] = contractType;
+            }
+
+            if (contractTypeAnyOf !== undefined) {
+                localVarQueryParameter['contract_type.any_of'] = contractTypeAnyOf;
+            }
+
+            if (date !== undefined) {
+                localVarQueryParameter['date'] = date;
+            }
+
+            if (dateGt !== undefined) {
+                localVarQueryParameter['date.gt'] = dateGt;
+            }
+
+            if (dateGte !== undefined) {
+                localVarQueryParameter['date.gte'] = dateGte;
+            }
+
+            if (dateLt !== undefined) {
+                localVarQueryParameter['date.lt'] = dateLt;
+            }
+
+            if (dateLte !== undefined) {
+                localVarQueryParameter['date.lte'] = dateLte;
             }
 
             if (limit !== undefined) {
@@ -28466,6 +28794,49 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * OPRA administrative messages: the free-text channel of the OPRA feed, carrying FLEX option prints and quotes, operational notices, and other messages that don\'t fit a fixed format. One record per OPRA Category C message, written once and never modified.
+         * @param {string} [timestampGt] Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+         * @param {number} [exchange] The exchange ID. See Exchanges mapping for details. Value must be an integer.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getOptionsV1AdminMessages(timestampGt?: string, timestampGte?: string, timestampLt?: string, timestampLte?: string, exchange?: number, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetOptionsV1AdminMessages200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOptionsV1AdminMessages(timestampGt, timestampGte, timestampLt, timestampLte, exchange, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getOptionsV1AdminMessages']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Daily end-of-day greeks and implied volatility for every listed US options contract, with every input used to compute them.
+         * @param {string} [ticker] Options contract ticker in Massive format (e.g. O:AMD261121C00220000)
+         * @param {string} [tickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [underlyingTicker] Underlying symbol
+         * @param {string} [underlyingTickerAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [expirationDate] Contract expiration date Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {GetOptionsV1AnalyticsContractTypeEnum} [contractType] call or put
+         * @param {GetOptionsV1AnalyticsContractTypeAnyOfEnum} [contractTypeAnyOf] Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+         * @param {string} [date] The trading date the values reflect Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGt] Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateGte] Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLt] Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {string} [dateLte] Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+         * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+         * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getOptionsV1Analytics(ticker?: string, tickerAnyOf?: string, underlyingTicker?: string, underlyingTickerAnyOf?: string, expirationDate?: string, contractType?: GetOptionsV1AnalyticsContractTypeEnum, contractTypeAnyOf?: GetOptionsV1AnalyticsContractTypeAnyOfEnum, date?: string, dateGt?: string, dateGte?: string, dateLt?: string, dateLte?: string, limit?: number, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<GetOptionsV1Analytics200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOptionsV1Analytics(ticker, tickerAnyOf, underlyingTicker, underlyingTickerAnyOf, expirationDate, contractType, contractTypeAnyOf, date, dateGt, dateGte, dateLt, dateLte, limit, sort, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getOptionsV1Analytics']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * US options exchanges and trading venues including traditional options exchanges (CBOE, ISE, etc.), Securities Information Processors (SIP), and other options market infrastructure for derivatives trading.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;1000\&#39;.
          * @param {*} [options] Override http request option.
@@ -30985,6 +31356,24 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getOptionsTrades(requestParameters: DefaultApiGetOptionsTradesRequest, options?: RawAxiosRequestConfig): Promise<GetOptionsTrades200Response> {
             return localVarFp.getOptionsTrades(requestParameters.optionsTicker, requestParameters.timestamp, requestParameters.timestampGte, requestParameters.timestampGt, requestParameters.timestampLte, requestParameters.timestampLt, requestParameters.order, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * OPRA administrative messages: the free-text channel of the OPRA feed, carrying FLEX option prints and quotes, operational notices, and other messages that don\'t fit a fixed format. One record per OPRA Category C message, written once and never modified.
+         * @param {DefaultApiGetOptionsV1AdminMessagesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV1AdminMessages(requestParameters: DefaultApiGetOptionsV1AdminMessagesRequest = {}, options?: RawAxiosRequestConfig): Promise<GetOptionsV1AdminMessages200Response> {
+            return localVarFp.getOptionsV1AdminMessages(requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.exchange, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Daily end-of-day greeks and implied volatility for every listed US options contract, with every input used to compute them.
+         * @param {DefaultApiGetOptionsV1AnalyticsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getOptionsV1Analytics(requestParameters: DefaultApiGetOptionsV1AnalyticsRequest = {}, options?: RawAxiosRequestConfig): Promise<GetOptionsV1Analytics200Response> {
+            return localVarFp.getOptionsV1Analytics(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.underlyingTicker, requestParameters.underlyingTickerAnyOf, requestParameters.expirationDate, requestParameters.contractType, requestParameters.contractTypeAnyOf, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(axios, basePath));
         },
         /**
          * US options exchanges and trading venues including traditional options exchanges (CBOE, ISE, etc.), Securities Information Processors (SIP), and other options market infrastructure for derivatives trading.
@@ -39498,6 +39887,167 @@ export interface DefaultApiGetOptionsTradesRequest {
 }
 
 /**
+ * Request parameters for getOptionsV1AdminMessages operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetOptionsV1AdminMessagesRequest
+ */
+export interface DefaultApiGetOptionsV1AdminMessagesRequest {
+    /**
+     * Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly timestampGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly timestampGte?: string
+
+    /**
+     * Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly timestampLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly timestampLte?: string
+
+    /**
+     * The exchange ID. See Exchanges mapping for details. Value must be an integer.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly exchange?: number
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;asc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1AdminMessages
+     */
+    readonly sort?: string
+}
+
+/**
+ * Request parameters for getOptionsV1Analytics operation in DefaultApi.
+ * @export
+ * @interface DefaultApiGetOptionsV1AnalyticsRequest
+ */
+export interface DefaultApiGetOptionsV1AnalyticsRequest {
+    /**
+     * Options contract ticker in Massive format (e.g. O:AMD261121C00220000)
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly ticker?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly tickerAnyOf?: string
+
+    /**
+     * Underlying symbol
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly underlyingTicker?: string
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly underlyingTickerAnyOf?: string
+
+    /**
+     * Contract expiration date Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly expirationDate?: string
+
+    /**
+     * call or put
+     * @type {'call' | 'put'}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly contractType?: GetOptionsV1AnalyticsContractTypeEnum
+
+    /**
+     * Filter equal to any of the values. Multiple values can be specified by using a comma separated list.
+     * @type {'call' | 'put'}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly contractTypeAnyOf?: GetOptionsV1AnalyticsContractTypeAnyOfEnum
+
+    /**
+     * The trading date the values reflect Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly date?: string
+
+    /**
+     * Filter greater than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly dateGt?: string
+
+    /**
+     * Filter greater than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly dateGte?: string
+
+    /**
+     * Filter less than the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly dateLt?: string
+
+    /**
+     * Filter less than or equal to the value. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly dateLte?: string
+
+    /**
+     * Limit the maximum number of results returned. Defaults to \&#39;1000\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
+     * @type {number}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly limit?: number
+
+    /**
+     * A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;date\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
+     * @type {string}
+     * @memberof DefaultApiGetOptionsV1Analytics
+     */
+    readonly sort?: string
+}
+
+/**
  * Request parameters for getOptionsV1Exchanges operation in DefaultApi.
  * @export
  * @interface DefaultApiGetOptionsV1ExchangesRequest
@@ -47796,6 +48346,28 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * OPRA administrative messages: the free-text channel of the OPRA feed, carrying FLEX option prints and quotes, operational notices, and other messages that don\'t fit a fixed format. One record per OPRA Category C message, written once and never modified.
+     * @param {DefaultApiGetOptionsV1AdminMessagesRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getOptionsV1AdminMessages(requestParameters: DefaultApiGetOptionsV1AdminMessagesRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getOptionsV1AdminMessages(requestParameters.timestampGt, requestParameters.timestampGte, requestParameters.timestampLt, requestParameters.timestampLte, requestParameters.exchange, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Daily end-of-day greeks and implied volatility for every listed US options contract, with every input used to compute them.
+     * @param {DefaultApiGetOptionsV1AnalyticsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getOptionsV1Analytics(requestParameters: DefaultApiGetOptionsV1AnalyticsRequest = {}, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getOptionsV1Analytics(requestParameters.ticker, requestParameters.tickerAnyOf, requestParameters.underlyingTicker, requestParameters.underlyingTickerAnyOf, requestParameters.expirationDate, requestParameters.contractType, requestParameters.contractTypeAnyOf, requestParameters.date, requestParameters.dateGt, requestParameters.dateGte, requestParameters.dateLt, requestParameters.dateLte, requestParameters.limit, requestParameters.sort, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * US options exchanges and trading venues including traditional options exchanges (CBOE, ISE, etc.), Securities Information Processors (SIP), and other options market infrastructure for derivatives trading.
      * @param {DefaultApiGetOptionsV1ExchangesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -49501,6 +50073,22 @@ export enum GetOptionsTradesOrderEnum {
   */
 export enum GetOptionsTradesSortEnum {
     Timestamp = 'timestamp'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetOptionsV1AnalyticsContractTypeEnum {
+    Call = 'call',
+    Put = 'put'
+}
+/**
+  * @export
+  * @enum {string}
+  */
+export enum GetOptionsV1AnalyticsContractTypeAnyOfEnum {
+    Call = 'call',
+    Put = 'put'
 }
 /**
   * @export
