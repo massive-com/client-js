@@ -17823,6 +17823,14 @@
         "operationId": "get_options_v1_admin-messages",
         "parameters": [
           {
+            "description": "The SIP timestamp in Unix nanoseconds. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
+            "in": "query",
+            "name": "timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "Filter greater than the value. Value must be an integer timestamp in nanoseconds, formatted 'yyyy-mm-dd', or ISO 8601/RFC 3339 (e.g. '2024-05-28T20:27:41Z').",
             "in": "query",
             "name": "timestamp.gt",
@@ -18405,6 +18413,934 @@
         "x-massive-field-selection": true
       }
     },
+    "/options/v1/analytics/expiration": {
+      "get": {
+        "description": "Daily options analytics per underlying asset and expiration date: open interest, max pain, gamma exposure and delta exposure. Only standard contracts that deliver 100 shares count.",
+        "operationId": "get_options_v1_analytics_expiration",
+        "parameters": [
+          {
+            "description": "The ticker of the underlying asset (e.g., AAPL). The values cover every root on the underlying asset.",
+            "in": "query",
+            "name": "underlying_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "underlying_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The expiration date of the contracts (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "expiration_date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "expiration_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "expiration_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "expiration_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "expiration_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The trading date the values apply to (formatted as YYYY-MM-DD). Open interest is as published the morning of date, for the prior trading day's close. Greeks are from 15 minutes before the close on date. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/options/v1/analytics/expiration?cursor=YXA9ZGF0ZT0yMDI2LTEwLTI5JnVuZGVybHlpbmdfdGlja2VyPUFBUEwmZXhwaXJhdGlvbl9kYXRlPTIwMjYtMTEtMDQmbGltaXQ9MiZzb3J0PWRhdGUuZGVzYw",
+                  "request_id": "2a6d9f1c4e7b4a3d8f5c0e2b6d9a1f4c",
+                  "results": [
+                    {
+                      "date": "2026-10-29",
+                      "delta_exposure": 1489882581.1,
+                      "excluded_open_interest": 0,
+                      "expiration_date": "2026-10-30",
+                      "gamma_exposure": 474342855.02,
+                      "gamma_exposure_calls": 683276314.77,
+                      "gamma_exposure_puts": -208933459.75,
+                      "max_pain": 342.5,
+                      "open_interest": 323918,
+                      "open_interest_calls": 152319,
+                      "open_interest_puts": 171599,
+                      "open_interest_with_greeks": 230928,
+                      "underlying_price": 349.5103,
+                      "underlying_ticker": "AAPL"
+                    },
+                    {
+                      "date": "2026-10-29",
+                      "delta_exposure": 278960473.2,
+                      "excluded_open_interest": 0,
+                      "expiration_date": "2026-11-04",
+                      "gamma_exposure": 57835242.23,
+                      "gamma_exposure_calls": 76884104.38,
+                      "gamma_exposure_puts": -19048862.14,
+                      "max_pain": 345,
+                      "open_interest": 43909,
+                      "open_interest_calls": 31819,
+                      "open_interest_puts": 12090,
+                      "open_interest_with_greeks": 43325,
+                      "underlying_price": 349.5103,
+                      "underlying_ticker": "AAPL"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "date": {
+                            "description": "The trading date the values apply to (formatted as YYYY-MM-DD). Open interest is as published the morning of date, for the prior trading day's close. Greeks are from 15 minutes before the close on date.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "delta_exposure": {
+                            "description": "Delta exposure in dollars: the sum of open interest x 100 x delta x underlying_price. Put deltas are negative. Null if no contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "excluded_open_interest": {
+                            "description": "Open interest of binary options and of the contracts that do not have a standard deliverable of 100 shares, for example contracts adjusted after a corporate action. These contracts are not in any other field.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "expiration_date": {
+                            "description": "The expiration date of the contracts (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "gamma_exposure": {
+                            "description": "Net gamma exposure in dollars per 1% move of the underlying price: the sum of open interest x 100 x gamma x underlying_price² x 0.01, with calls positive and puts negative. Null if no contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "gamma_exposure_calls": {
+                            "description": "Gamma exposure of the call contracts (positive). Null if no call contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "gamma_exposure_puts": {
+                            "description": "Gamma exposure of the put contracts (negative). Null if no put contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "max_pain": {
+                            "description": "The strike price at which the open contracts of this expiration date have the smallest total value if the underlying asset settles there. Every strike price of the expiration date is a candidate. If strike prices tie, the lower one. Null if the expiration date has no open interest.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "open_interest": {
+                            "description": "Total open interest of the standard (not binary) contracts with a standard deliverable of 100 shares.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_calls": {
+                            "description": "Total open interest of the standard (not binary) call contracts with a standard deliverable of 100 shares.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_puts": {
+                            "description": "Total open interest of the standard (not binary) put contracts with a standard deliverable of 100 shares.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_with_greeks": {
+                            "description": "Open interest of the contracts that count in the exposure values: contracts with open interest above 0 and a gamma and a delta.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "underlying_price": {
+                            "description": "The underlying price used for the Greeks: the last SIP trade, or the last published index value, at or before 15 minutes before the close. Null if no contract of the expiration date has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_ticker": {
+                            "description": "The ticker of the underlying asset (e.g., AAPL). The values cover every root on the underlying asset.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "date"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              },
+              "application/vnd.apache.arrow.file": {
+                "schema": {
+                  "description": "An Apache Arrow IPC file. Its record batch columns match the fields of the entries in the JSON response's `results` array."
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ],
+        "x-massive-field-selection": true
+      }
+    },
+    "/options/v1/analytics/strike": {
+      "get": {
+        "description": "Daily options analytics per underlying asset and strike price, summed over all expiration dates: open interest, gamma exposure and delta exposure. Only standard contracts that deliver 100 shares count.",
+        "operationId": "get_options_v1_analytics_strike",
+        "parameters": [
+          {
+            "description": "The ticker of the underlying asset (e.g., AAPL). The values cover every root on the underlying asset.",
+            "in": "query",
+            "name": "underlying_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "underlying_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The strike price. The values sum the contracts of all expiration dates at this strike price. Value must be a floating point number.",
+            "in": "query",
+            "name": "strike_price",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "strike_price.gt",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "strike_price.gte",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "strike_price.lt",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be a floating point number.",
+            "in": "query",
+            "name": "strike_price.lte",
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "The trading date the values apply to (formatted as YYYY-MM-DD). Open interest is as published the morning of date, for the prior trading day's close. Greeks are from 15 minutes before the close on date. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '1000' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 1000,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/options/v1/analytics/strike?cursor=YXA9ZGF0ZT0yMDI2LTEwLTI5JnVuZGVybHlpbmdfdGlja2VyPUFBUEwmc3RyaWtlX3ByaWNlPTI3NSZsaW1pdD0yJnNvcnQ9ZGF0ZS5kZXNj",
+                  "request_id": "8c1f4a7e2d9b4c6a8e0f3b5d7a9c2e4f",
+                  "results": [
+                    {
+                      "date": "2026-10-29",
+                      "delta_exposure": 1210104246.61,
+                      "excluded_open_interest": 0,
+                      "gamma_exposure": -6163058.32,
+                      "gamma_exposure_calls": 8429392.85,
+                      "gamma_exposure_puts": -14592451.17,
+                      "open_interest": 121620,
+                      "open_interest_calls": 42255,
+                      "open_interest_puts": 79365,
+                      "open_interest_with_greeks": 120246,
+                      "strike_price": 270,
+                      "underlying_price": 349.5103,
+                      "underlying_ticker": "AAPL"
+                    },
+                    {
+                      "date": "2026-10-29",
+                      "delta_exposure": 327167756.5,
+                      "excluded_open_interest": 0,
+                      "gamma_exposure": -3144262.25,
+                      "gamma_exposure_calls": 2151783.38,
+                      "gamma_exposure_puts": -5296045.63,
+                      "open_interest": 41946,
+                      "open_interest_calls": 11138,
+                      "open_interest_puts": 30808,
+                      "open_interest_with_greeks": 41279,
+                      "strike_price": 275,
+                      "underlying_price": 349.5103,
+                      "underlying_ticker": "AAPL"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "date": {
+                            "description": "The trading date the values apply to (formatted as YYYY-MM-DD). Open interest is as published the morning of date, for the prior trading day's close. Greeks are from 15 minutes before the close on date.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "delta_exposure": {
+                            "description": "Delta exposure in dollars: the sum of open interest x 100 x delta x underlying_price. Put deltas are negative. Null if no contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "excluded_open_interest": {
+                            "description": "Open interest of binary options and of the contracts that do not have a standard deliverable of 100 shares, for example contracts adjusted after a corporate action. These contracts are not in any other field.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "gamma_exposure": {
+                            "description": "Net gamma exposure in dollars per 1% move of the underlying price: the sum of open interest x 100 x gamma x underlying_price² x 0.01, with calls positive and puts negative. Null if no contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "gamma_exposure_calls": {
+                            "description": "Gamma exposure of the call contracts (positive). Null if no call contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "gamma_exposure_puts": {
+                            "description": "Gamma exposure of the put contracts (negative). Null if no put contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "open_interest": {
+                            "description": "Total open interest of the standard (not binary) contracts with a standard deliverable of 100 shares.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_calls": {
+                            "description": "Total open interest of the standard (not binary) call contracts with a standard deliverable of 100 shares.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_puts": {
+                            "description": "Total open interest of the standard (not binary) put contracts with a standard deliverable of 100 shares.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_with_greeks": {
+                            "description": "Open interest of the contracts that count in the exposure values: contracts with open interest above 0 and a gamma and a delta.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "strike_price": {
+                            "description": "The strike price. The values sum the contracts of all expiration dates at this strike price.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_price": {
+                            "description": "The underlying price used for the Greeks: the last SIP trade, or the last published index value, at or before 15 minutes before the close. Null if no contract at this strike price has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_ticker": {
+                            "description": "The ticker of the underlying asset (e.g., AAPL). The values cover every root on the underlying asset.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "date"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              },
+              "application/vnd.apache.arrow.file": {
+                "schema": {
+                  "description": "An Apache Arrow IPC file. Its record batch columns match the fields of the entries in the JSON response's `results` array."
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ],
+        "x-massive-field-selection": true
+      }
+    },
+    "/options/v1/analytics/underlying": {
+      "get": {
+        "description": "Daily options analytics per underlying asset: open interest, put/call ratio, gamma exposure, delta exposure, the call and put walls, and the gamma flip. Only standard contracts that deliver 100 shares count.",
+        "operationId": "get_options_v1_analytics_underlying",
+        "parameters": [
+          {
+            "description": "The ticker of the underlying asset (e.g., AAPL). The values cover every root on the underlying asset.",
+            "in": "query",
+            "name": "underlying_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "underlying_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The trading date the values apply to (formatted as YYYY-MM-DD). Open interest is as published the morning of date, for the prior trading day's close. Greeks are from 15 minutes before the close on date. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "5e2b7c9d1a4f4e8b9c3d6a0f2b8e1d7c",
+                  "results": [
+                    {
+                      "call_wall": 350,
+                      "date": "2026-10-29",
+                      "delta_exposure": 42543166702.46,
+                      "excluded_open_interest": 0,
+                      "gamma_exposure": 1447588925.97,
+                      "gamma_exposure_calls": 2437000732.98,
+                      "gamma_exposure_puts": -989411807.01,
+                      "gamma_flip": 348.11,
+                      "open_interest": 4888327,
+                      "open_interest_calls": 2667328,
+                      "open_interest_puts": 2220999,
+                      "open_interest_with_greeks": 4604696,
+                      "put_call_ratio": 0.8327,
+                      "put_wall": 345,
+                      "underlying_price": 349.5103,
+                      "underlying_ticker": "AAPL"
+                    },
+                    {
+                      "call_wall": 600,
+                      "date": "2026-10-29",
+                      "delta_exposure": 41932960361.16,
+                      "excluded_open_interest": 0,
+                      "gamma_exposure": 463709891.37,
+                      "gamma_exposure_calls": 786519563.56,
+                      "gamma_exposure_puts": -322809672.19,
+                      "gamma_flip": 548.65,
+                      "open_interest": 2598431,
+                      "open_interest_calls": 1592013,
+                      "open_interest_puts": 1006418,
+                      "open_interest_with_greeks": 2502487,
+                      "put_call_ratio": 0.6322,
+                      "put_wall": 500,
+                      "underlying_price": 563.56,
+                      "underlying_ticker": "AMD"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "call_wall": {
+                            "description": "The strike price at or above underlying_price with the largest call gamma exposure, summed over all expiration dates. If strike prices tie, the one nearest underlying_price. Null if no call contract at or above underlying_price has gamma exposure.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "date": {
+                            "description": "The trading date the values apply to (formatted as YYYY-MM-DD). Open interest is as published the morning of date, for the prior trading day's close. Greeks are from 15 minutes before the close on date.",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "delta_exposure": {
+                            "description": "Delta exposure in dollars: the sum of open interest x 100 x delta x underlying_price. Put deltas are negative. Null if no contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "excluded_open_interest": {
+                            "description": "Open interest of binary options and of the contracts that do not have a standard deliverable of 100 shares, for example contracts adjusted after a corporate action. These contracts are not in any other field.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "gamma_exposure": {
+                            "description": "Net gamma exposure in dollars per 1% move of the underlying price: the sum of open interest x 100 x gamma x underlying_price² x 0.01, with calls positive and puts negative. Null if no contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "gamma_exposure_calls": {
+                            "description": "Gamma exposure of the call contracts (positive). Null if no call contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "gamma_exposure_puts": {
+                            "description": "Gamma exposure of the put contracts (negative). Null if no put contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "gamma_flip": {
+                            "description": "The price where the running sum of net gamma exposure changes sign. The sum runs over the strike prices from the lowest up, and the price is interpolated linearly between the two adjacent strike prices. If the sum changes sign more than once, the crossing nearest underlying_price. Strike prices without gamma exposure are skipped. Null if the sum does not change sign.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "open_interest": {
+                            "description": "Total open interest of the standard (not binary) contracts with a standard deliverable of 100 shares.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_calls": {
+                            "description": "Total open interest of the standard (not binary) call contracts with a standard deliverable of 100 shares.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_puts": {
+                            "description": "Total open interest of the standard (not binary) put contracts with a standard deliverable of 100 shares.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_with_greeks": {
+                            "description": "Open interest of the contracts that count in the exposure values: contracts with open interest above 0 and a gamma and a delta.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "put_call_ratio": {
+                            "description": "open_interest_puts divided by open_interest_calls. Null if there is no call open interest.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "put_wall": {
+                            "description": "The strike price at or below underlying_price with the most negative put gamma exposure, summed over all expiration dates. If strike prices tie, the one nearest underlying_price. Null if no put contract at or below underlying_price has gamma exposure.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_price": {
+                            "description": "The underlying price used for the Greeks: the last SIP trade, or the last published index value, at or before 15 minutes before the close. Null if no contract has Greeks.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_ticker": {
+                            "description": "The ticker of the underlying asset (e.g., AAPL). The values cover every root on the underlying asset.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "date"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              },
+              "application/vnd.apache.arrow.file": {
+                "schema": {
+                  "description": "An Apache Arrow IPC file. Its record batch columns match the fields of the entries in the JSON response's `results` array."
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ],
+        "x-massive-field-selection": true
+      }
+    },
     "/options/v1/exchanges": {
       "get": {
         "description": "US options exchanges and trading venues including traditional options exchanges (CBOE, ISE, etc.), Securities Information Processors (SIP), and other options market infrastructure for derivatives trading.",
@@ -18888,6 +19824,256 @@
                         "required": [
                           "ticker",
                           "date"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "OK"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              },
+              "application/vnd.apache.arrow.file": {
+                "schema": {
+                  "description": "An Apache Arrow IPC file. Its record batch columns match the fields of the entries in the JSON response's `results` array."
+                }
+              }
+            },
+            "description": "A list of results."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "A message describing the source of the error.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "enum": [
+                        "ERROR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error message."
+          }
+        },
+        "tags": [
+          "default"
+        ],
+        "x-massive-field-selection": true
+      }
+    },
+    "/options/v1/open-interest/underlying": {
+      "get": {
+        "description": "Daily open interest for US options rolled up across each underlying's whole chain, as reported by OPRA, with the call and put split.",
+        "operationId": "get_options_v1_open-interest_underlying",
+        "parameters": [
+          {
+            "description": "The ticker of the underlying (e.g., SPX). Totals cover every root on the underlying, so weekly roots (SPXW) and roots adjusted after a corporate action (AMCR1) are included.",
+            "in": "query",
+            "name": "underlying_ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
+            "in": "query",
+            "name": "underlying_ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value.",
+            "in": "query",
+            "name": "underlying_ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value.",
+            "in": "query",
+            "name": "underlying_ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value.",
+            "in": "query",
+            "name": "underlying_ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value.",
+            "in": "query",
+            "name": "underlying_ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The trading date the open interest applies to (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
+            "in": "query",
+            "name": "date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 50000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'desc' if not specified.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "date.desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.massive.com/options/v1/open-interest/underlying?cursor=YXA9ZGF0ZT0yMDI2LTAxLTIyJnVuZGVybHlpbmdfdGlja2VyPVFRUSZsaW1pdD0yJnNvcnQ9ZGF0ZS5kZXNj",
+                  "request_id": "0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d",
+                  "results": [
+                    {
+                      "date": "2026-01-23",
+                      "open_interest": 20987654,
+                      "open_interest_calls": 8765432,
+                      "open_interest_puts": 12222222,
+                      "underlying_ticker": "SPY"
+                    },
+                    {
+                      "date": "2026-01-23",
+                      "open_interest": 9876543,
+                      "open_interest_calls": 4321098,
+                      "open_interest_puts": 5555445,
+                      "underlying_ticker": "QQQ"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "The results for this request.",
+                      "items": {
+                        "properties": {
+                          "date": {
+                            "description": "The trading date the open interest applies to (formatted as YYYY-MM-DD).",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "open_interest": {
+                            "description": "Total open interest across every contract on the underlying.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_calls": {
+                            "description": "Total open interest across the underlying's call contracts.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "open_interest_puts": {
+                            "description": "Total open interest across the underlying's put contracts.",
+                            "format": "int64",
+                            "type": "integer"
+                          },
+                          "underlying_ticker": {
+                            "description": "The ticker of the underlying (e.g., SPX). Totals cover every root on the underlying, so weekly roots (SPXW) and roots adjusted after a corporate action (AMCR1) are included.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "date",
+                          "open_interest_calls",
+                          "open_interest_puts"
                         ],
                         "type": "object"
                       },
@@ -19610,301 +20796,6 @@
                           "price",
                           "size",
                           "exchange"
-                        ],
-                        "type": "object"
-                      },
-                      "type": "array"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "enum": [
-                        "OK"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id",
-                    "results"
-                  ],
-                  "type": "object"
-                }
-              },
-              "application/vnd.apache.arrow.file": {
-                "schema": {
-                  "description": "An Apache Arrow IPC file. Its record batch columns match the fields of the entries in the JSON response's `results` array."
-                }
-              }
-            },
-            "description": "A list of results."
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "error": {
-                      "description": "A message describing the source of the error.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A request id assigned by the server.",
-                      "type": "string"
-                    },
-                    "status": {
-                      "description": "The status of this request's response.",
-                      "enum": [
-                        "ERROR"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status",
-                    "request_id",
-                    "error"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "An error message."
-          }
-        },
-        "tags": [
-          "default"
-        ],
-        "x-massive-field-selection": true
-      }
-    },
-    "/options/vX/open-interest/underlying": {
-      "get": {
-        "description": "Daily open interest for US options rolled up across each underlying's whole chain, as reported by OPRA, with the call and put split.",
-        "operationId": "get_options_vX_open-interest_underlying",
-        "parameters": [
-          {
-            "description": "The ticker of the underlying (e.g., SPX). Totals cover every root on the underlying, so weekly roots (SPXW) and roots adjusted after a corporate action (AMCR1) are included.",
-            "in": "query",
-            "name": "underlying_ticker",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter equal to any of the values. Multiple values can be specified by using a comma separated list.",
-            "in": "query",
-            "name": "underlying_ticker.any_of",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value.",
-            "in": "query",
-            "name": "underlying_ticker.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value.",
-            "in": "query",
-            "name": "underlying_ticker.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value.",
-            "in": "query",
-            "name": "underlying_ticker.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value.",
-            "in": "query",
-            "name": "underlying_ticker.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The trading date the open interest applies to (formatted as YYYY-MM-DD). Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "date",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "date.gt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "date.gte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "date.lt",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value. Value must be formatted 'yyyy-mm-dd'.",
-            "in": "query",
-            "name": "date.lte",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Total open interest across every contract on the underlying. Value must be an integer.",
-            "in": "query",
-            "name": "open_interest",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Filter greater than the value. Value must be an integer.",
-            "in": "query",
-            "name": "open_interest.gt",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Filter greater than or equal to the value. Value must be an integer.",
-            "in": "query",
-            "name": "open_interest.gte",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Filter less than the value. Value must be an integer.",
-            "in": "query",
-            "name": "open_interest.lt",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Filter less than or equal to the value. Value must be an integer.",
-            "in": "query",
-            "name": "open_interest.lte",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Limit the maximum number of results returned. Defaults to '100' if not specified. The maximum allowed limit is '50000'.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 100,
-              "maximum": 50000,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "A comma separated list of sort columns. For each column, append '.asc' or '.desc' to specify the sort direction. The sort column defaults to 'date' if not specified. The sort order defaults to 'desc' if not specified.",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "date.desc",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "next_url": "https://api.massive.com/options/vX/open-interest/underlying?cursor=YXA9ZGF0ZT0yMDI2LTAxLTIyJnVuZGVybHlpbmdfdGlja2VyPVFRUSZsaW1pdD0yJnNvcnQ9ZGF0ZS5kZXNj",
-                  "request_id": "0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d",
-                  "results": [
-                    {
-                      "date": "2026-01-23",
-                      "open_interest": 20987654,
-                      "open_interest_calls": 8765432,
-                      "open_interest_puts": 12222222,
-                      "underlying_ticker": "SPY"
-                    },
-                    {
-                      "date": "2026-01-23",
-                      "open_interest": 9876543,
-                      "open_interest_calls": 4321098,
-                      "open_interest_puts": 5555445,
-                      "underlying_ticker": "QQQ"
-                    }
-                  ],
-                  "status": "OK"
-                },
-                "schema": {
-                  "properties": {
-                    "next_url": {
-                      "description": "If present, this value can be used to fetch the next page.",
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "description": "A request id assigned by the server.",
-                      "type": "string"
-                    },
-                    "results": {
-                      "description": "The results for this request.",
-                      "items": {
-                        "properties": {
-                          "date": {
-                            "description": "The trading date the open interest applies to (formatted as YYYY-MM-DD).",
-                            "format": "date",
-                            "type": "string"
-                          },
-                          "open_interest": {
-                            "description": "Total open interest across every contract on the underlying.",
-                            "format": "int64",
-                            "type": "integer"
-                          },
-                          "open_interest_calls": {
-                            "description": "Total open interest across the underlying's call contracts.",
-                            "format": "int64",
-                            "type": "integer"
-                          },
-                          "open_interest_puts": {
-                            "description": "Total open interest across the underlying's put contracts.",
-                            "format": "int64",
-                            "type": "integer"
-                          },
-                          "underlying_ticker": {
-                            "description": "The ticker of the underlying (e.g., SPX). Totals cover every root on the underlying, so weekly roots (SPXW) and roots adjusted after a corporate action (AMCR1) are included.",
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "date",
-                          "open_interest_calls",
-                          "open_interest_puts"
                         ],
                         "type": "object"
                       },
@@ -21676,6 +22567,7 @@
                       "cusip": "023135106",
                       "file_number": "028-04545",
                       "filer_cik": "0001067983",
+                      "filer_name": "Berkshire Hathaway Inc",
                       "filing_date": "2024-11-14",
                       "filing_url": "https://www.sec.gov/Archives/edgar/data/1067983/0000950123-24-011775.txt",
                       "film_number": "241461756",
@@ -21700,6 +22592,7 @@
                       "cusip": "025816109",
                       "file_number": "028-04545",
                       "filer_cik": "0001067983",
+                      "filer_name": "Berkshire Hathaway Inc",
                       "filing_date": "2024-11-14",
                       "filing_url": "https://www.sec.gov/Archives/edgar/data/1067983/0000950123-24-011775.txt",
                       "film_number": "241461756",
@@ -21750,6 +22643,10 @@
                           },
                           "filer_cik": {
                             "description": "SEC Central Index Key (10 digits, zero-padded) of the filing entity.",
+                            "type": "string"
+                          },
+                          "filer_name": {
+                            "description": "Name of the institutional investment manager filing the report, as reported on the filing's cover page. Null for older text-format filings (before mid-2013), which do not report it in a structured field.",
                             "type": "string"
                           },
                           "filing_date": {
