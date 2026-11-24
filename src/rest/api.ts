@@ -5241,6 +5241,10 @@ export interface GetMarketStatus200Response {
      */
     'market'?: string;
     /**
+     * Whether or not the market is in overnight hours (9:00 PM to 4:00 AM ET).
+     */
+    'overnight'?: boolean;
+    /**
      * The current time of the server, returned as a date-time in RFC3339 format.
      */
     'serverTime'?: string;
