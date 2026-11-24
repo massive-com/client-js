@@ -39298,6 +39298,13 @@
                       "description": "The status of the market as a whole.",
                       "type": "string"
                     },
+                    "overnight": {
+                      "description": "Whether or not the market is in overnight hours (9:00 PM to 4:00 AM ET).",
+                      "type": "boolean",
+                      "x-polygon-go-type": {
+                        "name": "*bool"
+                      }
+                    },
                     "serverTime": {
                       "description": "The current time of the server, returned as a date-time in RFC3339 format.",
                       "type": "string"
