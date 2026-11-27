@@ -4106,7 +4106,7 @@ export interface GetFuturesV1Exchanges200ResponseResultsInner {
     /**
      * Geographic location code where the exchange operates.
      */
-    'locale'?: string;
+    'locale': string;
     /**
      * Market Identifier Code (MIC) - ISO 10383 standard four-character code for the futures market.
      */
@@ -4220,7 +4220,7 @@ export interface GetFuturesV1Products200ResponseResultsInner {
     /**
      * A date string in the format YYYY-MM-DD. This parameter will return point-in-time information about products for the specified day.
      */
-    'date': string;
+    'date'?: string;
     /**
      * The date and time at which this product was last updated.
      */
@@ -4432,7 +4432,7 @@ export enum GetFuturesV1Snapshot200ResponseStatusEnum {
 }
 
 export interface GetFuturesV1Snapshot200ResponseResultsInner {
-    'details'?: GetFuturesV1Snapshot200ResponseResultsInnerDetails;
+    'details': GetFuturesV1Snapshot200ResponseResultsInnerDetails;
     'last_minute'?: GetFuturesV1Snapshot200ResponseResultsInnerLastMinute;
     'last_quote'?: GetFuturesV1Snapshot200ResponseResultsInnerLastQuote;
     'last_trade'?: GetFuturesV1Snapshot200ResponseResultsInnerLastTrade;
@@ -6177,7 +6177,7 @@ export interface GetOptionsV1Exchanges200ResponseResultsInner {
     /**
      * Geographic location code.
      */
-    'locale'?: string;
+    'locale': string;
     /**
      * Market Identifier Code (MIC) - ISO 10383 standard four-character code identifying the specific options market.
      */
@@ -9541,7 +9541,7 @@ export interface GetStocksV1Exchanges200ResponseResultsInner {
     /**
      * Geographic location code.
      */
-    'locale'?: string;
+    'locale': string;
     /**
      * Market Identifier Code (MIC) - ISO 10383 standard four-character code for the market (may be empty for some venues).
      */
@@ -17692,7 +17692,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
+         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
@@ -17999,7 +17999,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
+         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
@@ -28704,7 +28704,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
+         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;100\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
@@ -28781,7 +28781,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [timestampGte] Filter greater than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLt] Filter less than the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
          * @param {string} [timestampLte] Filter less than or equal to the value. Value must be an integer timestamp in nanoseconds, formatted \&#39;yyyy-mm-dd\&#39;, or ISO 8601/RFC 3339 (e.g. \&#39;2024-05-28T20:27:41Z\&#39;).
-         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
+         * @param {string} [sessionEndDate] Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
          * @param {number} [limit] Limit the maximum number of results returned. Defaults to \&#39;10\&#39; if not specified. The maximum allowed limit is \&#39;50000\&#39;.
          * @param {string} [sort] A comma separated list of sort columns. For each column, append \&#39;.asc\&#39; or \&#39;.desc\&#39; to specify the sort direction. The sort column defaults to \&#39;timestamp\&#39; if not specified. The sort order defaults to \&#39;desc\&#39; if not specified.
          * @param {*} [options] Override http request option.
@@ -38669,7 +38669,7 @@ export interface DefaultApiGetFuturesV1QuotesTickerRequest {
     readonly timestampLte?: string
 
     /**
-     * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
+     * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
      * @type {string}
      * @memberof DefaultApiGetFuturesV1QuotesTicker
      */
@@ -38984,7 +38984,7 @@ export interface DefaultApiGetFuturesV1TradesTickerRequest {
     readonly timestampLte?: string
 
     /**
-     * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format.
+     * Also known as the trading date, the date of the end of the trading session, in YYYY-MM-DD format. Value must be formatted \&#39;yyyy-mm-dd\&#39;.
      * @type {string}
      * @memberof DefaultApiGetFuturesV1TradesTicker
      */
